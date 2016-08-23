@@ -1,9 +1,13 @@
 #!/usr/bin/env python
+#
+# Python script that works like a simplified "grep" command
+# which doesn't read from stdin
+#
 import sys, re
 from os.path import basename
 
 if len(sys.argv) < 3:
-    sys.stderr.write('usage: %s REGEX FILE ...\n' % basename(sys.argv[0]))
+    sys.stderr.write('Usage: %s regex file ...\n' % basename(sys.argv[0]))
     sys.exit(1)
 
 r = re.compile(sys.argv[1])
