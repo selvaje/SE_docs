@@ -11,11 +11,11 @@ status = call('ls -l', shell=True)
 
 status = call(['ls', '-l'])
 
-#### bash: s=$(echo $USER)
+#### bash: S=$(echo $USER)
 s = check_output('echo $USER', shell=True).rstrip()
 print s
 
-# this does *not* work since "$USER" is substituted since shell is not used
+# this does *not* work since "$USER" is not substituted without shell
 s = check_output(['echo', '$USER']).rstrip()
 print s
 
@@ -28,7 +28,7 @@ p = Popen(['ls'], stdout=PIPE)
 status = call(['wc', '-l'], stdin=p.stdout)
 status = p.wait()
 
-#### bash: ls | grep '\.sh$' wc -l
+#### bash: S=$(ls | grep '\.py$' | wc -l)
 p1 = Popen(['ls'],                              stdout=PIPE)
 p2 = Popen(['grep', '\\.py$'], stdin=p1.stdout, stdout=PIPE)
 p3 = Popen(['wc', '-l'],       stdin=p2.stdout, stdout=PIPE)
@@ -41,6 +41,7 @@ status = call('ls *.py', shell=True)
 
 # this does *not* work since "*.py" is expanded by the shell, not "ls"
 status = call(['ls', '*.py'])
+print "Exit status:", status
 
 # use glob module to expand "*.py"
 import glob
