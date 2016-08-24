@@ -1,4 +1,9 @@
 #!/usr/bin/env python
+#
+# Example uses of the subprocess module. For more information, see:
+#
+#  https://docs.python.org/2/library/subprocess.html
+#
 from subprocess import Popen, call, check_output, STDOUT, PIPE
 
 #### bash: ls -l
