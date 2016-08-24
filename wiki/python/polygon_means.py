@@ -1,4 +1,10 @@
 #!/us/bin/env python
+#
+# Rasterize shape file using gdal_rasterize:
+#
+# $ gdal_rasterize -te 2632000.000 1420000.000 5972000.000 5450000.000 \
+#    -tap -clump -tr 1000 1000 -l poly_fr poly_fr.shp poly_fr.tif
+#
 import os, sys
 from osgeo import gdal
 from osgeo.gdalconst import *
