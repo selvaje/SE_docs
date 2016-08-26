@@ -15,3 +15,13 @@ print y.mean()
 
 print x[x >= 0].mean()
 print x[mask == 0].mean()
+
+####
+mx = ma.masked_where(x < 0, x)
+print mx.mean()
+
+# Mask a masked array
+mmx = ma.masked_where(mx > 2, mx)
+print mmx
+
+print mmx.fill_value
