@@ -5,7 +5,7 @@ raster=raster("vrm.tif")
 
 png("vrm.png",   res=100 , width = 800, height = 800  )
 
-max=0.004 ; min=0 ; des="Vector Ruggedness Measure - Median"
+max=0.004 ; min=0 ; des="Vector Ruggedness Measure"
 
 n=100
 at=seq(min,max,length=n)
