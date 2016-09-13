@@ -10,6 +10,9 @@ g.extension  extension=r.vector.ruggedness
 echo calculate  Vector Ruggedness Measure
 r.vector.ruggedness      elevation=elevation   output=vrm   --o 
 
+# export the results 
+r.out.gdal -c  createopt="COMPRESS=DEFLATE,ZLEVEL=9" format=GTiff  type=Float32 input=vrm output=vrm.tif 
+
 echo calculate curvature variables 
 r.slope.aspect elevation=elevation  precision=FCELL  pcurv=pcurv tcurv=tcurv dx=dx  dy=dy  dxx=dxx dyy=dyy  --o
 
