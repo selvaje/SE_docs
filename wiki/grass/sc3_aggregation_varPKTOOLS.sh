@@ -1,28 +1,28 @@
 # aggregate variables 
 
-# for file in *.tif ; do  
-#     for km in 1 5 10 50 100 ; do 
-# 	km=$km
-# 	res=$(expr $km \* 4)
-# 	for aggreg in min max mean median stdev ; do 	    
-# 	    filename=$( basename $file .tif) 
-# 	    pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -ot Float32 -of GTiff -nodata -9999 -dx $res -dy $res -f $aggreg  -d $res -i $file  -o ${filename}_${km}KM${aggreg}.tif    
-# 	done 
-#     done 
-# done 
+for file in *.tif ; do  
+    for km in 1 5 10 50 100 ; do 
+	km=$km
+	res=$(expr $km \* 4)
+	for aggreg in min max mean median stdev ; do 	    
+	    filename=$( basename $file .tif) 
+	    pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -ot Float32 -of GTiff -nodata -9999 -dx $res -dy $res -f $aggreg  -d $res -i $file  -o ${filename}_${km}KM${aggreg}.tif    
+	done 
+    done 
+done 
 
 
-# echo majority 
+echo majority 
 
-# for km in 1 5 10 50 100 ; do 
-#     km=$km
-#     res=$(expr $km \* 4)
-#     for aggreg in mode countid ; do
-#  	if [ $aggreg = "mode" ] ; then naggreg=maj ; fi 
-#  	if [ $aggreg = "countid" ] ; then naggreg=count ; fi 
-#  	pkfilter -co COMPRESS=DEFLATE  -co ZLEVEL=9 -ot Byte -nodata 255 -dx $res -dy $res -f $aggreg  -d $res -i   geomorphon.tif   -o geom_${km}KM${naggreg}.tif
-#     done 
-# done
+for km in 1 5 10 50 100 ; do 
+    km=$km
+    res=$(expr $km \* 4)
+    for aggreg in mode countid ; do
+ 	if [ $aggreg = "mode" ] ; then naggreg=maj ; fi 
+ 	if [ $aggreg = "countid" ] ; then naggreg=count ; fi 
+ 	pkfilter -co COMPRESS=DEFLATE  -co ZLEVEL=9 -ot Byte -nodata 255 -dx $res -dy $res -f $aggreg  -d $res -i   geomorphon.tif   -o geom_${km}KM${naggreg}.tif
+    done 
+done
 
 
 for km in 1 5 10 50 100 ; do 
@@ -58,12 +58,3 @@ for km in 1 5 10 50 100 ; do
     gdal_calc.py  --co=COMPRESS=LZW --co=ZLEVEL=9  --type=Float32 --overwrite -A geom_classH_1_${km}KM.tif -B geom_classH_2_${km}KM.tif -C geom_classH_3_${km}KM.tif -D geom_classH_4_${km}KM.tif  -E geom_classH_5_${km}KM.tif -F geom_classH_6_${km}KM.tif -G geom_classH_7_${km}KM.tif -H geom_classH_8_${km}KM.tif -I geom_classH_9_${km}KM.tif -J geom_classH_10_${km}KM.tif --calc="((A + B + C + D + E + F + G + H + I + J) * -1  )"  --outfile=geom_${km}KMsha.tif   	
 
 done
-
-
-
-
-
-
-
-
-
