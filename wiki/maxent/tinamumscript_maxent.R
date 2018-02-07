@@ -117,6 +117,10 @@ spplot(points,zcol="type",pch=1:5,col.regions=c("red","red","black","red","black
 download.file("https://www.wsl.ch/lud/chelsa/data/bioclim/integer/CHELSA_bio10_12_land.7z" , "~/Solitary_Tinamou/CHELSA_bio10_12_land.7z" )
 download.file("https://www.wsl.ch/lud/chelsa/data/bioclim/integer/CHELSA_bio10_01_land.7z" , "~/Solitary_Tinamou/CHELSA_bio10_01_land.7z" )
 
+# be sure 7z is installed 
+# http://7-zip.org/download.html 
+# http://www.kekaosx.com/en/
+
 system("7z e  CHELSA_bio10_12_land.7z")
 system("7z e  CHELSA_bio10_01_land.7z")
 
