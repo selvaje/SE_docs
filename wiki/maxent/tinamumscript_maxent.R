@@ -15,6 +15,7 @@ library(rgdal)
 library(rJava)
 
 # search where you OS save the R libray use the .libPaths() 
+# in MAC should be /Library/Frameworks/R.framework/Resources/library 
 # copy the maxent.jar under R/x86_64-pc-linux-gnu-library/3.3/dismo/java/ 
 
 ##################################
@@ -28,7 +29,6 @@ setwd("~/Solitary_Tinamou/")
 
 gbif_points = gbif('Tinamus' , 'solitarius' , download=T , geo=T)
 gbif_points=gbif_points[!is.na(gbif_points$lat),]
-
 
 ## get e-bird lat_long_ebd.txt file and save in the ~/Solitary_Tinamou/
 
