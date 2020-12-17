@@ -34,7 +34,10 @@ release = '0.0.1'
 # ones.
 extensions = [
     'recommonmark',
-    'sphinx_rtd_theme'
+    'sphinx_rtd_theme',
+    'jupyter_sphinx',
+    'nbsphinx',
+    'sphinx.ext.mathjax'
 ]
 
 # Add any paths that contain templates here, relative to this directory.

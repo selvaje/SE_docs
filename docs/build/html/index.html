@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="_static/thebelab.css" type="text/css" />
 
   
   
@@ -30,6 +32,10 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script src="_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -84,16 +90,25 @@
               
             
             
-              <p class="caption"><span class="caption-text">Geo Data</span></p>
+              <p class="caption"><span class="caption-text">GEO DATA</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Web Seminar</span></p>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL/OGR &amp; PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GDALPKTOOLS/gdal_pktools.html">Use GDAL/OGR and PKTOOLS for raster/vector operations</a></li>
 </ul>
 
             
@@ -159,24 +174,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="figure align-default">
-<img alt="_images/logos_sw.png" src="_images/logos_sw.png" />
-</div>
-<hr class="docutils" />
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
 <div class="section" id="free-opensource-software-documentation-for-biggeodata-processing">
 <h1>Free &amp; OpenSource Software Documentation for BigGeoData Processing.<a class="headerlink" href="#free-opensource-software-documentation-for-biggeodata-processing" title="Permalink to this headline">¶</a></h1>
+<div class="figure align-default">
+<img alt="_images/logos_sw.png" src="_images/logos_sw.png" />
+</div>
 <p><strong>Welcome to the Spatial Ecology’s documentation!</strong> The content of this documentation is free and open source, (CC-BY-SA license) it can be used, but WITHOUT ANY WARRANTY. You can remix, tweak, and build upon our work as long as you credit us and license your new creations under the identical terms. Software we use have a GNU General Public License GPL or GPL / MIT compatible licenses.</p>
 <hr class="docutils" />
 <div class="section" id="documentation-contents">
 <h2>Documentation Contents<a class="headerlink" href="#documentation-contents" title="Permalink to this headline">¶</a></h2>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Geo Data</span></p>
+<p class="caption"><span class="caption-text">GEO DATA</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
-<p class="caption"><span class="caption-text">Web Seminar</span></p>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
 <li class="toctree-l1"><a class="reference internal" href="WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
@@ -185,6 +223,63 @@
 </ul>
 </div>
 <div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="PYTHON/01_Python_Intro.html">Introduction to Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Why-Python?">Why Python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#You-can-use-Python-to…">You can use Python to…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Python-Environment">Python Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Different-ways-to-run-Python">Different ways to run Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Basic-Data-Types:-integer,-floating-point,-string,-boolean">Basic Data Types: <em>integer, floating point, string, boolean</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Data-Types:-lists">Data Types: <em>lists</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Data-Types:-tuples">Data Types: <em>tuples</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Data-Types:-strings">Data Types: <em>strings</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Data-Types:-dictionaries">Data Types: <em>dictionaries</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Basic-Printing">Basic Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Control-Flow-Statements:-if">Control Flow Statements: <em>if</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Control-Flow-Statements:-while">Control Flow Statements: <em>while</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Control-Flow-Statements:-for">Control Flow Statements: <em>for</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Using-for-loops-and-dicts">Using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">dicts</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Control-Flow-Statements:-altering-loops">Control Flow Statements: altering loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Read-from-standard-input">Read from standard input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Summary-of-basic-elements-of-Python">Summary of basic elements of Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Example-1:-File-Reformatter">Example 1: File Reformatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Step-1:-open-the-input-file">Step 1: open the input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Step-2:-read-the-first-header-line,-and-print-it-out">Step 2: read the first header line, and print it out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Step-3:-for-each-remaining-line-in-the-file,-read-the-line">Step 3: for each remaining line in the file, read the line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Step-4:-find-the-value-in-the-5th-column,-and-remove-last-3-letters">Step 4: find the value in the 5th column, and remove last 3 letters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Exercise-1:-Fibonacci-Series">Exercise 1: Fibonacci Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/01_Python_Intro.html#Sources-:-this-material-was-adopted-from-the-following-sources">Sources : this material was adopted from the following sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Numpy-Intro">Numpy Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Interfacing-with-Network">Interfacing with Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Zipping-Files">Zipping Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Raster-Images">Raster Images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Shapefiles">Shapefiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PYTHON/02_Geo_Python.html#Sources-:-this-material-was-adopted-from-the-following-sources">Sources : this material was adopted from the following sources</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">GDAL/OGR &amp; PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="GDALPKTOOLS/gdal_pktools.html">Use GDAL/OGR and PKTOOLS for raster/vector operations</a></li>
+</ul>
 </div>
 <div class="toctree-wrapper compound">
 </div>
