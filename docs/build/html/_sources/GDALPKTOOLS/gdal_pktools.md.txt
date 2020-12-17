@@ -24,7 +24,15 @@ How do you get min and max pixel values?\
 **Understand data type**
 
                            Ranges of GDAL data types        Image    \
-     GDAL data type           minimum      maximum        Size     \
+ 
++-----------------------+--------------------+-------------+---------------+-------+
+| GDAL data type     |   minimum                           |  maximum |  Size | 
++================+=======================+
+ 
+ 
+ +-----------------------+----------------------------------+--------------+--------+
+ 
+                              Size     \
      Byte                   0          255        39M    \
      UInt16                 0       65,535        78M    \
      Int16, CInt16            -32,768       32,767        78M    \

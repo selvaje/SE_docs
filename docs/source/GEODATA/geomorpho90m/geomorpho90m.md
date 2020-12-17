@@ -8,9 +8,9 @@ Amatulli, G., McInerney, D., Sethi, T., Strobl, P., & Domisch, S. (2020). [Geomo
 Geomorpho90m is a set of geomorphometric variables derived from [MERIT-DEM](http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/ ).
 The are available at 3 resolutions:
 
-- 100 m resolution, under Equi7 projection.\
-- 3 arc-second (~90m) resolution, under WGS84 Geographic Coordinate System.\
-- 7.5 arc-second (~250m) resolution, under WGS84 Geographic Coordinate System.
+- 100 m resolution, under Equi7 projection.\
+- 3 arc-second (~90m) resolution, under WGS84 Geographic Coordinate System.\
+- 7.5 arc-second (~250m) resolution, under WGS84 Geographic Coordinate System.
 
 The layers can be downloaded from [ OpenTopography
 ](https://portal.opentopography.org/dataspace/dataset?opentopoID=OTDS.012020.4326.1) or from a [Public Goodle Drive Repository](https://drive.google.com/drive/folders/1D4YHUycBBhNFVVsz4ohaJI7QXV9BEh94).
@@ -31,11 +31,12 @@ contains 26 subfolders labelled in accordance to the geomorphometry layer name (
 Global visualization of the 250m is visible at [OpenLandMap.org](ttps://openlandmap.org/) under Relief/Geology Item, 
 starting from 1.7 Cosine of the aspect. All the data layers are distributed under: [Creative Commons Attribution 4.0
 International](https://creativecommons.org/licenses/by/4.0/). The download can be done by clicking procedure or by command
-line scripting routine. The last one can be achieved by [https://rclone.org](https://rclone.org) by following the Google Drive procedure authentification at [https://rclone.org/drive/](https://rclone.org/drive/). You will need to authenticate reclone with your Google Drive account and then share the geomorphometry_v.1.0 folder with your own Google Drive. Afterwards, you will be able to mount your Google Drive and access directly to the geomorphometry_v.1.0 archive. You will need a fast connection to download the full archive. The download of the 90m resolution in WGS84 can be also done from [www.opentopography.org](https://portal.opentopography.org/dataspace/dataset?opentopoID=OTDS.012020.4326.1). Using the [opentopography_tiles.txt](http://www.spatial-ecology.net/ost4sem/geomorpho90m/opentopography_tiles.txt)
+line scripting routine. The last one can be achieved by [https://rclone.org](https://rclone.org) by following the Google Drive procedure authentification at [https://rclone.org/drive/](https://rclone.org/drive/). You will need to authenticate reclone with your Google Drive account and then share the geomorphometry_v.1.0 folder with your own Google Drive. Afterwards, you will be able to mount your Google Drive and access directly to the geomorphometry_v.1.0 archive. You will need a fast connection to download the full archive. The download of the 90m resolution in WGS84 can be also done from [www.opentopography.org](https://portal.opentopography.org/dataspace/dataset?opentopoID=OTDS.012020.4326.1). Using the [opentopography_tiles.txt](https://github.com/selvaje/spatial-ecology-codes/blob/master/docs/source/GEODATA/geomorpho90m/opentopography_tiles.txt)
 it possible to download the full globe. 
 
-    for tile in $(cat opentopography_tiles.txt ) ; do
-    wget https://cloud.sdsc.edu/v1/AUTH_opentopography/hosted_data/OTDS.012020.4326.1/raster/aspect-cosine/aspect-cosine_90M_$tile.tar.gz
+    wget https://github.com/selvaje/spatial-ecology-codes/blob/master/docs/source/GEODATA/geomorpho90m/opentopography_tiles.txt
+    for tile in $(cat opentopography_tiles.txt); do
+    wget https://cloud.sdsc.edu/v1/AUTH_opentopography/hosted_data/OTDS.012020.4326.1/raster/aspect-cosine/aspect-cosine_90M_$tile.tar.gz
     done
 
 **Tiling System under WGS84 Geographic Coordinate System**
