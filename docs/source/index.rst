@@ -30,8 +30,8 @@ Documentation Contents
 .. toctree::
    :maxdepth: 1
    :caption: Geo Data
-	     
-   GEODATA/geomorpho90m
+
+   GEODATA/geomorpho90m/geomorpho90m
 
 
 
@@ -41,3 +41,5 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+
