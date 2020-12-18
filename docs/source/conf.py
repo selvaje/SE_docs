@@ -35,7 +35,7 @@ release = '0.0.1'
 extensions = [
     'recommonmark',
     'sphinx_rtd_theme',
-    'jupyter_sphinx',
+    'jupyter_sphinx.execute',
     'nbsphinx',
     'sphinx.ext.mathjax'
 ]
