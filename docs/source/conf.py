@@ -15,7 +15,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 
 import sphinx_rtd_theme
-
+import jupyter_sphinx
 
 # -- Project information -----------------------------------------------------
 
@@ -25,7 +25,6 @@ author = 'Giuseppe Amatulli'
 
 # The full version, including alpha/beta/rc tags
 release = '0.0.1'
-
 
 # -- General configuration ---------------------------------------------------
 
