@@ -57,6 +57,22 @@ Documentation Contents
    :maxdepth: 1
    :caption: R
 
+.. toctree::
+   :maxdepth: 1
+   :caption: GDAL/OGR
+
+   GDAL/01_gdal.ipynb
+
+.. toctree::
+   :maxdepth: 1
+   :caption: PKTOOLS
+
+   PKTOOLS/
+
+.. toctree::
+   :maxdepth: 1
+   :caption: R
+
    R/
 
 .. toctree::
@@ -65,12 +81,6 @@ Documentation Contents
 
    PYTHON/01_Python_Intro
    PYTHON/02_Geo_Python
-
-.. toctree::
-   :maxdepth: 1
-   :caption: GDAL/OGR & PKTOOLS
-
-   GDALPKTOOLS/gdal_pktools.md
 
 .. toctree::
    :maxdepth: 1
