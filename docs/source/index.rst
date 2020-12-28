@@ -67,7 +67,7 @@ Documentation Contents
    :maxdepth: 1
    :caption: PKTOOLS
 
-   PKTOOLS/
+   PKTOOLS/02_pktools.ipynb
 
 .. toctree::
    :maxdepth: 1
