@@ -33,7 +33,7 @@ Documentation Contents
    :maxdepth: 1
    :caption: LINUX VIRTUAL MACHINE
 
-   LVM/OSGEO-live-installation
+   VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
 
 .. toctree::
    :maxdepth: 1
@@ -59,7 +59,7 @@ Documentation Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: GDAL/OGR
+   :caption: GDAL
 
    GDAL/01_gdal.ipynb
 
