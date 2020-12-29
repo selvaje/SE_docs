@@ -102,13 +102,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
 </ul>
-<p class="caption"><span class="caption-text">GDAL/OGR</span></p>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal.html">Use GDAL/OGR for raster/vector operations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">PKTOOLS</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Use PKTOOLS for raster/vector operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use PKTOOLS for raster/vector operations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-OSGeoLive">Setting working directory for the OSGeoLive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-Google-Collaboratory">Setting working directory for the Google Collaboratory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-PKTOOLS">Start to use PKTOOLS</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">PYTHON</span></p>
 <ul>
@@ -451,8 +460,10 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Use-PKTOOLS-for-raster/vector-operations">
 <h1>Use PKTOOLS for raster/vector operations<a class="headerlink" href="#Use-PKTOOLS-for-raster/vector-operations" title="Permalink to this headline">¶</a></h1>
-<p><strong>Working directory and scripting procedure</strong></p>
-<p>Change directory</p>
+<p>Before to start the exercise follow the settings if you are working in the OSGeoLive or in the Google Colaboratory</p>
+<div class="section" id="Setting-working-directory-for-the-OSGeoLive">
+<h2>Setting working directory for the OSGeoLive<a class="headerlink" href="#Setting-working-directory-for-the-OSGeoLive" title="Permalink to this headline">¶</a></h2>
+<p>Run this commands in the Bash Terminal Change directory</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME
 </pre></div>
 </div>
@@ -469,10 +480,74 @@ div.rendered_html tbody tr:hover {
 jupter-notebook 02_pktools.ipynb
 </pre></div>
 </div>
-<div class="line-block">
-<div class="line"><strong>Create a mask</strong></div>
-<div class="line">Create a mask with by manipulate a text file.</div>
 </div>
+<div class="section" id="Setting-working-directory-for-the-Google-Collaboratory">
+<h2>Setting working directory for the Google Collaboratory<a class="headerlink" href="#Setting-working-directory-for-the-Google-Collaboratory" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-4-e5b0420cd036&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span><span class="ansi-green-fg">from</span> google<span class="ansi-blue-fg">.</span>colab <span class="ansi-green-fg">import</span> drive
+<span class="ansi-green-intense-fg ansi-bold">      2</span> drive<span class="ansi-blue-fg">.</span>mount<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;/gdrive&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;google.colab&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">cd</span> /gdrive/MyDrive/SE_data/exercise
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[Errno 2] No such file or directory: &#39;/gdrive/MyDrive/SE_data/exercise&#39;
+/home/selv/SE_data/exercise
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> apt install pktools
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-intense-fg ansi-bold">E: </span>Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+<span class="ansi-red-intense-fg ansi-bold">E: </span>Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Start-to-use-PKTOOLS">
+<h2>Start to use PKTOOLS<a class="headerlink" href="#Start-to-use-PKTOOLS" title="Permalink to this headline">¶</a></h2>
+<p><strong>Create a mask</strong></p>
+<p>Create a mask with by manipulate a text file.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
@@ -952,6 +1027,7 @@ processing layer presence
 <span></span>%%bash
 rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetation/ETmean08-11_crop_trh.tif geodata/vegetation/ETmean08-11_crop_trh.txt vegetation/ETmean08-11_crop.txt geodata/vegetation/ETmosaic.vrt geodata/vegetation/ETmosaic.tif  geodata/vegetation/stack_??.tif geodata/vegetation/stack.vrt geodata/vegetation/tiles.* geodata/vegetation/ETmean08-11_crop_proximity.tif geodata/vegetation/ETmean08-11_crop_buffer.tif  geodata/dem/slope.tif geodata/dem/aspect.tif  geodata/dem/tri.tif geodata/dem/tpi.tif geodata/dem/roughness.tif geodata/vegetation/ETmean08-11_01_trh?.tif geodata/LST/LST_MOYDmax_month1-msk.tif geodata/LST/LST_MOYDmax_monthStdev.tif geodata/LST/LST_MOYDmax_monthMean.tif geodata/LST/LST_MOYDmax_month_mean_stdev.tif geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif  geodata/temperature/reclass_ug_bio_3.tif geodata/temperature/reclass_ug_bio_3.txt geodata/shp/polygons_stat.csv geodata/shp/polygons.sqlite geodata/shp/point-buf_stat.csv geodata/shp/point_stat.csv geodata/shp/polygons_stat.* geodata/shp/TM_LARGE_BORDERS.shp.*  geodata/shp/TM_UGANDA_BORDERS-0.3.* geodata/vegetation/ETmean08-11_crop.txt
 </pre></div>
+</div>
 </div>
 </div>
 </div>
