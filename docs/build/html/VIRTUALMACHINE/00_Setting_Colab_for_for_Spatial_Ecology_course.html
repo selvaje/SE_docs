@@ -106,7 +106,7 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare Colab for Spatial Ecology courses</a></li>
 </ul>
-<p class="caption"><span class="caption-text">GDAL/OGR</span></p>
+<p class="caption"><span class="caption-text">GDAL</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal.html">Use GDAL/OGR for raster/vector operations</a></li>
 </ul>
@@ -455,15 +455,20 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Prepare-Colab-for-Spatial-Ecology-courses">
 <h1>Prepare Colab for Spatial Ecology courses<a class="headerlink" href="#Prepare-Colab-for-Spatial-Ecology-courses" title="Permalink to this headline">¶</a></h1>
-<p>We first mount your own google drive folder and then dowload the dataset and scripts that will be used during the full course.</p>
+<p>We first mount your own google drive folder and then download the dataset and scripts that will be used during the full course.</p>
+<p>Get this script from the git repository</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">selvaje</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="mi">00</span><span class="n">_Setting_Colab_for_for_Spatial_Ecology_course</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>Load in Google Colaboratory (File &gt; Upload notebook) and follow the below instruction</p>
 <p><strong>Mount your own google drive by following the instruction</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>from google.colab import drive
-drive.mount(&#39;/gdrive&#39;)
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -480,8 +485,8 @@ Mounted at /gdrive
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>! ls /gdrive/MyDrive
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> ls /gdrive/MyDrive
 </pre></div>
 </div>
 </div>
@@ -502,10 +507,10 @@ Mounted at /gdrive
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>%rm -rf /gdrive/MyDrive/SE_data
-%cd /gdrive/MyDrive
-%ls
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">rm</span> -rf /gdrive/MyDrive/SE_data
+<span class="o">%</span><span class="k">cd</span> /gdrive/MyDrive
+<span class="o">%</span><span class="k">ls</span>
 </pre></div>
 </div>
 </div>
@@ -526,8 +531,8 @@ Mounted at /gdrive
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>!git clone https://github.com/selvaje/SE_data.git
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>git clone https://github.com/selvaje/SE_data.git
 </pre></div>
 </div>
 </div>
@@ -549,8 +554,8 @@ Checking out files: 100% (35/35), done.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>! ls -l SE_data/*
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> ls -l SE_data/*
 </pre></div>
 </div>
 </div>
@@ -572,8 +577,8 @@ drwx------ 7 root root   4096 Dec 29 00:32 geodata
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>%cd /gdrive/MyDrive/SE_data
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">cd</span> /gdrive/MyDrive/SE_data
 </pre></div>
 </div>
 </div>
@@ -589,8 +594,8 @@ drwx------ 7 root root   4096 Dec 29 00:32 geodata
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-none notranslate"><div class="highlight"><pre>
-<span></span>! ls -l *
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> ls -l *
 </pre></div>
 </div>
 </div>
