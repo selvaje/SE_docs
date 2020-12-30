@@ -25,15 +25,15 @@ Documentation Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: WEB SEMINARS
-
-   WEBSEMINAR/webseminar.md
-
-.. toctree::
-   :maxdepth: 1
    :caption: LINUX VIRTUAL MACHINE
 
    VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
+   
+.. toctree::
+   :maxdepth: 1
+   :caption: WEB SEMINARS
+
+   WEBSEMINAR/webseminar.md
 
 .. toctree::
    :maxdepth: 1
