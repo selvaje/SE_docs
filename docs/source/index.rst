@@ -28,6 +28,7 @@ Documentation Contents
    :caption: LINUX VIRTUAL MACHINE
 
    VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
+   VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.md
    
 .. toctree::
    :maxdepth: 1
