@@ -3,17 +3,17 @@
 
 In order to execute the Spatial Ecology exercise we will need first install the OSGeoLive Linux Virtual Machine and then populate with additional software and data.
 
-[OSGeoLive](https://live.osgeo.org/en/index.html) is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around. Source https://live.osgeo.org/en/index.html
+[OSGeoLive](https://live.osgeo.org/en/index.html) is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around (source https://live.osgeo.org/en/index.html)
 
 For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk file that contains the virtualized OS.
 
 **Install Virtualbox**
 
-Open you browser and go to https://www.virtualbox.org/wiki/Downloads and base on your OS download the Virtualbox executable and install it. 
+Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. 
 
 **Download OSGeoLive**
 
-Open you browser and go to https://sourceforge.net/projects/osgeo-live/files/. Proceed with the download of osgeolive-13.0-amd64.vmdk.7z. The osgeolive-13.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped. A this point you are ready to load the osgeolive-13.0-amd64.vmdk  inside Virtualbox. 
+Open you browser and go to [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Proceed with the download of osgeolive-13.0-amd64.vmdk.7z. The osgeolive-13.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped. A this point you are ready to load the osgeolive-13.0-amd64.vmdk inside Virtualbox. 
 
 **Install OSGeoLive inside Virtualbox**
 
@@ -31,18 +31,18 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_osgeo-live13_p9.png)
 
 
+
 **Populate OSGeoLive with additional software**
 
-Open the terminal and run by one the the following codes. The sudo password is "user". For security what you type is not shown, anyway it is recorded. When you to type the password press enter. 
+Open the terminal and run line by line the following codes. The sudo password is "user". For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
-Update the OS
+Update the OS. This operation can last few minutes. Be patient. 
 
-   sudo apt update
-   sudo apt upgrade
-   # this operation can last few minutes. Be patient. 
-   
-Add to Virtualbox additional add on.     
-From the Virtualbox menu press Device > Insert Guest Addicion CD image
+    sudo apt update   # update the repositories
+    sudo apt upgrade  # installation of the sw
+
+Add to Virtualbox additional add-on to improve the graphical user interface of the VM.
+From the Virtualbox menu press Device > Insert Guest Addition CD image
 
     cd /media/user/VBox_GAs_*
     sudo ./VBoxLinuxAdditions.run
@@ -53,7 +53,7 @@ Install pktools
 
 Install openev
 
-    # first install depencies libraries
+    # first install dependencies libraries
     sudo apt-get install libc6:i386 libxext6:i386 libstdc++5
     # download and unzip openev 
     cd /tmp
@@ -86,11 +86,11 @@ Install additional editors
     # one of the oldest editor which is still used my many programmer
     sudo apt install emacs25
     # and editor markdown language
-    sudo apt install ghostwriter 
+    sudo add-apt-repository ppa:wereturtle/ppa
+    sudo apt-get update
+    sudo apt-get install ghostwriter
 
-Download the data to follow the exercises.
+Download the data and start to follow the exercises.
 
     cd $HOME
     git clone  https://github.com/selvaje/SE_data.git
-
-

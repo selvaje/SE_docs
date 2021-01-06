@@ -98,6 +98,7 @@
 <p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
 </ul>
 <p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
 <ul>
@@ -113,8 +114,6 @@
 <p class="caption"><span class="caption-text">PKTOOLS</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Use PKTOOLS for raster/vector operations</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-OSGeoLive">Setting working directory for the OSGeoLive</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-Google-Collaboratory">Setting working directory for the Google Collaboratory</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Start-to-use-PKTOOLS">Start to use PKTOOLS</a></li>
 </ul>
 </li>
@@ -460,31 +459,9 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Use-PKTOOLS-for-raster/vector-operations">
 <h1>Use PKTOOLS for raster/vector operations<a class="headerlink" href="#Use-PKTOOLS-for-raster/vector-operations" title="Permalink to this headline">¶</a></h1>
-<p>Before to start the exercise follow the settings if you are working in the OSGeoLive or in the Google Colaboratory</p>
-<div class="section" id="Setting-working-directory-for-the-OSGeoLive">
-<h2>Setting working directory for the OSGeoLive<a class="headerlink" href="#Setting-working-directory-for-the-OSGeoLive" title="Permalink to this headline">¶</a></h2>
-<p>Run this commands in the Bash Terminal Change directory</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME
-</pre></div>
-</div>
-<p>Download the data</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span>  <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">selvaje</span><span class="o">/</span><span class="n">SE_data</span><span class="o">.</span><span class="n">git</span>
-</pre></div>
-</div>
-<p>Code availability at</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">selvaje</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/</span><span class="n">blob</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="mi">02</span><span class="n">_pktools</span><span class="o">.</span><span class="n">ipynb</span>
-</pre></div>
-</div>
-<p>Open the jupter-notebook</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data/exercise
-jupter-notebook 02_pktools.ipynb
-</pre></div>
-</div>
-</div>
-<div class="section" id="Setting-working-directory-for-the-Google-Collaboratory">
-<h2>Setting working directory for the Google Collaboratory<a class="headerlink" href="#Setting-working-directory-for-the-Google-Collaboratory" title="Permalink to this headline">¶</a></h2>
+<p><strong>Setting working directory for the Google Collaboratory</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -502,7 +479,7 @@ Drive already mounted at /gdrive; to attempt to forcibly remount, call drive.mou
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -522,87 +499,25 @@ Drive already mounted at /gdrive; to attempt to forcibly remount, call drive.mou
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> apt install pktools
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+chmod <span class="m">777</span> /gdrive/MyDrive/SE_data/pktools_local/usr/bin
+<span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/gdrive/MyDrive/SE_data/pktools_local/usr/lib/x86_64-linux-gnu
+<span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/gdrive/MyDrive/SE_data/pktools_local/usr/bin
+pkfilter -h
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area docutils container">
+<div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Reading package lists... Done
-Building dependency tree
-Reading state information... Done
-The following additional packages will be installed:
-  libalgorithms1 libfann2 libfileclasses1 libgsl23 libgslcblas0
-  libimageclasses1 liblas3 liblasclasses1
-Suggested packages:
-  libfann-dev libfann-doc gsl-ref-psdoc | gsl-doc-pdf | gsl-doc-info
-  | gsl-ref-html libgeotiff-epsg
-The following NEW packages will be installed:
-  libalgorithms1 libfann2 libfileclasses1 libgsl23 libgslcblas0
-  libimageclasses1 liblas3 liblasclasses1 pktools
-0 upgraded, 9 newly installed, 0 to remove and 15 not upgraded.
-Need to get 2,347 kB of archives.
-After this operation, 9,702 kB of additional disk space will be used.
-Get:1 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libgslcblas0 amd64 2.4+dfsg-6 [79.7 kB]
-Get:2 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libgsl23 amd64 2.4+dfsg-6 [823 kB]
-Get:3 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libimageclasses1 amd64 2.6.7.3+ds-1 [57.9 kB]
-Get:4 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libalgorithms1 amd64 2.6.7.3+ds-1 [130 kB]
-Get:5 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libfann2 amd64 2.2.0+ds-3 [64.5 kB]
-Get:6 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libfileclasses1 amd64 2.6.7.3+ds-1 [12.7 kB]
-Get:7 http://archive.ubuntu.com/ubuntu bionic/universe amd64 liblas3 amd64 1.8.1-6build1 [270 kB]
-Get:8 http://archive.ubuntu.com/ubuntu bionic/universe amd64 liblasclasses1 amd64 2.6.7.3+ds-1 [15.2 kB]
-Get:9 http://archive.ubuntu.com/ubuntu bionic/universe amd64 pktools amd64 2.6.7.3+ds-1 [894 kB]
-Fetched 2,347 kB in 1s (1,590 kB/s)
-Selecting previously unselected package libgslcblas0:amd64.
-(Reading database ... 145480 files and directories currently installed.)
-Preparing to unpack .../0-libgslcblas0_2.4+dfsg-6_amd64.deb ...
-Unpacking libgslcblas0:amd64 (2.4+dfsg-6) ...
-Selecting previously unselected package libgsl23:amd64.
-Preparing to unpack .../1-libgsl23_2.4+dfsg-6_amd64.deb ...
-Unpacking libgsl23:amd64 (2.4+dfsg-6) ...
-Selecting previously unselected package libimageclasses1.
-Preparing to unpack .../2-libimageclasses1_2.6.7.3+ds-1_amd64.deb ...
-Unpacking libimageclasses1 (2.6.7.3+ds-1) ...
-Selecting previously unselected package libalgorithms1.
-Preparing to unpack .../3-libalgorithms1_2.6.7.3+ds-1_amd64.deb ...
-Unpacking libalgorithms1 (2.6.7.3+ds-1) ...
-Selecting previously unselected package libfann2:amd64.
-Preparing to unpack .../4-libfann2_2.2.0+ds-3_amd64.deb ...
-Unpacking libfann2:amd64 (2.2.0+ds-3) ...
-Selecting previously unselected package libfileclasses1.
-Preparing to unpack .../5-libfileclasses1_2.6.7.3+ds-1_amd64.deb ...
-Unpacking libfileclasses1 (2.6.7.3+ds-1) ...
-Selecting previously unselected package liblas3.
-Preparing to unpack .../6-liblas3_1.8.1-6build1_amd64.deb ...
-Unpacking liblas3 (1.8.1-6build1) ...
-Selecting previously unselected package liblasclasses1.
-Preparing to unpack .../7-liblasclasses1_2.6.7.3+ds-1_amd64.deb ...
-Unpacking liblasclasses1 (2.6.7.3+ds-1) ...
-Selecting previously unselected package pktools.
-Preparing to unpack .../8-pktools_2.6.7.3+ds-1_amd64.deb ...
-Unpacking pktools (2.6.7.3+ds-1) ...
-Setting up liblas3 (1.8.1-6build1) ...
-Setting up liblasclasses1 (2.6.7.3+ds-1) ...
-Setting up libfann2:amd64 (2.2.0+ds-3) ...
-Setting up libfileclasses1 (2.6.7.3+ds-1) ...
-Setting up libgslcblas0:amd64 (2.4+dfsg-6) ...
-Setting up libgsl23:amd64 (2.4+dfsg-6) ...
-Setting up libimageclasses1 (2.6.7.3+ds-1) ...
-Setting up libalgorithms1 (2.6.7.3+ds-1) ...
-Setting up pktools (2.6.7.3+ds-1) ...
-Processing triggers for libc-bin (2.27-3ubuntu1.2) ...
-/sbin/ldconfig.real: /usr/local/lib/python3.6/dist-packages/ideep4py/lib/libmkldnn.so.0 is not a symbolic link
-
-Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+bash: line 4: /gdrive/MyDrive/SE_data/pktools_local/usr/bin/pkfilter: Permission denied
 </pre></div></div>
-</div>
 </div>
 <div class="section" id="Start-to-use-PKTOOLS">
 <h2>Start to use PKTOOLS<a class="headerlink" href="#Start-to-use-PKTOOLS" title="Permalink to this headline">¶</a></h2>

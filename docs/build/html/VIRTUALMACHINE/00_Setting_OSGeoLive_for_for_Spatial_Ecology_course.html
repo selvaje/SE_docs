@@ -99,7 +99,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare OSGeoLive for Spatial Ecology courses</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#this-operation-can-last-few-minutes-be-patient">this operation can last few minutes. Be patient.</a></li>
 </ul>
 <p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
 <ul>
@@ -212,12 +211,12 @@
 <div class="section" id="prepare-osgeolive-for-spatial-ecology-courses">
 <h1>Prepare OSGeoLive for Spatial Ecology courses<a class="headerlink" href="#prepare-osgeolive-for-spatial-ecology-courses" title="Permalink to this headline">¶</a></h1>
 <p>In order to execute the Spatial Ecology exercise we will need first install the OSGeoLive Linux Virtual Machine and then populate with additional software and data.</p>
-<p><a class="reference external" href="https://live.osgeo.org/en/index.html">OSGeoLive</a> is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around. Source https://live.osgeo.org/en/index.html</p>
+<p><a class="reference external" href="https://live.osgeo.org/en/index.html">OSGeoLive</a> is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around (source https://live.osgeo.org/en/index.html)</p>
 <p>For running a Virtual Machine in your OS we need a virtualization software such as <a class="reference external" href="https://www.virtualbox.org/">Virtualbox</a> and a vmdk file that contains the virtualized OS.</p>
 <p><strong>Install Virtualbox</strong></p>
-<p>Open you browser and go to https://www.virtualbox.org/wiki/Downloads and base on your OS download the Virtualbox executable and install it.</p>
+<p>Open you browser and go to <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> and base on your OS download the Virtualbox executable and install it.</p>
 <p><strong>Download OSGeoLive</strong></p>
-<p>Open you browser and go to https://sourceforge.net/projects/osgeo-live/files/. Proceed with the download of osgeolive-13.0-amd64.vmdk.7z. The osgeolive-13.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped. A this point you are ready to load the osgeolive-13.0-amd64.vmdk  inside Virtualbox.</p>
+<p>Open you browser and go to <a class="reference external" href="https://sourceforge.net/projects/osgeo-live/files/">https://sourceforge.net/projects/osgeo-live/files/</a>. Proceed with the download of osgeolive-13.0-amd64.vmdk.7z. The osgeolive-13.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped. A this point you are ready to load the osgeolive-13.0-amd64.vmdk inside Virtualbox.</p>
 <p><strong>Install OSGeoLive inside Virtualbox</strong></p>
 <p>Lunch Virtualbox from OS and follow the below instructions.</p>
 <p><img alt="title" src="../_images/Installation_vm_osgeo-live13_p0.png" />
@@ -231,14 +230,14 @@
 <img alt="title" src="../_images/Installation_vm_osgeo-live13_p8.png" />
 <img alt="title" src="../_images/Installation_vm_osgeo-live13_p9.png" /></p>
 <p><strong>Populate OSGeoLive with additional software</strong></p>
-<p>Open the terminal and run by one the the following codes. The sudo password is “user”. For security what you type is not shown, anyway it is recorded. When you to type the password press enter.</p>
-<p>Update the OS</p>
-<p>sudo apt update
-sudo apt upgrade</p>
+<p>Open the terminal and run line by line the following codes. The sudo password is “user”. For security what you type is not shown, anyway it is recorded. After typed the password press enter.</p>
+<p>Update the OS. This operation can last few minutes. Be patient.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>   <span class="c1"># update the repositories</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>  <span class="c1"># installation of the sw</span>
+</pre></div>
 </div>
-<div class="section" id="this-operation-can-last-few-minutes-be-patient">
-<h1>this operation can last few minutes. Be patient.<a class="headerlink" href="#this-operation-can-last-few-minutes-be-patient" title="Permalink to this headline">¶</a></h1>
-<p>Add to Virtualbox additional add on.<br />From the Virtualbox menu press Device &gt; Insert Guest Addicion CD image</p>
+<p>Add to Virtualbox additional add-on to improve the graphical user interface of the VM.
+From the Virtualbox menu press Device &gt; Insert Guest Addition CD image</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs_</span><span class="o">*</span>
 <span class="n">sudo</span> <span class="o">./</span><span class="n">VBoxLinuxAdditions</span><span class="o">.</span><span class="n">run</span>
 </pre></div>
@@ -248,7 +247,7 @@ sudo apt upgrade</p>
 </pre></div>
 </div>
 <p>Install openev</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># first install depencies libraries</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># first install dependencies libraries</span>
 <span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">libc6</span><span class="p">:</span><span class="n">i386</span> <span class="n">libxext6</span><span class="p">:</span><span class="n">i386</span> <span class="n">libstdc</span><span class="o">++</span><span class="mi">5</span>
 <span class="c1"># download and unzip openev </span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
@@ -281,10 +280,12 @@ sudo apt upgrade</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># one of the oldest editor which is still used my many programmer</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">emacs25</span>
 <span class="c1"># and editor markdown language</span>
-<span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">ghostwriter</span> 
+<span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">wereturtle</span><span class="o">/</span><span class="n">ppa</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ghostwriter</span>
 </pre></div>
 </div>
-<p>Download the data to follow the exercises.</p>
+<p>Download the data and start to follow the exercises.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME
 git clone  https://github.com/selvaje/SE_data.git
 </pre></div>

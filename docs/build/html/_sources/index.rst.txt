@@ -89,6 +89,12 @@ Documentation Contents
 
    GRASS/
 
+.. toctree::
+   :maxdepth: 1
+   :caption: ADMIN
+
+   ADMIN/   
+
 
 Indices and tables
 ==================
