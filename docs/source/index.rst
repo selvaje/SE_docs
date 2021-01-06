@@ -93,7 +93,7 @@ Documentation Contents
    :maxdepth: 1
    :caption: ADMIN
 
-   ADMIN/   
+   ADMIN/00_pktools_gdrive_install.ipynb   
 
 
 Indices and tables
