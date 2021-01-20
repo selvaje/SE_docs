@@ -1,0 +1,5418 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Manipulate text files in bash &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Use GDAL/OGR for raster/vector operations" href="../GDAL/01_gdal.html" />
+    <link rel="prev" title="Linux Operation System as a base for Spatial Ecology Computing" href="03_bashintro_osgeo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+          
+
+          
+            
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BASH</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="03_bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Manipulate text files in bash</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Pattern-matching">Pattern matching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Sorting-a-file">Sorting a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Append-the-command-result-to-a-file">Append the command result to a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Concatenate-commands">Concatenate commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Use-the-variable">Use the variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#For-loop">For loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#If-condition-in-a-for-loop">If condition in a for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Checking-the-flow-statement">Checking the flow statement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Debugging">Debugging</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal.html">Use GDAL/OGR for raster/vector operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/02_pktools_osgeo.html">Use PKTOOLS for raster/vector operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/02_pktools_colab.html">Use PKTOOLS for raster/vector operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Manipulate text files in bash</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/BASH/03_bashinter_osgeo.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Manipulate-text-files-in-bash">
+<h1>Manipulate text files in bash<a class="headerlink" href="#Manipulate-text-files-in-bash" title="Permalink to this headline">¶</a></h1>
+<p>The bash language has several commands to read and manipulate txt files, such as: head, tail, more, less, sort, join, wc, uniq. Here we are going to use some of them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data/exercise
+jupyter-notebook 03_bashinter_osgeo.ipynb
+</pre></div>
+</div>
+<div class="section" id="Pattern-matching">
+<h2>Pattern matching<a class="headerlink" href="#Pattern-matching" title="Permalink to this headline">¶</a></h2>
+<p>Create a little file from a large file:</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> head -1000 txt/aver_month_nuts3_fire.asc &gt; input.txt
+</pre></div>
+</div>
+</div>
+<p>Read/explore the input.txt file</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> head input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS YYYY MM 0 BAREA
+BG311 2005 04 2 0.282594
+BG311 2006 11 2 0.600812
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2005 04 3 10.6419
+BG312 2006 10 2 0.293182
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> tail input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DE425 2000 06 4 3.1973
+DE425 2000 07 4 0.724873
+DE425 2000 08 4 4.67528
+DE425 2000 09 3 0.194243
+DE425 2001 04 2 0.0724194
+DE425 2001 05 2 0.66708
+DE425 2001 08 2 0.0421668
+DE425 2002 02 2 0.0125149
+DE425 2002 03 2 0.492932
+DE425 2002 04 4 1.06466
+</pre></div></div>
+</div>
+<p>Count the line/word/character in a input.txt</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> wc input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ 1000  5000 24535 input.txt
+</pre></div></div>
+</div>
+<p>Search for a word in a file</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> grep <span class="s2">&quot;2007&quot;</span> input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2007 01 3 114.535
+BG312 2007 02 3 17.3247
+BG312 2007 03 3 322.063
+BG312 2007 04 3 521.189
+BG312 2007 05 3 4.13178
+BG312 2007 06 2 5.94132
+BG312 2007 07 2 1117.64
+BG313 2007 01 2 205.374
+BG313 2007 02 2 103.186
+BG313 2007 03 2 394.699
+BG313 2007 04 5 36.6292
+BG313 2007 05 3 7.68499
+BG313 2007 07 3 267.507
+BG313 2007 08 2 8.23134
+BG314 2007 03 2 31.1266
+BG314 2007 05 3 49.9327
+BG314 2007 06 2 5.50835
+BG314 2007 07 2 1243.67
+BG314 2007 08 2 70.1061
+BG315 2007 01 3 97.1538
+BG315 2007 02 3 72.1268
+BG315 2007 03 3 1825.58
+BG315 2007 04 3 709.847
+BG315 2007 05 4 37.3087
+BG315 2007 07 4 2595.44
+BG321 2007 01 2 34.6964
+BG321 2007 02 2 15.8478
+BG321 2007 03 2 128.72
+BG321 2007 04 2 44.5743
+BG321 2007 05 4 36.5963
+BG321 2007 06 3 0.207622
+BG321 2007 07 3 736.828
+BG321 2007 08 3 16.4847
+BG322 2007 01 2 25.6421
+BG322 2007 02 3 2.47755
+BG322 2007 03 3 23.3933
+BG322 2007 04 3 61.2729
+BG322 2007 07 3 1142.19
+BG322 2007 08 3 0.195825
+BG323 2007 04 5 2.25699
+BG323 2007 05 2 0.346974
+BG323 2007 07 2 10.9846
+BG323 2007 09 2 0.218432
+BG324 2007 01 2 1.83585
+BG324 2007 05 2 0.0708554
+BG324 2007 06 2 3.00246
+BG324 2007 07 2 31.0683
+BG325 2007 03 3 50.6905
+BG325 2007 07 3 139.212
+BG325 2007 10 2 4.28359
+BG331 2007 01 3 14.9751
+BG331 2007 02 3 2.17089
+BG331 2007 03 3 54.6886
+BG331 2007 04 3 3.46769
+BG331 2007 05 3 5.26728
+BG331 2007 06 3 17.715
+BG331 2007 07 3 635.74
+BG331 2007 08 5 5.69637
+BG331 2007 09 4 1.45601
+BG331 2007 10 3 1.16162
+BG332 2007 03 2 0.464604
+BG332 2007 04 2 0.135462
+BG332 2007 06 2 6.04419
+BG332 2007 07 2 81.8419
+BG333 2007 01 4 24.929
+BG333 2007 02 2 2.23803
+BG333 2007 03 5 39.8419
+BG333 2007 04 5 49.7954
+BG333 2007 05 5 13.0934
+BG333 2007 07 5 57.5293
+BG333 2007 08 5 35.7814
+BG334 2007 03 3 27.6829
+BG334 2007 04 3 0.517585
+BG334 2007 05 2 0.647435
+BG334 2007 06 2 0.140486
+BG334 2007 07 2 27.4913
+BG341 2007 01 3 1.66492
+BG341 2007 03 5 6.8906
+BG341 2007 04 3 0.315852
+BG341 2007 05 4 62.2719
+BG341 2007 06 4 293.251
+BG341 2007 07 4 1057.39
+BG341 2007 08 4 141.546
+BG341 2007 09 2 23.2366
+BG342 2007 01 2 0.30804
+BG342 2007 03 2 128.902
+BG342 2007 04 2 291.04
+BG342 2007 05 2 0.0792935
+BG342 2007 07 2 860.014
+BG342 2007 08 3 4.4406
+BG342 2007 10 2 4.33875
+BG343 2007 06 4 205.937
+BG343 2007 07 4 193.754
+BG343 2007 08 5 1154.31
+BG343 2007 09 2 1.12145
+BG344 2007 03 5 1.85917
+BG344 2007 04 5 4.82415
+BG344 2007 05 2 3.05647
+BG344 2007 06 3 1.7138
+BG344 2007 07 3 5720.55
+BG344 2007 08 3 59.9997
+BG344 2007 09 2 2.61198
+BG411 2007 01 2 0.125264
+BG411 2007 03 2 19.4587
+BG411 2007 04 4 1.18276
+BG411 2007 05 2 0.202724
+BG411 2007 07 4 4.77007
+BG412 2007 01 2 357.321
+BG412 2007 02 5 15.001
+BG412 2007 03 5 1563.86
+BG412 2007 04 5 1118.17
+BG412 2007 05 5 79.8004
+BG412 2007 06 3 15.4517
+BG412 2007 07 3 1100.8
+BG412 2007 08 4 12.9193
+BG413 2007 01 3 5.14457
+BG413 2007 02 2 4.04579
+BG413 2007 03 2 91.8944
+BG413 2007 04 2 64.757
+BG413 2007 05 2 1.60664
+BG413 2007 06 2 7.62226
+BG413 2007 07 2 158.693
+BG413 2007 08 2 10.7716
+BG413 2007 09 2 1.542
+BG413 2007 10 2 10.4395
+BG414 2007 01 4 4.30643
+BG414 2007 02 4 4.16793
+BG414 2007 03 4 495.007
+BG414 2007 04 4 78.332
+BG414 2007 05 4 2.15944
+BG414 2007 07 3 25.7131
+BG414 2007 08 2 0.734826
+BG414 2007 09 2 4.46241
+BG415 2007 01 3 20.5053
+BG415 2007 02 5 5.29747
+BG415 2007 03 5 106.259
+BG415 2007 04 5 316.271
+BG415 2007 05 3 0.323577
+BG415 2007 06 4 21.6512
+BG415 2007 07 4 888.636
+BG415 2007 08 4 5.12635
+BG415 2007 09 2 19.5612
+BG415 2007 10 3 3.67903
+BG421 2007 01 3 16.6377
+BG421 2007 02 3 36.8495
+BG421 2007 03 3 284.924
+BG421 2007 04 3 200.269
+BG421 2007 05 4 2.23446
+BG421 2007 06 4 14.21
+BG421 2007 07 4 626.222
+BG421 2007 08 4 247.26
+BG422 2007 01 4 1.13109
+BG422 2007 02 3 4.25846
+BG422 2007 03 3 51.2923
+BG422 2007 04 2 1.36679
+BG422 2007 06 4 60.5828
+BG422 2007 07 4 5106.58
+BG422 2007 08 4 12972.6
+BG423 2007 01 3 330.791
+BG423 2007 02 2 0.745402
+BG423 2007 03 2 180.982
+BG423 2007 04 2 62.7641
+BG423 2007 05 4 0.452272
+BG423 2007 06 3 29.5529
+BG423 2007 07 3 1421.17
+BG423 2007 08 5 18.1706
+BG423 2007 09 2 1.00679
+BG424 2007 01 5 4.48651
+BG424 2007 02 3 5.26365
+BG424 2007 03 3 13.9579
+BG424 2007 04 3 16.2728
+BG424 2007 05 5 0.54032
+BG424 2007 07 5 319.625
+BG424 2007 08 5 1.38762
+BG424 2007 09 3 3.73571
+BG425 2007 01 5 1.0197
+BG425 2007 02 2 0.134967
+BG425 2007 03 2 6.44724
+BG425 2007 04 2 9.75379
+BG425 2007 05 3 0.422148
+BG425 2007 06 2 1.69251
+BG425 2007 07 2 34.3116
+BG425 2007 08 4 0.73277
+BG425 2007 09 3 2.6549
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Sorting-a-file">
+<h2>Sorting a file<a class="headerlink" href="#Sorting-a-file" title="Permalink to this headline">¶</a></h2>
+<p>I want to search for a command able to sort the input.txt table based on the Year column (YYYY).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> man -k  sort
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+alphasort (3)        - scan a directory for matching entries
+apt-sortpkgs (1)     - Utility to sort package index files
+bsearch (3)          - binary search of a sorted array
+bunzip2 (1)          - a block-sorting file compressor, v1.0.8
+bzip2 (1)            - a block-sorting file compressor, v1.0.8
+comm (1)             - compare two sorted files line by line
+qsort (3)            - sort an array
+qsort_r (3)          - sort an array
+sort (1)             - sort lines of text files
+tsort (1)            - perform topological sort
+versionsort (3)      - scan a directory for matching entries
+XConsortium (7)      - X Consortium information
+</pre></div></div>
+</div>
+<p>One of the last lines contain: sort (1) - sort lines of text files So i will search how to use the sort command:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> man sort
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+SORT(1)                          User Commands                         SORT(1)
+
+NNAAMMEE
+       sort - sort lines of text files
+
+SSYYNNOOPPSSIISS
+       ssoorrtt [_O_P_T_I_O_N]... [_F_I_L_E]...
+       ssoorrtt [_O_P_T_I_O_N]... _-_-_f_i_l_e_s_0_-_f_r_o_m_=_F
+
+DDEESSCCRRIIPPTTIIOONN
+       Write sorted concatenation of all FILE(s) to standard output.
+
+       With no FILE, or when FILE is -, read standard input.
+
+       Mandatory  arguments  to  long  options are mandatory for short options
+       too.  Ordering options:
+
+       --bb, ----iiggnnoorree--lleeaaddiinngg--bbllaannkkss
+              ignore leading blanks
+
+       --dd, ----ddiiccttiioonnaarryy--oorrddeerr
+              consider only blanks and alphanumeric characters
+
+       --ff, ----iiggnnoorree--ccaassee
+              fold lower case to upper case characters
+
+       --gg, ----ggeenneerraall--nnuummeerriicc--ssoorrtt
+              compare according to general numerical value
+
+       --ii, ----iiggnnoorree--nnoonnpprriinnttiinngg
+              consider only printable characters
+
+       --MM, ----mmoonntthh--ssoorrtt
+              compare (unknown) &lt; &#39;JAN&#39; &lt; ... &lt; &#39;DEC&#39;
+
+       --hh, ----hhuummaann--nnuummeerriicc--ssoorrtt
+              compare human readable numbers (e.g., 2K 1G)
+
+       --nn, ----nnuummeerriicc--ssoorrtt
+              compare according to string numerical value
+
+       --RR, ----rraannddoomm--ssoorrtt
+              shuffle, but group identical keys.  See shuf(1)
+
+       ----rraannddoomm--ssoouurrccee=_F_I_L_E
+              get random bytes from FILE
+
+       --rr, ----rreevveerrssee
+              reverse the result of comparisons
+
+       ----ssoorrtt=_W_O_R_D
+              sort according to WORD: general-numeric  --gg,  human-numeric  --hh,
+              month --MM, numeric --nn, random --RR, version --VV
+
+       --VV, ----vveerrssiioonn--ssoorrtt
+              natural sort of (version) numbers within text
+
+       Other options:
+
+       ----bbaattcchh--ssiizzee=_N_M_E_R_G_E
+              merge at most NMERGE inputs at once; for more use temp files
+
+       --cc, ----cchheecckk, ----cchheecckk=_d_i_a_g_n_o_s_e_-_f_i_r_s_t
+              check for sorted input; do not sort
+
+       --CC, ----cchheecckk=_q_u_i_e_t, ----cchheecckk=_s_i_l_e_n_t
+              like --cc, but do not report first bad line
+
+       ----ccoommpprreessss--pprrooggrraamm=_P_R_O_G
+              compress temporaries with PROG; decompress them with PROG --dd
+
+       ----ddeebbuugg
+              annotate the part of the line used to sort, and warn about ques‐
+              tionable usage to stderr
+
+       ----ffiilleess00--ffrroomm=_F
+              read input from the files specified by NUL-terminated  names  in
+              file F; If F is - then read names from standard input
+
+       --kk, ----kkeeyy=_K_E_Y_D_E_F
+              sort via a key; KEYDEF gives location and type
+
+       --mm, ----mmeerrggee
+              merge already sorted files; do not sort
+
+       --oo, ----oouuttppuutt=_F_I_L_E
+              write result to FILE instead of standard output
+
+       --ss, ----ssttaabbllee
+              stabilize sort by disabling last-resort comparison
+
+       --SS, ----bbuuffffeerr--ssiizzee=_S_I_Z_E
+              use SIZE for main memory buffer
+
+       --tt, ----ffiieelldd--sseeppaarraattoorr=_S_E_P
+              use SEP instead of non-blank to blank transition
+
+       --TT, ----tteemmppoorraarryy--ddiirreeccttoorryy=_D_I_R
+              use  DIR  for temporaries, not $TMPDIR or _/_t_m_p; multiple options
+              specify multiple directories
+
+       ----ppaarraalllleell=_N
+              change the number of sorts run concurrently to N
+
+       --uu, ----uunniiqquuee
+              with --cc, check for strict ordering; without --cc, output only  the
+              first of an equal run
+
+       --zz, ----zzeerroo--tteerrmmiinnaatteedd
+              line delimiter is NUL, not newline
+
+       ----hheellpp display this help and exit
+
+       ----vveerrssiioonn
+              output version information and exit
+
+       KEYDEF  is F[.C][OPTS][,F[.C][OPTS]] for start and stop position, where
+       F is a field number and C a character position in the field;  both  are
+       origin 1, and the stop position defaults to the line&#39;s end.  If neither
+       --tt nor --bb is in effect, characters in a field are counted from the  be‐
+       ginning of the preceding whitespace.  OPTS is one or more single-letter
+       ordering options [bdfgiMhnRrV], which override global ordering  options
+       for that key.  If no key is given, use the entire line as the key.  Use
+       ----ddeebbuugg to diagnose incorrect key usage.
+
+       SIZE may be followed by the following multiplicative suffixes: % 1%  of
+       memory, b 1, K 1024 (default), and so on for M, G, T, P, E, Z, Y.
+
+       ***  WARNING  ***  The locale specified by the environment affects sort
+       order.  Set LC_ALL=C to get the traditional sort order that uses native
+       byte values.
+
+AAUUTTHHOORR
+       Written by Mike Haertel and Paul Eggert.
+
+RREEPPOORRTTIINNGG BBUUGGSS
+       GNU coreutils online help: &lt;https://www.gnu.org/software/coreutils/&gt;
+       Report sort translation bugs to &lt;https://translationproject.org/team/&gt;
+
+CCOOPPYYRRIIGGHHTT
+       Copyright  ©  2018  Free Software Foundation, Inc.  License GPLv3+: GNU
+       GPL version 3 or later &lt;https://gnu.org/licenses/gpl.html&gt;.
+       This is free software: you are free  to  change  and  redistribute  it.
+       There is NO WARRANTY, to the extent permitted by law.
+
+SSEEEE AALLSSOO
+       shuf(1), uniq(1)
+
+       Full documentation at: &lt;https://www.gnu.org/software/coreutils/sort&gt;
+       or available locally via: info &#39;(coreutils) sort invocation&#39;
+
+GNU coreutils 8.30              September 2019                         SORT(1)
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">The -k option identify the column of sorting:</div>
+<div class="line">Sorting based on column number 2 ( -k 2,2)</div>
+<div class="line">sorting based on column number 2 and then number 1 ( -k 2,1)</div>
+<div class="line">See again man sort for more options like -n -g</div>
+<div class="line">Alfa numeric sorting:</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> sort -k <span class="m">2</span>,2 input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+DE121 1997 05 2 0.232016
+DE122 1997 05 2 0.0637817
+DE124 1997 03 2 1.28501
+DE125 1997 05 2 0.107349
+DE128 1997 04 2 0.340913
+DE129 1997 03 2 0.297982
+DE12A 1997 03 2 0.0815152
+DE123 1998 04 2 0.434829
+DE124 1998 03 2 0.0796515
+DE12A 1998 05 2 0.345525
+DE412 1998 05 3 1.22806
+DE412 1998 06 2 0.0130324
+DE412 1998 07 2 0.0611725
+DE412 1998 08 2 0.913361
+DE412 1998 09 2 0.0146242
+DE413 1998 03 2 0.108482
+DE413 1998 04 2 0.0403881
+DE413 1998 05 3 0.0507124
+DE413 1998 08 2 0.267596
+DE414 1998 03 2 0.363849
+DE414 1998 05 3 0.347403
+DE414 1998 06 4 2.88662
+DE414 1998 07 3 0.0392562
+DE414 1998 08 4 0.49688
+DE415 1998 02 3 0.20879
+DE415 1998 03 3 0.0162351
+DE415 1998 05 3 1.74778
+DE415 1998 06 3 0.0208709
+DE415 1998 07 3 0.27388
+DE415 1998 08 3 1.21651
+DE416 1998 06 3 0.0236748
+DE416 1998 08 3 0.260007
+DE417 1998 05 2 0.0931233
+DE417 1998 06 2 0.0117269
+DE417 1998 08 2 0.227174
+DE418 1998 03 4 3.13756
+DE418 1998 04 3 0.163528
+DE418 1998 05 3 2.43519
+DE418 1998 06 3 0.370169
+DE418 1998 07 3 3.51113
+DE418 1998 08 5 0.863216
+DE421 1998 03 2 0.0716028
+DE421 1998 05 3 0.726903
+DE421 1998 06 3 1.80126
+DE421 1998 08 3 0.228295
+DE422 1998 03 2 0.284016
+DE422 1998 05 2 0.0148151
+DE422 1998 06 2 0.00614217
+DE423 1998 06 4 0.111207
+DE424 1998 02 2 1.02572
+DE424 1998 03 2 0.637232
+DE424 1998 04 4 1.60236
+DE424 1998 05 4 2.35991
+DE424 1998 06 4 0.51498
+DE424 1998 07 2 0.283466
+DE424 1998 08 2 0.355448
+DE424 1998 09 2 0.0572774
+DE425 1998 03 3 0.29827
+DE425 1998 04 2 0.229308
+DE425 1998 05 2 2.33178
+DE425 1998 06 5 1.14979
+DE425 1998 08 3 0.366289
+DE123 1999 03 2 1.03189
+DE126 1999 03 2 0.161851
+DE127 1999 06 2 0.164155
+DE128 1999 04 2 2.56944
+DE128 1999 05 2 0.0157669
+DE128 1999 07 2 0.0745548
+DE128 1999 09 2 0.00695462
+DE128 1999 11 2 0.00687936
+DE411 1999 09 2 0.199858
+DE412 1999 04 2 2.83041
+DE412 1999 05 5 0.252814
+DE412 1999 06 3 0.0318186
+DE412 1999 07 3 1.23219
+DE412 1999 08 3 3.10461
+DE412 1999 09 3 0.901185
+DE413 1999 05 2 0.0545964
+DE413 1999 07 5 1.81325
+DE413 1999 08 5 0.371798
+DE413 1999 09 4 0.41315
+DE413 1999 10 2 0.0088951
+DE414 1999 07 4 3.66707
+DE414 1999 08 2 0.0088249
+DE414 1999 09 5 0.220678
+DE414 1999 10 3 0.0750015
+DE415 1999 03 2 0.0101451
+DE415 1999 04 3 0.407166
+DE415 1999 05 3 2.39059
+DE415 1999 06 3 2.85613
+DE415 1999 07 3 1.95067
+DE415 1999 08 3 11.2052
+DE415 1999 09 3 6.63033
+DE416 1999 05 4 1.69441
+DE416 1999 06 3 0.0426324
+DE416 1999 07 2 0.0131683
+DE416 1999 08 4 0.593951
+DE416 1999 09 2 0.347715
+DE417 1999 05 2 0.0071362
+DE417 1999 07 4 0.84376
+DE417 1999 08 2 0.0310437
+DE418 1999 07 3 0.548349
+DE418 1999 08 2 0.0216208
+DE418 1999 09 2 0.141783
+DE421 1999 05 2 0.0139915
+DE421 1999 08 3 1.63382
+DE421 1999 10 2 0.0805432
+DE422 1999 08 2 0.281546
+DE422 1999 09 3 1.69918
+DE423 1999 05 5 0.172255
+DE423 1999 07 2 0.0116017
+DE423 1999 09 2 0.00682225
+DE424 1999 03 2 0.363183
+DE424 1999 04 2 0.980992
+DE424 1999 05 2 1.54027
+DE424 1999 06 3 0.133988
+DE424 1999 07 3 2.31606
+DE424 1999 08 3 10.2854
+DE424 1999 09 2 0.0148084
+DE425 1999 03 3 0.18435
+DE425 1999 04 4 0.0638735
+DE425 1999 05 4 4.56681
+DE425 1999 06 3 0.0706978
+DE425 1999 07 3 0.0633972
+DE425 1999 08 3 0.464032
+DE425 1999 09 3 0.693728
+CY000 2000 01 3 0.20086
+CY000 2000 02 4 4.65991
+CY000 2000 03 4 11.1362
+CY000 2000 04 4 21.2907
+CY000 2000 05 4 70.5618
+CY000 2000 06 4 8272.33
+CY000 2000 07 4 250.715
+CY000 2000 08 4 277.404
+CY000 2000 09 4 113.68
+CY000 2000 10 4 265.5
+CY000 2000 11 4 353.015
+CY000 2000 12 5 16.7437
+DE122 2000 08 4 0.593662
+DE123 2000 08 3 0.0606876
+DE124 2000 06 3 0.041517
+DE129 2000 06 2 0.6598
+DE129 2000 07 2 0.0145369
+DE129 2000 08 2 0.024801
+DE12A 2000 06 2 0.615235
+DE12A 2000 07 2 0.405126
+DE134 2000 09 2 0.149855
+DE135 2000 08 3 0.28563
+DE412 2000 04 5 0.838143
+DE412 2000 05 5 0.316454
+DE412 2000 06 5 5.50617
+DE412 2000 07 3 0.161901
+DE412 2000 08 2 4.01822
+DE413 2000 04 3 0.104547
+DE413 2000 05 5 0.162013
+DE413 2000 06 5 0.66888
+DE414 2000 06 4 1.32272
+DE414 2000 07 2 0.0419649
+DE414 2000 08 2 2.10543
+DE415 2000 04 3 2.02227
+DE415 2000 05 3 16.2333
+DE415 2000 06 3 20.4108
+DE415 2000 08 4 0.0271066
+DE416 2000 04 2 0.0309402
+DE416 2000 05 2 0.207631
+DE416 2000 06 3 1.2754
+DE417 2000 05 2 1.31603
+DE417 2000 06 2 0.477614
+DE417 2000 08 2 0.0629067
+DE418 2000 04 2 0.168472
+DE418 2000 05 2 11.9184
+DE421 2000 04 2 0.0064867
+DE421 2000 06 2 0.115743
+DE421 2000 07 2 0.094456
+DE422 2000 05 2 0.120523
+DE422 2000 06 2 0.251158
+DE424 2000 03 2 0.0275338
+DE424 2000 04 4 0.52353
+DE424 2000 05 4 58.8432
+DE424 2000 06 4 3.28863
+DE424 2000 07 3 0.608496
+DE424 2000 08 5 6.84759
+DE425 2000 04 4 1.83047
+DE425 2000 05 4 1.73796
+DE425 2000 06 4 3.1973
+DE425 2000 07 4 0.724873
+DE425 2000 08 4 4.67528
+DE425 2000 09 3 0.194243
+CY000 2001 01 4 0.762476
+CY000 2001 02 4 2.80746
+CY000 2001 03 4 4.05461
+CY000 2001 04 4 14.9135
+CY000 2001 05 4 192.847
+CY000 2001 06 4 3209
+CY000 2001 07 4 1366.72
+CY000 2001 08 4 258.869
+CY000 2001 09 4 55.9374
+CY000 2001 10 4 74.6056
+CY000 2001 11 4 5.39532
+DE124 2001 07 2 0.081426
+DE128 2001 09 3 0.076065
+DE129 2001 07 2 0.965376
+DE412 2001 05 4 0.389763
+DE412 2001 07 5 0.231797
+DE413 2001 07 4 0.088159
+DE414 2001 05 2 0.128885
+DE415 2001 04 4 2.28365
+DE415 2001 05 4 3.72977
+DE415 2001 06 4 0.728217
+DE415 2001 07 4 2.60132
+DE415 2001 08 4 0.400608
+DE416 2001 05 2 0.0665954
+DE417 2001 05 4 0.165737
+DE421 2001 07 3 0.0997191
+DE422 2001 06 2 0.0155788
+DE424 2001 05 5 0.86585
+DE424 2001 06 5 0.149352
+DE424 2001 07 5 0.0507112
+DE424 2001 08 3 0.130738
+DE425 2001 04 2 0.0724194
+DE425 2001 05 2 0.66708
+DE425 2001 08 2 0.0421668
+CY000 2002 02 4 0.231972
+CY000 2002 03 4 0.958884
+CY000 2002 04 3 0.0165195
+CY000 2002 05 3 27.1889
+CY000 2002 06 3 115.975
+CY000 2002 07 3 59.9245
+CY000 2002 08 3 863.556
+CY000 2002 09 3 184.671
+CY000 2002 10 3 374.937
+CY000 2002 11 3 139.895
+CY000 2002 12 4 0.32389
+DE129 2002 08 2 1.00398
+DE412 2002 03 4 1.01587
+DE412 2002 04 5 3.68798
+DE412 2002 05 3 0.0953768
+DE412 2002 07 2 0.414045
+DE412 2002 09 3 0.195143
+DE413 2002 03 3 0.612798
+DE413 2002 04 2 0.00520623
+DE413 2002 06 2 0.25516
+DE413 2002 07 3 2.655
+DE413 2002 08 2 0.0126309
+DE414 2002 05 2 0.00790377
+DE414 2002 08 2 0.347406
+DE414 2002 09 3 1.27069
+DE414 2002 10 2 0.0957212
+DE415 2002 04 5 0.356472
+DE415 2002 06 4 0.333388
+DE415 2002 07 4 0.645433
+DE415 2002 08 4 0.199384
+DE416 2002 04 2 0.0711995
+DE416 2002 06 4 0.371055
+DE416 2002 09 2 0.0350267
+DE418 2002 06 2 0.0256104
+DE418 2002 08 2 0.0269474
+DE421 2002 04 2 0.357042
+DE422 2002 07 2 0.00517562
+DE422 2002 09 2 0.0399912
+DE424 2002 03 2 0.0234896
+DE424 2002 04 3 0.256172
+DE424 2002 05 2 0.0119914
+DE424 2002 06 5 2.12954
+DE424 2002 07 5 2.31205
+DE424 2002 08 5 1.01519
+DE424 2002 09 4 0.0776358
+DE425 2002 02 2 0.0125149
+DE425 2002 03 2 0.492932
+DE425 2002 04 4 1.06466
+CY000 2003 04 4 1.47138
+CY000 2003 05 4 123.587
+CY000 2003 06 4 101.362
+CY000 2003 07 4 392.476
+CY000 2003 08 4 511.32
+CY000 2003 09 4 210.032
+CY000 2003 10 4 681.85
+CY000 2003 11 4 34.2503
+CY000 2003 12 4 3.02977
+DE121 2003 08 2 0.162159
+DE122 2003 08 2 0.866864
+DE123 2003 04 3 0.114334
+DE123 2003 05 2 0.0295618
+DE123 2003 08 5 0.392577
+DE124 2003 03 2 0.255276
+DE124 2003 06 2 0.142021
+DE124 2003 07 3 2.2447
+DE124 2003 08 2 0.0609876
+DE124 2003 09 2 0.0136845
+DE126 2003 03 2 0.0330138
+DE126 2003 07 2 0.0148902
+DE126 2003 08 4 0.182073
+DE127 2003 04 3 1.72321
+DE127 2003 08 3 0.112151
+DE127 2003 09 2 0.0655755
+DE128 2003 04 2 0.218954
+DE128 2003 06 2 0.0558414
+DE128 2003 07 2 0.0110147
+DE128 2003 08 2 3.89687
+DE129 2003 08 2 0.866864
+DE129 2003 09 2 0.35396
+DE12A 2003 03 2 0.278345
+DE12A 2003 04 2 0.293185
+DE12A 2003 09 2 0.0487216
+DE12C 2003 03 3 0.158382
+DE12C 2003 04 3 0.17952
+DE12C 2003 08 2 0.228436
+DE12C 2003 09 2 0.0426462
+DE411 2003 06 2 0.376554
+DE412 2003 03 4 1.72301
+DE412 2003 04 4 21.0501
+DE412 2003 05 3 0.0309936
+DE412 2003 06 3 6.22654
+DE412 2003 07 2 0.155251
+DE412 2003 08 2 0.839962
+DE412 2003 09 2 0.026047
+DE413 2003 03 2 5.2789
+DE413 2003 04 3 0.249118
+DE413 2003 05 2 0.00582479
+DE413 2003 08 4 0.105572
+DE414 2003 03 3 1.18491
+DE414 2003 04 4 1.7882
+DE414 2003 05 5 0.742903
+DE414 2003 06 2 0.00525537
+DE414 2003 07 3 0.749055
+DE414 2003 08 3 1.75443
+DE415 2003 02 2 0.0120666
+DE415 2003 03 5 0.27744
+DE415 2003 04 5 4.7018
+DE415 2003 05 5 2.60197
+DE415 2003 06 5 3.67264
+DE415 2003 07 5 1.35177
+DE415 2003 08 5 1.02374
+DE415 2003 09 5 2.54038
+DE416 2003 05 4 0.211562
+DE416 2003 06 2 0.444991
+DE416 2003 07 2 0.105896
+DE416 2003 08 4 0.964785
+DE417 2003 03 4 1.81684
+DE417 2003 04 3 0.0610802
+DE417 2003 05 3 4.79446
+DE417 2003 06 3 3.27555
+DE417 2003 07 4 0.673915
+DE417 2003 08 4 0.157456
+DE418 2003 03 4 55.2122
+DE418 2003 04 4 11.0773
+DE418 2003 07 2 0.108286
+DE418 2003 08 5 1.82489
+DE421 2003 04 3 0.298498
+DE421 2003 07 2 0.0672547
+DE421 2003 08 2 2.93714
+DE422 2003 03 2 2.26865
+DE422 2003 04 2 0.177208
+DE422 2003 07 2 0.01119
+DE422 2003 08 4 0.107948
+DE423 2003 08 3 0.793549
+DE424 2003 03 3 0.113966
+DE424 2003 04 3 18.619
+DE424 2003 05 3 1.72579
+DE424 2003 06 3 4.37626
+DE424 2003 07 4 11.2141
+DE424 2003 08 4 2.65389
+DE424 2003 09 4 3.85167
+CY000 2004 02 3 0.955392
+CY000 2004 03 3 6.49885
+CY000 2004 04 3 10.9706
+CY000 2004 05 3 296.32
+CY000 2004 06 3 403.587
+CY000 2004 07 3 164.836
+CY000 2004 08 3 59.2979
+CY000 2004 09 3 91.8522
+CY000 2004 10 3 93.4021
+CY000 2004 11 3 9.49625
+CY000 2004 12 2 0.278038
+CZ020 2004 03 2 24.0416
+CZ032 2004 04 2 13.5171
+CZ042 2004 06 2 13.5526
+DE412 2004 04 2 0.0241236
+DE412 2004 05 2 0.347961
+DE412 2004 06 2 0.809932
+DE412 2004 08 2 0.368142
+DE412 2004 09 2 0.00530336
+DE414 2004 03 4 1.97627
+DE414 2004 04 3 1.00275
+DE414 2004 07 2 0.00795488
+DE415 2004 04 5 2.13174
+DE415 2004 05 2 0.59346
+DE415 2004 06 2 0.53308
+DE415 2004 07 2 0.191283
+DE415 2004 08 2 0.26141
+DE415 2004 09 3 0.0237742
+DE416 2004 04 2 0.114188
+DE416 2004 05 2 0.302628
+DE416 2004 08 2 0.00156981
+DE417 2004 05 2 0.0439774
+DE417 2004 08 3 0.387086
+DE417 2004 09 2 0.00288114
+DE418 2004 04 2 0.0111405
+DE418 2004 05 2 0.0014667
+DE421 2004 08 2 0.0591344
+DE422 2004 08 2 2.57984
+DE424 2004 02 2 0.289952
+DE424 2004 03 3 1.71752
+DE424 2004 04 3 1.08551
+DE424 2004 05 5 0.442115
+DE424 2004 06 4 0.281393
+DE424 2004 07 4 0.141752
+DE424 2004 08 4 0.0923612
+DE424 2004 09 4 0.393816
+BG311 2005 04 2 0.282594
+BG312 2005 04 3 10.6419
+BG313 2005 03 2 48.0927
+BG314 2005 03 4 2.21985
+BG315 2005 03 2 125.772
+BG315 2005 04 2 95.5232
+BG315 2005 06 2 3.70607
+BG321 2005 03 3 59.201
+BG321 2005 04 2 0.562725
+BG322 2005 03 3 6.33855
+BG322 2005 04 2 5.45605
+BG323 2005 03 3 8.98824
+BG323 2005 04 2 3.04655
+BG324 2005 03 2 0.97613
+BG324 2005 04 2 2.06119
+BG325 2005 04 2 1.34959
+BG325 2005 07 2 27.4231
+BG331 2005 01 2 0.901016
+BG331 2005 03 2 2.26082
+BG331 2005 04 2 13.956
+BG331 2005 06 2 0.0643451
+BG332 2005 04 2 4.7556
+BG333 2005 03 2 28.8306
+BG333 2005 04 4 4.97396
+BG341 2005 03 3 621.824
+BG341 2005 04 4 9.6126
+BG341 2005 06 2 1.6579
+BG343 2005 03 2 3.71163
+BG343 2005 04 2 4.73784
+BG344 2005 01 3 4.74859
+BG344 2005 03 2 7.04468
+BG344 2005 04 4 138.517
+BG411 2005 03 2 1.01033
+BG411 2005 04 2 28.9588
+BG412 2005 02 3 54.2146
+BG412 2005 03 3 55.5808
+BG412 2005 04 3 221.366
+BG412 2005 05 2 0.676884
+BG413 2005 03 4 51.1086
+BG413 2005 04 5 33.3638
+BG413 2005 05 3 2.01096
+BG413 2005 06 3 7.07514
+BG413 2005 07 3 2.50366
+BG413 2005 08 3 2.27731
+BG413 2005 10 2 1.18454
+BG413 2005 11 2 26.345
+BG414 2005 03 3 5.75175
+BG415 2005 01 3 3.05667
+BG415 2005 03 3 17.5467
+BG415 2005 04 4 56.6121
+BG415 2005 05 2 2.79797
+BG415 2005 07 2 0.229202
+BG415 2005 08 4 1.65743
+BG415 2005 11 2 0.132618
+BG421 2005 01 2 0.65647
+BG421 2005 03 4 2.98041
+BG421 2005 04 3 2.42129
+BG421 2005 10 2 1.48457
+BG422 2005 03 4 12.6289
+BG422 2005 04 4 73.5618
+BG422 2005 09 4 5.53105
+BG423 2005 01 2 1.24759
+BG423 2005 03 2 57.5449
+BG423 2005 04 2 42.7673
+BG423 2005 05 2 1.6553
+BG423 2005 07 3 0.436605
+BG423 2005 08 2 0.128153
+BG424 2005 03 2 1.77938
+BG424 2005 04 2 2.04622
+BG424 2005 05 2 0.212858
+BG424 2005 06 2 0.0870192
+BG424 2005 08 2 0.289737
+BG424 2005 10 4 0.870632
+BG425 2005 03 3 0.188194
+BG425 2005 04 5 2.46982
+BG425 2005 06 2 0.27944
+BG425 2005 07 2 0.592672
+BG425 2005 09 4 0.186785
+CY000 2005 01 2 4.33947
+CY000 2005 02 2 0.129616
+CY000 2005 03 2 14.916
+CY000 2005 04 3 21.183
+CY000 2005 05 3 398.663
+CY000 2005 06 3 869.019
+CY000 2005 07 3 30.7432
+CY000 2005 08 3 343.746
+CY000 2005 09 3 33.1192
+CY000 2005 10 3 58.553
+CY000 2005 11 3 23.5366
+CY000 2005 12 4 0.0628105
+CZ080 2005 04 2 10.6867
+DE411 2005 06 2 0.0275849
+DE412 2005 03 2 0.556955
+DE412 2005 04 4 0.568387
+DE412 2005 05 4 1.19817
+DE412 2005 06 2 0.196609
+DE413 2005 03 2 0.0187005
+DE413 2005 04 3 0.16555
+DE414 2005 04 2 12.8237
+DE414 2005 05 3 0.182478
+DE414 2005 06 2 0.051172
+DE415 2005 03 2 0.0212352
+DE415 2005 04 3 0.355172
+DE415 2005 05 4 0.167359
+DE415 2005 06 4 0.204903
+DE415 2005 07 4 0.221021
+DE416 2005 04 2 0.0285458
+DE416 2005 07 2 0.0706065
+DE417 2005 04 5 0.347789
+DE417 2005 06 4 1.28673
+DE418 2005 03 2 0.898471
+DE418 2005 04 2 0.027917
+DE418 2005 07 2 0.0257342
+DE418 2005 08 2 0.000818049
+DE418 2005 09 2 0.0140452
+DE421 2005 04 2 0.434154
+DE423 2005 04 2 0.00996257
+DE423 2005 09 2 0.0324514
+DE424 2005 04 4 0.881837
+DE424 2005 05 4 3.08078
+DE424 2005 06 4 0.990736
+BG311 2006 11 2 0.600812
+BG312 2006 10 2 0.293182
+BG312 2006 11 5 92.0624
+BG312 2006 12 3 29.1471
+BG313 2006 03 2 6.13806
+BG313 2006 07 2 2.44256
+BG313 2006 11 2 0.347652
+BG314 2006 07 3 2.58765
+BG314 2006 08 2 3.64928
+BG314 2006 09 2 0.302142
+BG315 2006 04 2 36.2185
+BG315 2006 11 3 31.5821
+BG315 2006 12 3 123.5
+BG321 2006 03 2 6.28263
+BG321 2006 08 2 3.23006
+BG321 2006 11 2 1.01262
+BG322 2006 03 3 1.85972
+BG322 2006 11 2 0.248026
+BG323 2006 03 2 2.67472
+BG323 2006 06 2 3.01386
+BG323 2006 08 4 0.911752
+BG323 2006 09 2 0.759697
+BG324 2006 04 2 0.64145
+BG324 2006 08 2 7.40875
+BG325 2006 08 2 1.34587
+BG325 2006 09 2 0.249886
+BG331 2006 03 2 2.93096
+BG331 2006 04 3 1.89504
+BG331 2006 07 3 9.86313
+BG331 2006 08 3 45.5238
+BG331 2006 09 3 0.215108
+BG332 2006 03 3 1.74459
+BG332 2006 07 4 4.68026
+BG332 2006 08 4 4.81496
+BG333 2006 03 3 19.6429
+BG333 2006 08 3 3.81421
+BG333 2006 12 2 11.3134
+BG334 2006 08 3 1.77483
+BG334 2006 12 2 1.39199
+BG341 2006 02 2 5.0424
+BG341 2006 04 2 0.395691
+BG341 2006 05 3 0.4285
+BG341 2006 08 3 98.4393
+BG341 2006 09 3 0.40148
+BG342 2006 07 3 0.433358
+BG342 2006 08 4 41.8133
+BG342 2006 09 2 14.3074
+BG343 2006 04 2 0.704769
+BG343 2006 05 2 0.695017
+BG343 2006 06 2 2.10271
+BG343 2006 08 4 26.7505
+BG344 2006 07 3 17.2738
+BG344 2006 08 4 3.55306
+BG344 2006 09 5 18.4984
+BG411 2006 05 2 0.27316
+BG411 2006 08 5 1.57985
+BG411 2006 09 3 0.769804
+BG411 2006 10 2 0.861993
+BG411 2006 11 2 0.119801
+BG412 2006 01 2 0.863629
+BG412 2006 03 2 25.9191
+BG412 2006 04 4 0.878514
+BG412 2006 05 2 0.621264
+BG412 2006 08 5 5.98766
+BG412 2006 09 5 15.6847
+BG412 2006 10 2 0.0838813
+BG412 2006 11 2 0.582587
+BG412 2006 12 2 49.6206
+BG413 2006 02 2 42.3976
+BG413 2006 03 4 5.38129
+BG413 2006 04 3 2.72704
+BG413 2006 06 2 1.86938
+BG413 2006 07 3 0.414349
+BG413 2006 08 3 22.1535
+BG413 2006 09 3 12.0215
+BG414 2006 03 3 44.5425
+BG414 2006 04 2 0.139433
+BG414 2006 09 2 4.62588
+BG414 2006 10 2 0.276052
+BG415 2006 02 4 4.00813
+BG415 2006 03 3 2.46103
+BG415 2006 04 5 5.46104
+BG415 2006 08 2 0.755646
+BG415 2006 09 3 2.58218
+BG415 2006 10 3 3.36504
+BG415 2006 11 2 2.91194
+BG415 2006 12 2 0.794779
+BG421 2006 01 3 0.481229
+BG421 2006 03 3 30.1665
+BG421 2006 04 3 14.1157
+BG421 2006 05 2 0.1245
+BG421 2006 06 5 4.00158
+BG421 2006 07 5 1
+BG421 2006 08 4 1.44982
+BG421 2006 09 4 61.2472
+BG421 2006 11 3 36.602
+BG422 2006 01 5 10.3281
+BG422 2006 02 3 0.89011
+BG422 2006 03 4 20.2
+BG422 2006 04 3 7.0596
+BG422 2006 06 2 14.2214
+BG422 2006 07 2 145.893
+BG422 2006 08 2 1127.15
+BG422 2006 09 2 610.552
+BG423 2006 01 3 8.83021
+BG423 2006 02 4 29.5281
+BG423 2006 03 4 7.75145
+BG423 2006 04 2 0.99176
+BG423 2006 05 3 0.761956
+BG423 2006 07 4 3.2859
+BG423 2006 08 5 30.869
+BG423 2006 09 5 58.8844
+BG423 2006 10 2 0.665435
+BG423 2006 11 5 5.24478
+BG423 2006 12 3 19.0336
+BG424 2006 03 4 5.44071
+BG424 2006 04 2 3.36076
+BG424 2006 08 2 0.415581
+BG424 2006 09 4 21.6579
+BG424 2006 11 4 5.92479
+BG424 2006 12 3 1.67281
+BG425 2006 04 2 0.145462
+BG425 2006 05 5 0.372905
+BG425 2006 06 3 0.132586
+BG425 2006 07 2 0.29301
+BG425 2006 08 4 0.710985
+BG425 2006 09 4 1.90201
+CY000 2006 02 3 0.587406
+CY000 2006 03 3 83.1106
+CY000 2006 04 5 0.967452
+CY000 2006 05 5 282.391
+CY000 2006 06 5 358.534
+CY000 2006 07 5 261.244
+CY000 2006 08 5 40.6708
+CY000 2006 09 5 195.93
+CY000 2006 10 5 14.6292
+CY000 2006 12 3 0.845538
+CZ010 2006 05 4 0.023707
+CZ010 2006 07 4 0.0753943
+CZ010 2006 09 3 0.0131662
+CZ020 2006 01 2 0.00492811
+CZ020 2006 04 2 10.8473
+CZ020 2006 05 2 18.1471
+CZ020 2006 06 2 3.5218
+CZ020 2006 07 2 10.1153
+CZ020 2006 08 2 0.0108734
+CZ020 2006 09 2 1.43463
+CZ020 2006 10 2 0.117046
+CZ020 2006 11 2 0.166974
+CZ020 2006 12 2 0.00132759
+CZ031 2006 04 5 0.422728
+CZ031 2006 05 5 3.01639
+CZ031 2006 06 2 0.129287
+CZ031 2006 07 4 0.23045
+CZ031 2006 09 3 0.120826
+CZ031 2006 10 4 0.00803731
+CZ031 2006 11 5 0.28404
+CZ031 2006 12 5 0.691518
+CZ032 2006 04 2 7.39193
+CZ032 2006 05 2 0.650117
+CZ032 2006 06 2 0.576514
+CZ032 2006 07 2 0.573189
+CZ032 2006 08 3 0.0871045
+CZ032 2006 09 3 0.577752
+CZ032 2006 10 3 0.0238921
+CZ032 2006 11 3 0.00869638
+CZ032 2006 12 3 0.0428257
+CZ041 2006 04 2 9.24986
+CZ041 2006 05 4 1.01741
+CZ041 2006 07 4 0.676825
+CZ041 2006 08 3 0.247137
+CZ041 2006 09 2 0.0297836
+CZ041 2006 10 2 0.00172912
+CZ041 2006 11 2 0.0129302
+CZ042 2006 04 4 1.25128
+CZ042 2006 05 4 7.61324
+CZ042 2006 06 4 0.928723
+CZ042 2006 07 4 261.418
+CZ042 2006 08 2 0.00342008
+CZ042 2006 09 2 2.18124
+CZ042 2006 10 4 0.220816
+CZ051 2006 03 2 0.00259678
+CZ051 2006 04 4 0.194625
+CZ051 2006 05 4 0.0434952
+CZ051 2006 06 4 4.0513
+CZ051 2006 07 4 5.56088
+CZ051 2006 08 4 0.0422898
+CZ051 2006 09 4 0.283525
+CZ051 2006 10 4 0.0121199
+CZ052 2006 04 2 0.188787
+CZ052 2006 06 2 0.539782
+CZ052 2006 07 2 3.05991
+CZ052 2006 09 5 0.0859136
+CZ052 2006 10 5 1.63926
+CZ053 2006 04 2 0.0177711
+CZ053 2006 05 4 0.519223
+CZ053 2006 06 2 0.0620494
+CZ053 2006 07 2 3.76085
+CZ053 2006 08 2 0.0143413
+CZ053 2006 09 3 2.51401
+CZ061 2006 04 3 1.59017
+CZ061 2006 05 4 0.0568428
+CZ061 2006 06 4 0.341234
+CZ061 2006 07 4 2.99631
+CZ061 2006 09 4 0.533612
+CZ061 2006 10 4 0.164172
+CZ061 2006 11 3 0.0755874
+CZ061 2006 12 4 0.0398106
+CZ062 2006 04 3 0.547727
+CZ062 2006 05 2 0.0134157
+CZ062 2006 07 2 1.62121
+CZ062 2006 09 3 0.89482
+CZ062 2006 10 3 4.11491
+CZ062 2006 12 2 0.00152595
+CZ071 2006 04 2 7.06965
+CZ071 2006 06 2 0.00274927
+CZ071 2006 07 2 1.31209
+CZ071 2006 08 3 0.0133259
+CZ071 2006 09 3 0.197024
+CZ071 2006 10 2 0.0410324
+CZ072 2006 04 2 0.224868
+CZ072 2006 07 5 1.48377
+CZ072 2006 09 2 0.171342
+CZ072 2006 10 2 0.00245432
+CZ080 2006 04 2 9.4722
+CZ080 2006 06 3 1.14109
+CZ080 2006 07 3 3.12406
+CZ080 2006 08 2 0.00515456
+CZ080 2006 09 2 0.0758536
+CZ080 2006 10 2 1.98264
+DE122 2006 03 2 0.0938842
+DE122 2006 04 4 0.0366267
+DE124 2006 05 2 0.124872
+DE128 2006 04 2 0.139624
+DE128 2006 06 4 0.725333
+DE133 2006 07 2 0.0855255
+DE133 2006 09 2 0.106198
+DE134 2006 06 2 0.108214
+DE134 2006 10 2 0.052098
+DE139 2006 04 2 3.5739
+DE13A 2006 05 3 0.58272
+DE13A 2006 07 4 0.676899
+DE13A 2006 08 3 0.528195
+DE13A 2006 10 2 0.216715
+DE411 2006 07 3 3.44542
+DE412 2006 04 2 0.054478
+DE412 2006 05 5 0.691057
+DE412 2006 06 3 0.107348
+DE412 2006 07 3 1.93305
+DE412 2006 08 2 0.214044
+DE412 2006 09 2 0.219423
+DE413 2006 04 3 0.102182
+DE413 2006 05 5 0.815426
+DE413 2006 07 5 7.32987
+DE413 2006 09 2 0.299483
+DE413 2006 10 2 0.134471
+DE413 2006 11 2 0.00139426
+DE414 2006 05 5 1.88579
+DE414 2006 06 3 0.470848
+DE414 2006 07 4 11.9673
+DE414 2006 08 2 0.0490289
+DE414 2006 09 3 0.694654
+DE415 2006 05 4 0.535989
+DE415 2006 06 4 1.54183
+DE415 2006 07 4 45.7763
+DE415 2006 09 3 2.31642
+DE416 2006 05 3 0.148617
+DE416 2006 07 2 0.398726
+DE417 2006 06 2 0.13546
+DE417 2006 07 3 0.30921
+DE418 2006 05 4 1.53076
+DE418 2006 07 4 24.0147
+DE421 2006 07 3 1.45406
+DE422 2006 07 5 2.55061
+DE422 2006 08 4 0.0187947
+DE424 2006 05 4 3.19804
+DE424 2006 06 4 0.276527
+DE424 2006 07 4 6.28045
+DE424 2006 08 3 1.4451
+DE424 2006 09 3 0.155371
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2007 01 3 114.535
+BG312 2007 02 3 17.3247
+BG312 2007 03 3 322.063
+BG312 2007 04 3 521.189
+BG312 2007 05 3 4.13178
+BG312 2007 06 2 5.94132
+BG312 2007 07 2 1117.64
+BG313 2007 01 2 205.374
+BG313 2007 02 2 103.186
+BG313 2007 03 2 394.699
+BG313 2007 04 5 36.6292
+BG313 2007 05 3 7.68499
+BG313 2007 07 3 267.507
+BG313 2007 08 2 8.23134
+BG314 2007 03 2 31.1266
+BG314 2007 05 3 49.9327
+BG314 2007 06 2 5.50835
+BG314 2007 07 2 1243.67
+BG314 2007 08 2 70.1061
+BG315 2007 01 3 97.1538
+BG315 2007 02 3 72.1268
+BG315 2007 03 3 1825.58
+BG315 2007 04 3 709.847
+BG315 2007 05 4 37.3087
+BG315 2007 07 4 2595.44
+BG321 2007 01 2 34.6964
+BG321 2007 02 2 15.8478
+BG321 2007 03 2 128.72
+BG321 2007 04 2 44.5743
+BG321 2007 05 4 36.5963
+BG321 2007 06 3 0.207622
+BG321 2007 07 3 736.828
+BG321 2007 08 3 16.4847
+BG322 2007 01 2 25.6421
+BG322 2007 02 3 2.47755
+BG322 2007 03 3 23.3933
+BG322 2007 04 3 61.2729
+BG322 2007 07 3 1142.19
+BG322 2007 08 3 0.195825
+BG323 2007 04 5 2.25699
+BG323 2007 05 2 0.346974
+BG323 2007 07 2 10.9846
+BG323 2007 09 2 0.218432
+BG324 2007 01 2 1.83585
+BG324 2007 05 2 0.0708554
+BG324 2007 06 2 3.00246
+BG324 2007 07 2 31.0683
+BG325 2007 03 3 50.6905
+BG325 2007 07 3 139.212
+BG325 2007 10 2 4.28359
+BG331 2007 01 3 14.9751
+BG331 2007 02 3 2.17089
+BG331 2007 03 3 54.6886
+BG331 2007 04 3 3.46769
+BG331 2007 05 3 5.26728
+BG331 2007 06 3 17.715
+BG331 2007 07 3 635.74
+BG331 2007 08 5 5.69637
+BG331 2007 09 4 1.45601
+BG331 2007 10 3 1.16162
+BG332 2007 03 2 0.464604
+BG332 2007 04 2 0.135462
+BG332 2007 06 2 6.04419
+BG332 2007 07 2 81.8419
+BG333 2007 01 4 24.929
+BG333 2007 02 2 2.23803
+BG333 2007 03 5 39.8419
+BG333 2007 04 5 49.7954
+BG333 2007 05 5 13.0934
+BG333 2007 07 5 57.5293
+BG333 2007 08 5 35.7814
+BG334 2007 03 3 27.6829
+BG334 2007 04 3 0.517585
+BG334 2007 05 2 0.647435
+BG334 2007 06 2 0.140486
+BG334 2007 07 2 27.4913
+BG341 2007 01 3 1.66492
+BG341 2007 03 5 6.8906
+BG341 2007 04 3 0.315852
+BG341 2007 05 4 62.2719
+BG341 2007 06 4 293.251
+BG341 2007 07 4 1057.39
+BG341 2007 08 4 141.546
+BG341 2007 09 2 23.2366
+BG342 2007 01 2 0.30804
+BG342 2007 03 2 128.902
+BG342 2007 04 2 291.04
+BG342 2007 05 2 0.0792935
+BG342 2007 07 2 860.014
+BG342 2007 08 3 4.4406
+BG342 2007 10 2 4.33875
+BG343 2007 06 4 205.937
+BG343 2007 07 4 193.754
+BG343 2007 08 5 1154.31
+BG343 2007 09 2 1.12145
+BG344 2007 03 5 1.85917
+BG344 2007 04 5 4.82415
+BG344 2007 05 2 3.05647
+BG344 2007 06 3 1.7138
+BG344 2007 07 3 5720.55
+BG344 2007 08 3 59.9997
+BG344 2007 09 2 2.61198
+BG411 2007 01 2 0.125264
+BG411 2007 03 2 19.4587
+BG411 2007 04 4 1.18276
+BG411 2007 05 2 0.202724
+BG411 2007 07 4 4.77007
+BG412 2007 01 2 357.321
+BG412 2007 02 5 15.001
+BG412 2007 03 5 1563.86
+BG412 2007 04 5 1118.17
+BG412 2007 05 5 79.8004
+BG412 2007 06 3 15.4517
+BG412 2007 07 3 1100.8
+BG412 2007 08 4 12.9193
+BG413 2007 01 3 5.14457
+BG413 2007 02 2 4.04579
+BG413 2007 03 2 91.8944
+BG413 2007 04 2 64.757
+BG413 2007 05 2 1.60664
+BG413 2007 06 2 7.62226
+BG413 2007 07 2 158.693
+BG413 2007 08 2 10.7716
+BG413 2007 09 2 1.542
+BG413 2007 10 2 10.4395
+BG414 2007 01 4 4.30643
+BG414 2007 02 4 4.16793
+BG414 2007 03 4 495.007
+BG414 2007 04 4 78.332
+BG414 2007 05 4 2.15944
+BG414 2007 07 3 25.7131
+BG414 2007 08 2 0.734826
+BG414 2007 09 2 4.46241
+BG415 2007 01 3 20.5053
+BG415 2007 02 5 5.29747
+BG415 2007 03 5 106.259
+BG415 2007 04 5 316.271
+BG415 2007 05 3 0.323577
+BG415 2007 06 4 21.6512
+BG415 2007 07 4 888.636
+BG415 2007 08 4 5.12635
+BG415 2007 09 2 19.5612
+BG415 2007 10 3 3.67903
+BG421 2007 01 3 16.6377
+BG421 2007 02 3 36.8495
+BG421 2007 03 3 284.924
+BG421 2007 04 3 200.269
+BG421 2007 05 4 2.23446
+BG421 2007 06 4 14.21
+BG421 2007 07 4 626.222
+BG421 2007 08 4 247.26
+BG422 2007 01 4 1.13109
+BG422 2007 02 3 4.25846
+BG422 2007 03 3 51.2923
+BG422 2007 04 2 1.36679
+BG422 2007 06 4 60.5828
+BG422 2007 07 4 5106.58
+BG422 2007 08 4 12972.6
+BG423 2007 01 3 330.791
+BG423 2007 02 2 0.745402
+BG423 2007 03 2 180.982
+BG423 2007 04 2 62.7641
+BG423 2007 05 4 0.452272
+BG423 2007 06 3 29.5529
+BG423 2007 07 3 1421.17
+BG423 2007 08 5 18.1706
+BG423 2007 09 2 1.00679
+BG424 2007 01 5 4.48651
+BG424 2007 02 3 5.26365
+BG424 2007 03 3 13.9579
+BG424 2007 04 3 16.2728
+BG424 2007 05 5 0.54032
+BG424 2007 07 5 319.625
+BG424 2007 08 5 1.38762
+BG424 2007 09 3 3.73571
+BG425 2007 01 5 1.0197
+BG425 2007 02 2 0.134967
+BG425 2007 03 2 6.44724
+BG425 2007 04 2 9.75379
+BG425 2007 05 3 0.422148
+BG425 2007 06 2 1.69251
+BG425 2007 07 2 34.3116
+BG425 2007 08 4 0.73277
+BG425 2007 09 3 2.6549
+NUTS YYYY MM 0 BAREA
+</pre></div></div>
+</div>
+<p>General numerical sorting</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> sort -k <span class="m">2</span>,2 -g  input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS YYYY MM 0 BAREA
+DE121 1997 05 2 0.232016
+DE122 1997 05 2 0.0637817
+DE124 1997 03 2 1.28501
+DE125 1997 05 2 0.107349
+DE128 1997 04 2 0.340913
+DE129 1997 03 2 0.297982
+DE12A 1997 03 2 0.0815152
+DE123 1998 04 2 0.434829
+DE124 1998 03 2 0.0796515
+DE12A 1998 05 2 0.345525
+DE412 1998 05 3 1.22806
+DE412 1998 06 2 0.0130324
+DE412 1998 07 2 0.0611725
+DE412 1998 08 2 0.913361
+DE412 1998 09 2 0.0146242
+DE413 1998 03 2 0.108482
+DE413 1998 04 2 0.0403881
+DE413 1998 05 3 0.0507124
+DE413 1998 08 2 0.267596
+DE414 1998 03 2 0.363849
+DE414 1998 05 3 0.347403
+DE414 1998 06 4 2.88662
+DE414 1998 07 3 0.0392562
+DE414 1998 08 4 0.49688
+DE415 1998 02 3 0.20879
+DE415 1998 03 3 0.0162351
+DE415 1998 05 3 1.74778
+DE415 1998 06 3 0.0208709
+DE415 1998 07 3 0.27388
+DE415 1998 08 3 1.21651
+DE416 1998 06 3 0.0236748
+DE416 1998 08 3 0.260007
+DE417 1998 05 2 0.0931233
+DE417 1998 06 2 0.0117269
+DE417 1998 08 2 0.227174
+DE418 1998 03 4 3.13756
+DE418 1998 04 3 0.163528
+DE418 1998 05 3 2.43519
+DE418 1998 06 3 0.370169
+DE418 1998 07 3 3.51113
+DE418 1998 08 5 0.863216
+DE421 1998 03 2 0.0716028
+DE421 1998 05 3 0.726903
+DE421 1998 06 3 1.80126
+DE421 1998 08 3 0.228295
+DE422 1998 03 2 0.284016
+DE422 1998 05 2 0.0148151
+DE422 1998 06 2 0.00614217
+DE423 1998 06 4 0.111207
+DE424 1998 02 2 1.02572
+DE424 1998 03 2 0.637232
+DE424 1998 04 4 1.60236
+DE424 1998 05 4 2.35991
+DE424 1998 06 4 0.51498
+DE424 1998 07 2 0.283466
+DE424 1998 08 2 0.355448
+DE424 1998 09 2 0.0572774
+DE425 1998 03 3 0.29827
+DE425 1998 04 2 0.229308
+DE425 1998 05 2 2.33178
+DE425 1998 06 5 1.14979
+DE425 1998 08 3 0.366289
+DE123 1999 03 2 1.03189
+DE126 1999 03 2 0.161851
+DE127 1999 06 2 0.164155
+DE128 1999 04 2 2.56944
+DE128 1999 05 2 0.0157669
+DE128 1999 07 2 0.0745548
+DE128 1999 09 2 0.00695462
+DE128 1999 11 2 0.00687936
+DE411 1999 09 2 0.199858
+DE412 1999 04 2 2.83041
+DE412 1999 05 5 0.252814
+DE412 1999 06 3 0.0318186
+DE412 1999 07 3 1.23219
+DE412 1999 08 3 3.10461
+DE412 1999 09 3 0.901185
+DE413 1999 05 2 0.0545964
+DE413 1999 07 5 1.81325
+DE413 1999 08 5 0.371798
+DE413 1999 09 4 0.41315
+DE413 1999 10 2 0.0088951
+DE414 1999 07 4 3.66707
+DE414 1999 08 2 0.0088249
+DE414 1999 09 5 0.220678
+DE414 1999 10 3 0.0750015
+DE415 1999 03 2 0.0101451
+DE415 1999 04 3 0.407166
+DE415 1999 05 3 2.39059
+DE415 1999 06 3 2.85613
+DE415 1999 07 3 1.95067
+DE415 1999 08 3 11.2052
+DE415 1999 09 3 6.63033
+DE416 1999 05 4 1.69441
+DE416 1999 06 3 0.0426324
+DE416 1999 07 2 0.0131683
+DE416 1999 08 4 0.593951
+DE416 1999 09 2 0.347715
+DE417 1999 05 2 0.0071362
+DE417 1999 07 4 0.84376
+DE417 1999 08 2 0.0310437
+DE418 1999 07 3 0.548349
+DE418 1999 08 2 0.0216208
+DE418 1999 09 2 0.141783
+DE421 1999 05 2 0.0139915
+DE421 1999 08 3 1.63382
+DE421 1999 10 2 0.0805432
+DE422 1999 08 2 0.281546
+DE422 1999 09 3 1.69918
+DE423 1999 05 5 0.172255
+DE423 1999 07 2 0.0116017
+DE423 1999 09 2 0.00682225
+DE424 1999 03 2 0.363183
+DE424 1999 04 2 0.980992
+DE424 1999 05 2 1.54027
+DE424 1999 06 3 0.133988
+DE424 1999 07 3 2.31606
+DE424 1999 08 3 10.2854
+DE424 1999 09 2 0.0148084
+DE425 1999 03 3 0.18435
+DE425 1999 04 4 0.0638735
+DE425 1999 05 4 4.56681
+DE425 1999 06 3 0.0706978
+DE425 1999 07 3 0.0633972
+DE425 1999 08 3 0.464032
+DE425 1999 09 3 0.693728
+CY000 2000 01 3 0.20086
+CY000 2000 02 4 4.65991
+CY000 2000 03 4 11.1362
+CY000 2000 04 4 21.2907
+CY000 2000 05 4 70.5618
+CY000 2000 06 4 8272.33
+CY000 2000 07 4 250.715
+CY000 2000 08 4 277.404
+CY000 2000 09 4 113.68
+CY000 2000 10 4 265.5
+CY000 2000 11 4 353.015
+CY000 2000 12 5 16.7437
+DE122 2000 08 4 0.593662
+DE123 2000 08 3 0.0606876
+DE124 2000 06 3 0.041517
+DE129 2000 06 2 0.6598
+DE129 2000 07 2 0.0145369
+DE129 2000 08 2 0.024801
+DE12A 2000 06 2 0.615235
+DE12A 2000 07 2 0.405126
+DE134 2000 09 2 0.149855
+DE135 2000 08 3 0.28563
+DE412 2000 04 5 0.838143
+DE412 2000 05 5 0.316454
+DE412 2000 06 5 5.50617
+DE412 2000 07 3 0.161901
+DE412 2000 08 2 4.01822
+DE413 2000 04 3 0.104547
+DE413 2000 05 5 0.162013
+DE413 2000 06 5 0.66888
+DE414 2000 06 4 1.32272
+DE414 2000 07 2 0.0419649
+DE414 2000 08 2 2.10543
+DE415 2000 04 3 2.02227
+DE415 2000 05 3 16.2333
+DE415 2000 06 3 20.4108
+DE415 2000 08 4 0.0271066
+DE416 2000 04 2 0.0309402
+DE416 2000 05 2 0.207631
+DE416 2000 06 3 1.2754
+DE417 2000 05 2 1.31603
+DE417 2000 06 2 0.477614
+DE417 2000 08 2 0.0629067
+DE418 2000 04 2 0.168472
+DE418 2000 05 2 11.9184
+DE421 2000 04 2 0.0064867
+DE421 2000 06 2 0.115743
+DE421 2000 07 2 0.094456
+DE422 2000 05 2 0.120523
+DE422 2000 06 2 0.251158
+DE424 2000 03 2 0.0275338
+DE424 2000 04 4 0.52353
+DE424 2000 05 4 58.8432
+DE424 2000 06 4 3.28863
+DE424 2000 07 3 0.608496
+DE424 2000 08 5 6.84759
+DE425 2000 04 4 1.83047
+DE425 2000 05 4 1.73796
+DE425 2000 06 4 3.1973
+DE425 2000 07 4 0.724873
+DE425 2000 08 4 4.67528
+DE425 2000 09 3 0.194243
+CY000 2001 01 4 0.762476
+CY000 2001 02 4 2.80746
+CY000 2001 03 4 4.05461
+CY000 2001 04 4 14.9135
+CY000 2001 05 4 192.847
+CY000 2001 06 4 3209
+CY000 2001 07 4 1366.72
+CY000 2001 08 4 258.869
+CY000 2001 09 4 55.9374
+CY000 2001 10 4 74.6056
+CY000 2001 11 4 5.39532
+DE124 2001 07 2 0.081426
+DE128 2001 09 3 0.076065
+DE129 2001 07 2 0.965376
+DE412 2001 05 4 0.389763
+DE412 2001 07 5 0.231797
+DE413 2001 07 4 0.088159
+DE414 2001 05 2 0.128885
+DE415 2001 04 4 2.28365
+DE415 2001 05 4 3.72977
+DE415 2001 06 4 0.728217
+DE415 2001 07 4 2.60132
+DE415 2001 08 4 0.400608
+DE416 2001 05 2 0.0665954
+DE417 2001 05 4 0.165737
+DE421 2001 07 3 0.0997191
+DE422 2001 06 2 0.0155788
+DE424 2001 05 5 0.86585
+DE424 2001 06 5 0.149352
+DE424 2001 07 5 0.0507112
+DE424 2001 08 3 0.130738
+DE425 2001 04 2 0.0724194
+DE425 2001 05 2 0.66708
+DE425 2001 08 2 0.0421668
+CY000 2002 02 4 0.231972
+CY000 2002 03 4 0.958884
+CY000 2002 04 3 0.0165195
+CY000 2002 05 3 27.1889
+CY000 2002 06 3 115.975
+CY000 2002 07 3 59.9245
+CY000 2002 08 3 863.556
+CY000 2002 09 3 184.671
+CY000 2002 10 3 374.937
+CY000 2002 11 3 139.895
+CY000 2002 12 4 0.32389
+DE129 2002 08 2 1.00398
+DE412 2002 03 4 1.01587
+DE412 2002 04 5 3.68798
+DE412 2002 05 3 0.0953768
+DE412 2002 07 2 0.414045
+DE412 2002 09 3 0.195143
+DE413 2002 03 3 0.612798
+DE413 2002 04 2 0.00520623
+DE413 2002 06 2 0.25516
+DE413 2002 07 3 2.655
+DE413 2002 08 2 0.0126309
+DE414 2002 05 2 0.00790377
+DE414 2002 08 2 0.347406
+DE414 2002 09 3 1.27069
+DE414 2002 10 2 0.0957212
+DE415 2002 04 5 0.356472
+DE415 2002 06 4 0.333388
+DE415 2002 07 4 0.645433
+DE415 2002 08 4 0.199384
+DE416 2002 04 2 0.0711995
+DE416 2002 06 4 0.371055
+DE416 2002 09 2 0.0350267
+DE418 2002 06 2 0.0256104
+DE418 2002 08 2 0.0269474
+DE421 2002 04 2 0.357042
+DE422 2002 07 2 0.00517562
+DE422 2002 09 2 0.0399912
+DE424 2002 03 2 0.0234896
+DE424 2002 04 3 0.256172
+DE424 2002 05 2 0.0119914
+DE424 2002 06 5 2.12954
+DE424 2002 07 5 2.31205
+DE424 2002 08 5 1.01519
+DE424 2002 09 4 0.0776358
+DE425 2002 02 2 0.0125149
+DE425 2002 03 2 0.492932
+DE425 2002 04 4 1.06466
+CY000 2003 04 4 1.47138
+CY000 2003 05 4 123.587
+CY000 2003 06 4 101.362
+CY000 2003 07 4 392.476
+CY000 2003 08 4 511.32
+CY000 2003 09 4 210.032
+CY000 2003 10 4 681.85
+CY000 2003 11 4 34.2503
+CY000 2003 12 4 3.02977
+DE121 2003 08 2 0.162159
+DE122 2003 08 2 0.866864
+DE123 2003 04 3 0.114334
+DE123 2003 05 2 0.0295618
+DE123 2003 08 5 0.392577
+DE124 2003 03 2 0.255276
+DE124 2003 06 2 0.142021
+DE124 2003 07 3 2.2447
+DE124 2003 08 2 0.0609876
+DE124 2003 09 2 0.0136845
+DE126 2003 03 2 0.0330138
+DE126 2003 07 2 0.0148902
+DE126 2003 08 4 0.182073
+DE127 2003 04 3 1.72321
+DE127 2003 08 3 0.112151
+DE127 2003 09 2 0.0655755
+DE128 2003 04 2 0.218954
+DE128 2003 06 2 0.0558414
+DE128 2003 07 2 0.0110147
+DE128 2003 08 2 3.89687
+DE129 2003 08 2 0.866864
+DE129 2003 09 2 0.35396
+DE12A 2003 03 2 0.278345
+DE12A 2003 04 2 0.293185
+DE12A 2003 09 2 0.0487216
+DE12C 2003 03 3 0.158382
+DE12C 2003 04 3 0.17952
+DE12C 2003 08 2 0.228436
+DE12C 2003 09 2 0.0426462
+DE411 2003 06 2 0.376554
+DE412 2003 03 4 1.72301
+DE412 2003 04 4 21.0501
+DE412 2003 05 3 0.0309936
+DE412 2003 06 3 6.22654
+DE412 2003 07 2 0.155251
+DE412 2003 08 2 0.839962
+DE412 2003 09 2 0.026047
+DE413 2003 03 2 5.2789
+DE413 2003 04 3 0.249118
+DE413 2003 05 2 0.00582479
+DE413 2003 08 4 0.105572
+DE414 2003 03 3 1.18491
+DE414 2003 04 4 1.7882
+DE414 2003 05 5 0.742903
+DE414 2003 06 2 0.00525537
+DE414 2003 07 3 0.749055
+DE414 2003 08 3 1.75443
+DE415 2003 02 2 0.0120666
+DE415 2003 03 5 0.27744
+DE415 2003 04 5 4.7018
+DE415 2003 05 5 2.60197
+DE415 2003 06 5 3.67264
+DE415 2003 07 5 1.35177
+DE415 2003 08 5 1.02374
+DE415 2003 09 5 2.54038
+DE416 2003 05 4 0.211562
+DE416 2003 06 2 0.444991
+DE416 2003 07 2 0.105896
+DE416 2003 08 4 0.964785
+DE417 2003 03 4 1.81684
+DE417 2003 04 3 0.0610802
+DE417 2003 05 3 4.79446
+DE417 2003 06 3 3.27555
+DE417 2003 07 4 0.673915
+DE417 2003 08 4 0.157456
+DE418 2003 03 4 55.2122
+DE418 2003 04 4 11.0773
+DE418 2003 07 2 0.108286
+DE418 2003 08 5 1.82489
+DE421 2003 04 3 0.298498
+DE421 2003 07 2 0.0672547
+DE421 2003 08 2 2.93714
+DE422 2003 03 2 2.26865
+DE422 2003 04 2 0.177208
+DE422 2003 07 2 0.01119
+DE422 2003 08 4 0.107948
+DE423 2003 08 3 0.793549
+DE424 2003 03 3 0.113966
+DE424 2003 04 3 18.619
+DE424 2003 05 3 1.72579
+DE424 2003 06 3 4.37626
+DE424 2003 07 4 11.2141
+DE424 2003 08 4 2.65389
+DE424 2003 09 4 3.85167
+CY000 2004 02 3 0.955392
+CY000 2004 03 3 6.49885
+CY000 2004 04 3 10.9706
+CY000 2004 05 3 296.32
+CY000 2004 06 3 403.587
+CY000 2004 07 3 164.836
+CY000 2004 08 3 59.2979
+CY000 2004 09 3 91.8522
+CY000 2004 10 3 93.4021
+CY000 2004 11 3 9.49625
+CY000 2004 12 2 0.278038
+CZ020 2004 03 2 24.0416
+CZ032 2004 04 2 13.5171
+CZ042 2004 06 2 13.5526
+DE412 2004 04 2 0.0241236
+DE412 2004 05 2 0.347961
+DE412 2004 06 2 0.809932
+DE412 2004 08 2 0.368142
+DE412 2004 09 2 0.00530336
+DE414 2004 03 4 1.97627
+DE414 2004 04 3 1.00275
+DE414 2004 07 2 0.00795488
+DE415 2004 04 5 2.13174
+DE415 2004 05 2 0.59346
+DE415 2004 06 2 0.53308
+DE415 2004 07 2 0.191283
+DE415 2004 08 2 0.26141
+DE415 2004 09 3 0.0237742
+DE416 2004 04 2 0.114188
+DE416 2004 05 2 0.302628
+DE416 2004 08 2 0.00156981
+DE417 2004 05 2 0.0439774
+DE417 2004 08 3 0.387086
+DE417 2004 09 2 0.00288114
+DE418 2004 04 2 0.0111405
+DE418 2004 05 2 0.0014667
+DE421 2004 08 2 0.0591344
+DE422 2004 08 2 2.57984
+DE424 2004 02 2 0.289952
+DE424 2004 03 3 1.71752
+DE424 2004 04 3 1.08551
+DE424 2004 05 5 0.442115
+DE424 2004 06 4 0.281393
+DE424 2004 07 4 0.141752
+DE424 2004 08 4 0.0923612
+DE424 2004 09 4 0.393816
+BG311 2005 04 2 0.282594
+BG312 2005 04 3 10.6419
+BG313 2005 03 2 48.0927
+BG314 2005 03 4 2.21985
+BG315 2005 03 2 125.772
+BG315 2005 04 2 95.5232
+BG315 2005 06 2 3.70607
+BG321 2005 03 3 59.201
+BG321 2005 04 2 0.562725
+BG322 2005 03 3 6.33855
+BG322 2005 04 2 5.45605
+BG323 2005 03 3 8.98824
+BG323 2005 04 2 3.04655
+BG324 2005 03 2 0.97613
+BG324 2005 04 2 2.06119
+BG325 2005 04 2 1.34959
+BG325 2005 07 2 27.4231
+BG331 2005 01 2 0.901016
+BG331 2005 03 2 2.26082
+BG331 2005 04 2 13.956
+BG331 2005 06 2 0.0643451
+BG332 2005 04 2 4.7556
+BG333 2005 03 2 28.8306
+BG333 2005 04 4 4.97396
+BG341 2005 03 3 621.824
+BG341 2005 04 4 9.6126
+BG341 2005 06 2 1.6579
+BG343 2005 03 2 3.71163
+BG343 2005 04 2 4.73784
+BG344 2005 01 3 4.74859
+BG344 2005 03 2 7.04468
+BG344 2005 04 4 138.517
+BG411 2005 03 2 1.01033
+BG411 2005 04 2 28.9588
+BG412 2005 02 3 54.2146
+BG412 2005 03 3 55.5808
+BG412 2005 04 3 221.366
+BG412 2005 05 2 0.676884
+BG413 2005 03 4 51.1086
+BG413 2005 04 5 33.3638
+BG413 2005 05 3 2.01096
+BG413 2005 06 3 7.07514
+BG413 2005 07 3 2.50366
+BG413 2005 08 3 2.27731
+BG413 2005 10 2 1.18454
+BG413 2005 11 2 26.345
+BG414 2005 03 3 5.75175
+BG415 2005 01 3 3.05667
+BG415 2005 03 3 17.5467
+BG415 2005 04 4 56.6121
+BG415 2005 05 2 2.79797
+BG415 2005 07 2 0.229202
+BG415 2005 08 4 1.65743
+BG415 2005 11 2 0.132618
+BG421 2005 01 2 0.65647
+BG421 2005 03 4 2.98041
+BG421 2005 04 3 2.42129
+BG421 2005 10 2 1.48457
+BG422 2005 03 4 12.6289
+BG422 2005 04 4 73.5618
+BG422 2005 09 4 5.53105
+BG423 2005 01 2 1.24759
+BG423 2005 03 2 57.5449
+BG423 2005 04 2 42.7673
+BG423 2005 05 2 1.6553
+BG423 2005 07 3 0.436605
+BG423 2005 08 2 0.128153
+BG424 2005 03 2 1.77938
+BG424 2005 04 2 2.04622
+BG424 2005 05 2 0.212858
+BG424 2005 06 2 0.0870192
+BG424 2005 08 2 0.289737
+BG424 2005 10 4 0.870632
+BG425 2005 03 3 0.188194
+BG425 2005 04 5 2.46982
+BG425 2005 06 2 0.27944
+BG425 2005 07 2 0.592672
+BG425 2005 09 4 0.186785
+CY000 2005 01 2 4.33947
+CY000 2005 02 2 0.129616
+CY000 2005 03 2 14.916
+CY000 2005 04 3 21.183
+CY000 2005 05 3 398.663
+CY000 2005 06 3 869.019
+CY000 2005 07 3 30.7432
+CY000 2005 08 3 343.746
+CY000 2005 09 3 33.1192
+CY000 2005 10 3 58.553
+CY000 2005 11 3 23.5366
+CY000 2005 12 4 0.0628105
+CZ080 2005 04 2 10.6867
+DE411 2005 06 2 0.0275849
+DE412 2005 03 2 0.556955
+DE412 2005 04 4 0.568387
+DE412 2005 05 4 1.19817
+DE412 2005 06 2 0.196609
+DE413 2005 03 2 0.0187005
+DE413 2005 04 3 0.16555
+DE414 2005 04 2 12.8237
+DE414 2005 05 3 0.182478
+DE414 2005 06 2 0.051172
+DE415 2005 03 2 0.0212352
+DE415 2005 04 3 0.355172
+DE415 2005 05 4 0.167359
+DE415 2005 06 4 0.204903
+DE415 2005 07 4 0.221021
+DE416 2005 04 2 0.0285458
+DE416 2005 07 2 0.0706065
+DE417 2005 04 5 0.347789
+DE417 2005 06 4 1.28673
+DE418 2005 03 2 0.898471
+DE418 2005 04 2 0.027917
+DE418 2005 07 2 0.0257342
+DE418 2005 08 2 0.000818049
+DE418 2005 09 2 0.0140452
+DE421 2005 04 2 0.434154
+DE423 2005 04 2 0.00996257
+DE423 2005 09 2 0.0324514
+DE424 2005 04 4 0.881837
+DE424 2005 05 4 3.08078
+DE424 2005 06 4 0.990736
+BG311 2006 11 2 0.600812
+BG312 2006 10 2 0.293182
+BG312 2006 11 5 92.0624
+BG312 2006 12 3 29.1471
+BG313 2006 03 2 6.13806
+BG313 2006 07 2 2.44256
+BG313 2006 11 2 0.347652
+BG314 2006 07 3 2.58765
+BG314 2006 08 2 3.64928
+BG314 2006 09 2 0.302142
+BG315 2006 04 2 36.2185
+BG315 2006 11 3 31.5821
+BG315 2006 12 3 123.5
+BG321 2006 03 2 6.28263
+BG321 2006 08 2 3.23006
+BG321 2006 11 2 1.01262
+BG322 2006 03 3 1.85972
+BG322 2006 11 2 0.248026
+BG323 2006 03 2 2.67472
+BG323 2006 06 2 3.01386
+BG323 2006 08 4 0.911752
+BG323 2006 09 2 0.759697
+BG324 2006 04 2 0.64145
+BG324 2006 08 2 7.40875
+BG325 2006 08 2 1.34587
+BG325 2006 09 2 0.249886
+BG331 2006 03 2 2.93096
+BG331 2006 04 3 1.89504
+BG331 2006 07 3 9.86313
+BG331 2006 08 3 45.5238
+BG331 2006 09 3 0.215108
+BG332 2006 03 3 1.74459
+BG332 2006 07 4 4.68026
+BG332 2006 08 4 4.81496
+BG333 2006 03 3 19.6429
+BG333 2006 08 3 3.81421
+BG333 2006 12 2 11.3134
+BG334 2006 08 3 1.77483
+BG334 2006 12 2 1.39199
+BG341 2006 02 2 5.0424
+BG341 2006 04 2 0.395691
+BG341 2006 05 3 0.4285
+BG341 2006 08 3 98.4393
+BG341 2006 09 3 0.40148
+BG342 2006 07 3 0.433358
+BG342 2006 08 4 41.8133
+BG342 2006 09 2 14.3074
+BG343 2006 04 2 0.704769
+BG343 2006 05 2 0.695017
+BG343 2006 06 2 2.10271
+BG343 2006 08 4 26.7505
+BG344 2006 07 3 17.2738
+BG344 2006 08 4 3.55306
+BG344 2006 09 5 18.4984
+BG411 2006 05 2 0.27316
+BG411 2006 08 5 1.57985
+BG411 2006 09 3 0.769804
+BG411 2006 10 2 0.861993
+BG411 2006 11 2 0.119801
+BG412 2006 01 2 0.863629
+BG412 2006 03 2 25.9191
+BG412 2006 04 4 0.878514
+BG412 2006 05 2 0.621264
+BG412 2006 08 5 5.98766
+BG412 2006 09 5 15.6847
+BG412 2006 10 2 0.0838813
+BG412 2006 11 2 0.582587
+BG412 2006 12 2 49.6206
+BG413 2006 02 2 42.3976
+BG413 2006 03 4 5.38129
+BG413 2006 04 3 2.72704
+BG413 2006 06 2 1.86938
+BG413 2006 07 3 0.414349
+BG413 2006 08 3 22.1535
+BG413 2006 09 3 12.0215
+BG414 2006 03 3 44.5425
+BG414 2006 04 2 0.139433
+BG414 2006 09 2 4.62588
+BG414 2006 10 2 0.276052
+BG415 2006 02 4 4.00813
+BG415 2006 03 3 2.46103
+BG415 2006 04 5 5.46104
+BG415 2006 08 2 0.755646
+BG415 2006 09 3 2.58218
+BG415 2006 10 3 3.36504
+BG415 2006 11 2 2.91194
+BG415 2006 12 2 0.794779
+BG421 2006 01 3 0.481229
+BG421 2006 03 3 30.1665
+BG421 2006 04 3 14.1157
+BG421 2006 05 2 0.1245
+BG421 2006 06 5 4.00158
+BG421 2006 07 5 1
+BG421 2006 08 4 1.44982
+BG421 2006 09 4 61.2472
+BG421 2006 11 3 36.602
+BG422 2006 01 5 10.3281
+BG422 2006 02 3 0.89011
+BG422 2006 03 4 20.2
+BG422 2006 04 3 7.0596
+BG422 2006 06 2 14.2214
+BG422 2006 07 2 145.893
+BG422 2006 08 2 1127.15
+BG422 2006 09 2 610.552
+BG423 2006 01 3 8.83021
+BG423 2006 02 4 29.5281
+BG423 2006 03 4 7.75145
+BG423 2006 04 2 0.99176
+BG423 2006 05 3 0.761956
+BG423 2006 07 4 3.2859
+BG423 2006 08 5 30.869
+BG423 2006 09 5 58.8844
+BG423 2006 10 2 0.665435
+BG423 2006 11 5 5.24478
+BG423 2006 12 3 19.0336
+BG424 2006 03 4 5.44071
+BG424 2006 04 2 3.36076
+BG424 2006 08 2 0.415581
+BG424 2006 09 4 21.6579
+BG424 2006 11 4 5.92479
+BG424 2006 12 3 1.67281
+BG425 2006 04 2 0.145462
+BG425 2006 05 5 0.372905
+BG425 2006 06 3 0.132586
+BG425 2006 07 2 0.29301
+BG425 2006 08 4 0.710985
+BG425 2006 09 4 1.90201
+CY000 2006 02 3 0.587406
+CY000 2006 03 3 83.1106
+CY000 2006 04 5 0.967452
+CY000 2006 05 5 282.391
+CY000 2006 06 5 358.534
+CY000 2006 07 5 261.244
+CY000 2006 08 5 40.6708
+CY000 2006 09 5 195.93
+CY000 2006 10 5 14.6292
+CY000 2006 12 3 0.845538
+CZ010 2006 05 4 0.023707
+CZ010 2006 07 4 0.0753943
+CZ010 2006 09 3 0.0131662
+CZ020 2006 01 2 0.00492811
+CZ020 2006 04 2 10.8473
+CZ020 2006 05 2 18.1471
+CZ020 2006 06 2 3.5218
+CZ020 2006 07 2 10.1153
+CZ020 2006 08 2 0.0108734
+CZ020 2006 09 2 1.43463
+CZ020 2006 10 2 0.117046
+CZ020 2006 11 2 0.166974
+CZ020 2006 12 2 0.00132759
+CZ031 2006 04 5 0.422728
+CZ031 2006 05 5 3.01639
+CZ031 2006 06 2 0.129287
+CZ031 2006 07 4 0.23045
+CZ031 2006 09 3 0.120826
+CZ031 2006 10 4 0.00803731
+CZ031 2006 11 5 0.28404
+CZ031 2006 12 5 0.691518
+CZ032 2006 04 2 7.39193
+CZ032 2006 05 2 0.650117
+CZ032 2006 06 2 0.576514
+CZ032 2006 07 2 0.573189
+CZ032 2006 08 3 0.0871045
+CZ032 2006 09 3 0.577752
+CZ032 2006 10 3 0.0238921
+CZ032 2006 11 3 0.00869638
+CZ032 2006 12 3 0.0428257
+CZ041 2006 04 2 9.24986
+CZ041 2006 05 4 1.01741
+CZ041 2006 07 4 0.676825
+CZ041 2006 08 3 0.247137
+CZ041 2006 09 2 0.0297836
+CZ041 2006 10 2 0.00172912
+CZ041 2006 11 2 0.0129302
+CZ042 2006 04 4 1.25128
+CZ042 2006 05 4 7.61324
+CZ042 2006 06 4 0.928723
+CZ042 2006 07 4 261.418
+CZ042 2006 08 2 0.00342008
+CZ042 2006 09 2 2.18124
+CZ042 2006 10 4 0.220816
+CZ051 2006 03 2 0.00259678
+CZ051 2006 04 4 0.194625
+CZ051 2006 05 4 0.0434952
+CZ051 2006 06 4 4.0513
+CZ051 2006 07 4 5.56088
+CZ051 2006 08 4 0.0422898
+CZ051 2006 09 4 0.283525
+CZ051 2006 10 4 0.0121199
+CZ052 2006 04 2 0.188787
+CZ052 2006 06 2 0.539782
+CZ052 2006 07 2 3.05991
+CZ052 2006 09 5 0.0859136
+CZ052 2006 10 5 1.63926
+CZ053 2006 04 2 0.0177711
+CZ053 2006 05 4 0.519223
+CZ053 2006 06 2 0.0620494
+CZ053 2006 07 2 3.76085
+CZ053 2006 08 2 0.0143413
+CZ053 2006 09 3 2.51401
+CZ061 2006 04 3 1.59017
+CZ061 2006 05 4 0.0568428
+CZ061 2006 06 4 0.341234
+CZ061 2006 07 4 2.99631
+CZ061 2006 09 4 0.533612
+CZ061 2006 10 4 0.164172
+CZ061 2006 11 3 0.0755874
+CZ061 2006 12 4 0.0398106
+CZ062 2006 04 3 0.547727
+CZ062 2006 05 2 0.0134157
+CZ062 2006 07 2 1.62121
+CZ062 2006 09 3 0.89482
+CZ062 2006 10 3 4.11491
+CZ062 2006 12 2 0.00152595
+CZ071 2006 04 2 7.06965
+CZ071 2006 06 2 0.00274927
+CZ071 2006 07 2 1.31209
+CZ071 2006 08 3 0.0133259
+CZ071 2006 09 3 0.197024
+CZ071 2006 10 2 0.0410324
+CZ072 2006 04 2 0.224868
+CZ072 2006 07 5 1.48377
+CZ072 2006 09 2 0.171342
+CZ072 2006 10 2 0.00245432
+CZ080 2006 04 2 9.4722
+CZ080 2006 06 3 1.14109
+CZ080 2006 07 3 3.12406
+CZ080 2006 08 2 0.00515456
+CZ080 2006 09 2 0.0758536
+CZ080 2006 10 2 1.98264
+DE122 2006 03 2 0.0938842
+DE122 2006 04 4 0.0366267
+DE124 2006 05 2 0.124872
+DE128 2006 04 2 0.139624
+DE128 2006 06 4 0.725333
+DE133 2006 07 2 0.0855255
+DE133 2006 09 2 0.106198
+DE134 2006 06 2 0.108214
+DE134 2006 10 2 0.052098
+DE139 2006 04 2 3.5739
+DE13A 2006 05 3 0.58272
+DE13A 2006 07 4 0.676899
+DE13A 2006 08 3 0.528195
+DE13A 2006 10 2 0.216715
+DE411 2006 07 3 3.44542
+DE412 2006 04 2 0.054478
+DE412 2006 05 5 0.691057
+DE412 2006 06 3 0.107348
+DE412 2006 07 3 1.93305
+DE412 2006 08 2 0.214044
+DE412 2006 09 2 0.219423
+DE413 2006 04 3 0.102182
+DE413 2006 05 5 0.815426
+DE413 2006 07 5 7.32987
+DE413 2006 09 2 0.299483
+DE413 2006 10 2 0.134471
+DE413 2006 11 2 0.00139426
+DE414 2006 05 5 1.88579
+DE414 2006 06 3 0.470848
+DE414 2006 07 4 11.9673
+DE414 2006 08 2 0.0490289
+DE414 2006 09 3 0.694654
+DE415 2006 05 4 0.535989
+DE415 2006 06 4 1.54183
+DE415 2006 07 4 45.7763
+DE415 2006 09 3 2.31642
+DE416 2006 05 3 0.148617
+DE416 2006 07 2 0.398726
+DE417 2006 06 2 0.13546
+DE417 2006 07 3 0.30921
+DE418 2006 05 4 1.53076
+DE418 2006 07 4 24.0147
+DE421 2006 07 3 1.45406
+DE422 2006 07 5 2.55061
+DE422 2006 08 4 0.0187947
+DE424 2006 05 4 3.19804
+DE424 2006 06 4 0.276527
+DE424 2006 07 4 6.28045
+DE424 2006 08 3 1.4451
+DE424 2006 09 3 0.155371
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2007 01 3 114.535
+BG312 2007 02 3 17.3247
+BG312 2007 03 3 322.063
+BG312 2007 04 3 521.189
+BG312 2007 05 3 4.13178
+BG312 2007 06 2 5.94132
+BG312 2007 07 2 1117.64
+BG313 2007 01 2 205.374
+BG313 2007 02 2 103.186
+BG313 2007 03 2 394.699
+BG313 2007 04 5 36.6292
+BG313 2007 05 3 7.68499
+BG313 2007 07 3 267.507
+BG313 2007 08 2 8.23134
+BG314 2007 03 2 31.1266
+BG314 2007 05 3 49.9327
+BG314 2007 06 2 5.50835
+BG314 2007 07 2 1243.67
+BG314 2007 08 2 70.1061
+BG315 2007 01 3 97.1538
+BG315 2007 02 3 72.1268
+BG315 2007 03 3 1825.58
+BG315 2007 04 3 709.847
+BG315 2007 05 4 37.3087
+BG315 2007 07 4 2595.44
+BG321 2007 01 2 34.6964
+BG321 2007 02 2 15.8478
+BG321 2007 03 2 128.72
+BG321 2007 04 2 44.5743
+BG321 2007 05 4 36.5963
+BG321 2007 06 3 0.207622
+BG321 2007 07 3 736.828
+BG321 2007 08 3 16.4847
+BG322 2007 01 2 25.6421
+BG322 2007 02 3 2.47755
+BG322 2007 03 3 23.3933
+BG322 2007 04 3 61.2729
+BG322 2007 07 3 1142.19
+BG322 2007 08 3 0.195825
+BG323 2007 04 5 2.25699
+BG323 2007 05 2 0.346974
+BG323 2007 07 2 10.9846
+BG323 2007 09 2 0.218432
+BG324 2007 01 2 1.83585
+BG324 2007 05 2 0.0708554
+BG324 2007 06 2 3.00246
+BG324 2007 07 2 31.0683
+BG325 2007 03 3 50.6905
+BG325 2007 07 3 139.212
+BG325 2007 10 2 4.28359
+BG331 2007 01 3 14.9751
+BG331 2007 02 3 2.17089
+BG331 2007 03 3 54.6886
+BG331 2007 04 3 3.46769
+BG331 2007 05 3 5.26728
+BG331 2007 06 3 17.715
+BG331 2007 07 3 635.74
+BG331 2007 08 5 5.69637
+BG331 2007 09 4 1.45601
+BG331 2007 10 3 1.16162
+BG332 2007 03 2 0.464604
+BG332 2007 04 2 0.135462
+BG332 2007 06 2 6.04419
+BG332 2007 07 2 81.8419
+BG333 2007 01 4 24.929
+BG333 2007 02 2 2.23803
+BG333 2007 03 5 39.8419
+BG333 2007 04 5 49.7954
+BG333 2007 05 5 13.0934
+BG333 2007 07 5 57.5293
+BG333 2007 08 5 35.7814
+BG334 2007 03 3 27.6829
+BG334 2007 04 3 0.517585
+BG334 2007 05 2 0.647435
+BG334 2007 06 2 0.140486
+BG334 2007 07 2 27.4913
+BG341 2007 01 3 1.66492
+BG341 2007 03 5 6.8906
+BG341 2007 04 3 0.315852
+BG341 2007 05 4 62.2719
+BG341 2007 06 4 293.251
+BG341 2007 07 4 1057.39
+BG341 2007 08 4 141.546
+BG341 2007 09 2 23.2366
+BG342 2007 01 2 0.30804
+BG342 2007 03 2 128.902
+BG342 2007 04 2 291.04
+BG342 2007 05 2 0.0792935
+BG342 2007 07 2 860.014
+BG342 2007 08 3 4.4406
+BG342 2007 10 2 4.33875
+BG343 2007 06 4 205.937
+BG343 2007 07 4 193.754
+BG343 2007 08 5 1154.31
+BG343 2007 09 2 1.12145
+BG344 2007 03 5 1.85917
+BG344 2007 04 5 4.82415
+BG344 2007 05 2 3.05647
+BG344 2007 06 3 1.7138
+BG344 2007 07 3 5720.55
+BG344 2007 08 3 59.9997
+BG344 2007 09 2 2.61198
+BG411 2007 01 2 0.125264
+BG411 2007 03 2 19.4587
+BG411 2007 04 4 1.18276
+BG411 2007 05 2 0.202724
+BG411 2007 07 4 4.77007
+BG412 2007 01 2 357.321
+BG412 2007 02 5 15.001
+BG412 2007 03 5 1563.86
+BG412 2007 04 5 1118.17
+BG412 2007 05 5 79.8004
+BG412 2007 06 3 15.4517
+BG412 2007 07 3 1100.8
+BG412 2007 08 4 12.9193
+BG413 2007 01 3 5.14457
+BG413 2007 02 2 4.04579
+BG413 2007 03 2 91.8944
+BG413 2007 04 2 64.757
+BG413 2007 05 2 1.60664
+BG413 2007 06 2 7.62226
+BG413 2007 07 2 158.693
+BG413 2007 08 2 10.7716
+BG413 2007 09 2 1.542
+BG413 2007 10 2 10.4395
+BG414 2007 01 4 4.30643
+BG414 2007 02 4 4.16793
+BG414 2007 03 4 495.007
+BG414 2007 04 4 78.332
+BG414 2007 05 4 2.15944
+BG414 2007 07 3 25.7131
+BG414 2007 08 2 0.734826
+BG414 2007 09 2 4.46241
+BG415 2007 01 3 20.5053
+BG415 2007 02 5 5.29747
+BG415 2007 03 5 106.259
+BG415 2007 04 5 316.271
+BG415 2007 05 3 0.323577
+BG415 2007 06 4 21.6512
+BG415 2007 07 4 888.636
+BG415 2007 08 4 5.12635
+BG415 2007 09 2 19.5612
+BG415 2007 10 3 3.67903
+BG421 2007 01 3 16.6377
+BG421 2007 02 3 36.8495
+BG421 2007 03 3 284.924
+BG421 2007 04 3 200.269
+BG421 2007 05 4 2.23446
+BG421 2007 06 4 14.21
+BG421 2007 07 4 626.222
+BG421 2007 08 4 247.26
+BG422 2007 01 4 1.13109
+BG422 2007 02 3 4.25846
+BG422 2007 03 3 51.2923
+BG422 2007 04 2 1.36679
+BG422 2007 06 4 60.5828
+BG422 2007 07 4 5106.58
+BG422 2007 08 4 12972.6
+BG423 2007 01 3 330.791
+BG423 2007 02 2 0.745402
+BG423 2007 03 2 180.982
+BG423 2007 04 2 62.7641
+BG423 2007 05 4 0.452272
+BG423 2007 06 3 29.5529
+BG423 2007 07 3 1421.17
+BG423 2007 08 5 18.1706
+BG423 2007 09 2 1.00679
+BG424 2007 01 5 4.48651
+BG424 2007 02 3 5.26365
+BG424 2007 03 3 13.9579
+BG424 2007 04 3 16.2728
+BG424 2007 05 5 0.54032
+BG424 2007 07 5 319.625
+BG424 2007 08 5 1.38762
+BG424 2007 09 3 3.73571
+BG425 2007 01 5 1.0197
+BG425 2007 02 2 0.134967
+BG425 2007 03 2 6.44724
+BG425 2007 04 2 9.75379
+BG425 2007 05 3 0.422148
+BG425 2007 06 2 1.69251
+BG425 2007 07 2 34.3116
+BG425 2007 08 4 0.73277
+BG425 2007 09 3 2.6549
+</pre></div></div>
+</div>
+<p>String numerical sorting</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> sort -k <span class="m">2</span>,2 -n  input.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS YYYY MM 0 BAREA
+DE121 1997 05 2 0.232016
+DE122 1997 05 2 0.0637817
+DE124 1997 03 2 1.28501
+DE125 1997 05 2 0.107349
+DE128 1997 04 2 0.340913
+DE129 1997 03 2 0.297982
+DE12A 1997 03 2 0.0815152
+DE123 1998 04 2 0.434829
+DE124 1998 03 2 0.0796515
+DE12A 1998 05 2 0.345525
+DE412 1998 05 3 1.22806
+DE412 1998 06 2 0.0130324
+DE412 1998 07 2 0.0611725
+DE412 1998 08 2 0.913361
+DE412 1998 09 2 0.0146242
+DE413 1998 03 2 0.108482
+DE413 1998 04 2 0.0403881
+DE413 1998 05 3 0.0507124
+DE413 1998 08 2 0.267596
+DE414 1998 03 2 0.363849
+DE414 1998 05 3 0.347403
+DE414 1998 06 4 2.88662
+DE414 1998 07 3 0.0392562
+DE414 1998 08 4 0.49688
+DE415 1998 02 3 0.20879
+DE415 1998 03 3 0.0162351
+DE415 1998 05 3 1.74778
+DE415 1998 06 3 0.0208709
+DE415 1998 07 3 0.27388
+DE415 1998 08 3 1.21651
+DE416 1998 06 3 0.0236748
+DE416 1998 08 3 0.260007
+DE417 1998 05 2 0.0931233
+DE417 1998 06 2 0.0117269
+DE417 1998 08 2 0.227174
+DE418 1998 03 4 3.13756
+DE418 1998 04 3 0.163528
+DE418 1998 05 3 2.43519
+DE418 1998 06 3 0.370169
+DE418 1998 07 3 3.51113
+DE418 1998 08 5 0.863216
+DE421 1998 03 2 0.0716028
+DE421 1998 05 3 0.726903
+DE421 1998 06 3 1.80126
+DE421 1998 08 3 0.228295
+DE422 1998 03 2 0.284016
+DE422 1998 05 2 0.0148151
+DE422 1998 06 2 0.00614217
+DE423 1998 06 4 0.111207
+DE424 1998 02 2 1.02572
+DE424 1998 03 2 0.637232
+DE424 1998 04 4 1.60236
+DE424 1998 05 4 2.35991
+DE424 1998 06 4 0.51498
+DE424 1998 07 2 0.283466
+DE424 1998 08 2 0.355448
+DE424 1998 09 2 0.0572774
+DE425 1998 03 3 0.29827
+DE425 1998 04 2 0.229308
+DE425 1998 05 2 2.33178
+DE425 1998 06 5 1.14979
+DE425 1998 08 3 0.366289
+DE123 1999 03 2 1.03189
+DE126 1999 03 2 0.161851
+DE127 1999 06 2 0.164155
+DE128 1999 04 2 2.56944
+DE128 1999 05 2 0.0157669
+DE128 1999 07 2 0.0745548
+DE128 1999 09 2 0.00695462
+DE128 1999 11 2 0.00687936
+DE411 1999 09 2 0.199858
+DE412 1999 04 2 2.83041
+DE412 1999 05 5 0.252814
+DE412 1999 06 3 0.0318186
+DE412 1999 07 3 1.23219
+DE412 1999 08 3 3.10461
+DE412 1999 09 3 0.901185
+DE413 1999 05 2 0.0545964
+DE413 1999 07 5 1.81325
+DE413 1999 08 5 0.371798
+DE413 1999 09 4 0.41315
+DE413 1999 10 2 0.0088951
+DE414 1999 07 4 3.66707
+DE414 1999 08 2 0.0088249
+DE414 1999 09 5 0.220678
+DE414 1999 10 3 0.0750015
+DE415 1999 03 2 0.0101451
+DE415 1999 04 3 0.407166
+DE415 1999 05 3 2.39059
+DE415 1999 06 3 2.85613
+DE415 1999 07 3 1.95067
+DE415 1999 08 3 11.2052
+DE415 1999 09 3 6.63033
+DE416 1999 05 4 1.69441
+DE416 1999 06 3 0.0426324
+DE416 1999 07 2 0.0131683
+DE416 1999 08 4 0.593951
+DE416 1999 09 2 0.347715
+DE417 1999 05 2 0.0071362
+DE417 1999 07 4 0.84376
+DE417 1999 08 2 0.0310437
+DE418 1999 07 3 0.548349
+DE418 1999 08 2 0.0216208
+DE418 1999 09 2 0.141783
+DE421 1999 05 2 0.0139915
+DE421 1999 08 3 1.63382
+DE421 1999 10 2 0.0805432
+DE422 1999 08 2 0.281546
+DE422 1999 09 3 1.69918
+DE423 1999 05 5 0.172255
+DE423 1999 07 2 0.0116017
+DE423 1999 09 2 0.00682225
+DE424 1999 03 2 0.363183
+DE424 1999 04 2 0.980992
+DE424 1999 05 2 1.54027
+DE424 1999 06 3 0.133988
+DE424 1999 07 3 2.31606
+DE424 1999 08 3 10.2854
+DE424 1999 09 2 0.0148084
+DE425 1999 03 3 0.18435
+DE425 1999 04 4 0.0638735
+DE425 1999 05 4 4.56681
+DE425 1999 06 3 0.0706978
+DE425 1999 07 3 0.0633972
+DE425 1999 08 3 0.464032
+DE425 1999 09 3 0.693728
+CY000 2000 01 3 0.20086
+CY000 2000 02 4 4.65991
+CY000 2000 03 4 11.1362
+CY000 2000 04 4 21.2907
+CY000 2000 05 4 70.5618
+CY000 2000 06 4 8272.33
+CY000 2000 07 4 250.715
+CY000 2000 08 4 277.404
+CY000 2000 09 4 113.68
+CY000 2000 10 4 265.5
+CY000 2000 11 4 353.015
+CY000 2000 12 5 16.7437
+DE122 2000 08 4 0.593662
+DE123 2000 08 3 0.0606876
+DE124 2000 06 3 0.041517
+DE129 2000 06 2 0.6598
+DE129 2000 07 2 0.0145369
+DE129 2000 08 2 0.024801
+DE12A 2000 06 2 0.615235
+DE12A 2000 07 2 0.405126
+DE134 2000 09 2 0.149855
+DE135 2000 08 3 0.28563
+DE412 2000 04 5 0.838143
+DE412 2000 05 5 0.316454
+DE412 2000 06 5 5.50617
+DE412 2000 07 3 0.161901
+DE412 2000 08 2 4.01822
+DE413 2000 04 3 0.104547
+DE413 2000 05 5 0.162013
+DE413 2000 06 5 0.66888
+DE414 2000 06 4 1.32272
+DE414 2000 07 2 0.0419649
+DE414 2000 08 2 2.10543
+DE415 2000 04 3 2.02227
+DE415 2000 05 3 16.2333
+DE415 2000 06 3 20.4108
+DE415 2000 08 4 0.0271066
+DE416 2000 04 2 0.0309402
+DE416 2000 05 2 0.207631
+DE416 2000 06 3 1.2754
+DE417 2000 05 2 1.31603
+DE417 2000 06 2 0.477614
+DE417 2000 08 2 0.0629067
+DE418 2000 04 2 0.168472
+DE418 2000 05 2 11.9184
+DE421 2000 04 2 0.0064867
+DE421 2000 06 2 0.115743
+DE421 2000 07 2 0.094456
+DE422 2000 05 2 0.120523
+DE422 2000 06 2 0.251158
+DE424 2000 03 2 0.0275338
+DE424 2000 04 4 0.52353
+DE424 2000 05 4 58.8432
+DE424 2000 06 4 3.28863
+DE424 2000 07 3 0.608496
+DE424 2000 08 5 6.84759
+DE425 2000 04 4 1.83047
+DE425 2000 05 4 1.73796
+DE425 2000 06 4 3.1973
+DE425 2000 07 4 0.724873
+DE425 2000 08 4 4.67528
+DE425 2000 09 3 0.194243
+CY000 2001 01 4 0.762476
+CY000 2001 02 4 2.80746
+CY000 2001 03 4 4.05461
+CY000 2001 04 4 14.9135
+CY000 2001 05 4 192.847
+CY000 2001 06 4 3209
+CY000 2001 07 4 1366.72
+CY000 2001 08 4 258.869
+CY000 2001 09 4 55.9374
+CY000 2001 10 4 74.6056
+CY000 2001 11 4 5.39532
+DE124 2001 07 2 0.081426
+DE128 2001 09 3 0.076065
+DE129 2001 07 2 0.965376
+DE412 2001 05 4 0.389763
+DE412 2001 07 5 0.231797
+DE413 2001 07 4 0.088159
+DE414 2001 05 2 0.128885
+DE415 2001 04 4 2.28365
+DE415 2001 05 4 3.72977
+DE415 2001 06 4 0.728217
+DE415 2001 07 4 2.60132
+DE415 2001 08 4 0.400608
+DE416 2001 05 2 0.0665954
+DE417 2001 05 4 0.165737
+DE421 2001 07 3 0.0997191
+DE422 2001 06 2 0.0155788
+DE424 2001 05 5 0.86585
+DE424 2001 06 5 0.149352
+DE424 2001 07 5 0.0507112
+DE424 2001 08 3 0.130738
+DE425 2001 04 2 0.0724194
+DE425 2001 05 2 0.66708
+DE425 2001 08 2 0.0421668
+CY000 2002 02 4 0.231972
+CY000 2002 03 4 0.958884
+CY000 2002 04 3 0.0165195
+CY000 2002 05 3 27.1889
+CY000 2002 06 3 115.975
+CY000 2002 07 3 59.9245
+CY000 2002 08 3 863.556
+CY000 2002 09 3 184.671
+CY000 2002 10 3 374.937
+CY000 2002 11 3 139.895
+CY000 2002 12 4 0.32389
+DE129 2002 08 2 1.00398
+DE412 2002 03 4 1.01587
+DE412 2002 04 5 3.68798
+DE412 2002 05 3 0.0953768
+DE412 2002 07 2 0.414045
+DE412 2002 09 3 0.195143
+DE413 2002 03 3 0.612798
+DE413 2002 04 2 0.00520623
+DE413 2002 06 2 0.25516
+DE413 2002 07 3 2.655
+DE413 2002 08 2 0.0126309
+DE414 2002 05 2 0.00790377
+DE414 2002 08 2 0.347406
+DE414 2002 09 3 1.27069
+DE414 2002 10 2 0.0957212
+DE415 2002 04 5 0.356472
+DE415 2002 06 4 0.333388
+DE415 2002 07 4 0.645433
+DE415 2002 08 4 0.199384
+DE416 2002 04 2 0.0711995
+DE416 2002 06 4 0.371055
+DE416 2002 09 2 0.0350267
+DE418 2002 06 2 0.0256104
+DE418 2002 08 2 0.0269474
+DE421 2002 04 2 0.357042
+DE422 2002 07 2 0.00517562
+DE422 2002 09 2 0.0399912
+DE424 2002 03 2 0.0234896
+DE424 2002 04 3 0.256172
+DE424 2002 05 2 0.0119914
+DE424 2002 06 5 2.12954
+DE424 2002 07 5 2.31205
+DE424 2002 08 5 1.01519
+DE424 2002 09 4 0.0776358
+DE425 2002 02 2 0.0125149
+DE425 2002 03 2 0.492932
+DE425 2002 04 4 1.06466
+CY000 2003 04 4 1.47138
+CY000 2003 05 4 123.587
+CY000 2003 06 4 101.362
+CY000 2003 07 4 392.476
+CY000 2003 08 4 511.32
+CY000 2003 09 4 210.032
+CY000 2003 10 4 681.85
+CY000 2003 11 4 34.2503
+CY000 2003 12 4 3.02977
+DE121 2003 08 2 0.162159
+DE122 2003 08 2 0.866864
+DE123 2003 04 3 0.114334
+DE123 2003 05 2 0.0295618
+DE123 2003 08 5 0.392577
+DE124 2003 03 2 0.255276
+DE124 2003 06 2 0.142021
+DE124 2003 07 3 2.2447
+DE124 2003 08 2 0.0609876
+DE124 2003 09 2 0.0136845
+DE126 2003 03 2 0.0330138
+DE126 2003 07 2 0.0148902
+DE126 2003 08 4 0.182073
+DE127 2003 04 3 1.72321
+DE127 2003 08 3 0.112151
+DE127 2003 09 2 0.0655755
+DE128 2003 04 2 0.218954
+DE128 2003 06 2 0.0558414
+DE128 2003 07 2 0.0110147
+DE128 2003 08 2 3.89687
+DE129 2003 08 2 0.866864
+DE129 2003 09 2 0.35396
+DE12A 2003 03 2 0.278345
+DE12A 2003 04 2 0.293185
+DE12A 2003 09 2 0.0487216
+DE12C 2003 03 3 0.158382
+DE12C 2003 04 3 0.17952
+DE12C 2003 08 2 0.228436
+DE12C 2003 09 2 0.0426462
+DE411 2003 06 2 0.376554
+DE412 2003 03 4 1.72301
+DE412 2003 04 4 21.0501
+DE412 2003 05 3 0.0309936
+DE412 2003 06 3 6.22654
+DE412 2003 07 2 0.155251
+DE412 2003 08 2 0.839962
+DE412 2003 09 2 0.026047
+DE413 2003 03 2 5.2789
+DE413 2003 04 3 0.249118
+DE413 2003 05 2 0.00582479
+DE413 2003 08 4 0.105572
+DE414 2003 03 3 1.18491
+DE414 2003 04 4 1.7882
+DE414 2003 05 5 0.742903
+DE414 2003 06 2 0.00525537
+DE414 2003 07 3 0.749055
+DE414 2003 08 3 1.75443
+DE415 2003 02 2 0.0120666
+DE415 2003 03 5 0.27744
+DE415 2003 04 5 4.7018
+DE415 2003 05 5 2.60197
+DE415 2003 06 5 3.67264
+DE415 2003 07 5 1.35177
+DE415 2003 08 5 1.02374
+DE415 2003 09 5 2.54038
+DE416 2003 05 4 0.211562
+DE416 2003 06 2 0.444991
+DE416 2003 07 2 0.105896
+DE416 2003 08 4 0.964785
+DE417 2003 03 4 1.81684
+DE417 2003 04 3 0.0610802
+DE417 2003 05 3 4.79446
+DE417 2003 06 3 3.27555
+DE417 2003 07 4 0.673915
+DE417 2003 08 4 0.157456
+DE418 2003 03 4 55.2122
+DE418 2003 04 4 11.0773
+DE418 2003 07 2 0.108286
+DE418 2003 08 5 1.82489
+DE421 2003 04 3 0.298498
+DE421 2003 07 2 0.0672547
+DE421 2003 08 2 2.93714
+DE422 2003 03 2 2.26865
+DE422 2003 04 2 0.177208
+DE422 2003 07 2 0.01119
+DE422 2003 08 4 0.107948
+DE423 2003 08 3 0.793549
+DE424 2003 03 3 0.113966
+DE424 2003 04 3 18.619
+DE424 2003 05 3 1.72579
+DE424 2003 06 3 4.37626
+DE424 2003 07 4 11.2141
+DE424 2003 08 4 2.65389
+DE424 2003 09 4 3.85167
+CY000 2004 02 3 0.955392
+CY000 2004 03 3 6.49885
+CY000 2004 04 3 10.9706
+CY000 2004 05 3 296.32
+CY000 2004 06 3 403.587
+CY000 2004 07 3 164.836
+CY000 2004 08 3 59.2979
+CY000 2004 09 3 91.8522
+CY000 2004 10 3 93.4021
+CY000 2004 11 3 9.49625
+CY000 2004 12 2 0.278038
+CZ020 2004 03 2 24.0416
+CZ032 2004 04 2 13.5171
+CZ042 2004 06 2 13.5526
+DE412 2004 04 2 0.0241236
+DE412 2004 05 2 0.347961
+DE412 2004 06 2 0.809932
+DE412 2004 08 2 0.368142
+DE412 2004 09 2 0.00530336
+DE414 2004 03 4 1.97627
+DE414 2004 04 3 1.00275
+DE414 2004 07 2 0.00795488
+DE415 2004 04 5 2.13174
+DE415 2004 05 2 0.59346
+DE415 2004 06 2 0.53308
+DE415 2004 07 2 0.191283
+DE415 2004 08 2 0.26141
+DE415 2004 09 3 0.0237742
+DE416 2004 04 2 0.114188
+DE416 2004 05 2 0.302628
+DE416 2004 08 2 0.00156981
+DE417 2004 05 2 0.0439774
+DE417 2004 08 3 0.387086
+DE417 2004 09 2 0.00288114
+DE418 2004 04 2 0.0111405
+DE418 2004 05 2 0.0014667
+DE421 2004 08 2 0.0591344
+DE422 2004 08 2 2.57984
+DE424 2004 02 2 0.289952
+DE424 2004 03 3 1.71752
+DE424 2004 04 3 1.08551
+DE424 2004 05 5 0.442115
+DE424 2004 06 4 0.281393
+DE424 2004 07 4 0.141752
+DE424 2004 08 4 0.0923612
+DE424 2004 09 4 0.393816
+BG311 2005 04 2 0.282594
+BG312 2005 04 3 10.6419
+BG313 2005 03 2 48.0927
+BG314 2005 03 4 2.21985
+BG315 2005 03 2 125.772
+BG315 2005 04 2 95.5232
+BG315 2005 06 2 3.70607
+BG321 2005 03 3 59.201
+BG321 2005 04 2 0.562725
+BG322 2005 03 3 6.33855
+BG322 2005 04 2 5.45605
+BG323 2005 03 3 8.98824
+BG323 2005 04 2 3.04655
+BG324 2005 03 2 0.97613
+BG324 2005 04 2 2.06119
+BG325 2005 04 2 1.34959
+BG325 2005 07 2 27.4231
+BG331 2005 01 2 0.901016
+BG331 2005 03 2 2.26082
+BG331 2005 04 2 13.956
+BG331 2005 06 2 0.0643451
+BG332 2005 04 2 4.7556
+BG333 2005 03 2 28.8306
+BG333 2005 04 4 4.97396
+BG341 2005 03 3 621.824
+BG341 2005 04 4 9.6126
+BG341 2005 06 2 1.6579
+BG343 2005 03 2 3.71163
+BG343 2005 04 2 4.73784
+BG344 2005 01 3 4.74859
+BG344 2005 03 2 7.04468
+BG344 2005 04 4 138.517
+BG411 2005 03 2 1.01033
+BG411 2005 04 2 28.9588
+BG412 2005 02 3 54.2146
+BG412 2005 03 3 55.5808
+BG412 2005 04 3 221.366
+BG412 2005 05 2 0.676884
+BG413 2005 03 4 51.1086
+BG413 2005 04 5 33.3638
+BG413 2005 05 3 2.01096
+BG413 2005 06 3 7.07514
+BG413 2005 07 3 2.50366
+BG413 2005 08 3 2.27731
+BG413 2005 10 2 1.18454
+BG413 2005 11 2 26.345
+BG414 2005 03 3 5.75175
+BG415 2005 01 3 3.05667
+BG415 2005 03 3 17.5467
+BG415 2005 04 4 56.6121
+BG415 2005 05 2 2.79797
+BG415 2005 07 2 0.229202
+BG415 2005 08 4 1.65743
+BG415 2005 11 2 0.132618
+BG421 2005 01 2 0.65647
+BG421 2005 03 4 2.98041
+BG421 2005 04 3 2.42129
+BG421 2005 10 2 1.48457
+BG422 2005 03 4 12.6289
+BG422 2005 04 4 73.5618
+BG422 2005 09 4 5.53105
+BG423 2005 01 2 1.24759
+BG423 2005 03 2 57.5449
+BG423 2005 04 2 42.7673
+BG423 2005 05 2 1.6553
+BG423 2005 07 3 0.436605
+BG423 2005 08 2 0.128153
+BG424 2005 03 2 1.77938
+BG424 2005 04 2 2.04622
+BG424 2005 05 2 0.212858
+BG424 2005 06 2 0.0870192
+BG424 2005 08 2 0.289737
+BG424 2005 10 4 0.870632
+BG425 2005 03 3 0.188194
+BG425 2005 04 5 2.46982
+BG425 2005 06 2 0.27944
+BG425 2005 07 2 0.592672
+BG425 2005 09 4 0.186785
+CY000 2005 01 2 4.33947
+CY000 2005 02 2 0.129616
+CY000 2005 03 2 14.916
+CY000 2005 04 3 21.183
+CY000 2005 05 3 398.663
+CY000 2005 06 3 869.019
+CY000 2005 07 3 30.7432
+CY000 2005 08 3 343.746
+CY000 2005 09 3 33.1192
+CY000 2005 10 3 58.553
+CY000 2005 11 3 23.5366
+CY000 2005 12 4 0.0628105
+CZ080 2005 04 2 10.6867
+DE411 2005 06 2 0.0275849
+DE412 2005 03 2 0.556955
+DE412 2005 04 4 0.568387
+DE412 2005 05 4 1.19817
+DE412 2005 06 2 0.196609
+DE413 2005 03 2 0.0187005
+DE413 2005 04 3 0.16555
+DE414 2005 04 2 12.8237
+DE414 2005 05 3 0.182478
+DE414 2005 06 2 0.051172
+DE415 2005 03 2 0.0212352
+DE415 2005 04 3 0.355172
+DE415 2005 05 4 0.167359
+DE415 2005 06 4 0.204903
+DE415 2005 07 4 0.221021
+DE416 2005 04 2 0.0285458
+DE416 2005 07 2 0.0706065
+DE417 2005 04 5 0.347789
+DE417 2005 06 4 1.28673
+DE418 2005 03 2 0.898471
+DE418 2005 04 2 0.027917
+DE418 2005 07 2 0.0257342
+DE418 2005 08 2 0.000818049
+DE418 2005 09 2 0.0140452
+DE421 2005 04 2 0.434154
+DE423 2005 04 2 0.00996257
+DE423 2005 09 2 0.0324514
+DE424 2005 04 4 0.881837
+DE424 2005 05 4 3.08078
+DE424 2005 06 4 0.990736
+BG311 2006 11 2 0.600812
+BG312 2006 10 2 0.293182
+BG312 2006 11 5 92.0624
+BG312 2006 12 3 29.1471
+BG313 2006 03 2 6.13806
+BG313 2006 07 2 2.44256
+BG313 2006 11 2 0.347652
+BG314 2006 07 3 2.58765
+BG314 2006 08 2 3.64928
+BG314 2006 09 2 0.302142
+BG315 2006 04 2 36.2185
+BG315 2006 11 3 31.5821
+BG315 2006 12 3 123.5
+BG321 2006 03 2 6.28263
+BG321 2006 08 2 3.23006
+BG321 2006 11 2 1.01262
+BG322 2006 03 3 1.85972
+BG322 2006 11 2 0.248026
+BG323 2006 03 2 2.67472
+BG323 2006 06 2 3.01386
+BG323 2006 08 4 0.911752
+BG323 2006 09 2 0.759697
+BG324 2006 04 2 0.64145
+BG324 2006 08 2 7.40875
+BG325 2006 08 2 1.34587
+BG325 2006 09 2 0.249886
+BG331 2006 03 2 2.93096
+BG331 2006 04 3 1.89504
+BG331 2006 07 3 9.86313
+BG331 2006 08 3 45.5238
+BG331 2006 09 3 0.215108
+BG332 2006 03 3 1.74459
+BG332 2006 07 4 4.68026
+BG332 2006 08 4 4.81496
+BG333 2006 03 3 19.6429
+BG333 2006 08 3 3.81421
+BG333 2006 12 2 11.3134
+BG334 2006 08 3 1.77483
+BG334 2006 12 2 1.39199
+BG341 2006 02 2 5.0424
+BG341 2006 04 2 0.395691
+BG341 2006 05 3 0.4285
+BG341 2006 08 3 98.4393
+BG341 2006 09 3 0.40148
+BG342 2006 07 3 0.433358
+BG342 2006 08 4 41.8133
+BG342 2006 09 2 14.3074
+BG343 2006 04 2 0.704769
+BG343 2006 05 2 0.695017
+BG343 2006 06 2 2.10271
+BG343 2006 08 4 26.7505
+BG344 2006 07 3 17.2738
+BG344 2006 08 4 3.55306
+BG344 2006 09 5 18.4984
+BG411 2006 05 2 0.27316
+BG411 2006 08 5 1.57985
+BG411 2006 09 3 0.769804
+BG411 2006 10 2 0.861993
+BG411 2006 11 2 0.119801
+BG412 2006 01 2 0.863629
+BG412 2006 03 2 25.9191
+BG412 2006 04 4 0.878514
+BG412 2006 05 2 0.621264
+BG412 2006 08 5 5.98766
+BG412 2006 09 5 15.6847
+BG412 2006 10 2 0.0838813
+BG412 2006 11 2 0.582587
+BG412 2006 12 2 49.6206
+BG413 2006 02 2 42.3976
+BG413 2006 03 4 5.38129
+BG413 2006 04 3 2.72704
+BG413 2006 06 2 1.86938
+BG413 2006 07 3 0.414349
+BG413 2006 08 3 22.1535
+BG413 2006 09 3 12.0215
+BG414 2006 03 3 44.5425
+BG414 2006 04 2 0.139433
+BG414 2006 09 2 4.62588
+BG414 2006 10 2 0.276052
+BG415 2006 02 4 4.00813
+BG415 2006 03 3 2.46103
+BG415 2006 04 5 5.46104
+BG415 2006 08 2 0.755646
+BG415 2006 09 3 2.58218
+BG415 2006 10 3 3.36504
+BG415 2006 11 2 2.91194
+BG415 2006 12 2 0.794779
+BG421 2006 01 3 0.481229
+BG421 2006 03 3 30.1665
+BG421 2006 04 3 14.1157
+BG421 2006 05 2 0.1245
+BG421 2006 06 5 4.00158
+BG421 2006 07 5 1
+BG421 2006 08 4 1.44982
+BG421 2006 09 4 61.2472
+BG421 2006 11 3 36.602
+BG422 2006 01 5 10.3281
+BG422 2006 02 3 0.89011
+BG422 2006 03 4 20.2
+BG422 2006 04 3 7.0596
+BG422 2006 06 2 14.2214
+BG422 2006 07 2 145.893
+BG422 2006 08 2 1127.15
+BG422 2006 09 2 610.552
+BG423 2006 01 3 8.83021
+BG423 2006 02 4 29.5281
+BG423 2006 03 4 7.75145
+BG423 2006 04 2 0.99176
+BG423 2006 05 3 0.761956
+BG423 2006 07 4 3.2859
+BG423 2006 08 5 30.869
+BG423 2006 09 5 58.8844
+BG423 2006 10 2 0.665435
+BG423 2006 11 5 5.24478
+BG423 2006 12 3 19.0336
+BG424 2006 03 4 5.44071
+BG424 2006 04 2 3.36076
+BG424 2006 08 2 0.415581
+BG424 2006 09 4 21.6579
+BG424 2006 11 4 5.92479
+BG424 2006 12 3 1.67281
+BG425 2006 04 2 0.145462
+BG425 2006 05 5 0.372905
+BG425 2006 06 3 0.132586
+BG425 2006 07 2 0.29301
+BG425 2006 08 4 0.710985
+BG425 2006 09 4 1.90201
+CY000 2006 02 3 0.587406
+CY000 2006 03 3 83.1106
+CY000 2006 04 5 0.967452
+CY000 2006 05 5 282.391
+CY000 2006 06 5 358.534
+CY000 2006 07 5 261.244
+CY000 2006 08 5 40.6708
+CY000 2006 09 5 195.93
+CY000 2006 10 5 14.6292
+CY000 2006 12 3 0.845538
+CZ010 2006 05 4 0.023707
+CZ010 2006 07 4 0.0753943
+CZ010 2006 09 3 0.0131662
+CZ020 2006 01 2 0.00492811
+CZ020 2006 04 2 10.8473
+CZ020 2006 05 2 18.1471
+CZ020 2006 06 2 3.5218
+CZ020 2006 07 2 10.1153
+CZ020 2006 08 2 0.0108734
+CZ020 2006 09 2 1.43463
+CZ020 2006 10 2 0.117046
+CZ020 2006 11 2 0.166974
+CZ020 2006 12 2 0.00132759
+CZ031 2006 04 5 0.422728
+CZ031 2006 05 5 3.01639
+CZ031 2006 06 2 0.129287
+CZ031 2006 07 4 0.23045
+CZ031 2006 09 3 0.120826
+CZ031 2006 10 4 0.00803731
+CZ031 2006 11 5 0.28404
+CZ031 2006 12 5 0.691518
+CZ032 2006 04 2 7.39193
+CZ032 2006 05 2 0.650117
+CZ032 2006 06 2 0.576514
+CZ032 2006 07 2 0.573189
+CZ032 2006 08 3 0.0871045
+CZ032 2006 09 3 0.577752
+CZ032 2006 10 3 0.0238921
+CZ032 2006 11 3 0.00869638
+CZ032 2006 12 3 0.0428257
+CZ041 2006 04 2 9.24986
+CZ041 2006 05 4 1.01741
+CZ041 2006 07 4 0.676825
+CZ041 2006 08 3 0.247137
+CZ041 2006 09 2 0.0297836
+CZ041 2006 10 2 0.00172912
+CZ041 2006 11 2 0.0129302
+CZ042 2006 04 4 1.25128
+CZ042 2006 05 4 7.61324
+CZ042 2006 06 4 0.928723
+CZ042 2006 07 4 261.418
+CZ042 2006 08 2 0.00342008
+CZ042 2006 09 2 2.18124
+CZ042 2006 10 4 0.220816
+CZ051 2006 03 2 0.00259678
+CZ051 2006 04 4 0.194625
+CZ051 2006 05 4 0.0434952
+CZ051 2006 06 4 4.0513
+CZ051 2006 07 4 5.56088
+CZ051 2006 08 4 0.0422898
+CZ051 2006 09 4 0.283525
+CZ051 2006 10 4 0.0121199
+CZ052 2006 04 2 0.188787
+CZ052 2006 06 2 0.539782
+CZ052 2006 07 2 3.05991
+CZ052 2006 09 5 0.0859136
+CZ052 2006 10 5 1.63926
+CZ053 2006 04 2 0.0177711
+CZ053 2006 05 4 0.519223
+CZ053 2006 06 2 0.0620494
+CZ053 2006 07 2 3.76085
+CZ053 2006 08 2 0.0143413
+CZ053 2006 09 3 2.51401
+CZ061 2006 04 3 1.59017
+CZ061 2006 05 4 0.0568428
+CZ061 2006 06 4 0.341234
+CZ061 2006 07 4 2.99631
+CZ061 2006 09 4 0.533612
+CZ061 2006 10 4 0.164172
+CZ061 2006 11 3 0.0755874
+CZ061 2006 12 4 0.0398106
+CZ062 2006 04 3 0.547727
+CZ062 2006 05 2 0.0134157
+CZ062 2006 07 2 1.62121
+CZ062 2006 09 3 0.89482
+CZ062 2006 10 3 4.11491
+CZ062 2006 12 2 0.00152595
+CZ071 2006 04 2 7.06965
+CZ071 2006 06 2 0.00274927
+CZ071 2006 07 2 1.31209
+CZ071 2006 08 3 0.0133259
+CZ071 2006 09 3 0.197024
+CZ071 2006 10 2 0.0410324
+CZ072 2006 04 2 0.224868
+CZ072 2006 07 5 1.48377
+CZ072 2006 09 2 0.171342
+CZ072 2006 10 2 0.00245432
+CZ080 2006 04 2 9.4722
+CZ080 2006 06 3 1.14109
+CZ080 2006 07 3 3.12406
+CZ080 2006 08 2 0.00515456
+CZ080 2006 09 2 0.0758536
+CZ080 2006 10 2 1.98264
+DE122 2006 03 2 0.0938842
+DE122 2006 04 4 0.0366267
+DE124 2006 05 2 0.124872
+DE128 2006 04 2 0.139624
+DE128 2006 06 4 0.725333
+DE133 2006 07 2 0.0855255
+DE133 2006 09 2 0.106198
+DE134 2006 06 2 0.108214
+DE134 2006 10 2 0.052098
+DE139 2006 04 2 3.5739
+DE13A 2006 05 3 0.58272
+DE13A 2006 07 4 0.676899
+DE13A 2006 08 3 0.528195
+DE13A 2006 10 2 0.216715
+DE411 2006 07 3 3.44542
+DE412 2006 04 2 0.054478
+DE412 2006 05 5 0.691057
+DE412 2006 06 3 0.107348
+DE412 2006 07 3 1.93305
+DE412 2006 08 2 0.214044
+DE412 2006 09 2 0.219423
+DE413 2006 04 3 0.102182
+DE413 2006 05 5 0.815426
+DE413 2006 07 5 7.32987
+DE413 2006 09 2 0.299483
+DE413 2006 10 2 0.134471
+DE413 2006 11 2 0.00139426
+DE414 2006 05 5 1.88579
+DE414 2006 06 3 0.470848
+DE414 2006 07 4 11.9673
+DE414 2006 08 2 0.0490289
+DE414 2006 09 3 0.694654
+DE415 2006 05 4 0.535989
+DE415 2006 06 4 1.54183
+DE415 2006 07 4 45.7763
+DE415 2006 09 3 2.31642
+DE416 2006 05 3 0.148617
+DE416 2006 07 2 0.398726
+DE417 2006 06 2 0.13546
+DE417 2006 07 3 0.30921
+DE418 2006 05 4 1.53076
+DE418 2006 07 4 24.0147
+DE421 2006 07 3 1.45406
+DE422 2006 07 5 2.55061
+DE422 2006 08 4 0.0187947
+DE424 2006 05 4 3.19804
+DE424 2006 06 4 0.276527
+DE424 2006 07 4 6.28045
+DE424 2006 08 3 1.4451
+DE424 2006 09 3 0.155371
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2007 01 3 114.535
+BG312 2007 02 3 17.3247
+BG312 2007 03 3 322.063
+BG312 2007 04 3 521.189
+BG312 2007 05 3 4.13178
+BG312 2007 06 2 5.94132
+BG312 2007 07 2 1117.64
+BG313 2007 01 2 205.374
+BG313 2007 02 2 103.186
+BG313 2007 03 2 394.699
+BG313 2007 04 5 36.6292
+BG313 2007 05 3 7.68499
+BG313 2007 07 3 267.507
+BG313 2007 08 2 8.23134
+BG314 2007 03 2 31.1266
+BG314 2007 05 3 49.9327
+BG314 2007 06 2 5.50835
+BG314 2007 07 2 1243.67
+BG314 2007 08 2 70.1061
+BG315 2007 01 3 97.1538
+BG315 2007 02 3 72.1268
+BG315 2007 03 3 1825.58
+BG315 2007 04 3 709.847
+BG315 2007 05 4 37.3087
+BG315 2007 07 4 2595.44
+BG321 2007 01 2 34.6964
+BG321 2007 02 2 15.8478
+BG321 2007 03 2 128.72
+BG321 2007 04 2 44.5743
+BG321 2007 05 4 36.5963
+BG321 2007 06 3 0.207622
+BG321 2007 07 3 736.828
+BG321 2007 08 3 16.4847
+BG322 2007 01 2 25.6421
+BG322 2007 02 3 2.47755
+BG322 2007 03 3 23.3933
+BG322 2007 04 3 61.2729
+BG322 2007 07 3 1142.19
+BG322 2007 08 3 0.195825
+BG323 2007 04 5 2.25699
+BG323 2007 05 2 0.346974
+BG323 2007 07 2 10.9846
+BG323 2007 09 2 0.218432
+BG324 2007 01 2 1.83585
+BG324 2007 05 2 0.0708554
+BG324 2007 06 2 3.00246
+BG324 2007 07 2 31.0683
+BG325 2007 03 3 50.6905
+BG325 2007 07 3 139.212
+BG325 2007 10 2 4.28359
+BG331 2007 01 3 14.9751
+BG331 2007 02 3 2.17089
+BG331 2007 03 3 54.6886
+BG331 2007 04 3 3.46769
+BG331 2007 05 3 5.26728
+BG331 2007 06 3 17.715
+BG331 2007 07 3 635.74
+BG331 2007 08 5 5.69637
+BG331 2007 09 4 1.45601
+BG331 2007 10 3 1.16162
+BG332 2007 03 2 0.464604
+BG332 2007 04 2 0.135462
+BG332 2007 06 2 6.04419
+BG332 2007 07 2 81.8419
+BG333 2007 01 4 24.929
+BG333 2007 02 2 2.23803
+BG333 2007 03 5 39.8419
+BG333 2007 04 5 49.7954
+BG333 2007 05 5 13.0934
+BG333 2007 07 5 57.5293
+BG333 2007 08 5 35.7814
+BG334 2007 03 3 27.6829
+BG334 2007 04 3 0.517585
+BG334 2007 05 2 0.647435
+BG334 2007 06 2 0.140486
+BG334 2007 07 2 27.4913
+BG341 2007 01 3 1.66492
+BG341 2007 03 5 6.8906
+BG341 2007 04 3 0.315852
+BG341 2007 05 4 62.2719
+BG341 2007 06 4 293.251
+BG341 2007 07 4 1057.39
+BG341 2007 08 4 141.546
+BG341 2007 09 2 23.2366
+BG342 2007 01 2 0.30804
+BG342 2007 03 2 128.902
+BG342 2007 04 2 291.04
+BG342 2007 05 2 0.0792935
+BG342 2007 07 2 860.014
+BG342 2007 08 3 4.4406
+BG342 2007 10 2 4.33875
+BG343 2007 06 4 205.937
+BG343 2007 07 4 193.754
+BG343 2007 08 5 1154.31
+BG343 2007 09 2 1.12145
+BG344 2007 03 5 1.85917
+BG344 2007 04 5 4.82415
+BG344 2007 05 2 3.05647
+BG344 2007 06 3 1.7138
+BG344 2007 07 3 5720.55
+BG344 2007 08 3 59.9997
+BG344 2007 09 2 2.61198
+BG411 2007 01 2 0.125264
+BG411 2007 03 2 19.4587
+BG411 2007 04 4 1.18276
+BG411 2007 05 2 0.202724
+BG411 2007 07 4 4.77007
+BG412 2007 01 2 357.321
+BG412 2007 02 5 15.001
+BG412 2007 03 5 1563.86
+BG412 2007 04 5 1118.17
+BG412 2007 05 5 79.8004
+BG412 2007 06 3 15.4517
+BG412 2007 07 3 1100.8
+BG412 2007 08 4 12.9193
+BG413 2007 01 3 5.14457
+BG413 2007 02 2 4.04579
+BG413 2007 03 2 91.8944
+BG413 2007 04 2 64.757
+BG413 2007 05 2 1.60664
+BG413 2007 06 2 7.62226
+BG413 2007 07 2 158.693
+BG413 2007 08 2 10.7716
+BG413 2007 09 2 1.542
+BG413 2007 10 2 10.4395
+BG414 2007 01 4 4.30643
+BG414 2007 02 4 4.16793
+BG414 2007 03 4 495.007
+BG414 2007 04 4 78.332
+BG414 2007 05 4 2.15944
+BG414 2007 07 3 25.7131
+BG414 2007 08 2 0.734826
+BG414 2007 09 2 4.46241
+BG415 2007 01 3 20.5053
+BG415 2007 02 5 5.29747
+BG415 2007 03 5 106.259
+BG415 2007 04 5 316.271
+BG415 2007 05 3 0.323577
+BG415 2007 06 4 21.6512
+BG415 2007 07 4 888.636
+BG415 2007 08 4 5.12635
+BG415 2007 09 2 19.5612
+BG415 2007 10 3 3.67903
+BG421 2007 01 3 16.6377
+BG421 2007 02 3 36.8495
+BG421 2007 03 3 284.924
+BG421 2007 04 3 200.269
+BG421 2007 05 4 2.23446
+BG421 2007 06 4 14.21
+BG421 2007 07 4 626.222
+BG421 2007 08 4 247.26
+BG422 2007 01 4 1.13109
+BG422 2007 02 3 4.25846
+BG422 2007 03 3 51.2923
+BG422 2007 04 2 1.36679
+BG422 2007 06 4 60.5828
+BG422 2007 07 4 5106.58
+BG422 2007 08 4 12972.6
+BG423 2007 01 3 330.791
+BG423 2007 02 2 0.745402
+BG423 2007 03 2 180.982
+BG423 2007 04 2 62.7641
+BG423 2007 05 4 0.452272
+BG423 2007 06 3 29.5529
+BG423 2007 07 3 1421.17
+BG423 2007 08 5 18.1706
+BG423 2007 09 2 1.00679
+BG424 2007 01 5 4.48651
+BG424 2007 02 3 5.26365
+BG424 2007 03 3 13.9579
+BG424 2007 04 3 16.2728
+BG424 2007 05 5 0.54032
+BG424 2007 07 5 319.625
+BG424 2007 08 5 1.38762
+BG424 2007 09 3 3.73571
+BG425 2007 01 5 1.0197
+BG425 2007 02 2 0.134967
+BG425 2007 03 2 6.44724
+BG425 2007 04 2 9.75379
+BG425 2007 05 3 0.422148
+BG425 2007 06 2 1.69251
+BG425 2007 07 2 34.3116
+BG425 2007 08 4 0.73277
+BG425 2007 09 3 2.6549
+</pre></div></div>
+</div>
+<p>Save the result of a command in a file by ““&gt;”” symbol</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> sort -k <span class="m">2</span>,2 -g input.txt &gt; input_s.txt
+<span class="o">!</span> wc -l input_s.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1000 input_s.txt
+</pre></div></div>
+</div>
+<p>Which is the first and last year of observations?</p>
+</div>
+<div class="section" id="Append-the-command-result-to-a-file">
+<h2>Append the command result to a file<a class="headerlink" href="#Append-the-command-result-to-a-file" title="Permalink to this headline">¶</a></h2>
+<p>Add the result of a command in the already existing “output” file by ‘&gt;&gt;’ symbol</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> sort -k <span class="m">3</span>,3 -g input.txt &gt;&gt; input_s.txt
+<span class="o">!</span> wc -l input_s.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2000 input_s.txt
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Concatenate-commands">
+<h2>Concatenate commands<a class="headerlink" href="#Concatenate-commands" title="Permalink to this headline">¶</a></h2>
+<p>We want to count how many observations exist in year 2007 in the input.txt. Concatenate command by the pipe “|” symbol by searching for the word “2007” and count the line/word/character</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> grep <span class="s2">&quot;2007&quot;</span> input.txt <span class="p">|</span> wc
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+    189     945    4539
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Use-the-variable">
+<h2>Use the variable<a class="headerlink" href="#Use-the-variable" title="Permalink to this headline">¶</a></h2>
+<p>Define the value of the variable, print it by putting it in front of the $ symbol</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> <span class="nv">var</span><span class="o">=</span><span class="m">21</span>
+<span class="o">!</span> <span class="nb">echo</span> <span class="nv">$var</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+</pre></div></div>
+</div>
+<p>Define the value of the variable using the result of a command</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="nv">var</span><span class="o">=</span><span class="k">$(</span>grep <span class="s2">&quot;2007&quot;</span> input.txt <span class="p">|</span> wc -l<span class="k">)</span>
+<span class="nb">echo</span> <span class="nv">$var</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+189
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="For-loop">
+<h2>For loop<a class="headerlink" href="#For-loop" title="Permalink to this headline">¶</a></h2>
+<p>In computer science, a for-loop (or simply for loop) is a control flow statement for specifying iteration, which allows code to be executed repeatedly (source <a class="reference external" href="https://en.wikipedia.org/wiki/For_loop">https://en.wikipedia.org/wiki/For_loop</a>). We want to automatically count how many observations exist in the years 2007, 2006 and 2005 in the input.txt file. To solve this task we can use the variable and list word/number loop function</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> var in <span class="m">2005</span> <span class="m">2006</span> <span class="m">2007</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="nv">$var</span> input.txt
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BG311 2005 04 2 0.282594
+BG312 2005 04 3 10.6419
+BG313 2005 03 2 48.0927
+BG314 2005 03 4 2.21985
+BG315 2005 03 2 125.772
+BG315 2005 04 2 95.5232
+BG315 2005 06 2 3.70607
+BG321 2005 03 3 59.201
+BG321 2005 04 2 0.562725
+BG322 2005 03 3 6.33855
+BG322 2005 04 2 5.45605
+BG323 2005 03 3 8.98824
+BG323 2005 04 2 3.04655
+BG324 2005 03 2 0.97613
+BG324 2005 04 2 2.06119
+BG325 2005 04 2 1.34959
+BG325 2005 07 2 27.4231
+BG331 2005 01 2 0.901016
+BG331 2005 03 2 2.26082
+BG331 2005 04 2 13.956
+BG331 2005 06 2 0.0643451
+BG332 2005 04 2 4.7556
+BG333 2005 03 2 28.8306
+BG333 2005 04 4 4.97396
+BG341 2005 03 3 621.824
+BG341 2005 04 4 9.6126
+BG341 2005 06 2 1.6579
+BG343 2005 03 2 3.71163
+BG343 2005 04 2 4.73784
+BG344 2005 01 3 4.74859
+BG344 2005 03 2 7.04468
+BG344 2005 04 4 138.517
+BG411 2005 03 2 1.01033
+BG411 2005 04 2 28.9588
+BG412 2005 02 3 54.2146
+BG412 2005 03 3 55.5808
+BG412 2005 04 3 221.366
+BG412 2005 05 2 0.676884
+BG413 2005 03 4 51.1086
+BG413 2005 04 5 33.3638
+BG413 2005 05 3 2.01096
+BG413 2005 06 3 7.07514
+BG413 2005 07 3 2.50366
+BG413 2005 08 3 2.27731
+BG413 2005 10 2 1.18454
+BG413 2005 11 2 26.345
+BG414 2005 03 3 5.75175
+BG415 2005 01 3 3.05667
+BG415 2005 03 3 17.5467
+BG415 2005 04 4 56.6121
+BG415 2005 05 2 2.79797
+BG415 2005 07 2 0.229202
+BG415 2005 08 4 1.65743
+BG415 2005 11 2 0.132618
+BG421 2005 01 2 0.65647
+BG421 2005 03 4 2.98041
+BG421 2005 04 3 2.42129
+BG421 2005 10 2 1.48457
+BG422 2005 03 4 12.6289
+BG422 2005 04 4 73.5618
+BG422 2005 09 4 5.53105
+BG423 2005 01 2 1.24759
+BG423 2005 03 2 57.5449
+BG423 2005 04 2 42.7673
+BG423 2005 05 2 1.6553
+BG423 2005 07 3 0.436605
+BG423 2005 08 2 0.128153
+BG424 2005 03 2 1.77938
+BG424 2005 04 2 2.04622
+BG424 2005 05 2 0.212858
+BG424 2005 06 2 0.0870192
+BG424 2005 08 2 0.289737
+BG424 2005 10 4 0.870632
+BG425 2005 03 3 0.188194
+BG425 2005 04 5 2.46982
+BG425 2005 06 2 0.27944
+BG425 2005 07 2 0.592672
+BG425 2005 09 4 0.186785
+CY000 2005 01 2 4.33947
+CY000 2005 02 2 0.129616
+CY000 2005 03 2 14.916
+CY000 2005 04 3 21.183
+CY000 2005 05 3 398.663
+CY000 2005 06 3 869.019
+CY000 2005 07 3 30.7432
+CY000 2005 08 3 343.746
+CY000 2005 09 3 33.1192
+CY000 2005 10 3 58.553
+CY000 2005 11 3 23.5366
+CY000 2005 12 4 0.0628105
+CZ080 2005 04 2 10.6867
+DE411 2005 06 2 0.0275849
+DE412 2005 03 2 0.556955
+DE412 2005 04 4 0.568387
+DE412 2005 05 4 1.19817
+DE412 2005 06 2 0.196609
+DE413 2005 03 2 0.0187005
+DE413 2005 04 3 0.16555
+DE414 2005 04 2 12.8237
+DE414 2005 05 3 0.182478
+DE414 2005 06 2 0.051172
+DE415 2005 03 2 0.0212352
+DE415 2005 04 3 0.355172
+DE415 2005 05 4 0.167359
+DE415 2005 06 4 0.204903
+DE415 2005 07 4 0.221021
+DE416 2005 04 2 0.0285458
+DE416 2005 07 2 0.0706065
+DE417 2005 04 5 0.347789
+DE417 2005 06 4 1.28673
+DE418 2005 03 2 0.898471
+DE418 2005 04 2 0.027917
+DE418 2005 07 2 0.0257342
+DE418 2005 08 2 0.000818049
+DE418 2005 09 2 0.0140452
+DE421 2005 04 2 0.434154
+DE423 2005 04 2 0.00996257
+DE423 2005 09 2 0.0324514
+DE424 2005 04 4 0.881837
+DE424 2005 05 4 3.08078
+DE424 2005 06 4 0.990736
+BG311 2006 11 2 0.600812
+BG312 2006 10 2 0.293182
+BG312 2006 11 5 92.0624
+BG312 2006 12 3 29.1471
+BG313 2006 03 2 6.13806
+BG313 2006 07 2 2.44256
+BG313 2006 11 2 0.347652
+BG314 2006 07 3 2.58765
+BG314 2006 08 2 3.64928
+BG314 2006 09 2 0.302142
+BG315 2006 04 2 36.2185
+BG315 2006 11 3 31.5821
+BG315 2006 12 3 123.5
+BG321 2006 03 2 6.28263
+BG321 2006 08 2 3.23006
+BG321 2006 11 2 1.01262
+BG322 2006 03 3 1.85972
+BG322 2006 11 2 0.248026
+BG323 2006 03 2 2.67472
+BG323 2006 06 2 3.01386
+BG323 2006 08 4 0.911752
+BG323 2006 09 2 0.759697
+BG324 2006 04 2 0.64145
+BG324 2006 08 2 7.40875
+BG325 2006 08 2 1.34587
+BG325 2006 09 2 0.249886
+BG331 2006 03 2 2.93096
+BG331 2006 04 3 1.89504
+BG331 2006 07 3 9.86313
+BG331 2006 08 3 45.5238
+BG331 2006 09 3 0.215108
+BG332 2006 03 3 1.74459
+BG332 2006 07 4 4.68026
+BG332 2006 08 4 4.81496
+BG333 2006 03 3 19.6429
+BG333 2006 08 3 3.81421
+BG333 2006 12 2 11.3134
+BG334 2006 08 3 1.77483
+BG334 2006 12 2 1.39199
+BG341 2006 02 2 5.0424
+BG341 2006 04 2 0.395691
+BG341 2006 05 3 0.4285
+BG341 2006 08 3 98.4393
+BG341 2006 09 3 0.40148
+BG342 2006 07 3 0.433358
+BG342 2006 08 4 41.8133
+BG342 2006 09 2 14.3074
+BG343 2006 04 2 0.704769
+BG343 2006 05 2 0.695017
+BG343 2006 06 2 2.10271
+BG343 2006 08 4 26.7505
+BG344 2006 07 3 17.2738
+BG344 2006 08 4 3.55306
+BG344 2006 09 5 18.4984
+BG411 2006 05 2 0.27316
+BG411 2006 08 5 1.57985
+BG411 2006 09 3 0.769804
+BG411 2006 10 2 0.861993
+BG411 2006 11 2 0.119801
+BG412 2006 01 2 0.863629
+BG412 2006 03 2 25.9191
+BG412 2006 04 4 0.878514
+BG412 2006 05 2 0.621264
+BG412 2006 08 5 5.98766
+BG412 2006 09 5 15.6847
+BG412 2006 10 2 0.0838813
+BG412 2006 11 2 0.582587
+BG412 2006 12 2 49.6206
+BG413 2006 02 2 42.3976
+BG413 2006 03 4 5.38129
+BG413 2006 04 3 2.72704
+BG413 2006 06 2 1.86938
+BG413 2006 07 3 0.414349
+BG413 2006 08 3 22.1535
+BG413 2006 09 3 12.0215
+BG414 2006 03 3 44.5425
+BG414 2006 04 2 0.139433
+BG414 2006 09 2 4.62588
+BG414 2006 10 2 0.276052
+BG415 2006 02 4 4.00813
+BG415 2006 03 3 2.46103
+BG415 2006 04 5 5.46104
+BG415 2006 08 2 0.755646
+BG415 2006 09 3 2.58218
+BG415 2006 10 3 3.36504
+BG415 2006 11 2 2.91194
+BG415 2006 12 2 0.794779
+BG421 2006 01 3 0.481229
+BG421 2006 03 3 30.1665
+BG421 2006 04 3 14.1157
+BG421 2006 05 2 0.1245
+BG421 2006 06 5 4.00158
+BG421 2006 07 5 1
+BG421 2006 08 4 1.44982
+BG421 2006 09 4 61.2472
+BG421 2006 11 3 36.602
+BG422 2006 01 5 10.3281
+BG422 2006 02 3 0.89011
+BG422 2006 03 4 20.2
+BG422 2006 04 3 7.0596
+BG422 2006 06 2 14.2214
+BG422 2006 07 2 145.893
+BG422 2006 08 2 1127.15
+BG422 2006 09 2 610.552
+BG423 2006 01 3 8.83021
+BG423 2006 02 4 29.5281
+BG423 2006 03 4 7.75145
+BG423 2006 04 2 0.99176
+BG423 2006 05 3 0.761956
+BG423 2006 07 4 3.2859
+BG423 2006 08 5 30.869
+BG423 2006 09 5 58.8844
+BG423 2006 10 2 0.665435
+BG423 2006 11 5 5.24478
+BG423 2006 12 3 19.0336
+BG424 2006 03 4 5.44071
+BG424 2006 04 2 3.36076
+BG424 2006 08 2 0.415581
+BG424 2006 09 4 21.6579
+BG424 2006 11 4 5.92479
+BG424 2006 12 3 1.67281
+BG425 2006 04 2 0.145462
+BG425 2006 05 5 0.372905
+BG425 2006 06 3 0.132586
+BG425 2006 07 2 0.29301
+BG425 2006 08 4 0.710985
+BG425 2006 09 4 1.90201
+CY000 2006 02 3 0.587406
+CY000 2006 03 3 83.1106
+CY000 2006 04 5 0.967452
+CY000 2006 05 5 282.391
+CY000 2006 06 5 358.534
+CY000 2006 07 5 261.244
+CY000 2006 08 5 40.6708
+CY000 2006 09 5 195.93
+CY000 2006 10 5 14.6292
+CY000 2006 12 3 0.845538
+CZ010 2006 05 4 0.023707
+CZ010 2006 07 4 0.0753943
+CZ010 2006 09 3 0.0131662
+CZ020 2006 01 2 0.00492811
+CZ020 2006 04 2 10.8473
+CZ020 2006 05 2 18.1471
+CZ020 2006 06 2 3.5218
+CZ020 2006 07 2 10.1153
+CZ020 2006 08 2 0.0108734
+CZ020 2006 09 2 1.43463
+CZ020 2006 10 2 0.117046
+CZ020 2006 11 2 0.166974
+CZ020 2006 12 2 0.00132759
+CZ031 2006 04 5 0.422728
+CZ031 2006 05 5 3.01639
+CZ031 2006 06 2 0.129287
+CZ031 2006 07 4 0.23045
+CZ031 2006 09 3 0.120826
+CZ031 2006 10 4 0.00803731
+CZ031 2006 11 5 0.28404
+CZ031 2006 12 5 0.691518
+CZ032 2006 04 2 7.39193
+CZ032 2006 05 2 0.650117
+CZ032 2006 06 2 0.576514
+CZ032 2006 07 2 0.573189
+CZ032 2006 08 3 0.0871045
+CZ032 2006 09 3 0.577752
+CZ032 2006 10 3 0.0238921
+CZ032 2006 11 3 0.00869638
+CZ032 2006 12 3 0.0428257
+CZ041 2006 04 2 9.24986
+CZ041 2006 05 4 1.01741
+CZ041 2006 07 4 0.676825
+CZ041 2006 08 3 0.247137
+CZ041 2006 09 2 0.0297836
+CZ041 2006 10 2 0.00172912
+CZ041 2006 11 2 0.0129302
+CZ042 2006 04 4 1.25128
+CZ042 2006 05 4 7.61324
+CZ042 2006 06 4 0.928723
+CZ042 2006 07 4 261.418
+CZ042 2006 08 2 0.00342008
+CZ042 2006 09 2 2.18124
+CZ042 2006 10 4 0.220816
+CZ051 2006 03 2 0.00259678
+CZ051 2006 04 4 0.194625
+CZ051 2006 05 4 0.0434952
+CZ051 2006 06 4 4.0513
+CZ051 2006 07 4 5.56088
+CZ051 2006 08 4 0.0422898
+CZ051 2006 09 4 0.283525
+CZ051 2006 10 4 0.0121199
+CZ052 2006 04 2 0.188787
+CZ052 2006 06 2 0.539782
+CZ052 2006 07 2 3.05991
+CZ052 2006 09 5 0.0859136
+CZ052 2006 10 5 1.63926
+CZ053 2006 04 2 0.0177711
+CZ053 2006 05 4 0.519223
+CZ053 2006 06 2 0.0620494
+CZ053 2006 07 2 3.76085
+CZ053 2006 08 2 0.0143413
+CZ053 2006 09 3 2.51401
+CZ061 2006 04 3 1.59017
+CZ061 2006 05 4 0.0568428
+CZ061 2006 06 4 0.341234
+CZ061 2006 07 4 2.99631
+CZ061 2006 09 4 0.533612
+CZ061 2006 10 4 0.164172
+CZ061 2006 11 3 0.0755874
+CZ061 2006 12 4 0.0398106
+CZ062 2006 04 3 0.547727
+CZ062 2006 05 2 0.0134157
+CZ062 2006 07 2 1.62121
+CZ062 2006 09 3 0.89482
+CZ062 2006 10 3 4.11491
+CZ062 2006 12 2 0.00152595
+CZ071 2006 04 2 7.06965
+CZ071 2006 06 2 0.00274927
+CZ071 2006 07 2 1.31209
+CZ071 2006 08 3 0.0133259
+CZ071 2006 09 3 0.197024
+CZ071 2006 10 2 0.0410324
+CZ072 2006 04 2 0.224868
+CZ072 2006 07 5 1.48377
+CZ072 2006 09 2 0.171342
+CZ072 2006 10 2 0.00245432
+CZ080 2006 04 2 9.4722
+CZ080 2006 06 3 1.14109
+CZ080 2006 07 3 3.12406
+CZ080 2006 08 2 0.00515456
+CZ080 2006 09 2 0.0758536
+CZ080 2006 10 2 1.98264
+DE122 2006 03 2 0.0938842
+DE122 2006 04 4 0.0366267
+DE124 2006 05 2 0.124872
+DE128 2006 04 2 0.139624
+DE128 2006 06 4 0.725333
+DE133 2006 07 2 0.0855255
+DE133 2006 09 2 0.106198
+DE134 2006 06 2 0.108214
+DE134 2006 10 2 0.052098
+DE139 2006 04 2 3.5739
+DE13A 2006 05 3 0.58272
+DE13A 2006 07 4 0.676899
+DE13A 2006 08 3 0.528195
+DE13A 2006 10 2 0.216715
+DE411 2006 07 3 3.44542
+DE412 2006 04 2 0.054478
+DE412 2006 05 5 0.691057
+DE412 2006 06 3 0.107348
+DE412 2006 07 3 1.93305
+DE412 2006 08 2 0.214044
+DE412 2006 09 2 0.219423
+DE413 2006 04 3 0.102182
+DE413 2006 05 5 0.815426
+DE413 2006 07 5 7.32987
+DE413 2006 09 2 0.299483
+DE413 2006 10 2 0.134471
+DE413 2006 11 2 0.00139426
+DE414 2006 05 5 1.88579
+DE414 2006 06 3 0.470848
+DE414 2006 07 4 11.9673
+DE414 2006 08 2 0.0490289
+DE414 2006 09 3 0.694654
+DE415 2006 05 4 0.535989
+DE415 2006 06 4 1.54183
+DE415 2006 07 4 45.7763
+DE415 2006 09 3 2.31642
+DE416 2006 05 3 0.148617
+DE416 2006 07 2 0.398726
+DE417 2006 06 2 0.13546
+DE417 2006 07 3 0.30921
+DE418 2006 05 4 1.53076
+DE418 2006 07 4 24.0147
+DE421 2006 07 3 1.45406
+DE422 2006 07 5 2.55061
+DE422 2006 08 4 0.0187947
+DE424 2006 05 4 3.19804
+DE424 2006 06 4 0.276527
+DE424 2006 07 4 6.28045
+DE424 2006 08 3 1.4451
+DE424 2006 09 3 0.155371
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2007 01 3 114.535
+BG312 2007 02 3 17.3247
+BG312 2007 03 3 322.063
+BG312 2007 04 3 521.189
+BG312 2007 05 3 4.13178
+BG312 2007 06 2 5.94132
+BG312 2007 07 2 1117.64
+BG313 2007 01 2 205.374
+BG313 2007 02 2 103.186
+BG313 2007 03 2 394.699
+BG313 2007 04 5 36.6292
+BG313 2007 05 3 7.68499
+BG313 2007 07 3 267.507
+BG313 2007 08 2 8.23134
+BG314 2007 03 2 31.1266
+BG314 2007 05 3 49.9327
+BG314 2007 06 2 5.50835
+BG314 2007 07 2 1243.67
+BG314 2007 08 2 70.1061
+BG315 2007 01 3 97.1538
+BG315 2007 02 3 72.1268
+BG315 2007 03 3 1825.58
+BG315 2007 04 3 709.847
+BG315 2007 05 4 37.3087
+BG315 2007 07 4 2595.44
+BG321 2007 01 2 34.6964
+BG321 2007 02 2 15.8478
+BG321 2007 03 2 128.72
+BG321 2007 04 2 44.5743
+BG321 2007 05 4 36.5963
+BG321 2007 06 3 0.207622
+BG321 2007 07 3 736.828
+BG321 2007 08 3 16.4847
+BG322 2007 01 2 25.6421
+BG322 2007 02 3 2.47755
+BG322 2007 03 3 23.3933
+BG322 2007 04 3 61.2729
+BG322 2007 07 3 1142.19
+BG322 2007 08 3 0.195825
+BG323 2007 04 5 2.25699
+BG323 2007 05 2 0.346974
+BG323 2007 07 2 10.9846
+BG323 2007 09 2 0.218432
+BG324 2007 01 2 1.83585
+BG324 2007 05 2 0.0708554
+BG324 2007 06 2 3.00246
+BG324 2007 07 2 31.0683
+BG325 2007 03 3 50.6905
+BG325 2007 07 3 139.212
+BG325 2007 10 2 4.28359
+BG331 2007 01 3 14.9751
+BG331 2007 02 3 2.17089
+BG331 2007 03 3 54.6886
+BG331 2007 04 3 3.46769
+BG331 2007 05 3 5.26728
+BG331 2007 06 3 17.715
+BG331 2007 07 3 635.74
+BG331 2007 08 5 5.69637
+BG331 2007 09 4 1.45601
+BG331 2007 10 3 1.16162
+BG332 2007 03 2 0.464604
+BG332 2007 04 2 0.135462
+BG332 2007 06 2 6.04419
+BG332 2007 07 2 81.8419
+BG333 2007 01 4 24.929
+BG333 2007 02 2 2.23803
+BG333 2007 03 5 39.8419
+BG333 2007 04 5 49.7954
+BG333 2007 05 5 13.0934
+BG333 2007 07 5 57.5293
+BG333 2007 08 5 35.7814
+BG334 2007 03 3 27.6829
+BG334 2007 04 3 0.517585
+BG334 2007 05 2 0.647435
+BG334 2007 06 2 0.140486
+BG334 2007 07 2 27.4913
+BG341 2007 01 3 1.66492
+BG341 2007 03 5 6.8906
+BG341 2007 04 3 0.315852
+BG341 2007 05 4 62.2719
+BG341 2007 06 4 293.251
+BG341 2007 07 4 1057.39
+BG341 2007 08 4 141.546
+BG341 2007 09 2 23.2366
+BG342 2007 01 2 0.30804
+BG342 2007 03 2 128.902
+BG342 2007 04 2 291.04
+BG342 2007 05 2 0.0792935
+BG342 2007 07 2 860.014
+BG342 2007 08 3 4.4406
+BG342 2007 10 2 4.33875
+BG343 2007 06 4 205.937
+BG343 2007 07 4 193.754
+BG343 2007 08 5 1154.31
+BG343 2007 09 2 1.12145
+BG344 2007 03 5 1.85917
+BG344 2007 04 5 4.82415
+BG344 2007 05 2 3.05647
+BG344 2007 06 3 1.7138
+BG344 2007 07 3 5720.55
+BG344 2007 08 3 59.9997
+BG344 2007 09 2 2.61198
+BG411 2007 01 2 0.125264
+BG411 2007 03 2 19.4587
+BG411 2007 04 4 1.18276
+BG411 2007 05 2 0.202724
+BG411 2007 07 4 4.77007
+BG412 2007 01 2 357.321
+BG412 2007 02 5 15.001
+BG412 2007 03 5 1563.86
+BG412 2007 04 5 1118.17
+BG412 2007 05 5 79.8004
+BG412 2007 06 3 15.4517
+BG412 2007 07 3 1100.8
+BG412 2007 08 4 12.9193
+BG413 2007 01 3 5.14457
+BG413 2007 02 2 4.04579
+BG413 2007 03 2 91.8944
+BG413 2007 04 2 64.757
+BG413 2007 05 2 1.60664
+BG413 2007 06 2 7.62226
+BG413 2007 07 2 158.693
+BG413 2007 08 2 10.7716
+BG413 2007 09 2 1.542
+BG413 2007 10 2 10.4395
+BG414 2007 01 4 4.30643
+BG414 2007 02 4 4.16793
+BG414 2007 03 4 495.007
+BG414 2007 04 4 78.332
+BG414 2007 05 4 2.15944
+BG414 2007 07 3 25.7131
+BG414 2007 08 2 0.734826
+BG414 2007 09 2 4.46241
+BG415 2007 01 3 20.5053
+BG415 2007 02 5 5.29747
+BG415 2007 03 5 106.259
+BG415 2007 04 5 316.271
+BG415 2007 05 3 0.323577
+BG415 2007 06 4 21.6512
+BG415 2007 07 4 888.636
+BG415 2007 08 4 5.12635
+BG415 2007 09 2 19.5612
+BG415 2007 10 3 3.67903
+BG421 2007 01 3 16.6377
+BG421 2007 02 3 36.8495
+BG421 2007 03 3 284.924
+BG421 2007 04 3 200.269
+BG421 2007 05 4 2.23446
+BG421 2007 06 4 14.21
+BG421 2007 07 4 626.222
+BG421 2007 08 4 247.26
+BG422 2007 01 4 1.13109
+BG422 2007 02 3 4.25846
+BG422 2007 03 3 51.2923
+BG422 2007 04 2 1.36679
+BG422 2007 06 4 60.5828
+BG422 2007 07 4 5106.58
+BG422 2007 08 4 12972.6
+BG423 2007 01 3 330.791
+BG423 2007 02 2 0.745402
+BG423 2007 03 2 180.982
+BG423 2007 04 2 62.7641
+BG423 2007 05 4 0.452272
+BG423 2007 06 3 29.5529
+BG423 2007 07 3 1421.17
+BG423 2007 08 5 18.1706
+BG423 2007 09 2 1.00679
+BG424 2007 01 5 4.48651
+BG424 2007 02 3 5.26365
+BG424 2007 03 3 13.9579
+BG424 2007 04 3 16.2728
+BG424 2007 05 5 0.54032
+BG424 2007 07 5 319.625
+BG424 2007 08 5 1.38762
+BG424 2007 09 3 3.73571
+BG425 2007 01 5 1.0197
+BG425 2007 02 2 0.134967
+BG425 2007 03 2 6.44724
+BG425 2007 04 2 9.75379
+BG425 2007 05 3 0.422148
+BG425 2007 06 2 1.69251
+BG425 2007 07 2 34.3116
+BG425 2007 08 4 0.73277
+BG425 2007 09 3 2.6549
+</pre></div></div>
+</div>
+<p>and now we count</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> var in <span class="m">2005</span> <span class="m">2006</span> <span class="m">2007</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="nv">$var</span> input.txt <span class="p">|</span> wc -l
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+121
+280
+189
+</pre></div></div>
+</div>
+<p>Now we want to automatically count and save in a file how many observations exist from year 2000 to 2008 in input.txt file. For this use the serial number list loop function.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+rm -f input_wc.txt
+<span class="k">for</span> <span class="o">((</span><span class="nv">var</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> var&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> var++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="nv">$var</span> input.txt <span class="p">|</span> wc -l  &gt;&gt; input_wc.txt
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> head input_wc.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+62
+34
+48
+93
+46
+121
+280
+189
+2
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="If-condition-in-a-for-loop">
+<h2>If condition in a for loop<a class="headerlink" href="#If-condition-in-a-for-loop" title="Permalink to this headline">¶</a></h2>
+<p>As for the previews exercise, we want to automatically count how many observations exist from year 2000 to 2008 in input.txt file, but not for the year 2003. For this you should use the serial number list loop function with the if condition.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+rm no2003output.txt
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$year</span> !<span class="o">=</span> <span class="m">2003</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l  &gt;&gt; no2003output.txt
+<span class="k">fi</span>
+<span class="k">done</span>
+cat no2003output.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2778
+2643
+2641
+2894
+2837
+3011
+775
+0
+</pre></div></div>
+</div>
+<p>I need to know in each year which was the biggest fire and print it. I can use the sort command and get the largest fire in the last position.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$year</span> !<span class="o">=</span> <span class="m">2003</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> sort -k <span class="m">5</span>,5 -g <span class="p">|</span> tail -1
+<span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+GR253 2000 07 3 23216.3
+PT117 2001 08 464 7226.27
+PT118 2002 08 448 14574.7
+PT150 2004 07 5 16599
+PT164 2005 08 114 41830.3
+ES114 2006 08 554 52093.4
+BG422 2007 08 4 12972.6
+</pre></div></div>
+</div>
+<p><strong>Exercise</strong></p>
+<p>Perform the same loop but excluding the year from 2002 to 2004. Use the “man test” to see the option for the if condition. Googled “if statement with multiple condition bash”.</p>
+</div>
+<div class="section" id="Checking-the-flow-statement">
+<h2>Checking the flow statement<a class="headerlink" href="#Checking-the-flow-statement" title="Permalink to this headline">¶</a></h2>
+<p>How can I check that the results are correct and that i’m using the correct variables? By printing the variable during the process and if you need also in the file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+rm no2003output.txt
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$year</span> !<span class="o">=</span> <span class="m">2003</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> processing year <span class="nv">$year</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l &gt;&gt; no2003output.txt
+<span class="k">fi</span>
+<span class="k">done</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+processing year 2000
+processing year 2001
+processing year 2002
+processing year 2004
+processing year 2005
+processing year 2006
+processing year 2007
+processing year 2008
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> head no2003output.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2778
+2643
+2641
+2894
+2837
+3011
+775
+0
+</pre></div></div>
+</div>
+<p>I can also run manually a command and compare the results.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> grep <span class="s2">&quot; 2007 &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+<span class="o">!</span> grep <span class="s2">&quot; 2002 &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+775
+2641
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="nb">time</span> <span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$year</span> !<span class="o">=</span> <span class="m">2003</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span>
+    <span class="nb">echo</span> year <span class="nv">$year</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc
+<span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+year 2000
+   2778   13890   67910
+year 2001
+   2643   13215   64585
+year 2002
+   2641   13205   64534
+year 2004
+   2894   14470   70924
+year 2005
+   2837   14185   69493
+year 2006
+   3011   15055   73972
+year 2007
+    775    3875   19026
+year 2008
+      0       0       0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+real    0m0.033s
+user    0m0.029s
+sys     0m0.015s
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Debugging">
+<h2>Debugging<a class="headerlink" href="#Debugging" title="Permalink to this headline">¶</a></h2>
+<p>The shell reports message and status symbols in case of error syntax, incorrect commands or inexistent files. Here are reported the most common errors using the example:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2778
+2643
+2641
+3078
+2894
+2837
+3011
+775
+0
+</pre></div></div>
+</div>
+<p>Run the script and see the error results.</p>
+<p>The loop was not close and after the bash error a series of no sense python errors are reported.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+bash: line 3: syntax error: unexpected end of file
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-49-94fe56a6d559&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;for ((year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -l\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2360</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2361</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2362</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2363</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2364</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;for ((year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -l\n&#39;&#39; returned non-zero exit status 2.
+</pre></div></div>
+</div>
+<p>Bash: syntax error near unexpected token `(’</p>
+<p>The error is near the brackets. Often it is just a space or a bracket that has not been closed</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">(</span> <span class="o">(</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+bash: line 1: syntax error near unexpected token `(&#39;
+bash: line 1: `for ( (year=2000 ; year&lt;=2008 ; year++)); do&#39;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-50-186e4e61dddc&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;for ( (year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -l  \ndone   \n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2360</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2361</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2362</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2363</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2364</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;for ( (year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -l  \ndone   \n&#39;&#39; returned non-zero exit status 2.
+</pre></div></div>
+</div>
+<p>Bash command error: use “man -k” for searching the operation that you need.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grap <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+0
+0
+0
+0
+0
+0
+0
+0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+bash: line 2: grap: command not found
+</pre></div></div>
+</div>
+<p>Invalid command option: “wc: invalid option – ‘k’”. Read carefully the manual for the wc command.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">warnings</span><span class="p">;</span> <span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> txt/aver_month_nuts3_fire.asc  <span class="p">|</span> wc -k
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+wc: invalid option -- &#39;k&#39;
+Try &#39;wc --help&#39; for more information.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-55-74385b15380a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;for ((year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -k\ndone\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2360</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2361</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2362</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2363</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2364</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">/usr/lib/python3/dist-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;for ((year=2000 ; year&lt;=2008 ; year++)); do\n    grep &#34; $year &#34; txt/aver_month_nuts3_fire.asc  | wc -k\ndone\n&#39;&#39; returned non-zero exit status 1.
+</pre></div></div>
+</div>
+<p>The file or directory does not exist: search for the correct file and directory, by using “cd” and “pwd”</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> <span class="o">((</span><span class="nv">year</span><span class="o">=</span><span class="m">2000</span> <span class="p">;</span> year&lt;<span class="o">=</span><span class="m">2008</span> <span class="p">;</span> year++<span class="o">))</span><span class="p">;</span> <span class="k">do</span>
+    grep <span class="s2">&quot; </span><span class="nv">$year</span><span class="s2"> &quot;</span> ../aver_month_nuts3_fire.asc  <span class="p">|</span> wc -l
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+0
+0
+0
+0
+0
+0
+0
+0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+grep: ../aver_month_nuts3_fire.asc: No such file or directory
+</pre></div></div>
+</div>
+<p><strong>remove processed files</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> rm input_s.txt  input.txt input_wc.txt no2003output.txt
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../GDAL/01_gdal.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03_bashintro_osgeo.html" class="btn btn-neutral float-left" title="Linux Operation System as a base for Spatial Ecology Computing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Giuseppe Amatulli
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

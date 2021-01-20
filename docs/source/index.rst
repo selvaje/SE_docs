@@ -40,7 +40,8 @@ Documentation Contents
    :maxdepth: 1
    :caption: BASH
 
-   BASH/starting-with-bash
+   BASH/03_bashintro_osgeo.ipynb
+   BASH/03_bashinter_osgeo.ipynb
 
 .. toctree::
    :maxdepth: 1
@@ -62,13 +63,15 @@ Documentation Contents
    :maxdepth: 1
    :caption: GDAL
 
-   GDAL/01_gdal.ipynb
-
+   GDAL/01_gdal_osgeo.ipynb
+   GDAL/01_gdal_colab.ipynb
+   
 .. toctree::
    :maxdepth: 1
    :caption: PKTOOLS
 
-   PKTOOLS/02_pktools.ipynb
+   PKTOOLS/02_pktools_osgeo.ipynb
+   PKTOOLS/02_pktools_colab.ipynb
 
 .. toctree::
    :maxdepth: 1

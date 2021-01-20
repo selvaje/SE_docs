@@ -1,0 +1,1293 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use PKTOOLS for raster/vector operations - colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Python" href="../PYTHON/01_Python_Intro.html" />
+    <link rel="prev" title="Use PKTOOLS for raster/vector operations" href="02_pktools_osgeo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+          
+
+          
+            
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashinter_osgeo.html">Manipulate text files in bash</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal.html">Use GDAL/OGR for raster/vector operations</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PKTOOLS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="02_pktools_osgeo.html">Use PKTOOLS for raster/vector operations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use PKTOOLS for raster/vector operations - colab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-Google-Collaboratory">Setting working directory for the Google Collaboratory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Install-pktools">Install pktools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-PKTOOLS">Start to use PKTOOLS</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Use PKTOOLS for raster/vector operations - colab</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/PKTOOLS/02_pktools_colab.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Use-PKTOOLS-for-raster/vector-operations---colab">
+<h1>Use PKTOOLS for raster/vector operations - colab<a class="headerlink" href="#Use-PKTOOLS-for-raster/vector-operations---colab" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Setting-working-directory-for-the-Google-Collaboratory">
+<h2>Setting working directory for the Google Collaboratory<a class="headerlink" href="#Setting-working-directory-for-the-Google-Collaboratory" title="Permalink to this headline">¶</a></h2>
+<p>PKTOOLS is a suite of utilities written in C++ for image processing with a focus on remote sensing applications. It relies on the Geospatial Data Abstraction Library (GDAL and OGR, <a class="reference external" href="http://www.gdal.org">http://www.gdal.org</a>) (source <a class="reference external" href="http://pktools.nongnu.org/html/index.html">http://pktools.nongnu.org/html/index.html</a>)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Mounted at /gdrive
+</pre></div></div>
+</div>
+<p>List the mounted gdrive. If you have folders and files in you gdrive you should be able to see them</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> ls /gdrive/MyDrive
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ auto
+ Big_blue
+&#39;Colab Notebooks&#39;
+&#39;Dataset for global stream network and MOSQLAND.gdoc&#39;
+&#39;Discharge Tasks.gdoc&#39;
+ Elena_intro.gdoc
+ GeoCompCourse
+ GeoCompYaleMay2020
+ grants
+&#39;ID PASSPORT&#39;
+ LandscapeGenetic
+ Lawsuit
+ Margosa
+ panniers-trailers.pdf
+ RDOC_CMS
+ review
+ Sofia_intro.gdoc
+ Stream_Variables_dataset_selected.gsheet
+ Taino
+ yale
+</pre></div></div>
+</div>
+<p>Download the SE_data folder yousing git</p>
+<p>First remove the directory if already exist, then enter in the directory.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%</span><span class="k">rm</span> -rf /gdrive/MyDrive/SE_data
+<span class="o">%</span><span class="k">cd</span> /gdrive/MyDrive
+<span class="o">%</span><span class="k">ls</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/gdrive/MyDrive
+ <span class="ansi-blue-intense-fg ansi-bold">auto</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Big_blue</span>/
+<span class="ansi-blue-intense-fg ansi-bold">&#39;Colab Notebooks&#39;</span>/
+&#39;Dataset for global stream network and MOSQLAND.gdoc&#39;
+&#39;Discharge Tasks.gdoc&#39;
+ Elena_intro.gdoc
+ <span class="ansi-blue-intense-fg ansi-bold">GeoCompCourse</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">GeoCompYaleMay2020</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">grants</span>/
+<span class="ansi-blue-intense-fg ansi-bold">&#39;ID PASSPORT&#39;</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">LandscapeGenetic</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Lawsuit</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Margosa</span>/
+ panniers-trailers.pdf
+ <span class="ansi-blue-intense-fg ansi-bold">RDOC_CMS</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">review</span>/
+ Sofia_intro.gdoc
+ Stream_Variables_dataset_selected.gsheet
+ <span class="ansi-blue-intense-fg ansi-bold">Taino</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">yale</span>/
+</pre></div></div>
+</div>
+<p>Then perform the downloading</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>git clone https://github.com/selvaje/SE_data.git
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Cloning into &#39;SE_data&#39;...
+remote: Enumerating objects: 195, done.
+remote: Counting objects: 100% (195/195), done.
+remote: Compressing objects: 100% (155/155), done.
+remote: Total 262 (delta 22), reused 190 (delta 20), pack-reused 67
+Receiving objects: 100% (262/262), 78.99 MiB | 17.46 MiB/s, done.
+Resolving deltas: 100% (25/25), done.
+Checking out files: 100% (162/162), done.
+</pre></div></div>
+</div>
+<p>Check if the SE_data folder is full</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> ls -l SE_data/*
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-rw------- 1 root root   58 Jan 19 22:45 SE_data/README.md
+
+SE_data/exercise:
+total 187
+-rw------- 1 root root   8591 Jan 19 22:45 00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
+-rw------- 1 root root 153327 Jan 19 22:45 01_gdal.ipynb
+-rw------- 1 root root  24271 Jan 19 22:45 02_pktools.ipynb
+drwx------ 7 root root   4096 Jan 19 22:45 geodata
+
+SE_data/pktools_local:
+total 15
+-rw------- 1 root root 11141 Jan 19 22:45 00_pktools_gdrive_install.ipynb
+drwx------ 5 root root  4096 Jan 19 22:45 usr
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Install-pktools">
+<h2>Install pktools<a class="headerlink" href="#Install-pktools" title="Permalink to this headline">¶</a></h2>
+<p>pktools is not present in Colab but is possible to install via the “apt install” comand. Pay attention that if you re-open another colab you have to re-install pktools</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> apt install pktools
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+The following additional packages will be installed:
+  libalgorithms1 libfann2 libfileclasses1 libgsl23 libgslcblas0
+  libimageclasses1 liblas3 liblasclasses1
+Suggested packages:
+  libfann-dev libfann-doc gsl-ref-psdoc | gsl-doc-pdf | gsl-doc-info
+  | gsl-ref-html libgeotiff-epsg
+The following NEW packages will be installed:
+  libalgorithms1 libfann2 libfileclasses1 libgsl23 libgslcblas0
+  libimageclasses1 liblas3 liblasclasses1 pktools
+0 upgraded, 9 newly installed, 0 to remove and 12 not upgraded.
+Need to get 2,347 kB of archives.
+After this operation, 9,702 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libgslcblas0 amd64 2.4+dfsg-6 [79.7 kB]
+Get:2 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libgsl23 amd64 2.4+dfsg-6 [823 kB]
+Get:3 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libimageclasses1 amd64 2.6.7.3+ds-1 [57.9 kB]
+Get:4 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libalgorithms1 amd64 2.6.7.3+ds-1 [130 kB]
+Get:5 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libfann2 amd64 2.2.0+ds-3 [64.5 kB]
+Get:6 http://archive.ubuntu.com/ubuntu bionic/universe amd64 libfileclasses1 amd64 2.6.7.3+ds-1 [12.7 kB]
+Get:7 http://archive.ubuntu.com/ubuntu bionic/universe amd64 liblas3 amd64 1.8.1-6build1 [270 kB]
+Get:8 http://archive.ubuntu.com/ubuntu bionic/universe amd64 liblasclasses1 amd64 2.6.7.3+ds-1 [15.2 kB]
+Get:9 http://archive.ubuntu.com/ubuntu bionic/universe amd64 pktools amd64 2.6.7.3+ds-1 [894 kB]
+Fetched 2,347 kB in 2s (1,435 kB/s)
+Selecting previously unselected package libgslcblas0:amd64.
+(Reading database ... 146364 files and directories currently installed.)
+Preparing to unpack .../0-libgslcblas0_2.4+dfsg-6_amd64.deb ...
+Unpacking libgslcblas0:amd64 (2.4+dfsg-6) ...
+Selecting previously unselected package libgsl23:amd64.
+Preparing to unpack .../1-libgsl23_2.4+dfsg-6_amd64.deb ...
+Unpacking libgsl23:amd64 (2.4+dfsg-6) ...
+Selecting previously unselected package libimageclasses1.
+Preparing to unpack .../2-libimageclasses1_2.6.7.3+ds-1_amd64.deb ...
+Unpacking libimageclasses1 (2.6.7.3+ds-1) ...
+Selecting previously unselected package libalgorithms1.
+Preparing to unpack .../3-libalgorithms1_2.6.7.3+ds-1_amd64.deb ...
+Unpacking libalgorithms1 (2.6.7.3+ds-1) ...
+Selecting previously unselected package libfann2:amd64.
+Preparing to unpack .../4-libfann2_2.2.0+ds-3_amd64.deb ...
+Unpacking libfann2:amd64 (2.2.0+ds-3) ...
+Selecting previously unselected package libfileclasses1.
+Preparing to unpack .../5-libfileclasses1_2.6.7.3+ds-1_amd64.deb ...
+Unpacking libfileclasses1 (2.6.7.3+ds-1) ...
+Selecting previously unselected package liblas3.
+Preparing to unpack .../6-liblas3_1.8.1-6build1_amd64.deb ...
+Unpacking liblas3 (1.8.1-6build1) ...
+Selecting previously unselected package liblasclasses1.
+Preparing to unpack .../7-liblasclasses1_2.6.7.3+ds-1_amd64.deb ...
+Unpacking liblasclasses1 (2.6.7.3+ds-1) ...
+Selecting previously unselected package pktools.
+Preparing to unpack .../8-pktools_2.6.7.3+ds-1_amd64.deb ...
+Unpacking pktools (2.6.7.3+ds-1) ...
+Setting up liblas3 (1.8.1-6build1) ...
+Setting up liblasclasses1 (2.6.7.3+ds-1) ...
+Setting up libfann2:amd64 (2.2.0+ds-3) ...
+Setting up libfileclasses1 (2.6.7.3+ds-1) ...
+Setting up libgslcblas0:amd64 (2.4+dfsg-6) ...
+Setting up libgsl23:amd64 (2.4+dfsg-6) ...
+Setting up libimageclasses1 (2.6.7.3+ds-1) ...
+Setting up libalgorithms1 (2.6.7.3+ds-1) ...
+Setting up pktools (2.6.7.3+ds-1) ...
+Processing triggers for libc-bin (2.27-3ubuntu1.3) ...
+/sbin/ldconfig.real: /usr/local/lib/python3.6/dist-packages/ideep4py/lib/libmkldnn.so.0 is not a symbolic link
+
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+</pre></div></div>
+</div>
+<p>Test if pktools is working fine by running a pktools command and getting the help</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> pkgetmask --help
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+   -i       --input                Input image file
+   -o       --output               Output mask file
+   -min     --min                  Values smaller than min threshold(s) are masked as invalid. Use one threshold for each band
+   -max     --max                  Values greater than max threshold(s) are masked as invalid. Use one threshold for each band
+   -data    --data                 value(s) for valid pixels: between min and max (default: 1)
+   -nodata   --nodata               value(s) for invalid pixels: not between min and max (default: 0)
+   -b       --band                 band(s) used for mask (default: 0)
+   -p       --operator             Operator: [AND,OR]. (default: OR)
+   -ot      --otype                Data type for output image ({Byte/Int16/UInt16/UInt32/Int32/Float32/Float64/CInt16/CInt32/CFloat32/CFloat64}). Empty string: inherit type from input image (default: Byte)
+   -of      --oformat              Output image format (see also gdal_translate). (default: GTiff)
+   -co      --co                   Creation option for output file. Multiple options can be specified.
+   -ct      --ct                   color table (file with 5 columns: id R G B ALFA (0: transparent, 255: solid)
+
+Usage: pkgetmask -i input -o output
+
+short option -h shows basic options only, use long option --help to show all options
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Start-to-use-PKTOOLS">
+<h2>Start to use PKTOOLS<a class="headerlink" href="#Start-to-use-PKTOOLS" title="Permalink to this headline">¶</a></h2>
+<p><strong>Create a mask</strong></p>
+<p>Create a mask with by manipulate a text file.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="nb">cd</span> /gdrive/MyDrive/SE_data
+gdal_translate -of  XYZ   geodata/vegetation/ETmean08-11_crop.tif geodata/vegetation/ETmean08-11_crop.txt
+awk <span class="s1">&#39;{if ($3&gt;2 &amp;&amp; $3&lt;4) {print $1,$2,50 } else {print}}&#39;</span> geodata/vegetation/ETmean08-11_crop.txt &gt; geodata/vegetation/ETmean08-11_crop_trh.txt
+gdal_translate -ot Byte geodata/vegetation/ETmean08-11_crop_trh.txt geodata/vegetation/ETmean08-11_crop_trh.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 240, 240
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 240, 240
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>The same operation can be done more efficient using pkgetmask. We can create 3 masks using different thresholds values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">1</span>  -max  <span class="m">2</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhA.tif
+pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">5</span>  -max  <span class="m">8</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhB.tif
+pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">0</span>  -max  <span class="m">10</span> -data <span class="m">0</span> -nodata <span class="m">1</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhC.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Set a mask to other image</strong></div>
+<div class="line">Use the prepared mask and apply to the image.</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
+-m geodata/vegetation/ETmean08-11_01_trhA.tif  -msknodata <span class="m">1</span> -nodata  -9 <span class="se">\</span>
+-m geodata/vegetation/ETmean08-11_01_trhB.tif  -msknodata <span class="m">1</span> -nodata  -5 <span class="se">\</span>
+-m geodata/vegetation/ETmean08-11_01_trhC.tif  -msknodata <span class="m">1</span> -nodata -10 <span class="se">\</span>
+-i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Composite images</strong></div>
+<div class="line">create a mask to apply during the composite</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min <span class="m">0</span> -max <span class="m">25</span> -data <span class="m">0</span> -nodata <span class="m">1</span> -ot Byte -i geodata/LST/LST_MOYDmax_month1.tif -o geodata/LST/LST_MOYDmax_month1-msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>Calculate mean and standard deviation with several images</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkcomposite <span class="k">$(for</span> file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
+pkcomposite <span class="k">$(for</span> file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>An alternative way is to use pkstatprofile</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="c1"># Create a multiband vrt</span>
+gdalbuildvrt -overwrite -separate geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif
+<span class="c1"># Calculate mean and standard deviation</span>
+pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata <span class="m">0</span> -f mean -f stdev  -i geodata/LST/LST_MOYDmax_month.vrt -o geodata/LST/LST_MOYDmax_month_mean_stdev.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Filter/Aggregate images</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="c1"># mean aggregation</span>
+pkfilter -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -nodata <span class="m">0</span> -ot Float32 -dx <span class="m">10</span> -dy <span class="m">10</span> -f mean -d <span class="m">10</span> -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif
+<span class="c1"># mean circular moving window</span>
+pkfilter -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -nodata <span class="m">0</span> -ot Float32 -dx <span class="m">11</span> -dy <span class="m">11</span> -f mean -c  -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+opening output image geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif with 1 bands
+0...10...20...30...40...50...60...70...80...90...100 - done.
+opening output image geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif with 1 bands
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Images statistic and histogram</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkstat -hist  -src_min <span class="m">0</span>  -i    geodata/temperature/ug_bio_3.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0 0
+1 0
+2 0
+3 0
+4 0
+5 0
+6 0
+7 0
+8 0
+9 0
+10 0
+11 0
+12 0
+13 0
+14 0
+15 0
+16 0
+17 0
+18 0
+19 0
+20 0
+21 0
+22 0
+23 0
+24 0
+25 0
+26 0
+27 0
+28 0
+29 0
+30 0
+31 0
+32 0
+33 0
+34 0
+35 0
+36 0
+37 0
+38 0
+39 0
+40 0
+41 0
+42 0
+43 0
+44 0
+45 0
+46 0
+47 0
+48 0
+49 0
+50 0
+51 0
+52 0
+53 0
+54 0
+55 0
+56 0
+57 0
+58 0
+59 0
+60 0
+61 2
+62 9
+63 31
+64 138
+65 235
+66 288
+67 481
+68 589
+69 803
+70 1989
+71 3471
+72 4490
+73 5513
+74 6938
+75 12332
+76 21295
+77 23643
+78 20937
+79 24687
+80 36864
+81 32858
+82 35070
+83 33486
+84 30120
+85 25312
+86 19138
+87 11203
+88 5892
+89 5799
+90 4372
+91 5354
+92 2456
+93 168
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkstat -hist  -nbin  <span class="m">100</span> -src_min <span class="m">0</span>  -i    geodata/vegetation/GPPstdev08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.02110012531 616
+0.06330037594 0
+0.1055006266 30
+0.1477008772 624
+0.1899011278 650
+0.2321013784 555
+0.2743016291 589
+0.3165018797 602
+0.3587021303 634
+0.4009023809 695
+0.4431026316 761
+0.4853028822 1072
+0.5275031328 2287
+0.5697033834 5055
+0.6119036341 9187
+0.6541038847 12469
+0.6963041353 12988
+0.7385043859 11639
+0.7807046366 10078
+0.8229048872 8994
+0.8651051378 7597
+0.9073053885 6994
+0.9495056391 6978
+0.9917058897 8092
+1.03390614 9392
+1.076106391 10288
+1.118306642 11877
+1.160506892 13784
+1.202707143 15860
+1.244907393 17719
+1.287107644 18117
+1.329307895 16990
+1.371508145 14917
+1.413708396 11927
+1.455908647 8212
+1.498108897 4854
+1.540309148 2430
+1.582509398 1295
+1.624709649 1298
+1.6669099 1862
+1.70911015 2812
+1.751310401 3990
+1.793510652 5286
+1.835710902 6235
+1.877911153 6864
+1.920111403 7441
+1.962311654 7356
+2.004511905 7345
+2.046712155 8170
+2.088912406 9272
+2.131112657 9107
+2.173312907 7296
+2.215513158 4944
+2.257713408 3490
+2.299913659 2446
+2.34211391 1688
+2.38431416 1415
+2.426514411 1180
+2.468714662 995
+2.510914912 860
+2.553115163 706
+2.595315413 564
+2.637515664 441
+2.679715915 347
+2.721916165 318
+2.764116416 269
+2.806316667 256
+2.848516917 217
+2.890717168 170
+2.932917418 115
+2.975117669 112
+3.01731792 107
+3.05951817 86
+3.101718421 63
+3.143918672 44
+3.186118922 61
+3.228319173 53
+3.270519423 44
+3.312719674 45
+3.354919925 41
+3.397120175 31
+3.439320426 37
+3.481520677 42
+3.523720927 38
+3.565921178 44
+3.608121428 55
+3.650321679 54
+3.69252193 51
+3.73472218 46
+3.776922431 62
+3.819122682 45
+3.861322932 49
+3.903523183 34
+3.945723433 17
+3.987923684 15
+4.030123935 6
+4.072324185 9
+4.114524436 1
+4.156724687 0
+4.198924937 1
+</pre></div></div>
+</div>
+<p><strong>Images reclassification</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+pkstat  -hist -i geodata/temperature/ug_bio_3.tif  <span class="p">|</span> grep -v <span class="s2">&quot; 0&quot;</span>  <span class="p">|</span> awk <span class="s1">&#39;{ if ($1&lt;75) { print $1 , 0 } else { print $1 , 1 }  }&#39;</span> &gt; geodata/temperature/reclass_ug_bio_3.txt
+pkreclass -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif  -o geodata/temperature/reclass_ug_bio_3.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Zonal statistic (polygon extraction)</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+rm -f geodata/shp/polygons_stat.*
+pkextractogr -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min    -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/polygons.sqlite    -o   geodata/shp/polygons_stat.sqlite
+
+pkextractogr -f <span class="s2">&quot;ESRI Shapefile&quot;</span> -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/polygons.sqlite -o   geodata/shp/polygons_stat.shp
+
+<span class="c1"># we can also create a csv that can be manipulate later on with awk</span>
+rm  -f geodata/shp/polygons_stat.csv
+pkextractogr -f CSV -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min    -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/polygons.sqlite    -o   geodata/shp/polygons_stat.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+processing layer polygons
+0...10...20...30...40...50...60...70...80...90...100 - done.
+processing layer polygons
+0...10...20...30...40...50...60...70...80...90...100 - done.
+processing layer polygons
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Zonal statistic (point extraction)</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="c1"># at point location</span>
+rm geodata/shp/point_stat.csv
+pkextractogr -f CSV -srcnodata -339999995214436424907732413799364296704 -r mean -r stdev -r min    -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/presence.shp -o   geodata/shp/point_stat.csv
+<span class="c1"># at point location + 1 pixel around</span>
+rm geodata/shp/point-buf_stat.csv
+pkextractogr -f CSV -buf <span class="m">2</span> -srcnodata -339999995214436424907732413799364296704 -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/presence.shp -o geodata/shp/point-buf_stat.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+processing layer presence
+0...10...20...30...40...50...60...70...80...90...100 - done.
+processing layer presence
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Remove all the output</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetation/ETmean08-11_crop_trh.tif geodata/vegetation/ETmean08-11_crop_trh.txt vegetation/ETmean08-11_crop.txt geodata/vegetation/ETmosaic.vrt geodata/vegetation/ETmosaic.tif  geodata/vegetation/stack_??.tif geodata/vegetation/stack.vrt geodata/vegetation/tiles.* geodata/vegetation/ETmean08-11_crop_proximity.tif geodata/vegetation/ETmean08-11_crop_buffer.tif  geodata/dem/slope.tif geodata/dem/aspect.tif  geodata/dem/tri.tif geodata/dem/tpi.tif geodata/dem/roughness.tif geodata/vegetation/ETmean08-11_01_trh?.tif geodata/LST/LST_MOYDmax_month1-msk.tif geodata/LST/LST_MOYDmax_monthStdev.tif geodata/LST/LST_MOYDmax_monthMean.tif geodata/LST/LST_MOYDmax_month_mean_stdev.tif geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif  geodata/temperature/reclass_ug_bio_3.tif geodata/temperature/reclass_ug_bio_3.txt geodata/shp/polygons_stat.csv geodata/shp/polygons.sqlite geodata/shp/point-buf_stat.csv geodata/shp/point_stat.csv geodata/shp/polygons_stat.* geodata/shp/TM_LARGE_BORDERS.shp.*  geodata/shp/TM_UGANDA_BORDERS-0.3.* geodata/vegetation/ETmean08-11_crop.txt
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../PYTHON/01_Python_Intro.html" class="btn btn-neutral float-right" title="Introduction to Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02_pktools_osgeo.html" class="btn btn-neutral float-left" title="Use PKTOOLS for raster/vector operations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, Giuseppe Amatulli
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
