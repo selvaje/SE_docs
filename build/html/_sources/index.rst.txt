@@ -35,7 +35,7 @@ Documentation Contents
    :caption: WEB SEMINARS
 
    WEBSEMINAR/webseminar.md
-
+      
 .. toctree::
    :maxdepth: 1
    :caption: BASH

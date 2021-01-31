@@ -30,3 +30,5 @@ This workshop introduces students to perform Geocomputation analysis in High Per
 - [Youtube English Version](https://youtu.be/gcQ_74v87xk)
 
 - [Youtube Version en Español](https://youtu.be/KXiVF0l59Ok)
+
+
