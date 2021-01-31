@@ -35,6 +35,7 @@ Documentation Contents
    :caption: WEB SEMINARS
 
    WEBSEMINAR/webseminar.md
+   WEBSEMINAR/lect_20210201_Policy_Html/lect_20210201_Policy.html
       
 .. toctree::
    :maxdepth: 1
