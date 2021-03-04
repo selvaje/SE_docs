@@ -35,7 +35,6 @@ Documentation Contents
    :caption: WEB SEMINARS
 
    WEBSEMINAR/webseminar.md
-   WEBSEMINAR/lect_20210201_Policy_Html/lect_20210201_Policy.html
       
 .. toctree::
    :maxdepth: 1
@@ -58,10 +57,6 @@ Documentation Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: R
-
-.. toctree::
-   :maxdepth: 1
    :caption: GDAL
 
    GDAL/01_gdal_osgeo.ipynb
@@ -78,7 +73,7 @@ Documentation Contents
    :maxdepth: 1
    :caption: R
 
-   R/
+   R/01_basic_r.html
 
 .. toctree::
    :maxdepth: 2
