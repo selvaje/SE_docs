@@ -70,7 +70,7 @@ Documentation Contents
    PKTOOLS/02_pktools_colab.ipynb
 
 .. toctree::
-   :maxdepth: 2
+   :titlesonly:
    :caption: R
 
    R/05_R_Intro
