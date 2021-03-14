@@ -1,0 +1,2771 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>BIO401-01/598-02 &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction to Python" href="../PYTHON/01_Python_Intro.html" />
+    <link rel="prev" title="Use PKTOOLS for raster/vector operations - colab" href="../PKTOOLS/02_pktools_colab.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+          
+
+          
+            
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashinter_osgeo.html">Manipulate text files in bash</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/01_gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/02_pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/02_pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BIO401-01/598-02</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Mar. 15-2021">Mar. 15 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#R-is-a-script-language-for-statistical-data-analysis-and-manipulation.">R is a script language for statistical data analysis and manipulation.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#home-page-:-https://cran.r-project.org/">home page : https://cran.r-project.org/</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Initial-Settings">Initial Settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#1.-miniconda-installation">1. miniconda installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#2.-installing-R-kernel">2. installing R-kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#3.-installing-jupterlab">3. installing jupterlab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#How-to-run">How to run</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Installing-packages">Installing packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Interfacing-with-the-system">Interfacing with the system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Getting-help">Getting help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#As-a-caculator">As a caculator</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Logic-Operations">Logic Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-structures">Data structures</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#vectors-:-the-heart-of-R">vectors : the heart of R</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Missing-Values">Missing Values</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Working-with-strings">Working with strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Factors">Factors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Set-Operations">Set Operations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#List-:-contains-that-can-hold-different-types">List : contains that can hold different types</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list-and-delete-R-objects">list and delete R objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Frames">Data Frames</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Dataframe-construction">Dataframe construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#Data-selection-and-manipulation">Data selection and manipulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Reading-and-Writing-Files">Reading and Writing Files</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#Exercise">Exercise</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#break-and-next">break and next</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#id1">Exercise</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Basic-Graphs">Basic Graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Assignment">Assignment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>BIO401-01/598-02</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/R/05_R_Intro.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<h1><center><p>R Introduction</p>
+</center></h1><div class="section" id="BIO401-01/598-02">
+<h1>BIO401-01/598-02<a class="headerlink" href="#BIO401-01/598-02" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="Mar. 15-2021">
+<h1>Mar. 15 2021<a class="headerlink" href="#Mar. 15-2021" title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="R-is-a-script-language-for-statistical-data-analysis-and-manipulation.">
+<h1>R is a script language for statistical data analysis and manipulation.<a class="headerlink" href="#R-is-a-script-language-for-statistical-data-analysis-and-manipulation." title="Permalink to this headline">¶</a></h1>
+</div>
+<div class="section" id="home-page-:-https://cran.r-project.org/">
+<h1>home page : <a class="reference external" href="https://cran.r-project.org/">https://cran.r-project.org/</a><a class="headerlink" href="#home-page-:-https://cran.r-project.org/" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Initial-Settings">
+<h2>Initial Settings<a class="headerlink" href="#Initial-Settings" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="1.-miniconda-installation">
+<h1>1. miniconda installation<a class="headerlink" href="#1.-miniconda-installation" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://docs.conda.io/en/latest/miniconda.html">https://docs.conda.io/en/latest/miniconda.html</a></p>
+<p>Download the latest shell script</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+<p>Make the miniconda installation script executable</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ chmod +x Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+<p>Run miniconda installation script</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ./Miniconda3-latest-Linux-x86_64.sh
+</pre></div>
+</div>
+<p>Choose yes along the course of installation</p>
+<p>After successful installation, promote becomes :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ (base) user@osgeolive
+</pre></div>
+</div>
+</div>
+<div class="section" id="2.-installing-R-kernel">
+<h1>2. installing R-kernel<a class="headerlink" href="#2.-installing-R-kernel" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install -c r r-irkernel
+</pre></div>
+</div>
+</div>
+<div class="section" id="3.-installing-jupterlab">
+<h1>3. installing jupterlab<a class="headerlink" href="#3.-installing-jupterlab" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ conda install jupterlab
+</pre></div>
+</div>
+<div class="section" id="How-to-run">
+<h2>How to run<a class="headerlink" href="#How-to-run" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>batch mode</p>
+<p>$ R CMD BATCH script.R</p>
+</li>
+</ol>
+<p>help for the batch mode</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ R CMD command --help
+</pre></div>
+</div>
+<p>for example</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ R CMD INSTALL --help
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>interactive mode</p></li>
+</ol>
+<p>console : “&gt;” as the R prompt</p>
+<p>common IDE (integrated development environment) for R</p>
+<ul class="simple">
+<li><p>R studio</p></li>
+<li><p>Jupyter-notebook</p></li>
+<li><p>ESS(emacs speaks statistics)</p></li>
+<li><p>R commander, etc.</p></li>
+</ul>
+</div>
+<div class="section" id="Installing-packages">
+<h2>Installing packages<a class="headerlink" href="#Installing-packages" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;package_name&quot;)
+
+&gt; install.packages(c(&quot;ggplots&quot;,&quot;rgdal&quot;,&quot;sp&quot;,&quot;raster&quot;))
+</pre></div>
+</div>
+</div>
+<div class="section" id="Interfacing-with-the-system">
+<h2>Interfacing with the system<a class="headerlink" href="#Interfacing-with-the-system" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; dir() #  show files in the current directory
+
+&gt; getwd() #  is asking for the current working directory
+</pre></div>
+</div>
+</div>
+<div class="section" id="Getting-help">
+<h2>Getting help<a class="headerlink" href="#Getting-help" title="Permalink to this headline">¶</a></h2>
+<p>R provides help with function and commands. On-line help gives useful information as well. Getting used to R help is a key to successful statistical modelling. The online help can be accessed in HTML format by typing:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; help.start()
+</pre></div>
+</div>
+<p>A keyword search is possible using the Search Engine and Keywords link. You can also use the help() or ? functions.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; help(dir)
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; ? dir
+</pre></div>
+</div>
+</div>
+<div class="section" id="As-a-caculator">
+<h2>As a caculator<a class="headerlink" href="#As-a-caculator" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[118]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">3</span> <span class="o">+</span> <span class="m">5</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+8</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">sin</span><span class="p">(</span><span class="kc">pi</span><span class="o">/</span><span class="m">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">2</span><span class="o">^</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+8</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">5</span><span class="o">/</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1.66666666666667</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">5</span><span class="o">%%</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+2</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">5</span><span class="o">%/%</span><span class="m">3</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1</div>
+</div>
+</div>
+<div class="section" id="Logic-Operations">
+<h2>Logic Operations<a class="headerlink" href="#Logic-Operations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>AND operator &amp;</p></li>
+<li><p>OR operator |</p></li>
+<li><p>NOT operator !</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">12</span> <span class="o">&gt;</span> <span class="m">5</span> <span class="o">&amp;</span> <span class="m">12</span> <span class="o">&lt;</span> <span class="m">15</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span> <span class="kc">TRUE</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+FALSE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="kc">TRUE</span> <span class="o">|</span> <span class="kc">FALSE</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+</div>
+<div class="section" id="Data-structures">
+<h2>Data structures<a class="headerlink" href="#Data-structures" title="Permalink to this headline">¶</a></h2>
+<p>R objects</p>
+<p>The entities R operates on are technically known as objects. Examples are “vectors of numeric (real)” or “complex values”, “vectors of logical” values and “vectors of character strings”. These are known as “atomic” structures since their components are all of the same type, or mode, namely numeric, complex, logical, character and raw. R also operates on objects called “lists”, which are of mode list. These are ordered sequences of objects which individually can be of any mode. Lists are known as
+“recursive” rather than atomic structures since their components can themselves be lists in their own right. The other recursive structures are those of mode function and expression.</p>
+<p>By the “mode” of an object we mean the basic type of its fundamental constituents. This is a special case of a “property” of an object. Another property of every object is its “length.” The functions mode(object) and length(object) can be used to find out the mode and length of any defined structure 10.</p>
+<p>Further properties of an object are usually provided by attributes(object). Because of this, mode and length are also called “intrinsic attributes” of an object. For example, if z is a complex vector of length 100, then in an expression mode(z) is the character string “complex” and length(z) is 100.</p>
+</div>
+</div>
+<div class="section" id="vectors-:-the-heart-of-R">
+<h1>vectors : the heart of R<a class="headerlink" href="#vectors-:-the-heart-of-R" title="Permalink to this headline">¶</a></h1>
+<p>Vectors are combinations of scalars in a string structure. Vectors must have all values of the same mode. Thus any given vector must be unambiguously either logical, numeric, complex, character or raw. (The only apparent exception to this rule is the special “value” listed as NA for quantities not available, but in fact there are several types of NA). Note that a vector can be empty and still have a mode. For example the empty character string vector is listed as character(0) and the empty
+numeric vector as numeric(0).</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; help(vector)
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># &quot;&lt;-&quot; is the  assignment operator in R.</span>
+<span class="c1"># &quot;c&quot; stands for concatenate.</span>
+
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># subsetting operation</span>
+<span class="c1"># &quot;[]&quot; used to retrieve vector elements</span>
+<span class="c1"># &quot;:&quot; used to give a range for retrieval</span>
+<span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+<span class="n">x</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>5</li><li>8</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+3</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'numeric'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># scalar not really exist in R</span>
+<span class="c1"># individual numbers actually single element vectors</span>
+
+<span class="n">x</span> <span class="o">&lt;-</span> <span class="m">3.5</span>
+<span class="n">x</span>
+<span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+3.5</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+3.5</div>
+</div>
+<p>Two common functions we can use to generate a sequence.</p>
+<p>The seq() function “seq(from = number, to = number, by = number)” allow to create a vector starting from a value to another by a defined increment:</p>
+<p>The replicate function “rep(x,times)” enables you to replicate a vector several times in a more complex vector. Calculations can be included to form vectors as well and functions can be combined in the same command.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">1</span><span class="o">:</span><span class="m">10</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">seq</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">0.25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>1.25</li><li>1.5</li><li>1.75</li><li>2</li><li>2.25</li><li>2.5</li><li>2.75</li><li>3</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">one2three</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span>
+<span class="nf">rep</span><span class="p">(</span><span class="n">one2three</span><span class="p">,</span><span class="m">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li><li>1</li><li>2</li><li>3</li></ol></div>
+</div>
+</div>
+<div class="section" id="Missing-Values">
+<h1>Missing Values<a class="headerlink" href="#Missing-Values" title="Permalink to this headline">¶</a></h1>
+<p>In some cases the components of a vector or of an R object more in general, may not be completely known. When an element or value is “not available” or a “missing value” in the statistical sense, a place within a vector may be reserved for it by assigning it the special value NA. Any operation on an NA becomes an NA.</p>
+<p>The function is.na(x) gives a logical vector of the same size as x with value TRUE if and only if the corresponding element in x is NA.</p>
+<p>Functions : dealing with NAs</p>
+<p>na.fail returns the object if it does not contain any missing values, and signals an error otherwise.</p>
+<p>na.omit returns the object with incomplete cases removed.</p>
+<p>na.pass returns the object unchanged.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="kc">NA</span><span class="p">)</span>
+<span class="n">ind</span> <span class="o">&lt;-</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li></ol></div>
+</div>
+<p>There is a second kind of “missing” values which are produced by numerical computation, the so-called Not a Number, NaN , values.</p>
+<p>Examples are 0/0 or Inf - Inf which both give NaN since the result cannot be defined sensibly.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="kc">Inf</span><span class="o">-</span><span class="kc">Inf</span>
+<span class="m">0</span><span class="o">/</span><span class="m">0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+NaN</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+NaN</div>
+</div>
+<p>is.na(xx) is TRUE both for NA and NaN values. To differentiate these, is.nan(xx) is only TRUE for NaNs. Missing values are sometimes printed as when character vectors are printed without quotes.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">z</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="kc">NA</span><span class="p">,</span><span class="m">0</span><span class="o">/</span><span class="m">0</span><span class="p">)</span>
+<span class="n">is.not.available</span> <span class="o">&lt;-</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+<span class="n">is.not.a.number</span> <span class="o">&lt;-</span><span class="nf">is.nan</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="n">is.not.a.number</span>
+<span class="n">is.not.available</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li></ol></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>FALSE</li><li>FALSE</li><li>FALSE</li><li>TRUE</li><li>TRUE</li></ol></div>
+</div>
+<p>On the other hand, NULL represent the value does not exit.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[97]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="kc">NA</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+&lt;NA&gt;</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[98]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="kc">NULL</span><span class="p">)</span>
+<span class="nf">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+2</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[99]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">na.fail</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in na.fail.default(x): missing values in object
+Traceback:
+
+1. na.fail(x)
+2. na.fail.default(x)
+3. stop(&#34;missing values in object&#34;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">na.fail</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li></ol></div>
+</div>
+</div>
+<div class="section" id="Working-with-strings">
+<h1>Working with strings<a class="headerlink" href="#Working-with-strings" title="Permalink to this headline">¶</a></h1>
+<p>character strings : single element vectors</p>
+<p>mode : check datatype</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="s">&quot;hello&quot;</span>
+<span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'character'</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># concatenate strings</span>
+
+<span class="nf">paste</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="s">&quot;world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'hello world'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># if you don&#39;t want any space between the strings, you can use paste0</span>
+
+<span class="nf">paste0 </span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="s">&quot;world&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'helloworld'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># substr is used to get parts of a string</span>
+
+<span class="nf">substr</span><span class="p">(</span><span class="s">&quot;Hello world&quot;</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span><span class="m">11</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+' world'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># grep : retrieval based on certain pattern</span>
+
+<span class="n">timespan</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;day&quot;</span><span class="p">,</span><span class="s">&quot;month&quot;</span><span class="p">,</span><span class="s">&quot;year&quot;</span><span class="p">)</span>
+<span class="nf">grep</span><span class="p">(</span><span class="s">&#39;y&#39;</span><span class="p">,</span> <span class="n">timespan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>3</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># ^ : start with</span>
+
+<span class="nf">grep</span><span class="p">(</span><span class="s">&#39;^m&#39;</span><span class="p">,</span> <span class="n">timespan</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+2</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">numeric.vector</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="nf">rep</span><span class="p">(</span><span class="nf">c </span><span class="p">(</span><span class="m">5</span><span class="o">*</span><span class="m">10</span><span class="o">:</span><span class="m">1</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">),</span> <span class="m">2</span><span class="p">))</span>
+<span class="n">numeric.vector</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>50</li><li>45</li><li>40</li><li>35</li><li>30</li><li>25</li><li>20</li><li>15</li><li>10</li><li>5</li><li>5</li><li>6</li><li>50</li><li>45</li><li>40</li><li>35</li><li>30</li><li>25</li><li>20</li><li>15</li><li>10</li><li>5</li><li>5</li><li>6</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">character.vector</span>  <span class="o">&lt;-</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">numeric.vector</span><span class="p">)</span>
+<span class="n">character.vector</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'50'</li><li>'45'</li><li>'40'</li><li>'35'</li><li>'30'</li><li>'25'</li><li>'20'</li><li>'15'</li><li>'10'</li><li>'5'</li><li>'5'</li><li>'6'</li><li>'50'</li><li>'45'</li><li>'40'</li><li>'35'</li><li>'30'</li><li>'25'</li><li>'20'</li><li>'15'</li><li>'10'</li><li>'5'</li><li>'5'</li><li>'6'</li></ol></div>
+</div>
+</div>
+<div class="section" id="Factors">
+<h1>Factors<a class="headerlink" href="#Factors" title="Permalink to this headline">¶</a></h1>
+<p>A factor is a variable to represent categories of a set. They can created using the function as.factor().</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">countries</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;Korea&quot;</span><span class="p">,</span> <span class="s">&quot;China&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">,</span> <span class="s">&quot;UK&quot;</span><span class="p">,</span> <span class="s">&quot;USA&quot;</span><span class="p">,</span> <span class="s">&quot;Japan&quot;</span><span class="p">,</span> <span class="s">&quot;Korea&quot;</span><span class="p">)</span>
+<span class="nf">as.factor</span><span class="p">(</span><span class="n">countries</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>Korea</li><li>China</li><li>UK</li><li>UK</li><li>USA</li><li>Japan</li><li>Korea</li></ol>
+
+<details>
+    <summary style=display:list-item;cursor:pointer>
+            <strong>Levels</strong>:
+    </summary>
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>'China'</li><li>'Japan'</li><li>'Korea'</li><li>'UK'</li><li>'USA'</li></ol>
+</details></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># factor can work on numbers also.</span>
+<span class="n">fnum</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">3</span><span class="p">,</span><span class="m">2</span><span class="o">:</span><span class="m">5</span><span class="p">,</span><span class="m">1</span><span class="o">:</span><span class="m">8</span><span class="p">)</span>
+<span class="nf">as.factor</span><span class="p">(</span><span class="n">fnum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>2</li><li>3</li><li>4</li><li>5</li><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li></ol>
+
+<details>
+    <summary style=display:list-item;cursor:pointer>
+            <strong>Levels</strong>:
+    </summary>
+    <style>
+    .list-inline {list-style: none; margin:0; padding: 0}
+    .list-inline>li {display: inline-block}
+    .list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+    </style>
+    <ol class=list-inline><li>'1'</li><li>'2'</li><li>'3'</li><li>'4'</li><li>'5'</li><li>'6'</li><li>'7'</li><li>'8'</li></ol>
+</details></div>
+</div>
+</div>
+<div class="section" id="Set-Operations">
+<h1>Set Operations<a class="headerlink" href="#Set-Operations" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>union(x,y)
+intersect(x,y)
+setdiff(x,y) : all elements of x NOT in y
+setequal(x,y)
+c %in% x : membership testing
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">8</span><span class="p">,</span> <span class="m">10</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">6</span><span class="p">,</span> <span class="m">7</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">union</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nf">intersect</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nf">setdiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="nf">setequal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>3</li><li>5</li><li>8</li><li>10</li><li>4</li><li>6</li><li>7</li></ol></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>3</li><li>5</li></ol></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>8</li><li>10</li></ol></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+FALSE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="m">7</span> <span class="o">%in%</span> <span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+FALSE</div>
+</div>
+</div>
+<div class="section" id="List-:-contains-that-can-hold-different-types">
+<h1>List : contains that can hold different types<a class="headerlink" href="#List-:-contains-that-can-hold-different-types" title="Permalink to this headline">¶</a></h1>
+<p>Lists are a general form of vector in which the various elements need not be of the same type, and are often themselves vectors or lists. Lists provide a convenient way to return the results of a statistical computation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">list</span><span class="p">(</span><span class="n">w</span><span class="o">=</span><span class="m">2</span><span class="p">,</span> <span class="n">v</span><span class="o">=</span><span class="s">&quot;GIS&quot;</span><span class="p">)</span>
+<span class="n">x</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<dl>
+    <dt>$w</dt>
+            <dd>2</dd>
+    <dt>$v</dt>
+            <dd>'GIS'</dd>
+</dl></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># $ sign used to access list elements by names</span>
+<span class="n">x</span><span class="o">$</span><span class="n">w</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+2</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">mode</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">x</span><span class="o">$</span><span class="n">w</span><span class="p">,</span><span class="n">x</span><span class="o">$</span><span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'list'</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'character'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="s">&quot;GIS&quot;</span><span class="p">)</span>
+<span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="nf">mode</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="m">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'character'</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'character'</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># show internal datasets</span>
+
+<span class="nf">data</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">hn</span> <span class="o">&lt;-</span> <span class="nf">hist</span><span class="p">(</span><span class="n">Nile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/R_05_R_Intro_62_0.png" class="no-scaled-link" src="../_images/R_05_R_Intro_62_0.png" style="width: 420px; height: 420px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">print </span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+$breaks
+ [1]  400  500  600  700  800  900 1000 1100 1200 1300 1400
+
+$counts
+ [1]  1  0  5 20 25 19 12 11  6  1
+
+$density
+ [1] 0.0001 0.0000 0.0005 0.0020 0.0025 0.0019 0.0012 0.0011 0.0006 0.0001
+
+$mids
+ [1]  450  550  650  750  850  950 1050 1150 1250 1350
+
+$xname
+[1] &#34;Nile&#34;
+
+$equidist
+[1] TRUE
+
+attr(,&#34;class&#34;)
+[1] &#34;histogram&#34;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># str : structure</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+List of 6
+ $ breaks  : int [1:11] 400 500 600 700 800 900 1000 1100 1200 1300 ...
+ $ counts  : int [1:10] 1 0 5 20 25 19 12 11 6 1
+ $ density : num [1:10] 0.0001 0 0.0005 0.002 0.0025 0.0019 0.0012 0.0011 0.0006 0.0001
+ $ mids    : num [1:10] 450 550 650 750 850 950 1050 1150 1250 1350
+ $ xname   : chr &#34;Nile&#34;
+ $ equidist: logi TRUE
+ - attr(*, &#34;class&#34;)= chr &#34;histogram&#34;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">mode</span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'list'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># summary is a generic function in R. It outputs a concise and more friendly representation of a list.</span>
+<span class="nf">summary</span><span class="p">(</span><span class="n">hn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+         Length Class  Mode
+breaks   11     -none- numeric
+counts   10     -none- numeric
+density  10     -none- numeric
+mids     10     -none- numeric
+xname     1     -none- character
+equidist  1     -none- logical
+</pre></div></div>
+</div>
+<p>Matrices</p>
+<p>Matrices, or more generally arrays, are multi-dimensional generalizations of vectors. In fact, they are vectors that can be indexed by two or more indices and will be printed in a special way.</p>
+<p>The matrix() function creates a matrix from the given set of values. We use the matrix(x, nrow=, ncol=) function to set the matrix cell values, the number of rows and the number of columns. We can use the colnames() and rownames() functions to set the column and row names of the matrix-like object.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">matrix</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="kc">NA</span><span class="p">,</span> <span class="n">nrow</span> <span class="o">=</span> <span class="m">2</span><span class="p">,</span> <span class="n">ncol</span> <span class="o">=</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type lgl</caption>
+<tbody>
+    <tr><td>NA</td><td>NA</td><td>NA</td></tr>
+    <tr><td>NA</td><td>NA</td><td>NA</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">example.matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">example.matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type int</caption>
+<tbody>
+    <tr><td>1</td><td>3</td><td>5</td></tr>
+    <tr><td>2</td><td>4</td><td>6</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># data distributed by columns by default, can be changed using the keyword byrow</span>
+<span class="n">example.matrix</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span> <span class="n">byrow</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">example.matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type int</caption>
+<tbody>
+    <tr><td>1</td><td>2</td><td>3</td></tr>
+    <tr><td>4</td><td>5</td><td>6</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># retrieval by rows</span>
+<span class="n">example.matrix</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># retrival by columns</span>
+<span class="n">example.matrix</span><span class="p">[,</span><span class="m">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>2</li><li>5</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># changing values</span>
+
+<span class="n">example.matrix</span><span class="p">[</span><span class="m">1</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="m">1</span><span class="o">:</span><span class="m">3</span>
+<span class="n">example.matrix</span><span class="p">[</span><span class="m">2</span><span class="p">,]</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="m">5</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="m">4</span><span class="p">)</span>
+<span class="n">example.matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type dbl</caption>
+<tbody>
+    <tr><td>1</td><td> 2</td><td>3</td></tr>
+    <tr><td>5</td><td>10</td><td>4</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># apply () function is a machanism to apply a function across a vector.</span>
+
+<span class="c1"># by column</span>
+<span class="nf">apply</span><span class="p">(</span><span class="n">example.matrix</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="n">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>6</li><li>12</li><li>7</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># by row</span>
+<span class="nf">apply</span><span class="p">(</span><span class="n">example.matrix</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="n">sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>6</li><li>19</li></ol></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">matrix.head</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;col a&quot;</span><span class="p">,</span><span class="s">&quot;col b&quot;</span><span class="p">,</span><span class="s">&quot;column c&quot;</span><span class="p">)</span>
+<span class="n">matrix.side</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;first raw&quot;</span><span class="p">,</span><span class="s">&quot;second raw&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">colnames</span><span class="p">(</span><span class="n">example.matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">matrix.head</span>
+<span class="nf">rownames</span><span class="p">(</span><span class="n">example.matrix</span><span class="p">)</span> <span class="o">=</span> <span class="n">matrix.side</span>
+<span class="n">example.matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 3 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>col a</th><th scope=col>col b</th><th scope=col>column c</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>first raw</th><td>1</td><td> 2</td><td>3</td></tr>
+    <tr><th scope=row>second raw</th><td>5</td><td>10</td><td>4</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># The structure function str(object.name) informs you of the structure of a</span>
+<span class="c1"># specific object</span>
+
+<span class="nf">str</span><span class="p">(</span><span class="n">example.matrix</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ num [1:2, 1:3] 1 5 2 10 3 4
+ - attr(*, &#34;dimnames&#34;)=List of 2
+  ..$ : chr [1:2] &#34;first raw&#34; &#34;second raw&#34;
+  ..$ : chr [1:3] &#34;col a&#34; &#34;col b&#34; &#34;column c&#34;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># combine matrix using rbind (by row) and cbind (by column)</span>
+
+<span class="n">matrix1</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">6</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="n">matrix2</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">11</span><span class="o">:</span><span class="m">16</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">)</span>
+<span class="nf">rbind</span><span class="p">(</span><span class="n">matrix1</span><span class="p">,</span><span class="n">matrix2</span><span class="p">)</span>
+<span class="nf">cbind</span><span class="p">(</span><span class="n">matrix1</span><span class="p">,</span><span class="n">matrix2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 4 × 3 of type int</caption>
+<tbody>
+    <tr><td> 1</td><td> 3</td><td> 5</td></tr>
+    <tr><td> 2</td><td> 4</td><td> 6</td></tr>
+    <tr><td>11</td><td>13</td><td>15</td></tr>
+    <tr><td>12</td><td>14</td><td>16</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 2 × 6 of type int</caption>
+<tbody>
+    <tr><td>1</td><td>3</td><td>5</td><td>11</td><td>13</td><td>15</td></tr>
+    <tr><td>2</td><td>4</td><td>6</td><td>12</td><td>14</td><td>16</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>Arrays</p>
+<p>An array can be considered a multiple subscripted collection of data entries, for example numeric. R allows simple facilities for creating and handling arrays, and in particular the special case of matrices.</p>
+<p>As well as giving a vector structure a dim attribute, arrays can be constructed from vectors by the array function, which has the form array(data_vector, dim_vector)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Z</span> <span class="o">&lt;-</span> <span class="nf">array</span><span class="p">(</span><span class="m">1</span><span class="o">:</span><span class="m">24</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">2</span><span class="p">))</span>
+<span class="n">Z</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li><li>7</li><li>8</li><li>9</li><li>10</li><li>11</li><li>12</li><li>13</li><li>14</li><li>15</li><li>16</li><li>17</li><li>18</li><li>19</li><li>20</li><li>21</li><li>22</li><li>23</li><li>24</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">str</span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ int [1:3, 1:4, 1:2] 1 2 3 4 5 6 7 8 9 10 ...
+</pre></div></div>
+</div>
+<div class="section" id="list-and-delete-R-objects">
+<h2>list and delete R objects<a class="headerlink" href="#list-and-delete-R-objects" title="Permalink to this headline">¶</a></h2>
+<p>The list function ls() outputs a list of existing R objects.</p>
+<p>rm() removes the object.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">ls </span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'character.vector'</li><li>'example.matrix'</li><li>'hn'</li><li>'ind'</li><li>'is.not.a.number'</li><li>'is.not.available'</li><li>'matrix.head'</li><li>'matrix.side'</li><li>'numeric.vector'</li><li>'one2three'</li><li>'x'</li><li>'z'</li><li>'Z'</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">rm </span><span class="p">(</span><span class="n">Z</span><span class="p">)</span>
+<span class="nf">ls </span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'character.vector'</li><li>'example.matrix'</li><li>'hn'</li><li>'ind'</li><li>'is.not.a.number'</li><li>'is.not.available'</li><li>'matrix.head'</li><li>'matrix.side'</li><li>'numeric.vector'</li><li>'one2three'</li><li>'x'</li><li>'z'</li></ol></div>
+</div>
+</div>
+<div class="section" id="Data-Frames">
+<h2>Data Frames<a class="headerlink" href="#Data-Frames" title="Permalink to this headline">¶</a></h2>
+<p>Data frames are matrix-like structures, in which the columns can be of different types. Think of data frames as data matrices with one row per observational unit but with (possibly) both numerical and categorical variables. Many experiments are best described by data frames: the treatments are categorical but the response is numeric.</p>
+<p>As a result R dataframes are tightly coupled collections of variables which share many of the properties of matrices and of lists. Data frames are used as the fundamental data structure by most of R’s modeling software.</p>
+<p>A data frame is a list with class “data.frame”. There are restrictions on lists that may be made into data frames, namely :</p>
+<p>The components must be vectors (numeric, character, or logical), factors, numeric matrices, lists, or other data frames. Matrices, lists, and data frames provide as many variables to the new data frame as they have columns, elements, or variables, respectively. Numeric vectors, logicals and factors are included, and character vectors are coerced to be factors, whose levels are the unique values appearing in the vector. Vector structures appearing as variables of the data frame must all have the
+same length, and matrix structures must all have the same row size.</p>
+</div>
+</div>
+<div class="section" id="Dataframe-construction">
+<h1>Dataframe construction<a class="headerlink" href="#Dataframe-construction" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">my.data.frame</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">v</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span> <span class="n">ch</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">),</span> <span class="n">n</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+<span class="n">my.data.frame</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 4 × 3</caption>
+<thead>
+    <tr><th scope=col>v</th><th scope=col>ch</th><th scope=col>n</th></tr>
+    <tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>1</td><td>a</td><td>10</td></tr>
+    <tr><td>2</td><td>b</td><td>10</td></tr>
+    <tr><td>3</td><td>c</td><td>10</td></tr>
+    <tr><td>4</td><td>d</td><td>10</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Or:</span>
+
+<span class="n">my.data.frame</span> <span class="o">=</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vector</span> <span class="o">=</span> <span class="m">1</span><span class="o">:</span><span class="m">4</span><span class="p">,</span>
+                           <span class="n">character</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">,</span> <span class="s">&quot;d&quot;</span><span class="p">),</span>
+                           <span class="n">const.vector</span> <span class="o">=</span> <span class="m">10</span><span class="p">,</span>
+                           <span class="n">row.names</span> <span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;data1&quot;</span><span class="p">,</span> <span class="s">&quot;data2&quot;</span><span class="p">,</span> <span class="s">&quot;data3&quot;</span><span class="p">,</span> <span class="s">&quot;data4&quot;</span><span class="p">))</span>
+<span class="n">my.data.frame</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 4 × 3</caption>
+<thead>
+    <tr><th></th><th scope=col>vector</th><th scope=col>character</th><th scope=col>const.vector</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>data1</th><td>1</td><td>a</td><td>10</td></tr>
+    <tr><th scope=row>data2</th><td>2</td><td>b</td><td>10</td></tr>
+    <tr><th scope=row>data3</th><td>3</td><td>c</td><td>10</td></tr>
+    <tr><th scope=row>data4</th><td>4</td><td>d</td><td>10</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Data-selection-and-manipulation">
+<h1>Data selection and manipulation<a class="headerlink" href="#Data-selection-and-manipulation" title="Permalink to this headline">¶</a></h1>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># You can extract data from dataframes using the    [ [    ] ]  and  $  sign:</span>
+
+<span class="n">my.data.frame</span><span class="p">[[</span><span class="s">&quot;character&quot;</span><span class="p">]]</span>
+
+<span class="n">my.data.frame</span><span class="p">[[</span><span class="m">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'a'</li><li>'b'</li><li>'c'</li><li>'d'</li></ol></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'a'</li><li>'b'</li><li>'c'</li><li>'d'</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Call the 3rd value of the character vector:</span>
+
+<span class="n">my.data.frame</span><span class="p">[[</span><span class="m">2</span><span class="p">]][</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+'c'</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Or using the $ syntax:</span>
+
+<span class="n">my.data.frame</span><span class="o">$</span><span class="n">vector</span>
+
+<span class="n">my.data.frame</span><span class="o">$</span><span class="n">character</span><span class="p">[</span><span class="m">2</span><span class="o">:</span><span class="m">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>1</li><li>2</li><li>3</li><li>4</li></ol></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>'b'</li><li>'c'</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># You can add single arguments to a data frame, query information, select and</span>
+<span class="c1"># manipulate arguments or single values from a dataframe</span>
+
+<span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span>
+
+<span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="m">10</span><span class="p">,</span><span class="m">11</span><span class="p">,</span><span class="m">20</span><span class="p">,</span><span class="m">40</span><span class="p">)</span>
+<span class="n">my.data.frame</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NULL
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 4 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>vector</th><th scope=col>character</th><th scope=col>const.vector</th><th scope=col>new</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>data1</th><td>1</td><td>a</td><td>10</td><td>10</td></tr>
+    <tr><th scope=row>data2</th><td>2</td><td>b</td><td>10</td><td>11</td></tr>
+    <tr><th scope=row>data3</th><td>3</td><td>c</td><td>10</td><td>20</td></tr>
+    <tr><th scope=row>data4</th><td>4</td><td>d</td><td>10</td><td>40</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># length(object.name) returns the number of elements in an object such as</span>
+<span class="c1"># matrix vector or dataframes:</span>
+
+<span class="nf">length</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+4</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># which(object.name) and which.max(object.name) return the index of a specific</span>
+<span class="c1"># or of the greatest element of an object</span>
+
+<span class="nf">which.max</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span><span class="p">)</span>
+
+<span class="nf">which</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span> <span class="o">==</span> <span class="m">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+4</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+3</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[71]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># max(object.name) returns the value of the greatest element</span>
+
+<span class="nf">max</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+40</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[72]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># sort(object.name) sort from small to big</span>
+
+<span class="nf">sort</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>10</li><li>11</li><li>20</li><li>40</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[73]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># rev(object.name) sorts from big to small</span>
+
+<span class="nf">rev</span><span class="p">(</span><span class="nf">sort</span><span class="p">(</span><span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+.list-inline {list-style: none; margin:0; padding: 0}
+.list-inline>li {display: inline-block}
+.list-inline>li:not(:last-child)::after {content: "\00b7"; padding: 0 .5ex}
+</style>
+<ol class=list-inline><li>40</li><li>20</li><li>11</li><li>10</li></ol></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># subset(object.name, ...) returns a selection of an R-object with respect to</span>
+<span class="c1"># criteria (typically comparisons: x$V1 &lt; 10).</span>
+
+<span class="nf">subset</span><span class="p">(</span><span class="n">my.data.frame</span><span class="p">,</span> <span class="n">my.data.frame</span><span class="o">$</span><span class="n">new</span> <span class="o">==</span> <span class="m">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 1 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>vector</th><th scope=col>character</th><th scope=col>const.vector</th><th scope=col>new</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>data3</th><td>3</td><td>c</td><td>10</td><td>20</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[79]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># If the R-object is a data frame,</span>
+<span class="c1"># the option select gives the variables to be kept or dropped using a minus</span>
+<span class="c1"># sign</span>
+
+<span class="n">my.data.frame</span><span class="p">[</span><span class="m">-1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 4 × 3</caption>
+<thead>
+    <tr><th></th><th scope=col>character</th><th scope=col>const.vector</th><th scope=col>new</th></tr>
+    <tr><th></th><th scope=col>&lt;chr&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>data1</th><td>a</td><td>10</td><td>10</td></tr>
+    <tr><th scope=row>data2</th><td>b</td><td>10</td><td>11</td></tr>
+    <tr><th scope=row>data3</th><td>c</td><td>10</td><td>20</td></tr>
+    <tr><th scope=row>data4</th><td>d</td><td>10</td><td>40</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="section" id="Reading-and-Writing-Files">
+<h2>Reading and Writing Files<a class="headerlink" href="#Reading-and-Writing-Files" title="Permalink to this headline">¶</a></h2>
+<p>read.table(“filename”)** Reads a file in table format and creates a data frame from it, with cases corresponding to lines and variables to fields within the file. The default separator sep=”” is any whitespace. You might need sep=“,” or “;” and so on. Use header=TRUE to read the first line as a header of column names. The <strong>as.is=TRUE</strong> specification is used to prevent character vectors from being converted to factors.</p>
+<p>The comment.char=”” specification is used to prevent “#” from being interpreted as a comment and use “skip=n” to skip n lines before reading data. For more details: ?read.table</p>
+<p>read.csv(“filename”) is set to read comma separated files. Example usage is: read.csv(file.name, header = TRUE, sep = “,”, quote=“””, dec=“.”, fill =TRUE, comment.char=””, …)</p>
+<p>read.delim(“filename”) is used for reading tab-delimited files</p>
+<p>read.fwf() reads a table of fixed width formatted data into a ’data.frame’. Widths is an integer vector, giving the widths of the fixed-width fields</p>
+<p>write.csv(Robj, “filename”, row.names=FALSE)</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/point_stat.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>FID</th><th scope=col>mean</th><th scope=col>stdev</th><th scope=col>min</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>0</td><td>2.550725</td><td>0.25891342</td><td>2.396264</td></tr>
+    <tr><th scope=row>2</th><td>1</td><td>2.550725</td><td>0.25891342</td><td>2.396264</td></tr>
+    <tr><th scope=row>3</th><td>2</td><td>2.550725</td><td>0.25891342</td><td>2.396264</td></tr>
+    <tr><th scope=row>4</th><td>3</td><td>2.383711</td><td>0.12381761</td><td>2.050272</td></tr>
+    <tr><th scope=row>5</th><td>4</td><td>2.383137</td><td>0.09662122</td><td>2.133288</td></tr>
+    <tr><th scope=row>6</th><td>5</td><td>2.383137</td><td>0.09662122</td><td>2.133288</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># subsetting</span>
+<span class="n">dfSel</span> <span class="o">&lt;-</span> <span class="n">df</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df</span><span class="o">$</span><span class="n">mean</span><span class="o">&gt;</span><span class="m">7</span><span class="p">),]</span>
+<span class="n">dfSel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 2 × 4</caption>
+<thead>
+    <tr><th></th><th scope=col>FID</th><th scope=col>mean</th><th scope=col>stdev</th><th scope=col>min</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>106</th><td>105</td><td>7.536515</td><td>0.1895011</td><td>7.16515</td></tr>
+    <tr><th scope=row>107</th><td>106</td><td>7.536515</td><td>0.1895011</td><td>7.16515</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">write.csv</span><span class="p">(</span><span class="n">dfSel</span><span class="p">,</span><span class="s">&quot;./geodata/shp/point_stat_sel.csv&quot;</span><span class="p">,</span> <span class="n">row.names</span><span class="o">=</span><span class="kc">FALSE</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/point_stat_sel.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 2 × 4</caption>
+<thead>
+    <tr><th scope=col>FID</th><th scope=col>mean</th><th scope=col>stdev</th><th scope=col>min</th></tr>
+    <tr><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><td>105</td><td>7.536515</td><td>0.1895011</td><td>7.16515</td></tr>
+    <tr><td>106</td><td>7.536515</td><td>0.1895011</td><td>7.16515</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+</div>
+<div class="section" id="Exercise">
+<h1>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline">¶</a></h1>
+<p>Print the data rows with the column min value less than 1. Do NOT use the “which” function in R.</p>
+<div class="section" id="Functions">
+<h2>Functions<a class="headerlink" href="#Functions" title="Permalink to this headline">¶</a></h2>
+<p>Functions are themselves objects in R which can be stored in the project’s workspace. This provides a simple and convenient way to extend R.</p>
+<p>Usage: in writing your own function you provide one or more arguments or names for the function, an expression and a value is produced equal to the output function result.</p>
+<div class="line-block">
+<div class="line">function(arglist) expr function definition</div>
+<div class="line">return(value)</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[112]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Example</span>
+
+<span class="n">myfunction</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="n">x</span><span class="o">^</span><span class="m">5</span>
+<span class="nf">myfunction</span><span class="p">(</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+243</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[115]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># oddcount function</span>
+
+<span class="n">oddcount</span> <span class="o">&lt;-</span> <span class="nf">function</span><span class="p">(</span><span class="n">x</span><span class="p">){</span>
+    <span class="n">k</span> <span class="o">&lt;-</span> <span class="m">0</span>
+    <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nf">if </span><span class="p">(</span><span class="n">i</span> <span class="o">%%</span> <span class="m">2</span> <span class="o">==</span> <span class="m">1</span><span class="p">)</span> <span class="n">k</span> <span class="o">&lt;-</span> <span class="n">k</span> <span class="o">+</span> <span class="m">1</span>
+    <span class="p">}</span>
+    <span class="nf">return </span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[116]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">oddcount</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+4</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[117]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">oddcount</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+3</div>
+</div>
+</div>
+</div>
+<div class="section" id="break-and-next">
+<h1>break and next<a class="headerlink" href="#break-and-next" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>break : break out of a loop
+next : skip a step
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">){</span>
+    <span class="nf">if </span><span class="p">(</span><span class="n">i</span> <span class="o">%in%</span> <span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">next</span>
+    <span class="p">}</span>
+    <span class="n">else</span> <span class="nf">if </span><span class="p">(</span><span class="n">i</span> <span class="o">&gt;</span> <span class="m">8</span><span class="p">){</span>
+        <span class="n">break</span>
+    <span class="p">}</span>
+    <span class="nf">print </span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1] 2
+[1] 4
+[1] 6
+[1] 8
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h1>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>write a function to test if a number is a prime number, a natural number that is NOT a multiplication of two smaller numbers.</p>
+<div class="section" id="Basic-Graphs">
+<h2>Basic Graphs<a class="headerlink" href="#Basic-Graphs" title="Permalink to this headline">¶</a></h2>
+<p>The plot() function forms the foundation for much of R based graphing operations.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">5</span><span class="p">,</span><span class="m">7</span><span class="p">),</span><span class="nf">c</span><span class="p">(</span><span class="m">2</span><span class="p">,</span><span class="m">4</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/R_05_R_Intro_118_0.png" class="no-scaled-link" src="../_images/R_05_R_Intro_118_0.png" style="width: 420px; height: 420px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">x</span> <span class="o">&lt;-</span> <span class="nf">seq</span><span class="p">(</span><span class="m">0</span><span class="p">,</span><span class="m">10</span><span class="p">,</span><span class="n">length.out</span><span class="o">=</span><span class="m">100</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">&lt;-</span> <span class="nf">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/R_05_R_Intro_120_0.png" class="no-scaled-link" src="../_images/R_05_R_Intro_120_0.png" style="width: 420px; height: 420px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/R_05_R_Intro_121_0.png" class="no-scaled-link" src="../_images/R_05_R_Intro_121_0.png" style="width: 420px; height: 420px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;l&quot;</span><span class="p">,</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">,</span> <span class="n">xlab</span><span class="o">=</span><span class="s">&quot;time&quot;</span><span class="p">,</span> <span class="n">cex.lab</span><span class="o">=</span><span class="m">1.5</span><span class="p">,</span><span class="n">cex.axis</span><span class="o">=</span><span class="m">1.5</span><span class="p">)</span>
+<span class="nf">grid</span><span class="p">(</span><span class="n">lwd</span><span class="o">=</span><span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/R_05_R_Intro_122_0.png" class="no-scaled-link" src="../_images/R_05_R_Intro_122_0.png" style="width: 420px; height: 420px;" />
+</div>
+</div>
+<div class="section" id="Assignment">
+<h3>Assignment<a class="headerlink" href="#Assignment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>individual effort or collaboration by maximum two people</p></li>
+<li><p>if in collaboration, please specify the contribution of each contributor</p></li>
+<li><p>please turn in a set of .pdf and .ipynb files</p></li>
+<li><p>please label the question number before giving the answer</p></li>
+</ul>
+<p>Q3. Read in file “./geodata/shp/point_stat.csv” and output the rows that their “stdev” less than their “min” and their “mean” is greater than 7. (20%)</p>
+<p>Q4. Create a 3x3 matrix with element values in the range of 1 to 9 and then change the diagonal elements to 0. (20%)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>1   4   7           0   4   7
+2   5   8    ==&gt;    2   0   8
+3   6   9           3   6   0
+</pre></div>
+</div>
+<p>Q5. Create a dataframe to store the calendar of March 2021 with the day of the week as the column name. (20%)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Mo Tu We Th Fr Sa Su
+ 1  2  3  4  5  6  7
+ 8  9 10 11 12 13 14
+15 16 17 18 19 20 21
+22 23 24 25 26 27 28
+29 30 31
+</pre></div>
+</div>
+<p>QB (bonus) (10%)</p>
+<p>According to Gregorian calendar, leap years can be determined by the criteria below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>Years that are divisible by 4 and not divisible by 100 are leap years.
+Years that are divisible by 100 but not divisible by 400 are NOT leap years.
+Years that are divisible by 400 are leap years.
+</pre></div>
+</div>
+<p>Please write a R script to print all the leap years between 1800 and 2020 into a file named “leap_years.dat” and calculate the ratio of the number of leap years over this period of time.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../PYTHON/01_Python_Intro.html" class="btn btn-neutral float-right" title="Introduction to Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../PKTOOLS/02_pktools_colab.html" class="btn btn-neutral float-left" title="Use PKTOOLS for raster/vector operations - colab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Giuseppe Amatulli.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
