@@ -18,33 +18,33 @@ Documentation Contents
 ----------------------
 
 .. toctree::
-   :maxdepth: 2
+   :titlesonly:
    :caption: GEO DATA
 
    GEODATA/geomorpho90m/geomorpho90m.md
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: LINUX VIRTUAL MACHINE
 
    VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
    VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.md
    
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: WEB SEMINARS
 
    WEBSEMINAR/webseminar.md
       
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: BASH
 
    BASH/03_bashintro_osgeo.ipynb
    BASH/03_bashinter_osgeo.ipynb
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: AWK
 
    AWK/
@@ -56,14 +56,14 @@ Documentation Contents
    GNUPLOT/
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: GDAL
 
    GDAL/01_gdal_osgeo.ipynb
    GDAL/01_gdal_colab.ipynb
    
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: PKTOOLS
 
    PKTOOLS/02_pktools_osgeo.ipynb
@@ -76,7 +76,7 @@ Documentation Contents
    R/05_R_Intro
 
 .. toctree::
-   :maxdepth: 2
+   :titlesonly:
    :caption: PYTHON
 
    PYTHON/01_Python_Intro
@@ -89,7 +89,7 @@ Documentation Contents
    GRASS/
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: ADMIN
 
    ADMIN/00_pktools_gdrive_install.ipynb   
