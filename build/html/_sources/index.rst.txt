@@ -89,7 +89,7 @@ Documentation Contents
    GRASS/
 
 .. toctree::
-   :maxdepth: 1
+   :titlesonly:
    :caption: CASE STUDY
 
    CASESTUDY/101_SDM1_geocomp.ipynb
