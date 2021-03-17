@@ -92,7 +92,7 @@ Documentation Contents
    :titlesonly:
    :caption: CASE STUDY
 
-   CASESTUDY/101_SDM1_geocomp.ipynb
+   CASESTUDY/
    
 .. toctree::
    :titlesonly:
