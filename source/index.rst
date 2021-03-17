@@ -37,7 +37,7 @@ Documentation Contents
    WEBSEMINAR/webseminar.md
       
 .. toctree::
-   :titlesonly:
+   :maxdepth: 1
    :caption: BASH
 
    BASH/03_bashintro_osgeo.ipynb
@@ -88,6 +88,12 @@ Documentation Contents
 
    GRASS/
 
+.. toctree::
+   :maxdepth: 1
+   :caption: CASE STUDY
+
+   CASESTUDY/101_SDM1_geocomp.ipynb
+   
 .. toctree::
    :titlesonly:
    :caption: ADMIN
