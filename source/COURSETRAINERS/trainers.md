@@ -2,7 +2,7 @@
 
 **Giuseppe Amatulli, PhD**
 
-Geo-data Scientist, Spatial Ecology
+Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
 [Publications](https://scholar.google.com/citations?hl=en&user=LSxTtpMAAAAJ&view_op=list_works&sortby=pubdate)
 
@@ -18,7 +18,7 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 
 **Longzhu Shen, PhD** 
 
-Scientific Advisor, Spatial Ecology
+Scientific Advisor, Spatial Ecology; l.shen at spatial-ecology.net
 
 [Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
 

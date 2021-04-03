@@ -68,6 +68,7 @@ You should see the pkfilter manual instructions
  
 Test [OpenEV](http://openev.sourceforge.net)
  
+    source ~/.bashrc
     openev /home/user/jupyter/notebook_gallery/Rasterio/data/world.rgb.tif /home/user/.local/share/cartopy/shapefiles/natural_earth/physical/ne_110m_land.shp
 
 You should see the openev software popup and ope the the tif and shp files. 
