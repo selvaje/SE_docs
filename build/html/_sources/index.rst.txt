@@ -19,6 +19,12 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
+   :caption: COURSE TRAINERS
+
+   COURSETRAINERS/trainers.md
+
+.. toctree::
+   :titlesonly:
    :caption: GEO DATA
 
    GEODATA/geomorpho90m/geomorpho90m.md
