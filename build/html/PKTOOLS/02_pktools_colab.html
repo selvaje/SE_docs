@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Use PKTOOLS for raster/vector operations - colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -18,10 +18,7 @@
 
   
   
-
   
-  
-
   
 
   
@@ -34,10 +31,13 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
           
 
           
@@ -176,8 +176,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -189,7 +187,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/PKTOOLS/02_pktools_colab.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -483,7 +481,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
+<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -855,8 +853,8 @@ pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
-pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
+pkcomposite <span class="k">$(for</span> file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
+pkcomposite <span class="k">$(for</span> file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
 </pre></div>
 </div>
 </div>
@@ -1243,29 +1241,37 @@ rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetati
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../R/05_R_Intro.html" class="btn btn-neutral float-right" title="R Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="02_pktools_osgeo.html" class="btn btn-neutral float-left" title="Use PKTOOLS for raster/vector operations - osgeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="../R/05_R_Intro.html" class="btn btn-neutral float-right" title="R Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02_pktools_osgeo.html" class="btn btn-neutral float-left" title="Use PKTOOLS for raster/vector operations - osgeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2020, Giuseppe Amatulli.
+        
+        &copy; Copyright 2020, Giuseppe Amatulli
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
