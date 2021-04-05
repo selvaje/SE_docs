@@ -32,8 +32,13 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_osgeo-live13_p8.png)
 ![title](Installation_vm_osgeo-live13_p9.png)
 
+**Test your OSGeoLive Virtual Machine**
 
-**Populate OSGeoLive with additional software**
+If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
+
+![title](Installation_vm_osgeo-live13_p10.png)
+
+If the screen is very small try to enlarge, and if the enlargement is not working properly try to reboot. Sometime the Virtual Box guest edition is not kick-in so you have to redo the procedure. 
 
 Open the bash terminal (green icon in the down left corner) and run line by line the following codes. The sudo password is "user". For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
@@ -49,19 +54,13 @@ From the Virtualbox menu press Device > Insert Guest Addition CD image
     cd /media/user/VBox_GAs_*
     sudo ./VBoxLinuxAdditions.run
 
-**Test your OSGeoLive Virtual Machine**
-
-If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
-
-![title](Installation_vm_osgeo-live13_p10.png)
-
-If the screen is very small try to enlarge, and if the enlargement is not working properly try to reboot. Sometime the Virtual Box guest edition is not kick-in so you have to redo the procedure. 
-
 Another test that you should do it is to test if the shared folder is correctly done. Open a bash terminal and run 
 
     ls /home/selv/LVM_shared
    
 If are able to list the folder then means that the sharing folder operation is properly done. 
+
+**Populate OSGeoLive with additional software**
 
 At this point the OSGeoLive Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
 
