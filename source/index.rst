@@ -112,7 +112,7 @@ Documentation Contents
    :caption: ADMIN
 
    ADMIN/00_pktools_gdrive_install.ipynb   
-
+   ADMIN/video.md
 
 Indices and tables
 ==================
