@@ -1,7 +1,8 @@
 
 
-# GEOCOMPUTATION AND MACHINE LEARNING FOR ENVIRONMENTAL APPLICATIONS
-## 06 April - 03 June 2021, 2.00 PM - 4.30 PM 
+# Stockholm University
+## GEOCOMPUTATION AND MACHINE LEARNING FOR ENVIRONMENTAL APPLICATIONS
+### 06 April - 03 June 2021, 2.00 PM - 4.30 PM 
 
 Organizer by Spatial Ecology and the Bolin Center from Climate Research University - Stockholm University
 
