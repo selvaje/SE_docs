@@ -16,8 +16,8 @@ In this course, students will be introduced to an array of powerful open-source 
 **Lectures**
 
 * 06 April 2021 - Course introduction and objectives
-	- [Course introduction Giuseppe Amatulli](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/Course_introduction_GA_sweden_06042021.pdf)
-	- [Course introduction Longzhu Shen](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/Course_introduction_LS_sweden_06042021.pdf)
+	- [Course introduction Giuseppe Amatulli](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_CourseIntro.pdf)
+	- [Course introduction geomodeling Longzhu Shen](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_Geomodeling.pdf)
 	- [Video recording](https://wcsu-edu.zoom.us/rec/share/uPMzqUe5DkMMdkKd6A_GyXQNSPa2sGTACNraK36EY13_7pnRwzESiNtDenspiRg.prrfLfh3ABistFCx) Passcode: #&94M!pK
 
 
