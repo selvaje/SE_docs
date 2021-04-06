@@ -56,9 +56,11 @@ From the Virtualbox menu press Device > Insert Guest Addition CD image
 
 Another test that you should do it is to test if the shared folder is correctly done. Open a bash terminal and run 
 
-    ls /home/selv/LVM_shared
+    ls /media/sf_LVM_shared
    
-If are able to list the folder then means that the sharing folder operation is properly done. 
+If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the OSGeoLive. 
+
+If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation so try to redo it.
 
 **Populate OSGeoLive with additional software**
 
