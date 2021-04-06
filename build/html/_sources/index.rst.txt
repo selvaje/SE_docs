@@ -25,6 +25,13 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
+   :caption: COURSES AROUND THE WORLD
+
+   COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.md
+   COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.md
+
+.. toctree::
+   :titlesonly:
    :caption: GEO DATA
 
    GEODATA/geomorpho90m/geomorpho90m.md
