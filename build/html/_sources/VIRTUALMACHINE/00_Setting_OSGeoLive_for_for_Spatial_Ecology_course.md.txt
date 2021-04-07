@@ -123,13 +123,13 @@ install jupyter-lab
 
 ### First time action 
 
-This line download the folder data 'SE\_data' from github. If do not have the folder '/home/user/SE\_data' proceed with the download. If you have already the folder it will prompt an error: 'fatal: destination path 'SE_data' already exists and is not an empty directory'.
+These lines download the folder data 'SE\_data' from github. If you do not have the folder '/home/user/SE\_data' proceed with the download. If you have already the folder it will prompt an error: 'fatal: destination path 'SE_data' already exists and is not an empty directory'.
 
     cd 
     git clone https://github.com/selvaje/SE_data.git 
     cp -r SE_data /media/sf_LVM_shared/my_SE_data
-    
-It can be used for restore the full data repository.
+
+The same procedure can be used for restore the full SE_data folder.
 
 ### Future routine 
 
