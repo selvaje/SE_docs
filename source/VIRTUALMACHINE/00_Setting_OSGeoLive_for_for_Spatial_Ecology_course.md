@@ -97,15 +97,15 @@ You should see the rstudio software pop-up
 
 ## Miniconda Settings 
 
-    $ wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 
 Make the miniconda installation script executable
 
-    $ chmod +x Miniconda3-latest-Linux-x86_64.sh
+    chmod +x Miniconda3-latest-Linux-x86_64.sh
 
 Run miniconda installation script
 
-    $./Miniconda3-latest-Linux-x86_64.sh
+    ./Miniconda3-latest-Linux-x86_64.sh
 
 choose "yes" along the course of installation
 
@@ -113,34 +113,37 @@ quit and open a new terminal
 
 after successful installation, promote becomes :  
 
-    (base) user@osgeolive$
+   (base) user@osgeolive$
     
 install jupyter-lab    
     
-    (base) user@osgeolive$ conda install jupyterlab     
-    
+    conda install jupyterlab     
+
 ## Git Settings 
 
 ### First time action 
-```
-$ cd 
-$ git clone https://github.com/selvaje/SE_data.git 
-$ cp -r SE_data /media/LVM_shared/my_SE_data
-```    
+
+This line download the folder data ''SE\_data' from github. If do not have the folder ''/home/user/SE\_data' proceed with the download. If you have already the folder it will prompt an error: "fatal: destination path 'SE_data' already exists and is not an empty directory".
+
+    cd 
+    git clone https://github.com/selvaje/SE_data.git 
+    cp -r SE_data /media/sf_LVM_shared/my_SE_data
     
+It can be used for restore the full data repository.
+
 ### Future routine 
 
 setup
-- ~/SE_data : sever copy, sync. with cloud 
-- /media/LVM_shared/my_SE_data : working copy, for yourself, always work here
 
-synchronisation 
+~/SE_data : serve copy, sync. with cloud
 
-``` 
-$ cd ~/SE_data
-$ git pull # synchronise with cloud 
-$ rsync -hvrPt --ignore-existing ~/SE_data/* /media/LVM_shared/my_SE_data # local sync.
-$ cd /media/LVM_shared/my_SE_data
-```
+/media/sf\_LVM\_shared/my\_SE\_data : working copy, for yourself, always work here
+
+synchronization 
+
+    cd ~/SE_data
+    git pull # synchronise with cloud  
+    rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data # local sync.
+    cd /media/sf_LVM_shared/my_SE_data
 
 starting working here 
