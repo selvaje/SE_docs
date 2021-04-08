@@ -143,7 +143,6 @@ setup
 Proceed with these lines every time we have new class material.
 
     cd ~/SE_data
-    sudo rm -rf ~/SE_data
     git pull # synchronise with cloud  
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data # local sync.
     cd /media/sf_LVM_shared/my_SE_data
