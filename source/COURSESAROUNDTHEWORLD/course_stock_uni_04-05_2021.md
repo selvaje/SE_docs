@@ -22,7 +22,12 @@ In this course, students will be introduced to an array of powerful open-source 
 
 * 08 April 2021 - OSGeoLive installation, git, and bash introduction
 
-<a href="http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html" target="_blank">installation</a>
+<a href="http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html" target="_blank">Giuseppe Amatulli: OSGeoLive installation</a>
+
+- <a href="https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210408_Policy.pdf" target="_blank">Longzhu Shen: Course policy</a>
+	
+	
+	[Longzhu Shen: Course policy](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210408_Policy.pdf)
 
 	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
 	- [Longzhu Shen: Course policy](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210408_Policy.pdf)
