@@ -16,8 +16,15 @@ In this course, students will be introduced to an array of powerful open-source 
 **Lectures**
 
 * 06 April 2021 - Course introduction and objectives
-	- [Course introduction Giuseppe Amatulli](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_CourseIntro.pdf)
-	- [Course introduction geomodeling Longzhu Shen](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_Geomodeling.pdf)
+	- [Giuseppe Amatulli: Course introduction ](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_CourseIntro.pdf){:target="_blank"}
+	- [Longzhu Shen: Course introduction geomodeling](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210406_Geomodeling.pdf)
 	- [Video recording](https://wcsu-edu.zoom.us/rec/share/uPMzqUe5DkMMdkKd6A_GyXQNSPa2sGTACNraK36EY13_7pnRwzESiNtDenspiRg.prrfLfh3ABistFCx) Passcode: #&94M!pK
 
+* 08 April 2021 - OSGeoLive installation, git, and bash introduction
 
+	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
+	- [Longzhu Shen: Course policy](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210408_Policy.pdf)
+	- [Longzhu Shen: Git](https://github.com/selvaje/SE_docs/raw/master/source/COURSESAROUNDTHEWORLD/lect_20210408_Git.pdf)
+	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html)
+	- [Video recording](https://wcsu-edu.zoom.us/rec/share/zgtVh14JA4Yo5AMNVBjNvTf2UOyiJh_bEC397uk1IKqHsusH-La0hLg5BhanlgP1.dAlaT_OyLSzT970v) Passcode: xG+D2RJL
+	
