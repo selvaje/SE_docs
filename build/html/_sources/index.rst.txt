@@ -7,7 +7,7 @@
 Free & OpenSource Software Documentation for BigGeoData Processing.
 ===================================================================
 
-.. figure:: img/logos_sw.png
+.. figure:: images/logos_sw.png
 
 
 **Welcome to the Spatial Ecology's documentation!** The content of this documentation is free and open source, (CC-BY-SA license) it can be used, but WITHOUT ANY WARRANTY. You can remix, tweak, and build upon our work as long as you credit us and license your new creations under the identical terms. Software we use have a GNU General Public License GPL or GPL / MIT compatible licenses.
@@ -105,7 +105,8 @@ Documentation Contents
    :titlesonly:
    :caption: CASE STUDY
 
-   CASESTUDY/
+   CASESTUDY/101_SDM1_MWood_gecomp.ipynb
+   CASESTUDY/101_SDM1_MWood_Rglm.ipynb
    
 .. toctree::
    :titlesonly:

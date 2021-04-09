@@ -43,7 +43,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="# R : SDM : Montane woodcreper" href="101_SDM1_MWood_Rglm.html" />
+    <link rel="prev" title="Python &amp; GeoComputation" href="../PYTHON/02_Geo_Python.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -60,9 +62,6 @@
             <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
           
 
-          
-            
-            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -140,6 +139,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
 </ul>
+<p class="caption"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Collecting environmental predictors for species distribution model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_Rglm.html"># R : SDM : Montane woodcreper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_Rglm.html#Preparation">Preparation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_Rglm.html#Data-Exploration">Data Exploration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_Rglm.html#References">References</a></li>
+</ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
@@ -196,7 +203,7 @@
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/CASESTUDY/101_SDM1_geocomp.ipynb.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/CASESTUDY/101_SDM1_MWood_gecomp.ipynb.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -491,7 +498,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data
 <span class="c1"># test</span>
 <span class="c1"># define north south weast owest extent</span>
 <span class="nv">ulx</span><span class="o">=</span><span class="k">$(</span>ogrinfo -al -so geodata/shp/cartodb-query.shp <span class="p">|</span> grep Extent <span class="p">|</span> awk <span class="s1">&#39;{ gsub(&quot;\\(&quot;,&quot; &quot;); print int($2 -3)}&#39;</span><span class="k">)</span>
@@ -502,10 +509,17 @@ div.rendered_html tbody tr:hover {
 <span class="c1">## Print the extent to confirm the lat long</span>
 <span class="nb">echo</span> <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span>
 <span class="c1">## croping</span>
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/cloud/SA_intra.tif  geodata/cloud/SA_intra_crop.tif
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/cloud/SA_meanannual.tif  geodata/cloud/SA_meanannual_crop.tif
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/dem/SA_elevation_mn_GMTED2010_mn.tif  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif  geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif
+gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
+geodata/cloud/SA_intra.tif  geodata/cloud/SA_intra_crop.tif
+
+gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
+geodata/cloud/SA_meanannual.tif  geodata/cloud/SA_meanannual_crop.tif
+
+gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
+geodata/dem/SA_elevation_mn_GMTED2010_mn.tif  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif
+
+gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
+geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif  geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif
 
 </pre></div>
 </div>
@@ -529,15 +543,18 @@ Input file size is 5880, 8400
 </div>
 <div class="section" id="Download-climate-layers">
 <h2>Download climate layers<a class="headerlink" href="#Download-climate-layers" title="Permalink to this headline">¶</a></h2>
-<p>Dowonload climate data from <a class="reference external" href="https://chelsa-climate.org/">https://chelsa-climate.org/</a> . Using the /vsicurl/ option in gdal is possible to download only the raster extend of your study area</p>
+<p>Dowonload climate data from <a class="reference external" href="https://chelsa-climate.org/">https://chelsa-climate.org/</a> . Using the /vsicurl/ option in gdal is possible to download only the raster extend of your study area.</p>
+<ol class="arabic simple">
+<li><p>Download and process climate data (grade 20%)</p></li>
+</ol>
+<p>Proceed with the download also for tmin and prec. Build up the loop and also calculate mean and stdev. Consider that, pkstatprofile even giving the compression flag (-co COMPRESS=DEFLATE -co ZLEVEL=9) does not compress very well so insert a gdal_translate to perform the compression (and of course remove the intermediate files).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise/
-mkdir /home/user/SE_data/exercise/geodata/climate
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
 <span class="c1"># download temperature tmin and tmax from https://envicloud.wsl.ch/#/?prefix=chelsa%2Fchelsa_V1</span>
 <span class="k">for</span> var in tmin tmax <span class="p">;</span> <span class="k">do</span>
 <span class="k">for</span> MM in <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="p">;</span> <span class="k">do</span>
@@ -547,7 +564,7 @@ gdal_translate -projwin -82 <span class="m">14</span> -59 -21 -co <span class="n
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
+<div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
@@ -602,21 +619,13 @@ Input file size is 43200, 20880
 0...10...20...30...40...50...60...70...80...90...100 - done.
 </pre></div></div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-mkdir: cannot create directory ‘/home/user/SE_data/exercise/geodata/climate’: File exists
-</pre></div></div>
-</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise/
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
 <span class="c1"># download precipitation from https://envicloud.wsl.ch/#/?prefix=chelsa%2Fchelsa_V1</span>
 <span class="k">for</span> MM in <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="p">;</span> <span class="k">do</span>
 gdal_translate -projwin -82 <span class="m">14</span> -59 -21 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> /vsicurl/https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V1/climatologies/prec/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land.tif  geodata/climate/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land_crop.tif
@@ -662,7 +671,7 @@ Input file size is 43200, 20880
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
 
 <span class="c1"># calculate mean and stdev for tmax,</span>
 <span class="k">for</span> var in tmin tmax <span class="p">;</span> <span class="k">do</span>
@@ -701,12 +710,12 @@ Input file size is 2760, 4200
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
 
 gdalbuildvrt -overwrite -separate geodata/climate/CHELSA_prec_V1.2_land_crop.vrt geodata/climate/CHELSA_prec_*V1.2_land_crop.tif
 
@@ -737,13 +746,17 @@ Input file size is 2760, 4200
 </div>
 <div class="section" id="Building-geomorphometric-layers">
 <h2>Building geomorphometric layers<a class="headerlink" href="#Building-geomorphometric-layers" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple" start="2">
+<li><p>Geomorphometric layers (grade 20%)</p></li>
+</ol>
+<p>Using the GMTED2010 DEM (geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif) calculate “aspect” “slope” “Terrain Ruggedness Index” using gdal. I have opt for the uploding of “Multiple Attempts”, so in case you want upload another version of the homework now is possible - please do not send it by e-mail.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/user/SE_data/exercise
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
 
 <span class="c1"># To calculate the slope by gdaldem slope in lat long you need to setup corretly the scale flag.</span>
 <span class="c1"># The slope scale value is 111120 at the equator and 0 at the north/south pole. In order to get the slope correctly</span>
@@ -752,7 +765,7 @@ Input file size is 2760, 4200
 <span class="c1"># Center      ( -70.5000000,  -3.5000000)</span>
 <span class="c1"># 111120 - (111120 /90 * 3.5) = 106798</span>
 
-gdaldem slope  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -scale <span class="m">106798</span>   geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_slope.tif
+gdaldem slope  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -scale <span class="m">106798</span> geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_slope.tif
 gdaldem aspect -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_aspect.tif
 gdaldem TRI    -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_tri.tif
 </pre></div>
@@ -763,6 +776,37 @@ gdaldem TRI    -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Masking">
+<h2>Masking<a class="headerlink" href="#Masking" title="Permalink to this headline">¶</a></h2>
+<p>Many of the layers that whe have download have the same pixel values for the sea and also for the land (e.g. percent of vegation = 0% is given to desert area and also to the see). We can use an uncilary layers (/media/sf_LVM_shared/my_SE_data/exercise/geodata/mask/msk_1km.tif) to mask all the other layers and give a common no-data value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+
+pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/cloud/SA_meanannual_crop.tif -o geodata/cloud/SA_meanannual_crop_msk.tif
+pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/cloud/SA_intra_crop.tif -o geodata/cloud/SA_intra_crop_msk.tif
+
+pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif -o geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_msk.tif
+pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif  -o geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
 0...10...20...30...40...50...60...70...80...90...100 - done.
 0...10...20...30...40...50...60...70...80...90...100 - done.
 0...10...20...30...40...50...60...70...80...90...100 - done.
@@ -785,6 +829,15 @@ gdaldem TRI    -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="101_SDM1_MWood_Rglm.html" class="btn btn-neutral float-right" title="# R : SDM : Montane woodcreper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../PYTHON/02_Geo_Python.html" class="btn btn-neutral float-left" title="Python &amp; GeoComputation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
