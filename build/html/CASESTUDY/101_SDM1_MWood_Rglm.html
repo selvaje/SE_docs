@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title># R : SDM : Montane woodcreper &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  <title>SDM1 : Montane woodcreper - Model &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
 
   
@@ -142,10 +142,7 @@
 <p class="caption"><span class="caption-text">CASE STUDY</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_gecomp.html">Collecting environmental predictors for species distribution model</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#"># R : SDM : Montane woodcreper</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Preparation">Preparation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Data-Exploration">Data Exploration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#References">References</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SDM1 : Montane woodcreper - Model</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -197,7 +194,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li># R : SDM : Montane woodcreper</li>
+      <li>SDM1 : Montane woodcreper - Model</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -486,13 +483,10 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<div class="section" id="#-R-:-SDM-:-Montane-woodcreper">
-<h1># R : SDM : Montane woodcreper<a class="headerlink" href="##-R-:-SDM-:-Montane-woodcreper" title="Permalink to this headline">¶</a></h1>
-<p>BIO401-01/598-02</p>
-<p>Apr. 7 2021</p>
-</div>
+<div class="section" id="SDM1-:-Montane-woodcreper---Model">
+<h1>SDM1 : Montane woodcreper - Model<a class="headerlink" href="#SDM1-:-Montane-woodcreper---Model" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="Preparation">
-<h1>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h1>
+<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
 <p>Start R in the bash terminal and run the following lines to install the libraries.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;rworldmap&quot;</span><span class="p">)</span>
 <span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;maptools&quot;</span><span class="p">)</span>
@@ -501,7 +495,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -524,6 +518,20 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
+Loading required package: sp
+rgdal: version: 1.5-23, (SVN revision 1121)
+Geospatial Data Abstraction Library extensions to R successfully loaded
+Loaded GDAL runtime: GDAL 2.3.3, released 2018/12/14
+Path to GDAL shared files: /home/user/miniconda3/share/gdal
+GDAL binary built with GEOS: TRUE
+Loaded PROJ runtime: Rel. 5.2.0, September 15th, 2018, [PJ_VERSION: 520]
+Path to PROJ shared files: /home/user/miniconda3/share/proj
+Linking to sp version:1.4-5
+rgeos version: 0.5-5, (SVN revision 640)
+ GEOS runtime version: 3.7.1-CAPI-1.11.1
+ Linking to sp version: 1.4-5
+ Polygon checking: TRUE
+
 Loading required package: terra
 terra version 1.1.4
 
@@ -573,7 +581,7 @@ This is mgcv 1.8-34. For overview type &#39;help(&#34;mgcv-package&#34;)&#39;.
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -583,14 +591,14 @@ This is mgcv 1.8-34. For overview type &#39;help(&#34;mgcv-package&#34;)&#39;.
 </div>
 </div>
 <div class="section" id="Data-Exploration">
-<h1>Data Exploration<a class="headerlink" href="#Data-Exploration" title="Permalink to this headline">¶</a></h1>
+<h2>Data Exploration<a class="headerlink" href="#Data-Exploration" title="Permalink to this headline">¶</a></h2>
 <p>We will use Montane woodcreper (Lepidocolaptes lacrymiger) as example species.</p>
 <p>This species has a large range, occurring from the coastal cordillera of Venezuela along the Andes south to south-east Peru and central Bolivia.</p>
-<p><img alt="b5418a026aab4596bded6bb514ffb72d" class="no-scaled-link" src="CASESTUDY/./images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
+<p><img alt="abec1c0a00f449c398bfdf95e7be7fe9" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
 <div class="section" id="Read-in-points-data">
-<h2>Read in points data<a class="headerlink" href="#Read-in-points-data" title="Permalink to this headline">¶</a></h2>
+<h3>Read in points data<a class="headerlink" href="#Read-in-points-data" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -610,7 +618,7 @@ It has 7 fields
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -626,37 +634,62 @@ It has 7 fields
 <img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_8_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_8_0.png" />
 </div>
 </div>
+</div>
+</div>
+<div class="section" id="Load-observation-presence-dataset">
+<h2>Load observation presence dataset<a class="headerlink" href="#Load-observation-presence-dataset" title="Permalink to this headline">¶</a></h2>
+<p>Let’s suppose that you have done field work and you have collected the bird presence in the Lepidocolaptes_lacrymiger_allpoints.csv file</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span> <span class="n">points</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
- <span class="nf">head</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span></span> <span class="n">points_field</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
+ <span class="nf">str</span><span class="p">(</span><span class="n">points_field</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<thead><tr><th scope=col>lon</th><th scope=col>lat</th><th scope=col>scientific_name</th></tr></thead>
-<tbody>
-    <tr><td>-76.18925                </td><td>3.98125                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-    <tr><td>-76.18406                </td><td>3.93442                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-    <tr><td>-76.10394                </td><td>4.74631                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-    <tr><td>-76.13861                </td><td>4.74536                  </td><td>Lepidocolaptes_lacrymiger</td></tr>
-</tbody>
-</table></div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;data.frame&#39;:   3438 obs. of  3 variables:
+ $ lon            : num  -76.2 -76.2 -74.3 -74.3 -76.1 ...
+ $ lat            : num  3.98 3.93 4.61 4.61 4.75 ...
+ $ scientific_name: Factor w/ 1 level &#34;Lepidocolaptes_lacrymiger&#34;: 1 1 1 1 1 1 1 1 1 1 ...
+</pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[115]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">gbif_points</span> <span class="o">=</span> <span class="nf">gbif</span><span class="p">(</span><span class="s">&#39;Lepidocolaptes&#39;</span> <span class="p">,</span> <span class="s">&#39;lacrymiger&#39;</span> <span class="p">,</span> <span class="n">download</span><span class="o">=</span><span class="bp">T</span> <span class="p">,</span> <span class="n">geo</span><span class="o">=</span><span class="bp">T</span> <span class="p">,</span> <span class="n">ext</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="m">-82</span><span class="p">,</span><span class="m">-59</span><span class="p">,</span><span class="m">-21</span><span class="p">,</span><span class="m">14</span><span class="p">)</span> <span class="p">,</span> <span class="n">removeZeros</span><span class="o">=</span><span class="kc">TRUE</span> <span class="p">)</span>
+
+<span class="nf">str</span><span class="p">(</span><span class="n">gbif_points</span><span class="p">)</span>
+<span class="n">points</span><span class="o">=</span><span class="nf">rbind.data.frame</span><span class="p">(</span>
+  <span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lon</span><span class="p">),</span>
+  <span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lon</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="nf">str</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;data.frame&#39;:   34835 obs. of  2 variables:
+ $ lat: num  0.02978 5.3731 4.76848 0.00634 6.40736 ...
+ $ lon: num  -78.7 -75.9 -75.5 -78.7 -75.7 ...
+</pre></div></div>
 </div>
 <div class="section" id="Read-the-environmental-data-layers">
-<h2>Read the environmental data layers<a class="headerlink" href="#Read-the-environmental-data-layers" title="Permalink to this headline">¶</a></h2>
+<h3>Read the environmental data layers<a class="headerlink" href="#Read-the-environmental-data-layers" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[85]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -689,13 +722,11 @@ values     : -72, 6460  (min, max)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[116]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># mapSA &lt;- getMap(resolution = &quot;low&quot;)</span>
-<span class="c1"># plot(mapSA, xlim = c(-80, -60), ylim = c(-30, 15), asp = 1)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
 <span class="nf">points</span><span class="p">(</span><span class="n">points</span><span class="o">$</span><span class="n">lon</span><span class="p">,</span> <span class="n">points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="m">.3</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">birdrange</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
@@ -705,11 +736,11 @@ values     : -72, 6460  (min, max)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_12_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_12_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_14_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_14_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[117]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -720,7 +751,7 @@ values     : -72, 6460  (min, max)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[119]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -733,44 +764,60 @@ values     : -72, 6460  (min, max)
 </div>
 <div class="output_area rendered_html docutils container">
 <table>
-<thead><tr><th scope=col>lon</th><th scope=col>lat</th><th scope=col>scientific_name</th><th scope=col>presence</th></tr></thead>
+<thead><tr><th scope=col>lat</th><th scope=col>lon</th><th scope=col>presence</th></tr></thead>
 <tbody>
-    <tr><td>-76.18925                </td><td>3.98125                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.18406                </td><td>3.93442                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.10394                </td><td>4.74631                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.13861                </td><td>4.74536                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
+    <tr><td> 0.029785</td><td>-78.68224</td><td>1        </td></tr>
+    <tr><td> 5.373100</td><td>-75.89100</td><td>1        </td></tr>
+    <tr><td> 4.768477</td><td>-75.45283</td><td>1        </td></tr>
+    <tr><td> 0.006336</td><td>-78.67635</td><td>1        </td></tr>
+    <tr><td> 6.407356</td><td>-75.66417</td><td>1        </td></tr>
+    <tr><td>11.107720</td><td>-74.04844</td><td>1        </td></tr>
 </tbody>
 </table></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[120]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># building spatial dataframe</span>
-<span class="n">points</span> <span class="o">&lt;-</span> <span class="nf">SpatialPointsDataFrame</span><span class="p">(</span><span class="n">points[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">)</span><span class="n">]</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+<span class="c1"># points &lt;- SpatialPointsDataFrame(points[,c(1,2)], points)</span>
+<span class="nf">coordinates</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;lon&#39;</span><span class="p">,</span><span class="s">&#39;lat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[121]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">class</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span></span><span class="nf">str</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-'SpatialPointsDataFrame'</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slots
+  ..@ data       :&#39;data.frame&#39;: 34835 obs. of  1 variable:
+  .. ..$ presence: num [1:34835] 1 1 1 1 1 1 1 1 1 1 ...
+  ..@ coords.nrs : int [1:2] 2 1
+  ..@ coords     : num [1:34835, 1:2] -78.7 -75.9 -75.5 -78.7 -75.7 ...
+  .. ..- attr(*, &#34;dimnames&#34;)=List of 2
+  .. .. ..$ : NULL
+  .. .. ..$ : chr [1:2] &#34;lon&#34; &#34;lat&#34;
+  ..@ bbox       : num [1:2, 1:2] -81.1 -18.8 -62.6 11.2
+  .. ..- attr(*, &#34;dimnames&#34;)=List of 2
+  .. .. ..$ : chr [1:2] &#34;lon&#34; &#34;lat&#34;
+  .. .. ..$ : chr [1:2] &#34;min&#34; &#34;max&#34;
+  ..@ proj4string:Formal class &#39;CRS&#39; [package &#34;sp&#34;] with 1 slot
+  .. .. ..@ projargs: chr NA
+</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[122]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -780,33 +827,24 @@ values     : -72, 6460  (min, max)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[123]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<thead><tr><th scope=col>lon</th><th scope=col>lat</th><th scope=col>scientific_name</th><th scope=col>presence</th></tr></thead>
-<tbody>
-    <tr><td>-76.18925                </td><td>3.98125                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.18406                </td><td>3.93442                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-74.30256                </td><td>4.60675                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.10394                </td><td>4.74631                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-    <tr><td>-76.13861                </td><td>4.74536                  </td><td>Lepidocolaptes_lacrymiger</td><td>1                        </td></tr>
-</tbody>
-</table></div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_20_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_20_0.png" />
+</div>
 </div>
 <p>Loading eBird sampling dataset, in order to obtain “absence” data</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[124]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -817,7 +855,7 @@ values     : -72, 6460  (min, max)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[125]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -844,7 +882,7 @@ values     : 0, 65535  (min, max)
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[126]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -894,7 +932,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </table></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[127]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -911,37 +949,45 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_23_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_23_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_25_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_25_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[128]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
+<span></span><span class="nf">summary</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
-<div class="output_area rendered_html docutils container">
-<table>
-<thead><tr><th></th><th scope=col>observation</th><th scope=col>presence</th></tr></thead>
-<tbody>
-    <tr><th scope=row>2518</th><td>1</td><td>0</td></tr>
-    <tr><th scope=row>2519</th><td>2</td><td>0</td></tr>
-    <tr><th scope=row>2520</th><td>1</td><td>0</td></tr>
-    <tr><th scope=row>2523</th><td>2</td><td>0</td></tr>
-    <tr><th scope=row>2525</th><td>1</td><td>0</td></tr>
-    <tr><th scope=row>2529</th><td>1</td><td>0</td></tr>
-</tbody>
-</table></div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Object of class SpatialPointsDataFrame
+Coordinates:
+        min       max
+x -81.97917 -59.00417
+y -20.99583  13.99584
+Is projected: FALSE
+proj4string :
+[+proj=longlat +datum=WGS84 +ellps=WGS84 +towgs84=0,0,0]
+Number of points: 17420
+Data attributes:
+  observation          presence
+ Min.   :   1.000   Min.   :0
+ 1st Qu.:   1.000   1st Qu.:0
+ Median :   2.000   Median :0
+ Mean   :   5.935   Mean   :0
+ 3rd Qu.:   3.000   3rd Qu.:0
+ Max.   :1412.000   Max.   :0
+</pre></div></div>
 </div>
 <p>combine presence and non-presence point datasets</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[70]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[129]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -958,14 +1004,14 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="highlight"><pre>
 
     0     1
-17420  3438
+17420 34835
 </pre></div></div>
 </div>
 </div>
 <div class="section" id="Plot-the-environmental-data-layers">
-<h2>Plot the environmental data layers<a class="headerlink" href="#Plot-the-environmental-data-layers" title="Permalink to this headline">¶</a></h2>
+<h3>Plot the environmental data layers<a class="headerlink" href="#Plot-the-environmental-data-layers" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[86]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[130]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -991,7 +1037,7 @@ max values :                  10000,              3790,                         
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[131]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1011,12 +1057,12 @@ max values :                  10000,              3790,                         
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_29_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_29_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_31_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_31_0.png" />
 </div>
 </div>
 <p>Scaling and centering the environmental variables to zero mean and variance of 1</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[88]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[132]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1037,7 +1083,7 @@ dimensions : 4200, 2760, 11592000, 4  (nrow, ncol, ncell, nlayers)
 resolution : 0.008333333, 0.008333333  (x, y)
 extent     : -82, -59, -21, 14  (xmin, xmax, ymin, ymax)
 crs        : +proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0
-source     : /tmp/Rtmpj2PfcG/raster/r_tmp_2021-04-09_221426_19629_20488.grd
+source     : /tmp/RtmpRDFtNw/raster/r_tmp_2021-04-10_033527_3049_30290.grd
 names      :        cld,     cld_ia,       elev,     forest
 min values : -4.5919892, -1.7513057, -0.6661006, -1.7261695
 max values :  2.1937157,  4.5331428,  5.0445753,  0.7798705
@@ -1045,7 +1091,7 @@ max values :  2.1937157,  4.5331428,  5.0445753,  0.7798705
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[133]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1074,19 +1120,19 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_32_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_32_1.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_34_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_34_1.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_32_2.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_32_2.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_34_2.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_34_2.png" />
 </div>
 </div>
 <p>Annotate the point records with the scaled environmental data</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[91]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[134]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1095,7 +1141,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[92]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[135]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1105,9 +1151,9 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="section" id="Correlation-plots">
-<h2>Correlation plots<a class="headerlink" href="#Correlation-plots" title="Permalink to this headline">¶</a></h2>
+<h3>Correlation plots<a class="headerlink" href="#Correlation-plots" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[93]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[136]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1117,7 +1163,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[137]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1132,17 +1178,17 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <table>
 <thead><tr><th scope=col>lat</th><th scope=col>lon</th><th scope=col>presence</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
 <tbody>
-    <tr><td>3.98125  </td><td>-76.18925</td><td>1        </td><td>cld      </td><td>1.3689791</td></tr>
-    <tr><td>3.93442  </td><td>-76.18406</td><td>1        </td><td>cld      </td><td>1.7015461</td></tr>
-    <tr><td>4.60675  </td><td>-74.30256</td><td>1        </td><td>cld      </td><td>2.0170395</td></tr>
-    <tr><td>4.60675  </td><td>-74.30256</td><td>1        </td><td>cld      </td><td>2.0170395</td></tr>
-    <tr><td>4.74631  </td><td>-76.10394</td><td>1        </td><td>cld      </td><td>0.8070298</td></tr>
-    <tr><td>4.74536  </td><td>-76.13861</td><td>1        </td><td>cld      </td><td>1.1329159</td></tr>
+    <tr><td> 0.029785</td><td>-78.68224</td><td>1        </td><td>cld      </td><td>1.927959 </td></tr>
+    <tr><td> 5.373100</td><td>-75.89100</td><td>1        </td><td>cld      </td><td>1.966560 </td></tr>
+    <tr><td> 4.768477</td><td>-75.45283</td><td>1        </td><td>cld      </td><td>2.029659 </td></tr>
+    <tr><td> 0.006336</td><td>-78.67635</td><td>1        </td><td>cld      </td><td>1.997739 </td></tr>
+    <tr><td> 6.407356</td><td>-75.66417</td><td>1        </td><td>cld      </td><td>1.138112 </td></tr>
+    <tr><td>11.107720</td><td>-74.04844</td><td>1        </td><td>cld      </td><td>1.684472 </td></tr>
 </tbody>
 </table></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[95]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1157,17 +1203,17 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <table>
 <thead><tr><th></th><th scope=col>lat</th><th scope=col>lon</th><th scope=col>presence</th><th scope=col>variable</th><th scope=col>value</th></tr></thead>
 <tbody>
-    <tr><th scope=row>81811</th><td>-20.97083</td><td>-70.13750</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
-    <tr><th scope=row>81812</th><td>-20.97083</td><td>-68.56250</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
-    <tr><th scope=row>81813</th><td>-20.97916</td><td>-70.15417</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
-    <tr><th scope=row>81814</th><td>-20.98749</td><td>-68.55417</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
-    <tr><th scope=row>81815</th><td>-20.99583</td><td>-70.13750</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
-    <tr><th scope=row>81816</th><td>-20.99583</td><td>-67.42917</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207399</th><td>-20.97083</td><td>-70.13750</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207400</th><td>-20.97083</td><td>-68.56250</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207401</th><td>-20.97916</td><td>-70.15417</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207402</th><td>-20.98749</td><td>-68.55417</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207403</th><td>-20.99583</td><td>-70.13750</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
+    <tr><th scope=row>207404</th><td>-20.99583</td><td>-67.42917</td><td>0        </td><td>forest   </td><td>-1.726169</td></tr>
 </tbody>
 </table></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[96]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[139]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1183,16 +1229,16 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_40_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_40_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_42_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_42_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="Model-Fitting">
-<h2>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline">¶</a></h2>
+<h3>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline">¶</a></h3>
 <p>cross validation</p>
-<p><img alt="a86798fe87934930a6729bd5c53239b5" class="no-scaled-link" src="CASESTUDY/./images/cross_vld.gif" style="width: 600px;" /></p>
+<p><img alt="68b7fad6c0734874b7774d528b21bde4" class="no-scaled-link" src="CASESTUDY/./images/cross_vld.gif" style="width: 600px;" /></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[97]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[140]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1201,7 +1247,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[98]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[141]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1210,7 +1256,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[99]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1225,17 +1271,17 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <table>
 <thead><tr><th scope=col>presence</th><th scope=col>lon</th><th scope=col>lat</th><th scope=col>cld</th><th scope=col>cld_ia</th><th scope=col>elev</th><th scope=col>forest</th><th scope=col>lon.1</th><th scope=col>lat.1</th><th scope=col>grp</th></tr></thead>
 <tbody>
-    <tr><td>1          </td><td>-76.18925  </td><td>3.98125    </td><td>1.3689791  </td><td>-1.381535  </td><td>0.4922958  </td><td>-0.19272362</td><td>-76.18925  </td><td>3.98125    </td><td>2          </td></tr>
-    <tr><td>1          </td><td>-76.18406  </td><td>3.93442    </td><td>1.7015461  </td><td>-1.391484  </td><td>0.7895447  </td><td> 0.37163657</td><td>-76.18406  </td><td>3.93442    </td><td>1          </td></tr>
-    <tr><td>1          </td><td>-74.30256  </td><td>4.60675    </td><td>2.0170395  </td><td>-1.610362  </td><td>1.6471952  </td><td> 0.03181757</td><td>-74.30256  </td><td>4.60675    </td><td>2          </td></tr>
-    <tr><td>1          </td><td>-74.30256  </td><td>4.60675    </td><td>2.0170395  </td><td>-1.610362  </td><td>1.6471952  </td><td> 0.03181757</td><td>-74.30256  </td><td>4.60675    </td><td>1          </td></tr>
-    <tr><td>1          </td><td>-76.10394  </td><td>4.74631    </td><td>0.8070298  </td><td>-1.101305  </td><td>0.8874620  </td><td> 0.51397967</td><td>-76.10394  </td><td>4.74631    </td><td>1          </td></tr>
-    <tr><td>1          </td><td>-76.13861  </td><td>4.74536    </td><td>1.1329159  </td><td>-1.245565  </td><td>0.9215583  </td><td> 0.12403984</td><td>-76.13861  </td><td>4.74536    </td><td>2          </td></tr>
+    <tr><td>1         </td><td>-78.68224 </td><td> 0.029785 </td><td>1.927959  </td><td>-1.4047492</td><td>0.7799278 </td><td> 0.2916939</td><td>-78.68224 </td><td> 0.029785 </td><td>2         </td></tr>
+    <tr><td>1         </td><td>-75.89100 </td><td> 5.373100 </td><td>1.966560  </td><td>-1.5490096</td><td>0.9285523 </td><td> 0.4776421</td><td>-75.89100 </td><td> 5.373100 </td><td>1         </td></tr>
+    <tr><td>1         </td><td>-75.45283 </td><td> 4.768477 </td><td>2.029659  </td><td>-1.4279635</td><td>3.0433908 </td><td>-1.4251941</td><td>-75.45283 </td><td> 4.768477 </td><td>1         </td></tr>
+    <tr><td>1         </td><td>-78.67635 </td><td> 0.006336 </td><td>1.997739  </td><td>-1.4097236</td><td>1.0081102 </td><td> 0.4074729</td><td>-78.67635 </td><td> 0.006336 </td><td>1         </td></tr>
+    <tr><td>1         </td><td>-75.66417 </td><td> 6.407356 </td><td>1.138112  </td><td>-0.8791106</td><td>1.6227160 </td><td>-0.6916761</td><td>-75.66417 </td><td> 6.407356 </td><td>2         </td></tr>
+    <tr><td>1         </td><td>-74.04844 </td><td>11.107720 </td><td>1.684472  </td><td>-1.0664833</td><td>1.5134332 </td><td>-0.6926786</td><td>-74.04844 </td><td>11.107720 </td><td>2         </td></tr>
 </tbody>
 </table></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[143]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1244,7 +1290,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[101]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[144]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1265,38 +1311,38 @@ glm(formula = presence ~ cld + cld_ia * I(cld_ia^2) + elev *
 
 Deviance Residuals:
     Min       1Q   Median       3Q      Max
--2.1201  -0.1678  -0.0180  -0.0023   5.1070
+-2.9786  -0.0259   0.2245   0.3542   4.6843
 
 Coefficients:
                    Estimate Std. Error z value Pr(&gt;|z|)
-(Intercept)        -5.40732    0.23181 -23.327  &lt; 2e-16 ***
-cld                 1.19661    0.14515   8.244  &lt; 2e-16 ***
-cld_ia              0.71223    0.14739   4.832 1.35e-06 ***
-I(cld_ia^2)         0.31000    0.05714   5.425 5.79e-08 ***
-elev                6.11978    0.55508  11.025  &lt; 2e-16 ***
-I(elev^2)          -2.74122    0.49940  -5.489 4.04e-08 ***
-forest              1.35894    0.08211  16.551  &lt; 2e-16 ***
-cld_ia:I(cld_ia^2) -0.14284    0.04419  -3.233  0.00123 **
-elev:I(elev^2)      0.21677    0.13560   1.599  0.10990
+(Intercept)        -3.01092    0.09349 -32.207  &lt; 2e-16 ***
+cld                 0.97331    0.07360  13.225  &lt; 2e-16 ***
+cld_ia              0.14549    0.08344   1.744   0.0812 .
+I(cld_ia^2)         0.30934    0.03284   9.420  &lt; 2e-16 ***
+elev                5.87632    0.20179  29.121  &lt; 2e-16 ***
+I(elev^2)          -3.04689    0.16585 -18.371  &lt; 2e-16 ***
+forest              1.15308    0.04215  27.354  &lt; 2e-16 ***
+cld_ia:I(cld_ia^2) -0.13518    0.02612  -5.174 2.29e-07 ***
+elev:I(elev^2)      0.39002    0.03988   9.780  &lt; 2e-16 ***
 ---
 Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
 
 (Dispersion parameter for binomial family taken to be 1)
 
-    Null deviance: 9319.7  on 10226  degrees of freedom
-Residual deviance: 3969.1  on 10218  degrees of freedom
-AIC: 3987.1
+    Null deviance: 32790  on 25925  degrees of freedom
+Residual deviance: 11125  on 25917  degrees of freedom
+AIC: 11143
 
-Number of Fisher Scoring iterations: 9
+Number of Fisher Scoring iterations: 7
 
 </pre></div></div>
 </div>
 </div>
 <div class="section" id="Prediction">
-<h2>Prediction<a class="headerlink" href="#Prediction" title="Permalink to this headline">¶</a></h2>
+<h3>Prediction<a class="headerlink" href="#Prediction" title="Permalink to this headline">¶</a></h3>
 <p>Calculate estimates of p(occurrence) for each cell. We can use the predict function in the raster package to make the predictions across the full raster grid and save the output.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[102]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[145]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1306,7 +1352,7 @@ Number of Fisher Scoring iterations: 9
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[103]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[146]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1318,11 +1364,11 @@ Number of Fisher Scoring iterations: 9
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_50_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_50_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_52_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_52_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[147]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1334,14 +1380,14 @@ Number of Fisher Scoring iterations: 9
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_51_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_51_0.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_53_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_53_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="Out-mapping">
-<h2>Out mapping<a class="headerlink" href="#Out-mapping" title="Permalink to this headline">¶</a></h2>
+<h3>Out mapping<a class="headerlink" href="#Out-mapping" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[148]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1351,7 +1397,7 @@ Number of Fisher Scoring iterations: 9
 </div>
 <p>Plot the results as a map:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[107]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[149]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
@@ -1379,16 +1425,17 @@ Regions defined for each Polygons
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_55_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_55_1.png" />
+<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rglm_57_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rglm_57_1.png" />
 </div>
 </div>
 </div>
 </div>
 <div class="section" id="References">
-<h1>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h1>
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Cross-validation">https://en.wikipedia.org/wiki/Cross-validation</a></p></li>
 </ul>
+</div>
 </div>
 
 
