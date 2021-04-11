@@ -106,7 +106,7 @@ Documentation Contents
    :caption: CASE STUDY
 
    CASESTUDY/101_SDM1_MWood_gecomp.ipynb
-   CASESTUDY/101_SDM1_MWood_Rglm.ipynb
+   CASESTUDY/101_SDM1_MWood_Rmodel.ipynb
    
 .. toctree::
    :titlesonly:
