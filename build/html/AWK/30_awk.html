@@ -493,12 +493,37 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="AWK-Tutorial">
 <h1>AWK Tutorial<a class="headerlink" href="#AWK-Tutorial" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s.</p>
-<p>It consists of a set of actions to be taken against streams of textual data.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s. It consists of a set of actions to be taken against streams of textual data.</p>
+<div class="section" id="The-AWK-syntax">
+<h2>The AWK syntax<a class="headerlink" href="#The-AWK-syntax" title="Permalink to this headline">¶</a></h2>
+<p>The awk syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;[pattern] </span><span class="si">{action}</span><span class="s1"> [pattern]&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>The awk line is always placed between single-quotation (’) and not back-quotation (`).</p>
+<p>The awk structure is composed of patterns and actions.</p>
+<ul class="simple">
+<li><p>The [pattern] (optional feature) can be:</p>
+<ul>
+<li><p>BEGIN {action} (actions computed before reading the input).</p></li>
+<li><p>END {action} (actions computed at the end of the input).</p></li>
+</ul>
+</li>
+<li><p>The main action ({action}) is computed by reading the input line by line. The actions include commands and operations.</p></li>
+</ul>
+<p>Therefore the full awk syntax can be represented in this way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;BEGIN </span><span class="si">{action}</span><span class="s1"> </span><span class="si">{action}</span><span class="s1"> END </span><span class="si">{action}</span><span class="s1">&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>in practice you can read it as:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;BEGIN {action before the input.txt reading } {action during the input.txt reading} END {action after the input.txt reading}&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="Columns-and-rows">
 <h2>Columns and rows<a class="headerlink" href="#Columns-and-rows" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -513,11 +538,11 @@ awk <span class="s1">&#39;{print $2,$5}&#39;</span> <span class="si">${</span><s
 
 <span class="nb">echo</span> <span class="s2">&quot;--------&quot;</span>
 
-awk  <span class="s1">&#39;{ print NF }&#39;</span>  <span class="si">${</span><span class="nv">fIn</span><span class="si">}</span> <span class="p">|</span> head -1      <span class="c1"># print number of column</span>
+awk  <span class="s1">&#39;{ print NF }&#39;</span>  <span class="si">${</span><span class="nv">fIn</span><span class="si">}</span> <span class="p">|</span> head -10     <span class="c1"># print number of column # very usefull to check if all the row have the same number of columns</span>
 
 <span class="nb">echo</span> <span class="s2">&quot;--------&quot;</span>
 
-awk  <span class="s1">&#39;{ print NR }&#39;</span> <span class="si">${</span><span class="nv">fIn</span><span class="si">}</span>  <span class="p">|</span> tail -1     <span class="c1"># print number of row</span>
+awk  <span class="s1">&#39;{ print NR }&#39;</span> <span class="si">${</span><span class="nv">fIn</span><span class="si">}</span>  <span class="p">|</span> tail -10     <span class="c1"># print number of row # very usefull to ad ID column e.g. awk  &#39;{ print NR , $0 }&#39; ${fIn}</span>
 </pre></div>
 </div>
 </div>
@@ -549,7 +574,25 @@ YYYY BAREA
 2006 0.293182
 --------
 5
+5
+5
+5
+5
+5
+5
+5
+5
+5
 --------
+53459
+53460
+53461
+53462
+53463
+53464
+53465
+53466
+53467
 53468
 </pre></div></div>
 </div>
@@ -557,11 +600,11 @@ YYYY BAREA
 <div class="section" id="BEGIN-and-END">
 <h2>BEGIN and END<a class="headerlink" href="#BEGIN-and-END" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;BEGIN { sum=0} { sum += $5 } END {print sum}&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<span></span><span class="o">!</span> awk <span class="s1">&#39;BEGIN { print &quot;sum&quot; } { sum += $5 } END {printf ( &quot;%f\n&quot;, sum)}&#39;</span> ./txt/aver_month_nuts3_fire.asc
 </pre></div>
 </div>
 </div>
@@ -570,18 +613,19 @@ YYYY BAREA
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-1.14679e+07
+sum
+11467947.039565
 </pre></div></div>
 </div>
 </div>
 <div class="section" id="Pipe">
 <h2>Pipe<a class="headerlink" href="#Pipe" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print $5 }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>  <span class="p">|</span>  sort -k <span class="m">1</span>,1 <span class="p">|</span> head
+<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print $5 }&#39;</span>  ./txt/aver_month_nuts3_fire.asc  <span class="p">|</span>  sort -k <span class="m">1</span>,1 <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -608,13 +652,13 @@ sort: write error
 <div class="section" id="Bash-variables-in-AWK">
 <h2>Bash variables in AWK<a class="headerlink" href="#Bash-variables-in-AWK" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span><span class="m">1</span> <span class="p">;</span> i&lt;<span class="o">=</span><span class="m">4</span> <span class="p">;</span> i++  <span class="o">))</span> <span class="p">;</span> <span class="k">do</span>
-awk  -v <span class="nv">i</span><span class="o">=</span><span class="nv">$i</span>  <span class="s1">&#39;{ print $i }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head -3
+awk  -v <span class="nv">i</span><span class="o">=</span><span class="nv">$i</span>  <span class="s1">&#39;{ print $i }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head -3
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -646,7 +690,7 @@ MM
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;NR&gt;1{ print log($5) }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
+<span></span><span class="o">!</span> awk  <span class="s1">&#39;NR&gt;1{ print log($5) }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -763,11 +807,11 @@ index NUTS YYYY MM 0 BAREA
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7) sum=sum+$5} END {print sum }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7) sum=sum+$5} END {printf (&quot;%f&quot;,sum) }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -776,7 +820,7 @@ index NUTS YYYY MM 0 BAREA
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-2.78901e+06
+2789009.889985
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -849,9 +893,8 @@ index NUTS YYYY MM 0 BAREA
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="k">for</span> COLNAME in  colum_b TOTAL <span class="p">;</span> <span class="k">do</span>
-awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39; { if (NR==1)  { for (col=1;col&lt;=NF;col++) { if ($col==COLNAME) {colprint=col}}}  else  {print $1 &quot;,&quot; $colprint }}  &#39;</span> ./txt/test.csv &gt; ./txt/<span class="nv">$COLNAME</span>.csv
+awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span> ./txt/test.csv &gt; ./txt/<span class="nv">$COLNAME</span>.csv
 <span class="k">done</span>
-
 </pre></div>
 </div>
 </div>
@@ -894,7 +937,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk -F,  <span class="s1">&#39; {  for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot; ) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot; ) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv &gt; ./txt/list_of_columns.csv
+<span></span><span class="o">!</span> awk -F, <span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv &gt; ./txt/list_of_columns.csv
 </pre></div>
 </div>
 </div>
