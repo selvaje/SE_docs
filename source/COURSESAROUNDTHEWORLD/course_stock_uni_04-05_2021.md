@@ -27,4 +27,8 @@ In this course, students will be introduced to an array of powerful open-source 
 	- [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf)
 	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html)
 	- [Video recording](https://wcsu-edu.zoom.us/rec/share/zgtVh14JA4Yo5AMNVBjNvTf2UOyiJh_bEC397uk1IKqHsusH-La0hLg5BhanlgP1.dAlaT_OyLSzT970v) Passcode: xG+D2RJL
-	
+
+
+* 13 April 2021 - Bash and AWK for file munipulation.
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
+	- [Longzhu Shen: AWK](http://spatial-ecology.net/docs/build/html/AWK/30_awk.html)	
