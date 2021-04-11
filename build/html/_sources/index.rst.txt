@@ -60,7 +60,7 @@ Documentation Contents
    :titlesonly:
    :caption: AWK
 
-   AWK/
+   AWK/30_awk.ipynb
 
 .. toctree::
    :maxdepth: 1
