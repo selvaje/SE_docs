@@ -41,3 +41,10 @@ In this course, students will learn GIS concepts by using open source software i
    - [Giuseppe Amatulli: Geographic coordinates and projection](http://spatial-ecology.net/docs/source/lectures/lect_20210201_CoordReferSystems.pdf)
    - [Giuseppe Amatulli: Geographic coordinates and projection](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 
+* 22 February 2021 - Bash and AWK for file manipulation.
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html)
+   - [Longzhu Shen: Modeling Prologue](http://spatial-ecology.net/docs/build/html/lect_20210222_Modeling_Prologue.pdf)
+
+* 24 February 2021 - Linux bash language. Use of variables and for loop in bash, if statement.
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
+
