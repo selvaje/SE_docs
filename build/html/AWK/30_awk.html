@@ -494,6 +494,7 @@ div.rendered_html tbody tr:hover {
 <h1>AWK Tutorial<a class="headerlink" href="#AWK-Tutorial" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s. It consists of a set of actions to be taken against streams of textual data.</p>
+<p><img alt="d9af4977ba7e4adb938c968e67c89621" class="no-scaled-link" src="../_images/less_auk.jpg" style="width: 900px;" /></p>
 <div class="section" id="The-AWK-syntax">
 <h2>The AWK syntax<a class="headerlink" href="#The-AWK-syntax" title="Permalink to this headline">¶</a></h2>
 <p>The awk syntax is:</p>
@@ -523,7 +524,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Columns-and-rows">
 <h2>Columns and rows<a class="headerlink" href="#Columns-and-rows" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -600,7 +601,7 @@ YYYY BAREA
 <div class="section" id="BEGIN-and-END">
 <h2>BEGIN and END<a class="headerlink" href="#BEGIN-and-END" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -621,11 +622,12 @@ sum
 <div class="section" id="Pipe">
 <h2>Pipe<a class="headerlink" href="#Pipe" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print $5 }&#39;</span>  ./txt/aver_month_nuts3_fire.asc  <span class="p">|</span>  sort -k <span class="m">1</span>,1 <span class="p">|</span> head
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+awk  <span class="s1">&#39;{ print $5 }&#39;</span>  ./txt/aver_month_nuts3_fire.asc  <span class="p">|</span>  sort -k <span class="m">1</span>,1 <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -644,21 +646,20 @@ sum
 0.000581179
 0.000603623
 0.000604238
-sort: write failed: &#39;standard output&#39;: Broken pipe
-sort: write error
 </pre></div></div>
 </div>
 </div>
 <div class="section" id="Bash-variables-in-AWK">
 <h2>Bash variables in AWK<a class="headerlink" href="#Bash-variables-in-AWK" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span><span class="m">1</span> <span class="p">;</span> i&lt;<span class="o">=</span><span class="m">4</span> <span class="p">;</span> i++  <span class="o">))</span> <span class="p">;</span> <span class="k">do</span>
 awk  -v <span class="nv">i</span><span class="o">=</span><span class="nv">$i</span>  <span class="s1">&#39;{ print $i }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head -3
+<span class="nb">echo</span> <span class="s2">&quot;---&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -671,22 +672,26 @@ awk  -v <span class="nv">i</span><span class="o">=</span><span class="nv">$i</sp
 NUTS
 BG311
 BG311
+---
 YYYY
 2005
 2006
+---
 MM
 04
 11
+---
 0
 2
 2
+---
 </pre></div></div>
 </div>
 </div>
 <div class="section" id="Awk-Operations">
 <h2>Awk Operations<a class="headerlink" href="#Awk-Operations" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -712,11 +717,11 @@ MM
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print substr($1,1,4) }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
+<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print substr($1,1,4) }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head -3
 </pre></div>
 </div>
 </div>
@@ -726,13 +731,6 @@ MM
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 NUTS
-BG31
-BG31
-BG31
-BG31
-BG31
-BG31
-BG31
 BG31
 BG31
 </pre></div></div>
@@ -842,7 +840,7 @@ index NUTS YYYY MM 0 BAREA
 </div>
 <p>Query operation for file management If we want to count files in a folder tmp of size bigger than 1Mb we can concatenate 3 functions piping each output as input for the next functiont</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -860,7 +858,7 @@ index NUTS YYYY MM 0 BAREA
 </div>
 <p>Split a large file into small files of 100 lines each</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -873,7 +871,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="section" id="Query-a-dataset-on-the-basis-of-the-header-name">
 <h2>Query a dataset on the basis of the header name<a class="headerlink" href="#Query-a-dataset-on-the-basis-of-the-header-name" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -886,23 +884,59 @@ index NUTS YYYY MM 0 BAREA
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cat</span> <span class="s2">&quot;./txt/test.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ID,column_1,colum_b,colum_c,TOTAL
+1,3,5,6,14
+2,5,4,6,15
+3,8,4,6,18
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="k">for</span> COLNAME in  colum_b TOTAL <span class="p">;</span> <span class="k">do</span>
-awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span> ./txt/test.csv &gt; ./txt/<span class="nv">$COLNAME</span>.csv
+awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span> ./txt/test.csv
+<span class="nb">echo</span> <span class="s2">&quot;---&quot;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1,5
+2,4
+3,4
+---
+1,14
+2,15
+3,18
+---
+</pre></div></div>
 </div>
 </div>
 <div class="section" id="Subset-a-limited-number-of-column-headers-and-query-the-dataset-on-the-basis-of-the-header-subset-selection">
 <h2>Subset a limited number of column headers and query the dataset on the basis of the header subset selection<a class="headerlink" href="#Subset-a-limited-number-of-column-headers-and-query-the-dataset-on-the-basis-of-the-header-subset-selection" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -911,9 +945,9 @@ awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="n
 <span class="nb">echo</span> <span class="sb">`</span>seq -s <span class="se">\,</span> <span class="m">1</span> <span class="m">1</span> <span class="m">100</span><span class="sb">`</span>  &gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
 <span class="nb">echo</span> <span class="sb">`</span>seq -s <span class="se">\,</span> <span class="m">2</span> <span class="m">20</span> <span class="m">2000</span><span class="sb">`</span>  &gt;&gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
 <span class="nb">echo</span> <span class="sb">`</span>seq -s <span class="se">\,</span> <span class="m">2</span> <span class="m">200</span> <span class="m">20000</span><span class="sb">`</span>  &gt;&gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
-awk -F,  <span class="s1">&#39; { print NF }&#39;</span> <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span> <span class="p">|</span> head
+awk -F,  <span class="s1">&#39; { print NF }&#39;</span> <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span> <span class="p">|</span> head -1
 <span class="nb">echo</span> <span class="s2">&quot;----&quot;</span>
-awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span> <span class="p">|</span> tail
+awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
 </pre></div>
 </div>
 </div>
@@ -923,8 +957,6 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 100
-100
-100
 ----
 1
 2
@@ -933,16 +965,16 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 </div>
 <p>We would like to select the first 5, the 25th and the 90th to the 94th colums from the total 100 colums (Fields in AWK) in our dataset. We redirect the list of the selection in a “listofcolumns.csv” file</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk -F, <span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv &gt; ./txt/list_of_columns.csv
+<span></span><span class="o">!</span> awk -F, <span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv  &gt; ./txt/list_of_columns.csv
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -960,7 +992,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 </div>
 <p>Finally we carry out a query of the original dataset on the basis of the columns previously selected.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
