@@ -13,10 +13,14 @@ The Global Streamflow Indices and Metadata Archive (GSIM) –
     mkdir -p GSIM/zip
     cd  GSIM/zip
     wget https://iacweb.ethz.ch/staff/lukasgu/GSIM/GSIM_indices.zip
+    unzip GSIM_indices.zip
+    TIMESERIES/monthly/TIMESERIES/monthly
 
-**Data exploration**
+##Data exploration
 
 To return a fast results we only perform the operation on ./US_*.mon files
+
+**Create x_y.txt file**
 
 First count longitude and latitude information. 
 
@@ -27,12 +31,23 @@ Now that we know that for longitude/latitude strings are not missing any entranc
 
     paste -d " " <(grep longitude US*.mon | awk '{print $4}') <(grep latitude  US*.mon | awk '{print $4 }') > x_y.txt
 
+**Count number of observations**
+
 For the column "MEAN" count the overall number of observations and also the ones that reported NA
 
     paste -d " " <(awk -F , '{ if(NF>5) print $2}' US*.mon | grep -v date | wc -l )  <( awk -F , '{ if(NF>5) print $2}' US*.mon | grep -v date |  grep NA  | wc -l )
 
 overall observation 2,053,753 ; observation with NA 556,197 
 
+**Count how many observation per date**
+
 List (and count) unique date observations
 
-    awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }} }' ./US_*.mon | sort | uniq  -c
+    awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }} }' ./US_*.mon | sort | uniq  -c > count_date.txt
+
+
+**Monthly MEAN distribution**
+
+Check the distribution of the monthly MEAN
+
+    awk -F , '{ if(NF>5) { if ($2 > 0  ) { print int($2) }} }'  ./US_*.mon | sort -g | uniq -c
