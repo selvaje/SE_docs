@@ -39,7 +39,7 @@ For the column "MEAN" count the overall number of observations and also the ones
 
 overall observation 2,053,753 ; observation with NA 556,197 
 
-**Count how many observation per date**
+**Count how many observations per date**
 
 List (and count) unique date observations
 
@@ -48,6 +48,8 @@ List (and count) unique date observations
 
 **Monthly MEAN distribution**
 
-Check the distribution of the monthly MEAN
+Check if your data are normally distributed.
 
     awk -F , '{ if(NF>5) { if ($2 > 0  ) { print int($2) }} }'  ./US_*.mon | sort -g | uniq -c
+
+The monthly MEAN is skewed to the left.

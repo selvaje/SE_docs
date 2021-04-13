@@ -276,16 +276,17 @@
 </pre></div>
 </div>
 <p>overall observation 2,053,753 ; observation with NA 556,197</p>
-<p><strong>Count how many observation per date</strong></p>
+<p><strong>Count how many observations per date</strong></p>
 <p>List (and count) unique date observations</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) { if ($1 &gt; 0) { print $1 }} }&#39;</span> <span class="o">./</span><span class="n">US_</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span>  <span class="o">-</span><span class="n">c</span> <span class="o">&gt;</span> <span class="n">count_date</span><span class="o">.</span><span class="n">txt</span>
 </pre></div>
 </div>
 <p><strong>Monthly MEAN distribution</strong></p>
-<p>Check the distribution of the monthly MEAN</p>
+<p>Check if your data are normally distributed.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) { if ($2 &gt; 0  ) { print int($2) }} }&#39;</span>  <span class="o">./</span><span class="n">US_</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">g</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span>
 </pre></div>
 </div>
+<p>The monthly MEAN is skewed to the left.</p>
 </div>
 
 
