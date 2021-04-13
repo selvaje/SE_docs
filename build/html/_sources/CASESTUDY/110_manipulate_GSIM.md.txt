@@ -14,9 +14,9 @@ The Global Streamflow Indices and Metadata Archive (GSIM) –
     cd  GSIM/zip
     wget https://iacweb.ethz.ch/staff/lukasgu/GSIM/GSIM_indices.zip
     unzip GSIM_indices.zip
-    TIMESERIES/monthly/TIMESERIES/monthly
+    cd GSIM_indices/TIMESERIES/monthly
 
-##Data exploration
+## Data exploration
 
 To return a fast results we only perform the operation on ./US_*.mon files
 
