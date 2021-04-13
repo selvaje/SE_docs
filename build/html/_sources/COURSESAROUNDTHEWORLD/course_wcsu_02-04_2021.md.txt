@@ -48,3 +48,5 @@ In this course, students will learn GIS concepts by using open source software i
 * 24 February 2021 - Linux bash language. Use of variables and for loop in bash, if statement.
 	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
 
+* 01 March 2021 - Linux bash language. Use of variables and for loop in bash, if statement.
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
