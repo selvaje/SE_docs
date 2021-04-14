@@ -107,6 +107,7 @@ Documentation Contents
 
    CASESTUDY/101_SDM1_MWood_gecomp.ipynb
    CASESTUDY/101_SDM1_MWood_Rmodel.ipynb
+   CASESTUDY/101_SDM2_Vath_Rmodel.ipynb
    CASESTUDY/110_manipulate_GSIM.md
    
 .. toctree::
