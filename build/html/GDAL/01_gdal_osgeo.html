@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8">
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <title>Use GDAL/OGR for raster/vector operations - osgeo &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -18,10 +18,7 @@
 
   
   
-
   
-  
-
   
 
   
@@ -34,10 +31,13 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
           
 
           
@@ -198,8 +198,6 @@
 
 
 
-
-
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -211,7 +209,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-          
+            
             <a href="../_sources/GDAL/01_gdal_osgeo.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -500,7 +498,7 @@ div.rendered_html tbody tr:hover {
 <p><strong>Setting working directory for the OSGeoLive</strong></p>
 <p><a class="reference external" href="https://gdal.org/">GDAL</a> is a translator library for raster and vector geospatial data formats that is released under an X/MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing (source <a class="reference external" href="https://gdal.org/">https://gdal.org/</a>).</p>
 <p>Open the bash terminal, migrate in the directory, and open the jupter-notebook.ipynb</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data/exercise
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data/exercise
 jupyter-notebook 01_gdal_osgeo.ipynb
 </pre></div>
 </div>
@@ -628,15 +626,19 @@ Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
 <p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf">Numerical System Decimal vs Binary</a></p>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 26%" />
-<col style="width: 38%" />
-<col style="width: 20%" />
-<col style="width: 15%" />
+<col style="width: 16%" />
+<col style="width: 24%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 31%" />
+<col style="width: 9%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p></p></th>
 <th class="head"><p>Ranges of GDAL data types</p></th>
 <th class="head"></th>
+<th class="head"><p>base^bit</p></th>
+<th class="head"><p>Precision</p></th>
 <th class="head"><p>Image Size</p></th>
 </tr>
 </thead>
@@ -645,40 +647,56 @@ Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
 <td><p>Minimum</p></td>
 <td><p>Maximum</p></td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr class="row-odd"><td><p>Byte</p></td>
 <td><p>0</p></td>
 <td><p>255</p></td>
+<td><p>2^8</p></td>
+<td></td>
 <td><p>39M</p></td>
 </tr>
 <tr class="row-even"><td><p>UInt16</p></td>
 <td><p>0</p></td>
 <td><p>65,535</p></td>
+<td><p>2^16</p></td>
+<td></td>
 <td><p>78M</p></td>
 </tr>
 <tr class="row-odd"><td><p>Int16, CInt16</p></td>
 <td><p>-32,768</p></td>
 <td><p>32,767</p></td>
+<td><p>2^16</p></td>
+<td></td>
 <td><p>78M</p></td>
 </tr>
 <tr class="row-even"><td><p>UInt32</p></td>
 <td><p>0</p></td>
 <td><p>4,294,967,295</p></td>
+<td><p>2^32</p></td>
+<td></td>
 <td><p>155M</p></td>
 </tr>
 <tr class="row-odd"><td><p>Int32, CInt32</p></td>
 <td><p>-2,147,483,648</p></td>
 <td><p>2,147,483,647</p></td>
+<td><p>2^32</p></td>
+<td></td>
 <td><p>155M</p></td>
 </tr>
 <tr class="row-even"><td><p>Float32, CFloat32</p></td>
 <td><p>-3.4E38</p></td>
 <td><p>3.4E38</p></td>
+<td><p>2^38</p></td>
+<td><p>Integer -16777216 16777216 (2^24)</p></td>
 <td><p>155M</p></td>
 </tr>
 <tr class="row-odd"><td><p>Float64, CFloat64</p></td>
 <td><p>-1.79E308</p></td>
 <td><p>1.79E308</p></td>
+<td><p>2^308</p></td>
+<td></td>
 <td><p>309M</p></td>
 </tr>
 </tbody>
@@ -841,7 +859,7 @@ Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> geodata/vegetation/*.tif <span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file in geodata/vegetation/*.tif <span class="p">;</span> <span class="k">do</span>
 gdalinfo  -mm  <span class="nv">$file</span>  <span class="p">|</span> grep Computed
 <span class="k">done</span>
 </pre></div>
@@ -936,7 +954,7 @@ Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
   <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif <span class="k">)</span>
   gdalwarp -overwrite -te <span class="m">29</span> -1 <span class="m">35</span>.0000000048 <span class="m">4</span>.000000004 -tr <span class="m">0</span>.008333333340000 <span class="m">0</span>.008333333340000 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="nv">$file</span> geodata/LST/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
 <span class="k">done</span>
@@ -1006,7 +1024,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly <span class="nv">$file</span>  <span class="m">20</span> <span class="m">20</span>
 <span class="k">done</span>
 </pre></div>
@@ -1039,7 +1057,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly -geoloc <span class="nv">$file</span>  <span class="m">33</span> <span class="m">2</span>
 <span class="k">done</span>
 </pre></div>
@@ -1077,7 +1095,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 <span class="nb">echo</span> <span class="m">32</span>.5 <span class="m">2</span>.5 &gt; geodata/LST/x_y.txt
 <span class="nb">echo</span> <span class="m">31</span>.1 <span class="m">2</span>.1 &gt;&gt; geodata/LST/x_y.txt
 <span class="c1"># looping trough the images</span>
-<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly -geoloc <span class="nv">$file</span> &lt; geodata/LST/x_y.txt
    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="k">done</span>
@@ -4660,29 +4678,37 @@ rm -f geodata/shp/polygons.sqlite geodata/shp/point-buf_stat.csv geodata/shp/poi
            
           </div>
           <footer>
+  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="01_gdal_colab.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations - colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../AWK/30_awk.html" class="btn btn-neutral float-left" title="AWK Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+      
+        <a href="01_gdal_colab.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations - colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../AWK/30_awk.html" class="btn btn-neutral float-left" title="AWK Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        &#169; Copyright 2020, Giuseppe Amatulli.
+        
+        &copy; Copyright 2020, Giuseppe Amatulli
 
     </p>
   </div>
     
     
     
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
+
         </div>
       </div>
 
