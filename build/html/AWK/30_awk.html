@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>AWK Tutorial &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,13 +34,10 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
           
 
           
@@ -150,6 +150,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/101_SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/101_SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/101_SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/110_manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/120_Data_type_GTiff.html">Data type in GTiff</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -195,6 +198,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -206,7 +211,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/AWK/30_awk.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -494,11 +499,11 @@ div.rendered_html tbody tr:hover {
 <h1>AWK Tutorial<a class="headerlink" href="#AWK-Tutorial" title="Permalink to this headline">¶</a></h1>
 <hr class="docutils" />
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s. It consists of a set of actions to be taken against streams of textual data.</p>
-<p><img alt="5ec5990c8c7c4f9e8b346da3fd925115" class="no-scaled-link" src="../_images/less_auk.jpg" style="width: 900px;" /></p>
+<p><img alt="040530051c23466bbd3798a1c49d968e" class="no-scaled-link" src="../_images/less_auk.jpg" style="width: 900px;" /></p>
 <div class="section" id="The-AWK-syntax">
 <h2>The AWK syntax<a class="headerlink" href="#The-AWK-syntax" title="Permalink to this headline">¶</a></h2>
 <p>The awk syntax is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;[pattern] </span><span class="si">{action}</span><span class="s1"> [pattern]&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;[pattern] {action} [pattern]&#39; input.txt &gt; output.txt
 </pre></div>
 </div>
 <p>The awk line is always placed between single-quotation (’) and not back-quotation (`).</p>
@@ -513,11 +518,11 @@ div.rendered_html tbody tr:hover {
 <li><p>The main action ({action}) is computed by reading the input line by line. The actions include commands and operations.</p></li>
 </ul>
 <p>Therefore the full awk syntax can be represented in this way:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;BEGIN </span><span class="si">{action}</span><span class="s1"> </span><span class="si">{action}</span><span class="s1"> END </span><span class="si">{action}</span><span class="s1">&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;BEGIN {action} {action} END {action}&#39; input.txt &gt; output.txt
 </pre></div>
 </div>
 <p>in practice you can read it as:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="s1">&#39;BEGIN {action before the input.txt reading } {action during the input.txt reading} END {action after the input.txt reading}&#39;</span> <span class="nb">input</span><span class="o">.</span><span class="n">txt</span> <span class="o">&gt;</span> <span class="n">output</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;BEGIN {action before the input.txt reading } {action during the input.txt reading} END {action after the input.txt reading}&#39; input.txt &gt; output.txt
 </pre></div>
 </div>
 </div>
@@ -910,7 +915,7 @@ ID,column_1,colum_b,colum_c,TOTAL
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> COLNAME in  colum_b TOTAL <span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> COLNAME <span class="k">in</span>  colum_b TOTAL <span class="p">;</span> <span class="k">do</span>
 awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span> ./txt/test.csv
 <span class="nb">echo</span> <span class="s2">&quot;---&quot;</span>
 <span class="k">done</span>
@@ -997,7 +1002,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> COLNAME in  <span class="sb">`</span>cat ./txt/list_of_columns.csv<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> COLNAME <span class="k">in</span>  <span class="sb">`</span>cat ./txt/list_of_columns.csv<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
 <span class="nb">echo</span> <span class="nv">$COLNAME</span>
 awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39; { if (NR==1)  { for (col=1;col&lt;=NF;col++) { if ($col==COLNAME) {colprint=col}}}  else  {print $1 &quot;,&quot; $colprint }} &#39;</span> ./txt/test.csv &gt; ./txt/OUTPUT_subset_<span class="nv">$COLNAME</span>.csv
 <span class="k">done</span>
@@ -1030,37 +1035,29 @@ awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="n
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../GDAL/01_gdal_osgeo.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations - osgeo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../BASH/03_bashinter_osgeo.html" class="btn btn-neutral float-left" title="Manipulate text files in bash" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../GDAL/01_gdal_osgeo.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations - osgeo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../BASH/03_bashinter_osgeo.html" class="btn btn-neutral float-left" title="Manipulate text files in bash" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Giuseppe Amatulli
+        &#169; Copyright 2020, Giuseppe Amatulli.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
