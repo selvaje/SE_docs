@@ -34,6 +34,7 @@ In this course, students will be introduced to an array of powerful open-source 
 	- [Longzhu Shen: AWK](http://spatial-ecology.net/docs/build/html/AWK/30_awk.html)
 	- [Video recording](https://wcsu-edu.zoom.us/rec/share/trpmS2sEmfZvOnQqgMYSyx3YBaHUj01Ch_epCZVBAu2OHgPkMItgB5AIqnpb2twK.4VgLUzHevjJmV8cB)  Passcode: 1k8I3@56
 
-* 15 April 2021 - Bash and AWK for file manipulation.
-- [Giuseppe Amatulli: Bash]()
-- [Longzhu Shen: AWK]()
+* 15 April 2021 - GDAL?OGR and Data Type.
+ - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/01_gdal_osgeo.html)
+ - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf)
+ - [Video recording](https://wcsu-edu.zoom.us/rec/share/gtx5Yl_NuSyw9u5289XTAhYwuSg39fH6JYgO2MicPLY1GWj03lUxI0Ae1AAg4LUT.rkfR6X_ZSX8keyXS) Passcode: Mcp!N5&z
