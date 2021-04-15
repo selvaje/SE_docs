@@ -12,7 +12,7 @@ The Global Streamflow Indices and Metadata Archive (GSIM) –
 
     mkdir -p GSIM/zip
     cd  GSIM/zip
-    wget https://iacweb.ethz.ch/staff/lukasgu/GSIM/GSIM_indices.zip
+    wget https://store.pangaea.de/Publications/GudmundssonL-etal_2018/GSIM_indices.zip
     unzip GSIM_indices.zip
     cd GSIM_indices/TIMESERIES/monthly
 
