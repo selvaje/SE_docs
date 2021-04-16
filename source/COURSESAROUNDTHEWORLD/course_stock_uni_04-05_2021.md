@@ -39,7 +39,6 @@ In this course, students will be introduced to an array of powerful open-source 
  - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf)
  - [Video recording](https://wcsu-edu.zoom.us/rec/share/gtx5Yl_NuSyw9u5289XTAhYwuSg39fH6JYgO2MicPLY1GWj03lUxI0Ae1AAg4LUT.rkfR6X_ZSX8keyXS) Passcode: Mcp!N5&z
 
-
 * 20 April 2021 - GDAL\OGR and Data Type.
  - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/01_gdal_osgeo.html)
 
