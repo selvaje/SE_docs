@@ -41,11 +41,12 @@ In this course, students will be introduced to an array of powerful open-source 
 
 * 20 April 2021 - GDAL\OGR and Data Type.
    - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/01_gdal_osgeo.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/V0fe-bWcUEHECB3_53feJSd15UYflijEJXGilqvSddQF6pTFno1KSLHsKiEJz3Mg.lEsZXEkWX5a_TN-7] Passcode: qd4xj&7Q
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/V0fe-bWcUEHECB3_53feJSd15UYflijEJXGilqvSddQF6pTFno1KSLHsKiEJz3Mg.lEsZXEkWX5a_TN-7) Passcode: qd4xj&7Q
 
 
 * 22 April 2021 - PKTOOLS.
    - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/02_pktools_osgeo.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/j1Lwe1g9kj7D53kl3fWWy8KLYIxYm3Ap5sMH1leXmRvGYbbdmz7bgx9m4douEQk1.GuV7GNKBLpszCI4S] Passcode: B1L#SNZ^
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/j1Lwe1g9kj7D53kl3fWWy8KLYIxYm3Ap5sMH1leXmRvGYbbdmz7bgx9m4douEQk1.GuV7GNKBLpszCI4S) Passcode: B1L#SNZ^
+
 
 
