@@ -504,8 +504,8 @@ div.rendered_html tbody tr:hover {
 <h2>Transform a simple “for loop” in multicore “for loop”<a class="headerlink" href="#Transform-a-simple-“for-loop”-in-multicore-“for-loop”" title="Permalink to this headline">¶</a></h2>
 <p><strong>For Loop</strong></p>
 <p>You may run the full process by applying the loop in the usual way:</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -522,6 +522,51 @@ gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
 <span class="o">)</span>
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+geodata/LST/LST_MOYDmax_month1.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month2.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month3.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month4.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month5.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month6.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month7.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month8.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+geodata/LST/LST_MOYDmax_month9.tif
+Input file size is 1080, 840
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+real    0m39.567s
+user    0m33.485s
+sys     0m4.028s
+</pre></div></div>
 </div>
 <p>In this way only one processor will be used. The others will be just sleeping or eventually swap when the process is applied to another tif.</p>
 <div class="nbinput docutils container">
@@ -605,13 +650,30 @@ sys     0m3.390s
 <li><p>The -P option identify the processors (in this case 2) used to run the full line inside -c $’ ….. ’ _</p></li>
 </ul>
 <p>For example, the following picture shows the processing time during the xargs loop. As you can see two processors are running simultaneously, and the whole processing time is shorter.</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/xargs_core2.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/BASH_03_bashxargs_osgeo_8_0.png" src="../_images/BASH_03_bashxargs_osgeo_8_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
 </pre></div>
 </div>
 </div>
