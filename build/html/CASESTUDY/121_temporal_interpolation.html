@@ -497,7 +497,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Temporal-interpolation-of-landsat-images">
 <h1>Temporal interpolation of landsat images<a class="headerlink" href="#Temporal-interpolation-of-landsat-images" title="Permalink to this headline">¶</a></h1>
 <p>The Landsat Analysis Ready Data (GLAD ARD) developed by the Global Land Analysis and Discovery (GLAD) provides spatially and temporally consistent inputs for land cover mapping and change detection. The GLAD ARD represent a 16-day time-series of tiled Landsat normalized surface reflectance from 1997 to present (source <a class="reference external" href="https://glad.umd.edu/book/overview">https://glad.umd.edu/book/overview</a>).</p>
-<p>The GLAD ARD data can be download from the <a class="reference external" href="https://glad.umd.edu/dataset/landsat_v1.1/">https://glad.umd.edu/dataset/landsat_v1.1/</a> previous autentifcation. For this exercise we are going to use a portion of TILE 015E_38N, which is located in the south of Italy (Sicily), for the year 2018, 2019, 2020.</p>
+<p>The GLAD ARD data can be download from the <a class="reference external" href="https://glad.umd.edu/dataset/landsat_v1.1/">https://glad.umd.edu/dataset/landsat_v1.1/</a> previous autentifcation. For this exercise we are going to use a portion of TILE 015E_38N, which is located in the south of Italy (Sicily), for the year <strong>2018, 2019, 2020</strong>.</p>
 <p>The temporal series for each tile is labeled following this numerical nomenclature.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
@@ -522,9 +522,9 @@ div.rendered_html tbody tr:hover {
 </pre></div></div>
 </div>
 <p>Where the first column identify the year, and the others the 16-day time-series.</p>
-<p>For example the below figure depict three images for the 876 899 922 time-frame.</p>
+<p>For example the below figure depict three images for the <strong>876, 899, 922</strong> time-frame (second 16-day time-serie).</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -534,7 +534,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -714,7 +714,7 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 </tbody>
 </table>
 <p>The band 8 can be used to mask out areas that do not belong to land (QA=1) and water (QA=2) class.</p>
-<p>In the below figures we use the same images than before and we apply a masking procedure.</p>
+<p>In the below figures we use the same images than before and we apply a masking procedure using the band 8. The black part has pixel value equal to 0 and is labled as NoData</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -733,13 +733,13 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 <img alt="../_images/CASESTUDY_121_temporal_interpolation_7_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_7_0.png" />
 </div>
 </div>
-<p>We decided to compute a temporal median in order to reduce the area with no data. In other words we have combined the images that belong to the same period (876, 899, 922) and select the median value.</p>
+<p>We decided to compute a temporal median in order to reduce the area with no data. In other words we have combined the images that belong to the same period (876, 899, 922) and select the median value. During the opearion we use the band 8 to select only good-quality pixels.</p>
 </div>
 <div class="section" id="Temporal-composite">
 <h2>Temporal composite<a class="headerlink" href="#Temporal-composite" title="Permalink to this headline">¶</a></h2>
 <p>For each of the 16-day time-series we composite the 3 images (from the year 2018,2019,2020) taking median among them. The composite has been done by retaining from band 8 (-bndnodata 7) only pixels that belong to land (QA=1) or water (QA=2)</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -756,7 +756,8 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 <span class="s1">-srcnodata 10 -srcnodata 11 -srcnodata 12 -srcnodata 13 -srcnodata 14 -srcnodata 15  -srcnodata 16 -srcnodata 17 \</span>
 <span class="s1">-o geodata/glad_ard/median_$day.tif</span>
 
-<span class="s1">##### select only 6 bands</span>
+<span class="s1">##### The obtaine mosaic still contains 8 bands. Therefore we run gdal_translate to select only 6 bands</span>
+
 <span class="s1">gdal_translate  -co COMPRESS=LZW -co ZLEVEL=9 -b 1 -b 2 -b 3 -b 4 -b 5 -b 6 -a_nodata 0 \</span>
 <span class="s1">geodata/glad_ard/median_$day.tif  geodata/glad_ard/median_${day}_6bs.tif</span>
 <span class="s1">rm geodata/glad_ard/median_$day.tif</span>
@@ -769,81 +770,81 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-00...10.....20...10.30.....40..20...50.....3060......7040.....80..50...90....100 - done.
+00...10.....20...10.30......40.20...50.....3060......7040......80.50....90....100 - done.
 Input file size is 400, 440
-0....10...20...30...40...50...60...70...80...90...100 - done.
-060....10.....7020.....30...80..40.....9050......60100 - done.
+0...10...20...30...40...5060...60...70...80...90...100 - done.
+0......10..70..20.....3080.....40..90...50....100 - done.
 Input file size is 400, 440
 0...10...20...30...40...50...60...70...80...90...100 - done.
-0....10.....20..70..30.....8040.....50..90...60....100 - done.
-.Input file size is 400, 440
-0...10...20...30...40...50...60...70...80...90...100 - done.
-700.....10..80...20.....30.90...40....50...100 - done.
-.Input file size is 400, 440
-060...10...20...30...40...50...60...70...80...90...100 - done.
-.0....10....20...7030.....40...80..50....90....60.100 - done.
+.0..60.10.....20....7030.....40..80...50.....9060......70100 - done.
 .Input file size is 400, 440
 0...10...20...30...40...50....60...70...80...90...100 - done.
-700....10.....20..80.30....40.....50..90..60.....100 - done.
-70Input file size is 400, 440
-0...10...20...30...40...50......60...70...80...90...100 - done.
-80...090.....10....20..100 - done.
-.30...40Input file size is 400, 440
-0.....10...20...30...40...50.50....60...70...80...90...100 - done.
-..60...070......1080.....90....20100 - done.
-...Input file size is 400, 440
-030....10...20...30...40...50.....60...70...80...90...100 - done.
-40.0.....1050......6020......7030.....40..80...50.....6090.....70....80.100 - done.
-..90..Input file size is 400, 440
-0....10...20...30...40...50...60...70...80...90...100 - done.
-100 - done.
+0...80..10.....2090....30.....40100 - done.
 Input file size is 400, 440
-00.....10...20...30...40...50.10.....60...70...80...90...100 - done.
-.20...30.0....40..10.....5020......6030......7040......8050......9060......70...100 - done.
-80...90.Input file size is 400, 440
-0.....10...20...30...40...50...60...70...80...90...100 - done.
-100 - done.
-0Input file size is 400, 440
-0.....10...20...30...40...50.10....60...70...80...90...100 - done.
-..20...300......1040.....20..50....30..60...40....70..50....80..60....90..70.....80...100 - done.
-90...Input file size is 400, 440
+0....10...20...30...40...50.....60...70...80...90...100 - done.
+500.....10....6020....30....40...70.50......8060.....90....70.100 - done.
+.Input file size is 400, 440
+0....10...20...30...40...5080...60...70...80...90...100 - done.
+.0.....10.90...20.....30...40100 - done.
+.Input file size is 400, 440
+0....10...20...30...40...50.50....60...70...80...90...100 - done.
+..060....10....20....3070....40.....8050......6090......70...80100 - done.
+..Input file size is 400, 440
+0.90...10...20...30...40...50......60...70...80...90...100 - done.
+0...100 - done.
+10Input file size is 400, 440
+0.....10...20...30...40...50.20...60...70...80...90...100 - done.
+.0.....1030.....20...40.30......40.50.....60.50....70...60....8070......8090......90...100 - done.
+Input file size is 400, 440
+0...10...20...30...40...50100 - done.
+Input file size is 400, 440
+0...60...70...80...90...100 - done.
+...10...20...30...40...500.....60...70...80...90...100 - done.
+.10..0...20..10....30.20......4030......5040......6050.....70..60....80..70....90..80.....90.100 - done.
+..Input file size is 400, 440
 0...10...20...30...40...50100 - done.
 ...60...70...80...90...100 - done.
 Input file size is 400, 440
-0...10...20...30...40...500.....60...70...80...90...100 - done.
-.10..0....2010....20....30...40....3050...60.....70..40...80....50...90..60.....70..100 - done.
-.80...90Input file size is 400, 440
-0....10...20...30...40...50.....60...70...80...90...100 - done.
-100 - done.
-0.Input file size is 400, 440
+0...10...20...30...40...500......60...70...80...90...100 - done.
+10..0...20..10.....3020......4030......4050......5060.....60..70....70..80....80...90..90.....100 - done.
+Input file size is 400, 440
+0100 - done.
+Input file size is 400, 440
+0...10...20...30...40...50...10...20...30...40...50...60...70...80...90...100 - done.
+...60...70...80...90...100 - done.
+0..0....10..10...20.20....30....40....3050....60.....4070......8050......60.90.....70...80100 - done.
+.Input file size is 400, 440
+0.....10...20...30...40...5090......60...70...80...90...100 - done.
+0.100 - done.
+Input file size is 400, 440
+0....10...20...30...40...50.10...60...70...80...90...100 - done.
+0.....20...10.30......40.20...50.....6030.....70....80...4090....100 - done.
+Input file size is 400, 440
 0...10...20...30...40...50....60...70...80...90...100 - done.
-.010.....20...10.30......40.20...50.....6030.....70....80...90.40..100 - done.
-.Input file size is 400, 440
-0...10...20...30...40...50...60...70...80...90...100 - done.
-0.....1050.....20..60....30.70......4080......9050......100 - done.
-60Input file size is 400, 440
-0...10...20...30...40...50...60...70...80...90...100 - done.
-0....10.....20...3070...40....50....60...70....80...9080...100 - done.
-.Input file size is 400, 440
-0...10...20...30...40...50...60...70...80...90...100 - done.
-.0..90....10..100 - done.
+0..50...10....60.20......7030......8040.....90..50....100 - done.
+Input file size is 400, 440
+0...10...20...30...40...50....60...70...80...90...100 - done.
+060....10....20....30.70..40....50...60....70....80.80..90.....100 - done.
+Input file size is 400, 440
+0....10...20...30...40...50...60...70...80...90...100 - done.
+090......10100 - done.
 Input file size is 400, 440
 0...10...20...30...40...50...60...70...80...90...100 - done.
-.0...10....2020.....30..30..40......5040.....60...50...70..60....80..70....90....80100 - done.
+.0....10....2020......30.30...40.....5040.....60..50....70.60.....80.70.....90..80...100 - done.
 .Input file size is 400, 440
 0...10...20...30...40...50...60...70...80...90...100 - done.
-0...90.....10100 - done.
+.090......100 - done.
 Input file size is 400, 440
-0...10...20...30...40...50...60...70...80...90...100 - done.
+010...10...20...30...40...50...60...70...80...90...100 - done.
 ...20...30...40...50...60...70...80...90...100 - done.
 Input file size is 400, 440
 0...10...20...30...40...50...60...70...80...90...100 - done.
 </pre></div></div>
 </div>
-<p>After the temporal composite some images present areas with no data.</p>
+<p>After the temporal composite some images present areas with NoData.</p>
 <p>Below the results of the median aggregation of the previus 3 images.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -853,7 +854,7 @@ Input file size is 400, 440
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -863,15 +864,15 @@ Input file size is 400, 440
 </div>
 <div class="section" id="Temporal-interpolation">
 <h2>Temporal interpolation<a class="headerlink" href="#Temporal-interpolation" title="Permalink to this headline">¶</a></h2>
-<p>We re-fill (gap-filling) all the area labeled as NoData=0 (black area in the above immages) using temporal interpolation by means of <a class="reference external" href="https://en.wikipedia.org/wiki/Akima_spline">Akima</a> and Stefen algorithm.</p>
+<p>We re-fill (gap-filling) all the area labeled as NoData=0 (black area in the above immages) using temporal interpolation by means of <a class="reference external" href="https://en.wikipedia.org/wiki/Akima_spline">Akima</a> and <a class="reference external" href="https://www.weatherclasses.com/uploads/1/3/1/3/131359169/steffen_interpolation_paper.pdf">Steffen</a> algorithm.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-<span class="c1"># for semplicity we concentrate in threath ony band1</span>
+<span class="c1"># for semplicity we concentrate in only on band 1</span>
 <span class="nb">echo</span> <span class="m">1</span>  <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">1</span>  bash -c <span class="s1">$&#39;</span>
 <span class="s1">B=$1 # band</span>
 
@@ -889,13 +890,16 @@ Input file size is 400, 440
 <span class="s1">pkfilter -of GTiff -co COMPRESS=LZW -co ZLEVEL=9 -nodata 0 -f smoothnodata -dz 1 -interp akima \</span>
 <span class="s1">-i geodata/glad_ard/median_tseries_${B}b.vrt -o geodata/glad_ard/median_akima_${B}b_tmp.tif</span>
 
+<span class="s1">## reselecto only the 16-day time-series in the center</span>
 <span class="s1">gdal_translate  -co COMPRESS=LZW -co ZLEVEL=9 $(for b in $(seq 24 46); do echo &quot;-b $b&quot; ; done) \</span>
 <span class="s1">geodata/glad_ard/median_akima_${B}b_tmp.tif geodata/glad_ard/median_akima_${B}b.tif</span>
 <span class="s1">rm geodata/glad_ard/median_akima_${B}b_tmp.tif</span>
 
+<span class="s1">## gap filling with the steffen spline</span>
 <span class="s1">pkfilter -of GTiff -co COMPRESS=LZW -co ZLEVEL=9 -nodata 0 -f smoothnodata -dz 1 -interp steffen \</span>
 <span class="s1">-i geodata/glad_ard/median_tseries_${B}b.vrt -o geodata/glad_ard/median_steffen_${B}b_tmp.tif</span>
 
+<span class="s1">## reselecto only the 16-day time-series in the center</span>
 <span class="s1">gdal_translate  -co COMPRESS=LZW -co ZLEVEL=9 $(for b in $(seq 24 46); do echo &quot;-b $b&quot; ; done) \</span>
 <span class="s1">geodata/glad_ard/median_steffen_${B}b_tmp.tif geodata/glad_ard/median_steffen_${B}b.tif</span>
 <span class="s1">rm geodata/glad_ard/median_steffen_${B}b_tmp.tif</span>
@@ -944,11 +948,106 @@ Input file size is 400, 440
 </div>
 <p>At this point all the immages have been re-fill.</p>
 </div>
+<div class="section" id="Plotting-the-temporal-interpolation-for-band-1">
+<h2>Plotting the temporal interpolation for band 1<a class="headerlink" href="#Plotting-the-temporal-interpolation-for-band-1" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+R --vanilla -q
+<span class="c1"># open a terminal and run this line for the installation</span>
+<span class="c1"># install.packages(&quot;Rcpp&quot;)</span>
+<span class="c1"># install.packages(&quot;rgdal&quot;)</span>
+<span class="c1"># install.packages(&quot;raster&quot;)</span>
+library<span class="o">(</span>sp<span class="o">)</span>
+library<span class="o">(</span>raster<span class="o">)</span>
+<span class="nv">stack</span> <span class="o">=</span> stack<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/median_steffen_1b.tif&quot;</span><span class="o">)</span>
+png<span class="o">(</span><span class="s2">&quot;../images/median_steffen_1b.png&quot;</span><span class="o">)</span>
+<span class="nv">pal</span> <span class="o">=</span> colorRampPalette<span class="o">(</span>rev<span class="o">(</span>rainbow<span class="o">(</span><span class="m">20</span><span class="o">)))</span>
+plot<span class="o">(</span>stack , <span class="nv">col</span><span class="o">=</span>pal<span class="o">(</span><span class="m">20</span><span class="o">))</span>
+dev.off<span class="o">()</span>
+<span class="nv">stack</span> <span class="o">=</span> stack<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/median_tseries_1b.vrt&quot;</span><span class="o">)</span>
+png<span class="o">(</span><span class="s2">&quot;../images/median_tseries_1b.png&quot;</span><span class="o">)</span>
+<span class="nv">pal</span> <span class="o">=</span> colorRampPalette<span class="o">(</span>rev<span class="o">(</span>rainbow<span class="o">(</span><span class="m">20</span><span class="o">)))</span>
+plot<span class="o">(</span>stack , <span class="nv">col</span><span class="o">=</span>pal<span class="o">(</span><span class="m">20</span><span class="o">))</span>
+dev.off<span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&gt; # open a terminal and run this line for the installation
+&gt; # install.packages(&#34;Rcpp&#34;)
+&gt; # install.packages(&#34;rgdal&#34;)
+&gt; # install.packages(&#34;raster&#34;)
+&gt; library(sp)
+&gt; library(raster)
+&gt; stack = stack(&#34;geodata/glad_ard/median_steffen_1b.tif&#34;)
+&gt; png(&#34;../images/median_steffen_1b.png&#34;)
+&gt; pal = colorRampPalette(rev(rainbow(20)))
+&gt; plot(stack , col=pal(20))
+&gt; dev.off()
+null device
+          1
+&gt; stack = stack(&#34;geodata/glad_ard/median_tseries_1b.vrt&#34;)
+&gt; png(&#34;../images/median_tseries_1b.png&#34;)
+&gt; pal = colorRampPalette(rev(rainbow(20)))
+&gt; plot(stack , col=pal(20))
+&gt; dev.off()
+null device
+          1
+&gt;
+</pre></div></div>
+</div>
+<p><strong>Before interpolation</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/median_tseries_1b.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_121_temporal_interpolation_18_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_18_0.png" />
+</div>
+</div>
+<p><strong>After interpolation</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/median_steffen_1b.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_121_temporal_interpolation_20_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_20_0.png" />
+</div>
+</div>
+</div>
 <div class="section" id="Assessing-the-temporal-interpolation">
 <h2>Assessing the temporal interpolation<a class="headerlink" href="#Assessing-the-temporal-interpolation" title="Permalink to this headline">¶</a></h2>
 <p>We select one pixel in the images and we plot its values acros time.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -964,7 +1063,7 @@ paste -d <span class="s2">&quot; &quot;</span> &lt;<span class="o">(</span><span
 </div>
 <p>We obtained a table with 4 Columns. The zero in the second column rapresent No-Data and is the one that we had interpolated.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1003,8 +1102,9 @@ day tseries akima steffen
 360 0 894 929
 </pre></div></div>
 </div>
+<p>We import in R for plotting</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1045,7 +1145,7 @@ null device
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1055,19 +1155,20 @@ null device
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_21_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_21_0.png" />
+<img alt="../_images/CASESTUDY_121_temporal_interpolation_27_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_27_0.png" />
 </div>
 </div>
+<p>You can noticed that Steffen and Akima present same differences only in the interpolated pixels. The orginal values have been kept constant for both method.</p>
 </div>
 <div class="section" id="Savitzky–Golay-smoothing-filter">
 <h2>Savitzky–Golay smoothing filter<a class="headerlink" href="#Savitzky–Golay-smoothing-filter" title="Permalink to this headline">¶</a></h2>
 <p>We can use the Savitzky–Golay filter to smooth out the spectral response.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1077,7 +1178,7 @@ null device
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1085,8 +1186,9 @@ null device
 &lt;IPython.core.display.Image object&gt;
 </pre></div></div>
 </div>
+<p>Run Savitzky–Golay smoothing filter</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1113,7 +1215,7 @@ opening output image geodata/glad_ard/median_savgolay_1b.tif with 23 bands
 <h2>Assessing the Savitzky–Golay smoothing filter<a class="headerlink" href="#Assessing-the-Savitzky–Golay-smoothing-filter" title="Permalink to this headline">¶</a></h2>
 <p>We use the lat lon location to extract the value for the Savitzky–Golay smoothing filter and we plot against the previus values</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1125,7 +1227,7 @@ paste -d <span class="s2">&quot; &quot;</span> geodata/glad_ard/day_orig_akima_s
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1164,8 +1266,9 @@ day tseries akima steffen savgolay
 360 0 894 929 853
 </pre></div></div>
 </div>
+<p>We import in R for plotting</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1209,7 +1312,7 @@ null device
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1219,11 +1322,11 @@ null device
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_29_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_29_0.png" />
+<img alt="../_images/CASESTUDY_121_temporal_interpolation_38_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_38_0.png" />
 </div>
 </div>
 </div>
@@ -1231,7 +1334,7 @@ null device
 <h2>Wavelet prediction<a class="headerlink" href="#Wavelet-prediction" title="Permalink to this headline">¶</a></h2>
 <p>We use the Wavelet tecnique to predic the value for the 15 of each month</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1257,7 +1360,7 @@ opening output image geodata/glad_ard/median_akima_wavelet_1b.tif with 12 bands
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1289,8 +1392,9 @@ day wavelet
 357 842
 </pre></div></div>
 </div>
+<p>We import in R for plotting</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1330,7 +1434,7 @@ null device
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1340,11 +1444,11 @@ null device
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_34_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_34_0.png" />
+<img alt="../_images/CASESTUDY_121_temporal_interpolation_44_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_44_0.png" />
 </div>
 </div>
 </div>
