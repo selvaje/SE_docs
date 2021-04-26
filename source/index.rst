@@ -55,6 +55,7 @@ Documentation Contents
 
    BASH/03_bashintro_osgeo.ipynb
    BASH/03_bashinter_osgeo.ipynb
+   BASH/03_bashxargs_osgeo.ipynb
 
 .. toctree::
    :titlesonly:
