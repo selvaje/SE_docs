@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Use GDAL/OGR for raster/vector operations - colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -18,7 +18,10 @@
 
   
   
+
   
+  
+
   
 
   
@@ -31,13 +34,10 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +59,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
           
 
           
@@ -122,6 +122,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/03_bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption"><span class="caption-text">AWK</span></p>
 <ul>
@@ -153,6 +154,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/101_SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/110_manipulate_GSIM.html">Manipulate GSIM files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/120_Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/121_temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -198,6 +200,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -209,7 +213,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/GDAL/01_gdal_colab.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -503,7 +507,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="k">import</span> <span class="n">drive</span>
+<span></span><span class="kn">from</span> <span class="nn">google.colab</span> <span class="kn">import</span> <span class="n">drive</span>
 <span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1003,7 +1007,7 @@ Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file in geodata/vegetation/*.tif <span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file <span class="k">in</span> geodata/vegetation/*.tif <span class="p">;</span> <span class="k">do</span>
 gdalinfo  -mm  <span class="nv">$file</span>  <span class="p">|</span> grep Computed
 <span class="k">done</span>
 </pre></div>
@@ -1120,7 +1124,7 @@ Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
   <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif <span class="k">)</span>
   gdalwarp -overwrite -te <span class="m">29</span> -1 <span class="m">35</span>.0000000048 <span class="m">4</span>.000000004 -tr <span class="m">0</span>.008333333340000 <span class="m">0</span>.008333333340000 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="nv">$file</span> geodata/LST/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
 <span class="k">done</span>
@@ -1192,7 +1196,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly <span class="nv">$file</span>  <span class="m">20</span> <span class="m">20</span>
 <span class="k">done</span>
 </pre></div>
@@ -1227,7 +1231,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly -geoloc <span class="nv">$file</span>  <span class="m">33</span> <span class="m">2</span>
 <span class="k">done</span>
 </pre></div>
@@ -1265,7 +1269,7 @@ Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destina
 <span class="nb">echo</span> <span class="m">32</span>.5 <span class="m">2</span>.5 &gt; geodata/LST/x_y.txt
 <span class="nb">echo</span> <span class="m">31</span>.1 <span class="m">2</span>.1 &gt;&gt; geodata/LST/x_y.txt
 <span class="c1"># looping trough the images</span>
-<span class="k">for</span> file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span> <span class="k">do</span>
    gdallocationinfo -valonly -geoloc <span class="nv">$file</span> &lt; geodata/LST/x_y.txt
    <span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
 <span class="k">done</span>
@@ -4871,37 +4875,29 @@ rm -f geodata/shp/polygons.sqlite geodata/shp/point-buf_stat.csv geodata/shp/poi
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../PKTOOLS/02_pktools_osgeo.html" class="btn btn-neutral float-right" title="Use PKTOOLS for raster/vector operations - osgeo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="01_gdal_osgeo.html" class="btn btn-neutral float-left" title="Use GDAL/OGR for raster/vector operations - osgeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../PKTOOLS/02_pktools_osgeo.html" class="btn btn-neutral float-right" title="Use PKTOOLS for raster/vector operations - osgeo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_gdal_osgeo.html" class="btn btn-neutral float-left" title="Use GDAL/OGR for raster/vector operations - osgeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Giuseppe Amatulli
+        &#169; Copyright 2020, Giuseppe Amatulli.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
