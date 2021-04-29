@@ -50,7 +50,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
 
 * 27 April 2021 - PKTOOLS for temporal analysis.
-   - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
-   - [Longzhu Shen: Fundamental of temporal analysis] 
-
+   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
+   - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/GrRjrHnG-J3gLeKJ9pIHSy0ILJCawifbj-rUp7__EQ3kKo1rMqk6If-7UYNS2zzr.5D2pNuR85oJzLCR9)  Passcode: 7$F.l5Y?
 
