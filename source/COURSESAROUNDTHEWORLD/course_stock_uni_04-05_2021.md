@@ -59,3 +59,12 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/VGmeUTQn9Vp_4SUHswWw_hpAxA9JZX8YuGJW9ILZdS0CKvRGQOBYdE7ZbUU2wZvJ.fP9y-qRW-BnrGCqF) Passcode: K!?e!8e$
  
+* 04 May 2021 - Student presentation and ML introduction.
+   - Students: Presenting objectives for the final project
+   - [Longzhu Shen: ML introduction](http://spatial-ecology.net/docs/source/lectures/lect_20210504_ML_overview.pdf)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/ATCGRyjtyhZibwOasqm5qNSsbTUjO1isY_HQi1wXW-N2do9u5Ug5aZ0_5zlsLEYs.tANWM3aFuxIi0pQI) Passcode: 6898L*!3
+   
+* 06 May 2021 - Student presentation and ML.
+   - Students: Presenting objectives for the final project
+   - [Longzhu Shen: ML ](http://spatial-ecology.net/docs/source/lectures/lect_20210504_ML_overview.pdf)
+   - [Video recording]( ) Passcode: 6898L*!3
