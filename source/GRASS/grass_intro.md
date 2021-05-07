@@ -39,9 +39,9 @@ Once you are running Grass through the bash shell terminal you can always start 
 
 **GRASS command structure**
 
-| Prefix 	| Function   	| Class type of command        	| Example              |
-|--------	|------------	|------------------------------	|----------------------|
-| d.*    	|   display  	| graphical output             	| d.rast: views raster |
+| Prefix | Function | Class type of command | Example |
+|--------|----------|-----------------------|---------|
+| d.*    | display  | graphical output | d.rast: views raster |
 
 
 
