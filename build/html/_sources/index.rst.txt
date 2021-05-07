@@ -100,7 +100,7 @@ Documentation Contents
    :maxdepth: 1
    :caption: GRASS
 
-   GRASS/
+   GRASS/grass_intro.md
 
 .. toctree::
    :titlesonly:
