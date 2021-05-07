@@ -44,7 +44,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Install pktools on the gdrive and be able to use from any Colab" href="../ADMIN/00_pktools_gdrive_install.html" />
+    <link rel="next" title="# NP Modelling" href="122_pred_NP.html" />
     <link rel="prev" title="Data type in GTiff" href="120_Data_type_GTiff.html" /> 
 </head>
 
@@ -147,6 +147,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
 </ul>
+<p class="caption"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+</ul>
 <p class="caption"><span class="caption-text">CASE STUDY</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
@@ -155,6 +159,9 @@
 <li class="toctree-l1"><a class="reference internal" href="110_manipulate_GSIM.html">Manipulate GSIM files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="120_Data_type_GTiff.html">Data type in GTiff</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html"># NP Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html#BackGround">BackGround</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html#Code">Code</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -539,13 +546,13 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_3_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_3_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_3_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_3_0.png" />
 </div>
 </div>
 <div class="section" id="Data-download">
 <h2>Data download<a class="headerlink" href="#Data-download" title="Permalink to this headline">¶</a></h2>
 <p>Per convenience the images have been downloaded and cropped already with the following lines.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>for INTER in $(grep -e ^2018 -e ^2019 -e ^2020 geodata/glad_ard//16d_intervals.csv | awk &#39;{ $1=&quot;&quot;; print $0}&#39;) ; do
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>for INTER in $(grep -e ^2018 -e ^2019 -e ^2020 geodata/glad_ard//16d_intervals.csv | awk &#39;{ $1=&quot;&quot;; print $0}&#39;) ; do
 curl --connect-timeout 600 -u user:password -X GET https://glad.umd.edu/dataset/landsat_v1.1/38N/015E_38N/$INTER.tif -o geodata/glad_ard/$INTER.tif
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -projwin 15.24 38.11 15.34 38 geodata/glad_ard/$INTER.tif geodata/glad_ard/${INTER}_crop.tif
 done
@@ -731,7 +738,7 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_7_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_7_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_7_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_7_0.png" />
 </div>
 </div>
 <p>We decided to compute a temporal median in order to reduce the area with no data. In other words we have combined the images that belong to the same period (876, 899, 922) and select the median value. During the opearion we use the band 8 to select only good-quality pixels.</p>
@@ -859,7 +866,7 @@ Input file size is 400, 440
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_12_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_12_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_12_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_12_0.png" />
 </div>
 </div>
 </div>
@@ -1022,7 +1029,7 @@ null device
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_18_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_18_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_18_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_18_0.png" />
 </div>
 </div>
 <p><strong>After interpolation</strong></p>
@@ -1041,7 +1048,7 @@ null device
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_20_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_20_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_20_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_20_0.png" />
 </div>
 </div>
 </div>
@@ -1161,7 +1168,7 @@ null device
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_27_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_27_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_27_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_27_0.png" />
 </div>
 </div>
 <p>You can noticed that Steffen and Akima present same differences only in the interpolated pixels. The orginal values have been kept constant for both method.</p>
@@ -1328,7 +1335,7 @@ null device
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_38_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_38_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_38_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_38_0.png" />
 </div>
 </div>
 </div>
@@ -1450,7 +1457,7 @@ null device
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_121_temporal_interpolation_44_0.png" src="../_images/CASESTUDY_121_temporal_interpolation_44_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_44_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_121_temporal_interpolation_44_0.png" />
 </div>
 </div>
 </div>
@@ -1464,7 +1471,7 @@ null device
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ADMIN/00_pktools_gdrive_install.html" class="btn btn-neutral float-right" title="Install pktools on the gdrive and be able to use from any Colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="122_pred_NP.html" class="btn btn-neutral float-right" title="# NP Modelling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="120_Data_type_GTiff.html" class="btn btn-neutral float-left" title="Data type in GTiff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

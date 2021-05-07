@@ -147,6 +147,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/01_Python_Intro.html">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/02_Geo_Python.html">Python &amp; GeoComputation</a></li>
 </ul>
+<p class="caption"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+</ul>
 <p class="caption"><span class="caption-text">CASE STUDY</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="101_SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
@@ -155,6 +159,9 @@
 <li class="toctree-l1"><a class="reference internal" href="110_manipulate_GSIM.html">Manipulate GSIM files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="120_Data_type_GTiff.html">Data type in GTiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="121_temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html"># NP Modelling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html#BackGround">BackGround</a></li>
+<li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html#Code">Code</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -500,13 +507,13 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Preparation">
 <h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
 <p>Start R in the bash terminal and run the following lines to install the libraries.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;e1071&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;caret&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;rworldmap&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;maptools&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;rgeos&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;reshape&quot;</span><span class="p">)</span>
-<span class="n">install</span><span class="o">.</span><span class="n">packages</span><span class="p">(</span><span class="s2">&quot;randomForest&quot;</span><span class="p">)</span>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>install.packages(&quot;e1071&quot;)
+install.packages(&quot;caret&quot;)
+install.packages(&quot;rworldmap&quot;)
+install.packages(&quot;maptools&quot;)
+install.packages(&quot;rgeos&quot;)
+install.packages(&quot;reshape&quot;)
+install.packages(&quot;randomForest&quot;)
 </pre></div>
 </div>
 <div class="nbinput docutils container">
@@ -637,7 +644,7 @@ The following objects are masked from ‘package:InformationValue’:
 <h2>Data Exploration<a class="headerlink" href="#Data-Exploration" title="Permalink to this headline">¶</a></h2>
 <p>We will use Montane woodcreper (Lepidocolaptes lacrymiger) as example species.</p>
 <p>This species has a large range, occurring from the coastal cordillera of Venezuela along the Andes south to south-east Peru and central Bolivia.</p>
-<p><img alt="8c94798433e24e1bb867126e6bf001a6" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
+<p><img alt="721daf3023ce4124acccd3b86e3cd29d" class="no-scaled-link" src="images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
 <div class="section" id="Read-in-points-data">
 <h3>Read in points data<a class="headerlink" href="#Read-in-points-data" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -767,7 +774,7 @@ It has 7 fields
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_15_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_15_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_15_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_15_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -964,7 +971,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_25_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_25_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_25_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_25_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1072,7 +1079,7 @@ max values :                  10000,              3790,                         
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_31_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_31_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_31_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_31_0.png" />
 </div>
 </div>
 <p>Scaling and centering the environmental variables to zero mean and variance of 1</p>
@@ -1134,14 +1141,14 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_34_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_34_1.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_34_1.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_34_1.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_34_2.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_34_2.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_34_2.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_34_2.png" />
 </div>
 </div>
 <p>Annotate the point records with the scaled environmental data</p>
@@ -1243,14 +1250,14 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_42_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_42_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_42_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_42_0.png" />
 </div>
 </div>
 </div>
 <div class="section" id="Model-Fitting">
 <h3>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline">¶</a></h3>
 <p>cross validation</p>
-<p><img alt="9bcf25b5bd574e8980994d09082a15ad" class="no-scaled-link" src="../_images/cross_vld.gif" style="width: 600px;" /></p>
+<p><img alt="8a62f3e2482143ceb19247d2d39ec49c" class="no-scaled-link" src="images/cross_vld.gif" style="width: 600px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
@@ -1378,7 +1385,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_52_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_52_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_52_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_52_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1394,7 +1401,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_53_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_53_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_53_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_53_0.png" />
 </div>
 </div>
 </div>
@@ -1439,7 +1446,7 @@ Regions defined for each Polygons
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_57_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_57_1.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_57_1.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_57_1.png" />
 </div>
 </div>
 </div>
@@ -1512,7 +1519,7 @@ Resampling results:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_63_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_63_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_63_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_63_0.png" />
 </div>
 </div>
 <p>Predict and ploting in terms of probability</p>
@@ -1530,7 +1537,7 @@ Resampling results:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_65_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_65_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_65_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_65_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1547,7 +1554,7 @@ Resampling results:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_66_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_66_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_66_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_66_0.png" />
 </div>
 </div>
 </div>
@@ -1622,7 +1629,7 @@ Confusion matrix:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_73_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_73_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_73_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_73_0.png" />
 </div>
 </div>
 </div>
@@ -1652,14 +1659,14 @@ Confusion matrix:
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_76_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_76_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_76_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_76_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_76_1.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_76_1.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_76_1.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_76_1.png" />
 </div>
 </div>
 </div>
@@ -1733,7 +1740,7 @@ values     : 0, 0  (min, max)
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_81_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_81_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_81_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_81_0.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1798,7 +1805,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_86_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_86_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_86_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_86_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1884,7 +1891,7 @@ No. of variables tried at each split: 1
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_90_0.png" src="../_images/CASESTUDY_101_SDM1_MWood_Rmodel_90_0.png" />
+<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_90_0.png" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM1_MWood_Rmodel_90_0.png" />
 </div>
 </div>
 </div>
