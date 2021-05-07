@@ -296,12 +296,7 @@
 </pre></div>
 </div>
 <p>If you started grass correctly you should visualize the following lines on your terminal</p>
-<p>GISDBASE=/home/user/ost4sem/grassdb</p>
-<p>LOCATION_NAME=europe</p>
-<p>MAPSET=PERMANENT</p>
-<p>MONITOR=x2</p>
-<p>GRASS_GUI=text</p>
-<p>GRASS 7.4.0 (europe):~ &gt;</p>
+<p>GISDBASE=/home/user/ost4sem/grassdb<br />LOCATION_NAME=europe<br />MAPSET=PERMANENT<br />MONITOR=x2<br />GRASS_GUI=text<br />GRASS 7.4.0 (europe):~ &gt;</p>
 <p>Running grass through the bash shell terminal allows you to use all command line functionality of both grass and shell. As an example you can type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
@@ -325,6 +320,123 @@
 <p>but</p>
 <p>GRASS 7.6.1 (europe):/home/user/my_SE_data/exercise/grassdb:~ &gt;</p>
 <p>and you will be aware tif your current bash shell working directory match your grass location directory.</p>
+<p><strong>Grass MAPSET</strong></p>
+<p>We have explained that grass projects can be organised in MAPSETs by users, by themes, by extent or locations, and grouped within the same grass LOCATION. This LOCATION will group several MAPSETS defined by a common projection and is able to access a common set of maps in the PERMANENT MAPSET forlder. When we work in a specific MAPSET we will have no rights to write or delete maps in a different MAPSET. For doing so you will have to change your working MAPSET directory and then delete or produce new maps.</p>
+<p>The g.mapset command allows you to change the Grass working directory and successively generate, delete or modify maps as you wish.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">mapset</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">g</span><span class="o">.</span><span class="n">mapset</span> <span class="n">mapset</span><span class="o">=</span><span class="n">PCEM</span>
+<span class="n">g</span><span class="o">.</span><span class="n">gisenv</span> 
+</pre></div>
+</div>
+<p>Now you should see the following settings:</p>
+<p>GRASS 7.4.0 (europe):/home/user/my_SE_data/exercise/grassdb &gt; g.gisenv<br />GISDBASE=/home/user/my_SE_data/exercise/grassdb<br />LOCATION_NAME=europe<br />MAPSET=PCEM<br />MONITOR=x2<br />GRASS_GUI=text<br />GRASS 7.4.0 (europe):/home/user/my_SE_data/exercise/grassdb &gt;</p>
+<p><strong>Manage mapset</strong></p>
+<p>To list your available maps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="nb">type</span><span class="o">=</span><span class="n">vect</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="n">vect</span>  <span class="o">-</span><span class="n">p</span>
+<span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="n">rast</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>The user can add, modify, and delete data layers that exist under his current mapset. Although the user can also access (i.e., use) data that are stored under other mapsets in the same GRASS location, the user can only make permanent changes (create or modify data) located in the current mapset.</p>
+<p>Now we can access the fnfpc_crop mapset and eventually copy a map from the PCEMstat mapset to our current mapset directory using the g.copy function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">copy</span> <span class="n">rast</span><span class="o">=</span><span class="n">fnfpc_crop</span><span class="nd">@PCEMstat</span><span class="p">,</span><span class="n">fnfpc_crop</span>
+<span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="n">rast</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>And delete a map with the g.remove command</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">remove</span> <span class="o">-</span><span class="n">f</span> <span class="nb">type</span><span class="o">=</span><span class="n">rast</span> <span class="n">name</span><span class="o">=</span><span class="n">fnfpc_crop</span>
+<span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="n">rast</span>
+</pre></div>
+</div>
+<p>You can access but not delete or modify a map in a different mapset from your current</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">remove</span> <span class="o">-</span><span class="n">f</span> <span class="nb">type</span><span class="o">=</span><span class="n">rast</span> <span class="n">name</span><span class="o">=</span><span class="n">fnfpc_crop</span><span class="nd">@PCEMstat</span>
+</pre></div>
+</div>
+<p>We have to be careful in Grass to understand the possible differences existing in the same MAPSET between the whole extent and resolution of the MAPSET itself, the extent, resolution and geographic location of our working region, and the extent and location of what we are visualising.</p>
+<p>Region settings
+In GRASS, a region refers to a geographic area with some defined boundaries, based on a specific map coordinate system and map projection. Grass region definition and details. This crucial Grass setting will allow us to define within MAPSET settings a particular region of work.
+Once defined the grass region, grass modules (or programs) will operate within this region. The user can create, modify, and store as many geographic region definitions as desired for any given mapset. However, only one of these geographic region definitions will be current at any given moment, for a specified mapset. GRASS programs that respect the geographic region settings will use the current geographic region settings.</p>
+<p>To query your current region settings type</p>
+<p>g.region -p</p>
+<p>and to reset region settings to their original extent type</p>
+<p>g.region -d
+-p stands for “print” ; -d stands for default
+You can modify your default g. region with a -s flag within the PERMANENT directory.</p>
+<p>Now we will define a new study area for the Scandinavia region.</p>
+<p>g.region -p
+g.region n=6015390 e=5676400 s=3303955 w=3876180 res=1000 save=scandinavia –overwrite
+g.region -p
+You will visualize the current and newest region settings saved as scandinavia
+If you open the GRASS gui</p>
+<p>g.gui wxpython</p>
+<p>You can visualize the Computational Region in the Display menu by cliking “Show computation Extent” and you will see the Scandinavia area within a red frame.</p>
+<p>Back to GRASS if you reset the default grass region</p>
+<p>g.region -d</p>
+<p>Clipping maps and changing resolution use
+g.region allow us to do two basic GIS function: resample and clip.
+We would like to have 3 new maps of forest/non-forest percentage clipped and resampled with a different resolution from a forest/non-forest map. The original forest/non-forest map has the European extent and 1km resolution. We need to generate:
+Italian extent map at 20km resolution,
+Alpine extent map at 10km resolution
+Alpine and Carpathians extent map at 5km reslution.
+In the europe LOCATION different g.region exists:</p>
+<p>ls PERMANENT/windows/
+ls */windows/
+The g.region are saved in the following folders and named as follow:</p>
+<p>EUforest/windows/: europe
+PCEMstat/windows/: alpine
+PCEM/windows/: alp_car
+PERMANENT/windows/: scandinavia
+We now resample the g.region at 20km using the res=new_res option and will set 75 x 57 pixels of 20k resolution</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">res</span><span class="o">=</span><span class="mi">20000</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>projection: 99 (Lambert Azimuthal Equal Area)<br />zone:       0<br />datum:      ** unknown (default: WGS84) **<br />ellipsoid:  grs80<br />north:      2900000<br />south:      1400000<br />west:       3960000<br />east:       5100000<br />nsres:      20000<br />ewres:      20000<br />rows:       75<br />cols:       57<br />cells:      4275</p>
+<p>we can create a new forest/non-forest map with the new extent and resolution using</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="n">function</span> <span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="n">details</span>
+<span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="s2">&quot;fnfpc_italy20k = fnfpc&quot;</span> 
+</pre></div>
+</div>
+<p>Now create the two other maps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">alpine</span><span class="nd">@PCEMstat</span> <span class="n">res</span><span class="o">=</span><span class="mi">10000</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>projection: 99 (Lambert Azimuthal Equal Area)
+zone:       0
+datum:      ** unknown (default: WGS84) **
+ellipsoid:  grs80
+north:      2751000
+south:      2310000
+west:       3960000
+east:       4700000
+nsres:      10022.72727273
+ewres:      10000
+rows:       44
+cols:       74
+cells:      3256</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="s2">&quot;fnfpc_alpine10k = fnfpc&quot;</span> 
+<span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">alp_car</span><span class="nd">@PCEM</span> <span class="n">res</span><span class="o">=</span><span class="mi">5000</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>projection: 99 (Lambert Azimuthal Equal Area)
+zone:       0
+datum:      ** unknown (default: WGS84) **
+ellipsoid:  grs80
+north:      3070000
+south:      2270000
+west:       3900000
+east:       5660000
+nsres:      5000
+ewres:      5000
+rows:       160
+cols:       352
+cells:      56320</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="s2">&quot;fnfpc_alpine_carpatien5k = fnfpc&quot;</span> 
+</pre></div>
+</div>
+<p>You can save a new extent and resolution as g.mapset with the save=namenew option</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">alp_car</span><span class="nd">@PCEM</span> <span class="n">res</span><span class="o">=</span><span class="mi">5000</span> <span class="o">-</span><span class="n">p</span> <span class="n">save</span><span class="o">=</span><span class="n">alp_car_5km_res</span>
+</pre></div>
+</div>
 </div>
 
 
