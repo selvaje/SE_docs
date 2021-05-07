@@ -41,7 +41,7 @@ Once you are running Grass through the bash shell terminal you can always start 
 
 
 | Prefix | Function   | Class type of command        | Example                                                        |
-|--------|------------|------------------------------|----------------------------------------------------------------|
+| -------| -----------| -----------------------------| ---------------------------------------------------------------|
 | d.*    |   display  | graphical output             | d.rast: views raster map d.vect: views vector map              |
 | db.*   |  database  | database management          | db.select: selects value(s) from table                         |
 | g.*    |   general  | general file operations      | g.rename: renames map                                          |
@@ -50,7 +50,6 @@ Once you are running Grass through the bash shell terminal you can always start 
 | r.*    | raster     | raster data processing       | r.buffer: buffer around raster features r.mapcalc: map algebra |
 | r3.*   | voxel      | raster voxel data processing | r3.mapcalc: volume map algebra                                 |
 | v.*    | vector     | vector data processing       | v.overlay: vector map intersections                            |
-|--------|------------|------------------------------|----------------------------------------------------------------|
 
 
 
