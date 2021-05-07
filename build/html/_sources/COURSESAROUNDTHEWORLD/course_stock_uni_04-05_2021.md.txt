@@ -66,5 +66,5 @@ In this course, students will be introduced to an array of powerful open-source 
    
 * 06 May 2021 - Student presentation and ML.
    - Students: Presenting objectives for the final project
-   - [Longzhu Shen: Optimization](http://spatial-ecology.net/docs/source/lectures/lect_20210506_ML_OPT.pdf)
-   - [Video recording]( ) Passcode: 
+   - [Longzhu Shen: ML Optimization](http://spatial-ecology.net/docs/source/lectures/lect_20210506_ML_OPT.pdf)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/RNa2eLIRywzQD1OR3QBpxa7HmW0sMS5FmL7pRTFiR6smSKkjvgEbmjA7wUFROwhy.KGKx6eEGxBVTkmMx) Passcode: 50.%ysyx
