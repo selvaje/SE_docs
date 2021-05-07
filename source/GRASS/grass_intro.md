@@ -40,17 +40,16 @@ Once you are running Grass through the bash shell terminal you can always start 
 **GRASS command structure**
 
 
-| Prefix | Function   | Class type of command        | Example                                                        |
-| -------| -----------| -----------------------------| ---------------------------------------------------------------|
-| d.*    |   display  | graphical output             | d.rast: views raster map d.vect: views vector map              |
-| db.*   |  database  | database management          | db.select: selects value(s) from table                         |
-| g.*    |   general  | general file operations      | g.rename: renames map                                          |
-| i.*    |   imagery  | image processing             | i.smap: image classifier                                       |
-| ps.*   | postscript | map creation format          | ps.map: map creation in Postscript                             |
-| r.*    | raster     | raster data processing       | r.buffer: buffer around raster features r.mapcalc: map algebra |
-| r3.*   | voxel      | raster voxel data processing | r3.mapcalc: volume map algebra                                 |
-| v.*    | vector     | vector data processing       | v.overlay: vector map intersections                            |
-
+| Prefix | Function | Class type of command | Example |
+|-|-|-|-|
+| d.* | display | graphical output | d.rast: views raster map d.vect: views vector map |
+| db.* | database | database management | db.select: selects value(s) from table |
+| g.* | general | general file operations | g.rename: renames map |
+| i.* | imagery | image processing | i.smap: image classifier |
+| ps.* | postscript | map creation format | ps.map: map creation in Postscript |
+| r.* | raster | raster data processing | r.buffer: buffer around raster features r.mapcalc: map algebra |
+| r3.* | voxel | raster voxel data processing | r3.mapcalc: volume map algebra |
+| v.* | vector | vector data processing | v.overlay: vector map intersections |
 
 
 For detailed instructions on grass command syntax and use, go to the [GRASS online manual](https://grass.osgeo.org/learn/manuals/) or type man and function name. As an example
