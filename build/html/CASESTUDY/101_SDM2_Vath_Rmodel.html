@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>SDM2 : Varied Thrush - Model &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -13,12 +13,17 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -28,16 +33,16 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +64,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
           
 
           
@@ -207,6 +212,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -218,7 +225,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/CASESTUDY/101_SDM2_Vath_Rmodel.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -547,7 +554,7 @@ $ R
 <p>The varied thrush breeds in western North America from Alaska to northern California.</p>
 <p>It is migratory, with northern breeders moving south within or somewhat beyond the breeding range.</p>
 <p>Other populations may only move altitudinally.</p>
-<p><img alt="1e7fa55bc5974dce9d77b6a5e4aaa56d" class="no-scaled-link" src="images/varied_thrush.jpg" style="width: 400px;" /></p>
+<p><img alt="448821ee7d4d4ca88d2bf97c1b7300de" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
 <div class="section" id="Read-in-data">
 <h3>Read in data<a class="headerlink" href="#Read-in-data" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
@@ -595,10 +602,10 @@ $ R
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># split dataset by presence</span>
-<span class="n">vath.pres</span> <span class="o">&lt;-</span> <span class="n">vath.data[vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span><span class="n">]</span>
-<span class="n">vath.abs</span> <span class="o">&lt;-</span> <span class="n">vath.data[vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="n">]</span>
-<span class="n">vath.pres.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
-<span class="n">vath.abs.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.abs[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+<span class="n">vath.pres</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,]</span>
+<span class="n">vath.abs</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,]</span>
+<span class="n">vath.pres.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.abs.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.abs</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -608,9 +615,9 @@ $ R
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># validation dataset</span>
-<span class="n">vath.val.pres</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val[vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
-<span class="n">vath.val.abs</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val[vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
-<span class="n">vath.val.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val[</span><span class="p">,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span><span class="n">]</span><span class="p">)</span>
+<span class="n">vath.val.pres</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.abs</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +775,7 @@ values     : 23, 287  (min, max)
 </pre></div></div>
 </div>
 <p>Interpolation</p>
-<p><img alt="3ea2333d07c244af90a120e66a82095e" class="no-scaled-link" src="images/interpolation.png" style="width: 800px;" /></p>
+<p><img alt="92b9ded49433425c9deb57caa709e6fb" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -842,7 +849,7 @@ TRUE</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_24_0.png" class="no-scaled-link" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_24_0.png" style="width: 1080px; height: 660px;" />
+<img alt="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_24_0.png" class="no-scaled-link" src="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_24_0.png" style="width: 1080px; height: 660px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -859,7 +866,7 @@ TRUE</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_25_0.png" class="no-scaled-link" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_25_0.png" style="width: 1080px; height: 960px;" />
+<img alt="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_25_0.png" class="no-scaled-link" src="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_25_0.png" style="width: 1080px; height: 960px;" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -930,7 +937,7 @@ TRUE</div>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_29_0.png" class="no-scaled-link" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_29_0.png" style="width: 540px; height: 540px;" />
+<img alt="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_29_0.png" class="no-scaled-link" src="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_29_0.png" style="width: 540px; height: 540px;" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -992,9 +999,9 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#remove any potential NAs</span>
-<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="n">df.pres</span><span class="nf">[complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),</span><span class="n">]</span>
-<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="n">df.back</span><span class="nf">[complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),</span><span class="n">]</span>
-<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="n">df.val</span><span class="nf">[complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),</span><span class="n">]</span>
+<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="n">df.pres</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),]</span>
+<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="n">df.back</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),]</span>
+<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="n">df.val</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),]</span>
 </pre></div>
 </div>
 </div>
@@ -1045,7 +1052,7 @@ TRUE</div>
 <span></span><span class="c1"># data transformation</span>
 <span class="c1"># Scaling and centering the environmental variables to zero mean and variance of 1</span>
 <span class="n">predictors</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
-<span class="n">df.all[</span><span class="p">,</span><span class="n">predictors]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.all[</span><span class="p">,</span><span class="n">predictors]</span><span class="p">)</span>
+<span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1092,7 +1099,7 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev^2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
+<span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1148,7 +1155,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val[</span><span class="p">,</span><span class="n">predictors]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val[</span><span class="p">,</span><span class="n">predictors]</span><span class="p">)</span>
+<span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1157,7 +1164,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val[</span><span class="p">,</span><span class="n">predictors]</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1191,7 +1198,7 @@ Number of Fisher Scoring iterations: 8
 </table></div>
 </div>
 <p>confusion matrix</p>
-<p><img alt="d38f92697c284c6e93da57c4a1a436c2" class="no-scaled-link" src="images/confusion_matrix.png" style="width: 900px;" /></p>
+<p><img alt="af93b365ee664bd99edbdd697d483e9f" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
@@ -1206,7 +1213,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="nf">[which</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="o">&gt;=</span><span class="n">cutoff</span><span class="p">),</span><span class="n">]</span>
+<span></span><span class="n">df.val</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="o">&gt;=</span><span class="n">cutoff</span><span class="p">),]</span>
 </pre></div>
 </div>
 </div>
@@ -1297,7 +1304,7 @@ Number of Fisher Scoring iterations: 8
 0.0774</div>
 </div>
 <p>ROC curves</p>
-<p><img alt="7566cb8cf7ae4ac9a3ba7cd3468016a7" class="no-scaled-link" src="images/ROC_curves.png" style="width: 600px;" /></p>
+<p><img alt="da833e2d67144628885a58df5d3f8614" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[141]:
 </pre></div>
@@ -1311,7 +1318,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_53_0.png" class="no-scaled-link" src="../build/doctrees/nbsphinx/CASESTUDY_101_SDM2_Vath_Rmodel_53_0.png" style="width: 540px; height: 540px;" />
+<img alt="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_53_0.png" class="no-scaled-link" src="../_images/CASESTUDY_101_SDM2_Vath_Rmodel_53_0.png" style="width: 540px; height: 540px;" />
 </div>
 </div>
 </div>
@@ -1374,37 +1381,29 @@ Number of Fisher Scoring iterations: 8
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="110_manipulate_GSIM.html" class="btn btn-neutral float-right" title="Manipulate GSIM files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="101_SDM1_MWood_Rmodel.html" class="btn btn-neutral float-left" title="SDM1 : Montane woodcreper - Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="110_manipulate_GSIM.html" class="btn btn-neutral float-right" title="Manipulate GSIM files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="101_SDM1_MWood_Rmodel.html" class="btn btn-neutral float-left" title="SDM1 : Montane woodcreper - Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Giuseppe Amatulli
+        &#169; Copyright 2020, Giuseppe Amatulli.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 

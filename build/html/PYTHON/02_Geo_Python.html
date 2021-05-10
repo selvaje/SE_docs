@@ -3,9 +3,9 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>Python &amp; GeoComputation &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
   
@@ -13,12 +13,17 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
 
   
   
+
   
+  
+
   
 
   
@@ -28,16 +33,16 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/language_data.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.18.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -59,7 +64,7 @@
           
 
           
-            <a href="../index.html" class="icon icon-home" alt="Documentation Home"> Spatial Ecology's code documentation
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
           
 
           
@@ -207,6 +212,8 @@
 
 
 
+
+
 <div role="navigation" aria-label="breadcrumbs navigation">
 
   <ul class="wy-breadcrumbs">
@@ -218,7 +225,7 @@
     
       <li class="wy-breadcrumbs-aside">
         
-            
+          
             <a href="../_sources/PYTHON/02_Geo_Python.ipynb.txt" rel="nofollow"> View page source</a>
           
         
@@ -1311,7 +1318,7 @@ b&#39;2019-05-31T16:22:07.250Z,38.8214989,-122.8526688,2.31,1.13,md,20,64,0.0068
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Numpy/gdalnumeric - Read an image, extract a band, save a new image</span>
-<span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">gdalnumeric</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">gdalnumeric</span>
 
 <span class="n">srcArray</span> <span class="o">=</span> <span class="n">gdalnumeric</span><span class="o">.</span><span class="n">LoadFile</span><span class="p">(</span><span class="s2">&quot;SatImage.tif&quot;</span><span class="p">)</span>
 <span class="n">band1</span> <span class="o">=</span> <span class="n">srcArray</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1338,7 +1345,7 @@ b&#39;2019-05-31T16:22:07.250Z,38.8214989,-122.8526688,2.31,1.13,md,20,64,0.0068
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Rasterize a shapefile with PIL</span>
 <span class="kn">import</span> <span class="nn">shapefile</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
 
 <span class="n">r</span> <span class="o">=</span> <span class="n">shapefile</span><span class="o">.</span><span class="n">Reader</span><span class="p">(</span><span class="s2">&quot;hancock.shp&quot;</span><span class="p">)</span>
 <span class="n">xdist</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">-</span> <span class="n">r</span><span class="o">.</span><span class="n">bbox</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -1505,7 +1512,7 @@ b&#39;2019-05-31T16:22:07.250Z,38.8214989,-122.8526688,2.31,1.13,md,20,64,0.0068
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#Examine a shapefile with ogr</span>
 
-<span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">ogr</span>
+<span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
 
 <span class="c1"># open the shapefile</span>
 <span class="n">shp</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="s2">&quot;point.shp&quot;</span><span class="p">)</span>
@@ -1568,7 +1575,7 @@ b&#39;2019-05-31T16:22:07.250Z,38.8214989,-122.8526688,2.31,1.13,md,20,64,0.0068
 <span></span><span class="sd">&quot;&quot;&quot;Choropleth thematic map&quot;&quot;&quot;</span>
 <span class="kn">import</span> <span class="nn">math</span>
 <span class="kn">import</span> <span class="nn">shapefile</span>
-<span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span>
 
 <span class="sd">&#39;&#39;&#39;convert geospatial coordinates to pixels&#39;&#39;&#39;</span>
 <span class="k">def</span> <span class="nf">world2screen</span><span class="p">(</span><span class="n">bbox</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
@@ -1627,7 +1634,7 @@ b&#39;2019-05-31T16:22:07.250Z,38.8214989,-122.8526688,2.31,1.13,md,20,64,0.0068
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">ogr</span>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
 
 <span class="n">shapefile_name</span> <span class="o">=</span> <span class="s2">&quot;tl_2012_us_cbsa.shp&quot;</span>
 <span class="n">shapefile</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">shapefile_name</span><span class="p">)</span>
@@ -1678,7 +1685,7 @@ Feature 9 has name Pierre, SD
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">ogr</span>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
 
 <span class="n">shapefile_name</span> <span class="o">=</span> <span class="s2">&quot;tl_2012_us_cbsa.shp&quot;</span>
 <span class="n">shapefile</span> <span class="o">=</span> <span class="n">ogr</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">shapefile_name</span><span class="p">)</span>
@@ -1762,7 +1769,7 @@ POLYGON containing:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">ogr</span>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
 
 <span class="k">def</span> <span class="nf">analyzeGeometry</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1830,7 +1837,7 @@ POLYGON containing:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="k">import</span> <span class="n">ogr</span>
+<span></span><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
 
 <span class="k">def</span> <span class="nf">findPoints</span><span class="p">(</span><span class="n">geometry</span><span class="p">,</span> <span class="n">results</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">geometry</span><span class="o">.</span><span class="n">GetPointCount</span><span class="p">()):</span>
@@ -1894,37 +1901,29 @@ Southernmost point is (-93.8752, 31.8442)
            
           </div>
           <footer>
-  
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../GRASS/grass_intro.html" class="btn btn-neutral float-right" title="GRASS Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="01_Python_Intro.html" class="btn btn-neutral float-left" title="Introduction to Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+        <a href="../GRASS/grass_intro.html" class="btn btn-neutral float-right" title="GRASS Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01_Python_Intro.html" class="btn btn-neutral float-left" title="Introduction to Python" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
     <p>
-        
-        &copy; Copyright 2020, Giuseppe Amatulli
+        &#169; Copyright 2020, Giuseppe Amatulli.
 
     </p>
   </div>
     
     
     
-    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     
-    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
     
     provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
