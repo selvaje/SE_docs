@@ -263,82 +263,90 @@
 </style>
 <div class="section" id="grass-introduction">
 <h1>GRASS Introduction<a class="headerlink" href="#grass-introduction" title="Permalink to this headline">¶</a></h1>
-<p>The object of this page is to start using Grass and to get familiar with some general GIS operations. We are going to use a command line approach. This is to enable carrying out stand-alone processes in the future, and understand step by step each function and the options per function which are available. Let´s start using grass.</p>
+<p>The object of this page is to start using GRASS and to get familiar with some general GIS operations. We are going to use a command line approach. This is to enable carrying out stand-alone processes in the future, and understand step by step each function and the options per function which are available. Let´s start using GRASS.</p>
 <p>We suggest to copy-paste the following command line directly in the bash terminal.</p>
 <p>Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE_data/ we create a working copy of the SE_data:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">SE_data</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span>  <span class="o">-</span><span class="n">p</span>   <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span>
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grassdb</span>  <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span>
+<span class="n">conda</span> <span class="n">deactivate</span> 
 </pre></div>
 </div>
-<p><strong>Starting Grass</strong></p>
-<p>Every Grass project has a predefined data structure:</p>
+<p><strong>Starting GRASS</strong></p>
+<p>Every GRASS project has a predefined data structure:</p>
 <ul>
-<li><p>GISDBASE - Grass data are stored in a directory referred to as a DATABASE “GISDBASE”. This directory has to be created with mkdir or a file manager, before starting to work with GRASS. Within this DATABASE, the projects are organized by project areas stored in subdirectories called LOCATIONs.</p></li>
-<li><p>LOCATION - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.</p></li>
-<li><p>MAPSET - Locations can have many MAPSETs. Each MAPSET is a LOCATION’s subdirectory. A new MAPSET can be added at GRASS startup.</p>
-<p>A common problem of basic users is not really using grass but starting a grass section. The main reason is due to the grass data structure and the way a grass section has to be set up before starting!</p>
+<li><p><strong>GISDBASE</strong> - GRASS data are stored in a directory referred to as a DATABASE “GISDBASE”. This directory has to be created with mkdir or a file manager, before starting to work with GRASS. Within this DATABASE, the projects are organized by project areas stored in subdirectories called LOCATIONs.</p></li>
+<li><p><strong>LOCATION</strong> - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.</p></li>
+<li><p><strong>MAPSET</strong> - Locations can have many MAPSETs. Each MAPSET is a LOCATION’s subdirectory. A new MAPSET can be added at GRASS startup.</p>
+<p>A common problem of basic users is not really using GRASS but starting a GRASS section. The main reason is due to the GRASS data structure and the way a GRASS section has to be set up before starting!</p>
 </li>
 </ul>
 <p>There are several two ways to use and open GRASS:</p>
-<p><strong>Start grass by GUI</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass74</span> <span class="o">-</span><span class="n">wxpython</span>
+<p><strong>Start GRASS by GUI</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass76</span> <span class="o">-</span><span class="n">wxpython</span>
 </pre></div>
 </div>
-<p>The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.</p>
-<p><strong>Start grass by command line</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass76</span> <span class="o">-</span><span class="n">text</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grassdb</span><span class="o">/</span><span class="n">europe</span><span class="o">/</span><span class="n">PERMANENT</span><span class="o">/</span>
+<p>cp -r   /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
+The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.</p>
+<p><strong>Start GRASS by command line</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass76</span> <span class="o">-</span><span class="n">text</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grassdb</span><span class="o">/</span><span class="n">europe</span><span class="o">/</span><span class="n">PERMANENT</span><span class="o">/</span>
 </pre></div>
 </div>
-<p>Once you are running Grass through the bash shell terminal you can always start the graphical user interface with:</p>
+<p>Once you are running GRASS through the bash shell terminal you can always start the graphical user interface with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">gui</span> <span class="n">wxpython</span> <span class="o">&amp;</span>
 </pre></div>
 </div>
 <p><strong>GRASS command structure</strong></p>
 <p><img alt="../_images/grass_command.png" src="../_images/grass_command.png" /></p>
-<p>For detailed instructions on grass command syntax and use, go to the <a class="reference external" href="https://grass.osgeo.org/learn/manuals/">GRASS online manual</a> or type man and function name. As an example</p>
+<p>For detailed instructions on GRASS command syntax and use, go to the <a class="reference external" href="https://grass.osgeo.org/learn/manuals/">GRASS online manual</a> or type man and function name. As an example</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">man</span> <span class="n">r</span><span class="o">.</span><span class="n">info</span>
 </pre></div>
 </div>
-<p><strong>Grass working environment</strong></p>
-<p>The g.gisenv command informs you of your current grass environment settings</p>
+<p><strong>GRASS working environment</strong></p>
+<p>The g.gisenv command informs you of your current GRASS environment settings</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">gisenv</span>
 </pre></div>
 </div>
-<p>If you started grass correctly you should visualize the following lines on your terminal</p>
-<p>GISDBASE=/home/user/ost4sem/grassdb<br />LOCATION_NAME=europe<br />MAPSET=PERMANENT<br />MONITOR=x2<br />GRASS_GUI=text<br />GRASS 7.4.0 (europe):~ &gt;</p>
-<p>Running grass through the bash shell terminal allows you to use all command line functionality of both grass and shell. As an example you can type:</p>
+<p>If you started GRASS correctly you should visualize the following lines on your terminal</p>
+<p>GISDBASE=/home/user/my_SE_data/exercise/grassdb<br />LOCATION_NAME=europe<br />GRASS_GUI=wxpython<br />GUI=text<br />PID=2790<br />MAPSET=PERMANENT<br />GRASS 7.6.1 (europe):~ &gt;</p>
+<p>Running GRASS through the bash shell terminal allows you to use all command line functionality of both GRASS and shell. As an example you can type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>
 </pre></div>
 </div>
-<p>and visualize all files available in your shell current working directory. This means that all your output files produced by bash command lines functionality will be saved in the current working directory (if not specified differently). Many non-geographical grass output features such as text file reports or images will be saved as well in the current working directory.</p>
-<p>The GRASS 7.4.0 (europe):~ &gt; inform you are currently working in the home folder. See</p>
+<p>and visualize all files available in your shell current working directory. This means that all your output files produced by bash command lines functionality will be saved in the current working directory (if not specified differently). Many non-geographical GRASS output features such as text file reports or images will be saved as well in the current working directory.</p>
+<p>The GRASS 7.6.1 (europe):~ &gt;</p>
+<p>inform you are currently working in the home folder. See</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pwd</span>
 </pre></div>
 </div>
-<p>for double checking the same information using a bash command instead of the grass</p>
+<p>for double checking the same information using a bash command instead of the GRASS</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">gisenv</span>
 </pre></div>
 </div>
 <p>command.</p>
-<p>It is a good working habit within Grass to set bash shell working directory the same as your GRASS LOCATION folder.</p>
+<p>It is a good working habit within GRASS to set bash shell working directory the same as your GRASS LOCATION folder.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grassdb</span>
 </pre></div>
 </div>
 <p>On the terminal you will no longer see</p>
-<p>GRASS 7.6.0 (europe):~ &gt;</p>
+<p>GRASS 7.6.1 (europe):~ &gt;</p>
 <p>but</p>
 <p>GRASS 7.6.1 (europe):/home/user/my_SE_data/exercise/grassdb:~ &gt;</p>
-<p>and you will be aware tif your current bash shell working directory match your grass location directory.</p>
-<p><strong>Grass MAPSET</strong></p>
-<p>We have explained that grass projects can be organised in MAPSETs by users, by themes, by extent or locations, and grouped within the same grass LOCATION. This LOCATION will group several MAPSETS defined by a common projection and is able to access a common set of maps in the PERMANENT MAPSET forlder. When we work in a specific MAPSET we will have no rights to write or delete maps in a different MAPSET. For doing so you will have to change your working MAPSET directory and then delete or produce new maps.</p>
-<p>The g.mapset command allows you to change the Grass working directory and successively generate, delete or modify maps as you wish.</p>
+<p>and you will be aware tif your current bash shell working directory match your GRASS location directory.</p>
+<p><strong>GRASS MAPSET</strong></p>
+<p>We have explained that GRASS projects can be organised in MAPSETs by users, by themes, by extent or locations, and grouped within the same GRASS LOCATION. This LOCATION will group several MAPSETS defined by a common projection and is able to access a common set of maps in the PERMANENT MAPSET forlder. When we work in a specific MAPSET we will have no rights to write or delete maps in a different MAPSET. For doing so you will have to change your working MAPSET directory and then delete or produce new maps.</p>
+<p>The g.mapset command allows you to change the GRASS working directory and successively generate, delete or modify maps as you wish.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">mapset</span> <span class="o">-</span><span class="n">l</span>
 <span class="n">g</span><span class="o">.</span><span class="n">mapset</span> <span class="n">mapset</span><span class="o">=</span><span class="n">PCEM</span>
 <span class="n">g</span><span class="o">.</span><span class="n">gisenv</span> 
 </pre></div>
 </div>
 <p>Now you should see the following settings:</p>
-<p>GRASS 7.4.0 (europe):/home/user/my_SE_data/exercise/grassdb &gt; g.gisenv<br />GISDBASE=/home/user/my_SE_data/exercise/grassdb<br />LOCATION_NAME=europe<br />MAPSET=PCEM<br />MONITOR=x2<br />GRASS_GUI=text<br />GRASS 7.4.0 (europe):/home/user/my_SE_data/exercise/grassdb &gt;</p>
-<p><strong>Manage mapset</strong></p>
+<p>GRASS 7.6.1 (europe):/home/user/my_SE_data/exercise/grassdb &gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">gisenv</span>  
+</pre></div>
+</div>
+<p>GISDBASE=/home/user/my_SE_data/exercise/grassdb<br />LOCATION_NAME=europe<br />GRASS_GUI=wxpython<br />GUI=text<br />PID=2790<br />MAPSET=PCEM<br />GRASS 7.6.1 (europe):~ &gt;</p>
+<p><strong>Manage MAPSET</strong></p>
 <p>To list your available maps:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="nb">type</span><span class="o">=</span><span class="n">vect</span> <span class="o">-</span><span class="n">p</span>
 <span class="n">g</span><span class="o">.</span><span class="n">list</span> <span class="n">vect</span>  <span class="o">-</span><span class="n">p</span>
@@ -360,41 +368,49 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">remove</span> <span class="o">-</span><span class="n">f</span> <span class="nb">type</span><span class="o">=</span><span class="n">rast</span> <span class="n">name</span><span class="o">=</span><span class="n">fnfpc_crop</span><span class="nd">@PCEMstat</span>
 </pre></div>
 </div>
-<p>We have to be careful in Grass to understand the possible differences existing in the same MAPSET between the whole extent and resolution of the MAPSET itself, the extent, resolution and geographic location of our working region, and the extent and location of what we are visualising.</p>
+<p>We have to be careful in GRASS to understand the possible differences existing in the same MAPSET between the whole extent and resolution of the MAPSET itself, the extent, resolution and geographic location of our working region, and the extent and location of what we are visualising.</p>
 <p>Region settings
-In GRASS, a region refers to a geographic area with some defined boundaries, based on a specific map coordinate system and map projection. Grass region definition and details. This crucial Grass setting will allow us to define within MAPSET settings a particular region of work.
-Once defined the grass region, grass modules (or programs) will operate within this region. The user can create, modify, and store as many geographic region definitions as desired for any given mapset. However, only one of these geographic region definitions will be current at any given moment, for a specified mapset. GRASS programs that respect the geographic region settings will use the current geographic region settings.</p>
+In GRASS, a region refers to a geographic area with some defined boundaries, based on a specific map coordinate system and map projection. Grass region definition and details. This crucial GRASS setting will allow us to define within MAPSET settings a particular region of work.
+Once defined the GRASS region, GRASS modules (or programs) will operate within this region. The user can create, modify, and store as many geographic region definitions as desired for any given mapset. However, only one of these geographic region definitions will be current at any given moment, for a specified mapset. GRASS programs that respect the geographic region settings will use the current geographic region settings.</p>
 <p>To query your current region settings type</p>
-<p>g.region -p</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
 <p>and to reset region settings to their original extent type</p>
-<p>g.region -d
--p stands for “print” ; -d stands for default
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>-p stands for “print” ; -d stands for default
 You can modify your default g. region with a -s flag within the PERMANENT directory.</p>
 <p>Now we will define a new study area for the Scandinavia region.</p>
-<p>g.region -p
-g.region n=6015390 e=5676400 s=3303955 w=3876180 res=1000 save=scandinavia –overwrite
-g.region -p
-You will visualize the current and newest region settings saved as scandinavia
-If you open the GRASS gui</p>
-<p>g.gui wxpython</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="o">-</span><span class="n">p</span>
+<span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">n</span><span class="o">=</span><span class="mi">6015390</span> <span class="n">e</span><span class="o">=</span><span class="mi">5676400</span> <span class="n">s</span><span class="o">=</span><span class="mi">3303955</span> <span class="n">w</span><span class="o">=</span><span class="mi">3876180</span> <span class="n">res</span><span class="o">=</span><span class="mi">1000</span> <span class="n">save</span><span class="o">=</span><span class="n">scandinavia</span> <span class="o">--</span><span class="n">overwrite</span>
+<span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>You will visualize the current and newest region settings saved as scandinavia.<br />If you open the GRASS gui</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">gui</span> <span class="n">wxpython</span>  
+</pre></div>
+</div>
 <p>You can visualize the Computational Region in the Display menu by cliking “Show computation Extent” and you will see the Scandinavia area within a red frame.</p>
-<p>Back to GRASS if you reset the default grass region</p>
-<p>g.region -d</p>
-<p>Clipping maps and changing resolution use
-g.region allow us to do two basic GIS function: resample and clip.
-We would like to have 3 new maps of forest/non-forest percentage clipped and resampled with a different resolution from a forest/non-forest map. The original forest/non-forest map has the European extent and 1km resolution. We need to generate:
-Italian extent map at 20km resolution,
-Alpine extent map at 10km resolution
-Alpine and Carpathians extent map at 5km reslution.
-In the europe LOCATION different g.region exists:</p>
-<p>ls PERMANENT/windows/
-ls */windows/
-The g.region are saved in the following folders and named as follow:</p>
-<p>EUforest/windows/: europe
-PCEMstat/windows/: alpine
-PCEM/windows/: alp_car
-PERMANENT/windows/: scandinavia
-We now resample the g.region at 20km using the res=new_res option and will set 75 x 57 pixels of 20k resolution</p>
+<p>Back to GRASS if you reset the default GRASS region</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Clipping maps and changing resolution use g.region allow us to do two basic GIS function: resample and clip. We would like to have 3 new maps of forest/non-forest percentage clipped and resampled with a different resolution from a forest/non-forest map. The original forest/non-forest map has the European extent and 1km resolution. We need to generate:</p>
+<ul class="simple">
+<li><p>Italian extent map at 20km resolution,</p></li>
+<li><p>Alpine extent map at 10km resolution</p></li>
+<li><p>Alpine and Carpathians extent map at 5km reslution.</p></li>
+</ul>
+<p>In the europe LOCATION different g.region exists:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="n">PERMANENT</span><span class="o">/</span><span class="n">windows</span><span class="o">/</span> 
+<span class="n">ls</span> <span class="o">*/</span><span class="n">windows</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>The g.region are saved in the following folders and named as follow:</p>
+<p>EUforest/windows/: europe<br />PCEMstat/windows/: alpine<br />PCEM/windows/: alp_car<br />PERMANENT/windows/: scandinavia</p>
+<p>We now resample the g.region at 20km using the res=new_res option and will set 75 x 57 pixels of 20k resolution</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">res</span><span class="o">=</span><span class="mi">20000</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
@@ -408,36 +424,12 @@ We now resample the g.region at 20km using the res=new_res option and will set 7
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">alpine</span><span class="nd">@PCEMstat</span> <span class="n">res</span><span class="o">=</span><span class="mi">10000</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
-<p>projection: 99 (Lambert Azimuthal Equal Area)
-zone:       0
-datum:      ** unknown (default: WGS84) **
-ellipsoid:  grs80
-north:      2751000
-south:      2310000
-west:       3960000
-east:       4700000
-nsres:      10022.72727273
-ewres:      10000
-rows:       44
-cols:       74
-cells:      3256</p>
+<p>projection: 99 (Lambert Azimuthal Equal Area)<br />zone:       0<br />datum:      ** unknown (default: WGS84) **<br />ellipsoid:  grs80<br />north:      2751000<br />south:      2310000<br />west:       3960000<br />east:       4700000<br />nsres:      10022.72727273<br />ewres:      10000<br />rows:       44<br />cols:       74<br />cells:      3256</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="s2">&quot;fnfpc_alpine10k = fnfpc&quot;</span> 
 <span class="n">g</span><span class="o">.</span><span class="n">region</span> <span class="n">alp_car</span><span class="nd">@PCEM</span> <span class="n">res</span><span class="o">=</span><span class="mi">5000</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
-<p>projection: 99 (Lambert Azimuthal Equal Area)
-zone:       0
-datum:      ** unknown (default: WGS84) **
-ellipsoid:  grs80
-north:      3070000
-south:      2270000
-west:       3900000
-east:       5660000
-nsres:      5000
-ewres:      5000
-rows:       160
-cols:       352
-cells:      56320</p>
+<p>projection: 99 (Lambert Azimuthal Equal Area)<br />zone:       0<br />datum:      ** unknown (default: WGS84) **<br />ellipsoid:  grs80<br />north:      3070000<br />south:      2270000<br />west:       3900000<br />east:       5660000<br />nsres:      5000<br />ewres:      5000<br />rows:       160<br />cols:       352<br />cells:      56320</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">r</span><span class="o">.</span><span class="n">mapcalc</span> <span class="s2">&quot;fnfpc_alpine_carpatien5k = fnfpc&quot;</span> 
 </pre></div>
 </div>
