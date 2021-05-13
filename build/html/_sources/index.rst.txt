@@ -101,6 +101,7 @@ Documentation Contents
    :caption: GRASS
 
    GRASS/grass_intro.md
+   GRASS/grass_hydro.ipynb
 
 .. toctree::
    :titlesonly:
