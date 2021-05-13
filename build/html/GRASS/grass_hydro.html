@@ -13,8 +13,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
 
@@ -33,7 +31,6 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -41,8 +38,6 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -155,7 +150,10 @@
 <p class="caption"><span class="caption-text">GRASS</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Flow-distribution-algorithms">Flow distribution algorithms</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">CASE STUDY</span></p>
 <ul>
@@ -165,9 +163,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/110_manipulate_GSIM.html">Manipulate GSIM files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/120_Data_type_GTiff.html">Data type in GTiff</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/121_temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/122_pred_NP.html"># NP Modelling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/122_pred_NP.html#BackGround">BackGround</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/122_pred_NP.html#Code">Code</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/122_pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ADMIN</span></p>
 <ul>
@@ -697,6 +693,9 @@ Goodbye from GRASS GIS
 <img alt="../_images/GRASS_grass_hydro_7_2.png" src="../_images/GRASS_grass_hydro_7_2.png" />
 </div>
 </div>
+<div class="section" id="Flow-distribution-algorithms">
+<h2>Flow distribution algorithms<a class="headerlink" href="#Flow-distribution-algorithms" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20210518_flow_metrics.pdf">Flow Metrics</a></p>
 <p><strong>Compute MFD flow accumulation</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
@@ -988,11 +987,11 @@ or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Use either --quiet or --verbose flag, not both. Assuming --quiet.
 WARNING: Color table of raster map &lt;stream&gt; not found
-   0%   0%   0%   0%   0%   3%   3%   3%   3%   3%   6%   6%   6%   6%   6%   9%   9%   9%   9%  12%  12%   9%  12%  12%  12%  15%  15%  15%  15%  18%  18%  18%  18%  15%  18%  21%  21%  21%  21%  21%  24%  24%  24%  27%  24%  27%  27%  27%  24%  27%  30%  30%  30%  30%  33%  33%  33%  33%  30%  33%  36%  36%  36%  36%  36%  39%  39%  42%  39%  42%  39%  42%  42%  39%  42%  45%  45%  45%  48%  48%  45%  48%  48%  51%  45%  51%  51%  51%  48%  54%  54%  57%  54%  57%  51%  54%  57%  57%  60%  60%  60%  63%  54%  63%  57%  60%  63%  63%  66%  66%  66%  69%  66%  69%  60%  69%  63%  69%  72%  72%  72%  72%  66%  69%  75%  78%  75%  78%  75%  75%  78%  78%  72%  81%  81%  81%  81%  84%  84%  84%  84%  75%  78%  87%  87%  87%  87%  81%  90%  90%  90%  93%  93%  84%  90%  93%  93%  96%  96%  96%  99%  99%  87%  96%  99%  99% 100% 100%
-  90%
- 100%
- 100%
-  93%  96%  99% 100%
+   0   0   0   0   0   3   3   3   3   3   6   6   6   6   6   9   9   9   9  12  12   9  12  12  12  15  15  15  15  18  18  18  18  15  18  21  21  21  21  21  24  24  24  27  24  27  27  27  24  27  30  30  30  30  33  33  33  33  30  33  36  36  36  36  36  39  39  42  39  42  39  42  42  39  42  45  45  45  48  48  45  48  48  51  45  51  51  51  48  54  54  57  54  57  51  54  57  57  60  60  60  63  54  63  57  60  63  63  66  66  66  69  66  69  60  69  63  69  72  72  72  72  66  69  75  78  75  78  75  75  78  78  72  81  81  81  81  84  84  84  84  75  78  87  87  87  87  81  90  90  90  93  93  84  90  93  93  96  96  96  99  99  87  96  99  99 100 100
+  90
+ 100
+ 100
+  93  96  99 100
 Removing raster &lt;lbasin_estripe&gt;
 Removing raster &lt;lbasin_nstripe&gt;
 Removing raster &lt;lbasin_rec&gt;
@@ -1000,17 +999,17 @@ Removing raster &lt;lbasin_sstripe&gt;
 Removing raster &lt;lbasin_wstripe&gt;
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasinTmp_1.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 Reading raster map &lt;lbasin_flow_clean&gt;...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Writing output raster maps...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Color table for raster map &lt;lbasin_flow_clean_grow&gt; set to
 &#39;lbasin_flow_clean&#39;
 WARNING: MASK already exists and will be overwritten
@@ -1018,11 +1017,11 @@ WARNING: Precision loss: Float32 can not preserve the DCELL precision of
          raster &lt;flow&gt;. This can be avoided by using Float64
 WARNING: Forcing raster export
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;Float32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/flow_1.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
@@ -1030,11 +1029,11 @@ or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Use either --quiet or --verbose flag, not both. Assuming --quiet.
 WARNING: Color table of raster map &lt;stream&gt; not found
-   0%   0%   0%   0%   0%   3%   3%   3%   3%   3%   6%   6%   6%   6%   6%   9%   9%   9%   9%  12%  12%  12%   9%  12%  12%  15%  15%  15%  18%  15%  18%  18%  18%  15%  21%  21%  21%  18%  21%  24%  24%  24%  21%  24%  27%  27%  27%  27%  24%  27%  30%  30%  30%  30%  33%  33%  33%  33%  30%  33%  36%  36%  36%  36%  39%  39%  39%  39%  36%  39%  42%  42%  42%  42%  45%  45%  45%  45%  42%  45%  48%  48%  48%  51%  48%  51%  51%  51%  48%  54%  51%  54%  54%  57%  54%  57%  57%  57%  54%  60%  60%  60%  57%  63%  60%  63%  63%  63%  66%  66%  60%  69%  66%  69%  66%  69%  69%  72%  72%  63%  72%  72%  75%  75%  66%  69%  75%  78%  75%  78%  78%  78%  72%  81%  81%  81%  81%  84%  75%  84%  84%  84%  78%  87%  87%  87%  87%  90%  90%  81%  90%  90%  84%  93%  93%  93%  93%  96%  96%  96%  87%  96%  90%  99%  99%  99%  99% 100% 100% 100% 100%
+   0   0   0   0   0   3   3   3   3   3   6   6   6   6   6   9   9   9   9  12  12  12   9  12  12  15  15  15  18  15  18  18  18  15  21  21  21  18  21  24  24  24  21  24  27  27  27  27  24  27  30  30  30  30  33  33  33  33  30  33  36  36  36  36  39  39  39  39  36  39  42  42  42  42  45  45  45  45  42  45  48  48  48  51  48  51  51  51  48  54  51  54  54  57  54  57  57  57  54  60  60  60  57  63  60  63  63  63  66  66  60  69  66  69  66  69  69  72  72  63  72  72  75  75  66  69  75  78  75  78  78  78  72  81  81  81  81  84  75  84  84  84  78  87  87  87  87  90  90  81  90  90  84  93  93  93  93  96  96  96  87  96  90  99  99  99  99 100 100 100 100
 
 
 
-  93%  96%  99% 100%
+  93  96  99 100
 Removing raster &lt;lbasin_estripe&gt;
 Removing raster &lt;lbasin_nstripe&gt;
 Removing raster &lt;lbasin_rec&gt;
@@ -1042,17 +1041,17 @@ Removing raster &lt;lbasin_sstripe&gt;
 Removing raster &lt;lbasin_wstripe&gt;
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasinTmp_2.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 Reading raster map &lt;lbasin_flow_clean&gt;...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Writing output raster maps...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Color table for raster map &lt;lbasin_flow_clean_grow&gt; set to
 &#39;lbasin_flow_clean&#39;
 WARNING: MASK already exists and will be overwritten
@@ -1060,11 +1059,11 @@ WARNING: Precision loss: Float32 can not preserve the DCELL precision of
          raster &lt;flow&gt;. This can be avoided by using Float64
 WARNING: Forcing raster export
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;Float32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/flow_2.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
@@ -1072,11 +1071,11 @@ or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Use either --quiet or --verbose flag, not both. Assuming --quiet.
 WARNING: Color table of raster map &lt;stream&gt; not found
-   0%   0%   0%   0%   0%   3%   3%   3%   3%   3%   6%   6%   6%   6%   6%   9%   9%   9%   9%   9%  12%  12%  12%  12%  12%  15%  15%  15%  15%  18%  18%  18%  15%  18%  18%  21%  21%  21%  21%  24%  24%  24%  24%  21%  24%  27%  27%  27%  27%  30%  30%  30%  30%  27%  30%  33%  33%  33%  33%  36%  36%  36%  36%  33%  39%  39%  39%  42%  39%  42%  36%  42%  42%  39%  45%  45%  45%  48%  45%  48%  42%  48%  48%  51%  51%  54%  51%  45%  54%  51%  48%  54%  54%  57%  57%  60%  57%  60%  57%  60%  60%  51%  54%  63%  63%  66%  63%  66%  63%  66%  66%  57%  60%  69%  72%  69%  72%  69%  69%  72%  72%  75%  75%  75%  63%  66%  75%  78%  78%  78%  81%  81%  78%  81%  69%  72%  81%  84%  75%  84%  84%  87%  84%  87%  87%  87%  78%  90%  90%  90%  90%  81%  93%  93%  93%  93%  84%  96%  96%  96%  96%  99%  87%  99%  99%  99% 100%
- 100%
-  90% 100%
- 100%
-  93%  96%  99% 100%
+   0   0   0   0   0   3   3   3   3   3   6   6   6   6   6   9   9   9   9   9  12  12  12  12  12  15  15  15  15  18  18  18  15  18  18  21  21  21  21  24  24  24  24  21  24  27  27  27  27  30  30  30  30  27  30  33  33  33  33  36  36  36  36  33  39  39  39  42  39  42  36  42  42  39  45  45  45  48  45  48  42  48  48  51  51  54  51  45  54  51  48  54  54  57  57  60  57  60  57  60  60  51  54  63  63  66  63  66  63  66  66  57  60  69  72  69  72  69  69  72  72  75  75  75  63  66  75  78  78  78  81  81  78  81  69  72  81  84  75  84  84  87  84  87  87  87  78  90  90  90  90  81  93  93  93  93  84  96  96  96  96  99  87  99  99  99 100
+ 100
+  90 100
+ 100
+  93  96  99 100
 Removing raster &lt;lbasin_estripe&gt;
 Removing raster &lt;lbasin_nstripe&gt;
 Removing raster &lt;lbasin_rec&gt;
@@ -1084,17 +1083,17 @@ Removing raster &lt;lbasin_sstripe&gt;
 Removing raster &lt;lbasin_wstripe&gt;
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasinTmp_3.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 Reading raster map &lt;lbasin_flow_clean&gt;...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Writing output raster maps...
-   0%   3%   6%   9%  12%  15%  18%  21%  24%  27%  30%  33%  36%  39%  42%  45%  48%  51%  54%  57%  60%  63%  66%  69%  72%  75%  78%  81%  84%  87%  90%  93%  96%  99% 100%
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Color table for raster map &lt;lbasin_flow_clean_grow&gt; set to
 &#39;lbasin_flow_clean&#39;
 WARNING: MASK already exists and will be overwritten
@@ -1102,11 +1101,11 @@ WARNING: Precision loss: Float32 can not preserve the DCELL precision of
          raster &lt;flow&gt;. This can be avoided by using Float64
 WARNING: Forcing raster export
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;Float32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/flow_3.tif&gt; created.
 Cleaning up temporary files...
 Done.
@@ -1133,7 +1132,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_10_0.png" src="../_images/GRASS_grass_hydro_10_0.png" />
+<img alt="../_images/GRASS_grass_hydro_11_0.png" src="../_images/GRASS_grass_hydro_11_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1154,7 +1153,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_11_0.png" src="../_images/GRASS_grass_hydro_11_0.png" />
+<img alt="../_images/GRASS_grass_hydro_12_0.png" src="../_images/GRASS_grass_hydro_12_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1175,7 +1174,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_12_0.png" src="../_images/GRASS_grass_hydro_12_0.png" />
+<img alt="../_images/GRASS_grass_hydro_13_0.png" src="../_images/GRASS_grass_hydro_13_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1196,7 +1195,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_13_0.png" src="../_images/GRASS_grass_hydro_13_0.png" />
+<img alt="../_images/GRASS_grass_hydro_14_0.png" src="../_images/GRASS_grass_hydro_14_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1217,7 +1216,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_14_0.png" src="../_images/GRASS_grass_hydro_14_0.png" />
+<img alt="../_images/GRASS_grass_hydro_15_0.png" src="../_images/GRASS_grass_hydro_15_0.png" />
 </div>
 </div>
 <p><strong>Merge the flow accumulation tiles</strong></p>
@@ -1260,7 +1259,7 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_17_0.png" src="../_images/GRASS_grass_hydro_17_0.png" />
+<img alt="../_images/GRASS_grass_hydro_18_0.png" src="../_images/GRASS_grass_hydro_18_0.png" />
 </div>
 </div>
 <p><strong>Copute stream and basin using the seamless South America Flow Accumulation</strong></p>
@@ -1533,26 +1532,26 @@ All subsequent raster operations will be limited to the MASK area. Removing
 or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Color table of raster map &lt;stream&gt; not found
-   0%   0%   0%   0%   3%   3%   3%   0%   3%   3%   6%   6%   6%   6%   6%   9%   9%   9%  12%  12%  12%   9%  12%   9%  12%  15%  15%  15%  18%  18%  15%  18%  18%  15%  18%  21%  21%  21%  21%  24%  24%  24%  27%  21%  27%  27%  24%  27%  24%  27%  30%  30%  30%  33%  33%  33%  30%  33%  30%  36%  36%  33%  36%  36%  36%  39%  42%  39%  39%  42%  42%  39%  42%  39%  45%  45%  45%  48%  42%  48%  48%  45%  45%  51%  51%  51%  48%  48%  51%  54%  54%  54%  51%  57%  57%  57%  54%  54%  57%  60%  60%  60%  63%  63%  63%  57%  60%  66%  63%  66%  60%  69%  66%  69%  63%  69%  66%  72%  72%  66%  72%  69%  72%  69%  75%  75%  78%  75%  78%  72%  78%  75%  81%  81%  78%  81%  84%  75%  84%  78%  84%  81%  87%  87%  87%  84%  81%  84%  87%  90%  90%  93%  93%  90%  93%  87%  90%  93%  96%  96%  96%  99%  99%  99%  90%  96% 100% 100%  99%
- 100%
+   0   0   0   0   3   3   3   0   3   3   6   6   6   6   6   9   9   9  12  12  12   9  12   9  12  15  15  15  18  18  15  18  18  15  18  21  21  21  21  24  24  24  27  21  27  27  24  27  24  27  30  30  30  33  33  33  30  33  30  36  36  33  36  36  36  39  42  39  39  42  42  39  42  39  45  45  45  48  42  48  48  45  45  51  51  51  48  48  51  54  54  54  51  57  57  57  54  54  57  60  60  60  63  63  63  57  60  66  63  66  60  69  66  69  63  69  66  72  72  66  72  69  72  69  75  75  78  75  78  72  78  75  81  81  78  81  84  75  84  78  84  81  87  87  87  84  81  84  87  90  90  93  93  90  93  87  90  93  96  96  96  99  99  99  90  96 100 100  99
+ 100
 
-  93% 100%
-  96%  99% 100%
+  93 100
+  96  99 100
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasin_1.tif&gt; created.
 ERROR: Raster map or group &lt;basin&gt; not found
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/stream_1.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
@@ -1560,26 +1559,26 @@ or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Color table of raster map &lt;stream&gt; not found
 WARNING: Color table of raster map &lt;flow&gt; not found
-   0%   0%   0%   0%   0%   3%   3%   3%   6%   6%   3%   3%   6%   6%   6%   9%   9%   9%  12%  12%   9%   9%  12%  12%  12%  15%  15%  18%  15%  18%  18%  15%  18%  21%  15%  21%  21%  21%  18%  21%  24%  24%  24%  24%  27%  27%  27%  27%  24%  27%  30%  30%  30%  33%  33%  30%  33%  33%  30%  33%  36%  36%  36%  36%  39%  39%  39%  39%  36%  42%  42%  39%  45%  42%  42%  45%  45%  45%  42%  48%  48%  48%  51%  51%  51%  48%  51%  45%  54%  48%  57%  54%  54%  57%  54%  57%  51%  57%  60%  54%  60%  60%  63%  63%  60%  63%  63%  57%  66%  69%  66%  69%  66%  69%  60%  66%  63%  69%  72%  72%  72%  72%  75%  75%  75%  66%  69%  75%  78%  78%  78%  78%  72%  81%  81%  81%  84%  84%  81%  84%  84%  75%  78%  87%  87%  87%  87%  90%  90%  90%  90%  81%  84%  93%  96%  93%  93%  93%  96%  96%  96%  87%  90%  99% 100%  99%
- 100%  99%  99%
- 100% 100%
+   0   0   0   0   0   3   3   3   6   6   3   3   6   6   6   9   9   9  12  12   9   9  12  12  12  15  15  18  15  18  18  15  18  21  15  21  21  21  18  21  24  24  24  24  27  27  27  27  24  27  30  30  30  33  33  30  33  33  30  33  36  36  36  36  39  39  39  39  36  42  42  39  45  42  42  45  45  45  42  48  48  48  51  51  51  48  51  45  54  48  57  54  54  57  54  57  51  57  60  54  60  60  63  63  60  63  63  57  66  69  66  69  66  69  60  66  63  69  72  72  72  72  75  75  75  66  69  75  78  78  78  78  72  81  81  81  84  84  81  84  84  75  78  87  87  87  87  90  90  90  90  81  84  93  96  93  93  93  96  96  96  87  90  99 100  99
+ 100  99  99
+ 100 100
 
-  93%  96%  99% 100%
+  93  96  99 100
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasin_2.tif&gt; created.
 ERROR: Raster map or group &lt;basin&gt; not found
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/stream_2.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
@@ -1587,26 +1586,26 @@ or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
 WARNING: Color table of raster map &lt;stream&gt; not found
 WARNING: Color table of raster map &lt;flow&gt; not found
-   0%   0%   0%   0%   0%   3%   3%   3%   3%   6%   6%   6%   3%   6%   6%   9%   9%   9%  12%  12%  12%   9%  12%   9%  12%  15%  15%  15%  18%  18%  18%  15%  15%  18%  18%  21%  21%  21%  24%  24%  24%  21%  21%  24%  24%  27%  27%  30%  27%  30%  30%  27%  27%  30%  30%  33%  33%  33%  36%  36%  36%  33%  33%  36%  36%  39%  39%  39%  42%  42%  42%  39%  42%  39%  42%  45%  45%  48%  45%  48%  48%  45%  48%  45%  48%  51%  51%  51%  54%  54%  54%  51%  54%  51%  57%  57%  60%  54%  60%  57%  60%  57%  60%  63%  63%  66%  57%  66%  60%  63%  66%  63%  66%  69%  72%  69%  72%  63%  69%  66%  75%  72%  75%  69%  72%  75%  75%  78%  78%  69%  72%  78%  81%  81%  78%  81%  81%  75%  84%  84%  87%  78%  84%  87%  87%  84%  81%  87%  90%  90%  90%  93%  93%  93%  84%  90%  87%  96%  93%  96%  99%  96%  99%  90%  99%  96%  93% 100%
-  99% 100%
- 100%
- 100%  96%
-  99% 100%
+   0   0   0   0   0   3   3   3   3   6   6   6   3   6   6   9   9   9  12  12  12   9  12   9  12  15  15  15  18  18  18  15  15  18  18  21  21  21  24  24  24  21  21  24  24  27  27  30  27  30  30  27  27  30  30  33  33  33  36  36  36  33  33  36  36  39  39  39  42  42  42  39  42  39  42  45  45  48  45  48  48  45  48  45  48  51  51  51  54  54  54  51  54  51  57  57  60  54  60  57  60  57  60  63  63  66  57  66  60  63  66  63  66  69  72  69  72  63  69  66  75  72  75  69  72  75  75  78  78  69  72  78  81  81  78  81  81  75  84  84  87  78  84  87  87  84  81  87  90  90  90  93  93  93  84  90  87  96  93  96  99  96  99  90  99  96  93 100
+  99 100
+ 100
+ 100  96
+  99 100
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/lbasin_3.tif&gt; created.
 ERROR: Raster map or group &lt;basin&gt; not found
 Checking GDAL data type and nodata value...
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 Using GDAL data type &lt;UInt32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
-   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File &lt;geodata/dem/stream_3.tif&gt; created.
 Cleaning up temporary files...
 Done.
@@ -1672,7 +1671,7 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_22_0.png" src="../_images/GRASS_grass_hydro_22_0.png" />
+<img alt="../_images/GRASS_grass_hydro_23_0.png" src="../_images/GRASS_grass_hydro_23_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1692,7 +1691,8 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_23_0.png" src="../_images/GRASS_grass_hydro_23_0.png" />
+<img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
+</div>
 </div>
 </div>
 </div>
