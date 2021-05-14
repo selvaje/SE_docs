@@ -114,6 +114,12 @@ Documentation Contents
    CASESTUDY/120_Data_type_GTiff.ipynb
    CASESTUDY/121_temporal_interpolation.ipynb
    CASESTUDY/122_pred_NP.ipynb
+
+.. toctree::
+   :titlesonly:
+   :caption: OUTDOOR
+   
+   OUTDOOR/outdoor_orientering.md 
    
 .. toctree::
    :titlesonly:
