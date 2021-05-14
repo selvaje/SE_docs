@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
 
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
@@ -38,6 +41,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
     
     <script type="text/javascript" src="../_static/js/theme.js"></script>
 
@@ -150,10 +155,7 @@
 <p class="caption"><span class="caption-text">GRASS</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#Flow-distribution-algorithms">Flow distribution algorithms</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">CASE STUDY</span></p>
 <ul>
@@ -508,11 +510,19 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Using-GRASS-for-stream-network-extraction-and-basins-delineation">
 <h1>Using GRASS for stream-network extraction and basins delineation<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation" title="Permalink to this headline">¶</a></h1>
-<p>In this exercize we use GRASS to extract stream-network and delineate basins. We simulate a case that we can not run the full South America continent in one tile becasue we reach RAM limitation. Therefore we compute the analysis in 3 tiles and then we combine the results.</p>
-<div class="line-block">
-<div class="line">Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE_data/ therefore we create a working copy of the SE_data under</div>
-<div class="line">/home/user/my_SE_data/</div>
-</div>
+<p>The first step towards modeling hydrological features is delineating a comprehensive hydrography network. DEMs at different spatial resolutions allow for the identification of stream channels, using a variety of flow-routing algorithms. Such algorithms are based on the observation that water follows the steepest and shortest route along a relief, and accumulates in valleys, lowlands, flat areas and depressions. Several algorithms have been proposed for stream network routing. These algorithms
+proceed in several stages: determining flow directions, resolving depressions and flat areas, and finally, calculating flow accumulation. With this hydrography other stream parameters, such as stream distance, slope, etc., can be computed. Below we describe how we will extract a new high-resolution hydrography (stream-network and basins) from the 1KM DEM.</p>
+<p>In this exercise we simulate a case that we can not run the full South America continent in one tile because we reach RAM limitation. Therefore we compute the analysis in 3 tiles and then we combine the results.</p>
+<p>We are going to use 3 GRASS commands: - <a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.watershed.html">r.watershed</a> to derive flow accumulation - <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/r.stream.extract.html">r.stream.extract</a> to extract-stream network - <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/addons/r.stream.basins.html">r.stream.basins</a> to delineate basins</p>
+<p><strong>Flow direction algorithms</strong></p>
+<p>In r.watershed there are 2 flow direction algorithms.</p>
+<ul class="simple">
+<li><p>SFD: single flow direction (O’Callaghan, 1984)</p></li>
+<li><p>MFD: multiple flow direction (Holmgren, 1994)</p></li>
+</ul>
+<p>Lectures: <a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20210518_flow_metrics.pdf">Flow Metrics</a></p>
+<p><strong>Prepare GRASS for hydrography extraction</strong></p>
+<p>Considering that GRASS can not working properly under <em>/media/sf_LVM_shared/my_SE_data/</em> therefore we create a working copy of the <em>SE_data</em> under <em>/home/user/my_SE_data/</em></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -693,10 +703,7 @@ Goodbye from GRASS GIS
 <img alt="../_images/GRASS_grass_hydro_7_2.png" src="../_images/GRASS_grass_hydro_7_2.png" />
 </div>
 </div>
-<div class="section" id="Flow-distribution-algorithms">
-<h2>Flow distribution algorithms<a class="headerlink" href="#Flow-distribution-algorithms" title="Permalink to this headline">¶</a></h2>
-<p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20210518_flow_metrics.pdf">Flow Metrics</a></p>
-<p><strong>Compute MFD flow accumulation</strong></p>
+<p><strong>First run: compute MFD flow accumulation</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
@@ -1114,6 +1121,7 @@ Goodbye from GRASS GIS
 
 </pre></div></div>
 </div>
+<p>At this point the flow accumulation has been computed ond saved only for the entire basins.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
@@ -1262,7 +1270,7 @@ Input file size is 5616, 8244
 <img alt="../_images/GRASS_grass_hydro_18_0.png" src="../_images/GRASS_grass_hydro_18_0.png" />
 </div>
 </div>
-<p><strong>Copute stream and basin using the seamless South America Flow Accumulation</strong></p>
+<p><strong>Second run: copute stream and basin using the seamless South America Flow Accumulation</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
@@ -1614,7 +1622,7 @@ Goodbye from GRASS GIS
 
 </pre></div></div>
 </div>
-<p><strong>Combine the tiled basins and streams</strong></p>
+<p><strong>Final step: combine the tiled basins and streams</strong></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
@@ -1692,7 +1700,6 @@ Input file size is 5616, 8244
 </div>
 <div class="output_area docutils container">
 <img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
-</div>
 </div>
 </div>
 </div>
