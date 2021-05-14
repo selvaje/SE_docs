@@ -513,7 +513,12 @@ div.rendered_html tbody tr:hover {
 <p>The first step towards modeling hydrological features is delineating a comprehensive hydrography network. DEMs at different spatial resolutions allow for the identification of stream channels, using a variety of flow-routing algorithms. Such algorithms are based on the observation that water follows the steepest and shortest route along a relief, and accumulates in valleys, lowlands, flat areas and depressions. Several algorithms have been proposed for stream network routing. These algorithms
 proceed in several stages: determining flow directions, resolving depressions and flat areas, and finally, calculating flow accumulation. With this hydrography other stream parameters, such as stream distance, slope, etc., can be computed. Below we describe how we will extract a new high-resolution hydrography (stream-network and basins) from the 1KM DEM.</p>
 <p>In this exercise we simulate a case that we can not run the full South America continent in one tile because we reach RAM limitation. Therefore we compute the analysis in 3 tiles and then we combine the results.</p>
-<p>We are going to use 3 GRASS commands: - <a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.watershed.html">r.watershed</a> to derive flow accumulation - <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/r.stream.extract.html">r.stream.extract</a> to extract-stream network - <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/addons/r.stream.basins.html">r.stream.basins</a> to delineate basins</p>
+<div class="line-block">
+<div class="line">We are going to use 3 GRASS commands:</div>
+<div class="line">- <a class="reference external" href="https://grass.osgeo.org/grass79/manuals/r.watershed.html">r.watershed</a> to derive flow accumulation</div>
+<div class="line">- <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/r.stream.extract.html">r.stream.extract</a> to extract-stream network</div>
+<div class="line">- <a class="reference external" href="https://grass.osgeo.org/grass78/manuals/addons/r.stream.basins.html">r.stream.basins</a> to delineate basins</div>
+</div>
 <p><strong>Flow direction algorithms</strong></p>
 <p>In r.watershed there are 2 flow direction algorithms.</p>
 <ul class="simple">
@@ -596,7 +601,7 @@ Goodbye from GRASS GIS
 <li><p>A shapefile reporting the 3 tiles</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1207,6 +1212,27 @@ Goodbye from GRASS GIS
 </div>
 </div>
 <div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># flow accumualtion tile 3</span>
+<span class="kn">import</span> <span class="nn">rasterio</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;geodata/dem/lbasinTmp_3.tif&quot;</span><span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;tab20b&#39;</span> <span class="p">)</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_15_0.png" src="../_images/GRASS_grass_hydro_15_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
@@ -1224,7 +1250,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_15_0.png" src="../_images/GRASS_grass_hydro_15_0.png" />
+<img alt="../_images/GRASS_grass_hydro_16_0.png" src="../_images/GRASS_grass_hydro_16_0.png" />
 </div>
 </div>
 <p><strong>Merge the flow accumulation tiles</strong></p>
@@ -1267,7 +1293,7 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_18_0.png" src="../_images/GRASS_grass_hydro_18_0.png" />
+<img alt="../_images/GRASS_grass_hydro_19_0.png" src="../_images/GRASS_grass_hydro_19_0.png" />
 </div>
 </div>
 <p><strong>Second run: copute stream and basin using the seamless South America Flow Accumulation</strong></p>
@@ -1679,7 +1705,7 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_23_0.png" src="../_images/GRASS_grass_hydro_23_0.png" />
+<img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1699,7 +1725,7 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
+<img alt="../_images/GRASS_grass_hydro_25_0.png" src="../_images/GRASS_grass_hydro_25_0.png" />
 </div>
 </div>
 </div>
