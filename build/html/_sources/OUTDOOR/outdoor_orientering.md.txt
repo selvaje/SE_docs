@@ -49,9 +49,9 @@ Research Scientist in GeoComputation and Spatial Science
 - Off-line Navigation:
   - Maps.me App: [https://maps.me](https://maps.me).
 - Routing and Mapping:
-  - Ride with GPS: [https://ridewithgps.com/](https://ridewithgps.com).
+  - Ride with GPS: [https://ridewithgps.com](https://ridewithgps.com).
   - CalTopo: [https://caltopo.com](https://caltopo.com).
-  - Open Railway Map: [https://www.openrailwaymap.org/](https://www.openrailwaymap.org).
+  - Open Railway Map: [https://www.openrailwaymap.org](https://www.openrailwaymap.org).
 - Orienteering and Tracking:
   - Locus App: [http://www.locusmap.eu](http://www.locusmap.eu).
 - Map store:
@@ -94,16 +94,16 @@ Research Scientist in GeoComputation and Spatial Science
 
 ---------------------
 
-**Open Railway Map: [https://www.openrailwaymap.org/](https://www.openrailwaymap.org)**
+**Open Railway Map: [https://www.openrailwaymap.org](https://www.openrailwaymap.org)**
 
 - Web-platform with web-gis interface with railway visualization.
 - Good for planing train+bike or train+hiking trips.
 
 ---------------------
 
-**Locus App: [http://www.locusmap.eu/](http://www.locusmap.eu)**
+**Locus App: [http://www.locusmap.eu](http://www.locusmap.eu)**
 
-- Web-GIS planer for routing [https://web.locusmap.app/en/](https://web.locusmap.app/en).
+- Web-GIS planer for routing [https://web.locusmap.app/en](https://web.locusmap.app/en).
   - Automatic route delineation (from-to).
   - Export .gpx.
 - Mobile app [https://www.locusmap.app/](https://www.locusmap.app).
@@ -121,3 +121,8 @@ Research Scientist in GeoComputation and Spatial Science
 
  - Country by Country selection of off-line maps in vector form.
  - Quick-install of off-line maps for Locus.
+   - From your android navigate on the [https://www.openandromaps.org/en/downloads](https://www.openandromaps.org/en/downloads).
+   - Navigate to your favorite map-download page.
+   - Click on the “+” symbol left of the mapname you want to download.
+   - Click on "Locus Map+Pois" , at this point the map is downloaded and installed in the right.
+   - When the download is done you will need activate the map Click on Locus Menu  → Map manager  → Off-Line  → Select on the map. 
