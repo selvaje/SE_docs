@@ -59,12 +59,16 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/VGmeUTQn9Vp_4SUHswWw_hpAxA9JZX8YuGJW9ILZdS0CKvRGQOBYdE7ZbUU2wZvJ.fP9y-qRW-BnrGCqF) Passcode: K!?e!8e$
  
-* 04 May 2021 - Student presentation and ML introduction.
+* 04 May 2021 - Student presentation and Machine Learning introduction.
    - Students: Presenting objectives for the final project
    - [Longzhu Shen: ML introduction](http://spatial-ecology.net/docs/source/lectures/lect_20210504_ML_overview.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/ATCGRyjtyhZibwOasqm5qNSsbTUjO1isY_HQi1wXW-N2do9u5Ug5aZ0_5zlsLEYs.tANWM3aFuxIi0pQI) Passcode: 6898L*!3
    
-* 06 May 2021 - Student presentation and ML.
+* 06 May 2021 - Student presentation and Machine Learning.
    - Students: Presenting objectives for the final project
    - [Longzhu Shen: ML Optimization](http://spatial-ecology.net/docs/source/lectures/lect_20210506_ML_OPT.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/RNa2eLIRywzQD1OR3QBpxa7HmW0sMS5FmL7pRTFiR6smSKkjvgEbmjA7wUFROwhy.KGKx6eEGxBVTkmMx) Passcode: 50.%ysyx
+
+* 11 May 2021 - Machine learning.
+   - [Longzhu Shen: Unsupervised learning](http://spatial-ecology.net/docs/source/lectures/lect_20210511_ML_Unsupervised.pdf   )
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/gEoFXow6jo5_oViHy9jk92-78p_3wjH8ej9jd5yxVFaWN_l5Is2UTrRRN3CYJsoX.2GI9uowKdD0FMa-a) Passcode: cOj1v^A@
