@@ -70,5 +70,10 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/RNa2eLIRywzQD1OR3QBpxa7HmW0sMS5FmL7pRTFiR6smSKkjvgEbmjA7wUFROwhy.KGKx6eEGxBVTkmMx) Passcode: 50.%ysyx
 
 * 11 May 2021 - Machine learning.
-   - [Longzhu Shen: Unsupervised learning](http://spatial-ecology.net/docs/source/lectures/lect_20210511_ML_Unsupervised.pdf   )
+   - [Longzhu Shen: Unsupervised learning](http://spatial-ecology.net/docs/source/lectures/lect_20210511_ML_Unsupervised.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/gEoFXow6jo5_oViHy9jk92-78p_3wjH8ej9jd5yxVFaWN_l5Is2UTrRRN3CYJsoX.2GI9uowKdD0FMa-a) Passcode: cOj1v^A@
+
+* 18 May 2021 - GRASS and Machine learning.
+   - [Giuseppe Amatulli: GRASS for hydrological modeling](http://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html) 
+   - [Longzhu Shen: Dynamic Time Warping](http://spatial-ecology.net/docs/source/lectures/lect_20210518_DTW.pdf)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/bG0oR4BSJBBsz4y8AWku18EaEpDBupT2OqpbvtEQotXNLUWGOEW-x9wngFlSD-Cl.djFTnCacr9uUb_Io) Passcode: O!f9sRFU
