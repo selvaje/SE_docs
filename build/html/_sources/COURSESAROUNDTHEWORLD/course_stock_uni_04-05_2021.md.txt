@@ -74,6 +74,7 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/gEoFXow6jo5_oViHy9jk92-78p_3wjH8ej9jd5yxVFaWN_l5Is2UTrRRN3CYJsoX.2GI9uowKdD0FMa-a) Passcode: cOj1v^A@
 
 * 18 May 2021 - GRASS and Machine learning.
-   - [Giuseppe Amatulli: GRASS for hydrological modeling](http://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html) 
+   - [Giuseppe Amatulli: GRASS for hydrological modeling](http://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
    - [Longzhu Shen: Dynamic Time Warping](http://spatial-ecology.net/docs/source/lectures/lect_20210518_DTW.pdf)
+   - [Longzhu Shen: Dynamic Time Warping - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/123_DTW.html)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/bG0oR4BSJBBsz4y8AWku18EaEpDBupT2OqpbvtEQotXNLUWGOEW-x9wngFlSD-Cl.djFTnCacr9uUb_Io) Passcode: O!f9sRFU
