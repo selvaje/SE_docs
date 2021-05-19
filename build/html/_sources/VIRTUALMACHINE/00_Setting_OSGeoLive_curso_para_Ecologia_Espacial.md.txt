@@ -2,11 +2,11 @@
 
 Para ejecutar el ejercicio de Ecología espacial, primero necesitaremos instalar la máquina virtual OSGeoLive Linux y luego completar con software y datos adicionales.
 
-[OSGeoLive] (https://live.osgeo.org/en/index.html) es una máquina virtual basada en Lubuntu que se puede arrancar desde un DVD de arranque autónomo o una unidad flash USB. Le permite probar una amplia variedad de aplicaciones geoespaciales, todas ellas de código abierto,  sin instalar nada. Está compuesto completamente de software libre, lo que permite que se distribuya, duplique y pase libremente (fuente https://live.osgeo.org/en/index.html)
+[OSGeoLive](https://live.osgeo.org/en/index.html) es una máquina virtual basada en Lubuntu que se puede arrancar desde un DVD de arranque autónomo o una unidad flash USB. Le permite probar una amplia variedad de aplicaciones geoespaciales, todas ellas de código abierto,  sin instalar nada. Está compuesto completamente de software libre, lo que permite que se distribuya, duplique y pase libremente (fuente https://live.osgeo.org/en/index.html)
 
-Puede seguir las instrucciones a continuación; además, el [video de YouTube de instalación de OSGeoLive] (https://youtu.be/wnRkkpaxqBU) le puede servir de guía a lo largo del procedimiento completo.
+Puede seguir las instrucciones a continuación; además, el [video de YouTube de instalación de OSGeoLive](https://youtu.be/wnRkkpaxqBU) le puede servir de guía a lo largo del procedimiento completo.
 
-Para ejecutar una máquina virtual en su sistema operativo, necesitamos un software de virtualización como [Virtualbox] (https://www.virtualbox.org/) y un archivo vmdk que contiene el sistema operativo virtualizado.
+Para ejecutar una máquina virtual en su sistema operativo, necesitamos un software de virtualización como [Virtualbox](https://www.virtualbox.org/) y un archivo vmdk que contiene el sistema operativo virtualizado.
 
 
 **Instalación de Virtualbox**
@@ -15,9 +15,9 @@ Abra su navegador y vaya a [https://www.virtualbox.org/wiki/Downloads](https://w
 
 **Descarga de OSGeoLive**
 
-Abra su navegador y vaya a [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Haga clic en la carpeta de la última versión y descargue el osgeolive - ??. 0-amd64.vmdk.7z. En el momento de escribir este artículo, la última versión es la 13, por lo que el archivo vmdk es osgeolive-13.0-amd64.vmdk.7z. El osgeolive-13.0-amd64.vmdk.7z es un archivo bastante grande, por lo tanto, según su conexión a Internet, puede tardar varias horas. 
+Abra su navegador y vaya a [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Haga clic en la carpeta de la última versión y descargue el osgeolive-??.0-amd64.vmdk.7z. En el momento de escribir este artículo, la última versión es la 13, por lo que el archivo vmdk es osgeolive-13.0-amd64.vmdk.7z. El osgeolive-13.0-amd64.vmdk.7z es un archivo bastante grande, por lo tanto, según su conexión a Internet, puede tardar varias horas. 
 
-Cuando finalice la descarga, descomprímalo usando [7zip] (https://www.7-zip.org). Los usuarios de Mac pueden usar [The Unarchiver] (https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) para descomprimir el archivo osgeolive-13.0-amd64.vmdk.7z. En este punto, está listo para cargar el osgeolive-13.0-amd64.vmdk dentro de Virtualbox.
+Cuando finalice la descarga, descomprímalo usando [7zip](https://www.7-zip.org). Los usuarios de Mac pueden usar [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) para descomprimir el archivo osgeolive-13.0-amd64.vmdk.7z. En este punto, está listo para cargar el osgeolive-13.0-amd64.vmdk dentro de Virtualbox.
 
 
 **Instalación de OSGeoLive dentro de Virtualbox**
@@ -39,7 +39,7 @@ Lance Virtualbox desde el sistema operativo y siga las instrucciones que tiene a
 
 Si sigue todos los pasos correctamente, la máquina virtual OSGeoLive debería aparecer en la ventana de Virtual Box mostrando algo como esto:
 
-! [título] (Instalación_vm_osgeo-live13_p10.png)
+! [título](Instalación_vm_osgeo-live13_p10.png)
 
 Si la pantalla es muy pequeña, intente ampliarla, y si la ampliación no funciona correctamente, intente reiniciar. En algún momento, la edición para invitados de Virtual Box no se activa, por lo que debe volver a realizar el procedimiento.
 
