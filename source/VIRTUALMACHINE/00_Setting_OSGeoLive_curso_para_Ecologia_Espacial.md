@@ -39,7 +39,7 @@ Lance Virtualbox desde el sistema operativo y siga las instrucciones que tiene a
 
 Si sigue todos los pasos correctamente, la máquina virtual OSGeoLive debería aparecer en la ventana de Virtual Box mostrando algo como esto:
 
-! [título](Instalación_vm_osgeo-live13_p10.png)
+! [title](Instalación_vm_osgeo-live13_p10.png)
 
 Si la pantalla es muy pequeña, intente ampliarla, y si la ampliación no funciona correctamente, intente reiniciar. En algún momento, la edición para invitados de Virtual Box no se activa, por lo que debe volver a realizar el procedimiento.
 
@@ -136,11 +136,11 @@ Se puede utilizar el mismo procedimiento para restaurar la carpeta SE_data compl
 
 ### Rutina futura
 
-C
+Carpetas:  
 
-~/SE_data : server copy, sync. with cloud
+~/SE_data : server copy, sync. with cloud  
 
-/media/sf\_LVM\_shared/my\_SE\_data : copia de trabajo, para usted, siempre trabaje aquí. 
+/media/sf\_LVM\_shared/my\_SE\_data : copia de trabajo, para usted, siempre trabaje aquí.
 
 
 Proceed with these lines every time we have new class material.
