@@ -42,6 +42,7 @@ Documentation Contents
 
    VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
    VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.md
+   VIRTUALMACHINE/00_Setting_OSGeoLive_curso_para_Ecologia_Espacial.md
    
 .. toctree::
    :titlesonly:
