@@ -24,22 +24,22 @@ Cuando finalice la descarga, descomprímalo usando [7zip](https://www.7-zip.org)
 
 Lance Virtualbox desde el sistema operativo y siga las instrucciones que tiene a continuación.
 
-![title](Installation_vm_osgeo-live13_p0.png)
-![title](Installation_vm_osgeo-live13_p1.png)
-![title](Installation_vm_osgeo-live13_p2.png)
-![title](Installation_vm_osgeo-live13_p3.png)
-![title](Installation_vm_osgeo-live13_p4.png)
-![title](Installation_vm_osgeo-live13_p5.png)
-![title](Installation_vm_osgeo-live13_p6.png)
-![title](Installation_vm_osgeo-live13_p7.png)
-![title](Installation_vm_osgeo-live13_p8.png)
-![title](Installation_vm_osgeo-live13_p9.png)
+![title](Installation_vm_osgeo-live13_p0_es.png)
+![title](Installation_vm_osgeo-live13_p1_es.png)
+![title](Installation_vm_osgeo-live13_p2_es.png)
+![title](Installation_vm_osgeo-live13_p3_es.png)
+![title](Installation_vm_osgeo-live13_p4_es.png)
+![title](Installation_vm_osgeo-live13_p5_es.png)
+![title](Installation_vm_osgeo-live13_p6_es.png)
+![title](Installation_vm_osgeo-live13_p7_es.png)
+![title](Installation_vm_osgeo-live13_p8_es.png)
+![title](Installation_vm_osgeo-live13_p9_es.png)
 
 **Prueba de la máquina virtual de OSGeoLive**
 
 Si sigue todos los pasos correctamente, la máquina virtual OSGeoLive debería aparecer en la ventana de Virtual Box mostrando algo como esto:
 
-! [title](Instalación_vm_osgeo-live13_p10.png)
+! [title](Instalación_vm_osgeo-live13_p10_es.png)
 
 Si la pantalla es muy pequeña, intente ampliarla, y si la ampliación no funciona correctamente, intente reiniciar. En algún momento, la edición para invitados de Virtual Box no se activa, por lo que debe volver a realizar el procedimiento.
 
