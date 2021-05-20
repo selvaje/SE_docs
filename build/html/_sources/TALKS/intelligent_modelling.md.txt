@@ -4,6 +4,6 @@
 
 **Giuseppe Amatulli and Longzhu Shen**
 
-![title](source/TALKS/intelligent_modelling.png)
+![title](intelligent_modelling.png)
 
 ![video]()
