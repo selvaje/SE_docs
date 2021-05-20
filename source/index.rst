@@ -124,6 +124,12 @@ Documentation Contents
    :caption: OUTDOOR
    
    OUTDOOR/outdoor_orientering.md 
+
+.. toctree::
+   :titlesonly:
+   :caption: TALKS
+
+   TALKS/intelligent_modelling.md
    
 .. toctree::
    :titlesonly:
