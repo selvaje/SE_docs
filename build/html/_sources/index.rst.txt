@@ -116,6 +116,7 @@ Documentation Contents
    CASESTUDY/121_temporal_interpolation.ipynb
    CASESTUDY/122_pred_NP.ipynb
    CASESTUDY/123_DTW.ipynb
+   CASESTUDY/NN-day1.ipynb
    
 .. toctree::
    :titlesonly:
