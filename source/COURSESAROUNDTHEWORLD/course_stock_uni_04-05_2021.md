@@ -78,3 +78,11 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Longzhu Shen: Dynamic Time Warping](http://spatial-ecology.net/docs/source/lectures/lect_20210518_DTW.pdf)
    - [Longzhu Shen: Dynamic Time Warping - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/123_DTW.html)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/bG0oR4BSJBBsz4y8AWku18EaEpDBupT2OqpbvtEQotXNLUWGOEW-x9wngFlSD-Cl.djFTnCacr9uUb_Io) Passcode: O!f9sRFU
+
+* 20 May 2021 - GRASS and Machine learning.
+   - [Antonio Fonseca: Artificial Neural Networks for geo-data](http://spatial-ecology.net/docs/source/lectures/lect_20210520_NNs_day1.pdf)
+   - [Antonio Fonseca: - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day1.html)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/yIHkGa91dnwOfZIExI-b1PQvl1lioFxRE0mapOkRoX4yLUKk7Bz9l-mUseZFkeCO.9S-lE5_v9fsVbf0s) Passcode: 0A8$Q0Sq 
+
+
+
