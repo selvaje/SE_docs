@@ -39,7 +39,7 @@ Lance Virtualbox desde el sistema operativo y siga las instrucciones que tiene a
 
 Si sigue todos los pasos correctamente, la máquina virtual OSGeoLive debería aparecer en la ventana de Virtual Box mostrando algo como esto:
 
-![title](Instalación_vm_osgeo-live13_p10_es.png)
+![title](Installation_vm_osgeo-live13_p10_es.png)
 
 Si la pantalla es muy pequeña, intente ampliarla, y si la ampliación no funciona correctamente, intente reiniciar. En algún momento, la edición para invitados de Virtual Box no se activa, por lo que debe volver a realizar el procedimiento.
 
