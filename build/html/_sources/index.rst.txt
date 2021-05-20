@@ -106,6 +106,7 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
+   :maxdepth: 1
    :caption: CASE STUDY
 
    CASESTUDY/101_SDM1_MWood_gecomp.ipynb
