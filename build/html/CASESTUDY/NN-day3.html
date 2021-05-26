@@ -50,7 +50,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Do not get lost in the wilderness" href="../OUTDOOR/outdoor_orientering.html" />
-    <link rel="prev" title="Estimating nitrogen concentrations in streams and rivers using NN" href="NN-day1.html" /> 
+    <link rel="prev" title="Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)" href="NN-day2.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -169,12 +169,13 @@
 <li class="toctree-l1"><a class="reference internal" href="123_DTW.html">Dynamic Time Warping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html">Estimating nitrogen concentrations in streams and rivers using RF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html#Section-3.2---GANS">Section 3.2 - GANS</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">LSTM Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#LSTM-for-Regression">LSTM for Regression</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#LSTM-for-Regression-Using-the-Window-Method">LSTM for Regression Using the Window Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#LSTM-for-Regression-with-Time-Steps">LSTM for Regression with Time Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#LSTM-with-Memory-Between-Batches">LSTM with Memory Between Batches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Stacked-LSTMs-with-Memory-Between-Batches">Stacked LSTMs with Memory Between Batches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#Adding-Early-Stopping">Adding Early Stopping</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OUTDOOR</span></p>
@@ -569,11 +570,10 @@ pip install numpy==1.19.5
 </div>
 </div>
 <p>There are three types of gates within a unit: - Forget Gate: conditionally decides what information to throw away from the block. - Input Gate: conditionally decides which values from the input to update the memory state. - Output Gate: conditionally decides what to output based on input and the memory of the block.</p>
-</div>
 <div class="section" id="LSTM-for-Regression">
-<h1>LSTM for Regression<a class="headerlink" href="#LSTM-for-Regression" title="Permalink to this headline">¶</a></h1>
+<h2>LSTM for Regression<a class="headerlink" href="#LSTM-for-Regression" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -583,7 +583,7 @@ pip install numpy==1.19.5
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -594,8 +594,8 @@ pip install numpy==1.19.5
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -607,37 +607,8 @@ pip install numpy==1.19.5
 </pre></div>
 </div>
 </div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-   International airline passengers: monthly totals in thousands. Jan 49 ? Dec 60
-0                                                112
-1                                                118
-2                                                132
-3                                                129
-4                                                121
-</pre></div></div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Text(0, 0.5, &#39;Monthly total of passangers (x10e3)&#39;)
-</pre></div></div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_NN-day3_7_2.png" src="../_images/CASESTUDY_NN-day3_7_2.png" />
-</div>
-</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -647,8 +618,8 @@ Text(0, 0.5, &#39;Monthly total of passangers (x10e3)&#39;)
 </pre></div>
 </div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -661,17 +632,8 @@ Text(0, 0.5, &#39;Monthly total of passangers (x10e3)&#39;)
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-len(dataset):  144
-96 48
-</pre></div></div>
-</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -687,8 +649,8 @@ len(dataset):  144
 </div>
 </div>
 <p>We have some flexibility in how the dataset is framed for the network. We will keep it simple and frame the problem as each time step in the original sequence is one separate sample, with one timestep and one feature.</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -726,19 +688,6 @@ len(dataset):  144
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-trainX.shape:  (94, 1, 1)
-trainY.shape:  (94,)
-trainX[:5]:  [0.01544401 0.02702703 0.05405405 0.04826255 0.03281853]
-trainY[:5]:  [0.02702703 0.05405405 0.04826255 0.03281853 0.05984557]
-keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
---- Elapsed time: 16.93787693977356 seconds ---
-</pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
@@ -955,12 +904,12 @@ Test R^2:  0.5286154831572729
 </div>
 </div>
 <div class="section" id="Question:-Now-that-you-are-an-expert-in-Neural-Nets-design,-what-else-would-you-change-in-this-model-in-order-to-make-it-better?">
-<h2>Question: Now that you are an expert in Neural Nets design, what else would you change in this model in order to make it better?<a class="headerlink" href="#Question:-Now-that-you-are-an-expert-in-Neural-Nets-design,-what-else-would-you-change-in-this-model-in-order-to-make-it-better?" title="Permalink to this headline">¶</a></h2>
+<h3>Question: Now that you are an expert in Neural Nets design, what else would you change in this model in order to make it better?<a class="headerlink" href="#Question:-Now-that-you-are-an-expert-in-Neural-Nets-design,-what-else-would-you-change-in-this-model-in-order-to-make-it-better?" title="Permalink to this headline">¶</a></h3>
 <p>Look at the configs used by the <a class="reference external" href="https://keras.io/api/layers/recurrent_layers/lstm/">LSTM</a></p>
 </div>
 </div>
 <div class="section" id="LSTM-for-Regression-Using-the-Window-Method">
-<h1>LSTM for Regression Using the Window Method<a class="headerlink" href="#LSTM-for-Regression-Using-the-Window-Method" title="Permalink to this headline">¶</a></h1>
+<h2>LSTM for Regression Using the Window Method<a class="headerlink" href="#LSTM-for-Regression-Using-the-Window-Method" title="Permalink to this headline">¶</a></h2>
 <p>We have been using a single feauture/time step to perform prediction. What if we use more samples to perform the prediction?</p>
 <p>Let’s see what happens…</p>
 <div class="nbinput docutils container">
@@ -1108,11 +1057,11 @@ Test R^2:  0.42679878247216185
 </div>
 </div>
 <div class="section" id="Question:-Compare-the-performance-obtained-on-single-points-versus-the-window-method.-What-are-the-advantages-of-one-versus-the-other?">
-<h2>Question: Compare the performance obtained on single points versus the window method. What are the advantages of one versus the other?<a class="headerlink" href="#Question:-Compare-the-performance-obtained-on-single-points-versus-the-window-method.-What-are-the-advantages-of-one-versus-the-other?" title="Permalink to this headline">¶</a></h2>
+<h3>Question: Compare the performance obtained on single points versus the window method. What are the advantages of one versus the other?<a class="headerlink" href="#Question:-Compare-the-performance-obtained-on-single-points-versus-the-window-method.-What-are-the-advantages-of-one-versus-the-other?" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 <div class="section" id="LSTM-for-Regression-with-Time-Steps">
-<h1>LSTM for Regression with Time Steps<a class="headerlink" href="#LSTM-for-Regression-with-Time-Steps" title="Permalink to this headline">¶</a></h1>
+<h2>LSTM for Regression with Time Steps<a class="headerlink" href="#LSTM-for-Regression-with-Time-Steps" title="Permalink to this headline">¶</a></h2>
 <p>Now we will reformulate the problem: instead of dealing with the past observations as independent features, we will consider them as time steps of one input feature.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
@@ -1239,7 +1188,7 @@ Test R^2:  0.5708315977886538
 </div>
 </div>
 <div class="section" id="LSTM-with-Memory-Between-Batches">
-<h1>LSTM with Memory Between Batches<a class="headerlink" href="#LSTM-with-Memory-Between-Batches" title="Permalink to this headline">¶</a></h1>
+<h2>LSTM with Memory Between Batches<a class="headerlink" href="#LSTM-with-Memory-Between-Batches" title="Permalink to this headline">¶</a></h2>
 <p>In order to prevent the LSTM to find dependencies between your batches, it is set to be “stateless” by default. But what if the dependency between the batches is somehow informative for LSTM to learn? Let’s see what happens when we let the LSTM to build state over the entire training sequence.</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
@@ -1348,7 +1297,7 @@ Test R^2:  0.37531750526932117
 </div>
 </div>
 <div class="section" id="Stacked-LSTMs-with-Memory-Between-Batches">
-<h1>Stacked LSTMs with Memory Between Batches<a class="headerlink" href="#Stacked-LSTMs-with-Memory-Between-Batches" title="Permalink to this headline">¶</a></h1>
+<h2>Stacked LSTMs with Memory Between Batches<a class="headerlink" href="#Stacked-LSTMs-with-Memory-Between-Batches" title="Permalink to this headline">¶</a></h2>
 <p>Let’s see what happens with we use a deeper LSTM network</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
@@ -2538,6 +2487,7 @@ Test R^2:  -3.3148429717990124
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">testPredictPlot</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -6540,7 +6490,7 @@ Test R^2:  0.615250920793732
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../OUTDOOR/outdoor_orientering.html" class="btn btn-neutral float-right" title="Do not get lost in the wilderness" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="NN-day1.html" class="btn btn-neutral float-left" title="Estimating nitrogen concentrations in streams and rivers using NN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="NN-day2.html" class="btn btn-neutral float-left" title="Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
