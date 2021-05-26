@@ -170,13 +170,7 @@
 <li class="toctree-l1"><a class="reference internal" href="122_pred_NP.html">Estimating nitrogen concentrations in streams and rivers using RF</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Autoencoding-MNIST">Autoencoding MNIST</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Section-2">Section 2</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Section-3.2---GANS">Section 3.2 - GANS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
-<li class="toctree-l1"><a class="reference internal" href="NN-day3.html#Adding-Early-Stopping">Adding Early Stopping</a></li>
 </ul>
 <p class="caption"><span class="caption-text">OUTDOOR</span></p>
 <ul>
@@ -602,16 +596,15 @@ cpu
 </pre></div>
 </div>
 </div>
-</div>
 <div class="section" id="Implementing-an-Autoencoder">
-<h1>Implementing an Autoencoder<a class="headerlink" href="#Implementing-an-Autoencoder" title="Permalink to this headline">¶</a></h1>
+<h2>Implementing an Autoencoder<a class="headerlink" href="#Implementing-an-Autoencoder" title="Permalink to this headline">¶</a></h2>
 <p>Now that you have a basic neural network set up, we’ll go through the steps of training an autoencoder that can compress the input down to 2 dimensions, and then (attempt to) reconstruct the original image. This will be similar to your previous network with one hidden layer, but with many more. - Fill in the Autoencoder class with a stack of layers of the following shape: 784-1000-500-250-2-250- 500-1000-784 You can make use of the nn.Linear function to automatically manage the creation of
 weight and bias parameters. Between each layer, use a tanh activation. - Change the activation function going to the middle (2-dim) layer to linear (keeping the rest as tanh). - Use the sigmoid activation function on the output of the last hidden layer. - Adapt your training function for the autoencoder. Use the same batch size and number of steps (128 and 5000), but use the ADAM optimizer instead of Gradient Descent. Use Mean Squared Error for your reconstruction loss. - After training your
 model, plot the 2 dimensional embeddings of 1000 digits, colored by the image labels. - Produce side-by-side plots of one original and reconstructed sample of each digit (0 - 9). You can use the save_image function from torchvision.utils. - Now for something fun: locate the embeddings of two distinct images, and interpolate between them to produce some intermediate point in the latent space. Visualize this point in the 2D embedding. Then, run your decoder on this fabricated “embedding” to see if
 it the output looks anything like a handwritten digit. You might try interpolating between and within several different classes.</p>
 <p><img alt="drawing" class="no-scaled-link" src="../_images/AE_architecture.png" style="width: 800px;" /></p>
 <div class="section" id="Section-1">
-<h2>Section 1<a class="headerlink" href="#Section-1" title="Permalink to this headline">¶</a></h2>
+<h3>Section 1<a class="headerlink" href="#Section-1" title="Permalink to this headline">¶</a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -763,7 +756,7 @@ it the output looks anything like a handwritten digit. You might try interpolati
 </div>
 </div>
 <div class="section" id="Autoencoding-MNIST">
-<h1>Autoencoding MNIST<a class="headerlink" href="#Autoencoding-MNIST" title="Permalink to this headline">¶</a></h1>
+<h2>Autoencoding MNIST<a class="headerlink" href="#Autoencoding-MNIST" title="Permalink to this headline">¶</a></h2>
 <p><img alt="drawing" class="no-scaled-link" src="../_images/AE_MNIST.png" style="width: 800px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -2250,6 +2243,7 @@ z.shape: torch.Size([2])
 <img alt="../_images/CASESTUDY_NN-day2_29_1.png" src="../_images/CASESTUDY_NN-day2_29_1.png" />
 </div>
 </div>
+</div>
 <div class="section" id="Question-1.1.">
 <h2>Question 1.1.<a class="headerlink" href="#Question-1.1." title="Permalink to this headline">¶</a></h2>
 <p><strong>Do the colors easily separate, or are they all clumped together? Which numbers are frequently embedded close together, and what does this mean?</strong></p>
@@ -2258,9 +2252,8 @@ z.shape: torch.Size([2])
 <h2>Question 1.2.<a class="headerlink" href="#Question-1.2." title="Permalink to this headline">¶</a></h2>
 <p><strong>How realistic were the images you generated by interpolating between points in the latent space? Can you think of a better way to generate images with an autoencoder?</strong></p>
 </div>
-</div>
 <div class="section" id="Section-2">
-<h1>Section 2<a class="headerlink" href="#Section-2" title="Permalink to this headline">¶</a></h1>
+<h2>Section 2<a class="headerlink" href="#Section-2" title="Permalink to this headline">¶</a></h2>
 <p>Now that we have an autoencoder working on MNIST, let’s use this model to visualize some geodata. For the next section we will use the SAT-6 (<a class="reference external" href="https://csc.lsu.edu/~saikat/deepsat/">https://csc.lsu.edu/~saikat/deepsat/</a>)</p>
 <p>SAT-6 consists of a total of 405,000 image patches each of size 28x28 and covering 6 landcover classes - barren land, trees, grassland, roads, buildings and water bodies. 324,000 images (comprising of four-fifths of the total dataset) were chosen as the training dataset and 81,000 (one fifths) were chosen as the testing dataset. Similar to SAT-4, the training and test sets were selected from disjoint NAIP tiles. Once generated, the images in the dataset were randomized in the same way as that
 for SAT-4. The specifications for the various landcover classes of SAT-4 and SAT-6 were adopted from those used in the National Land Cover Data (NLCD) algorithm.</p>
@@ -2794,14 +2787,15 @@ latentVar[:20]: [[-22.65415     5.3563433]
 <img alt="../_images/CASESTUDY_NN-day2_49_1.png" src="../_images/CASESTUDY_NN-day2_49_1.png" />
 </div>
 </div>
+</div>
 <div class="section" id="Question-2.1.">
 <h2>Question 2.1.<a class="headerlink" href="#Question-2.1." title="Permalink to this headline">¶</a></h2>
 <p><strong>How many clusters are visible in the embedding? Do they correspond to the cluster labels?</strong></p>
 </div>
-</div>
 <div class="section" id="Section-3---Generative-Models">
-<h1>Section 3 - Generative Models<a class="headerlink" href="#Section-3---Generative-Models" title="Permalink to this headline">¶</a></h1>
+<h2>Section 3 - Generative Models<a class="headerlink" href="#Section-3---Generative-Models" title="Permalink to this headline">¶</a></h2>
 <p>Now, let’s try something more interesting: generating data. In this section, you’ll implement a variation of the autoencoder (called a “Variational Autoencoder”) and a Generative Adversiarial Network, and will employ both to create never-before seen handwritten digits.</p>
+</div>
 <div class="section" id="Section-3.1---Variational-Autoencoder">
 <h2>Section 3.1 - Variational Autoencoder<a class="headerlink" href="#Section-3.1---Variational-Autoencoder" title="Permalink to this headline">¶</a></h2>
 <p>Autoencoders are great, but their latent spaces can be messy. You may have noticed previously that the AE’s embedding of MNIST clumped each digit into separate islands, with some overlap but also large empty regions. As you saw, the points in these empty parts of the embedding don’t correspond well to real digits.</p>
@@ -3471,9 +3465,8 @@ z.shape: torch.Size([20])
 <h2>Question 3.1.3.<a class="headerlink" href="#Question-3.1.3." title="Permalink to this headline">¶</a></h2>
 <p><strong>The distance between embeddings in your first autoencoder provided some measure of the similarity between digits. To what extent is this preserved, or improved, by the VAE?</strong></p>
 </div>
-</div>
 <div class="section" id="Section-3.2---GANS">
-<h1>Section 3.2 - GANS<a class="headerlink" href="#Section-3.2---GANS" title="Permalink to this headline">¶</a></h1>
+<h2>Section 3.2 - GANS<a class="headerlink" href="#Section-3.2---GANS" title="Permalink to this headline">¶</a></h2>
 <p>Whereas the VAE was tweaked to allow small perturbations in the latent space to produce reasonable decodings, the Generative Adversarial Network was designed to generate novel samples. A GAN is really two networks in one: the generator network produces fake images, while the discriminator guesses if they are fake. Initially, both networks perform horribly, but with time (and luck) they force each other to improve until the generator’s images are indistinguishable from the real thing. In this
 part, you’ll build your own GAN in PyTorch, and test it on the MNIST dataset.</p>
 <p><img alt="drawing" class="no-scaled-link" src="../_images/GANs_architecture1.png" style="width: 800px;" /> <img alt="drawing" class="no-scaled-link" src="../_images/GANS_architecture2.png" style="width: 800px;" /> <img alt="drawing" class="no-scaled-link" src="../_images/GANs_Loss.png" style="width: 800px;" /></p>
@@ -5142,6 +5135,7 @@ out: tensor([[2.9469e-05, 2.8193e-07, 1.9379e-05, 6.8732e-03, 2.2126e-09, 9.1837
 </div>
 </div>
 <p><img alt="drawing" class="no-scaled-link" src="CASESTUDY/images/GAN_PixelDist.png" style="width: 800px;" /></p>
+</div>
 <div class="section" id="Question-4.2.1.">
 <h2>Question 4.2.1.<a class="headerlink" href="#Question-4.2.1." title="Permalink to this headline">¶</a></h2>
 <p><strong>Which generates more realistic images: your GAN, or your VAE? Why do you think this is?</strong></p>
