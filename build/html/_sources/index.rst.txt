@@ -118,7 +118,9 @@ Documentation Contents
    CASESTUDY/123_DTW.ipynb
    CASESTUDY/122_pred_NP.ipynb
    CASESTUDY/NN-day1.ipynb
-   
+   CASESTUDY/NN-day2.ipynb
+   CASESTUDY/NN-day3.ipynb
+ 
 .. toctree::
    :titlesonly:
    :caption: OUTDOOR
