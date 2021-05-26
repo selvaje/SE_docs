@@ -79,10 +79,19 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Longzhu Shen: Dynamic Time Warping - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/123_DTW.html)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/bG0oR4BSJBBsz4y8AWku18EaEpDBupT2OqpbvtEQotXNLUWGOEW-x9wngFlSD-Cl.djFTnCacr9uUb_Io) Passcode: O!f9sRFU
 
-* 20 May 2021 - GRASS and Machine learning.
+* 20 May 2021 - Artificial Neural Networks 1.
    - [Antonio Fonseca: Artificial Neural Networks for geo-data](http://spatial-ecology.net/docs/source/lectures/lect_20210520_NNs_day1.pdf)
    - [Antonio Fonseca: - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day1.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/yIHkGa91dnwOfZIExI-b1PQvl1lioFxRE0mapOkRoX4yLUKk7Bz9l-mUseZFkeCO.9S-lE5_v9fsVbf0s) Passcode: 0A8$Q0Sq 
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/yIHkGa91dnwOfZIExI-b1PQvl1lioFxRE0mapOkRoX4yLUKk7Bz9l-mUseZFkeCO.9S-lE5_v9fsVbf0s) Passcode: 0A8$Q0Sq
+
+
+* 25 May 2021 - Artificial Neural Networks 2.
+   - [Antonio Fonseca: - Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day2.html)
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/HIC4lm-R-f2CXvmuXwBoRRJTfJoenYIQRNtY-DJb5NSYQgNb-9F4kQU6T1Bz5zWQ.kYsuVVyKwszH8dzD) Passcode: Passcode: 32CvC2%U
+
+* 27 May 2021 - Artificial Neural Networks 3.
+   - [Antonio Fonseca: LSTM Network](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day3.html)
+   - [Video recording]() Passcode: 
 
 
 
