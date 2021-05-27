@@ -7,6 +7,6 @@
 NEW ZOOM LINK
 [https://us02web.zoom.us/j/87155283955?pwd=SmFxdW0xeG4zR3Y4cXB4WmQ1UG4vUT09](https://us02web.zoom.us/j/87155283955?pwd=SmFxdW0xeG4zR3Y4cXB4WmQ1UG4vUT09)
 
-![title](./TALKS/intelligent_modelling.png)
+![title](./intelligent_modelling.png)
 
 ![video]()
