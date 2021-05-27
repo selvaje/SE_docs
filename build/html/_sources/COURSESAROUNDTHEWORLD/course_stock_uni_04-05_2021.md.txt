@@ -87,11 +87,11 @@ In this course, students will be introduced to an array of powerful open-source 
 
 * 25 May 2021 - Artificial Neural Networks 2.
    - [Antonio Fonseca: - Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day2.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/HIC4lm-R-f2CXvmuXwBoRRJTfJoenYIQRNtY-DJb5NSYQgNb-9F4kQU6T1Bz5zWQ.kYsuVVyKwszH8dzD) Passcode: Passcode: 32CvC2%U
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/HIC4lm-R-f2CXvmuXwBoRRJTfJoenYIQRNtY-DJb5NSYQgNb-9F4kQU6T1Bz5zWQ.kYsuVVyKwszH8dzD) Passcode: 32CvC2%U
 
 * 27 May 2021 - Artificial Neural Networks 3.
    - [Antonio Fonseca: LSTM Network](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day3.html)
-   - [Video recording]() Passcode: 
+   - [Video recording](https://wcsu-edu.zoom.us/rec/share/RF4dipwuSczkxmVcpSbqn2OUQVjkJSkFlgZRSvz8YC5NRu4iGJN-6yt42FrdVlM1.uj2H9uso7jy9EdrO) Passcode: f%6CZcSq
 
 
 
