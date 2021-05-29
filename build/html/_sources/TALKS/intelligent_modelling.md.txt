@@ -3,7 +3,7 @@
 
 **Giuseppe Amatulli and Longzhu Shen**
 
-![Video](https://youtu.be/MYV_bwFj0uw)
+[Video](https://youtu.be/MYV_bwFj0uw)
 
 ![title](./intelligent_modelling.png)
 
