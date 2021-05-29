@@ -3,8 +3,6 @@
 
 **Giuseppe Amatulli and Longzhu Shen**
 
-NEW ZOOM LINK
-
 ![Video](https://youtu.be/MYV_bwFj0uw)
 
 ![title](./intelligent_modelling.png)
