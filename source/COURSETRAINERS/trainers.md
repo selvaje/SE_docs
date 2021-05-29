@@ -6,6 +6,8 @@ Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
 [Publications](https://scholar.google.com/citations?hl=en&user=LSxTtpMAAAAJ&view_op=list_works&sortby=pubdate) [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
 
+[![Alternate Text]({Team_giuseppe2.jpeg})]({https://youtu.be/1jcZAY-ZJmk} "Link Title")
+
 ![title](Team_giuseppe2.jpeg)
 
 Giuseppe is the lead scientist at Spatial-Ecology for data analysis and product development. He is an accredited GIS data expert with deep expertise in spatial modelling and coding with open source software for environmental applications. His current focus is on hydrological modelling at a global scale, in addition to researching species distribution under climate change scenarios.
