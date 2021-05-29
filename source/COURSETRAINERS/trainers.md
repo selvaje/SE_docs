@@ -4,9 +4,7 @@
 
 Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
-[Publications](https://scholar.google.com/citations?hl=en&user=LSxTtpMAAAAJ&view_op=list_works&sortby=pubdate) [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
-
-[![Alternate Text](Team_giuseppe2.jpeg)]({https://youtu.be/1jcZAY-ZJmk} "Link Title")
+[Publications](https://scholar.google.com/citations?hl=en&user=LSxTtpMAAAAJ&view_op=list_works&sortby=pubdate)   [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
 
 ![title](Team_giuseppe2.jpeg)
 
