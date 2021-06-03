@@ -16,9 +16,9 @@ In this course, students will be introduced to an array of powerful open-source 
 **Lectures**
 
 * 06 April 2021 - Course introduction and objectives
-	- [Giuseppe Amatulli: Course introduction ](http://spatial-ecology.net/docs/source/lectures/lect_20210406_CourseIntro.pdf)
+	- [Giuseppe Amatulli: Course introduction ](http://spatial-ecology.net/docs/source/lectures/lect_20210406_CourseIntro.pdf) - [Video recording](https://youtu.be/yyYy3vn1g-k)
 	- [Longzhu Shen: Course introduction geomodeling](http://spatial-ecology.net/docs/source/lectures/lect_20210406_Geomodeling.pdf)
-	- [Video recording](https://wcsu-edu.zoom.us/rec/share/uPMzqUe5DkMMdkKd6A_GyXQNSPa2sGTACNraK36EY13_7pnRwzESiNtDenspiRg.prrfLfh3ABistFCx) Passcode: #&94M!pK
+
 
 * 08 April 2021 - OSGeoLive installation, git, and bash introduction
 
