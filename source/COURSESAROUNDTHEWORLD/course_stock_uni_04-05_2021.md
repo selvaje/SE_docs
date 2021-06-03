@@ -21,12 +21,10 @@ In this course, students will be introduced to an array of powerful open-source 
 
 * 08 April 2021 - OSGeoLive installation, git, and bash introduction
 
-	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
-	- [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf)
-	- [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf)
-	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html)
-	- [Video recording](https://wcsu-edu.zoom.us/rec/share/zgtVh14JA4Yo5AMNVBjNvTf2UOyiJh_bEC397uk1IKqHsusH-La0hLg5BhanlgP1.dAlaT_OyLSzT970v) Passcode: xG+D2RJL
-
+	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html) - [Video recording](https://youtu.be/wnRkkpaxqBU)
+	- [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf) - [Video recording](https://youtu.be/VOP3uRB9MWo) 
+	- [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf) - [Video recording](https://youtu.be/U35HallxMtc)
+	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html) - [Video recording](https://youtu.be/SASEdwBfsow )
 
 * 13 April 2021 - Bash and AWK for file manipulation.
 	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
