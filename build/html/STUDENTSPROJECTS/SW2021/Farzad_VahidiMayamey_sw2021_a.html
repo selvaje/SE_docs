@@ -532,29 +532,303 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Calculating-landcover-distribution">
 <h2>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Permalink to this headline">¶</a></h2>
 <p>we use two different layer: 1. <a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> (above picture) 2. <a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> (below picture)</p>
-<p><img alt="261857e651a5439090982386ece7ea18" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> \ <img alt="1f8f7191828c4b73978703af0ebc837b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
-%%bash
-gdalinfo nmd2018bas_ogeneraliserad_v1_1.tif | more<p>As NoData Value is not assigned, we assign nodata value = 0</p>
-%%bash
-gdal_edit.py -a_nodata 0 nmd2018bas_ogeneraliserad_v1_1.tif<p>we create the shapefile of each wetland by using <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">split</span> <span class="pre">vector</span> <span class="pre">layer</span></code> tool in QGIS to clip our landcover by this layers</p>
-%%bash
-for file in rms/*.gpkg; do echo $file;
-filename=$(basename $file .gpkg);
-gdalwarp -overwrite -srcnodata 0 -dstnodata 0 -crop_to_cutline -cutline $file nmd2018bas_ogeneraliserad_v1_1.tif clipped/${filename}.tif
-done<p>Now that we have our clipped land cover we can calculate the histogram (in percentage)</p>
-%%bash
-for file in clipped/*.tif; do
-echo $file; filename=$(basename $file .tif);
-pkstat -hist -rel -src_min 2 -src_max 128 -i $file > hist/${filename}.txt
-done<p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
-<p><img alt="0ac198e45121466db07e38f784cd4af6" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
-<p>Extract all 25 classes</p>
-%%bash
-#printf "%s %.3f\n", $1, $2
-for file in hist/*.txt; do echo $file; filename=$(basename $file .txt);
-awk '{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}' $file > class_25/${filename}.txt;done<p>Extract 7 main classess of our interest</p>
+<p><img alt="dbf6802ddc054fa9b447503fcfe8919a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> \ <img alt="fa640b461ded46a1b65c228255c4da23" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+gdalinfo nmd2018bas_ogeneraliserad_v1_1.tif <span class="p">|</span> more
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ERROR 4: nmd2018bas_ogeneraliserad_v1_1.tif: No such file or directory
+gdalinfo failed - unable to open &#39;nmd2018bas_ogeneraliserad_v1_1.tif&#39;.
+</pre></div></div>
+</div>
+<p>As NoData Value is not assigned, we assign nodata value = 0</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+gdal_edit.py -a_nodata <span class="m">0</span> nmd2018bas_ogeneraliserad_v1_1.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-dbce7316e0dd&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;gdal_edit.py -a_nodata 0 nmd2018bas_ogeneraliserad_v1_1.tif\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2401</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2402</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2403</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2404</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2405</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;gdal_edit.py -a_nodata 0 nmd2018bas_ogeneraliserad_v1_1.tif\n&#39;&#39; returned non-zero exit status 255.
+</pre></div></div>
+</div>
+<p>we create the shapefile of each wetland by using <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">split</span> <span class="pre">vector</span> <span class="pre">layer</span></code> tool in QGIS to clip our landcover by this layers</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> file <span class="k">in</span> rms/*.gpkg<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span>
+<span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .gpkg<span class="k">)</span><span class="p">;</span>
+gdalwarp -overwrite -srcnodata <span class="m">0</span> -dstnodata <span class="m">0</span> -crop_to_cutline -cutline <span class="nv">$file</span> nmd2018bas_ogeneraliserad_v1_1.tif clipped/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.tif
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+rms/*.gpkg
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+ERROR 4: nmd2018bas_ogeneraliserad_v1_1.tif: No such file or directory
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-36f89c7dfe7c&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;for file in rms/*.gpkg; do echo $file; \nfilename=$(basename $file .gpkg); \ngdalwarp -overwrite -srcnodata 0 -dstnodata 0 -crop_to_cutline -cutline $file nmd2018bas_ogeneraliserad_v1_1.tif clipped/${filename}.tif\ndone\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2401</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2402</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2403</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2404</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2405</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;for file in rms/*.gpkg; do echo $file; \nfilename=$(basename $file .gpkg); \ngdalwarp -overwrite -srcnodata 0 -dstnodata 0 -crop_to_cutline -cutline $file nmd2018bas_ogeneraliserad_v1_1.tif clipped/${filename}.tif\ndone\n&#39;&#39; returned non-zero exit status 2.
+</pre></div></div>
+</div>
+<p>Now that we have our clipped land cover we can calculate the histogram (in percentage)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="k">for</span> file <span class="k">in</span> clipped/*.tif<span class="p">;</span> <span class="k">do</span>
+<span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span><span class="p">;</span>
+pkstat -hist -rel -src_min <span class="m">2</span> -src_max <span class="m">128</span> -i <span class="nv">$file</span> &gt; hist/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+clipped/*.tif
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+bash: line 3: hist/*.txt: No such file or directory
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-0116dbb9b1dc&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;for file in clipped/*.tif; do \necho $file; filename=$(basename $file .tif); \npkstat -hist -rel -src_min 2 -src_max 128 -i $file &gt; hist/${filename}.txt\ndone\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2401</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2402</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2403</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2404</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2405</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;for file in clipped/*.tif; do \necho $file; filename=$(basename $file .tif); \npkstat -hist -rel -src_min 2 -src_max 128 -i $file &gt; hist/${filename}.txt\ndone\n&#39;&#39; returned non-zero exit status 1.
+</pre></div></div>
+</div>
+<p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
+<p><img alt="6d0d731986134fcfbf5b0ee802de8d25" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p>Extract all 25 classes</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
+<span></span>%%bash
+<span class="c1">#printf &quot;%s %.3f\n&quot;, $1, $2</span>
+<span class="k">for</span> file <span class="k">in</span> hist/*.txt<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .txt<span class="k">)</span><span class="p">;</span>
+awk <span class="s1">&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}&#39;</span> <span class="nv">$file</span> &gt; class_25/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+hist/*.txt
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+bash: line 3: class_25/*.txt: No such file or directory
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-1-849fb1d5a538&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>get_ipython<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">.</span>run_cell_magic<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">&#39;bash&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;&#39;</span><span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">&#39;#printf &#34;%s %.3f\\n&#34;, $1, $2\nfor file in hist/*.txt; do echo $file; filename=$(basename $file .txt);\nawk \&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}\&#39; $file &gt; class_25/${filename}.txt;done\n&#39;</span><span class="ansi-blue-fg">)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/interactiveshell.py</span> in <span class="ansi-cyan-fg">run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2401</span>             <span class="ansi-green-fg">with</span> self<span class="ansi-blue-fg">.</span>builtin_trap<span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">   2402</span>                 args <span class="ansi-blue-fg">=</span> <span class="ansi-blue-fg">(</span>magic_arg_s<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-fg">-&gt; 2403</span><span class="ansi-red-fg">                 </span>result <span class="ansi-blue-fg">=</span> fn<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>args<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>kwargs<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">   2404</span>             <span class="ansi-green-fg">return</span> result
+<span class="ansi-green-intense-fg ansi-bold">   2405</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">named_script_magic</span><span class="ansi-blue-fg">(line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    140</span>             <span class="ansi-green-fg">else</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-intense-fg ansi-bold">    141</span>                 line <span class="ansi-blue-fg">=</span> script
+<span class="ansi-green-fg">--&gt; 142</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">return</span> self<span class="ansi-blue-fg">.</span>shebang<span class="ansi-blue-fg">(</span>line<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    143</span>
+<span class="ansi-green-intense-fg ansi-bold">    144</span>         <span class="ansi-red-fg"># write a basic docstring:</span>
+
+<span class="ansi-green-fg">&lt;decorator-gen-110&gt;</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magic.py</span> in <span class="ansi-cyan-fg">&lt;lambda&gt;</span><span class="ansi-blue-fg">(f, *a, **k)</span>
+<span class="ansi-green-intense-fg ansi-bold">    185</span>     <span class="ansi-red-fg"># but it&#39;s overkill for just that one bit of state.</span>
+<span class="ansi-green-intense-fg ansi-bold">    186</span>     <span class="ansi-green-fg">def</span> magic_deco<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 187</span><span class="ansi-red-fg">         </span>call <span class="ansi-blue-fg">=</span> <span class="ansi-green-fg">lambda</span> f<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">:</span> f<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">*</span>a<span class="ansi-blue-fg">,</span> <span class="ansi-blue-fg">**</span>k<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    188</span>
+<span class="ansi-green-intense-fg ansi-bold">    189</span>         <span class="ansi-green-fg">if</span> callable<span class="ansi-blue-fg">(</span>arg<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-green-fg">~/.local/lib/python3.8/site-packages/IPython/core/magics/script.py</span> in <span class="ansi-cyan-fg">shebang</span><span class="ansi-blue-fg">(self, line, cell)</span>
+<span class="ansi-green-intense-fg ansi-bold">    243</span>             sys<span class="ansi-blue-fg">.</span>stderr<span class="ansi-blue-fg">.</span>flush<span class="ansi-blue-fg">(</span><span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    244</span>         <span class="ansi-green-fg">if</span> args<span class="ansi-blue-fg">.</span>raise_error <span class="ansi-green-fg">and</span> p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">!=</span><span class="ansi-cyan-fg">0</span><span class="ansi-blue-fg">:</span>
+<span class="ansi-green-fg">--&gt; 245</span><span class="ansi-red-fg">             </span><span class="ansi-green-fg">raise</span> CalledProcessError<span class="ansi-blue-fg">(</span>p<span class="ansi-blue-fg">.</span>returncode<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> output<span class="ansi-blue-fg">=</span>out<span class="ansi-blue-fg">,</span> stderr<span class="ansi-blue-fg">=</span>err<span class="ansi-blue-fg">)</span>
+<span class="ansi-green-intense-fg ansi-bold">    246</span>
+<span class="ansi-green-intense-fg ansi-bold">    247</span>     <span class="ansi-green-fg">def</span> _run_script<span class="ansi-blue-fg">(</span>self<span class="ansi-blue-fg">,</span> p<span class="ansi-blue-fg">,</span> cell<span class="ansi-blue-fg">,</span> to_close<span class="ansi-blue-fg">)</span><span class="ansi-blue-fg">:</span>
+
+<span class="ansi-red-fg">CalledProcessError</span>: Command &#39;b&#39;#printf &#34;%s %.3f\\n&#34;, $1, $2\nfor file in hist/*.txt; do echo $file; filename=$(basename $file .txt);\nawk \&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}\&#39; $file &gt; class_25/${filename}.txt;done\n&#39;&#39; returned non-zero exit status 1.
+</pre></div></div>
+</div>
+<p>Extract 7 main classess of our interest</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -632,7 +906,7 @@ bash: line 9: class_7/*.txt: No such file or directory
 </div>
 <p>Now we want to add header to each of the text files</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -702,7 +976,7 @@ bash: line 2: head/*.txt: No such file or directory
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -720,7 +994,7 @@ Note: you may need to restart the kernel to use updated packages.
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -782,12 +1056,12 @@ Note: you may need to restart the kernel to use updated packages.
 <ul class="simple">
 <li><p>Layers: SAR intensity sentinel-1 image.</p></li>
 </ul>
-<p><img alt="189c8c80ce9840c8a5135aa8c5b5820e" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p><img alt="4b58d1dd06134b64a67ce7c8efcfbad4" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
 <p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
 <p>we use thresholding method to extract open water from S1 layer</p>
 <p>First we move all layers to the crs: EPSG:4326</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -858,7 +1132,7 @@ ERROR 4: layers/*.tif: No such file or directory
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -921,7 +1195,7 @@ layers/*.tif
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -994,9 +1268,9 @@ ERROR 4: layers/*.tif: No such file or directory
 </pre></div></div>
 </div>
 <p>we maskout values greater than <strong>-23</strong></p>
-<p><img alt="854e4753fb9a4785b117fbca3be22320" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<p><img alt="50917d7a865847539d2e14b34a15e698" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1020,7 +1294,7 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 1: 235566 Aborted                 (core dumped) pkgetmask -max -23 -data 2 -nodata 0 -ot Byte -i crop/SAR_VH_crop.tif -o crop/water.tif
+bash: line 1: 236019 Aborted                 (core dumped) pkgetmask -max -23 -data 2 -nodata 0 -ot Byte -i crop/SAR_VH_crop.tif -o crop/water.tif
 ERROR 4: crop/water.tif: No such file or directory
 </pre></div></div>
 </div>
@@ -1073,10 +1347,10 @@ ERROR 4: crop/water.tif: No such file or directory
 <ul class="simple">
 <li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
 </ul>
-<p><img alt="9ee2f10f32d64394bc8defd9a8e38081" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="a7a7e2836eff4b42b1c235fbba9e0eaa" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p><img alt="66a5bbbb57f04fb4a1b12e3c33ea7080" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="afbeab06cc894e47ad2242ca8034331c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
 <p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1141,7 +1415,7 @@ ERROR 4: crop/coherence_crop.tif: No such file or directory
 </div>
 <p>We want to build stack of 2 layers before doing unsupervised classification: <strong>SAR coherence</strong> and <strong>SRTM DEM</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1217,7 +1491,7 @@ gdalinfo failed - unable to open &#39;crop/stack.vrt&#39;.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1279,9 +1553,9 @@ bash: line 2: /home/selv/OTB/superbuild_install/bin/otbcli_KMeansClassification:
 </pre></div></div>
 </div>
 <p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
-<p><img alt="04cbfb49c4b94fca987bd5f391212fe4" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="bed9e9d7e172431085e04fc69a8c1585" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<p><img alt="c903e83c7a4f44daaf04cacf81914915" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="8df6fb0101fa4661ab2e90d8b89fcf4a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1304,7 +1578,7 @@ pkgetmask -max <span class="m">12</span> -min <span class="m">12</span> -data <s
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 1: 235624 Aborted                 (core dumped) pkgetmask -max 12 -min 12 -data 1 -nodata 0 -ot Byte -i crop/ClassificationFilterOutput.tif -o crop/veg.tif
+bash: line 1: 236077 Aborted                 (core dumped) pkgetmask -max 12 -min 12 -data 1 -nodata 0 -ot Byte -i crop/ClassificationFilterOutput.tif -o crop/veg.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1352,7 +1626,7 @@ bash: line 1: 235624 Aborted                 (core dumped) pkgetmask -max 12 -mi
 </div>
 <p>Now we want to calculate number of water pixels and flooded Vegetation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1417,7 +1691,7 @@ ERROR 4: crop/veg.tif: No such file or directory
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1485,7 +1759,7 @@ cat: crop/final.txt: No such file or directory
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
