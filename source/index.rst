@@ -146,7 +146,7 @@ Documentation Contents
 
    ADMIN/00_pktools_gdrive_install.ipynb   
    ADMIN/video.md
-
+   ADMIN/Compiling_OTB.md
 Indices and tables
 ==================
 
