@@ -120,7 +120,14 @@ Documentation Contents
    CASESTUDY/NN-day1.ipynb
    CASESTUDY/NN-day2.ipynb
    CASESTUDY/NN-day3.ipynb
- 
+
+.. toctree::
+   :titlesonly:
+   :maxdepth: 1
+   :caption: STUDENTSPROJECTS
+
+   STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.ipynb
+   
 .. toctree::
    :titlesonly:
    :caption: OUTDOOR
