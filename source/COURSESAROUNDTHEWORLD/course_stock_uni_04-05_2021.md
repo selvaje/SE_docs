@@ -90,8 +90,6 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Antonio Fonseca: LSTM Network](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day3.html)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/RF4dipwuSczkxmVcpSbqn2OUQVjkJSkFlgZRSvz8YC5NRu4iGJN-6yt42FrdVlM1.uj2H9uso7jy9EdrO) Passcode: f%6CZcSq
 
-
-
 * 03 June 2021 - Student Presentations.
 
    - [Farzad Vahidi Mayamey: Calculating landcover distribution & vegetation extraction](http://spatial-ecology.net/docs/build/html/STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.html)
