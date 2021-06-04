@@ -92,3 +92,8 @@ In this course, students will be introduced to an array of powerful open-source 
 
 
 
+* 03 June 2021 - Student Presentations.
+
+   - [Farzad Vahidi Mayamey: Calculating landcover distribution & vegetation extraction]()
+
+
