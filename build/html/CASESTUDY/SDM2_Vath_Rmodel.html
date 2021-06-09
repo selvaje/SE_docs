@@ -1,0 +1,1437 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>SDM2 : Varied Thrush - Model &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Manipulate GSIM files" href="manipulate_GSIM.html" />
+    <link rel="prev" title="SDM1 : Montane woodcreper - Model" href="SDM1_MWood_Rmodel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+          
+
+          
+            
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">STUDENTSPROJECTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.html">Calculating landcover distribution &amp; vegetation extraction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>SDM2 : Varied Thrush - Model</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/CASESTUDY/SDM2_Vath_Rmodel.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="SDM2-:-Varied-Thrush---Model">
+<h1>SDM2 : Varied Thrush - Model<a class="headerlink" href="#SDM2-:-Varied-Thrush---Model" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="Preparation">
+<h2>Preparation<a class="headerlink" href="#Preparation" title="Permalink to this headline">¶</a></h2>
+<p>R library that provides bindings to GDAL library.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>&gt; install.packages(&quot;dismo&quot;)
+&gt; install.packages(&quot;caret&quot;)
+&gt; install.packages(&quot;InformationValue&quot;)
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">dismo</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
+<span class="nf">library</span><span class="p">(</span><span class="n">InformationValue</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="SDM">
+<h2>SDM<a class="headerlink" href="#SDM" title="Permalink to this headline">¶</a></h2>
+<p>types - Correlative - Mechanistic</p>
+<p>data - presence only - presence + absence</p>
+</div>
+<div class="section" id="Species-of-Interest-:-Varied-Thrush">
+<h2>Species of Interest : Varied Thrush<a class="headerlink" href="#Species-of-Interest-:-Varied-Thrush" title="Permalink to this headline">¶</a></h2>
+<p>The varied thrush breeds in western North America from Alaska to northern California.</p>
+<p>It is migratory, with northern breeders moving south within or somewhat beyond the breeding range.</p>
+<p>Other populations may only move altitudinally.</p>
+<p><img alt="6d6ecd4b76f948069e81940306adce19" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
+<div class="section" id="Read-in-data">
+<h3>Read in data<a class="headerlink" href="#Read-in-data" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">vath.data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_2004.csv&quot;</span><span class="p">)</span>
+<span class="n">vath.val</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_VALIDATION.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 6</caption>
+<thead>
+    <tr><th></th><th scope=col>SURVEYID</th><th scope=col>TRANSECT</th><th scope=col>POINT</th><th scope=col>VATH</th><th scope=col>EASTING</th><th scope=col>NORTHING</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>1</td><td>452511619</td><td>3</td><td>0</td><td>59332.20</td><td>173289.0</td></tr>
+    <tr><th scope=row>2</th><td>2</td><td>452511619</td><td>5</td><td>0</td><td>59142.22</td><td>173151.8</td></tr>
+    <tr><th scope=row>3</th><td>3</td><td>452511619</td><td>6</td><td>0</td><td>58834.36</td><td>173185.7</td></tr>
+    <tr><th scope=row>4</th><td>4</td><td>452511619</td><td>9</td><td>0</td><td>58754.24</td><td>172876.0</td></tr>
+    <tr><th scope=row>5</th><td>5</td><td>452511625</td><td>1</td><td>0</td><td>59037.42</td><td>181450.2</td></tr>
+    <tr><th scope=row>6</th><td>6</td><td>452511625</td><td>4</td><td>0</td><td>59336.71</td><td>181389.1</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># split dataset by presence</span>
+<span class="n">vath.pres</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,]</span>
+<span class="n">vath.abs</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,]</span>
+<span class="n">vath.pres.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.abs.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.abs</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># validation dataset</span>
+<span class="n">vath.val.pres</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.abs</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.val.pres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th></th><th scope=col>EASTING</th><th scope=col>NORTHING</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>97</th><td>257608.84</td><td>260574.5</td></tr>
+    <tr><th scope=row>151</th><td> 72212.39</td><td>355337.3</td></tr>
+    <tr><th scope=row>152</th><td> 72305.07</td><td>355535.5</td></tr>
+    <tr><th scope=row>154</th><td>156539.72</td><td>354851.7</td></tr>
+    <tr><th scope=row>155</th><td>156770.04</td><td>354898.6</td></tr>
+    <tr><th scope=row>164</th><td> 54244.40</td><td>366721.0</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># env layers</span>
+<span class="n">elev</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/elev.gri&quot;</span><span class="p">)</span> <span class="c1"># elevation</span>
+<span class="n">canopy</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/cc2.gri&quot;</span><span class="p">)</span> <span class="c1"># canopy slope</span>
+<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/mesic.gri&quot;</span><span class="p">)</span> <span class="c1"># mesic forest</span>
+<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/precip.gri&quot;</span><span class="p">)</span> <span class="c1"># precipitation</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#check maps</span>
+<span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">canopy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Error in compareRaster(elev, mesic): different extent
+Traceback:
+
+1. compareRaster(elev, mesic)
+2. stop(&#34;different extent&#34;)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">elev</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+class      : RasterLayer
+dimensions : 2083, 1643, 3422369  (nrow, ncol, ncell)
+resolution : 200, 200  (x, y)
+extent     : 19165, 347765, 164300, 580900  (xmin, xmax, ymin, ymax)
+crs        : NA
+source     : /home/user/SE_data/exercise/R_db/elev.grd
+names      : elev_km
+values     : 0, 3.079  (min, max)
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mesic</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+class      : RasterLayer
+dimensions : 2050, 1586, 3251300  (nrow, ncol, ncell)
+resolution : 210, 210  (x, y)
+extent     : 16965, 350025, 153735, 584235  (xmin, xmax, ymin, ymax)
+crs        : +proj=aea +lat_1=46 +lat_2=48 +lat_0=44 +lon_0=-109.5 +x_0=600000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+source     : /home/user/SE_data/exercise/R_db/mesic.grd
+names      : a_pmesic
+values     : 0, 1  (min, max)
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">precip</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+class      : RasterLayer
+dimensions : 2152, 1664, 3580928  (nrow, ncol, ncell)
+resolution : 200, 200  (x, y)
+extent     : 16965, 349765, 153735, 584135  (xmin, xmax, ymin, ymax)
+crs        : +proj=aea +lat_1=46 +lat_2=48 +lat_0=44 +lon_0=-109.5 +x_0=600000 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs
+source     : /home/user/SE_data/exercise/R_db/precip.grd
+names      : ppt_cm
+values     : 23, 287  (min, max)
+
+</pre></div></div>
+</div>
+<p>Interpolation</p>
+<p><img alt="72be1895d7d640a5bfd59a35b80e0620" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># resampling</span>
+<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mesic</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;ngb&quot;</span><span class="p">)</span>
+<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">precip</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;bilinear&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#crop to same extent</span>
+<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
+<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="n">precip</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+TRUE</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># creat a forest layer at 1km resolution</span>
+<span class="n">fw.1km</span> <span class="o">&lt;-</span> <span class="nf">focalWeight</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="m">1000</span><span class="p">,</span> <span class="s">&#39;circle&#39;</span><span class="p">)</span>
+<span class="n">mesic1km</span> <span class="o">&lt;-</span> <span class="nf">focal</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">fw.1km</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="s">&quot;mean&quot;</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#create raster stacck</span>
+<span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="n">canopy</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">,</span> <span class="n">mesic1km</span><span class="p">,</span> <span class="n">precip</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span> <span class="s">&quot;elev&quot;</span><span class="p">,</span> <span class="s">&quot;mesic&quot;</span><span class="p">,</span> <span class="s">&quot;mesic1km&quot;</span><span class="p">,</span> <span class="s">&quot;precip&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">11</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">cex.axis</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.lab</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.main</span><span class="o">=</span><span class="m">2.5</span><span class="p">,</span><span class="n">legend.args</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">cex.lab</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="m">2.3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_SDM2_Vath_Rmodel_24_0.png" class="no-scaled-link" src="../_images/CASESTUDY_SDM2_Vath_Rmodel_24_0.png" style="width: 1080px; height: 660px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
+<span class="nf">pairs</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">maxpixels</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_SDM2_Vath_Rmodel_25_0.png" class="no-scaled-link" src="../_images/CASESTUDY_SDM2_Vath_Rmodel_25_0.png" style="width: 1080px; height: 960px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#drop correlated layer (mesic)</span>
+
+<span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">dropLayer</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#Generate background points using</span>
+<span class="c1"># 2000 was chosen for the illustration purpose.</span>
+<span class="c1"># This number can be much larger in real practice.</span>
+
+<span class="n">back.xy</span> <span class="o">&lt;-</span> <span class="nf">randomPoints</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">vath.pres.xy</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">2000</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A matrix: 6 × 2 of type dbl</caption>
+<thead>
+    <tr><th scope=col>x</th><th scope=col>y</th></tr>
+</thead>
+<tbody>
+    <tr><td>124065</td><td>226200</td></tr>
+    <tr><td>152665</td><td>317400</td></tr>
+    <tr><td>152465</td><td>250400</td></tr>
+    <tr><td>139265</td><td>258400</td></tr>
+    <tr><td>181465</td><td>378800</td></tr>
+    <tr><td> 59665</td><td>423800</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_SDM2_Vath_Rmodel_29_0.png" class="no-scaled-link" src="../_images/CASESTUDY_SDM2_Vath_Rmodel_29_0.png" style="width: 540px; height: 540px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#extract GIS data</span>
+<span class="n">pres.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.pres.xy</span><span class="p">)</span>
+<span class="n">back.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">back.xy</span><span class="p">)</span>
+<span class="n">val.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.val.xy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#link data</span>
+<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.pres.xy</span><span class="p">,</span> <span class="n">pres.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">back.xy</span><span class="p">,</span> <span class="n">back.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.val</span><span class="p">,</span> <span class="n">val.idpv</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.pres</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+    <tr><th></th><th scope=col>EASTING</th><th scope=col>NORTHING</th><th scope=col>canopy</th><th scope=col>elev</th><th scope=col>mesic1km</th><th scope=col>precip</th><th scope=col>pres</th></tr>
+    <tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>22</th><td> 95880.25</td><td>191274.0</td><td> 0.03908799</td><td>2.033</td><td>0.1481481</td><td>126.000</td><td>1</td></tr>
+    <tr><th scope=row>38</th><td> 90821.05</td><td>210968.8</td><td>-0.13464460</td><td>1.682</td><td>0.3950617</td><td>104.000</td><td>1</td></tr>
+    <tr><th scope=row>39</th><td> 90745.12</td><td>210715.3</td><td> 0.32875299</td><td>1.665</td><td>0.4691358</td><td>104.000</td><td>1</td></tr>
+    <tr><th scope=row>42</th><td> 90463.29</td><td>209767.5</td><td> 0.22702400</td><td>1.676</td><td>0.7530864</td><td>106.000</td><td>1</td></tr>
+    <tr><th scope=row>43</th><td> 90142.26</td><td>209555.8</td><td> 0.43240750</td><td>1.659</td><td>0.8148148</td><td>106.000</td><td>1</td></tr>
+    <tr><th scope=row>48</th><td>116258.21</td><td>216962.9</td><td> 0.59498268</td><td>1.497</td><td>1.0000000</td><td> 85.875</td><td>1</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">#remove any potential NAs</span>
+<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="n">df.pres</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),]</span>
+<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="n">df.back</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),]</span>
+<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="n">df.val</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># merge together</span>
+<span class="n">df.all</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">df.pres</span><span class="p">,</span> <span class="n">df.back</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+    <tr><th></th><th scope=col>EASTING</th><th scope=col>NORTHING</th><th scope=col>canopy</th><th scope=col>elev</th><th scope=col>mesic1km</th><th scope=col>precip</th><th scope=col>pres</th></tr>
+    <tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>22</th><td> 95880.25</td><td>191274.0</td><td> 0.03908799</td><td>2.033</td><td>0.1481481</td><td>126.000</td><td>1</td></tr>
+    <tr><th scope=row>38</th><td> 90821.05</td><td>210968.8</td><td>-0.13464460</td><td>1.682</td><td>0.3950617</td><td>104.000</td><td>1</td></tr>
+    <tr><th scope=row>39</th><td> 90745.12</td><td>210715.3</td><td> 0.32875299</td><td>1.665</td><td>0.4691358</td><td>104.000</td><td>1</td></tr>
+    <tr><th scope=row>42</th><td> 90463.29</td><td>209767.5</td><td> 0.22702400</td><td>1.676</td><td>0.7530864</td><td>106.000</td><td>1</td></tr>
+    <tr><th scope=row>43</th><td> 90142.26</td><td>209555.8</td><td> 0.43240750</td><td>1.659</td><td>0.8148148</td><td>106.000</td><td>1</td></tr>
+    <tr><th scope=row>48</th><td>116258.21</td><td>216962.9</td><td> 0.59498268</td><td>1.497</td><td>1.0000000</td><td> 85.875</td><td>1</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># data transformation</span>
+<span class="c1"># Scaling and centering the environmental variables to zero mean and variance of 1</span>
+<span class="n">predictors</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
+<span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 7</caption>
+<thead>
+    <tr><th></th><th scope=col>EASTING</th><th scope=col>NORTHING</th><th scope=col>canopy</th><th scope=col>elev</th><th scope=col>mesic1km</th><th scope=col>precip</th><th scope=col>pres</th></tr>
+    <tr><th></th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>22</th><td> 95880.25</td><td>191274.0</td><td>-0.1392220</td><td>1.5492040</td><td>-0.609419480</td><td> 0.8536111</td><td>1</td></tr>
+    <tr><th scope=row>38</th><td> 90821.05</td><td>210968.8</td><td>-0.6450800</td><td>0.7652292</td><td> 0.009843172</td><td> 0.2539466</td><td>1</td></tr>
+    <tr><th scope=row>39</th><td> 90745.12</td><td>210715.3</td><td> 0.7041968</td><td>0.7272587</td><td> 0.195621968</td><td> 0.2539466</td><td>1</td></tr>
+    <tr><th scope=row>42</th><td> 90463.29</td><td>209767.5</td><td> 0.4079921</td><td>0.7518278</td><td> 0.907774019</td><td> 0.3084616</td><td>1</td></tr>
+    <tr><th scope=row>43</th><td> 90142.26</td><td>209555.8</td><td> 1.0060081</td><td>0.7138576</td><td> 1.062589682</td><td> 0.3084616</td><td>1</td></tr>
+    <tr><th scope=row>48</th><td>116258.21</td><td>216962.9</td><td> 1.4793790</td><td>0.3520229</td><td> 1.527036672</td><td>-0.2400951</td><td>1</td></tr>
+</tbody>
+</table></div>
+</div>
+</div>
+<div class="section" id="Model-Fitting">
+<h3>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline">¶</a></h3>
+<p>generalized linear model</p>
+<ol class="arabic simple">
+<li><p>An exponential family of probability distributions.</p></li>
+<li><p>A linear predictor <span class="math notranslate nohighlight">\(\displaystyle \eta =X\beta\)</span></p></li>
+<li><p>A link function <span class="math notranslate nohighlight">\({\displaystyle g}\)</span> such that <span class="math notranslate nohighlight">\({\displaystyle E(Y\mid X)=\mu =g^{-1}(\eta )}\)</span></p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">summary</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+Call:
+glm(formula = pres ~ canopy + elev + I(elev^2) + mesic1km + precip,
+    family = binomial(link = logit), data = df.all)
+
+Deviance Residuals:
+    Min       1Q   Median       3Q      Max
+-0.7757  -0.3423  -0.2126  -0.1371   3.5321
+
+Coefficients:
+            Estimate Std. Error z value Pr(&gt;|z|)
+(Intercept) -2.85830    0.17404 -16.424  &lt; 2e-16 ***
+canopy       0.19543    0.09928   1.968  0.04901 *
+elev        -0.72618    0.27404  -2.650  0.00805 **
+I(elev^2)   -0.97856    0.24709  -3.960 7.49e-05 ***
+mesic1km     0.39188    0.15197   2.579  0.00992 **
+precip       0.49281    0.16762   2.940  0.00328 **
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 773.28  on 2093  degrees of freedom
+Residual deviance: 674.77  on 2088  degrees of freedom
+AIC: 686.77
+
+Number of Fisher Scoring iterations: 8
+
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Model-Evaluation">
+<h3>Model Evaluation<a class="headerlink" href="#Model-Evaluation" title="Permalink to this headline">¶</a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.val</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 6 × 13</caption>
+<thead>
+    <tr><th></th><th scope=col>X.1</th><th scope=col>X</th><th scope=col>TRANSECT</th><th scope=col>STOP</th><th scope=col>YEAR</th><th scope=col>VATH</th><th scope=col>EASTING</th><th scope=col>NORTHING</th><th scope=col>canopy</th><th scope=col>elev</th><th scope=col>mesic1km</th><th scope=col>precip</th><th scope=col>pred</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1</th><td>1</td><td>1</td><td>464811437</td><td>2</td><td>2007</td><td>0</td><td>209685.9</td><td>325750.0</td><td> 0.74425510</td><td>-0.5121329</td><td>-0.1800319</td><td>-1.1350612</td><td>0.0381429149</td></tr>
+    <tr><th scope=row>2</th><td>2</td><td>2</td><td>464811437</td><td>3</td><td>2007</td><td>0</td><td>209845.0</td><td>325979.0</td><td> 0.44215351</td><td>-0.5299351</td><td>-0.2678732</td><td>-1.1350612</td><td>0.0346827307</td></tr>
+    <tr><th scope=row>3</th><td>3</td><td>3</td><td>464811437</td><td>6</td><td>2007</td><td>0</td><td>210406.8</td><td>326674.1</td><td> 0.50654501</td><td>-0.4705947</td><td>-0.7070799</td><td>-1.1045330</td><td>0.0305994483</td></tr>
+    <tr><th scope=row>4</th><td>4</td><td>4</td><td>454311415</td><td>3</td><td>2007</td><td>0</td><td>230797.4</td><td>201486.2</td><td>-0.92568323</td><td> 1.5855534</td><td>-1.0877256</td><td>-0.4319874</td><td>0.0006819783</td></tr>
+    <tr><th scope=row>5</th><td>5</td><td>5</td><td>454311415</td><td>4</td><td>2007</td><td>0</td><td>231006.4</td><td>201499.1</td><td>-0.60895621</td><td> 1.5291802</td><td>-1.0877256</td><td>-0.4319874</td><td>0.0008973454</td></tr>
+    <tr><th scope=row>6</th><td>6</td><td>6</td><td>454311415</td><td>6</td><td>2007</td><td>0</td><td>231491.6</td><td>201433.0</td><td> 0.01492895</td><td> 1.7784102</td><td>-1.0877256</td><td>-0.3209758</td><td>0.0003989799</td></tr>
+</tbody>
+</table></div>
+</div>
+<p>confusion matrix</p>
+<p><img alt="cd0e9c9f1ca341ec93882349f51458aa" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cutoff</span> <span class="o">&lt;-</span> <span class="nf">optimalCutoff</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span> <span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df.val</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="o">&gt;=</span><span class="n">cutoff</span><span class="p">),]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 1 × 13</caption>
+<thead>
+    <tr><th></th><th scope=col>X.1</th><th scope=col>X</th><th scope=col>TRANSECT</th><th scope=col>STOP</th><th scope=col>YEAR</th><th scope=col>VATH</th><th scope=col>EASTING</th><th scope=col>NORTHING</th><th scope=col>canopy</th><th scope=col>elev</th><th scope=col>mesic1km</th><th scope=col>precip</th><th scope=col>pred</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th><th scope=col>&lt;dbl&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>1555</th><td>1557</td><td>1557</td><td>471011616</td><td>12</td><td>2008</td><td>1</td><td>87299.98</td><td>374993.7</td><td>1.695836</td><td>-0.26587</td><td>1.28399</td><td>1.751242</td><td>0.2617735</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<table class="dataframe">
+<caption>A data.frame: 2 × 2</caption>
+<thead>
+    <tr><th></th><th scope=col>0</th><th scope=col>1</th></tr>
+    <tr><th></th><th scope=col>&lt;int&gt;</th><th scope=col>&lt;int&gt;</th></tr>
+</thead>
+<tbody>
+    <tr><th scope=row>0</th><td>1763</td><td>148</td></tr>
+    <tr><th scope=row>1</th><td>   0</td><td>  1</td></tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[129]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">specificity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+1</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[130]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">sensitivity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+0.00671140939597315</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[140]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Calculate the percentage misclassification error for the given actuals and probaility scores.</span>
+<span class="nf">misClassError</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+0.0774</div>
+</div>
+<p>ROC curves</p>
+<p><img alt="19c62e450213433db5c7b4041328f665" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[141]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_SDM2_Vath_Rmodel_53_0.png" class="no-scaled-link" src="../_images/CASESTUDY_SDM2_Vath_Rmodel_53_0.png" style="width: 540px; height: 540px;" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Discussions">
+<h2>Discussions<a class="headerlink" href="#Discussions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>HW vs. Project</p></li>
+<li><p>Future course topics</p>
+<ul class="simple">
+<li><p>thematic subjects : eg. GLM, Bayesian, etc.</p></li>
+<li><p>data techniques : eg. transformations, sampling, etc.</p></li>
+<li><p>case studies</p></li>
+<li><p>others ?</p></li>
+</ul>
+</li>
+</ol>
+<div class="alert alert-block alert-info"><p>Feedback : Please Provide input via slack channel by 4pm Apr 8. (EDT)</p>
+</div></div>
+<div class="section" id="References">
+<h2>References<a class="headerlink" href="#References" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Geocomputation with R. <a class="reference external" href="https://geocompr.robinlovelace.net/">https://geocompr.robinlovelace.net/</a></p></li>
+<li><p>Spatial Data Science with R. <a class="reference external" href="https://www.rspatial.org/">https://www.rspatial.org/</a></p></li>
+<li><ol class="upperalpha simple" start="13">
+<li><p>Stevens. A Primer Of Ecology With R (2009)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="4">
+<li><p>Borcard, F. Gillet, and P. Legendre. Numerical Ecology with R (2018)</p></li>
+</ol>
+</li>
+<li><ol class="upperalpha simple" start="18">
+<li><p>Fletcher and M. Fortin. Spatial Ecology and Conservation Modeling Applications with R (2018)</p></li>
+</ol>
+</li>
+<li><p>Spatial Modeling in GIS and R for Earth and Environmental Sciences (2019) ISBN : 978-0128152263</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Varied_thrush">https://en.wikipedia.org/wiki/Varied_thrush</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Mesic_habitat">https://en.wikipedia.org/wiki/Mesic_habitat</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Generalized_linear_model">https://en.wikipedia.org/wiki/Generalized_linear_model</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_distribution">https://en.wikipedia.org/wiki/Binomial_distribution</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Receiver_operating_characteristic">https://en.wikipedia.org/wiki/Receiver_operating_characteristic</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bilinear_interpolation">https://en.wikipedia.org/wiki/Bilinear_interpolation</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation">https://en.wikipedia.org/wiki/Nearest-neighbor_interpolation</a></p></li>
+</ul>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="manipulate_GSIM.html" class="btn btn-neutral float-right" title="Manipulate GSIM files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SDM1_MWood_Rmodel.html" class="btn btn-neutral float-left" title="SDM1 : Montane woodcreper - Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Giuseppe Amatulli.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

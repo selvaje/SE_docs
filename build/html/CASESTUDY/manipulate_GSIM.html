@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Manipulate GSIM files &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Data type in GTiff" href="Data_type_GTiff.html" />
+    <link rel="prev" title="SDM2 : Varied Thrush - Model" href="SDM2_Vath_Rmodel.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+          
+
+          
+            
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+</ul>
+<p class="caption"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+</ul>
+<p class="caption"><span class="caption-text">STUDENTSPROJECTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.html">Calculating landcover distribution &amp; vegetation extraction</a></li>
+</ul>
+<p class="caption"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+</ul>
+<p class="caption"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Manipulate GSIM files</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/CASESTUDY/manipulate_GSIM.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="manipulate-gsim-files">
+<h1>Manipulate GSIM files<a class="headerlink" href="#manipulate-gsim-files" title="Permalink to this headline">¶</a></h1>
+<p>The Global Streamflow Indices and Metadata Archive (GSIM) –</p>
+<p><a class="reference external" href="https://www.earth-syst-sci-data.net/10/765/2018/">Part 1: The production of daily streamflow archive and metadata</a></p>
+<p><a class="reference external" href="https://www.earth-syst-sci-data.net/10/787/2018/essd-10-787-2018.html">Part 2: Quality Control, Time-series Indices and Homogeneity Assessment</a></p>
+<p><strong>Download the GSIM archive</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">GSIM</span><span class="o">/</span><span class="nb">zip</span>
+<span class="n">cd</span>  <span class="n">GSIM</span><span class="o">/</span><span class="nb">zip</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">store</span><span class="o">.</span><span class="n">pangaea</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">Publications</span><span class="o">/</span><span class="n">GudmundssonL</span><span class="o">-</span><span class="n">etal_2018</span><span class="o">/</span><span class="n">GSIM_indices</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">unzip</span> <span class="n">GSIM_indices</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">cd</span> <span class="n">GSIM_indices</span><span class="o">/</span><span class="n">TIMESERIES</span><span class="o">/</span><span class="n">monthly</span>
+</pre></div>
+</div>
+<div class="section" id="data-exploration">
+<h2>Data exploration<a class="headerlink" href="#data-exploration" title="Permalink to this headline">¶</a></h2>
+<p>To return a fast results we only perform the operation on ./US_*.mon files</p>
+<p><strong>Create x_y.txt file</strong></p>
+<p>First count longitude and latitude information.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grep</span> <span class="n">latitude</span>  <span class="n">US</span><span class="o">*.</span><span class="n">mon</span>  <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{ print $4 }&#39;</span>   <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">grep</span> <span class="n">longitude</span> <span class="n">US</span><span class="o">*.</span><span class="n">mon</span>  <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{ print $4 }&#39;</span>   <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span>
+</pre></div>
+</div>
+<p>Now that we know that for longitude/latitude strings are not missing any entrance we can combine and create the x_y.txt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paste</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot; &quot;</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">grep</span> <span class="n">longitude</span> <span class="n">US</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $4}&#39;</span><span class="p">)</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">grep</span> <span class="n">latitude</span>  <span class="n">US</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">awk</span> <span class="s1">&#39;{print $4 }&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">x_y</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Count number of observations</strong></p>
+<p>For the column “MEAN” count the overall number of observations and also the ones that reported NA</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">paste</span> <span class="o">-</span><span class="n">d</span> <span class="s2">&quot; &quot;</span> <span class="o">&lt;</span><span class="p">(</span><span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) print $2}&#39;</span> <span class="n">US</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="n">date</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="p">)</span>  <span class="o">&lt;</span><span class="p">(</span> <span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) print $2}&#39;</span> <span class="n">US</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="n">date</span> <span class="o">|</span>  <span class="n">grep</span> <span class="n">NA</span>  <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>overall observation 2,053,753 ; observation with NA 556,197</p>
+<p><strong>Count how many observations per date</strong></p>
+<p>List (and count) unique date observations</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) { if ($1 &gt; 0) { print $1 }} }&#39;</span> <span class="o">./</span><span class="n">US_</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">|</span> <span class="n">uniq</span>  <span class="o">-</span><span class="n">c</span> <span class="o">&gt;</span> <span class="n">count_date</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p><strong>Monthly MEAN distribution</strong></p>
+<p>Check if your data are normally distributed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">awk</span> <span class="o">-</span><span class="n">F</span> <span class="p">,</span> <span class="s1">&#39;{ if(NF&gt;5) { if ($2 &gt; 0  ) { print int($2) }} }&#39;</span>  <span class="o">./</span><span class="n">US_</span><span class="o">*.</span><span class="n">mon</span> <span class="o">|</span> <span class="n">sort</span> <span class="o">-</span><span class="n">g</span> <span class="o">|</span> <span class="n">uniq</span> <span class="o">-</span><span class="n">c</span>
+</pre></div>
+</div>
+<p>The monthly MEAN is skewed to the left.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Data_type_GTiff.html" class="btn btn-neutral float-right" title="Data type in GTiff" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SDM2_Vath_Rmodel.html" class="btn btn-neutral float-left" title="SDM2 : Varied Thrush - Model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, Giuseppe Amatulli.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

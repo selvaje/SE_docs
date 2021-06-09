@@ -40,9 +40,9 @@ Documentation Contents
    :titlesonly:
    :caption: LINUX VIRTUAL MACHINE
 
-   VIRTUALMACHINE/00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
-   VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.md
-   VIRTUALMACHINE/00_Setting_OSGeoLive_curso_para_Ecologia_Espacial.md
+   VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.ipynb
+   VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.md
+   VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md
    
 .. toctree::
    :titlesonly:
@@ -54,15 +54,15 @@ Documentation Contents
    :maxdepth: 1
    :caption: BASH
 
-   BASH/03_bashintro_osgeo.ipynb
-   BASH/03_bashinter_osgeo.ipynb
-   BASH/03_bashxargs_osgeo.ipynb
+   BASH/bashintro_osgeo.ipynb
+   BASH/bashinter_osgeo.ipynb
+   BASH/bashxargs_osgeo.ipynb
 
 .. toctree::
    :titlesonly:
    :caption: AWK
 
-   AWK/30_awk.ipynb
+   AWK/awk.ipynb
 
 .. toctree::
    :maxdepth: 1
@@ -74,28 +74,28 @@ Documentation Contents
    :titlesonly:
    :caption: GDAL
 
-   GDAL/01_gdal_osgeo.ipynb
-   GDAL/01_gdal_colab.ipynb
+   GDAL/gdal_osgeo.ipynb
+   GDAL/gdal_colab.ipynb
    
 .. toctree::
    :titlesonly:
    :caption: PKTOOLS
 
-   PKTOOLS/02_pktools_osgeo.ipynb
-   PKTOOLS/02_pktools_colab.ipynb
+   PKTOOLS/pktools_osgeo.ipynb
+   PKTOOLS/pktools_colab.ipynb
 
 .. toctree::
    :titlesonly:
    :caption: R
 
-   R/05_R_Intro
+   R/R_Intro
 
 .. toctree::
    :titlesonly:
    :caption: PYTHON
 
-   PYTHON/01_Python_Intro
-   PYTHON/02_Geo_Python
+   PYTHON/Python_Intro
+   PYTHON/Geo_Python
 
 .. toctree::
    :maxdepth: 1
@@ -109,14 +109,14 @@ Documentation Contents
    :maxdepth: 1
    :caption: CASE STUDY
 
-   CASESTUDY/101_SDM1_MWood_gecomp.ipynb
-   CASESTUDY/101_SDM1_MWood_Rmodel.ipynb
-   CASESTUDY/101_SDM2_Vath_Rmodel.ipynb
-   CASESTUDY/110_manipulate_GSIM.md
-   CASESTUDY/120_Data_type_GTiff.ipynb
-   CASESTUDY/121_temporal_interpolation.ipynb
-   CASESTUDY/123_DTW.ipynb
-   CASESTUDY/122_pred_NP.ipynb
+   CASESTUDY/SDM1_MWood_gecomp.ipynb
+   CASESTUDY/SDM1_MWood_Rmodel.ipynb
+   CASESTUDY/SDM2_Vath_Rmodel.ipynb
+   CASESTUDY/manipulate_GSIM.md
+   CASESTUDY/Data_type_GTiff.ipynb
+   CASESTUDY/temporal_interpolation.ipynb
+   CASESTUDY/DTW.ipynb
+   CASESTUDY/pred_NP.ipynb
    CASESTUDY/NN-day1.ipynb
    CASESTUDY/NN-day2.ipynb
    CASESTUDY/NN-day3.ipynb
