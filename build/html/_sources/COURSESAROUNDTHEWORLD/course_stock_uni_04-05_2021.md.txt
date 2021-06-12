@@ -16,35 +16,31 @@ In this course, students will be introduced to an array of powerful open-source 
 **Lectures**
 
 * 06 April 2021 - Course introduction and objectives
-	- [Giuseppe Amatulli: Course introduction ](http://spatial-ecology.net/docs/source/lectures/lect_20210406_CourseIntro.pdf) - [Video recording](https://youtu.be/yyYy3vn1g-k)
-	- [Longzhu Shen: Course introduction geomodeling](http://spatial-ecology.net/docs/source/lectures/lect_20210406_Geomodeling.pdf) - [Video recording](https://youtu.be/OssugcEu9V8)
+   - [Giuseppe Amatulli: Course introduction ](http://spatial-ecology.net/docs/source/lectures/lect_20210406_CourseIntro.pdf) - [Video recording](https://youtu.be/yyYy3vn1g-k)
+   - [Longzhu Shen: Course introduction geomodeling](http://spatial-ecology.net/docs/source/lectures/lect_20210406_Geomodeling.pdf) - [Video recording](https://youtu.be/OssugcEu9V8)
 
 * 08 April 2021 - OSGeoLive installation, git, and bash introduction
 
-	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html) - [Video recording](https://youtu.be/wnRkkpaxqBU)
-	- [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf) - [Video recording](https://youtu.be/VOP3uRB9MWo) 
-	- [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf) - [Video recording](https://youtu.be/U35HallxMtc)
-	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) - [Video recording](https://youtu.be/SASEdwBfsow)
+   - [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html) - [Video recording](https://youtu.be/wnRkkpaxqBU)
+   - [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf) - [Video recording](https://youtu.be/VOP3uRB9MWo) 
+   - [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf) - [Video recording](https://youtu.be/U35HallxMtc)
+   - [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) - [Video recording](https://youtu.be/SASEdwBfsow)
 
 * 13 April 2021 - Bash and AWK for file manipulation.
-	- [Giuseppe Amatulli: Bash for text flie](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) - [Video recording](https://youtu.be/s3XlruWlXZ8) 
-	- [Longzhu Shen: AWK for text file](http://spatial-ecology.net/docs/build/html/AWK/awk.html) - [Video recording](https://youtu.be/eeW6krOoN7A) 
+   - [Giuseppe Amatulli: Bash for text flie](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) - [Video recording](https://youtu.be/s3XlruWlXZ8) 
+   - [Longzhu Shen: AWK for text file](http://spatial-ecology.net/docs/build/html/AWK/awk.html) - [Video recording](https://youtu.be/eeW6krOoN7A) 
 
 * 15 April 2021 - GDAL\OGR and Data Type.
-    - [Giuseppe Amatulli: Manipulate GSIM files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) - [Video recording]( ) 
-    - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) - [Video recording]( ) 
-    - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf) - [Video recording]( ) 
+   - [Giuseppe Amatulli: Manipulate GSIM files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) - [Video recording](https://youtu.be/f853RoNUaok) 
+   - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) - [Video recording](https://youtu.be/mD7lCdNw_oU) 
+   - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf) - [Video recording](https://youtu.be/ZJcDPE0lzMo) 
 
 * 20 April 2021 - GDAL\OGR and Data Type.
    - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/V0fe-bWcUEHECB3_53feJSd15UYflijEJXGilqvSddQF6pTFno1KSLHsKiEJz3Mg.lEsZXEkWX5a_TN-7) Passcode: qd4xj&7Q
-
-
+   
 * 22 April 2021 - PKTOOLS.
    - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/02_pktools_osgeo.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/j1Lwe1g9kj7D53kl3fWWy8KLYIxYm3Ap5sMH1leXmRvGYbbdmz7bgx9m4douEQk1.GuV7GNKBLpszCI4S) Passcode: B1L#SNZ^
-
-
+   
 * 27 April 2021 - PKTOOLS for temporal analysis.
    - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
@@ -58,36 +54,28 @@ In this course, students will be introduced to an array of powerful open-source 
 * 04 May 2021 - Student presentation and Machine Learning introduction.
    - Students: Presenting objectives for the final project
    - [Longzhu Shen: ML introduction](http://spatial-ecology.net/docs/source/lectures/lect_20210504_ML_overview.pdf)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/ATCGRyjtyhZibwOasqm5qNSsbTUjO1isY_HQi1wXW-N2do9u5Ug5aZ0_5zlsLEYs.tANWM3aFuxIi0pQI) Passcode: 6898L*!3
    
 * 06 May 2021 - Student presentation and Machine Learning.
    - Students: Presenting objectives for the final project
    - [Longzhu Shen: ML Optimization](http://spatial-ecology.net/docs/source/lectures/lect_20210506_ML_OPT.pdf)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/RNa2eLIRywzQD1OR3QBpxa7HmW0sMS5FmL7pRTFiR6smSKkjvgEbmjA7wUFROwhy.KGKx6eEGxBVTkmMx) Passcode: 50.%ysyx
 
 * 11 May 2021 - Machine learning.
    - [Longzhu Shen: Unsupervised learning](http://spatial-ecology.net/docs/source/lectures/lect_20210511_ML_Unsupervised.pdf)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/gEoFXow6jo5_oViHy9jk92-78p_3wjH8ej9jd5yxVFaWN_l5Is2UTrRRN3CYJsoX.2GI9uowKdD0FMa-a) Passcode: cOj1v^A@
 
 * 18 May 2021 - GRASS and Machine learning.
    - [Giuseppe Amatulli: GRASS for hydrological modeling](http://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
    - [Longzhu Shen: Dynamic Time Warping](http://spatial-ecology.net/docs/source/lectures/lect_20210518_DTW.pdf)
-   - [Longzhu Shen: Dynamic Time Warping - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/123_DTW.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/bG0oR4BSJBBsz4y8AWku18EaEpDBupT2OqpbvtEQotXNLUWGOEW-x9wngFlSD-Cl.djFTnCacr9uUb_Io) Passcode: O!f9sRFU
+   - [Longzhu Shen: Dynamic Time Warping - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/DTW.html)
 
 * 20 May 2021 - Artificial Neural Networks 1.
    - [Antonio Fonseca: Artificial Neural Networks for geo-data](http://spatial-ecology.net/docs/source/lectures/lect_20210520_NNs_day1.pdf)
    - [Antonio Fonseca: - case](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day1.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/yIHkGa91dnwOfZIExI-b1PQvl1lioFxRE0mapOkRoX4yLUKk7Bz9l-mUseZFkeCO.9S-lE5_v9fsVbf0s) Passcode: 0A8$Q0Sq
-
 
 * 25 May 2021 - Artificial Neural Networks 2.
    - [Antonio Fonseca: - Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day2.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/HIC4lm-R-f2CXvmuXwBoRRJTfJoenYIQRNtY-DJb5NSYQgNb-9F4kQU6T1Bz5zWQ.kYsuVVyKwszH8dzD) Passcode: 32CvC2%U
 
 * 27 May 2021 - Artificial Neural Networks 3.
    - [Antonio Fonseca: LSTM Network](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN-day3.html)
-   - [Video recording](https://wcsu-edu.zoom.us/rec/share/RF4dipwuSczkxmVcpSbqn2OUQVjkJSkFlgZRSvz8YC5NRu4iGJN-6yt42FrdVlM1.uj2H9uso7jy9EdrO) Passcode: f%6CZcSq
 
 * 03 June 2021 - Student Presentations.
 
