@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
 
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -38,6 +41,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
         <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "document", "processHtmlClass": "math|output_area"}}</script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -531,7 +536,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Calculating-landcover-distribution">
 <h2>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Permalink to this headline">¶</a></h2>
 <p>we use two different layer: 1. <a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> ( left picture) 2. <a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> ( right picture)</p>
-<p><img alt="d51e7d44df7241f79f47c18001b7584b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="9498deffa7204144806966da3cc09e2b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
+<p><img alt="c293a158a8784d12b9661ea2ebbac0f1" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="c3ef94d2f2064bbe97214037908e61bc" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
@@ -1233,7 +1238,7 @@ clipped/ramsarid_438.tif
 </pre></div></div>
 </div>
 <p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
-<p><img alt="7c84d1659b0349aca8b19b8c22b4725c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p><img alt="43b27855aa954291a5711ff6fc7ff731" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
 <p>Extract all 25 classes</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
@@ -1578,7 +1583,7 @@ Note: you may need to restart the kernel to use updated packages.
     <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
     <span class="n">ratio_r</span> <span class="o">=</span>  <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">ratio</span><span class="p">]</span>
     <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> - </span><span class="si">{1}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">class_</span><span class="p">,</span><span class="n">ratio_r</span><span class="p">)]</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="o">-.</span><span class="mi">15</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">.15</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
     <span class="c1">#plt.tight_layout()</span>
     <span class="n">file_name_ext</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span>
@@ -2601,7 +2606,7 @@ ramsarid_438
 <ul class="simple">
 <li><p>Layers: SAR intensity sentinel-1 image.</p></li>
 </ul>
-<p><img alt="033412af590041a3a53310e3bd31fd42" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p><img alt="eed2edc8257240db8ef1676f51aa0481" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
 <p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
 <p>we use thresholding method to extract open water from S1 layer</p>
 <p>First we move all layers to the crs: EPSG:4326</p>
@@ -2709,7 +2714,7 @@ Copying nodata values from source layers/slope.tif to destination crop/slope_cro
 </pre></div></div>
 </div>
 <p>we maskout values greater than <strong>-23</strong></p>
-<p><img alt="9df280772bc54dc683c2b9385c628a5f" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<p><img alt="8120f1ae86ef4ba188bd667d16cbd000" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -2727,7 +2732,7 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <ul class="simple">
 <li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
 </ul>
-<p><img alt="f14716ca69a24f1da9a8454fa72ab7b3" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="80415376477145b58c24617adb87d5e7" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p><img alt="75d6440837534a88a1dc7ab4422cda67" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="2c5881b4de8044bf80942b2fc2655398" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
 <p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
@@ -2872,7 +2877,7 @@ Writing crop/ClassificationFilterOutput.tif...: 100% [**************************
 </pre></div></div>
 </div>
 <p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
-<p><img alt="9258ed9f9e2245719bf8eca8b8ed29c6" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="eb3000f82aaa4cdc88dd0e7954f6e099" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<p><img alt="cd869b7c79e54947be6b8b9fec59ee37" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="d969e694fd2f4e00a92ba4e18e0fcf56" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
 </pre></div>

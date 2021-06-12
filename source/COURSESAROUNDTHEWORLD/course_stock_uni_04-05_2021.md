@@ -24,20 +24,19 @@ In this course, students will be introduced to an array of powerful open-source 
 	- [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html) - [Video recording](https://youtu.be/wnRkkpaxqBU)
 	- [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf) - [Video recording](https://youtu.be/VOP3uRB9MWo) 
 	- [Longzhu Shen: Git](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Git.pdf) - [Video recording](https://youtu.be/U35HallxMtc)
-	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html) - [Video recording](https://youtu.be/SASEdwBfsow)
+	- [Giuseppe Amatulli:Bash introduction](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) - [Video recording](https://youtu.be/SASEdwBfsow)
 
 * 13 April 2021 - Bash and AWK for file manipulation.
-	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
-	- [Longzhu Shen: AWK](http://spatial-ecology.net/docs/build/html/AWK/30_awk.html)
-	- [Video recording](https://wcsu-edu.zoom.us/rec/share/trpmS2sEmfZvOnQqgMYSyx3YBaHUj01Ch_epCZVBAu2OHgPkMItgB5AIqnpb2twK.4VgLUzHevjJmV8cB)  Passcode: 1k8I3@56
+	- [Giuseppe Amatulli: Bash for text flie](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) - [Video recording](https://youtu.be/s3XlruWlXZ8) 
+	- [Longzhu Shen: AWK for text file](http://spatial-ecology.net/docs/build/html/AWK/awk.html) - [Video recording](https://youtu.be/eeW6krOoN7A) 
 
 * 15 April 2021 - GDAL\OGR and Data Type.
-    - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/01_gdal_osgeo.html)
-    - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf)
-    - [Video recording](https://wcsu-edu.zoom.us/rec/share/gtx5Yl_NuSyw9u5289XTAhYwuSg39fH6JYgO2MicPLY1GWj03lUxI0Ae1AAg4LUT.rkfR6X_ZSX8keyXS) Passcode: Mcp!N5&z
+    - [Giuseppe Amatulli: Manipulate GSIM files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) - [Video recording]( ) 
+    - [Giuseppe Amatulli: GDAL](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) - [Video recording]( ) 
+    - [Longzhu Shen: Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20210415_Num_Syst.pdf) - [Video recording]( ) 
 
 * 20 April 2021 - GDAL\OGR and Data Type.
-   - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/01_gdal_osgeo.html)
+   - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/V0fe-bWcUEHECB3_53feJSd15UYflijEJXGilqvSddQF6pTFno1KSLHsKiEJz3Mg.lEsZXEkWX5a_TN-7) Passcode: qd4xj&7Q
 
 
