@@ -123,10 +123,19 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
-   :maxdepth: 1
    :caption: STUDENTSPROJECTS
 
    STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.ipynb
+   STUDENTSPROJECTS/SW2021/Alejandro_Uribe_Geo_comp_pro_AU
+   STUDENTSPROJECTS/SW2021/Alexandra_Pongrácz_project_idea
+   STUDENTSPROJECTS/SW2021/Carlos_Gómez-Ortiz_GeocomputationProject
+   STUDENTSPROJECTS/SW2021/Felicity_Alice_Holmes_Geocomp_project
+   STUDENTSPROJECTS/SW2021/Hamm_Alexandra_final_project
+   STUDENTSPROJECTS/SW2021/Jacopo_Cantoni_SeasonAnalisis
+   STUDENTSPROJECTS/SW2021/Julia_Wagner_Geocomputation
+   STUDENTSPROJECTS/SW2021/Kapás_Rozália_project
+   STUDENTSPROJECTS/SW2021/SaeidAminjafariProject
+   STUDENTSPROJECTS/SW2021/Tatiana_Klisho_project
    
 .. toctree::
    :titlesonly:
