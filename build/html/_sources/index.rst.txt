@@ -122,10 +122,7 @@ Documentation Contents
    CASESTUDY/NN-day3.ipynb
 
 .. toctree::
-   :numbered:
-
-   toctree/SWEDEN2021 
-   :titlesonly:
+   :titlesonly:   
    :caption: STUDENTS PROJECTS
 
    STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.ipynb
@@ -139,6 +136,7 @@ Documentation Contents
    STUDENTSPROJECTS/SW2021/Kapás_Rozália_project
    STUDENTSPROJECTS/SW2021/SaeidAminjafariProject
    STUDENTSPROJECTS/SW2021/Tatiana_Klisho_project
+   STUDENTSPROJECTS/SW2021/Juan_salinity_bash.Rmd
    
 .. toctree::
    :titlesonly:
