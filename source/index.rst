@@ -122,6 +122,9 @@ Documentation Contents
    CASESTUDY/NN-day3.ipynb
 
 .. toctree::
+   :numbered:
+
+   toctree/SWEDEN2021 
    :titlesonly:
    :caption: STUDENTS PROJECTS
 
