@@ -123,7 +123,7 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
-   :caption: STUDENTSPROJECTS
+   :caption: STUDENTS PROJECTS
 
    STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.ipynb
    STUDENTSPROJECTS/SW2021/Alejandro_Uribe_Geo_comp_pro_AU
