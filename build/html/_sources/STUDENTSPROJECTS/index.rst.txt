@@ -18,5 +18,5 @@
    Proj_2021_SW/Kapás_Rozália_project
    Proj_2021_SW/SaeidAminjafariProject
    Proj_2021_SW/Tatiana_Klisho_project
-   Proj_2021_SW/Juan_salinity_bash
+   Proj_2021_SW/Juan_salinity_bash.Rmd
 	     
