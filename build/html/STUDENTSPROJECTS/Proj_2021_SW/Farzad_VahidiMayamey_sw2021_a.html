@@ -160,6 +160,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
@@ -554,7 +555,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Calculating-landcover-distribution">
 <h2><span class="section-number">1.1.1. </span>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Permalink to this headline">¶</a></h2>
 <p>we use two different layer: 1. <a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> ( left picture) 2. <a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> ( right picture)</p>
-<p><img alt="f06a9153b5ea4c60b8440e9ef5176415" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="953f97328669432ebbfd7a6b061f6d76" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
+<p><img alt="947011440cfe4865843fa8e458a43469" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="35a7b299542341d093aa23e5efa41e24" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
@@ -1256,7 +1257,7 @@ clipped/ramsarid_438.tif
 </pre></div></div>
 </div>
 <p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
-<p><img alt="fecf38fc146a4e83abd0acc4a0996780" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p><img alt="e3e536d032f246a4be742ce1554f79cb" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
 <p>Extract all 25 classes</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
@@ -2624,7 +2625,7 @@ ramsarid_438
 <ul class="simple">
 <li><p>Layers: SAR intensity sentinel-1 image.</p></li>
 </ul>
-<p><img alt="a6222758c2d44eb594e9efce727779e1" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p><img alt="e43fe638871d4730909c14a9eb6fc06c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
 <p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
 <p>we use thresholding method to extract open water from S1 layer</p>
 <p>First we move all layers to the crs: EPSG:4326</p>
@@ -2732,7 +2733,7 @@ Copying nodata values from source layers/slope.tif to destination crop/slope_cro
 </pre></div></div>
 </div>
 <p>we maskout values greater than <strong>-23</strong></p>
-<p><img alt="cb6fa8e2b8454e81964eb3ac48ead940" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<p><img alt="fa78df462e6640be911065043ae6e43e" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -2750,7 +2751,7 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <ul class="simple">
 <li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
 </ul>
-<p><img alt="0375026c018941fea66c5b89b7c6ca0f" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="d771939e3c6f489790815a49c297dda4" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p><img alt="fec1389c3e32480a8b33f12d22761969" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="dd6bad4286054849b523a128f9ade63b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
 <p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
@@ -2895,7 +2896,7 @@ Writing crop/ClassificationFilterOutput.tif...: 100% [**************************
 </pre></div></div>
 </div>
 <p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
-<p><img alt="099640d4639343e2bb3f7887fbe641d1" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="31df15fe190c4b769021874aeb745634" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<p><img alt="8568c9f8f5d64b7daf066e2b56378c0c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="d7451932f0e24229bfe3799747a02a89" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
 </pre></div>
