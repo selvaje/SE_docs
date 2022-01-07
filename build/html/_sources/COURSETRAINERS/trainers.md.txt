@@ -33,3 +33,18 @@ Longzhu’s breadth of experience ranges from spatial modelling for charting nut
 Longzhu has previously worked as research scientist position at Cambridge University in the UK, where he was developing mathematical models to predict the molecular evolution of prominent viruses, which can be used to advance vaccine design.
 
 Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post-doctoral research in toxicology and molecular design at Yale University. In his spare time, he enjoys hiking, skateboarding and traveling.
+
+** Antonio Fonseca, M.Sc. ** 
+
+[website](https://ahof1704.github.io/)
+[Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
+
+![title](Team_antonio2.jpeg)
+
+Antonio is a machine learning researcher working at the intersection between Computational Neuroscience and Deep Learning. He is currently interested in using Deep Learning to model brain dynamics and what it can tell us about cognition and behavior. 
+
+Antonio's expertise includes robotics (software and hardware development), signal processing, computational vision, behavioral neuroscience and deep learning algorithms. More specifically, he is an expert in applying and developing machine learning frameworks to complex problems. 
+
+Antonio worked on software development for mining robots and solutions for banking companies. Most recently, he worked on applying machine learning and signal processing techniques to investigate behavior in developing animals, which has important implications for studies involving genetic disorders and how to treat them.
+
+Antonio is a Neuroscience Ph.D student at Yale University, obtained a bachelor's degree in robotics engineering and a master's in microelectronics. When he is not thinking about biological or artificial neuronal networks, Antonio enjoys rock climbing and hiking (most often doing both on the same trip).

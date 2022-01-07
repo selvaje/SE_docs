@@ -4,5 +4,5 @@
    :titlesonly: 
    :caption: COURSE TRAINERS
 
-  trainers.md
+   trainers.md
 
