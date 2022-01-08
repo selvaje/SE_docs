@@ -8,6 +8,7 @@
    :caption: SWEDEN 2021
 
    Proj_2021_SW/Farzad_VahidiMayamey_sw2021_a.ipynb
+   Proj_2021_SW/Farzad_VahidiMayamey_sw2021_b.ipynb
    Proj_2021_SW/Alejandro_Uribe_Geo_comp_pro_AU
    Proj_2021_SW/Alexandra_Pongrácz_project_idea
    Proj_2021_SW/Carlos_Gómez-Ortiz_GeocomputationProject

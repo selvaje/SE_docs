@@ -81,4 +81,3 @@ In this course, students will be introduced to an array of powerful open-source 
 
 * Day 16 - Student Presentations.
 
-   - [Farzad Vahidi Mayamey: Calculating landcover distribution & vegetation extraction](http://spatial-ecology.net/docs/build/html/STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.html)
