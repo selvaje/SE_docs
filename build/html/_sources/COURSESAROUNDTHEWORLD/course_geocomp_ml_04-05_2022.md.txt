@@ -42,15 +42,15 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)
    
 * Day 6 - PKTOOLS.
-   - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/02_pktools_osgeo.html)
+   - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html)
    
 * Day 7 - PKTOOLS for temporal analysis.
-   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
+   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html)
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
 
 
 * Day 8 - PKTOOLS for temporal analysis.
-   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
+   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html)
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
  
 * Day 9 - Student presentation and Machine Learning introduction.
@@ -82,5 +82,3 @@ In this course, students will be introduced to an array of powerful open-source 
 * Day 16 - Student Presentations.
 
    - [Farzad Vahidi Mayamey: Calculating landcover distribution & vegetation extraction](http://spatial-ecology.net/docs/build/html/STUDENTSPROJECTS/SW2021/Farzad_VahidiMayamey_sw2021_a.html)
-
-

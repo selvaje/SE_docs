@@ -70,8 +70,8 @@ Si recibe un error "ls: cannot access '/media/sf_LVM_shared': No such file or di
 En este punto, la máquina virtual OSGeoLive está lista para instalar software y datos adicionales para ejecutar cursos de Ecología espacial. En el terminal de bash ejecute las siguientes líneas:
 
     cd /tmp/
-    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/00_install_additional_sw_data_4SE_courses.sh
-    sudo bash ./00_install_additional_sw_data_4SE_courses.sh
+    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_additional_sw_data_4SE_courses.sh
+    sudo bash ./install_additional_sw_data_4SE_courses.sh
 
 la contraseña de sudo es la misma que antes, en principio, "user".
 

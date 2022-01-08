@@ -39,15 +39,15 @@ In this course, students will be introduced to an array of powerful open-source 
    - [Giuseppe Amatulli: Use GDAL/OGR for raster/vector operations](http://spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)
    
 * 22 April 2021 - PKTOOLS.
-   - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/02_pktools_osgeo.html)
+   - [Giuseppe Amatulli: Use PKTOOLS for raster/vector operations](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html)
    
 * 27 April 2021 - PKTOOLS for temporal analysis.
-   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
+   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html)
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/GrRjrHnG-J3gLeKJ9pIHSy0ILJCawifbj-rUp7__EQ3kKo1rMqk6If-7UYNS2zzr.5D2pNuR85oJzLCR9)  Passcode: 7$F.l5Y?
 
 * 29 April 2021 - PKTOOLS for temporal analysis.
-   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/121_temporal_interpolation.html)
+   - [Giuseppe Amatulli: Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html)
    - [Longzhu Shen: Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20210427_Approximation.pdf)
    - [Video recording](https://wcsu-edu.zoom.us/rec/share/VGmeUTQn9Vp_4SUHswWw_hpAxA9JZX8YuGJW9ILZdS0CKvRGQOBYdE7ZbUU2wZvJ.fP9y-qRW-BnrGCqF) Passcode: K!?e!8e$
  

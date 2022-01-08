@@ -67,8 +67,8 @@ If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or d
 At this point the OSGeoLive Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
 
     cd /tmp/
-    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/00_install_additional_sw_data_4SE_courses.sh
-    sudo bash ./00_install_additional_sw_data_4SE_courses.sh
+    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_additional_sw_data_4SE_courses.sh
+    sudo bash ./install_additional_sw_data_4SE_courses.sh
 
 as before the sudo password is "user".
 

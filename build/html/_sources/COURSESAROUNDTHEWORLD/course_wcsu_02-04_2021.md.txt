@@ -18,7 +18,7 @@ In this course, students will learn GIS concepts by using open source software i
 * 01 February 2021 - OSGeoLive installation.
 
     - [Giuseppe Amatulli: Linux Distribution](http://spatial-ecology.net/docs/source/lectures/lect_20210201_LinuxDistrib.pdf)
-    - [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/00_Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
+    - [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
     - [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf)
 
 
@@ -42,11 +42,11 @@ In this course, students will learn GIS concepts by using open source software i
    - [Giuseppe Amatulli: Geographic coordinates and projection](https://docs.qgis.org/3.16/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
 
 * 22 February 2021 - Bash and AWK for file manipulation.
-	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashintro_osgeo.html)
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html)
    - [Longzhu Shen: Modeling Prologue](http://spatial-ecology.net/docs/source/lectures/lect_20210222_Modeling_Prologue.pdf)
 
 * 24 February 2021 - Linux bash language. Use of variables and for loop in bash, if statement.
-	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html)
 
 * 01 March 2021 - Linux bash language. Use of variables and for loop in bash, if statement.
-	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/03_bashinter_osgeo.html)
+	- [Giuseppe Amatulli: Bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html)
