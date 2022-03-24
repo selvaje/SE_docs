@@ -110,6 +110,9 @@ $ pip install jupyterlab
 
 ## Git Settings 
 
+![title](Git_setting_4courses.png)
+
+
 ### First time action 
 
 These lines download the folder data 'SE\_data' from github. If you do not have the folder '/home/user/SE\_data' proceed with the download. If you have already the folder it will prompt an error: 'fatal: destination path 'SE_data' already exists and is not an empty directory'.
