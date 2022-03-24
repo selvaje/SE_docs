@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -387,7 +387,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -461,8 +461,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">dismo</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">caret</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">InformationValue</span><span class="p">)</span>
@@ -473,8 +472,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -489,15 +487,14 @@ div.rendered_html tbody tr:hover {
 <p>The varied thrush breeds in western North America from Alaska to northern California.</p>
 <p>It is migratory, with northern breeders moving south within or somewhat beyond the breeding range.</p>
 <p>Other populations may only move altitudinally.</p>
-<p><img alt="a23e1161071e426d8ec35b67a132e9f6" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
+<p><img alt="77b79e21b2d14be288234eece06bd746" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
 <section id="Read-in-data">
 <h3>Read in data<a class="headerlink" href="#Read-in-data" title="Permalink to this headline"></a></h3>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">vath.data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_2004.csv&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">vath.data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_2004.csv&quot;</span><span class="p">)</span>
 <span class="n">vath.val</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_VALIDATION.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -506,8 +503,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.data</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -535,8 +531,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># split dataset by presence</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># split dataset by presence</span>
 <span class="n">vath.pres</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,]</span>
 <span class="n">vath.abs</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,]</span>
 <span class="n">vath.pres.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
@@ -548,8 +543,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># validation dataset</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># validation dataset</span>
 <span class="n">vath.val.pres</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 <span class="n">vath.val.abs</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 <span class="n">vath.val.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
@@ -560,8 +554,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.val.pres</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">vath.val.pres</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -588,8 +581,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># env layers</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># env layers</span>
 <span class="n">elev</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/elev.gri&quot;</span><span class="p">)</span> <span class="c1"># elevation</span>
 <span class="n">canopy</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/cc2.gri&quot;</span><span class="p">)</span> <span class="c1"># canopy slope</span>
 <span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/mesic.gri&quot;</span><span class="p">)</span> <span class="c1"># mesic forest</span>
@@ -601,8 +593,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#check maps</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#check maps</span>
 <span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">canopy</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -617,8 +608,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -638,8 +628,7 @@ Traceback:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">elev</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">elev</span>
 </pre></div>
 </div>
 </div>
@@ -663,8 +652,7 @@ values     : 0, 3.079  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mesic</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mesic</span>
 </pre></div>
 </div>
 </div>
@@ -688,8 +676,7 @@ values     : 0, 1  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">precip</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">precip</span>
 </pre></div>
 </div>
 </div>
@@ -710,13 +697,12 @@ values     : 23, 287  (min, max)
 </pre></div></div>
 </div>
 <p>Interpolation</p>
-<p><img alt="842be2efb148460f9dc65b0cd74fc90c" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
+<p><img alt="70d4857af3514d0fbfa636078c462b06" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># resampling</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># resampling</span>
 <span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mesic</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;ngb&quot;</span><span class="p">)</span>
 <span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">precip</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;bilinear&quot;</span><span class="p">)</span>
 </pre></div>
@@ -726,8 +712,7 @@ values     : 23, 287  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#crop to same extent</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#crop to same extent</span>
 <span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
 <span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
 </pre></div>
@@ -737,8 +722,7 @@ values     : 23, 287  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="n">precip</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="n">precip</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -752,8 +736,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># creat a forest layer at 1km resolution</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># creat a forest layer at 1km resolution</span>
 <span class="n">fw.1km</span> <span class="o">&lt;-</span> <span class="nf">focalWeight</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="m">1000</span><span class="p">,</span> <span class="s">&#39;circle&#39;</span><span class="p">)</span>
 <span class="n">mesic1km</span> <span class="o">&lt;-</span> <span class="nf">focal</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">fw.1km</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="s">&quot;mean&quot;</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 </pre></div>
@@ -763,8 +746,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#create raster stacck</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#create raster stacck</span>
 <span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="n">canopy</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">,</span> <span class="n">mesic1km</span><span class="p">,</span> <span class="n">precip</span><span class="p">)</span>
 <span class="nf">names</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span> <span class="s">&quot;elev&quot;</span><span class="p">,</span> <span class="s">&quot;mesic&quot;</span><span class="p">,</span> <span class="s">&quot;mesic1km&quot;</span><span class="p">,</span> <span class="s">&quot;precip&quot;</span><span class="p">)</span>
 </pre></div>
@@ -774,8 +756,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">11</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">11</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">cex.axis</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.lab</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.main</span><span class="o">=</span><span class="m">2.5</span><span class="p">,</span><span class="n">legend.args</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">cex.lab</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="m">2.3</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -791,8 +772,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
 <span class="nf">pairs</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">maxpixels</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -808,8 +788,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#drop correlated layer (mesic)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#drop correlated layer (mesic)</span>
 
 <span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">dropLayer</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
 </pre></div>
@@ -819,8 +798,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#Generate background points using</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#Generate background points using</span>
 <span class="c1"># 2000 was chosen for the illustration purpose.</span>
 <span class="c1"># This number can be much larger in real practice.</span>
 
@@ -833,8 +811,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[74]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -861,8 +838,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
 <span class="nf">points</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
 </pre></div>
@@ -879,8 +855,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#extract GIS data</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#extract GIS data</span>
 <span class="n">pres.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.pres.xy</span><span class="p">)</span>
 <span class="n">back.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">back.xy</span><span class="p">)</span>
 <span class="n">val.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.val.xy</span><span class="p">)</span>
@@ -891,8 +866,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#link data</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#link data</span>
 <span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.pres.xy</span><span class="p">,</span> <span class="n">pres.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="n">df.back</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">back.xy</span><span class="p">,</span> <span class="n">back.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 <span class="n">df.val</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.val</span><span class="p">,</span> <span class="n">val.idpv</span><span class="p">)</span>
@@ -903,8 +877,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.pres</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.pres</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -932,8 +905,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">#remove any potential NAs</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">#remove any potential NAs</span>
 <span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="n">df.pres</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),]</span>
 <span class="n">df.back</span> <span class="o">&lt;-</span> <span class="n">df.back</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),]</span>
 <span class="n">df.val</span> <span class="o">&lt;-</span> <span class="n">df.val</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),]</span>
@@ -944,8 +916,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># merge together</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># merge together</span>
 <span class="n">df.all</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">df.pres</span><span class="p">,</span> <span class="n">df.back</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -954,8 +925,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[90]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -983,8 +953,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># data transformation</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># data transformation</span>
 <span class="c1"># Scaling and centering the environmental variables to zero mean and variance of 1</span>
 <span class="n">predictors</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
 <span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
@@ -995,8 +964,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1033,8 +1001,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1042,8 +1009,7 @@ TRUE</div>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">summary</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1089,8 +1055,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1098,8 +1063,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1107,8 +1071,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.val</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.val</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1133,13 +1096,12 @@ Number of Fisher Scoring iterations: 8
 </table></div>
 </div>
 <p>confusion matrix</p>
-<p><img alt="f0b1668051924f7283993521c9858b8e" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
+<p><img alt="6fe5867bc34b4c67b74955cff58de6f6" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cutoff</span> <span class="o">&lt;-</span> <span class="nf">optimalCutoff</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span> <span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">cutoff</span> <span class="o">&lt;-</span> <span class="nf">optimalCutoff</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span> <span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1147,8 +1109,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="o">&gt;=</span><span class="n">cutoff</span><span class="p">),]</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.val</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="o">&gt;=</span><span class="n">cutoff</span><span class="p">),]</span>
 </pre></div>
 </div>
 </div>
@@ -1171,8 +1132,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">confusionMatrix</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1196,8 +1156,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[129]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">specificity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">specificity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1211,8 +1170,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[130]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">sensitivity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">sensitivity</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1226,8 +1184,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[140]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Calculate the percentage misclassification error for the given actuals and probaility scores.</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the percentage misclassification error for the given actuals and probaility scores.</span>
 <span class="nf">misClassError</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">,</span><span class="n">threshold</span><span class="o">=</span><span class="n">cutoff</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1239,13 +1196,12 @@ Number of Fisher Scoring iterations: 8
 0.0774</div>
 </div>
 <p>ROC curves</p>
-<p><img alt="8a524b2e1e8b48049dca30d72aad8c33" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
+<p><img alt="d42be562fce84c97bdd26ea8ebcaf313" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[141]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1303,8 +1259,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

@@ -19,10 +19,10 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -405,7 +405,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -487,8 +487,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/carlos/Downloads/urlgrabber-4.0.0&#39;</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">os</span>
@@ -501,8 +500,7 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">import</span> <span class="n">plot</span><span class="p">,</span> <span class="n">subplots</span><span class="p">,</span> <span class="n">subplots_adjust</span><span class="p">,</span> <span class="n">legend</span><span class="p">,</span> <span class="n">tight_layout</span>
 <span class="kn">from</span> <span class="nn">seaborn</span> <span class="kn">import</span> <span class="n">histplot</span>
 <span class="kn">import</span> <span class="nn">cartopy</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 </section>
@@ -512,8 +510,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">getFiles</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span><span class="c1">#&#39;observations.apri.tar.gz&#39;, &#39;observations.apos.tar.gz&#39;, &#39;modelData.apri.nc&#39;, &#39;modelData.apos.nc&#39;], force=False):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">getFiles</span><span class="p">(</span><span class="n">folder</span><span class="p">,</span> <span class="n">project</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="n">files</span><span class="p">,</span> <span class="n">dest</span><span class="o">=</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">force</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span><span class="c1">#&#39;observations.apri.tar.gz&#39;, &#39;observations.apos.tar.gz&#39;, &#39;modelData.apri.nc&#39;, &#39;modelData.apos.nc&#39;], force=False):</span>
     <span class="n">dest</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dest</span><span class="p">,</span> <span class="n">inv</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">dest</span><span class="p">):</span>
         <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">dest</span><span class="p">)</span>
@@ -535,8 +532,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;FLEXPART&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">folder</span> <span class="o">=</span> <span class="s1">&#39;FLEXPART&#39;</span>
 <span class="c1"># project = &#39;verify&#39;</span>
 <span class="n">project</span> <span class="o">=</span> <span class="s1">&#39;footprints&#39;</span>
 <span class="n">inv</span> <span class="o">=</span> <span class="s1">&#39;LPJGUESS_ERA5_hourly.200-g.1.0-e-monthly.weekly_&#39;</span>
@@ -555,8 +551,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">emis_apri</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;modelData.apri.nc&#39;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">emis_apri</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;modelData.apri.nc&#39;</span><span class="p">))</span>
 <span class="n">emis_apos</span> <span class="o">=</span> <span class="n">Dataset</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;modelData.apos.nc&#39;</span><span class="p">))</span>
 <span class="n">biosphere_apri</span> <span class="o">=</span> <span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;emis&#39;</span><span class="p">][:]</span>
 <span class="n">biosphere_apos</span> <span class="o">=</span> <span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;emis&#39;</span><span class="p">][:]</span>
@@ -570,8 +565,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">db</span> <span class="o">=</span> <span class="n">obsdb</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;observations.apos.tar.gz&#39;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">obsdb</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;observations.apos.tar.gz&#39;</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -582,8 +576,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">Tools</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">region</span><span class="p">(</span><span class="n">latitudes</span><span class="o">=</span><span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">][:],</span> <span class="n">longitudes</span><span class="o">=</span><span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lons&#39;</span><span class="p">][:])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">reg</span> <span class="o">=</span> <span class="n">Tools</span><span class="o">.</span><span class="n">regions</span><span class="o">.</span><span class="n">region</span><span class="p">(</span><span class="n">latitudes</span><span class="o">=</span><span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">][:],</span> <span class="n">longitudes</span><span class="o">=</span><span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lons&#39;</span><span class="p">][:])</span>
 <span class="n">tstart</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;times_start&#39;</span><span class="p">]])</span>
 <span class="n">tend</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="n">datetime</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">emis_apri</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;times_end&#39;</span><span class="p">]])</span>
 <span class="n">dt</span> <span class="o">=</span> <span class="n">tend</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">tstart</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -597,8 +590,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">cartopy</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">cartopy</span><span class="o">.</span><span class="n">crs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()),</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
 <span class="n">extent</span> <span class="o">=</span> <span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">lonmin</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">lonmax</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">latmin</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">latmax</span><span class="p">)</span>
 <span class="n">lons</span><span class="p">,</span> <span class="n">lats</span> <span class="o">=</span> <span class="n">meshgrid</span><span class="p">(</span><span class="n">reg</span><span class="o">.</span><span class="n">lons</span><span class="p">,</span> <span class="n">reg</span><span class="o">.</span><span class="n">lats</span><span class="p">)</span>
 <span class="n">vmax</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span><span class="n">bio_apri_monthly</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">*</span><span class="mf">.75</span>
@@ -636,8 +628,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">biosphere_apri</span> <span class="o">*=</span> <span class="n">reg</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">*</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mf">44.e-6</span> <span class="o">*</span> <span class="mf">1.e-15</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">biosphere_apri</span> <span class="o">*=</span> <span class="n">reg</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">*</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mf">44.e-6</span> <span class="o">*</span> <span class="mf">1.e-15</span>
 <span class="n">biosphere_apos</span> <span class="o">*=</span> <span class="n">reg</span><span class="o">.</span><span class="n">area</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">*</span><span class="n">dt</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">*</span> <span class="mf">44.e-6</span> <span class="o">*</span> <span class="mf">1.e-15</span>
 <span class="n">months</span> <span class="o">=</span> <span class="n">array</span><span class="p">([</span><span class="n">t</span><span class="o">.</span><span class="n">month</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tstart</span><span class="p">])</span>
 
@@ -659,8 +650,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">times</span> <span class="o">=</span> <span class="n">date_range</span><span class="p">(</span><span class="n">datetime</span><span class="p">(</span><span class="mi">2018</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2019</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">closed</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">bios_apri_daily</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;apri&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">times</span><span class="p">,</span> <span class="n">bios_apos_daily</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span><span class="o">/</span><span class="mi">3600</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;apos&#39;</span><span class="p">)</span>
@@ -692,8 +682,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[89]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">db</span> <span class="o">=</span> <span class="n">obsdb</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;observations.apos.tar.gz&#39;</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">db</span> <span class="o">=</span> <span class="n">obsdb</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Downloads&#39;</span><span class="p">,</span> <span class="n">inv</span><span class="p">,</span> <span class="s1">&#39;observations.apos.tar.gz&#39;</span><span class="p">))</span>
 <span class="n">nsites</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">sites</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="n">nsites</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">3.5</span><span class="o">*</span><span class="n">nsites</span><span class="p">),</span> <span class="n">gridspec_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;width_ratios&#39;</span><span class="p">:[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">]})</span>
 <span class="k">for</span> <span class="n">isite</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">sites</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()):</span>
@@ -733,8 +722,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">dbs</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">db</span><span class="o">.</span><span class="n">observations</span><span class="o">.</span><span class="n">site</span> <span class="o">==</span> <span class="s1">&#39;htm&#39;</span><span class="p">]</span>
 
@@ -747,9 +735,7 @@ div.rendered_html tbody tr:hover {
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">time</span><span class="p">))):</span>
     <span class="n">t</span> <span class="o">=</span> <span class="n">where</span><span class="p">((</span><span class="n">array</span><span class="p">(</span><span class="n">tid</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">to_pydatetime</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">time</span><span class="p">)[</span><span class="n">i</span><span class="p">])</span><span class="o">-</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">tid</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">Timestamp</span><span class="o">.</span><span class="n">to_pydatetime</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">time</span><span class="p">)[</span><span class="n">i</span><span class="p">])</span><span class="o">+</span><span class="n">timedelta</span><span class="p">(</span><span class="n">minutes</span><span class="o">=</span><span class="mi">30</span><span class="p">)))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">time_filled</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-
-
-</pre></div>
+<br/><br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -765,8 +751,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">time_gap</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">tid</span><span class="p">),</span> <span class="n">time_filled</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">time_gap</span> <span class="o">=</span> <span class="n">delete</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">tid</span><span class="p">),</span> <span class="n">time_filled</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 <span class="n">time_gap_plot</span> <span class="o">=</span> <span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">time_gap</span><span class="p">)))</span><span class="o">*</span><span class="mi">450</span>
 <span class="n">time_gap_plot</span> <span class="o">=</span> <span class="n">column_stack</span><span class="p">((</span><span class="n">time_gap</span><span class="p">,</span><span class="n">time_gap_plot</span><span class="p">))</span>
 
@@ -794,8 +779,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">where</span><span class="p">((</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lat</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lat</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">where</span><span class="p">((</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lat</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lats&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lat</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">lon</span> <span class="o">=</span> <span class="n">where</span><span class="p">((</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lons&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lon</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="mf">0.25</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;lons&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="nb">list</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">lon</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="mf">0.25</span><span class="p">))[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">biosphere_apos_htm</span> <span class="o">=</span> <span class="n">emis_apos</span><span class="p">[</span><span class="s1">&#39;biosphere&#39;</span><span class="p">][</span><span class="s1">&#39;emis&#39;</span><span class="p">][:,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">lon</span><span class="p">]</span>
@@ -817,8 +801,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras</span> <span class="kn">import</span> <span class="n">metrics</span><span class="p">,</span> <span class="n">regularizers</span><span class="p">,</span> <span class="n">optimizers</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Model</span><span class="p">,</span> <span class="n">Sequential</span><span class="p">,</span> <span class="n">load_model</span>
 <span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Activation</span>
@@ -849,8 +832,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">pipline</span><span class="p">(</span><span class="n">inp_dim</span><span class="p">,</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pipline</span><span class="p">(</span><span class="n">inp_dim</span><span class="p">,</span>
             <span class="n">n_nod</span><span class="p">,</span>
             <span class="n">drop_nod</span><span class="p">,</span>
             <span class="n">act_fun</span> <span class="o">=</span> <span class="s1">&#39;relu&#39;</span><span class="p">,</span>
@@ -900,8 +882,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="k">def</span> <span class="nf">stats_reg</span><span class="p">(</span><span class="n">d</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">d_pred</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Training&#39;</span><span class="p">,</span> <span class="n">estimat</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stats_reg</span><span class="p">(</span><span class="n">d</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">d_pred</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;Training&#39;</span><span class="p">,</span> <span class="n">estimat</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 
     <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;MSE&#39;</span><span class="p">,</span> <span class="s1">&#39;CorrCoeff&#39;</span><span class="p">]</span>
 
@@ -928,8 +909,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Generate training and validation data</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate training and validation data</span>
 <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.75</span><span class="p">)</span>
 <span class="n">val_size</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">train_size</span>
 
@@ -968,8 +948,7 @@ Wall time: 1min 57s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1036,8 +1015,7 @@ Wall time: 15.5 µs
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[231]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1164,8 +1142,7 @@ Wall time: 3min 34s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[232]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1292,8 +1269,7 @@ Wall time: 3min 27s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[233]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1420,8 +1396,7 @@ Wall time: 3min 31s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[234]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1559,8 +1534,7 @@ Wall time: 3min 35s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[235]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1687,8 +1661,7 @@ Wall time: 3min 27s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[236]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1815,8 +1788,7 @@ Wall time: 3min 34s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[237]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -1943,8 +1915,7 @@ Wall time: 3min 40s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[238]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2071,8 +2042,7 @@ Wall time: 3min 4s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[239]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2199,8 +2169,7 @@ Wall time: 3min 35s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[243]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2327,8 +2296,7 @@ Wall time: 3min 33s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[251]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2455,8 +2423,7 @@ Wall time: 3min 29s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[252]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2583,8 +2550,7 @@ Wall time: 3min 36s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[254]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2711,8 +2677,7 @@ Wall time: 3min 32s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># Define the network, cost function and minimization method</span>
 <span class="n">INPUT</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;inp_dim&#39;</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
@@ -2842,8 +2807,7 @@ Wall time: 4min 15s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">x_comp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">column_stack</span><span class="p">((</span><span class="n">biosphere_apos_htm</span><span class="p">,</span> <span class="n">fossil_apos_htm</span><span class="p">))</span>
 
@@ -2891,8 +2855,7 @@ Wall time: 991 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">x_std</span> <span class="o">=</span> <span class="n">standard</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 
@@ -2942,8 +2905,7 @@ Wall time: 500 ms
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="k">for</span> <span class="n">isite</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">db</span><span class="o">.</span><span class="n">sites</span><span class="o">.</span><span class="n">itertuples</span><span class="p">()):</span>
 
@@ -3000,8 +2962,7 @@ Wall time: 500 ms
     <span class="n">model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;Model&#39;</span><span class="p">,</span> <span class="n">site</span><span class="o">.</span><span class="n">Index</span><span class="p">))</span>
 
     <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="o">.</span><span class="n">Index</span><span class="p">,</span> <span class="n">isite</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -3605,8 +3566,7 @@ Wall time: 2h 42min 41s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="c1"># db = obsdb(os.path.join(&#39;Downloads&#39;, inv, &#39;observations.apos.tar.gz&#39;))</span>
 <span class="n">nsites</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">sites</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -3702,8 +3662,7 @@ Wall time: 45min 2s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dbs</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">dbs</span><span class="o">.</span><span class="n">mix_apos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;apos&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dbs</span><span class="p">[(</span><span class="n">dbs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2019-06-20&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">time</span><span class="p">,</span> <span class="n">dbs</span><span class="p">[(</span><span class="n">dbs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2019-06-20&#39;</span><span class="p">)]</span><span class="o">.</span><span class="n">mix_apos</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;selection&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
@@ -3732,8 +3691,7 @@ Wall time: 45min 2s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[82]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 
 <span class="n">new_dbs</span> <span class="o">=</span> <span class="n">dbs</span><span class="p">[(</span><span class="n">dbs</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;2019-06-20&#39;</span><span class="p">)]</span>
 
@@ -3760,8 +3718,7 @@ Wall time: 51.8 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[87]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">biosphere_apos_htm_nogap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">biosphere_apos_htm_nogap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="mf">.5</span><span class="p">)</span>
 <span class="n">val_size</span>   <span class="o">=</span> <span class="n">biosphere_apos_htm_nogap</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">train_size</span>
 </pre></div>
 </div>
@@ -3770,8 +3727,7 @@ Wall time: 51.8 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[94]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">xtest</span> <span class="o">=</span> <span class="n">standard</span><span class="p">(</span><span class="n">biosphere_apos_htm_nogap</span><span class="p">,</span> <span class="n">biosphere_apos_htm_nogap</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xtest</span> <span class="o">=</span> <span class="n">standard</span><span class="p">(</span><span class="n">biosphere_apos_htm_nogap</span><span class="p">,</span> <span class="n">biosphere_apos_htm_nogap</span><span class="p">[:</span><span class="n">train_size</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 <span class="n">ytest</span> <span class="o">=</span> <span class="n">standard</span><span class="p">(</span><span class="n">array</span><span class="p">(</span><span class="n">new_dbs</span><span class="o">.</span><span class="n">mix_apos</span><span class="p">),</span> <span class="n">array</span><span class="p">(</span><span class="n">new_dbs</span><span class="o">.</span><span class="n">mix_apos</span><span class="p">)[:</span><span class="n">train_size</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
 
 <span class="n">x</span> <span class="o">=</span> <span class="n">standard</span><span class="p">(</span><span class="n">biosphere_apos_htm_nogap</span><span class="p">,</span> <span class="n">biosphere_apos_htm_nogap</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
@@ -3783,8 +3739,7 @@ Wall time: 51.8 s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">%%time</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%time</span>
 <span class="n">ns</span><span class="p">,</span><span class="n">tlen</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span>
 
 <span class="c1"># Parameters defining the mini-batch size and</span>
@@ -3868,9 +3823,7 @@ Wall time: 51.8 s
     <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="n">ndone</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ndone</span><span class="p">,</span> <span class="s2">&quot;    </span><span class="si">{:.2f}</span><span class="s2">        </span><span class="si">{:.5f}</span><span class="s2">     </span><span class="si">{:.5f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">,</span> <span class="n">meanloss</span><span class="o">/</span><span class="n">trnTrgVar</span><span class="p">,</span> <span class="n">meanlossvalid</span><span class="o">/</span><span class="n">testTrgVar</span><span class="p">))</span>
-
-
-</pre></div>
+<br/><br/></pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -4002,8 +3955,7 @@ Wall time: 5min 44s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">xshow</span> <span class="o">=</span> <span class="n">xtest</span><span class="p">[:</span><span class="n">mb</span><span class="p">]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xshow</span> <span class="o">=</span> <span class="n">xtest</span><span class="p">[:</span><span class="n">mb</span><span class="p">]</span>
 <span class="n">yshow</span> <span class="o">=</span> <span class="n">ytest</span><span class="p">[:</span><span class="n">mb</span><span class="p">]</span>
 <span class="n">yout</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mb</span><span class="p">,</span><span class="n">tlen</span><span class="p">))</span>
 <span class="n">hidden1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">mb</span><span class="p">,</span><span class="n">tlen</span><span class="p">,</span><span class="n">nh1</span><span class="p">))</span>
@@ -4077,8 +4029,7 @@ Wall time: 5min 44s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

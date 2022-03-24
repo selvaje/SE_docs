@@ -19,10 +19,10 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -403,7 +403,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -551,8 +551,7 @@ further processing and analysis steps (using Python xarray tools). The study are
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">############################################</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################</span>
 <span class="c1"># # Downloading CRUNCEP data from UCAR</span>
 <span class="c1">############################################</span>
 <span class="kn">import</span> <span class="nn">sys</span><span class="o">,</span> <span class="nn">os</span>
@@ -608,16 +607,14 @@ further processing and analysis steps (using Python xarray tools). The study are
                 <span class="n">check_file_status</span><span class="p">(</span><span class="n">file_base</span><span class="p">,</span> <span class="n">filesize</span><span class="p">)</span>
     <span class="n">check_file_status</span><span class="p">(</span><span class="n">file_base</span><span class="p">,</span> <span class="n">filesize</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">()</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">############################################</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">############################################</span>
 <span class="c1"># Function to extract study area and period</span>
 <span class="c1">############################################</span>
 <span class="k">def</span> <span class="nf">raw_to_extent</span><span class="p">(</span><span class="n">directory</span><span class="p">):</span>
@@ -635,16 +632,14 @@ further processing and analysis steps (using Python xarray tools). The study are
 <span class="c1"># Clipping raw data files to extent</span>
 <span class="n">directory</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;/media/data/CRU_JRA2_1&#39;</span>
 <span class="n">raw_to_extent</span><span class="p">(</span><span class="n">directory</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="s1">&#39;E:/VM_shared/NCEP/re_prc/clmforc.*.nc&#39;</span><span class="p">,</span><span class="n">combine</span> <span class="o">=</span> <span class="s1">&#39;by_coords&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds</span> <span class="o">=</span> <span class="n">xarray</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="s1">&#39;E:/VM_shared/NCEP/re_prc/clmforc.*.nc&#39;</span><span class="p">,</span><span class="n">combine</span> <span class="o">=</span> <span class="s1">&#39;by_coords&#39;</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 <span class="n">daily</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;24H&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">daily</span><span class="o">.</span><span class="n">PRECTmms</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="s1">&#39;E:/VM_shared/NCEP/prec_1970_2016sum.nc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -654,8 +649,7 @@ further processing and analysis steps (using Python xarray tools). The study are
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Import nessesary Python packages</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import nessesary Python packages</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -690,8 +684,7 @@ Importing the dtw module. When using in academic works please cite:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">################################################</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">################################################</span>
 <span class="c1">## Calculating seasonal time series</span>
 <span class="c1">################################################</span>
 <span class="k">def</span> <span class="nf">calc_season</span><span class="p">(</span><span class="n">indata</span><span class="p">,</span> <span class="n">varname</span><span class="p">,</span> <span class="n">dataset</span><span class="p">):</span>
@@ -715,8 +708,7 @@ Importing the dtw module. When using in academic works please cite:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Computing statistical properties from raw netcdf data using cdo</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Computing statistical properties from raw netcdf data using cdo</span>
 
 <span class="c1"># Temperature----------------------------------------------------</span>
 <span class="c1"># Convert from K to Celsius and change attributes</span>
@@ -741,8 +733,7 @@ cdo addc: Started child process &#34;setattribute,TBOT@units=degC /media/sf_VM_s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">raw2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_1970_2016_C.nc&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_1970_2016_C.nc&quot;</span><span class="p">)</span>
 <span class="n">area_clipped</span> <span class="o">=</span> <span class="n">raw2</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lon</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">33</span><span class="p">),</span> <span class="n">lat</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="mi">54</span><span class="p">,</span> <span class="mi">72</span><span class="p">))</span>
 <span class="n">new_filename</span> <span class="o">=</span> <span class="s1">&#39;/media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc&#39;</span>
 <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;saving to &#39;</span><span class="p">,</span> <span class="n">new_filename</span><span class="p">)</span>
@@ -762,8 +753,7 @@ saving to  /media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Calculate daily annual cycle</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate daily annual cycle</span>
 <span class="o">!</span>cdo -ydaymean /media/sf_VM_shared/CRUJRA/tmp_1970_2016_C.nc /media/sf_VM_shared/CRUJRA/tmp_ydaymean365.nc
 </pre></div>
 </div>
@@ -781,8 +771,7 @@ cdo ydaymean: Processed 35819640 values from 1 variable over 17155 timesteps [7.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cdo -ydaymean /media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc /media/sf_VM_shared/NCEP/tmp_ydaymean365.nc
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cdo -ydaymean /media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc /media/sf_VM_shared/NCEP/tmp_ydaymean365.nc
 </pre></div>
 </div>
 </div>
@@ -798,8 +787,7 @@ cdo ydaymean: Processed 35819640 values from 1 variable over 17155 timesteps [3.
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cdo -monmean /media/sf_VM_shared/NCEP/prec_cut.nc /media/sf_VM_shared/clim_out/stat/tmpCCRUJRA_ydays.nc
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cdo -monmean /media/sf_VM_shared/NCEP/prec_cut.nc /media/sf_VM_shared/clim_out/stat/tmpCCRUJRA_ydays.nc
 </pre></div>
 </div>
 </div>
@@ -815,8 +803,7 @@ cdo monmean: Processed 35819640 values from 1 variable over 17155 timesteps [1.7
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cdo -ydayvar /media/sf_VM_shared/clim_out/ncepT_1970_2016_scandi_C.nc /media/sf_VM_shared/NCEP/tmpNCEP_ydayvar365.nc
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cdo -ydayvar /media/sf_VM_shared/clim_out/ncepT_1970_2016_scandi_C.nc /media/sf_VM_shared/NCEP/tmpNCEP_ydayvar365.nc
 </pre></div>
 </div>
 </div>
@@ -835,8 +822,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [3.8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># test a global stat</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># test a global stat</span>
 <span class="o">!</span>cdo -daymean /media/sf_VM_shared/clim_out/sliced_raw/crujra.v2.1.5d.tmp.1901-2019.365d.noc.daymean.chunked_rew.nc /media/sf_VM_shared/clim_out/stat/tmp_global_daymean.nc
 </pre></div>
 </div>
@@ -845,8 +831,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [3.8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[101]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cdo -ydayvar /media/sf_VM_shared/NCEP/tmp_cut.nc /media/sf_VM_shared/NCEP/tmpNCEP_ydayvar.nc
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cdo -ydayvar /media/sf_VM_shared/NCEP/tmp_cut.nc /media/sf_VM_shared/NCEP/tmpNCEP_ydayvar.nc
 </pre></div>
 </div>
 </div>
@@ -883,8 +868,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">jra_mon</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/tmp_1970_2016_C.nc&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;netcdf4&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jra_mon</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/tmp_1970_2016_C.nc&quot;</span><span class="p">,</span> <span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;netcdf4&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">jra_mon</span><span class="o">.</span><span class="n">tmp</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">jra_mon</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
 <span class="n">cru_time</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">tmp</span>
@@ -895,8 +879,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cru_time_df</span> <span class="o">=</span> <span class="n">cru_time</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cru_time_df</span> <span class="o">=</span> <span class="n">cru_time</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">cru_time_df</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CRUJRA&quot;</span>
 <span class="n">cru_time_df</span> <span class="o">=</span> <span class="n">cru_time_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;tmp&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">})</span>
 </pre></div>
@@ -906,8 +889,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># NCEP timeseries</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># NCEP timeseries</span>
 <span class="n">ncep_mon</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">ncep_mon</span><span class="o">.</span><span class="n">TBOT</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">ncep_mon</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
@@ -919,8 +901,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ncep_time_df</span> <span class="o">=</span> <span class="n">ncep_time</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncep_time_df</span> <span class="o">=</span> <span class="n">ncep_time</span><span class="o">.</span><span class="n">to_dataframe</span><span class="p">()</span>
 <span class="n">ncep_time_df</span><span class="p">[</span><span class="s2">&quot;dataset&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CRUNCEP&quot;</span>
 <span class="n">ncep_time_df</span> <span class="o">=</span> <span class="n">ncep_time_df</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;TBOT&#39;</span><span class="p">:</span> <span class="s1">&#39;data&#39;</span><span class="p">})</span>
 </pre></div>
@@ -930,8 +911,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">T_viol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ncep_time_df</span><span class="p">,</span><span class="n">cru_time_df</span><span class="p">])</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_viol</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">ncep_time_df</span><span class="p">,</span><span class="n">cru_time_df</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -939,8 +919,7 @@ cdo ydayvar: Processed 35819640 values from 1 variable over 17155 timesteps [1.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">T_viol</span><span class="p">,</span><span class="n">palette</span> <span class="o">=</span> <span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">inner</span><span class="o">=</span><span class="s2">&quot;quartile&quot;</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Tmean$_</span><span class="si">{annual}</span><span class="s1">$ (°C)&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Dataset&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
@@ -968,8 +947,7 @@ Text(0.5, 0, &#39;Dataset&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Mean difference between T</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Mean difference between T</span>
 <span class="n">da_a</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_ydaymean365.nc&quot;</span><span class="p">)</span>
 <span class="n">da_b</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/tmp_ydaymean365.nc&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">da_a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s2">&quot;time&quot;</span><span class="p">)</span>
@@ -983,8 +961,7 @@ Text(0.5, 0, &#39;Dataset&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlOrRd&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;YlOrRd&quot;</span>
 <span class="n">norm</span> <span class="o">=</span> <span class="n">colors</span><span class="o">.</span><span class="n">TwoSlopeNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=-</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">vcenter</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">axes</span><span class="p">(</span><span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">())</span>
 
@@ -1006,8 +983,7 @@ Text(0.5, 0, &#39;Dataset&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">viol_mon_ncep</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">ncep_time</span><span class="p">,</span> <span class="s2">&quot;TBOT&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUNCEP&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">viol_mon_ncep</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">ncep_time</span><span class="p">,</span> <span class="s2">&quot;TBOT&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUNCEP&quot;</span><span class="p">)</span>
 <span class="n">viol_mon_jra</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">cru_time</span><span class="p">,</span> <span class="s2">&quot;tmp&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUJRA&quot;</span><span class="p">)</span>
 <span class="n">viol_mon</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">viol_mon_ncep</span><span class="p">,</span> <span class="n">viol_mon_jra</span><span class="p">])</span>
 </pre></div>
@@ -1017,16 +993,14 @@ Text(0.5, 0, &#39;Dataset&#39;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;seas&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">viol_mon</span><span class="p">,</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;seas&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">viol_mon</span><span class="p">,</span>
                    <span class="n">palette</span> <span class="o">=</span> <span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">inner</span><span class="o">=</span><span class="s2">&quot;quartile&quot;</span><span class="p">,</span><span class="n">split</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Seasonal surface temperature$_</span><span class="si">{mean}</span><span class="s1">$ (°C)&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/seasT_viol.png&quot;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fig. 2. Violon plot showing the seasonal distribution of surface temperature for the CRUNCEP and CRUJRA datasets.&quot;</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1048,8 +1022,7 @@ Fig. 2. Violon plot showing the seasonal distribution of surface temperature for
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Corr</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Corr</span>
 <span class="n">da_a</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_ydaymean365.nc&quot;</span><span class="p">)</span>
 <span class="n">da_b</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/tmp_ydaymean365.nc&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">da_a</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span> <span class="o">=</span> <span class="s2">&quot;time&quot;</span><span class="p">)</span>
@@ -1064,8 +1037,7 @@ Fig. 2. Violon plot showing the seasonal distribution of surface temperature for
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">prec_raw_crujra</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/prec_cut.nc&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prec_raw_crujra</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/prec_cut.nc&quot;</span><span class="p">)</span>
 <span class="n">prec_jra</span> <span class="o">=</span> <span class="n">prec_raw_crujra</span><span class="o">.</span><span class="n">pre</span>
 <span class="n">prec_jra_time</span> <span class="o">=</span> <span class="n">prec_jra</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
 </pre></div>
@@ -1075,8 +1047,7 @@ Fig. 2. Violon plot showing the seasonal distribution of surface temperature for
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">prec_raw_ncep</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/prec_cut.nc&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prec_raw_ncep</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/prec_cut.nc&quot;</span><span class="p">)</span>
 <span class="n">prec_ncep</span> <span class="o">=</span> <span class="n">prec_raw_ncep</span><span class="o">.</span><span class="n">PRECTmms</span> <span class="o">*</span> <span class="mi">60</span><span class="o">*</span><span class="mi">60</span>
 <span class="n">prec_ncep_time</span> <span class="o">=</span> <span class="n">prec_ncep</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span>
 </pre></div>
@@ -1086,8 +1057,7 @@ Fig. 2. Violon plot showing the seasonal distribution of surface temperature for
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">violP_mon_ncep</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">prec_ncep_time</span><span class="p">,</span> <span class="s2">&quot;PRECTmms&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUNCEP&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">violP_mon_ncep</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">prec_ncep_time</span><span class="p">,</span> <span class="s2">&quot;PRECTmms&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUNCEP&quot;</span><span class="p">)</span>
 <span class="n">violP_mon_jra</span> <span class="o">=</span> <span class="n">calc_season</span><span class="p">(</span><span class="n">prec_jra_time</span><span class="p">,</span> <span class="s2">&quot;pre&quot;</span><span class="p">,</span> <span class="s2">&quot;CRUJRA&quot;</span><span class="p">)</span>
 <span class="n">violP_mon</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">violP_mon_ncep</span><span class="p">,</span> <span class="n">violP_mon_jra</span><span class="p">])</span>
 </pre></div>
@@ -1097,14 +1067,12 @@ Fig. 2. Violon plot showing the seasonal distribution of surface temperature for
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;seas&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">violP_mon</span><span class="p">,</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">h</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;seas&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;data&quot;</span><span class="p">,</span><span class="n">hue</span> <span class="o">=</span> <span class="s2">&quot;dataset&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">violP_mon</span><span class="p">,</span>
                    <span class="n">palette</span> <span class="o">=</span> <span class="s2">&quot;Set1&quot;</span><span class="p">,</span><span class="n">inner</span><span class="o">=</span><span class="s2">&quot;quartile&quot;</span><span class="p">,</span><span class="n">split</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">legend_out</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Seasonal surface temperature$_</span><span class="si">{mean}</span><span class="s1">$ (°C)&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
 <span class="n">h</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Season&#39;</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">12</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fig. 3. Violon plot showing the seasonal distribution of precipitation for the CRUNCEP and CRUJRA datasets.&quot;</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1126,8 +1094,7 @@ Fig. 3. Violon plot showing the seasonal distribution of precipitation for the C
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># assign arrays monthly</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># assign arrays monthly</span>
 <span class="n">Tcrujra</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/CRUJRA/tmp_1970_2016_C.nc&quot;</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Tcrujra</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;1MS&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">Tcrujra</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.month&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
@@ -1140,8 +1107,7 @@ Fig. 3. Violon plot showing the seasonal distribution of precipitation for the C
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">T_NCEP</span><span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc&quot;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">T_NCEP</span><span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/NCEP/tmp_1970_2016_C_ext.nc&quot;</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">T_NCEP</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;time.month&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 <span class="n">TNCEP</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;lat&quot;</span><span class="p">,</span><span class="s2">&quot;lon&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">TBOT</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
@@ -1151,8 +1117,7 @@ Fig. 3. Violon plot showing the seasonal distribution of precipitation for the C
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">alignment1</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alignment1</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span>
                 <span class="n">step_pattern</span> <span class="o">=</span> <span class="n">asymmetric</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sakoe-Chiba, Normalised distance&quot;</span><span class="p">,</span><span class="n">alignment1</span><span class="o">.</span><span class="n">normalizedDistance</span><span class="p">)</span>
 </pre></div>
@@ -1170,8 +1135,7 @@ Sakoe-Chiba, Normalised distance 0.8617017467816671
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">alignment2</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alignment2</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">},</span>
                 <span class="n">step_pattern</span><span class="o">=</span><span class="n">symmetric2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sakoe-Chiba, Normalised distance&quot;</span><span class="p">,</span><span class="n">alignment2</span><span class="o">.</span><span class="n">normalizedDistance</span><span class="p">)</span>
 </pre></div>
@@ -1189,8 +1153,7 @@ Sakoe-Chiba, Normalised distance 0.8859652280807495
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">alignment3</span><span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">step_pattern</span><span class="o">=</span><span class="n">symmetricP05</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alignment3</span><span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span><span class="n">step_pattern</span><span class="o">=</span><span class="n">symmetricP05</span><span class="p">,</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sakoe-Chiba, Normalised distance&quot;</span><span class="p">,</span><span class="n">alignment3</span><span class="o">.</span><span class="n">normalizedDistance</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1207,8 +1170,7 @@ Sakoe-Chiba, Normalised distance 0.9817056854565939
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">alignment4</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alignment4</span> <span class="o">=</span> <span class="n">dtw</span><span class="p">(</span><span class="n">TCRU</span><span class="p">,</span> <span class="n">TNCEP</span><span class="p">,</span> <span class="n">keep_internals</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">window_type</span><span class="o">=</span><span class="s2">&quot;sakoechiba&quot;</span><span class="p">,</span>
                  <span class="n">step_pattern</span><span class="o">=</span><span class="n">rabinerJuangStepPattern</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="s2">&quot;c&quot;</span><span class="p">),</span><span class="n">window_args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;window_size&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">})</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sakoe-Chiba, Normalised distance&quot;</span><span class="p">,</span><span class="n">alignment4</span><span class="o">.</span><span class="n">normalizedDistance</span><span class="p">)</span>
 </pre></div>
@@ -1226,8 +1188,7 @@ Sakoe-Chiba, Normalised distance 0.9948395689328512
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Plot cost matrices</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot cost matrices</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">))</span>
 
 <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">alignment1</span><span class="o">.</span><span class="n">localCostMatrix</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">origin</span><span class="o">=</span><span class="s1">&#39;lower&#39;</span><span class="p">,</span> <span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;coolwarm&quot;</span><span class="p">)</span>
@@ -1276,8 +1237,7 @@ Sakoe-Chiba, Normalised distance 0.9948395689328512
     <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="n">label</span><span class="p">,</span><span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/dtw.png&quot;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Figure 4. DWT matrices with the contrsucted best alignment path shown by the blue line. Applied the Sakoe-Chiba window contraint and tested four different step patterns, asymmetric, symmetric patterns with different slopes and Rabiner-Juang set.&quot;</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1306,8 +1266,7 @@ dissimilarity between the two timeseries.</p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Read in model outputs</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in model outputs</span>
 <span class="n">raw</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/jra/msnowsoiltemp.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 
 <span class="n">rawncep</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/ncep/msnowsoiltemp.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
@@ -1353,8 +1312,7 @@ Fig x. Mean monthly difference in near surface soil T
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Read in model outputs</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in model outputs</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/jra/msnowdepth.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 <span class="n">rawncep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/ncep/msnowdepth.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 
@@ -1394,8 +1352,7 @@ Fig. 6. Snow depth difference
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># agpp</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># agpp</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/jra/agpp.out&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 <span class="n">rawncep</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/ncep/agpp.out&#39;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 </pre></div>
@@ -1405,8 +1362,7 @@ Fig. 6. Snow depth difference
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">raw</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">var</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1423,8 +1379,7 @@ Fig. 6. Snow depth difference
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">agpp_ncep</span> <span class="o">=</span> <span class="n">rawncep</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span><span class="s2">&quot;Lon&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">agpp_ncep</span> <span class="o">=</span> <span class="n">rawncep</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span><span class="s2">&quot;Lon&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">agpp_jra</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;Lat&quot;</span><span class="p">,</span><span class="s2">&quot;Lon&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1433,8 +1388,7 @@ Fig. 6. Snow depth difference
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">agpp_ncep</span> <span class="o">-</span> <span class="n">agpp_jra</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diff</span> <span class="o">=</span> <span class="n">agpp_ncep</span> <span class="o">-</span> <span class="n">agpp_jra</span>
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">diff</span><span class="o">.</span><span class="n">Total</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s2">&quot;#006400&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;GPP difference ($g C \ m² $)&quot;</span><span class="p">)</span>
@@ -1442,8 +1396,7 @@ Fig. 6. Snow depth difference
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/agpp_site.png&quot;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fig. 7. Average annual GPP difference/site (CRUNCEP-CRUJRA)&quot;</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1465,8 +1418,7 @@ Fig. X. Average annual GPP difference/site (CRUNCEP-CRUJRA)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Read in model outputs</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read in model outputs</span>
 <span class="n">raw</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/jra/mgpp.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
 
 <span class="n">rawncep</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_VM_shared/lpj_guess_runs/ncep/mgpp.out&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span> <span class="s2">&quot;\s+&quot;</span><span class="p">)</span>
@@ -1482,8 +1434,7 @@ Fig. X. Average annual GPP difference/site (CRUNCEP-CRUJRA)
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;/media/sf_VM_shared/mgpp.png&quot;</span><span class="p">,</span> <span class="n">dpi</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fig. 8. Average monthly GPP difference (CRUNCEP-CRUJRA)&quot;</span><span class="p">)</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <div class="nboutput docutils container">

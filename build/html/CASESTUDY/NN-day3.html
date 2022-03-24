@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -389,7 +389,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -472,8 +472,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -498,8 +497,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># fix random seed for reproducibility</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fix random seed for reproducibility</span>
 <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -508,8 +506,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># load the dataset</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load the dataset</span>
 <span class="n">dataframe</span> <span class="o">=</span> <span class="n">pandas</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./txt/airline-passengers.csv&#39;</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">engine</span><span class="o">=</span><span class="s1">&#39;python&#39;</span><span class="p">)</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">values</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
@@ -520,8 +517,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Inspect the dataset</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Inspect the dataset</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">dataframe</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (monthts)&#39;</span><span class="p">)</span>
@@ -533,8 +529,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># normalize the dataset</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalize the dataset</span>
 <span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 </pre></div>
@@ -544,8 +539,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># split into train and test sets</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split into train and test sets</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len(dataset): &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
 <span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.67</span><span class="p">)</span>
 <span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
@@ -558,8 +552,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># convert an array of values into a dataset matrix</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert an array of values into a dataset matrix</span>
 <span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">look_back</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">dataX</span><span class="p">,</span> <span class="n">dataY</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">-</span><span class="n">look_back</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
@@ -575,8 +568,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape into X=t and Y=t+1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="c1"># our data is in the form: [samples, features]</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -615,8 +607,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># summarize history for loss</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summarize history for loss</span>
 <span class="k">def</span> <span class="nf">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
@@ -632,8 +623,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -648,8 +638,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># make predictions</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
 <span class="k">def</span> <span class="nf">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">):</span>
     <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">)</span>
     <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">)</span>
@@ -674,8 +663,7 @@ pip install numpy==1.19.5
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -694,8 +682,7 @@ Test R^2:  0.5481121470797672
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># shift train predictions for plotting</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shift train predictions for plotting</span>
 <span class="k">def</span> <span class="nf">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">):</span>
     <span class="n">trainPredictPlot</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
     <span class="n">trainPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
@@ -716,8 +703,7 @@ Test R^2:  0.5481121470797672
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -732,8 +718,7 @@ Test R^2:  0.5481121470797672
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">## Redo using SGD as optimizer</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Redo using SGD as optimizer</span>
 <span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -777,8 +762,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -793,8 +777,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -813,8 +796,7 @@ Test R^2:  0.5286154831572729
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -838,8 +820,7 @@ Test R^2:  0.5286154831572729
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape into X=t and Y=t+3</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape into X=t and Y=t+3</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
 <span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -872,8 +853,7 @@ trainY[:5]:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape input to be [samples, time steps, features]</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape input to be [samples, time steps, features]</span>
 <span class="n">trainX</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 <span class="n">testX</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
 
@@ -930,8 +910,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -946,8 +925,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -966,8 +944,7 @@ Test R^2:  0.42679878247216185
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -989,8 +966,7 @@ Test R^2:  0.42679878247216185
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape into X=t and Y=t+1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
 <span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -1060,8 +1036,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1076,8 +1051,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1096,8 +1070,7 @@ Test R^2:  0.5708315977886538
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1116,8 +1089,7 @@ Test R^2:  0.5708315977886538
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape into X=t and Y=t+1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
 <span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -1158,8 +1130,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># make predictions</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
 <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
 <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -1193,8 +1164,7 @@ Test R^2:  0.37531750526932117
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># shift train predictions for plotting</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># shift train predictions for plotting</span>
 <span class="n">trainPredictPlot</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
 <span class="n">trainPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">nan</span>
 <span class="n">trainPredictPlot</span><span class="p">[</span><span class="n">look_back</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="n">look_back</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">trainPredict</span>
@@ -1225,8 +1195,7 @@ Test R^2:  0.37531750526932117
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># reshape into X=t and Y=t+1</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
 <span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -2269,8 +2238,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># make predictions</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
 <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
 <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -2325,8 +2293,7 @@ Test R^2:  -3.3148429717990124
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Let&#39;s see what happens if we let it train for longer</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s see what happens if we let it train for longer</span>
 <span class="c1"># Using Early stopping</span>
 
 <span class="c1"># reshape into X=t and Y=t+1</span>
@@ -2360,7 +2327,14 @@ Test R^2:  -3.3148429717990124
 <span class="c1"># list all data in history</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
-
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2368,17 +2342,7 @@ Test R^2:  -3.3148429717990124
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># make predictions</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
 <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
 <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -2420,8 +2384,7 @@ Test R^2:  -3.3148429717990124
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Using Early stopping</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using Early stopping</span>
 <span class="c1"># reshape into X=t and Y=t+1</span>
 <span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
 <span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
@@ -5035,8 +4998,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -5051,8 +5013,7 @@ keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># make predictions</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
 <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
 <span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
 <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
@@ -5107,8 +5068,7 @@ Test R^2:  0.6666832178313974
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Try more nodes in the LSTM</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try more nodes in the LSTM</span>
 <span class="c1"># Using Early stopping</span>
 
 <span class="c1"># reshape into X=t and Y=t+1</span>
@@ -5831,8 +5791,7 @@ Test R^2:  0.6822753881553338
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># More layers</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># More layers</span>
 <span class="c1"># Try more nodes in the LSTM</span>
 <span class="c1"># Using Early stopping</span>
 
@@ -6397,8 +6356,7 @@ Test R^2:  0.615250920793732
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

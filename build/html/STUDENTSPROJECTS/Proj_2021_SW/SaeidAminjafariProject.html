@@ -19,10 +19,10 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -397,7 +397,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -487,8 +487,7 @@ methods to estimate water level changes in lakes. This method has high spatial a
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdalinfo Project/ccAll
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo Project/ccAll
 </pre></div>
 </div>
 </div>
@@ -648,8 +647,7 @@ Band 41 Block=9219x1 Type=Float32, ColorInterp=Undefined
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo Project/ccAll <span class="p">|</span> grep Band_ <span class="p">|</span> wc -l<span class="k">)</span>
 <span class="nb">echo</span> <span class="nv">$nBands</span>
 </pre></div>
@@ -668,8 +666,7 @@ Band 41 Block=9219x1 Type=Float32, ColorInterp=Undefined
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo Project/ccAll <span class="p">|</span> grep Band_ <span class="p">|</span> wc -l<span class="k">)</span>
 <span class="k">for</span> band <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="nv">$nBands</span><span class="sb">`</span><span class="p">;</span> <span class="k">do</span>   <span class="c1"># a for loop through all bands (images)</span>
     <span class="nb">echo</span> <span class="s2">&quot;Band </span><span class="nv">$band</span><span class="s2">:&quot;</span>            <span class="c1"># show the band number in progress</span>
@@ -688,8 +685,7 @@ change maps.</strong></p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="k">for</span> i <span class="k">in</span> <span class="o">{</span>A..Z<span class="o">}</span><span class="p">;</span> <span class="k">do</span>
 <span class="nb">echo</span> <span class="nv">$i</span> &gt;&gt; letters.txt <span class="c1"># type letters A to Z in 26 lins of letters.txt</span>
 <span class="k">done</span>
@@ -700,8 +696,7 @@ change maps.</strong></p>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/letters.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat Project/letters.txt
 </pre></div>
 </div>
 </div>
@@ -742,8 +737,7 @@ Z
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Assign each letter with a dash to a mask*.tif file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Assign each letter with a dash to a mask*.tif file</span>
 <span class="o">%%</span><span class="k">bash</span>
 nBands=$(gdalinfo ccAll | grep Band_ | wc -l)
 for count in `seq 1 26`; do
@@ -756,8 +750,7 @@ done &gt; list.txt
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/list.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat Project/list.txt
 </pre></div>
 </div>
 </div>
@@ -798,8 +791,7 @@ done &gt; list.txt
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># change list.txt file to a single line file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change list.txt file to a single line file</span>
 <span class="o">!</span>grep - list.txt <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39; &#39;</span> &gt; ls.txt
 <span class="o">!</span><span class="nv">var</span><span class="o">=</span><span class="k">$(</span>cat ls.txt<span class="k">)</span>
 </pre></div>
@@ -809,8 +801,7 @@ done &gt; list.txt
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span><span class="nb">echo</span> <span class="nv">$var</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="nb">echo</span> <span class="nv">$var</span>
 </pre></div>
 </div>
 </div>
@@ -826,8 +817,7 @@ done &gt; list.txt
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># put an asterisk in front of each letter for gdal_calc.py sytanx</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># put an asterisk in front of each letter for gdal_calc.py sytanx</span>
 <span class="o">%%</span><span class="k">bash</span>
 for i in `seq 1 26`; do
 awk -v i=$i &#39;{ if (NR&lt;26) print $1,&quot;*&quot;; else print $1; }&#39; letters.txt &gt; multiply.txt
@@ -839,8 +829,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/multiply.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat Project/multiply.txt
 </pre></div>
 </div>
 </div>
@@ -881,8 +870,7 @@ Z
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># change multiply.txt file to a single line file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># change multiply.txt file to a single line file</span>
 <span class="o">!</span>grep . multiply.txt <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39; &#39;</span> &gt; multiply2.txt
 </pre></div>
 </div>
@@ -891,8 +879,7 @@ Z
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/multiply2.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat Project/multiply2.txt
 </pre></div>
 </div>
 </div>
@@ -908,8 +895,7 @@ A * B * C * D * E * F * G * H * I * J * K * L * M * N * O * P * Q * R * S * T * 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># multiply the first 26 mask*.tif images</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># multiply the first 26 mask*.tif images</span>
 <span class="o">!</span>gdal_calc.py --type<span class="o">=</span>Byte --overwrite  <span class="nv">$var</span> --co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>   --calc<span class="o">=</span><span class="s2">&quot;( </span><span class="k">$(</span>cat multiply2.txt<span class="k">)</span><span class="s2"> )&quot;</span> --outfile<span class="o">=</span>mask1_26.tif
 </pre></div>
 </div>
@@ -918,8 +904,7 @@ A * B * C * D * E * F * G * H * I * J * K * L * M * N * O * P * Q * R * S * T * 
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># the same procedure is done for the mask images mask27.tif to mask41.tif</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the same procedure is done for the mask images mask27.tif to mask41.tif</span>
 <span class="o">%%</span><span class="k">bash</span>
 for count in `seq 27 41`; do
 awk -v i=$count &#39;NR==i-26{ print &quot;-&quot;$1&quot; mask&quot;i&quot;.tif&quot; }&#39; letters.txt
@@ -944,8 +929,7 @@ gdal_calc.py --type=Byte --overwrite  $var --co=COMPRESS=DEFLATE --co=ZLEVEL=9  
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Multiply the last two masks we got and create the final maskAll.tif file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiply the last two masks we got and create the final maskAll.tif file</span>
 <span class="o">!</span>gdal_calc.py --type<span class="o">=</span>Byte --overwrite  -A mask1_26.tif -B mask27_41.tif --co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>   --calc<span class="o">=</span><span class="s2">&quot;( A * B )&quot;</span> --outfile<span class="o">=</span>maskAll.tif
 </pre></div>
 </div>
@@ -954,8 +938,7 @@ gdal_calc.py --type=Byte --overwrite  $var --co=COMPRESS=DEFLATE --co=ZLEVEL=9  
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Multiply each phase difference map (stored in bands of ifgAll file) by the maskAll.file to get the phase change of high-quality pixels</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Multiply each phase difference map (stored in bands of ifgAll file) by the maskAll.file to get the phase change of high-quality pixels</span>
 <span class="o">%%</span><span class="k">bash</span>
 for j in `seq 1 41`; do
 gdal_calc.py --type=Float32 --overwrite  -A ifgAll --A_band=$j -B maskAll.tif --co=COMPRESS=DEFLATE --co=ZLEVEL=9   --calc=&quot;( A * B.astype(float) )&quot; --outfile=&quot;ifg$j&quot;.tif
@@ -968,8 +951,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Crop the lake area for each phase change map with a shape file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crop the lake area for each phase change map with a shape file</span>
 <span class="o">%%</span><span class="k">bash</span>
 for j in `seq 1 41`; do
 gdalwarp -cutline shape/tvarsjon60.shp -crop_to_cutline -dstnodata 0 &quot;ifg$j&quot;.tif &quot;ifg_crop$j&quot;.tif
@@ -982,8 +964,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># get the phase change of each pixel and store the time series of each pixel in each field of file timesS.txt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># get the phase change of each pixel and store the time series of each pixel in each field of file timesS.txt</span>
 <span class="o">%%</span><span class="k">bash</span>
 nBands=$(gdalinfo ccAll | grep Band_ | wc -l)
 for l in `seq 1 $nBands`; do
@@ -997,8 +978,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Accumulate each field of timesS.txt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Accumulate each field of timesS.txt</span>
 <span class="o">!</span>awk <span class="s1">&#39;{ for (i=1; i&lt;=NF; ++i) {sum[i]+=$i; $i=sum[i] }; print $0}&#39;</span> timeS.txt &gt; timesAcc.txt
 </pre></div>
 </div>
@@ -1007,8 +987,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># the number of high-quality pixels</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># the number of high-quality pixels</span>
 <span class="o">!</span>awk <span class="s1">&#39;{print NF}&#39;</span> Project/timesAcc.txt
 </pre></div>
 </div>
@@ -1066,8 +1045,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>awk <span class="s1">&#39;BEGIN{ORS=&quot; &quot;;} {if ($3!=0) {print &quot;0&quot; } }&#39;</span> G1.txt &gt; zero.txt #create a line of zeros
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>awk <span class="s1">&#39;BEGIN{ORS=&quot; &quot;;} {if ($3!=0) {print &quot;0&quot; } }&#39;</span> G1.txt &gt; zero.txt #create a line of zeros
 <span class="o">!</span>sed <span class="s2">&quot;1i\\</span><span class="nv">$con</span><span class="s2">&quot;</span> timesAcc.txt &gt; tsAcc.txt #add zeros to the <span class="nb">time</span> series of the accumulated phase change <span class="o">(</span>first line: we assume that the phase of the first date was zero<span class="o">)</span>
 </pre></div>
 </div>
@@ -1076,8 +1054,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/zero.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>cat Project/zero.txt
 </pre></div>
 </div>
 </div>
@@ -1093,8 +1070,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># number of pixels</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of pixels</span>
 <span class="o">!</span>awk <span class="s1">&#39;{print NF}&#39;</span> Project/tsAcc.txt
 </pre></div>
 </div>
@@ -1152,8 +1128,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># number of dates</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># number of dates</span>
 <span class="o">!</span>awk <span class="s1">&#39;{print NR}&#39;</span> Project/tsAcc.txt
 </pre></div>
 </div>
@@ -1211,8 +1186,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># add the water level of the gauging station to the last column of the tsAcc.txt file</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># add the water level of the gauging station to the last column of the tsAcc.txt file</span>
 <span class="o">!</span> awk <span class="s1">&#39;{getline to_add &lt; &quot;field.txt&quot;; print $0,to_add}&#39;</span> tsAcc.txt &gt; tsAcc.txt
 </pre></div>
 </div>
@@ -1221,8 +1195,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># calculate the correlation between the last field (water level) and the accumulated phase change of all pixels (other fields) and store the values in corr.txt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate the correlation between the last field (water level) and the accumulated phase change of all pixels (other fields) and store the values in corr.txt</span>
 <span class="o">%%</span><span class="k">bash</span>
 for count in `seq 1 483`; do
 awk -v i=$count &#39;pass==1 {sx+=$i; sy+=$483; n+=1} pass==2 {mx=sx/(n); my=sy/(n); cov+=($i-mx)*($483-my); ssdx+=($i-mx)*($i-mx); ssdy+=($483-my)*($483-my);} END {print cov / ( sqrt(ssdx) * sqrt(ssdy) ) }&#39; pass=1 tsAccT.txt pass=2 tsAccT.txt  &gt;&gt; corr.txt
@@ -1238,8 +1211,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>sort -k1 -n corr.txt <span class="p">|</span> tail -10
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>sort -k1 -n corr.txt <span class="p">|</span> tail -10
 </pre></div>
 </div>
 </div>
@@ -1264,8 +1236,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert myProject.ipynb --to html
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>jupyter nbconvert myProject.ipynb --to html
 </pre></div>
 </div>
 </div>
@@ -1282,8 +1253,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert SaeidAminjafariProject.ipynb --to html
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>jupyter nbconvert SaeidAminjafariProject.ipynb --to html
 </pre></div>
 </div>
 </div>
@@ -1300,8 +1270,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>

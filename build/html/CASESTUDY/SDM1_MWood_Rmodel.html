@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -400,7 +400,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -478,8 +478,7 @@ install.packages(&quot;randomForest&quot;)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">library</span><span class="p">(</span><span class="n">ggplot2</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">rgdal</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">raster</span><span class="p">)</span>
 <span class="nf">library</span><span class="p">(</span><span class="n">rgeos</span><span class="p">)</span>
@@ -592,8 +591,7 @@ The following objects are masked from ‘package:InformationValue’:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">set.seed</span><span class="p">(</span><span class="m">30</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -602,7 +600,7 @@ The following objects are masked from ‘package:InformationValue’:
 <h2>Data Exploration<a class="headerlink" href="#Data-Exploration" title="Permalink to this headline"></a></h2>
 <p>We will use Montane woodcreper (Lepidocolaptes lacrymiger) as example species.</p>
 <p>This species has a large range, occurring from the coastal cordillera of Venezuela along the Andes south to south-east Peru and central Bolivia.</p>
-<p><img alt="42c451d9ec334cecb29feeca70606828" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
+<p><img alt="c0eb845440ef41bf86f480f5465bea47" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
 <section id="Read-in-points-data">
 <h3>Read in points data<a class="headerlink" href="#Read-in-points-data" title="Permalink to this headline"></a></h3>
 </section>
@@ -614,8 +612,7 @@ The following objects are masked from ‘package:InformationValue’:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span> <span class="n">points_field</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span> <span class="n">points_field</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
  <span class="nf">str</span><span class="p">(</span><span class="n">points_field</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -636,8 +633,7 @@ The following objects are masked from ‘package:InformationValue’:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># gbif_points = gbif(&#39;Lepidocolaptes&#39; , &#39;lacrymiger&#39; , download=T , geo=T , ext=c(-82,-59,-21,14) , removeZeros=TRUE )</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># gbif_points = gbif(&#39;Lepidocolaptes&#39; , &#39;lacrymiger&#39; , download=T , geo=T , ext=c(-82,-59,-21,14) , removeZeros=TRUE )</span>
 <span class="c1"># save(gbif_points , file=&quot;~/SE_data/exercise/geodata/SDM/gbif_points.Rdata&quot;)</span>
 <span class="nf">load</span><span class="p">(</span><span class="s">&quot;./geodata/SDM/gbif_points.Rdata&quot;</span><span class="p">)</span>
 <span class="n">points</span><span class="o">=</span><span class="nf">rbind.data.frame</span><span class="p">(</span>
@@ -664,8 +660,7 @@ The following objects are masked from ‘package:InformationValue’:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">rCld</span>   <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_meanannual_crop_msk.tif&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">rCld</span>   <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_meanannual_crop_msk.tif&quot;</span><span class="p">)</span>
 <span class="c1"># compute min and max</span>
 <span class="n">rCld</span>   <span class="o">=</span>  <span class="nf">setMinMax</span><span class="p">(</span><span class="n">rCld</span><span class="p">)</span>
 <span class="n">rCldIA</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_intra_crop_msk.tif&quot;</span><span class="p">)</span>
@@ -695,8 +690,7 @@ Traceback:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">birdrange</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;./geodata/shp&quot;</span><span class="p">,</span> <span class="s">&quot;cartodb-query&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">birdrange</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;./geodata/shp&quot;</span><span class="p">,</span> <span class="s">&quot;cartodb-query&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -715,8 +709,7 @@ It has 7 fields
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
 <span class="nf">points</span><span class="p">(</span><span class="n">points</span><span class="o">$</span><span class="n">lon</span><span class="p">,</span> <span class="n">points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="n">.</span><span class="m">3</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">birdrange</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
@@ -733,8 +726,7 @@ It has 7 fields
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># indicate that these data are presences</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># indicate that these data are presences</span>
 <span class="n">presence</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
 <span class="n">points</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">points</span><span class="p">,</span><span class="n">presence</span><span class="p">)</span>
 </pre></div>
@@ -744,8 +736,7 @@ It has 7 fields
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -769,8 +760,7 @@ It has 7 fields
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># building spatial dataframe</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># building spatial dataframe</span>
 <span class="nf">coordinates</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#39;lon&#39;</span><span class="p">,</span><span class="s">&#39;lat&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -779,8 +769,7 @@ It has 7 fields
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">str</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -809,8 +798,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># assign projection</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># assign projection</span>
 <span class="nf">projection</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;+proj=longlat +datum=WGS84&quot;</span>
 </pre></div>
 </div>
@@ -820,8 +808,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># link to global sampling raster</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># link to global sampling raster</span>
 <span class="c1"># first crop with the gdal and then load the cropversion</span>
 <span class="nf">system</span><span class="p">(</span><span class="s">&quot;gdal_translate -projwin -82 14 -59 -21 -co COMPRESS=DEFLATE -co ZLEVEL=9 ./geodata/SDM/eBirdSampling_filtered.tif ./geodata/SDM/eBirdSampling_filtered_crop.tif&quot;</span><span class="p">)</span>
 <span class="n">gsampling</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/SDM/eBirdSampling_filtered_crop.tif&quot;</span><span class="p">)</span>
@@ -832,8 +819,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># assign projection</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># assign projection</span>
 <span class="nf">projection</span><span class="p">(</span><span class="n">gsampling</span><span class="p">)</span><span class="o">=</span><span class="s">&quot;+proj=longlat +datum=WGS84&quot;</span>
 <span class="n">gsampling</span>
 </pre></div>
@@ -859,8 +845,7 @@ values     : 0, 65535  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># convert to points within data region</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert to points within data region</span>
 <span class="n">samplingp</span> <span class="o">&lt;-</span> <span class="nf">as</span><span class="p">(</span><span class="n">gsampling</span><span class="p">,</span><span class="s">&quot;SpatialPointsDataFrame&quot;</span><span class="p">)</span>
 <span class="n">samplingp</span> <span class="o">&lt;-</span> <span class="n">samplingp</span><span class="p">[</span><span class="n">samplingp</span><span class="o">$</span><span class="n">eBirdSampling_filtered_crop</span><span class="o">&gt;</span><span class="m">0</span><span class="p">,]</span>
 <span class="nf">str</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
@@ -909,8 +894,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span> <span class="c1"># edit column names</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span> <span class="c1"># edit column names</span>
  <span class="nf">colnames</span><span class="p">(</span><span class="n">samplingp</span><span class="o">@</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;observation&quot;</span><span class="p">)</span>
  <span class="n">samplingp</span><span class="o">$</span><span class="n">presence</span><span class="o">=</span><span class="m">0</span>
  <span class="nf">plot</span><span class="p">(</span><span class="n">samplingp</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">21</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">)</span><span class="c1">#absences</span>
@@ -930,8 +914,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">summary</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -964,8 +947,7 @@ Data attributes:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pdata</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">points</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">samplingp</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">])</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pdata</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">points</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">samplingp</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">])</span>
 <span class="n">pdata</span><span class="o">@</span><span class="n">data</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="nf">coordinates</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
 <span class="nf">table</span><span class="p">(</span><span class="n">pdata</span><span class="o">$</span><span class="n">presence</span><span class="p">)</span>
 </pre></div>
@@ -988,8 +970,7 @@ Data attributes:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">env</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rCld</span><span class="p">,</span><span class="n">rCldIA</span><span class="p">,</span><span class="n">rElv</span><span class="p">,</span><span class="n">rVeg</span><span class="p">))</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rCld</span><span class="p">,</span><span class="n">rCldIA</span><span class="p">,</span><span class="n">rElv</span><span class="p">,</span><span class="n">rVeg</span><span class="p">))</span>
 <span class="n">env</span>
 </pre></div>
 </div>
@@ -1014,8 +995,7 @@ max values :                  10000,              3790,                         
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># rename layers for convenience</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1"># rename layers for convenience</span>
 <span class="n">vars</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;cld&quot;</span><span class="p">,</span><span class="s">&quot;cld_ia&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;forest&quot;</span><span class="p">)</span>
 
 <span class="nf">names</span><span class="p">(</span><span class="n">env</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">vars</span>
@@ -1039,8 +1019,7 @@ max values :                  10000,              3790,                         
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">senv</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">env</span><span class="p">[[</span><span class="n">vars</span><span class="p">]])</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">senv</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">env</span><span class="p">[[</span><span class="n">vars</span><span class="p">]])</span>
 <span class="n">senv</span>
 <span class="c1"># this operation is quite long. Would be possible to do in gdal? how?</span>
 </pre></div>
@@ -1067,8 +1046,7 @@ max values :  2.1937157,  4.5331428,  5.0445753,  0.7798705
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">hist</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 <span class="nf">hist</span><span class="p">(</span><span class="n">senv</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1108,8 +1086,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">pdata</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">pdata</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1117,8 +1094,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="o">!</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">forest</span><span class="p">),])</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="o">!</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">forest</span><span class="p">),])</span>
 </pre></div>
 </div>
 </div>
@@ -1129,8 +1105,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="c1">## convert to &#39;long&#39; format for easier plotting</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="c1">## convert to &#39;long&#39; format for easier plotting</span>
 <span class="n">df.xactl</span> <span class="o">&lt;-</span> <span class="n">reshape</span><span class="o">::</span><span class="nf">melt</span><span class="p">(</span><span class="n">df.xact</span><span class="o">@</span><span class="n">data</span><span class="p">,</span><span class="n">id.vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lat&quot;</span><span class="p">,</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;presence&quot;</span><span class="p">),</span><span class="n">variable.name</span><span class="o">=</span><span class="s">&quot;variable&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1139,8 +1114,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1164,8 +1138,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">tail</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">tail</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1189,8 +1162,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">presence</span><span class="p">))</span><span class="o">+</span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">variable</span><span class="p">)</span><span class="o">+</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">presence</span><span class="p">))</span><span class="o">+</span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">variable</span><span class="p">)</span><span class="o">+</span>
   <span class="nf">geom_point</span><span class="p">()</span><span class="o">+</span>
   <span class="nf">stat_smooth</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="n">y</span> <span class="o">~</span> <span class="n">x</span> <span class="o">+</span> <span class="nf">I</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
   <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;gam&quot;</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="n">y</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bs</span> <span class="o">=</span> <span class="s">&quot;cs&quot;</span><span class="p">))</span> <span class="o">+</span>
@@ -1209,13 +1181,12 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <section id="Model-Fitting">
 <h3>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline"></a></h3>
 <p>cross validation</p>
-<p><img alt="2799d631e55d45c1b0a254b68a7b2251" class="no-scaled-link" src="../_images/cross_vld.gif" style="width: 600px;" /></p>
+<p><img alt="816888f6f2d84fdbbb3a68c4cd00f7bc" class="no-scaled-link" src="../_images/cross_vld.gif" style="width: 600px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1223,8 +1194,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span> <span class="o">&lt;-</span> <span class="nf">kfold</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span> <span class="o">&lt;-</span> <span class="nf">kfold</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1232,8 +1202,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">head</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1257,8 +1226,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.glm</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">presence</span><span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.glm</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">presence</span><span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1266,8 +1234,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">summary</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">summary</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1318,8 +1285,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.glm1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.glm1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 <span class="n">pred.glm2</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">2</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1328,8 +1294,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">pred.glm1</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">pred.glm1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1344,8 +1309,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">2</span><span class="p">),</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">pred.glm2</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plotROC</span><span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">2</span><span class="p">),</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">pred.glm2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1363,8 +1327,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1373,8 +1336,7 @@ Number of Fisher Scoring iterations: 8
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">8</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">8</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
 <span class="nf">gplot</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">+</span><span class="nf">geom_tile</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">value</span><span class="p">))</span><span class="o">+</span>
   <span class="nf">scale_fill_gradientn</span><span class="p">(</span>
     <span class="n">colours</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="s">&quot;red&quot;</span><span class="p">),</span>
@@ -1410,8 +1372,7 @@ Regions defined for each Polygons
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ctrl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;cv&quot;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">ctrl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;cv&quot;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
 
 <span class="n">mdl.glm.cv</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span>  <span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span> <span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span>
 <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span>  <span class="n">data</span> <span class="o">=</span> <span class="n">df.xact</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;glm&quot;</span><span class="p">,</span> <span class="n">trControl</span> <span class="o">=</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;Accuracy&#39;</span><span class="p">)</span>
@@ -1422,8 +1383,7 @@ Regions defined for each Polygons
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.glm.cv</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.glm.cv</span>
 </pre></div>
 </div>
 </div>
@@ -1453,8 +1413,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.raw</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;raw&quot;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.mdl.glm.cv.raw</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;raw&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1462,8 +1421,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.raw</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.raw</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1479,8 +1437,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.mdl.glm.cv.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.prob1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1496,8 +1453,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.prob2</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.mdl.glm.cv.prob2</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.prob2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1524,8 +1480,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.rf</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.rf</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1533,8 +1488,7 @@ Resampling results:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.rf</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.rf</span>
 </pre></div>
 </div>
 </div>
@@ -1563,8 +1517,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.resp</span>  <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.rf.resp</span>  <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1572,8 +1525,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.resp</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.resp</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1591,8 +1543,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.rf.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="n">pred.rf.prob0</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1601,8 +1552,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.prob1</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.prob1</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.prob0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1629,8 +1579,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ</span> <span class="o">=</span> <span class="nf">raster</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="m">420</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="m">276</span><span class="p">,</span> <span class="n">xmn</span><span class="o">=</span><span class="m">-82</span><span class="p">,</span> <span class="n">xmx</span><span class="o">=</span><span class="m">-59</span><span class="p">,</span> <span class="n">ymn</span><span class="o">=</span><span class="m">-21</span><span class="p">,</span> <span class="n">ymx</span><span class="o">=</span><span class="m">14</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s">&quot;+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0&quot;</span> <span class="p">,</span> <span class="n">vals</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="o">=</span> <span class="nf">raster</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="m">420</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="m">276</span><span class="p">,</span> <span class="n">xmn</span><span class="o">=</span><span class="m">-82</span><span class="p">,</span> <span class="n">xmx</span><span class="o">=</span><span class="m">-59</span><span class="p">,</span> <span class="n">ymn</span><span class="o">=</span><span class="m">-21</span><span class="p">,</span> <span class="n">ymx</span><span class="o">=</span><span class="m">14</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s">&quot;+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0&quot;</span> <span class="p">,</span> <span class="n">vals</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1638,8 +1587,7 @@ Confusion matrix:
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span>
 </pre></div>
 </div>
 </div>
@@ -1663,8 +1611,7 @@ values     : 0, 0  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pointcount</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pts</span><span class="p">){</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pointcount</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pts</span><span class="p">){</span>
   <span class="c1"># make a raster of zeroes like the input</span>
   <span class="n">r2</span> <span class="o">=</span> <span class="n">r</span>
   <span class="n">r2</span><span class="p">[]</span> <span class="o">=</span> <span class="m">0</span>
@@ -1683,8 +1630,7 @@ values     : 0, 0  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">occ_raster</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">occ_raster</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1699,8 +1645,7 @@ values     : 0, 0  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point</span> <span class="o">=</span> <span class="nf">rasterToPoints</span><span class="p">(</span><span class="n">occ_raster</span> <span class="p">,</span> <span class="n">spatial</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">occ_point</span> <span class="o">=</span> <span class="nf">rasterToPoints</span><span class="p">(</span><span class="n">occ_raster</span> <span class="p">,</span> <span class="n">spatial</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1708,8 +1653,7 @@ values     : 0, 0  (min, max)
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">str</span><span class="p">(</span><span class="n">occ_point</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">str</span><span class="p">(</span><span class="n">occ_point</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1739,8 +1683,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point_sel</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">occ_point</span> <span class="p">,</span> <span class="p">(</span><span class="n">layer</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="o">&amp;</span> <span class="n">layer</span> <span class="o">&lt;</span> <span class="m">100</span><span class="p">)</span>  <span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">occ_point_sel</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">occ_point</span> <span class="p">,</span> <span class="p">(</span><span class="n">layer</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="o">&amp;</span> <span class="n">layer</span> <span class="o">&lt;</span> <span class="m">100</span><span class="p">)</span>  <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1748,8 +1691,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">hist</span><span class="p">(</span><span class="n">occ_point_sel</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">layer</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">hist</span><span class="p">(</span><span class="n">occ_point_sel</span><span class="o">@</span><span class="n">data</span><span class="o">$</span><span class="n">layer</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1764,8 +1706,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point_sel_predictor</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">occ_point_sel</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">occ_point_sel_predictor</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">occ_point_sel</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 <span class="nf">str</span><span class="p">(</span><span class="n">occ_point_sel_predictor</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1799,8 +1740,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.rf.occ</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span> <span class="n">layer</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span> <span class="n">forest</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">occ_point_sel_predictor</span> <span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">mdl.rf.occ</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span> <span class="n">layer</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span> <span class="n">forest</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">occ_point_sel_predictor</span> <span class="p">)</span>
 <span class="n">mdl.rf.occ</span>
 </pre></div>
 </div>
@@ -1825,8 +1765,7 @@ No. of variables tried at each split: 1
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.occ</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf.occ</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="n">pred.rf.occ</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf.occ</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1834,8 +1773,7 @@ No. of variables tried at each split: 1
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
 </pre></div>
 </div>
-<div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.occ</span><span class="p">)</span>
+<div class="input_area highlight-r notranslate"><div class="highlight"><pre><span></span><span class="nf">plot</span><span class="p">(</span><span class="n">pred.rf.occ</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

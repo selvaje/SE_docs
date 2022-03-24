@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -386,7 +386,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -455,8 +455,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> head -43  geodata/glad_ard/16d_intervals.csv  <span class="p">|</span> tail -6
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> head -43  geodata/glad_ard/16d_intervals.csv  <span class="p">|</span> tail -6
 </pre></div>
 </div>
 </div>
@@ -479,8 +478,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/glad_ard_876_899_922_crop.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -510,8 +508,7 @@ done
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> gdalinfo -mm   geodata/glad_ard/922_crop.tif
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> gdalinfo -mm   geodata/glad_ard/922_crop.tif
 </pre></div>
 </div>
 </div>
@@ -671,8 +668,7 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/glad_ard_876_899_922_crop_msk.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -694,8 +690,7 @@ Band 8 Block=400x1 Type=UInt16, ColorInterp=Undefined
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="nb">echo</span> <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="k">$(</span> seq <span class="m">10</span> <span class="m">23</span> <span class="k">)</span>   <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">2</span>  bash -c <span class="s1">$&#39;</span>
 <span class="s1">day=$1</span>
@@ -799,8 +794,7 @@ Input file size is 400, 440
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/glad_ard_median_02_6bs.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -822,8 +816,7 @@ Input file size is 400, 440
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="c1"># for semplicity we concentrate in only on band 1</span>
 <span class="nb">echo</span> <span class="m">1</span>  <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">1</span>  bash -c <span class="s1">$&#39;</span>
@@ -907,8 +900,7 @@ Input file size is 400, 440
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 R --vanilla -q
 <span class="c1"># open a terminal and run this line for the installation</span>
 <span class="c1"># install.packages(&quot;Rcpp&quot;)</span>
@@ -962,8 +954,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/median_tseries_1b.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -981,8 +972,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/median_steffen_1b.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1003,8 +993,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nb">echo</span> <span class="s2">&quot;day tseries akima steffen&quot;</span> &gt; geodata/glad_ard/day_orig_akima_steffen.txt
 paste -d <span class="s2">&quot; &quot;</span> &lt;<span class="o">(</span><span class="k">for</span> day <span class="k">in</span>  <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="k">$(</span>seq <span class="m">10</span> <span class="m">23</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span>  expr <span class="nv">$day</span> <span class="se">\*</span> <span class="m">16</span> - <span class="m">8</span> <span class="p">;</span> <span class="k">done</span><span class="o">)</span> <span class="se">\</span>
  &lt;<span class="o">(</span>gdallocationinfo -valonly -geoloc geodata/glad_ard/median_tseries_1b.vrt       <span class="m">15</span>.2866 <span class="m">38</span>.0539 <span class="p">|</span> head -23 <span class="o">)</span> <span class="se">\</span>
@@ -1019,8 +1008,7 @@ paste -d <span class="s2">&quot; &quot;</span> &lt;<span class="o">(</span><span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> cat geodata/glad_ard/day_orig_akima_steffen.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cat geodata/glad_ard/day_orig_akima_steffen.txt
 </pre></div>
 </div>
 </div>
@@ -1060,8 +1048,7 @@ day tseries akima steffen
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 R --vanilla -q
 <span class="nv">tseries</span> <span class="o">=</span> read.table<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/day_orig_akima_steffen.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span> , <span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
 str<span class="o">(</span>tseries<span class="o">)</span>
@@ -1101,8 +1088,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/plot_interpolation1.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1124,8 +1110,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/Savitzky_Golay.gif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1144,8 +1129,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="nb">echo</span> <span class="m">1</span> <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">1</span>  bash -c <span class="s1">$&#39;</span>
 <span class="s1">B=$1</span>
@@ -1171,8 +1155,7 @@ opening output image geodata/glad_ard/median_savgolay_1b.tif with 23 bands
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nb">echo</span> <span class="s2">&quot;savgolay&quot;</span> &gt; geodata/glad_ard/savgolay.txt
 gdallocationinfo -valonly -geoloc geodata/glad_ard/median_savgolay_1b.tif <span class="m">15</span>.2866 <span class="m">38</span>.0539  &gt;&gt; geodata/glad_ard/savgolay.txt
 paste -d <span class="s2">&quot; &quot;</span> geodata/glad_ard/day_orig_akima_steffen.txt geodata/glad_ard/savgolay.txt &gt; geodata/glad_ard/day_orig_akima_steffen_savgolay.txt
@@ -1183,8 +1166,7 @@ paste -d <span class="s2">&quot; &quot;</span> geodata/glad_ard/day_orig_akima_s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> cat geodata/glad_ard/day_orig_akima_steffen_savgolay.txt
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cat geodata/glad_ard/day_orig_akima_steffen_savgolay.txt
 </pre></div>
 </div>
 </div>
@@ -1224,8 +1206,7 @@ day tseries akima steffen savgolay
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 R --vanilla -q
 <span class="nv">tseries</span> <span class="o">=</span> read.table<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/day_orig_akima_steffen_savgolay.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span> , <span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
 str<span class="o">(</span>tseries<span class="o">)</span>
@@ -1268,8 +1249,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/plot_interpolation2.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1290,8 +1270,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="nb">echo</span> <span class="m">1</span> <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">1</span>  bash -c <span class="s1">$&#39;</span>
 <span class="s1">B=$1</span>
@@ -1316,8 +1295,7 @@ opening output image geodata/glad_ard/median_akima_wavelet_1b.tif with 12 bands
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nb">echo</span> <span class="s2">&quot;day wavelet&quot;</span> &gt; geodata/glad_ard/day_wavelet.txt
 paste -d <span class="s2">&quot; &quot;</span> &lt;<span class="o">(</span>  <span class="k">for</span> day <span class="k">in</span>  <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span>   <span class="p">;</span> <span class="k">do</span>    expr <span class="nv">$day</span> <span class="se">\*</span> <span class="m">31</span>  - <span class="m">15</span>  <span class="p">;</span> <span class="k">done</span>   <span class="o">)</span> <span class="se">\</span>
 &lt;<span class="o">(</span>gdallocationinfo -valonly  -geoloc geodata/glad_ard/median_akima_wavelet_1b.tif <span class="m">15</span>.2866 <span class="m">38</span>.0539 <span class="o">)</span>  &gt;&gt; geodata/glad_ard/day_wavelet.txt
@@ -1350,8 +1328,7 @@ day wavelet
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 R --vanilla -q
 <span class="nv">tseries1</span> <span class="o">=</span> read.table<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/day_orig_akima_steffen_savgolay.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span> , <span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
 <span class="nv">tseries2</span> <span class="o">=</span> read.table<span class="o">(</span><span class="s2">&quot;geodata/glad_ard/day_wavelet.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span> , <span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
@@ -1390,8 +1367,7 @@ null device
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/plot_interpolation3.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>

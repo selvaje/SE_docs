@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -76,7 +76,7 @@
 <p class="caption" role="heading"><span class="caption-text">BASH</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">AWK</span></p>
@@ -385,7 +385,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -449,7 +449,7 @@ div.rendered_html tbody tr:hover {
 <h1>AWK Tutorial<a class="headerlink" href="#AWK-Tutorial" title="Permalink to this headline"></a></h1>
 <hr class="docutils" />
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s. It consists of a set of actions to be taken against streams of textual data.</p>
-<p><img alt="0525d195be6b420e9df90dcb385c2dde" class="no-scaled-link" src="../_images/less_auk.jpg" style="width: 900px;" /></p>
+<p><img alt="c7d01aefc6de4405950eb191ed275bea" class="no-scaled-link" src="../_images/less_auk.jpg" style="width: 900px;" /></p>
 <section id="The-AWK-syntax">
 <h2>The AWK syntax<a class="headerlink" href="#The-AWK-syntax" title="Permalink to this headline"></a></h2>
 <p>The awk syntax is:</p>
@@ -482,8 +482,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nv">fIn</span><span class="o">=</span><span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 
 head <span class="si">${</span><span class="nv">fIn</span><span class="si">}</span>
@@ -559,8 +558,7 @@ YYYY BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;BEGIN { print &quot;sum&quot; } { sum += $5 } END {printf ( &quot;%f\n&quot;, sum)}&#39;</span> ./txt/aver_month_nuts3_fire.asc
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk <span class="s1">&#39;BEGIN { print &quot;sum&quot; } { sum += $5 } END {printf ( &quot;%f\n&quot;, sum)}&#39;</span> ./txt/aver_month_nuts3_fire.asc
 </pre></div>
 </div>
 </div>
@@ -580,8 +578,7 @@ sum
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 awk  <span class="s1">&#39;{ print $5 }&#39;</span>  ./txt/aver_month_nuts3_fire.asc  <span class="p">|</span>  sort -k <span class="m">1</span>,1 <span class="p">|</span> head
 </pre></div>
 </div>
@@ -610,8 +607,7 @@ awk  <span class="s1">&#39;{ print $5 }&#39;</span>  ./txt/aver_month_nuts3_fire
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="k">for</span> <span class="o">((</span> <span class="nv">i</span><span class="o">=</span><span class="m">1</span> <span class="p">;</span> i&lt;<span class="o">=</span><span class="m">4</span> <span class="p">;</span> i++  <span class="o">))</span> <span class="p">;</span> <span class="k">do</span>
 awk  -v <span class="nv">i</span><span class="o">=</span><span class="nv">$i</span>  <span class="s1">&#39;{ print $i }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head -3
 <span class="nb">echo</span> <span class="s2">&quot;---&quot;</span>
@@ -649,8 +645,7 @@ MM
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;NR&gt;1{ print log($5) }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk  <span class="s1">&#39;NR&gt;1{ print log($5) }&#39;</span> ./txt/aver_month_nuts3_fire.asc <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -675,8 +670,7 @@ MM
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print substr($1,1,4) }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head -3
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk  <span class="s1">&#39;{ print substr($1,1,4) }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head -3
 </pre></div>
 </div>
 </div>
@@ -694,8 +688,7 @@ BG31
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;{ if($3&gt;2) print }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk  <span class="s1">&#39;{ if($3&gt;2) print }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -720,8 +713,7 @@ BG312 2006 12 3 29.1471
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;NR==1 { print &quot;index &quot;$0 } NR&gt;1 { print NR-1,$0 }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk <span class="s1">&#39;NR==1 { print &quot;index &quot;$0 } NR&gt;1 { print NR-1,$0 }&#39;</span> <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span> <span class="p">|</span> head
 </pre></div>
 </div>
 </div>
@@ -746,8 +738,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;{ if (NR&gt;1) {if ($4&gt;max) max= $4 }} END {print max }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk <span class="s1">&#39;{ if (NR&gt;1) {if ($4&gt;max) max= $4 }} END {print max }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -763,8 +754,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7) sum=sum+$5} END {printf (&quot;%f&quot;,sum) }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7) sum=sum+$5} END {printf (&quot;%f&quot;,sum) }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -780,8 +770,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7 &amp;&amp; $2==2005  ) sum=sum+$5} END {print sum }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk <span class="s1">&#39;{ if($3==7 &amp;&amp; $2==2005  ) sum=sum+$5} END {print sum }&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -798,8 +787,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> ls -l /tmp/ <span class="p">|</span> awk <span class="s1">&#39;{s=$5; if(s&gt;1000000){print$0}}&#39;</span><span class="p">|</span> wc -l
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> ls -l /tmp/ <span class="p">|</span> awk <span class="s1">&#39;{s=$5; if(s&gt;1000000){print$0}}&#39;</span><span class="p">|</span> wc -l
 </pre></div>
 </div>
 </div>
@@ -816,8 +804,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk  <span class="s1">&#39;NR%1000==1{x=&quot;blockfile&quot;++i ; }{print &gt; x}&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk  <span class="s1">&#39;NR%1000==1{x=&quot;blockfile&quot;++i ; }{print &gt; x}&#39;</span>  <span class="s2">&quot;./txt/aver_month_nuts3_fire.asc&quot;</span>
 <span class="o">!</span> mv blockfile* ./txt
 </pre></div>
 </div>
@@ -829,8 +816,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nv">fOut</span><span class="o">=</span><span class="s2">&quot;./txt/test.csv&quot;</span>
 <span class="nb">echo</span> ID,column_1,colum_b,colum_c,TOTAL &gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
 <span class="nb">echo</span> <span class="m">1</span>,3,5,6,14 &gt;&gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
@@ -843,8 +829,7 @@ index NUTS YYYY MM 0 BAREA
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cat</span> <span class="s2">&quot;./txt/test.csv&quot;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="s2">&quot;./txt/test.csv&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -863,8 +848,7 @@ ID,column_1,colum_b,colum_c,TOTAL
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="k">for</span> COLNAME <span class="k">in</span>  colum_b TOTAL <span class="p">;</span> <span class="k">do</span>
 awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span> ./txt/test.csv
 <span class="nb">echo</span> <span class="s2">&quot;---&quot;</span>
@@ -894,8 +878,7 @@ awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="n
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="nv">fOut</span><span class="o">=</span><span class="s2">&quot;./txt/test.csv&quot;</span>
 <span class="nb">echo</span> <span class="sb">`</span>seq -s <span class="se">\,</span> <span class="m">1</span> <span class="m">1</span> <span class="m">100</span><span class="sb">`</span>  &gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
 <span class="nb">echo</span> <span class="sb">`</span>seq -s <span class="se">\,</span> <span class="m">2</span> <span class="m">20</span> <span class="m">2000</span><span class="sb">`</span>  &gt;&gt; <span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
@@ -923,8 +906,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk -F, <span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv  &gt; ./txt/list_of_columns.csv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> awk -F, <span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span> ./txt/test.csv  &gt; ./txt/list_of_columns.csv
 </pre></div>
 </div>
 </div>
@@ -932,8 +914,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> cat ./txt/list_of_columns.csv
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span> cat ./txt/list_of_columns.csv
 </pre></div>
 </div>
 </div>
@@ -950,8 +931,7 @@ awk -F,  <span class="s1">&#39; { print NR }&#39;</span> <span class="si">${</sp
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="k">for</span> COLNAME <span class="k">in</span>  <span class="sb">`</span>cat ./txt/list_of_columns.csv<span class="sb">`</span> <span class="p">;</span> <span class="k">do</span>
 <span class="nb">echo</span> <span class="nv">$COLNAME</span>
 awk -F, -v <span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span> <span class="s1">&#39; { if (NR==1)  { for (col=1;col&lt;=NF;col++) { if ($col==COLNAME) {colprint=col}}}  else  {print $1 &quot;,&quot; $colprint }} &#39;</span> ./txt/test.csv &gt; ./txt/OUTPUT_subset_<span class="nv">$COLNAME</span>.csv
