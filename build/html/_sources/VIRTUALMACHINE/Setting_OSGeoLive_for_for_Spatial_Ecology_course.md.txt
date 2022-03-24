@@ -153,7 +153,13 @@ Now you should be ready to follow the lectures of the Spatial Ecology courses.
     include-system-site-packages = false --> include-system-site-packages = true
     -------------------------------------------------------------------------------
 
-   $ pip install -U pip
+   $ echo alias \'pyact=source  ~/pyVenv/bin/activate\'  >>  ~/.bashrc
 
-   $ pip install jupyterlab
+   exit and reenter the bash terminal
+
+   $ pyact 
+
+   (pyVenv) $ pip install -U pip
+
+   (pyVenv) $ pip install jupyterlab
 
