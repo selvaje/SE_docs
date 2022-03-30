@@ -138,20 +138,14 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 
 ![title](Git_setting_4courses.png)
 
-#########################
-
 Now you should be ready to follow the lectures of the Spatial Ecology courses.
 
+<!---
 ## Setting Python Virtual Env.
 
-$ sudo apt-get install python3-venv
-$ python3 -m venv pyVenv
+sudo apt-get install python3-venv
+python3 -m venv pyVenv
 
-    change line in ~/pyVenv/pyvenv.cfg
-    -------------------------------------------------------------------------------
-    include-system-site-packages = false --> include-system-site-packages = true
-    -------------------------------------------------------------------------------
-
-$ pip install -U pip
-$ pip install jupyterlab
-
+pip install -U pip
+pip install jupyterlab
+-->
