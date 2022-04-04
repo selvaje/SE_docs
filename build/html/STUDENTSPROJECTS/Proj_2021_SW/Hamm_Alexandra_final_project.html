@@ -19,10 +19,10 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -398,7 +398,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -528,8 +528,7 @@ often go together. The results show, however, that there is no preferential aspe
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="c1"># this is the script I ran as a .sh file. Hence the /bin/bash</span>
 <span class="c1">#!/bin/bash</span>
 
@@ -544,8 +543,7 @@ often go together. The results show, however, that there is no preferential aspe
     <span class="nb">echo</span> extracting tile list
     ogrinfo -al <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_tiles.shp -geom<span class="o">=</span>NO <span class="p">|</span> grep <span class="s1">&#39;tile (String)&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> awk <span class="s1">&#39;{ print $4 }&#39;</span> &gt; <span class="nv">$STRINGFIX</span>/tile_list.txt
 <span class="k">done</span>
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 <p>Tile lists look like this:</p>
@@ -553,8 +551,7 @@ often go together. The results show, however, that there is no preferential aspe
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 less tile_list.txt
 </pre></div>
 </div>
@@ -594,8 +591,7 @@ less tile_list.txt
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
 <span class="c1">#!/bin/bash</span>
 <span class="nv">direc</span><span class="o">=</span><span class="nv">$1</span>
@@ -658,8 +654,7 @@ touch all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span
     <span class="o">((</span>counter++<span class="o">))</span>
     rm *.tar.gz
 <span class="k">done</span> &lt;tile_list.txt
-
-</pre></div>
+<br/></pre></div>
 </div>
 </div>
 </section>
@@ -670,8 +665,7 @@ touch all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">cm</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -813,8 +807,7 @@ processing Far East
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">col_str</span> <span class="o">=</span> <span class="s1">&#39;r|rrrr&#39;</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">col_str</span> <span class="o">=</span> <span class="s1">&#39;r|rrrr&#39;</span>
 <span class="n">pd_t</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">slope_tab</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="n">areas</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">colnames</span><span class="p">)</span>
 <span class="c1"># latex table format</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">pd_t</span><span class="o">.</span><span class="n">to_latex</span><span class="p">(</span><span class="n">column_format</span><span class="o">=</span><span class="n">col_str</span><span class="p">))</span>
@@ -954,8 +947,7 @@ Far East              &amp;  59.99 &amp;  22.82 &amp;    8.70 &amp;   8.49 \\
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;../slope_map.png&#39;</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Image</span><span class="p">(</span><span class="s1">&#39;../slope_map.png&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

@@ -19,10 +19,10 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.1/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -378,7 +378,7 @@ div.nboutput.container div.output_area > div[class^='highlight']{
 }
 
 /* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
-.prompt a.copybtn {
+.prompt .copybtn {
     display: none;
 }
 
@@ -456,8 +456,7 @@ jupyter-notebook 02_pktools_osgeo.ipynb
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 gdal_translate -of  XYZ   geodata/vegetation/ETmean08-11_crop.tif geodata/vegetation/ETmean08-11_crop.txt
 awk <span class="s1">&#39;{if ($3&gt;2 &amp;&amp; $3&lt;4) {print $1,$2,50 } else {print}}&#39;</span> geodata/vegetation/ETmean08-11_crop.txt &gt; geodata/vegetation/ETmean08-11_crop_trh.txt
 gdal_translate -ot Byte geodata/vegetation/ETmean08-11_crop_trh.txt geodata/vegetation/ETmean08-11_crop_trh.tif
@@ -480,8 +479,7 @@ Input file size is 240, 240
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">1</span>  -max  <span class="m">2</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhA.tif
 pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">5</span>  -max  <span class="m">8</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhB.tif
 pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">0</span>  -max  <span class="m">10</span> -data <span class="m">0</span> -nodata <span class="m">1</span> -ot Byte  -i  geodata/vegetation/ETmean08-11.tif  -o geodata/vegetation/ETmean08-11_01_trhC.tif
@@ -504,8 +502,7 @@ pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
 -m geodata/vegetation/ETmean08-11_01_trhA.tif  -msknodata <span class="m">1</span> -nodata  -9 <span class="se">\</span>
 -m geodata/vegetation/ETmean08-11_01_trhB.tif  -msknodata <span class="m">1</span> -nodata  -5 <span class="se">\</span>
@@ -528,8 +525,7 @@ pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min <span class="m">0</span> -max <span class="m">25</span> -data <span class="m">0</span> -nodata <span class="m">1</span> -ot Byte -i geodata/LST/LST_MOYDmax_month1.tif -o geodata/LST/LST_MOYDmax_month1-msk.tif
 </pre></div>
 </div>
@@ -547,8 +543,7 @@ pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
 pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
 </pre></div>
@@ -568,8 +563,7 @@ pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="c1"># Create a multiband vrt</span>
 gdalbuildvrt -overwrite -separate geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif
 <span class="c1"># Calculate mean and standard deviation</span>
@@ -591,8 +585,7 @@ pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="c1"># mean aggregation</span>
 pkfilter -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -nodata <span class="m">0</span> -ot Float32 -dx <span class="m">10</span> -dy <span class="m">10</span> -f mean -d <span class="m">10</span> -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif
 <span class="c1"># mean circular moving window</span>
@@ -616,8 +609,7 @@ opening output image geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif with 1
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkstat -hist  -src_min <span class="m">0</span>  -i    geodata/temperature/ug_bio_3.tif &gt; geodata/temperature/ug_bio_3.hist
 head geodata/temperature/ug_bio_3.hist
 </pre></div>
@@ -644,8 +636,7 @@ head geodata/temperature/ug_bio_3.hist
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkstat -hist  -nbin  <span class="m">20</span> -src_min <span class="m">0</span>  -i    geodata/vegetation/GPPstdev08-11.tif
 </pre></div>
 </div>
@@ -682,8 +673,7 @@ pkstat -hist  -nbin  <span class="m">20</span> -src_min <span class="m">0</span>
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 pkstat  -hist -i geodata/temperature/ug_bio_3.tif  <span class="p">|</span> grep -v <span class="s2">&quot; 0&quot;</span>  <span class="p">|</span> awk <span class="s1">&#39;{ if ($1&lt;75) { print $1 , 0 } else { print $1 , 1 }  }&#39;</span> &gt; geodata/temperature/reclass_ug_bio_3.txt
 pkreclass -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif  -o geodata/temperature/reclass_ug_bio_3.tif
 </pre></div>
@@ -702,8 +692,7 @@ pkreclass -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 rm -f geodata/shp/polygons_stat.*
 pkextractogr -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min    -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/polygons.sqlite    -o   geodata/shp/polygons_stat.sqlite
 pkextractogr -f <span class="s2">&quot;ESRI Shapefile&quot;</span> -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/polygons.sqlite -o   geodata/shp/polygons_stat.shp
@@ -732,8 +721,7 @@ processing layer polygons
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 <span class="c1"># at point location</span>
 rm -f geodata/shp/point_stat.csv
 pkextractogr -f CSV -srcnodata -339999995214436424907732413799364296704 -r mean -r stdev -r min    -i geodata/vegetation/GPPmean08-11.tif -s  geodata/shp/presence.shp -o   geodata/shp/point_stat.csv
@@ -759,8 +747,7 @@ processing layer presence
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
-<div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
-<span></span>%%bash
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetation/ETmean08-11_crop_trh.tif geodata/vegetation/ETmean08-11_crop_trh.txt vegetation/ETmean08-11_crop.txt geodata/vegetation/ETmosaic.vrt geodata/vegetation/ETmosaic.tif  geodata/vegetation/stack_??.tif geodata/vegetation/stack.vrt geodata/vegetation/tiles.* geodata/vegetation/ETmean08-11_crop_proximity.tif geodata/vegetation/ETmean08-11_crop_buffer.tif  geodata/dem/slope.tif geodata/dem/aspect.tif  geodata/dem/tri.tif geodata/dem/tpi.tif geodata/dem/roughness.tif geodata/vegetation/ETmean08-11_01_trh?.tif geodata/LST/LST_MOYDmax_month1-msk.tif geodata/LST/LST_MOYDmax_monthStdev.tif geodata/LST/LST_MOYDmax_monthMean.tif geodata/LST/LST_MOYDmax_month_mean_stdev.tif geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif  geodata/temperature/reclass_ug_bio_3.tif geodata/temperature/reclass_ug_bio_3.txt geodata/shp/polygons_stat.csv geodata/shp/point-buf_stat.csv geodata/shp/point_stat.csv geodata/shp/polygons_stat.* geodata/shp/TM_LARGE_BORDERS.shp.*  geodata/shp/TM_UGANDA_BORDERS-0.3.* geodata/vegetation/ETmean08-11_crop.txt
 </pre></div>
 </div>
@@ -769,8 +756,7 @@ rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetati
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
 </pre></div>
 </div>
 </div>
