@@ -2,6 +2,10 @@
 ## Geocomputation and Machine Learning for environmental applications
 ### 
 
+#### Student affiliation and their origin  ####
+
+![](Physical-World-Map-3360.jpg)
+
 #### Student roster ####
 
 (1)  **Gulnihal Kurt (Turkey)**
@@ -30,7 +34,7 @@ Department of Earth and Environmental Sciences; Bari University, Italy.
 Department of Earth Sciences, Institute of Geological Sciences, Freie Universität Berlin (Germany)**
 
 ---
-(5)	**Eric 	Kumah-Baku (Ghana)**
+(5)	**Eric Kumah-Baku (Ghana)**
 
 ![](05_Eric_Kumah-Baku.jpg)
 
@@ -70,8 +74,10 @@ School of Forest, Fisheries, & Geomatics Sciences, University of Florida, USA.
 
 University of Washington - Seattle
 
+![](11_Lauren_Satterfiel.jpg)
+
 ---
-(12)	**Hyeyoung	Sim	(South Korea)**
+(12)	**Hyeyoung Sim (South Korea)**
 
 Seoul National University, South Korea.
 
@@ -83,7 +89,7 @@ Seoul National University, South Korea.
 University of Washington
 
 ---
-(14)	**Ritwika	Mukhopadhyay (India)**
+(14)	**Ritwika Mukhopadhyay (India)**
 
 Swedish University of Agricultural Sciences, Sweden.
 
@@ -126,9 +132,9 @@ EpiMap (https://www.epimap.org/), USA
 
 
 ---
-(20)	**Ahmad shah 	Frahmand (Afganistan)**
+(20)	**Ahmad Shah Frahmand (Afganistan)**
 
-Turkey
+Yildiz Technical University, Istanbul, Turkey 
 
 ---
 (21)	**James	Hannon (USA)**
@@ -145,7 +151,7 @@ The James Hutton Institute, Scotland
 ---
 (23)	**Hamidreza Rabiei Dastjerdi**
 
-University College Dublin
+University College Dublin, Irland.
 
 ---
 (24)	**Yuang	Chen (China)**
