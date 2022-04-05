@@ -66,7 +66,7 @@ School of Forest, Fisheries, & Geomatics Sciences, University of Florida, USA.
 ![](10_Vincent_Lecours.JPG)
 
 ---
-(11)	**Lauren	Satterfield**
+(11)	**Lauren Satterfield**
 
 University of Washington - Seattle
 
@@ -108,6 +108,8 @@ Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 
 Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 
+![](17_Afroditi_Grigoropoulo.png)
+
 ---
 (18)	**Jaime Ricardo García Márquez (Colombia)**
 
@@ -116,9 +118,12 @@ Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 ![](18_Jaime_Ricardo_Garcia_Marquez.jpg)
 
 ---
-(19)	**Erin	Stearns (USA)**	EpiMap, USA
+(19)	**Erin	Stearns (USA)**
+
+EpiMap (https://www.epimap.org/), USA
 
 ![](09_Stearns_Erin.JPG)
+
 
 ---
 (20)	**Ahmad shah 	Frahmand (Afganistan)**

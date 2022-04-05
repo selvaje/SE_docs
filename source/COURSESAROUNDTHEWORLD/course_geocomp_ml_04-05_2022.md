@@ -5,8 +5,8 @@
 
 **Online teaching: April and May 2022, 8 weeks**
 
-* Every Tuesday: starting from April 5th, at 3PM - 5:45 PM UTC time (CET 4PM, EST 10AM, PST 7AM)
-* Every Thursday: ending on   May 26th, at 3PM - 5:45 PM UTC time (CET 4PM, EST 10AM, PST 7AM)
+* Every Tuesday: starting from April 5th, at 3PM - 5:45 PM UTC+0 time
+* Every Thursday: ending on   May 26th, at 3PM - 5:45 PM UTC+0 time
 
 **In presence: June, 1 week in Matera, Italy** 
 
