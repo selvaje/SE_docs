@@ -42,7 +42,7 @@ This session introduces the overall course program and Linux operating system.
 * [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/lect_20220405_policy.pdf) (Longzhu Shen - 10min Lecture)
 * [Linux environment, why and what to use to handling BigData.](http://spatial-ecology.net/docs/source/lectures/lect_20220404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 20min Lecture)
 * [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20220405_SpatStat.pdf) (Longzhu Shen - 20min Lecture)
-* [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/) (Antonio Fonseca - 20min Lecture)
+* [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/lect_20220405_IntroML.pdf) (Antonio Fonseca - 20min Lecture)
 
 
 ## Lecture 2: 7th of April, 2022. 
@@ -51,7 +51,7 @@ This session introduces the overall course program and Linux operating system.
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
-* The www.spatial-ecology.net tutorial platform (Hands-on tutorial - 
+* The www.spatial-ecology.net tutorial platform (Hands-on tutorial) 
 
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
@@ -69,14 +69,13 @@ During this session we explore and practice the basics of BASH terminal command 
 	* Checking the flow statement
 	* Debugging
 
-
 **Suggested assignments:**
 
 These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics.  Below, some suggestions of possible operations:
 
 * Get fast in navigating up and down in the directory using only the command line.
 * Copy/move files from a directory to another directory.
-* Search and use a command for copy file from you pc to a remote server.
+* Search and use a command for copy file from you pc to a Linux remote server.
 * Get fast on using keyboard shortcuts.
 * Perform a data download operation using wget or curl.
 * Unzip/untar files.

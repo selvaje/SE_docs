@@ -155,6 +155,8 @@ Western Connecticut State University, United States
 
 The James Hutton Institute, Scotland
 
+![](22_bethany_wilkins.jpg)
+
 ---
 (23)	**Hamidreza Rabiei Dastjerdi**
 
