@@ -39,28 +39,28 @@ This session introduces the overall course program and Linux operating system.
 
 * Get to know each other: trainers and participants (30-40min Round-table )
 * [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20220404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)
-* [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/) (Longzhu Shen - 10min Lecture)
+* [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/lect_20220405_policy.pdf) (Longzhu Shen - 10min Lecture)
 * [Linux environment, why and what to use to handling BigData.](http://spatial-ecology.net/docs/source/lectures/lect_20220404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 20min Lecture)
-* [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20220405_CourseIntro_SpatStat.pdf) (Longzhu Shen - 20min Lecture)
+* [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20220405_SpatStat.pdf) (Longzhu Shen - 20min Lecture)
 * [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/) (Antonio Fonseca - 20min Lecture)
 
 
 ## Lecture 2: 7th of April, 2022. 
-**Jump start LINUX Bash programming (Amatulli)**
+**Jump start into LINUX Bash programming (Giuseppe Amatulli)**
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial - Giuseppe Amatulli)
-* The www.spatial-ecology.net tutorial platform (Hands-on tutorial - Giuseppe Amatulli)
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
+* The www.spatial-ecology.net tutorial platform (Hands-on tutorial - 
 
-* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial - Giuseppe Amatulli)
+* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
 	* Special characters and Quoting
 	* The most important commands - Unix/Linux Command Reference
 	* Meta-characters and regular expression, their use.
 	* Concatenate process (pipe).
 	* String manipulation
-* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial - Giuseppe Amatulli)
+* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial)
 	* Pattern matching
 	* Sorting a file
 	* Append the command result to a file
