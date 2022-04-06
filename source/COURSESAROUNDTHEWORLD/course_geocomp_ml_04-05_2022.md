@@ -17,7 +17,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
 ### Class roster  ###
 
-  - [Class roster with the student names and their geogpraphic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022_foto/course_geocomp_ml_04-05_2022.html)
+  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022_foto/course_geocomp_ml_04-05_2022.html)
 
 ### Prelimanary Syllabus ###
 
@@ -27,7 +27,7 @@ Some lectures and study cases can slightly change in accordance to the student l
 
 ### Final Syllabus ###
 
-Below we are going to list day by day with final syllabus with the relatives links to the materials and recorded video.
+Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
 
 
 ## Lecture 1: 5th of April, 2022.
@@ -35,11 +35,49 @@ Below we are going to list day by day with final syllabus with the relatives lin
 
 [Video Recording](https://yale.zoom.us/rec/share/UNKZhoVPFrx6DZUfke_n3uYwGTI19lLLSV4QlUrSCdSdPh_B1NHOs63263TbV_6e.c_B9EuFw_fFM3L3J)
 
-This session introduces the overall course program and Linux operating system. We also learn how to install and use a virtual environment operating system.
+This session introduces the overall course program and Linux operating system. 
 
 * Get to know each other: trainers and participants (30-40min Round-table )
-* Course objectives and schedule. (A. 10min Lecture)
-* Course policy, homeworks, final project, trainers/students interactions (slack) (S. 10min Lecture)
-* Linux environment, why and what to use to handling BigData (A. 15-20min Lecture)
-* Spatial Statistics: fundamentals and philosophical aspects. (S. 20min Lecture)
-* Machine learning pro and cons (F. 20min Lecture)
+* [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20220404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)
+* [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/) (Longzhu Shen - 10min Lecture)
+* [Linux environment, why and what to use to handling BigData.](http://spatial-ecology.net/docs/source/lectures/lect_20220404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 20min Lecture)
+* [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20220405_CourseIntro_SpatStat.pdf) (Longzhu Shen - 20min Lecture)
+* [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/) (Antonio Fonseca - 20min Lecture)
+
+
+## Lecture 2: 7th of April, 2022. 
+**Jump start LINUX Bash programming (Amatulli)**
+
+During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
+
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial - Giuseppe Amatulli)
+* The www.spatial-ecology.net tutorial platform (Hands-on tutorial - Giuseppe Amatulli)
+
+* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial - Giuseppe Amatulli)
+	* Starting with Bash
+	* Special characters and Quoting
+	* The most important commands - Unix/Linux Command Reference
+	* Meta-characters and regular expression, their use.
+	* Concatenate process (pipe).
+	* String manipulation
+* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial - Giuseppe Amatulli)
+	* Pattern matching
+	* Sorting a file
+	* Append the command result to a file
+	* For loop and the use of variables
+	* If condition in a for loop
+	* Checking the flow statement
+	* Debugging
+
+
+**Suggested assignments:**
+
+These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics.  Below, some suggestions of possible operations:
+
+* Get fast in navigating up and down in the directory using only the command line.
+* Copy/move files from a directory to another directory.
+* Search and use a command for copy file from you pc to a remote server.
+* Get fast on using keyboard shortcuts.
+* Perform a data download operation using wget or curl.
+* Unzip/untar files.
+* Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.

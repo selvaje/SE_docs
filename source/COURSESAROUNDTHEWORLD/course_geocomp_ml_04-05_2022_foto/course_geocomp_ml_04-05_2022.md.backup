@@ -94,6 +94,8 @@ Seoul National University, South Korea.
 
 School of Environmental and Forest Sciences, University of Washington, USA.
 
+![](13_hemalatha_velappan.jpg)
+
 ---
 (14)	**Ritwika Mukhopadhyay (India)**
 
