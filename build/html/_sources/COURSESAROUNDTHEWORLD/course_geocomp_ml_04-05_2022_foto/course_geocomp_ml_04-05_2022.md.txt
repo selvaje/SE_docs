@@ -31,7 +31,9 @@ Department of Earth and Environmental Sciences; Bari University, Italy.
 ---
 (4)	**Sebastian Walter (Germany)**
 
-Department of Earth Sciences, Institute of Geological Sciences, Freie Universität Berlin (Germany)**
+Department of Earth Sciences, Institute of Geological Sciences, Freie Universität Berlin, Germany
+
+![](04_sebastian_walter.jpg)
 
 ---
 (5)	**Eric Kumah-Baku (Ghana)**
@@ -43,6 +45,8 @@ Department of Earth Sciences, Institute of Geological Sciences, Freie Universit�
 
 Department of Geography, Uuniversity of Bergen, Norway
 
+![](06_gidske_andersen.jpg)
+
 ---
 (7)	**Txomin Bornaetxea (Spain)**
 
@@ -51,12 +55,14 @@ Department of Geography, Prehistory and archaeology; University of the Basque Co
 ![](07_Txomin_Bornaetxea.jpg)
 
 ---
-(8)	**Sebastian Munoz**
+(8)	**Sebastian Munoz (USA)**
 
 Department of Geological Sciences; Brown University, USA
 
+![](08_sebastian_munoz.jpeg)
+
 ---
-(9)	**Myriam Marending**
+(9)	**Myriam Marending (Denmark)**
 
 Copenhagen Business School
 
@@ -70,9 +76,9 @@ School of Forest, Fisheries, & Geomatics Sciences, University of Florida, USA.
 ![](10_Vincent_Lecours.JPG)
 
 ---
-(11)	**Lauren Satterfield**
+(11)	**Lauren Satterfield (USA)**
 
-University of Washington - Seattle
+School of Environmental and Forest Sciences, University of Washington, USA.
 
 ![](11_Lauren_Satterfiel.jpg)
 
@@ -84,9 +90,9 @@ Seoul National University, South Korea.
 ![](12_Hyeyoung_Sim.jpg)
 
 ---
-(13)	**Hemalatha Velappan**
+(13)	**Hemalatha Velappan (India)**
 
-University of Washington
+School of Environmental and Forest Sciences, University of Washington, USA.
 
 ---
 (14)	**Ritwika Mukhopadhyay (India)**
@@ -96,7 +102,7 @@ Swedish University of Agricultural Sciences, Sweden.
 ![](14_Ritwika_Mukhopadhyay.jpg)
 
 ---
-(15)	**Yusdiel Torres-Cambas**
+(15)	**Yusdiel Torres-Cambas (Cuba)**
 
 Leibniz Institute of Freshwater Ecology and Inland Fisheries, Germany
 
@@ -114,7 +120,7 @@ Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 
 Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 
-![](17_Afroditi_Grigoropoulo.png)
+![](17_Afroditi_Grigoropoulo.jpg)
 
 ---
 (18)	**Jaime Ricardo García Márquez (Colombia)**
@@ -130,7 +136,6 @@ EpiMap (https://www.epimap.org/), USA
 
 ![](09_Stearns_Erin.JPG)
 
-
 ---
 (20)	**Ahmad Shah Frahmand (Afganistan)**
 
@@ -141,7 +146,7 @@ Yildiz Technical University, Istanbul, Turkey
 
 Western Connecticut State University, United States
 
-![](21_James_Hannon.PNG)
+![](21_James_Hannon.jpg)
 
 ---
 (22)	**Bethany Wilkins (UK)**
