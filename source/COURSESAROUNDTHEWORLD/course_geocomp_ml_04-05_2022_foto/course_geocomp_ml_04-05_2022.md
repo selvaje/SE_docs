@@ -143,6 +143,8 @@ EpiMap (https://www.epimap.org/), USA
 
 Yildiz Technical University, Istanbul, Turkey 
 
+![](20_Ahmad_Shah_Frahmand.jpg)
+
 ---
 (21)	**James	Hannon (USA)**
 
@@ -158,9 +160,11 @@ The James Hutton Institute, Scotland
 ![](22_bethany_wilkins.jpg)
 
 ---
-(23)	**Hamidreza Rabiei Dastjerdi**
+(23)	**Hamidreza Rabies Dastjerdi (Iran)**
 
 University College Dublin, Irland.
+
+![](23_Hamidreza_Rabies_Dastjerdi.jpg)
 
 ---
 (24)	**Yuang	Chen (China)**
