@@ -138,4 +138,14 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 
 ![title](Git_setting_4courses.png)
 
+
+Below the same commands for an easy copy-paste
+
+    cd ~/SE_data
+    git pull
+    rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+
+
 Now you should be ready to follow the lectures of the Spatial Ecology courses.
+
+
