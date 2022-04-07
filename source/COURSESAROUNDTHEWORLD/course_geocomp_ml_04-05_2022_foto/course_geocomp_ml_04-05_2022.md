@@ -111,7 +111,7 @@ Leibniz Institute of Freshwater Ecology and Inland Fisheries, Germany
 ![](15_Yusdiel_Torres-Cambas.jpg)
 
 ---
-(16)	**Maria	Üblacker (Austria)**
+(16)	**Maria	(Marlene) Üblacker (Austria)**
 
 Leibniz Institute of Freshwater Ecology and Inland Fisheries, Berlin, Germany
 
@@ -146,7 +146,7 @@ Yildiz Technical University, Istanbul, Turkey
 ![](20_Ahmad_Shah_Frahmand.jpg)
 
 ---
-(21)	**James	Hannon (USA)**
+(21)	**James (JD)	Hannon (USA)**
 
 Western Connecticut State University, United States
 

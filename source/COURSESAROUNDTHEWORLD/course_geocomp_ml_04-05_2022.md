@@ -48,6 +48,8 @@ This session introduces the overall course program and Linux operating system.
 ## Lecture 2: 7th of April, 2022. 
 **Jump start into LINUX Bash programming (Giuseppe Amatulli)**
 
+[Video Recording](https://yale.zoom.us/rec/play/XKCXZCSnMgH-LACmPOts99E8BLuJbvLD3Tx71zFIMlwXBtBUo6zqCXeaU2121YOzT73PJidh4gw4F9Jv.gXBFvYHnesawIBRH)
+
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
