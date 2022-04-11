@@ -141,11 +141,24 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 
 Below the same commands for an easy copy-paste
 
+    
     cd ~/SE_data
-    git pull
+    #### git clone https://github.com/selvaje/SE_data  ## only run the first time
+    git pull                                           ## run every 5min before each lecture
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
 
 
 Now you should be ready to follow the lectures of the Spatial Ecology courses.
+Remember always to work on 
 
+    cd /media/sf_LVM_shared/my_SE_data
 
+## Settings for running jupyterlab
+
+The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via "source ~/juplab__env/bin/activate" everytime that you wanna use jupyterlab 
+
+    sudo apt install python3.8-venv
+    python3 -m venv juplab_env
+    source ~/juplab_env/bin/activate    ### run this line everytime wanna use jupyterlab
+    pip install -U pip
+    pip3 install jupyterlab

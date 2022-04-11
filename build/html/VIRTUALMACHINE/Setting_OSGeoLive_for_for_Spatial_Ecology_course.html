@@ -63,6 +63,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare OSGeoLive for Spatial Ecology courses</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#git-settings">Git Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#settings-for-running-jupyterlab">Settings for running jupyterlab</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
@@ -285,11 +286,27 @@ If during the installation some screen pop-up asking some question just accept t
 <p><img alt="title" src="../_images/Git_setting_4courses.png" /></p>
 <p>Below the same commands for an easy copy-paste</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">~/</span><span class="n">SE_data</span>
-<span class="n">git</span> <span class="n">pull</span>
+<span class="c1">#### git clone https://github.com/selvaje/SE_data  ## only run the first time</span>
+<span class="n">git</span> <span class="n">pull</span>                                           <span class="c1">## run every 5min before each lecture</span>
 <span class="n">rsync</span> <span class="o">-</span><span class="n">hvrPt</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">existing</span> <span class="o">~/</span><span class="n">SE_data</span><span class="o">/*</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span>
 </pre></div>
 </div>
-<p>Now you should be ready to follow the lectures of the Spatial Ecology courses.</p>
+<p>Now you should be ready to follow the lectures of the Spatial Ecology courses.
+Remember always to work on</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span>
+</pre></div>
+</div>
+</section>
+<section id="settings-for-running-jupyterlab">
+<h2>Settings for running jupyterlab<a class="headerlink" href="#settings-for-running-jupyterlab" title="Permalink to this headline"></a></h2>
+<p>The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via “source ~/juplab__env/bin/activate” everytime that you wanna use jupyterlab</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="mf">.8</span><span class="o">-</span><span class="n">venv</span>
+<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">juplab_env</span>
+<span class="n">source</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>    <span class="c1">### run this line everytime wanna use jupyterlab</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pip</span>
+<span class="n">pip3</span> <span class="n">install</span> <span class="n">jupyterlab</span>
+</pre></div>
+</div>
 </section>
 </section>
 

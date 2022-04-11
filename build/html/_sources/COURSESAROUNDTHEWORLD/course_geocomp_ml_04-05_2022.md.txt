@@ -31,7 +31,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 
 ## Lecture 1: 5th of April, 2022.
-**Getting started: knowing each other and course introduction (Amatulli, Shen, Fonseca)**
+### Getting started: knowing each other and course introduction (Amatulli, Shen, Fonseca)
 
 [Video Recording](https://yale.zoom.us/rec/share/UNKZhoVPFrx6DZUfke_n3uYwGTI19lLLSV4QlUrSCdSdPh_B1NHOs63263TbV_6e.c_B9EuFw_fFM3L3J)
 
@@ -46,7 +46,7 @@ This session introduces the overall course program and Linux operating system.
 
 
 ## Lecture 2: 7th of April, 2022. 
-**Jump start into LINUX Bash programming (Giuseppe Amatulli)**
+### Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
 [Video Recording](https://yale.zoom.us/rec/play/XKCXZCSnMgH-LACmPOts99E8BLuJbvLD3Tx71zFIMlwXBtBUo6zqCXeaU2121YOzT73PJidh4gw4F9Jv.gXBFvYHnesawIBRH)
 
@@ -82,3 +82,32 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Perform a data download operation using wget or curl.
 * Unzip/untar files.
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
+
+
+
+
+## Lecture 3: 12th of April, 2022.
+### Discovering the power of AWK programming language (Giuseppe Amatulli).
+
+[Video Recording]()
+
+This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
+
+
+* [Welcome to AWK world](http://spatial-ecology.net/docs/build/html/AWK/awk.html). Why to use AWK command line (Lecture).
+* The basic commands, command syntax  (Hands on tutorial).
+	* Built in variables
+	* Import variables
+	* String functions
+	* Numerical functions
+	* Query functions
+	* Manipulate large files before importing in R
+	* A study case: Manipulate thousand of text file with BASH and AWK
+	* This session summarizes the use of BASH and AWK with a practical example of text file manipulation.
+
+
+* [Explain GSIM text files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) (Lecture).
+	* Data exploration (Hands on tutorial).
+	* Count number of observations
+	* Count how many observations per date
+	* Monthly MEAN distribution
