@@ -89,9 +89,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: 12th of April, 2022.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-[Video Recording]()
-
-https://yale.zoom.us/rec/share/YquhUQpemJ-_GFO-sASbbfiHanHnxSwr0uhE4rLReEv4vm1SzjNw9kecPV6Xi_Yi.pJndoRaJZtsRQlUL
+[Video Recording](https://yale.zoom.us/rec/share/YquhUQpemJ-_GFO-sASbbfiHanHnxSwr0uhE4rLReEv4vm1SzjNw9kecPV6Xi_Yi.pJndoRaJZtsRQlUL)
 
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
