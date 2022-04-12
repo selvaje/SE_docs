@@ -59,7 +59,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 2,
+   "execution_count": 3,
    "metadata": {},
    "outputs": [
     {
@@ -114,21 +114,19 @@
    ],
    "source": [
     "%%bash\n",
-    "fIn=\"./txt/aver_month_nuts3_fire.asc\"\n",
-    "\n",
-    "head ${fIn}\n",
+    "head txt/aver_month_nuts3_fire.asc\n",
     "\n",
     "echo \"--------\"\n",
     "\n",
-    "awk '{print $2,$5}' ${fIn} | head # print the columns 1 and 2 \n",
+    "awk '{print $2,$5}' txt/aver_month_nuts3_fire.asc | head # print the columns 1 and 2 \n",
     "\n",
     "echo \"--------\"\n",
     "\n",
-    "awk  '{ print NF }'  ${fIn} | head -10     # print number of column # very usefull to check if all the row have the same number of columns \n",
+    "awk  '{ print NF }'  txt/aver_month_nuts3_fire.asc | head -10     # print number of column # very usefull to check if all the row have the same number of columns \n",
     "\n",
     "echo \"--------\"\n",
     "\n",
-    "awk  '{ print NR }' ${fIn}  | tail -10     # print number of row # very usefull to ad ID column e.g. awk  '{ print NR , $0 }' ${fIn} "
+    "awk  '{ print NR }' txt/aver_month_nuts3_fire.asc  | tail -10     # print number of row # very usefull to ad ID column e.g. awk  '{ print NR , $0 }' ${fIn} "
    ]
   },
   {
@@ -140,7 +138,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 3,
+   "execution_count": 4,
    "metadata": {},
    "outputs": [
     {
@@ -153,7 +151,7 @@
     }
    ],
    "source": [
-    "! awk 'BEGIN { print \"sum\" } { sum += $5 } END {printf ( \"%f\\n\", sum)}' ./txt/aver_month_nuts3_fire.asc"
+    "! awk 'BEGIN { print \"sum\" } { sum += $5 } END {printf ( \"%f\\n\", sum)}' txt/aver_month_nuts3_fire.asc"
    ]
   },
   {
@@ -187,7 +185,7 @@
    ],
    "source": [
     "%%bash\n",
-    "awk  '{ print $5 }'  ./txt/aver_month_nuts3_fire.asc  |  sort -k 1,1 | head "
+    "awk  '{ print $5 }'  txt/aver_month_nuts3_fire.asc  |  sort -k 1,1 | head "
    ]
   },
   {
@@ -228,7 +226,7 @@
    "source": [
     "%%bash\n",
     "for (( i=1 ; i<=4 ; i++  )) ; do\n",
-    "awk  -v i=$i  '{ print $i }' ./txt/aver_month_nuts3_fire.asc | head -3\n",
+    "awk  -v i=$i  '{ print $i }' txt/aver_month_nuts3_fire.asc | head -3\n",
     "echo \"---\"\n",
     "done "
    ]
@@ -237,7 +235,7 @@
    "cell_type": "markdown",
    "metadata": {},
    "source": [
-    "## Awk Operations"
+    "## AWK Operations"
    ]
   },
   {
@@ -263,7 +261,7 @@
     }
    ],
    "source": [
-    "! awk  'NR>1{ print log($5) }' ./txt/aver_month_nuts3_fire.asc | head"
+    "! awk  'NR>1{ print log($5) }' txt/aver_month_nuts3_fire.asc | head"
    ]
   },
   {
@@ -282,12 +280,12 @@
     }
    ],
    "source": [
-    "! awk  '{ print substr($1,1,4) }' \"./txt/aver_month_nuts3_fire.asc\" | head -3"
+    "! awk  '{ print substr($1,1,4) }' txt/aver_month_nuts3_fire.asc | head -3"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": 9,
    "metadata": {},
    "outputs": [
     {
@@ -308,12 +306,12 @@
     }
    ],
    "source": [
-    "! awk  '{ if($3>2) print }'  \"./txt/aver_month_nuts3_fire.asc\" | head"
+    "! awk  '{ if($3>2) print }'  txt/aver_month_nuts3_fire.asc | head"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 10,
    "metadata": {},
    "outputs": [
     {
@@ -334,12 +332,12 @@
     }
    ],
    "source": [
-    "! awk 'NR==1 { print \"index \"$0 } NR>1 { print NR-1,$0 }' \"./txt/aver_month_nuts3_fire.asc\" | head"
+    "! awk 'NR==1 { print \"index \"$0 } NR>1 { print NR-1,$0 }' txt/aver_month_nuts3_fire.asc | head"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 37,
+   "execution_count": 11,
    "metadata": {},
    "outputs": [
     {
@@ -351,12 +349,12 @@
     }
    ],
    "source": [
-    "! awk '{ if (NR>1) {if ($4>max) max= $4 }} END {print max }'  \"./txt/aver_month_nuts3_fire.asc\""
+    "! awk '{ if (NR>1) {if ($4>max) max= $4 }} END {print max }'  txt/aver_month_nuts3_fire.asc"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 8,
+   "execution_count": 12,
    "metadata": {},
    "outputs": [
     {
@@ -368,12 +366,12 @@
     }
    ],
    "source": [
-    "! awk '{ if($3==7) sum=sum+$5} END {printf (\"%f\",sum) }'  \"./txt/aver_month_nuts3_fire.asc\""
+    "! awk '{ if($3==7) sum=sum+$5} END {printf (\"%f\",sum) }'  txt/aver_month_nuts3_fire.asc"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 40,
+   "execution_count": 13,
    "metadata": {},
    "outputs": [
     {
@@ -385,7 +383,7 @@
     }
    ],
    "source": [
-    "! awk '{ if($3==7 && $2==2005  ) sum=sum+$5} END {print sum }'  \"./txt/aver_month_nuts3_fire.asc\""
+    "! awk '{ if($3==7 && $2==2005  ) sum=sum+$5} END {print sum }'  txt/aver_month_nuts3_fire.asc"
    ]
   },
   {
@@ -398,14 +396,14 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 9,
+   "execution_count": 14,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
-      "0\n"
+      "5\n"
      ]
     }
    ],
@@ -422,11 +420,11 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 15,
    "metadata": {},
    "outputs": [],
    "source": [
-    "! awk  'NR%1000==1{x=\"blockfile\"++i ; }{print > x}'  \"./txt/aver_month_nuts3_fire.asc\"\n",
+    "! awk  'NR%1000==1{x=\"blockfile\"++i ; }{print > x}'  txt/aver_month_nuts3_fire.asc\n",
     "! mv blockfile* ./txt"
    ]
   },
@@ -439,7 +437,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 17,
+   "execution_count": 16,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -453,7 +451,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 18,
+   "execution_count": 17,
    "metadata": {},
    "outputs": [
     {
@@ -473,7 +471,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 20,
+   "execution_count": 18,
    "metadata": {},
    "outputs": [
     {
@@ -508,13 +506,15 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 23,
+   "execution_count": 22,
    "metadata": {},
    "outputs": [
     {
      "name": "stdout",
      "output_type": "stream",
      "text": [
+      "100\n",
+      "100\n",
       "100\n",
       "----\n",
       "1\n",
@@ -526,10 +526,10 @@
    "source": [
     "%%bash \n",
     "fOut=\"./txt/test.csv\"\n",
-    "echo `seq -s \\, 1 1 100`  > ${fOut}\n",
-    "echo `seq -s \\, 2 20 2000`  >> ${fOut}\n",
-    "echo `seq -s \\, 2 200 20000`  >> ${fOut}\n",
-    "awk -F,  ' { print NF }' ${fOut} | head -1 \n",
+    "seq -s \\, 1 1 100  > ${fOut}\n",
+    "seq -s \\, 2 20 2000  >> ${fOut}\n",
+    "seq -s \\, 2 200 20000  >> ${fOut}\n",
+    "awk -F,  ' { print NF }' ${fOut} | head -10\n",
     "echo \"----\"\n",
     "awk -F,  ' { print NR }' ${fOut} "
    ]
@@ -544,7 +544,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 26,
+   "execution_count": 23,
    "metadata": {},
    "outputs": [],
    "source": [
@@ -553,7 +553,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 27,
+   "execution_count": 24,
    "metadata": {},
    "outputs": [
     {
@@ -577,7 +577,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 28,
+   "execution_count": 25,
    "metadata": {},
    "outputs": [
     {
@@ -600,16 +600,54 @@
    ],
    "source": [
     "%%bash \n",
-    "for COLNAME in  `cat ./txt/list_of_columns.csv` ; do\n",
+    "for COLNAME in  $(cat ./txt/list_of_columns.csv) ; do\n",
     "echo $COLNAME\n",
     "awk -F, -v COLNAME=$COLNAME ' { if (NR==1)  { for (col=1;col<=NF;col++) { if ($col==COLNAME) {colprint=col}}}  else  {print $1 \",\" $colprint }} ' ./txt/test.csv > ./txt/OUTPUT_subset_$COLNAME.csv \n",
     "done"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 26,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2,2\n",
+      "2,2\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%bash \n",
+    "head ./txt/OUTPUT_subset_1.csv "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 27,
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "2,22\n",
+      "2,202\n"
+     ]
+    }
+   ],
+   "source": [
+    "%%bash \n",
+    "head ./txt/OUTPUT_subset_2.csv "
    ]
   }
  ],
  "metadata": {
   "kernelspec": {
-   "display_name": "Python 3",
+   "display_name": "Python 3 (ipykernel)",
    "language": "python",
    "name": "python3"
   },
@@ -623,7 +661,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.8.8"
+   "version": "3.8.10"
   }
  },
  "nbformat": 4,
