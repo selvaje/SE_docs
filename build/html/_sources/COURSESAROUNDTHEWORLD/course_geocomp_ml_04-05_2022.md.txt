@@ -111,3 +111,29 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 	* Count number of observations
 	* Count how many observations per date
 	* Monthly MEAN distribution
+	
+
+**Compulsory assignments:**
+
+These assignment is compulsory and need to be delivered before 18th of April, 2022 12pm, UTC time. 
+
+Using the bash (and/or awk) language manipulate the GSIM/US*.mon files in order to create txt files, one for each month-year, that includes the station ID, latitude, longitude and the MEAN value.
+ 
+The final output will be n text file (form *FirstDateOfTheSeries* to LastDateOfTheSeries) with the following structure: 
+
+
+    cat 2002-01.txt 
+
+|Gsim.no|latitude|longitude|MEAN|
+|---|---|---|---|
+|US_0001971 | 33.79427255 | -84.4743747 | 0.916785714285714 |
+|US_0001977 | 33.65666667 | -84.6736111 | 74.5558064516129  |
+
+
+In case you wanna manipulate your own txt (or csv) files, fell free to do it by implementing everything in bash (and/or awk). 
+You can perform:
+- data summary 
+- table re-organization    
+- data filtering 
+
+
