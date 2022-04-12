@@ -125,10 +125,10 @@ The final output will be n text file (form *FirstDateOfTheSeries* to LastDateOfT
 
     cat 2002-01.txt 
 
-|Gsim.no|latitude|longitude|MEAN|
-|---|---|---|---|
-|US_0001971 | 33.79427255 | -84.4743747 | 0.916785714285714 |
-|US_0001977 | 33.65666667 | -84.6736111 | 74.5558064516129  |
+| Gsim.no    | latitude | longitude | MEAN |  
+
+| US_0001971 | 33.79427255 | -84.4743747 | 0.916785714285714 |  
+| US_0001977 | 33.65666667 | -84.6736111 | 74.5558064516129  |  
 
 
 In case you wanna manipulate your own txt (or csv) files, fell free to do it by implementing everything in bash (and/or awk). 
