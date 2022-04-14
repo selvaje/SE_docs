@@ -139,7 +139,9 @@ You can perform:
 
 
 ## Lecture 4: 14th of April, 2022.
-### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
+### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).
+
+[Video Recording](https://yale.zoom.us/rec/share/X6WdH8TiCujdF1MA99VSrGO8q5UK-IvLb7_m-YUasPz4kG80ommTsEYIU_mkzdlt.oBLfAcXXY0_UeLWh)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
