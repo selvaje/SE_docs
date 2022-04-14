@@ -138,3 +138,36 @@ You can perform:
 - data filtering 
 
 
+## Lecture 4: 14th of April, 2022.
+### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
+
+This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
+
+
+* [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
+	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
+	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture)
+	* Understanding NoData Value
+	* Openev & QGIS for raster and vector visualization
+	* [Geographic Projections database](https://spatialreference.org/)
+	* The use of .VRT for splitting and merging images
+	
+
+
+**Compulsory assignments:**
+
+These assignments do not need to be delivered now, nonetheless do it in order to get familiar with the gdal/ogr command line topics. In two weeks, when all the geographic tools will be covered, you will need to handling a scripting procedure that prepare your geographic dataset, so better to start now :-).  
+
+Below, some suggestions of possible operations:
+
+* Start to prepare the geographic dataset for your final project.
+	* Using wget and/or curl download geographic dataset from an official repository
+	* Using gdal command performs cropping, merging (vrt+gdal_translate), re-projecting.
+	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
+
+**Suggested assignments:**
+
+These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
+
+
+* [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
