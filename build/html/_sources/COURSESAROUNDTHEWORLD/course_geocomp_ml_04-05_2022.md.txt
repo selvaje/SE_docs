@@ -116,7 +116,7 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 
 **Compulsory assignments:**
 
-These assignment is compulsory and need to be delivered before 18th of April, 2022 12pm, UTC time. 
+These assignment is compulsory and need to be delivered before 18th of April, 2022 12pm, UTC time. Please send the jupyter file or sh file (name as name_surname.ipynb or name_surname.sh ) as e-mail attachment  to g.amatulli@spatial-ecology.net.
 
 Using the bash (and/or awk) language manipulate the GSIM/US*.mon files in order to create txt files, one for each month-year, that includes the station ID, latitude, longitude and the MEAN value.
  
