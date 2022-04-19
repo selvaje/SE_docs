@@ -195,9 +195,9 @@ This section introduces data manipulation for geospatial data processing on the 
 
 * These assignments do not need to be delivered now, nonetheless do it in order to get familiar with the gdal/ogr command line topics. In two weeks, when all the geographic tools will be covered, you will need to handling a scripting procedure that prepare the geographic dataset for your final project, so better to start now :-).  
 
- Below, some suggestions of possible operations:
+Below, some suggestions of possible operations:
 
- Start to prepare the geographic dataset for your final project.
+* Start to prepare the geographic dataset for your final project.  
 	* Using wget and/or curl download geographic dataset from an official repository
 	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
