@@ -173,18 +173,20 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 
 ## Lecture 5: 19th of April, 2022.  
-### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
+### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/5zzBwTEd8nvAdosCyI2VxYi1Bvyz1zFCCjluShu7u9n69XZ0cYpb4X70-zy8OAj7.dpeRT-AhGNEV-pBC)
 
-This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
+This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
 
-* [for raster and vector analysis](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) .
-	* Masking operation
-	* Building a mosaic
-	* Image histogram and classification
-	* Zonal statistic
+* [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
+	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
+	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture)
+	* Understanding NoData Value
+	* Openev & QGIS for raster and vector visualization
+	* [Geographic Projections database](https://spatialreference.org/)
+	* The use of .VRT for splitting and merging images
 * [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
 	* Transform a simple “for loop” in multicore “for loop”
 
@@ -202,3 +204,18 @@ Below, some suggestions of possible operations:
 	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 	* Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
+
+
+## Lecture 6: 21st of April, 2022.  
+### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
+
+[Video Recording]()
+
+This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
+
+
+* [for raster and vector analysis](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) .
+	* Masking operation
+	* Building a mosaic
+	* Image histogram and classification
+	* Zonal statistic
