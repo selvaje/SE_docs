@@ -165,9 +165,40 @@ Below, some suggestions of possible operations:
 	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 
-
 **Suggested assignments:**
 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
+
+
+## Lecture 5: 19th of April, 2022.  
+### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
+
+[Video Recording]()
+
+This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
+
+
+* [for raster and vector analysis](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) .
+	* Masking operation
+	* Building a mosaic
+	* Image histogram and classification
+	* Zonal statistic
+* [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
+	* Transform a simple “for loop” in multicore “for loop”
+
+**Compulsory assignments:**
+
+* If you decide to come to Matera (Italy), pay a 100 EURO deposit following the same procedure of the course [registration](http://spatial-ecology.net/geocomp_ml_2022-registration/) before 21st of April, 2022 lecture. The deposit will be refunded to you if come to Matera.
+
+
+* These assignments do not need to be delivered now, nonetheless do it in order to get familiar with the gdal/ogr command line topics. In two weeks, when all the geographic tools will be covered, you will need to handling a scripting procedure that prepare the geographic dataset for your final project, so better to start now :-).  
+
+ Below, some suggestions of possible operations:
+
+ Start to prepare the geographic dataset for your final project.
+	* Using wget and/or curl download geographic dataset from an official repository
+	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
+	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
+	* Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 

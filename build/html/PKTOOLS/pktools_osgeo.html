@@ -443,8 +443,8 @@ div.rendered_html tbody tr:hover {
 <p><strong>Setting working directory for the OSGeoLive</strong></p>
 <p><a class="reference external" href="http://pktools.nongnu.org/html/index.html">PKTOOLS</a> is a suite of utilities written in C++ for image processing with a focus on remote sensing applications. It relies on the Geospatial Data Abstraction Library (GDAL and OGR, <a class="reference external" href="http://www.gdal.org">http://www.gdal.org</a>) (source <a class="reference external" href="http://pktools.nongnu.org/html/index.html">http://pktools.nongnu.org/html/index.html</a>)</p>
 <p>Open the bash terminal, migrate in the directory, and open the jupter-notebook.ipynb</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data/exercise
-jupyter-notebook 02_pktools_osgeo.ipynb
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /media/sf_LVM_shared/my_SE_data/exercise
+jupyter-lab pktools_osgeo.ipynb
 </pre></div>
 </div>
 <p>We are going to use the jupyter-notebook as an editor for running bash-pktools commands. The beauty of using pktools in the bash environment is that we can combine it with other bash utilities such awk, sed, and other.</p>
@@ -544,13 +544,18 @@ pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -
 </div>
 <p>Calculate mean and standard deviation with several images</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
-pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif  <span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span> <span class="p">;</span>  <span class="k">done</span> <span class="k">)</span> -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
+pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span><span class="p">;</span> <span class="k">done)</span> <span class="se">\</span>
+-m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr mean   -dstnodata <span class="m">0</span> <span class="se">\</span>
+-co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthMean.tif
+
+pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> -i <span class="nv">$file</span><span class="p">;</span> <span class="k">done)</span> <span class="se">\</span>
+-m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata <span class="m">0</span> -cr stdev   -dstnodata -1 <span class="se">\</span>
+-co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -o geodata/LST/LST_MOYDmax_monthStdev.tif
 </pre></div>
 </div>
 </div>
@@ -565,7 +570,7 @@ pkcomposite <span class="k">$(for</span> file <span class="k">in</span> geodata/
 </div>
 <p>An alternative way is to use pkstatprofile</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -588,7 +593,7 @@ pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -
 </div>
 <p><strong>Filter/Aggregate images</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -613,7 +618,7 @@ opening output image geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif with 1
 </div>
 <p><strong>Images statistic and histogram</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -641,7 +646,7 @@ head geodata/temperature/ug_bio_3.hist
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -679,12 +684,12 @@ pkstat -hist  -nbin  <span class="m">20</span> -src_min <span class="m">0</span>
 </div>
 <p><strong>Images reclassification</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pkstat  -hist -i geodata/temperature/ug_bio_3.tif  <span class="p">|</span> grep -v <span class="s2">&quot; 0&quot;</span>  <span class="p">|</span> awk <span class="s1">&#39;{ if ($1&lt;75) { print $1 , 0 } else { print $1 , 1 }  }&#39;</span> &gt; geodata/temperature/reclass_ug_bio_3.txt
+pkstat -hist -i geodata/temperature/ug_bio_3.tif <span class="p">|</span> grep -v <span class="s2">&quot; 0&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{ if ($1&lt;75) {print $1, 0} else {print $1 , 1}}&#39;</span> &gt; geodata/temperature/reclass_ug_bio_3.txt
 pkreclass -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif  -o geodata/temperature/reclass_ug_bio_3.tif
 </pre></div>
 </div>
@@ -699,7 +704,7 @@ pkreclass -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 </div>
 <p><strong>Zonal statistic (polygon extraction)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -729,7 +734,7 @@ processing layer polygons
 </div>
 <p><strong>Zonal statistic (point extraction)</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -756,21 +761,12 @@ processing layer presence
 </div>
 <p><strong>Remove all the output</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 rm -f  geodata/vegetation/GPPcv08-11.tif geodata/LST/*_crop.tif geodata/vegetation/ETmean08-11_crop_trh.tif geodata/vegetation/ETmean08-11_crop_trh.txt vegetation/ETmean08-11_crop.txt geodata/vegetation/ETmosaic.vrt geodata/vegetation/ETmosaic.tif  geodata/vegetation/stack_??.tif geodata/vegetation/stack.vrt geodata/vegetation/tiles.* geodata/vegetation/ETmean08-11_crop_proximity.tif geodata/vegetation/ETmean08-11_crop_buffer.tif  geodata/dem/slope.tif geodata/dem/aspect.tif  geodata/dem/tri.tif geodata/dem/tpi.tif geodata/dem/roughness.tif geodata/vegetation/ETmean08-11_01_trh?.tif geodata/LST/LST_MOYDmax_month1-msk.tif geodata/LST/LST_MOYDmax_monthStdev.tif geodata/LST/LST_MOYDmax_monthMean.tif geodata/LST/LST_MOYDmax_month_mean_stdev.tif geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif  geodata/temperature/reclass_ug_bio_3.tif geodata/temperature/reclass_ug_bio_3.txt geodata/shp/polygons_stat.csv geodata/shp/point-buf_stat.csv geodata/shp/point_stat.csv geodata/shp/polygons_stat.* geodata/shp/TM_LARGE_BORDERS.shp.*  geodata/shp/TM_UGANDA_BORDERS-0.3.* geodata/vegetation/ETmean08-11_crop.txt
-</pre></div>
-</div>
-</div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
 </pre></div>
 </div>
 </div>
