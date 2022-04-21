@@ -12,7 +12,6 @@
 
 * June 13th - 17th.
 
-
 In this course, students will be introduced to an array of powerful open-source geocomputation tools and machine learning methodologies under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.
 
 ### Class roster  ###
@@ -116,7 +115,7 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 
 **Compulsory assignments:**
 
-These assignment is compulsory and need to be delivered before 18th of April, 2022 12pm, UTC time. Please send the jupyter file or sh file (name as name_surname.ipynb or name_surname.sh ) as e-mail attachment  to g.amatulli@spatial-ecology.net.
+These assignment is compulsory and need to be delivered before 18th of April, 2022 12pm, UTC time. Please send the jupyter file or sh file (name as name\_surname.ipynb or name\_surname.sh ) as e-mail attachment  to g.amatulli@spatial-ecology.net.
 
 Using the bash (and/or awk) language manipulate the GSIM/US*.mon files in order to create txt files, one for each month-year, that includes the station ID, latitude, longitude and the MEAN value.
  
@@ -125,7 +124,7 @@ The final output will be n text file (form *FirstDateOfTheSeries* to LastDateOfT
 
     cat 2002-01.txt 
 
-| Gsim.no    | latitude | longitude | MEAN |  
+| Gsim.no    | latitude | longitude | MEAN |   
 
 | US_0001971 | 33.79427255 | -84.4743747 | 0.916785714285714 |  
 | US_0001977 | 33.65666667 | -84.6736111 | 74.5558064516129  |  
@@ -137,6 +136,85 @@ You can perform:
 - table re-organization    
 - data filtering 
 
+**Compulsory assignment solution**
+
+*Solution 1*
+
+	# create output dir 
+	mkdir -p output1
+	rm -f output1/*.txt
+	
+	# Creates a txt file with the list of all uniq dates
+	
+	awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }}}' ./US_*.mon | sort | uniq > output1/dates.txt
+	
+	# Creates a txt file with the list of all uniq station ID, longitude, latitude. 
+	
+	paste -d " " <(grep gsim.no US*.mon   | awk '{print $4}') \
+	             <(grep longitude US*.mon | awk '{print $4}') 
+	             <(grep latitude US*.mon  | awk '{print $4}') | sort -k 1,1 > output1/ID_x_y.txt
+	
+	## loop trought the dates.txt 
+	
+	for DATE in $(cat output1/dates.txt ) ; do 
+	echo processing $DATE
+	
+	grep ^$DATE US*.mon | awk '{ gsub(":"," "); gsub(","," ");if($3!="NA"){print substr($1,1,10),$3}}' \
+	| sort -k 1,1 > output1/${DATE}_ID_mean.txt 
+	
+	join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  > output1/${DATE}_ID_x_y_mean.txt
+	rm output1/${DATE}_ID_mean.txt 
+	
+	done 
+
+*Solution 2*
+
+	# create output dir 
+	mkdir -p output2/
+	rm -f output2/*.txt 
+	#loop over all US files
+	n=0
+	for i in US_*.mon ; do
+	#pull out information of interest
+	gsim=$(awk 'NR==11 {print $4}' $i)
+	lat=$(awk 'NR==15 {print $4}' $i)
+	long=$(awk 'NR==16 {print $4}' $i)
+	#make new directory with name of gsim ID to store txt files in
+	mkdir $output$gsim
+	
+	#awk uses these and spits out txt files named by the date
+	n=$(expr $n + 1)
+	echo $gsim $n
+	
+	awk -v gsim=$gsim -v lat=$lat -v long=$long -v output=$output \
+	' NR>22 {gsub(","," "); if($2!="NA"){print gsim,long,lat,$2 >> "output2/"$1"_ID_x_y_mean.txt"}}' $i
+	
+	rm -r $gsim
+	done
+
+*Results*
+
+    head output1/1880-02-29_ID_x_y_mean.txt
+
+> US_0002566 -81.2142745 38.1381632 519.584137931034  
+> US_0003205 -85.2784299 35.08677555 1607.71448275862  
+> US_0003994 -90.252073 41.78058635 957.402068965517  
+> US_0004107 -91.374318 40.39365535 1340.26551724138  
+> US_0005298 -90.1797778 38.629 3158.30551724138  
+> US_0008856 -121.1899167 45.60827778 2184.69310344828 
+
+	head output2/1880-02-29_ID_x_y_mean.txt
+
+> US_0002566 -81.2142745 38.1381632 519.584137931034  
+> US_0003205 -85.2784299 35.08677555 1607.71448275862  
+> US_0003994 -90.252073 41.78058635 957.402068965517  
+> US_0004107 -91.374318 40.39365535 1340.26551724138  
+> US_0005298 -90.1797778 38.629 3158.30551724138  
+> US_0008856 -121.1899167 45.60827778 2184.69310344828	  
+
+
+	ls   output1/*_ID_x_y_mean.txt | wc -l ## 1644
+	ls   output2/*_ID_x_y_mean.txt | wc -l ## 1642
 
 ## Lecture 4: 14th of April, 2022.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).

@@ -360,6 +360,78 @@ You can perform:</p>
 <li><p>table re-organization</p></li>
 <li><p>data filtering</p></li>
 </ul>
+<p><strong>Compulsory assignment solution</strong></p>
+<p><em>Solution 1</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># create output dir 
+mkdir -p output1
+rm -f output1/*.txt
+
+# Creates a txt file with the list of all uniq dates
+
+awk -F , &#39;{ if(NF&gt;5) { if ($1 &gt; 0) { print $1 }}}&#39; ./US_*.mon | sort | uniq &gt; output1/dates.txt
+
+# Creates a txt file with the list of all uniq station ID, longitude, latitude. 
+
+paste -d &quot; &quot; &lt;(grep gsim.no US*.mon   | awk &#39;{print $4}&#39;) \
+             &lt;(grep longitude US*.mon | awk &#39;{print $4}&#39;) 
+             &lt;(grep latitude US*.mon  | awk &#39;{print $4}&#39;) | sort -k 1,1 &gt; output1/ID_x_y.txt
+
+## loop trought the dates.txt 
+
+for DATE in $(cat output1/dates.txt ) ; do 
+echo processing $DATE
+
+grep ^$DATE US*.mon | awk &#39;{ gsub(&quot;:&quot;,&quot; &quot;); gsub(&quot;,&quot;,&quot; &quot;);if($3!=&quot;NA&quot;){print substr($1,1,10),$3}}&#39; \
+| sort -k 1,1 &gt; output1/${DATE}_ID_mean.txt 
+
+join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  &gt; output1/${DATE}_ID_x_y_mean.txt
+rm output1/${DATE}_ID_mean.txt 
+
+done 
+</pre></div>
+</div>
+<p><em>Solution 2</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># create output dir 
+mkdir -p output2/
+rm -f output2/*.txt 
+#loop over all US files
+n=0
+for i in US_*.mon ; do
+#pull out information of interest
+gsim=$(awk &#39;NR==11 {print $4}&#39; $i)
+lat=$(awk &#39;NR==15 {print $4}&#39; $i)
+long=$(awk &#39;NR==16 {print $4}&#39; $i)
+#make new directory with name of gsim ID to store txt files in
+mkdir $output$gsim
+
+#awk uses these and spits out txt files named by the date
+n=$(expr $n + 1)
+echo $gsim $n
+
+awk -v gsim=$gsim -v lat=$lat -v long=$long -v output=$output \
+&#39; NR&gt;22 {gsub(&quot;,&quot;,&quot; &quot;); if($2!=&quot;NA&quot;){print gsim,long,lat,$2 &gt;&gt; &quot;output2/&quot;$1&quot;_ID_x_y_mean.txt&quot;}}&#39; $i
+
+rm -r $gsim
+done
+</pre></div>
+</div>
+<p><em>Results</em></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="n">output1</span><span class="o">/</span><span class="mi">1880</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">29</span><span class="n">_ID_x_y_mean</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>US_0002566 -81.2142745 38.1381632 519.584137931034<br />US_0003205 -85.2784299 35.08677555 1607.71448275862<br />US_0003994 -90.252073 41.78058635 957.402068965517<br />US_0004107 -91.374318 40.39365535 1340.26551724138<br />US_0005298 -90.1797778 38.629 3158.30551724138<br />US_0008856 -121.1899167 45.60827778 2184.69310344828</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">head</span> <span class="n">output2</span><span class="o">/</span><span class="mi">1880</span><span class="o">-</span><span class="mi">02</span><span class="o">-</span><span class="mi">29</span><span class="n">_ID_x_y_mean</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>US_0002566 -81.2142745 38.1381632 519.584137931034<br />US_0003205 -85.2784299 35.08677555 1607.71448275862<br />US_0003994 -90.252073 41.78058635 957.402068965517<br />US_0004107 -91.374318 40.39365535 1340.26551724138<br />US_0005298 -90.1797778 38.629 3158.30551724138<br />US_0008856 -121.1899167 45.60827778 2184.69310344828</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span>   <span class="n">output1</span><span class="o">/*</span><span class="n">_ID_x_y_mean</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="c1">## 1644</span>
+<span class="n">ls</span>   <span class="n">output2</span><span class="o">/*</span><span class="n">_ID_x_y_mean</span><span class="o">.</span><span class="n">txt</span> <span class="o">|</span> <span class="n">wc</span> <span class="o">-</span><span class="n">l</span> <span class="c1">## 1642</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="lecture-4-14th-of-april-2022">
