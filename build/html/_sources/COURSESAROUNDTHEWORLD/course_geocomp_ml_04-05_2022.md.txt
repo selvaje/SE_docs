@@ -287,7 +287,7 @@ Below, some suggestions of possible operations:
 ## Lecture 6: 21st of April, 2022.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/ON671x4l_zb8lxXvUb4DtH5x4hjjwA6kB4vozg2HXMExapznq0tQPuLjuutpYnXR.fQPpgT2eZYrobTtB)
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
