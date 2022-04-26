@@ -83,8 +83,6 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
 
 
-
-
 ## Lecture 3: 12th of April, 2022.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
@@ -297,3 +295,31 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Building a mosaic
 	* Image histogram and classification
 	* Zonal statistic
+
+
+## Lecture 7: 26th of April, 2022.
+### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example(Giuseppe Amatulli & Longzhu Shen).
+
+[Video Recording]()
+
+This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
+
+
+* [Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html) (A.)
+	* Data download & cropping
+	* Image characteristics
+	* Temporal composite
+	* Temporal interpolation
+	* Plotting the temporal interpolation for band 1
+	* Assessing the temporal interpolation
+* [Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20220426_Approximation.pdf)  (S.)
+	* Polynomial Interpolation
+	* Piecewise Interpolation
+		* Cubic Spline
+		* Hermite cubic spline
+		* Akima
+		* Steffen
+	* Smoothing
+		* Salvitsky-Golay filtering
+		* Fourier Transform
+		* Wavelet
