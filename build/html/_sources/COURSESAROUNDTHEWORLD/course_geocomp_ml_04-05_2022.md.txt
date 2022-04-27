@@ -300,7 +300,7 @@ This section introduces data manipulation for geospatial data processing on the 
 ## Lecture 7: 26th of April, 2022.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example(Giuseppe Amatulli & Longzhu Shen).
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/nN4qF1ZUObGL7MX-WEl2DRme0POKYYhDdYDtIbZ0ERYaxQzxVitoSoGmhwv-8HY8.cWSYSNYEaT1IsLYk)
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
