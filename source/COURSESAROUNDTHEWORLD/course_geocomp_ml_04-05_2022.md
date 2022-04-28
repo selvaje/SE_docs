@@ -331,10 +331,11 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 
 [Video Recording]()
 
-* [Modeling and scientific discovery](http://spatial-ecology.net/docs/source/lectures/lect_20220428_Conditioning.pdf)
-	* A well posed question
-	* Strategies to develop solutions
-	* Approximation in representation and transformation
-	* Sources of uncertainty and analysis
-	* Tradeoff between data and computational error
-	* Sensitivity and conditioning
+* [Conditioning](http://spatial-ecology.net/docs/source/lectures/lect_20220428_Conditioning.pdf)
+	* Modelling theory
+	* Computing
+		* Arithmetic
+		* Algorithms
+		* Analytics
+	* Machine precision
+	* Conditioning
