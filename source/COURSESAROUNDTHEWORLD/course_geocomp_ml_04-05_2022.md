@@ -298,7 +298,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 
 ## Lecture 7: 26th of April, 2022.
-### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example(Giuseppe Amatulli & Longzhu Shen).
+### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli & Longzhu Shen).
 
 [Video Recording](https://yale.zoom.us/rec/share/nN4qF1ZUObGL7MX-WEl2DRme0POKYYhDdYDtIbZ0ERYaxQzxVitoSoGmhwv-8HY8.cWSYSNYEaT1IsLYk)
 
@@ -323,3 +323,18 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Salvitsky-Golay filtering
 		* Fourier Transform
 		* Wavelet
+		
+
+
+## Lecture 8: 28th of April, 2022.
+### Modeling introduction (Longzhu Shen)
+
+[Video Recording]()
+
+* [Modeling and scientific discovery](http://spatial-ecology.net/docs/source/lectures/lect_20220428_Conditioning.pdf)
+	* A well posed question
+	* Strategies to develop solutions
+	* Approximation in representation and transformation
+	* Sources of uncertainty and analysis
+	* Tradeoff between data and computational error
+	* Sensitivity and conditioning
