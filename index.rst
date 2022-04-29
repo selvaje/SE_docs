@@ -120,7 +120,8 @@ Documentation Contents
    CASESTUDY/NN-day1.ipynb
    CASESTUDY/NN-day2.ipynb
    CASESTUDY/NN-day3.ipynb
-
+   CASESTUDY/Tree_Height_01DataExplore.ipynb
+   
 Students Projects   
 ============================================
 
