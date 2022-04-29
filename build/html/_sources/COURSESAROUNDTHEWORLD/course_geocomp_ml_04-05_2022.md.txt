@@ -329,7 +329,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 28th of April, 2022.
 ### Modeling introduction (Longzhu Shen)
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/yoWuizgenTI_lY5-Ia8RFZZmn2V5hivUbZb35LxbHg45Zt1OeYam6JOCetwkYVfV.eQoeUTwFs2g7Cyhh)
 
 * [Conditioning](http://spatial-ecology.net/docs/source/lectures/lect_20220428_Conditioning.pdf)
 	* Modelling theory
