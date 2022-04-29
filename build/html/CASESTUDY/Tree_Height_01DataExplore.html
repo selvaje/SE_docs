@@ -123,6 +123,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#GEDI-features">GEDI features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Data-presentation">Data presentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Available-txt-files">Available txt files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Available-geo-raster-files">Available geo raster files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Geo-raster-files-description.">Geo raster files description.</a></li>
 </ul>
 </li>
@@ -548,9 +550,10 @@ div.rendered_html tbody tr:hover {
 </section>
 <section id="Data-presentation">
 <h2>Data presentation<a class="headerlink" href="#Data-presentation" title="Permalink to this headline"></a></h2>
-<p><strong>Available txt files.</strong></p>
+<section id="Available-txt-files">
+<h3>Available txt files<a class="headerlink" href="#Available-txt-files" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -563,6 +566,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+tree_height/txt/eu_x_y_height_predictors_select.txt
 tree_height/txt/eu_x_y_height_select.txt
 tree_height/txt/eu_x_y_predictors_select.txt
 tree_height/txt/eu_x_y_select.txt
@@ -570,7 +574,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -583,11 +587,12 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
+  1267240 tree_height/txt/eu_x_y_height_predictors_select.txt
   1267240 tree_height/txt/eu_x_y_height_select.txt
   1267240 tree_height/txt/eu_x_y_predictors_select.txt
   1267239 tree_height/txt/eu_x_y_select.txt
   1267240 tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
-  5068959 total
+  6336199 total
 </pre></div></div>
 </div>
 <p><strong>File storing point location (longitude and latitude). Such file can be used with “gdallocationinfo” to extract enviromental predictor at each point.</strong></p>
@@ -643,8 +648,18 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 <img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_12_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_12_1.png" />
 </div>
 </div>
-<p><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flag.</strong> * a?_95: tree hight (cm) at 95 quintile, for each algorithm * min_rh_95: minimum value of tree hight (cm) ammong the 6 algorithms * max_rh_95: maximum value of tree hight (cm) ammong the 6 algorithms * BEAM: 1-4 coverage beam = lower power (worst) ; 5-8 power beam = higher power (better) * digital_elev: digital mdoel elevation * elev_low: elevation of center of lowest mode * qc_a?: quality_flag
-for six algorithms quality_flag = 1 (better) * se_a?: sensitivity for six algorithms sensitivity &lt; 0.95 (worse) ; sensitivity &gt; 0.95 (beter ) * deg_fg: (degrade_flag) not-degraded 0 (better) ; degraded &gt; 0 (worse); * solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</p>
+<div class="line-block">
+<div class="line"><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flag.</strong> * a?_95: tree hight (cm) at 95 quintile, for each algorithm</div>
+<div class="line">* min_rh_95: minimum value of tree hight (cm) ammong the 6 algorithms</div>
+<div class="line">* max_rh_95: maximum value of tree hight (cm) ammong the 6 algorithms</div>
+<div class="line">* BEAM: 1-4 coverage beam = lower power (worst) ; 5-8 power beam = higher power (better)</div>
+<div class="line">* digital_elev: digital mdoel elevation</div>
+<div class="line">* elev_low: elevation of center of lowest mode</div>
+<div class="line">* qc_a?: quality_flag for six algorithms quality_flag = 1 (better)</div>
+<div class="line">* se_a?: sensitivity for six algorithms sensitivity &lt; 0.95 (worse); sensitivity &gt; 0.95 (beter )</div>
+<div class="line">* deg_fg: (degrade_flag) not-degraded 0 (better) ; degraded &gt; 0 (worse)</div>
+<div class="line">* solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
@@ -1325,6 +1340,7 @@ Name: deg_fg, dtype: int64
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="o">!</span> head tree_height/txt/eu_x_y_height_select.txt
+<span class="o">!</span> paste -d <span class="s2">&quot; &quot;</span>  tree_height/txt/eu_x_y_height_select.txt &gt;
 </pre></div>
 </div>
 </div>
@@ -1345,7 +1361,9 @@ ID X Y h
 9 6.0500201 48.822645 1623.5
 </pre></div></div>
 </div>
-<p><strong>Available geo raster files.</strong></p>
+</section>
+<section id="Available-geo-raster-files">
+<h3>Available geo raster files<a class="headerlink" href="#Available-geo-raster-files" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -1373,6 +1391,16 @@ forestheight.tif       treecover.tif
 glad_ard_SVVI_max.tif
 </pre></div></div>
 </div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</section>
 <section id="Geo-raster-files-description.">
 <h3>Geo raster files description.<a class="headerlink" href="#Geo-raster-files-description." title="Permalink to this headline"></a></h3>
 <p><strong>Spectral Variability Vegetation Index obtained from the</strong><a class="reference external" href="https://glad.umd.edu/ard/glad-landsat-ard-tools">GLAD ARD</a><strong>dataset.</strong></p>
@@ -1409,7 +1437,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_28_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_28_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_29_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_29_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1428,7 +1456,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_29_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_29_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_30_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_30_0.png" />
 </div>
 </div>
 <p>**Climate data obained from the <a class="reference external" href="https://chelsa-climate.org/bioclim/">CHELSA</a> dataset.</p>
@@ -1464,7 +1492,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_31_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_31_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_32_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_32_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1482,7 +1510,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_32_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_32_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_33_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_33_0.png" />
 </div>
 </div>
 <p>**Soil data obained from the <a class="reference external" href="https://soilgrids.org/">SOILGRID</a></p>
@@ -1519,7 +1547,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_35_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_35_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1538,7 +1566,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_36_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_36_0.png" />
 </div>
 </div>
 <p><strong>Geomorphological data obtained from</strong><a class="reference external" href="http://spatial-ecology.net/docs/build/html/GEODATA/geomorpho90m/geomorpho90m.html">geomorpho90m</a></p>
@@ -1581,7 +1609,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_38_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_38_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1602,7 +1630,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_39_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_39_0.png" />
 </div>
 </div>
 <p><strong>Geomorphological data obtained from</strong><a class="reference external" href="https://essd.copernicus.org/preprints/essd-2022-9/">hydromorpho90m</a></p>
@@ -1636,7 +1664,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_41_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_41_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1654,7 +1682,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_42_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_42_0.png" />
 </div>
 </div>
 <p><strong>Soil data obtained from</strong><a class="reference external" href="https://zenodo.org/record/4558732#.YmqPg3VfiV4">Global Soil Bioclimatic variables</a></p>
@@ -1688,7 +1716,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_44_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_44_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1706,7 +1734,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_45_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_45_0.png" />
 </div>
 </div>
 <p><strong>Forest cover in percentage obtained from</strong><a class="reference external" href="https://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.7.html">Global Forest Change</a></p>
@@ -1737,7 +1765,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_47_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_47_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1754,7 +1782,7 @@ glad_ard_SVVI_max.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_48_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_48_0.png" />
 </div>
 </div>
 <p><strong>Forest height in percentage obtained from</strong><a class="reference external" href="https://glad.umd.edu/dataset/gedi">Forest Height</a></p>
@@ -1787,7 +1815,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_50_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_50_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1804,7 +1832,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_51_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_51_0.png" />
 </div>
 </div>
 <p><strong>Latitude and longittude obtained from GRASS (r.latlong)[https://grass.osgeo.org/grass78/manuals/r.latlong.html]</strong></p>
@@ -1838,7 +1866,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_53_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_53_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1856,23 +1884,23 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_54_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_54_0.png" />
 </div>
 </div>
 <p><strong>File storing enviromental predictors at each point location.</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_x_y_predictors_select.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_x_y_height_predictors_select.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
 <span class="n">predictors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1897,6 +1925,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <th>ID</th>
       <th>X</th>
       <th>Y</th>
+      <th>h</th>
       <th>BLDFIE_WeigAver</th>
       <th>CECSOL_WeigAver</th>
       <th>CHELSA_bio18</th>
@@ -1922,151 +1951,157 @@ different enviromental predictors that better express the ecolocacal condition.<
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>6.050001</td>
-      <td>49.727499</td>
+      <td>6.05000</td>
+      <td>49.72750</td>
+      <td>3139.00000</td>
       <td>1540</td>
       <td>13</td>
       <td>2113</td>
       <td>5893</td>
-      <td>-10.486560</td>
+      <td>-10.48656</td>
       <td>-238043120</td>
-      <td>1.158417</td>
-      <td>0.069094</td>
-      <td>353.983124</td>
+      <td>1.15842</td>
+      <td>0.06909</td>
+      <td>353.98312</td>
       <td>23</td>
-      <td>276.871094</td>
-      <td>46.444092</td>
-      <td>347.665405</td>
-      <td>0.042500</td>
+      <td>276.87109</td>
+      <td>46.44409</td>
+      <td>347.66541</td>
+      <td>0.04250</td>
       <td>9</td>
       <td>780403</td>
-      <td>19.798992</td>
-      <td>440.672211</td>
+      <td>19.79899</td>
+      <td>440.67221</td>
       <td>85</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>6.050002</td>
-      <td>49.922155</td>
+      <td>6.05000</td>
+      <td>49.92215</td>
+      <td>1454.75000</td>
       <td>1491</td>
       <td>12</td>
       <td>1993</td>
       <td>5912</td>
-      <td>33.274361</td>
+      <td>33.27436</td>
       <td>-208915344</td>
-      <td>-1.755341</td>
-      <td>0.269112</td>
-      <td>267.511688</td>
+      <td>-1.75534</td>
+      <td>0.26911</td>
+      <td>267.51169</td>
       <td>19</td>
-      <td>-49.526367</td>
-      <td>19.552734</td>
-      <td>-130.541748</td>
-      <td>0.182780</td>
+      <td>-49.52637</td>
+      <td>19.55273</td>
+      <td>-130.54175</td>
+      <td>0.18278</td>
       <td>16</td>
       <td>772777</td>
-      <td>20.889412</td>
-      <td>457.756195</td>
+      <td>20.88941</td>
+      <td>457.75620</td>
       <td>85</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>6.050002</td>
-      <td>48.602377</td>
+      <td>6.05000</td>
+      <td>48.60238</td>
+      <td>853.50000</td>
       <td>1521</td>
       <td>17</td>
       <td>2124</td>
       <td>5983</td>
-      <td>0.045293</td>
+      <td>0.04529</td>
       <td>-137479792</td>
-      <td>1.908780</td>
-      <td>-0.016055</td>
-      <td>389.751160</td>
+      <td>1.90878</td>
+      <td>-0.01605</td>
+      <td>389.75116</td>
       <td>21</td>
-      <td>93.257324</td>
-      <td>50.743652</td>
-      <td>384.522461</td>
-      <td>0.036253</td>
+      <td>93.25732</td>
+      <td>50.74365</td>
+      <td>384.52246</td>
+      <td>0.03625</td>
       <td>14</td>
       <td>898820</td>
-      <td>20.695877</td>
-      <td>481.879700</td>
+      <td>20.69588</td>
+      <td>481.87970</td>
       <td>62</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>6.050009</td>
-      <td>48.151979</td>
+      <td>6.05001</td>
+      <td>48.15198</td>
+      <td>3141.00000</td>
       <td>1526</td>
       <td>16</td>
       <td>2569</td>
       <td>6130</td>
-      <td>-33.654274</td>
+      <td>-33.65427</td>
       <td>-267223072</td>
-      <td>0.965787</td>
-      <td>0.067767</td>
-      <td>380.207703</td>
+      <td>0.96579</td>
+      <td>0.06777</td>
+      <td>380.20770</td>
       <td>27</td>
-      <td>542.401367</td>
-      <td>202.264160</td>
-      <td>386.156738</td>
-      <td>0.005139</td>
+      <td>542.40137</td>
+      <td>202.26416</td>
+      <td>386.15674</td>
+      <td>0.00514</td>
       <td>15</td>
       <td>831824</td>
-      <td>19.375000</td>
-      <td>479.410278</td>
+      <td>19.37500</td>
+      <td>479.41028</td>
       <td>85</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>6.050010</td>
-      <td>49.588410</td>
+      <td>6.05001</td>
+      <td>49.58841</td>
+      <td>2065.25000</td>
       <td>1547</td>
       <td>14</td>
       <td>2108</td>
       <td>5923</td>
-      <td>27.493824</td>
+      <td>27.49382</td>
       <td>-107809368</td>
-      <td>-0.162624</td>
-      <td>0.014065</td>
-      <td>308.042786</td>
+      <td>-0.16262</td>
+      <td>0.01406</td>
+      <td>308.04279</td>
       <td>25</td>
-      <td>136.048340</td>
-      <td>146.835205</td>
-      <td>198.127441</td>
-      <td>0.028847</td>
+      <td>136.04834</td>
+      <td>146.83521</td>
+      <td>198.12744</td>
+      <td>0.02885</td>
       <td>17</td>
       <td>796962</td>
-      <td>18.777500</td>
-      <td>457.880066</td>
+      <td>18.77750</td>
+      <td>457.88007</td>
       <td>85</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
-      <td>6.050014</td>
-      <td>48.608456</td>
+      <td>6.05001</td>
+      <td>48.60846</td>
+      <td>1246.50000</td>
       <td>1515</td>
       <td>19</td>
       <td>2124</td>
       <td>6010</td>
-      <td>-1.602039</td>
+      <td>-1.60204</td>
       <td>17384282</td>
-      <td>1.447979</td>
-      <td>-0.018912</td>
-      <td>364.527100</td>
+      <td>1.44798</td>
+      <td>-0.01891</td>
+      <td>364.52710</td>
       <td>18</td>
-      <td>221.339844</td>
-      <td>247.387207</td>
-      <td>480.387939</td>
-      <td>0.042747</td>
+      <td>221.33984</td>
+      <td>247.38721</td>
+      <td>480.38794</td>
+      <td>0.04275</td>
       <td>14</td>
       <td>897945</td>
-      <td>19.398880</td>
-      <td>474.331329</td>
+      <td>19.39888</td>
+      <td>474.33133</td>
       <td>62</td>
     </tr>
   </tbody>
@@ -2074,7 +2109,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2084,7 +2119,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2109,6 +2144,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <th>ID</th>
       <th>X</th>
       <th>Y</th>
+      <th>h</th>
       <th>BLDFIE_WeigAver</th>
       <th>CECSOL_WeigAver</th>
       <th>CHELSA_bio18</th>
@@ -2155,12 +2191,14 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>1267239.00000</td>
       <td>1267239.00000</td>
       <td>1267239.00000</td>
+      <td>1267239.00000</td>
     </tr>
     <tr>
       <th>mean</th>
       <td>633620.00000</td>
       <td>7.96654</td>
       <td>49.36511</td>
+      <td>1994.97683</td>
       <td>1502.39574</td>
       <td>13.68642</td>
       <td>2310.15649</td>
@@ -2186,6 +2224,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>365820.53323</td>
       <td>1.10181</td>
       <td>0.46899</td>
+      <td>977.86026</td>
       <td>44.27063</td>
       <td>2.21764</td>
       <td>366.82038</td>
@@ -2211,6 +2250,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>1.00000</td>
       <td>6.05000</td>
       <td>47.97635</td>
+      <td>84.75000</td>
       <td>1216.00000</td>
       <td>6.00000</td>
       <td>1553.00000</td>
@@ -2236,6 +2276,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>316810.50000</td>
       <td>7.02639</td>
       <td>49.05567</td>
+      <td>1326.75000</td>
       <td>1491.00000</td>
       <td>12.00000</td>
       <td>2078.00000</td>
@@ -2261,6 +2302,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>633620.00000</td>
       <td>7.84351</td>
       <td>49.51040</td>
+      <td>2078.00000</td>
       <td>1518.00000</td>
       <td>13.00000</td>
       <td>2242.00000</td>
@@ -2286,6 +2328,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>950429.50000</td>
       <td>8.97501</td>
       <td>49.73179</td>
+      <td>2676.00000</td>
       <td>1531.00000</td>
       <td>15.00000</td>
       <td>2457.00000</td>
@@ -2311,6 +2354,7 @@ different enviromental predictors that better express the ecolocacal condition.<
       <td>1267239.00000</td>
       <td>9.95000</td>
       <td>49.95000</td>
+      <td>14481.00000</td>
       <td>1599.00000</td>
       <td>38.00000</td>
       <td>4618.00000</td>
