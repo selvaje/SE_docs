@@ -349,7 +349,8 @@ Reading materials:
 ## Lecture 9: 28th of April, 2022.
 ### Probability theory & Tree height estimation (Longzhu Shen, Giuseppe Amatulli)
 
-[Video Recording](
+[Video Recording](https://yale.zoom.us/rec/share/JTRk3aI9qgnnuLrkXPvN9Itsik6_iJ49AZ9pDofdqbzKrre-rAeKNX75ZwUGW6ST.uKlhCayMj4SsNlKe)
+
 
 * Recap of previous lecture 
 * Guided reading of HW
@@ -362,7 +363,7 @@ Reading materials:
 	* Expectation values 
 	* Common probability distribution functions
 
-* [Estimation of tree height using GEDI dataset]()http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
+* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
 
 **Compulsory assignments:**
 
