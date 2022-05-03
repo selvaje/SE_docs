@@ -159,6 +159,10 @@ The below instructions are needed to create a python virtual environment (in thi
 
     sudo apt install python3.8-venv
     python3 -m venv juplab_env
+    ## allow to use system python packages
+    sed 's/false/true/g' ~/juplab_env/pyvenv.cfg > ~/juplab_env/pyvenv_tmp.cfg ;
+    mv ~/juplab_env/pyvenv_tmp.cfg ~/juplab_env/pyvenv.cfg
+    
     source ~/juplab_env/bin/activate    ### run this line everytime wanna use jupyterlab
     pip install -U pip
     pip3 install jupyterlab
