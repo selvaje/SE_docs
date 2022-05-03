@@ -121,11 +121,13 @@
 <li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Getting-the-dataset">Getting the dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#GEDI-features">GEDI features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Data-presentation">Data presentation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Available-txt-files">Available txt files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Available-geo-raster-files">Available geo raster files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Geo-raster-files-description.">Geo raster files description.</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Assessing-variable-autocorrelation">Assessing variable autocorrelation</a></li>
 </ul>
 </li>
 </ul>
@@ -447,6 +449,15 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Estimation-of-tree-height-using-GEDI-dataset">
 <h1>Estimation of tree height using GEDI dataset<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset" title="Permalink to this headline"></a></h1>
+<section id="Getting-the-dataset">
+<h2>Getting the dataset<a class="headerlink" href="#Getting-the-dataset" title="Permalink to this headline"></a></h2>
+<p>For the here presented page donwolad the following dataset.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd  /media/sf_LVM_shared/my_SE_data/exercise
+wget wget https://www.dropbox.com/s/yb8y86kbs9g83f7/tree_height.tar
+tar -xvzf tree_height.tar.gz
+</pre></div>
+</div>
+</section>
 <section id="GEDI-features">
 <h2>GEDI features<a class="headerlink" href="#GEDI-features" title="Permalink to this headline"></a></h2>
 <p>The Global Ecosystem Dynamics Investigation (GEDI) mission aims to characterize ecosystem structure and dynamics to enable radically improved quantification of biomass. The GEDI instrument, attached to the International Space Station (ISS), collects data globally between 51.6° N and 51.6° S latitudes at the highest resolution and densest sampling of the 3-dimensional structure of the Earth.</p>
@@ -466,11 +477,14 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">geopandas</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span>
+<span class="kn">import</span> <span class="nn">skgstat</span> <span class="k">as</span> <span class="nn">skg</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
 </pre></div>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -479,41 +493,7 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_2_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_2_0.png" style="width: 500px; height: 300px;" />
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_study_area.png&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_3_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_3_0.png" />
-</div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_study_area_selected.png&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -525,7 +505,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_hehght_beam.jpg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_study_area.png&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -534,7 +514,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.jpg" style="width: 500px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -542,7 +522,7 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_pulse_distribution.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_study_area_selected.png&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -551,7 +531,41 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" style="width: 600px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" style="width: 500px; height: 300px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_hehght_beam.jpg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">500</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.jpg" style="width: 500px; height: 300px;" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/tree_height_pulse_distribution.png&quot;</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">300</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.png" style="width: 600px; height: 300px;" />
 </div>
 </div>
 </section>
@@ -560,7 +574,7 @@ div.rendered_html tbody tr:hover {
 <section id="Available-txt-files">
 <h3>Available txt files<a class="headerlink" href="#Available-txt-files" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -581,7 +595,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -602,7 +616,10 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
   6336199 total
 </pre></div></div>
 </div>
-<p><strong>File storing point location (longitude and latitude). Such file can be used with “gdallocationinfo” to extract enviromental predictor at each point.</strong></p>
+<div class="line-block">
+<div class="line"><strong>File storing point location (longitude and latitude).</strong></div>
+<div class="line">Such file can be used with “gdallocationinfo” to extract enviromental predictor at each point. The points have been already clean by removing all the points that falls in agricolture area, urban/built-up area, and water. In the immage below those areas are labeled in white.</div>
+</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
@@ -630,7 +647,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -643,19 +660,19 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac87484310&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f20208867f0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_13_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_13_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_15_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_15_1.png" />
 </div>
 </div>
 <p><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flags.</strong> The quality flags can be used to refine and select the best tree height estimation and use it as tree height observation.</p>
@@ -672,7 +689,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 <li><p>solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -683,7 +700,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -927,7 +944,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -937,7 +954,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1244,7 +1261,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 <p>Count observation during the day (&gt;0) and during the night (&lt;0)</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1253,7 +1270,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1262,7 +1279,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1271,7 +1288,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1281,7 +1298,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 <p>Count uniq degraged (&gt;0) or not-degraded (0) observation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1290,7 +1307,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1309,8 +1326,8 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 Name: deg_fg, dtype: int64
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1318,9 +1335,29 @@ Name: deg_fg, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-35.10    17572
+-35.20    11174
+-20.60    10390
+-16.80     9658
+25.60      7223
+          ...
+10.00         2
+-0.40         1
+-60.40        1
+42.10         1
+-32.40        1
+Name: solar_ele, Length: 1101, dtype: int64
+</pre></div></div>
+</div>
 <p><strong>File storing point location and tree height. The height is obtained as average of the 4 algorithms.</strong> Among the 6 algorithms we calculate minimum and maximum of heith values, then we calculate the mean excluding the minimum and the maximum.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1344,13 +1381,15 @@ ID X Y h
 7 6.0500165 48.571401 2938.75
 8 6.0500189 49.921613 3294.75
 9 6.0500201 48.822645 1623.5
+/bin/bash: -c: line 0: syntax error near unexpected token `newline&#39;
+/bin/bash: -c: line 0: ` paste -d &#34; &#34;  tree_height/txt/eu_x_y_height_select.txt &gt;&#39;
 </pre></div></div>
 </div>
 </section>
 <section id="Available-geo-raster-files">
 <h3>Available geo raster files<a class="headerlink" href="#Available-geo-raster-files" title="Permalink to this headline"></a></h3>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1378,7 +1417,7 @@ glad_ard_SVVI_max.tif
 </div>
 <p>The geo raster have been standarized in terms of extent and pixel resolution, using <em>gdal_translate</em> and <em>gdal_edit.py</em></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1441,7 +1480,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>glad_ard_SVVI_max.tif: Spectral Variability Vegetation Index colculated using a 3 years temporal maximum composite.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1456,23 +1495,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe97d89d9d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f208cf2ba90&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_31_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_31_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_33_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_33_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1487,7 +1526,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_32_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_32_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_34_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_34_0.png" />
 </div>
 </div>
 <p>**Climate data obained from the <a class="reference external" href="https://chelsa-climate.org/bioclim/">CHELSA</a> dataset.</p>
@@ -1496,7 +1535,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>CHELSA_bio4.tif: temperature seasonality (standard deviation of the monthly mean temperatures)</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1511,23 +1550,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe6b7b0da90&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f208cb20b20&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_36_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_36_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1541,7 +1580,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_37_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_37_0.png" />
 </div>
 </div>
 <p>**Soil data obained from the <a class="reference external" href="https://soilgrids.org/">SOILGRID</a></p>
@@ -1551,7 +1590,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>ORCDRC_WeigAver.tif: Soil organic carbon content (fine earth fraction) in g per kg (weigheted average as function for the depth)</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1566,23 +1605,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe97d121eb0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f208c7996a0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_39_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_39_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1597,7 +1636,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_40_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_40_0.png" />
 </div>
 </div>
 <p><strong>Geomorphological data obtained from</strong><a class="reference external" href="http://spatial-ecology.net/docs/build/html/GEODATA/geomorpho90m/geomorpho90m.html">geomorpho90m</a></p>
@@ -1609,7 +1648,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>dev-magnitude.tif: Maximum multiscaledeviation</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1628,23 +1667,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe97cf2b460&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f208a1a6f10&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_42_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_42_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1661,7 +1700,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_43_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_43_0.png" />
 </div>
 </div>
 <p><strong>Geomorphological data obtained from</strong><a class="reference external" href="https://essd.copernicus.org/preprints/essd-2022-9/">hydromorpho90m</a></p>
@@ -1670,7 +1709,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>outlet_dist_dw_basin.tif: Distance between focal grid cell and the outlet grid cell in the network</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1683,23 +1722,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac17083bb0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f2089c54190&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_45_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_45_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1713,7 +1752,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_46_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_46_0.png" />
 </div>
 </div>
 <p><strong>Soil data obtained from</strong><a class="reference external" href="https://zenodo.org/record/4558732#.YmqPg3VfiV4">Global Soil Bioclimatic variables</a></p>
@@ -1722,7 +1761,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>SBIO4_Temperature_Seasonality_5_15cm.tif</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1735,23 +1774,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fe97d1d99d0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f206d8bf4c0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_48_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_48_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1765,7 +1804,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_49_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_49_0.png" />
 </div>
 </div>
 <p><strong>Forest cover in percentage obtained from</strong><a class="reference external" href="https://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.7.html">Global Forest Change</a></p>
@@ -1773,7 +1812,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <li><p>treecover.tif: canopy cover in percentage</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1784,23 +1823,23 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac859019a0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f206d671eb0&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_51_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_51_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1813,7 +1852,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_52_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_52_0.png" />
 </div>
 </div>
 <p><strong>Forest height in percentage obtained from</strong><a class="reference external" href="https://glad.umd.edu/dataset/gedi">Forest Height</a></p>
@@ -1823,7 +1862,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <li><p>forestheight.tif</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1834,23 +1873,23 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac87355bb0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f206d48a580&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_54_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_54_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1863,7 +1902,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_55_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_55_0.png" />
 </div>
 </div>
 <p><strong>Latitude and longittude obtained from GRASS (r.latlong)[https://grass.osgeo.org/grass78/manuals/r.latlong.html]</strong></p>
@@ -1872,7 +1911,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <li><p>latitude.tif</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1885,23 +1924,23 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;matplotlib.axes._subplots.AxesSubplot at 0x7fac2fb32ee0&gt;
+&lt;matplotlib.axes._subplots.AxesSubplot at 0x7f206d2f4370&gt;
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_55_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_55_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_57_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_57_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1915,12 +1954,12 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_56_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_56_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_58_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_58_0.png" />
 </div>
 </div>
 <p><strong>File storing enviromental predictors at each point location.</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1931,7 +1970,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1982,157 +2021,157 @@ different enviromental predictors that better express the ecolocacal condition.<
     <tr>
       <th>0</th>
       <td>1</td>
-      <td>6.050001</td>
-      <td>49.727499</td>
+      <td>6.05</td>
+      <td>49.73</td>
       <td>3139.00</td>
       <td>1540</td>
       <td>13</td>
       <td>2113</td>
       <td>5893</td>
-      <td>-10.486560</td>
+      <td>-10.49</td>
       <td>-238043120</td>
-      <td>1.158417</td>
-      <td>0.069094</td>
-      <td>353.983124</td>
+      <td>1.16</td>
+      <td>0.07</td>
+      <td>353.98</td>
       <td>23</td>
-      <td>276.871094</td>
-      <td>46.444092</td>
-      <td>347.665405</td>
-      <td>0.042500</td>
+      <td>276.87</td>
+      <td>46.44</td>
+      <td>347.67</td>
+      <td>0.04</td>
       <td>9</td>
       <td>780403</td>
-      <td>19.798992</td>
-      <td>440.672211</td>
+      <td>19.80</td>
+      <td>440.67</td>
       <td>85</td>
     </tr>
     <tr>
       <th>1</th>
       <td>2</td>
-      <td>6.050002</td>
-      <td>49.922155</td>
+      <td>6.05</td>
+      <td>49.92</td>
       <td>1454.75</td>
       <td>1491</td>
       <td>12</td>
       <td>1993</td>
       <td>5912</td>
-      <td>33.274361</td>
+      <td>33.27</td>
       <td>-208915344</td>
-      <td>-1.755341</td>
-      <td>0.269112</td>
-      <td>267.511688</td>
+      <td>-1.76</td>
+      <td>0.27</td>
+      <td>267.51</td>
       <td>19</td>
-      <td>-49.526367</td>
-      <td>19.552734</td>
-      <td>-130.541748</td>
-      <td>0.182780</td>
+      <td>-49.53</td>
+      <td>19.55</td>
+      <td>-130.54</td>
+      <td>0.18</td>
       <td>16</td>
       <td>772777</td>
-      <td>20.889412</td>
-      <td>457.756195</td>
+      <td>20.89</td>
+      <td>457.76</td>
       <td>85</td>
     </tr>
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>6.050002</td>
-      <td>48.602377</td>
+      <td>6.05</td>
+      <td>48.60</td>
       <td>853.50</td>
       <td>1521</td>
       <td>17</td>
       <td>2124</td>
       <td>5983</td>
-      <td>0.045293</td>
+      <td>0.05</td>
       <td>-137479792</td>
-      <td>1.908780</td>
-      <td>-0.016055</td>
-      <td>389.751160</td>
+      <td>1.91</td>
+      <td>-0.02</td>
+      <td>389.75</td>
       <td>21</td>
-      <td>93.257324</td>
-      <td>50.743652</td>
-      <td>384.522461</td>
-      <td>0.036253</td>
+      <td>93.26</td>
+      <td>50.74</td>
+      <td>384.52</td>
+      <td>0.04</td>
       <td>14</td>
       <td>898820</td>
-      <td>20.695877</td>
-      <td>481.879700</td>
+      <td>20.70</td>
+      <td>481.88</td>
       <td>62</td>
     </tr>
     <tr>
       <th>3</th>
       <td>4</td>
-      <td>6.050009</td>
-      <td>48.151979</td>
+      <td>6.05</td>
+      <td>48.15</td>
       <td>3141.00</td>
       <td>1526</td>
       <td>16</td>
       <td>2569</td>
       <td>6130</td>
-      <td>-33.654274</td>
+      <td>-33.65</td>
       <td>-267223072</td>
-      <td>0.965787</td>
-      <td>0.067767</td>
-      <td>380.207703</td>
+      <td>0.97</td>
+      <td>0.07</td>
+      <td>380.21</td>
       <td>27</td>
-      <td>542.401367</td>
-      <td>202.264160</td>
-      <td>386.156738</td>
-      <td>0.005139</td>
+      <td>542.40</td>
+      <td>202.26</td>
+      <td>386.16</td>
+      <td>0.01</td>
       <td>15</td>
       <td>831824</td>
-      <td>19.375000</td>
-      <td>479.410278</td>
+      <td>19.38</td>
+      <td>479.41</td>
       <td>85</td>
     </tr>
     <tr>
       <th>4</th>
       <td>5</td>
-      <td>6.050010</td>
-      <td>49.588410</td>
+      <td>6.05</td>
+      <td>49.59</td>
       <td>2065.25</td>
       <td>1547</td>
       <td>14</td>
       <td>2108</td>
       <td>5923</td>
-      <td>27.493824</td>
+      <td>27.49</td>
       <td>-107809368</td>
-      <td>-0.162624</td>
-      <td>0.014065</td>
-      <td>308.042786</td>
+      <td>-0.16</td>
+      <td>0.01</td>
+      <td>308.04</td>
       <td>25</td>
-      <td>136.048340</td>
-      <td>146.835205</td>
-      <td>198.127441</td>
-      <td>0.028847</td>
+      <td>136.05</td>
+      <td>146.84</td>
+      <td>198.13</td>
+      <td>0.03</td>
       <td>17</td>
       <td>796962</td>
-      <td>18.777500</td>
-      <td>457.880066</td>
+      <td>18.78</td>
+      <td>457.88</td>
       <td>85</td>
     </tr>
     <tr>
       <th>5</th>
       <td>6</td>
-      <td>6.050014</td>
-      <td>48.608456</td>
+      <td>6.05</td>
+      <td>48.61</td>
       <td>1246.50</td>
       <td>1515</td>
       <td>19</td>
       <td>2124</td>
       <td>6010</td>
-      <td>-1.602039</td>
+      <td>-1.60</td>
       <td>17384282</td>
-      <td>1.447979</td>
-      <td>-0.018912</td>
-      <td>364.527100</td>
+      <td>1.45</td>
+      <td>-0.02</td>
+      <td>364.53</td>
       <td>18</td>
-      <td>221.339844</td>
-      <td>247.387207</td>
-      <td>480.387939</td>
-      <td>0.042747</td>
+      <td>221.34</td>
+      <td>247.39</td>
+      <td>480.39</td>
+      <td>0.04</td>
       <td>14</td>
       <td>897945</td>
-      <td>19.398880</td>
-      <td>474.331329</td>
+      <td>19.40</td>
+      <td>474.33</td>
       <td>62</td>
     </tr>
   </tbody>
@@ -2140,7 +2179,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2150,7 +2189,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2409,6 +2448,225 @@ different enviromental predictors that better express the ecolocacal condition.<
   </tbody>
 </table>
 </div></div>
+</div>
+</section>
+<section id="Assessing-variable-autocorrelation">
+<h3>Assessing variable autocorrelation<a class="headerlink" href="#Assessing-variable-autocorrelation" title="Permalink to this headline"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_sample</span> <span class="o">=</span> <span class="n">predictors</span><span class="p">[[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span><span class="s2">&quot;h&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">predictors_sample</span> <span class="p">,</span>  <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">scatter_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">)))</span>
+<span class="n">pyplot</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_63_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_63_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_sample</span> <span class="o">=</span> <span class="n">predictors</span><span class="p">[[</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;BLDFIE_WeigAver&quot;</span><span class="p">,</span><span class="s2">&quot;CECSOL_WeigAver&quot;</span><span class="p">,</span><span class="s2">&quot;ORCDRC_WeigAver&quot;</span><span class="p">,</span><span class="s2">&quot;CHELSA_bio18&quot;</span><span class="p">,</span><span class="s2">&quot;CHELSA_bio4&quot;</span><span class="p">,</span><span class="s2">&quot;SBIO3_Isothermality_5_15cm&quot;</span><span class="p">,</span><span class="s2">&quot;SBIO4_Temperature_Seasonality_5_15cm&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">predictors_sample</span> <span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">scatter_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.PairGrid at 0x7f208d36f6d0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_64_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_64_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_sample</span> <span class="o">=</span> <span class="n">predictors</span><span class="p">[[</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;elev&quot;</span><span class="p">,</span><span class="s2">&quot;convergence&quot;</span><span class="p">,</span><span class="s2">&quot;dev-magnitude&quot;</span><span class="p">,</span><span class="s2">&quot;eastness&quot;</span><span class="p">,</span><span class="s2">&quot;northness&quot;</span><span class="p">,</span><span class="s2">&quot;outlet_dist_dw_basin&quot;</span><span class="p">,</span><span class="s2">&quot;cti&quot;</span><span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">predictors_sample</span> <span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">scatter_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.PairGrid at 0x7f204bad07c0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_sample</span> <span class="o">=</span> <span class="n">predictors</span><span class="p">[[</span><span class="s2">&quot;h&quot;</span><span class="p">,</span><span class="s2">&quot;glad_ard_SVVI_min&quot;</span><span class="p">,</span><span class="s2">&quot;glad_ard_SVVI_med&quot;</span><span class="p">,</span><span class="s2">&quot;glad_ard_SVVI_max&quot;</span> <span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">predictors_sample</span> <span class="p">,</span> <span class="n">kind</span><span class="o">=</span><span class="s2">&quot;reg&quot;</span><span class="p">,</span> <span class="n">plot_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">scatter_kws</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span> <span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map_lower</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;.2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.PairGrid at 0x7f204bc86fd0&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1">### Assessing spatial autocorrelation</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">xy_val</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_x_y_height_select.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="n">xy_val_sample</span> <span class="o">=</span> <span class="n">xy_val</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">xy_val_sample</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>105845</th>
+      <td>105846</td>
+      <td>6.42266</td>
+      <td>48.72670</td>
+      <td>2555.50000</td>
+    </tr>
+    <tr>
+      <th>549668</th>
+      <td>549669</td>
+      <td>7.60790</td>
+      <td>49.93721</td>
+      <td>2816.00000</td>
+    </tr>
+    <tr>
+      <th>914092</th>
+      <td>914093</td>
+      <td>8.88377</td>
+      <td>48.91128</td>
+      <td>3109.00000</td>
+    </tr>
+    <tr>
+      <th>360938</th>
+      <td>360939</td>
+      <td>7.12810</td>
+      <td>49.32316</td>
+      <td>1383.00000</td>
+    </tr>
+    <tr>
+      <th>747592</th>
+      <td>747593</td>
+      <td>8.39776</td>
+      <td>48.75737</td>
+      <td>1431.25000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">V</span> <span class="o">=</span> <span class="n">skg</span><span class="o">.</span><span class="n">Variogram</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">xy_val_sample</span><span class="o">.</span><span class="n">X</span><span class="p">,</span><span class="n">xy_val_sample</span><span class="o">.</span><span class="n">Y</span><span class="p">))</span> <span class="p">,</span> <span class="n">xy_val_sample</span><span class="o">.</span><span class="n">h</span> <span class="p">,</span>  <span class="n">maxlag</span> <span class="o">=</span> <span class="s1">&#39;median&#39;</span> <span class="p">,</span>  <span class="n">n_lags</span><span class="o">=</span><span class="mi">50</span> <span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/selv/.local/lib/python3.8/site-packages/skgstat/plotting/variogram_plot.py:123: UserWarning:
+
+Matplotlib is currently using module://matplotlib_inline.backend_inline, which is a non-GUI backend, so cannot show the figure.
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_69_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_69_1.png" />
+</div>
 </div>
 </section>
 </section>
