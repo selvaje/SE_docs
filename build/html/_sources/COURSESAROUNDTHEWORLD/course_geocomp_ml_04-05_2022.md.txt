@@ -281,7 +281,6 @@ Below, some suggestions of possible operations:
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 	* Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
-
 ## Lecture 6: 21st of April, 2022.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
@@ -295,7 +294,6 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Building a mosaic
 	* Image histogram and classification
 	* Zonal statistic
-
 
 ## Lecture 7: 26th of April, 2022.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli & Longzhu Shen).
@@ -346,7 +344,7 @@ Reading materials:
 
 * [What Role Does Hydrological Science Play in the Ageof Machine Learning?](https://agupubs.onlinelibrary.wiley.com/doi/epdf/10.1029/2020WR028091)
 
-## Lecture 9: 28th of April, 2022.
+## Lecture 9: 3rd of May, 2022.
 ### Probability theory & Tree height estimation (Longzhu Shen, Giuseppe Amatulli)
 
 [Video Recording](https://yale.zoom.us/rec/share/JTRk3aI9qgnnuLrkXPvN9Itsik6_iJ49AZ9pDofdqbzKrre-rAeKNX75ZwUGW6ST.uKlhCayMj4SsNlKe)
@@ -354,7 +352,7 @@ Reading materials:
 
 * Recap of previous lecture 
 * Guided reading of HW
-* Probability Theory 
+* [Probability Theory](http://spatial-ecology.net/docs/source/lectures/lect_20220503_Theo_Prob.pdf)
 	* Basic definitions and properties
 	* Conditional probability
 	* Independence
@@ -367,6 +365,35 @@ Reading materials:
 
 **Compulsory assignments:**
 
+Reading materials for next Tuesday.
+
+* [Predicting into unknown space? Estimating the area of applicability of spatial prediction models](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13650)
+* [Spatial validation reveals poor predictive performance of large-scale ecological mapping models](https://www.nature.com/articles/s41467-020-18321-y)
+* [Spatial cross-validation is not the right way to evaluate map accuracy](https://www.sciencedirect.com/science/article/pii/S0304380021002489)
+
+
+## Lecture 10: 5th of May, 2022.
+### Spatial statistic (Longzhu Shen)
+
+[Video Recording](https://yale.zoom.us/rec/share/4hWbNMTZ0w1lUySGae4MtGGfpjBVc46O6j6LIM3mPZ8xFczvaH5nsXTdiXMb9OhL.ZdCWNvGt6xUzRNJ3)
+
+* Recap: Probability Theory
+* Introduction to Spatial Statistic
+	* Spat Dependence 
+	* Stationarity
+	* Process modeling 
+	* Process decomposition
+	* Causality
+	* Smoothed data
+* Species Distribution Model (SDM)
+	* Theory of Ecology community 
+	* Single SDM 
+		* General linear model 
+		* Linear mixed model 
+		* Maxent
+		* Pseduo absence data 
+	* Joint SDM
+	
 Reading materials for next Tuesday.
 
 * [Predicting into unknown space? Estimating the area of applicability of spatial prediction models](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13650)
