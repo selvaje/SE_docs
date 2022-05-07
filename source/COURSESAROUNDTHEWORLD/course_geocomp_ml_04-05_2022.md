@@ -378,9 +378,9 @@ Reading materials for next Tuesday.
 [Video Recording](https://yale.zoom.us/rec/share/4hWbNMTZ0w1lUySGae4MtGGfpjBVc46O6j6LIM3mPZ8xFczvaH5nsXTdiXMb9OhL.ZdCWNvGt6xUzRNJ3)
 
 * Recap: Probability Theory
-* Introduction to Spatial Statistic
+* [Introduction to Spatial Statistic](http://spatial-ecology.net/docs/source/lectures/lect_20220505_SDM.pdf)
 	* Spat Dependence 
-	* Stationarity
+	* Stationary
 	* Process modeling 
 	* Process decomposition
 	* Causality
