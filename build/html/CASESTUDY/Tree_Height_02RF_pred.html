@@ -1,0 +1,4081 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimation of tree height using GEDI dataset - Random Forest prediction &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1. 2021 SWEDEN" href="../STUDENTSPROJECTS/index.html" />
+    <link rel="prev" title="Estimation of tree height using GEDI dataset" href="Tree_Height_01DataExplore.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+            <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Random Forest prediction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Random-Forest-default-parameters">Random Forest default parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Random-Forest-tuning">Random Forest tuning</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Estimation of tree height using GEDI dataset - Random Forest prediction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CASESTUDY/Tree_Height_02RF_pred.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction">
+<h1>Estimation of tree height using GEDI dataset - Random Forest prediction<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction" title="Permalink to this headline"></a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install Pyspatialml
+</pre></div>
+</div>
+<p><strong>Code</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">rasterio</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span> <span class="k">as</span> <span class="n">RFReg</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span><span class="n">GridSearchCV</span>
+<span class="kn">from</span> <span class="nn">sklearn.pipeline</span> <span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>read in data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_x_y_height_predictors_select.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">predictors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>dev-magnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.050001</td>
+      <td>49.727499</td>
+      <td>3139.00</td>
+      <td>1540</td>
+      <td>13</td>
+      <td>2113</td>
+      <td>5893</td>
+      <td>-10.486560</td>
+      <td>-238043120</td>
+      <td>1.158417</td>
+      <td>0.069094</td>
+      <td>353.983124</td>
+      <td>23</td>
+      <td>276.871094</td>
+      <td>46.444092</td>
+      <td>347.665405</td>
+      <td>0.042500</td>
+      <td>9</td>
+      <td>780403</td>
+      <td>19.798992</td>
+      <td>440.672211</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6.050002</td>
+      <td>49.922155</td>
+      <td>1454.75</td>
+      <td>1491</td>
+      <td>12</td>
+      <td>1993</td>
+      <td>5912</td>
+      <td>33.274361</td>
+      <td>-208915344</td>
+      <td>-1.755341</td>
+      <td>0.269112</td>
+      <td>267.511688</td>
+      <td>19</td>
+      <td>-49.526367</td>
+      <td>19.552734</td>
+      <td>-130.541748</td>
+      <td>0.182780</td>
+      <td>16</td>
+      <td>772777</td>
+      <td>20.889412</td>
+      <td>457.756195</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6.050002</td>
+      <td>48.602377</td>
+      <td>853.50</td>
+      <td>1521</td>
+      <td>17</td>
+      <td>2124</td>
+      <td>5983</td>
+      <td>0.045293</td>
+      <td>-137479792</td>
+      <td>1.908780</td>
+      <td>-0.016055</td>
+      <td>389.751160</td>
+      <td>21</td>
+      <td>93.257324</td>
+      <td>50.743652</td>
+      <td>384.522461</td>
+      <td>0.036253</td>
+      <td>14</td>
+      <td>898820</td>
+      <td>20.695877</td>
+      <td>481.879700</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6.050009</td>
+      <td>48.151979</td>
+      <td>3141.00</td>
+      <td>1526</td>
+      <td>16</td>
+      <td>2569</td>
+      <td>6130</td>
+      <td>-33.654274</td>
+      <td>-267223072</td>
+      <td>0.965787</td>
+      <td>0.067767</td>
+      <td>380.207703</td>
+      <td>27</td>
+      <td>542.401367</td>
+      <td>202.264160</td>
+      <td>386.156738</td>
+      <td>0.005139</td>
+      <td>15</td>
+      <td>831824</td>
+      <td>19.375000</td>
+      <td>479.410278</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.050010</td>
+      <td>49.588410</td>
+      <td>2065.25</td>
+      <td>1547</td>
+      <td>14</td>
+      <td>2108</td>
+      <td>5923</td>
+      <td>27.493824</td>
+      <td>-107809368</td>
+      <td>-0.162624</td>
+      <td>0.014065</td>
+      <td>308.042786</td>
+      <td>25</td>
+      <td>136.048340</td>
+      <td>146.835205</td>
+      <td>198.127441</td>
+      <td>0.028847</td>
+      <td>17</td>
+      <td>796962</td>
+      <td>18.777500</td>
+      <td>457.880066</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>6.050014</td>
+      <td>48.608456</td>
+      <td>1246.50</td>
+      <td>1515</td>
+      <td>19</td>
+      <td>2124</td>
+      <td>6010</td>
+      <td>-1.602039</td>
+      <td>17384282</td>
+      <td>1.447979</td>
+      <td>-0.018912</td>
+      <td>364.527100</td>
+      <td>18</td>
+      <td>221.339844</td>
+      <td>247.387207</td>
+      <td>480.387939</td>
+      <td>0.042747</td>
+      <td>14</td>
+      <td>897945</td>
+      <td>19.398880</td>
+      <td>474.331329</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>6.050016</td>
+      <td>48.571401</td>
+      <td>2938.75</td>
+      <td>1520</td>
+      <td>19</td>
+      <td>2169</td>
+      <td>6147</td>
+      <td>27.856503</td>
+      <td>-66516432</td>
+      <td>-1.073956</td>
+      <td>0.002280</td>
+      <td>254.679596</td>
+      <td>19</td>
+      <td>125.250488</td>
+      <td>87.865234</td>
+      <td>160.696777</td>
+      <td>0.037254</td>
+      <td>11</td>
+      <td>908426</td>
+      <td>20.170450</td>
+      <td>476.414520</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3294.75</td>
+      <td>1490</td>
+      <td>12</td>
+      <td>1995</td>
+      <td>5912</td>
+      <td>22.102139</td>
+      <td>-297770784</td>
+      <td>-1.402633</td>
+      <td>0.309765</td>
+      <td>294.927765</td>
+      <td>26</td>
+      <td>-86.729492</td>
+      <td>-145.584229</td>
+      <td>-190.062988</td>
+      <td>0.222435</td>
+      <td>15</td>
+      <td>772784</td>
+      <td>20.855963</td>
+      <td>457.195404</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>6.050020</td>
+      <td>48.822645</td>
+      <td>1623.50</td>
+      <td>1554</td>
+      <td>18</td>
+      <td>1973</td>
+      <td>6138</td>
+      <td>18.496584</td>
+      <td>-25336536</td>
+      <td>-0.800016</td>
+      <td>0.010370</td>
+      <td>240.493759</td>
+      <td>22</td>
+      <td>-51.470703</td>
+      <td>-245.886719</td>
+      <td>172.074707</td>
+      <td>0.004428</td>
+      <td>8</td>
+      <td>839132</td>
+      <td>21.812290</td>
+      <td>496.231110</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6.050024</td>
+      <td>49.847522</td>
+      <td>1400.00</td>
+      <td>1521</td>
+      <td>15</td>
+      <td>2187</td>
+      <td>5886</td>
+      <td>-5.660453</td>
+      <td>-278652608</td>
+      <td>1.477951</td>
+      <td>-0.068720</td>
+      <td>376.671143</td>
+      <td>12</td>
+      <td>277.297363</td>
+      <td>273.141846</td>
+      <td>-138.895996</td>
+      <td>0.098817</td>
+      <td>13</td>
+      <td>768873</td>
+      <td>21.137711</td>
+      <td>466.976685</td>
+      <td>70</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">len</span><span class="p">(</span><span class="n">predictors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1267239
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="nb">max</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="n">bins</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_8_0.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_8_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_sel</span> <span class="o">=</span> <span class="n">predictors</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">8000</span><span class="p">)</span>  <span class="o">&amp;</span> <span class="p">(</span> <span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">300</span> <span class="p">)]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">predictors_sel</span><span class="o">.</span><span class="n">insert</span> <span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;hm&#39;</span> <span class="p">,</span>  <span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span> <span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">)</span>
+<span class="n">predictors_sel</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>hm</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>dev-magnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1169231</th>
+      <td>1169232</td>
+      <td>9.531712</td>
+      <td>49.014526</td>
+      <td>2637.75</td>
+      <td>26.3775</td>
+      <td>1460</td>
+      <td>13</td>
+      <td>2825</td>
+      <td>6553</td>
+      <td>14.741976</td>
+      <td>65513460</td>
+      <td>-1.234663</td>
+      <td>-0.136787</td>
+      <td>359.731506</td>
+      <td>26</td>
+      <td>388.843872</td>
+      <td>180.184570</td>
+      <td>-282.092896</td>
+      <td>-0.032185</td>
+      <td>15</td>
+      <td>854664</td>
+      <td>19.974524</td>
+      <td>486.256927</td>
+      <td>87</td>
+    </tr>
+    <tr>
+      <th>1242642</th>
+      <td>1242643</td>
+      <td>9.829277</td>
+      <td>49.457428</td>
+      <td>1847.50</td>
+      <td>18.4750</td>
+      <td>1539</td>
+      <td>17</td>
+      <td>1880</td>
+      <td>6578</td>
+      <td>-10.230325</td>
+      <td>-190945552</td>
+      <td>0.450617</td>
+      <td>-0.028938</td>
+      <td>331.827881</td>
+      <td>26</td>
+      <td>184.586914</td>
+      <td>-44.678223</td>
+      <td>41.607666</td>
+      <td>0.076611</td>
+      <td>4</td>
+      <td>802882</td>
+      <td>17.801113</td>
+      <td>487.997589</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>616944</th>
+      <td>616945</td>
+      <td>7.794376</td>
+      <td>49.936491</td>
+      <td>2366.00</td>
+      <td>23.6600</td>
+      <td>1510</td>
+      <td>15</td>
+      <td>1784</td>
+      <td>6281</td>
+      <td>-0.818384</td>
+      <td>-246739456</td>
+      <td>0.441385</td>
+      <td>-0.151280</td>
+      <td>283.319794</td>
+      <td>25</td>
+      <td>-75.419434</td>
+      <td>-94.947998</td>
+      <td>157.605469</td>
+      <td>0.065698</td>
+      <td>17</td>
+      <td>564287</td>
+      <td>18.662825</td>
+      <td>480.487823</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>767204</th>
+      <td>767205</td>
+      <td>8.481658</td>
+      <td>49.032304</td>
+      <td>2899.25</td>
+      <td>28.9925</td>
+      <td>1531</td>
+      <td>15</td>
+      <td>2194</td>
+      <td>6621</td>
+      <td>14.723026</td>
+      <td>-102499456</td>
+      <td>-1.473219</td>
+      <td>-0.014258</td>
+      <td>113.876358</td>
+      <td>7</td>
+      <td>429.215332</td>
+      <td>342.055420</td>
+      <td>190.835205</td>
+      <td>0.008521</td>
+      <td>9</td>
+      <td>720756</td>
+      <td>20.647640</td>
+      <td>526.152283</td>
+      <td>58</td>
+    </tr>
+    <tr>
+      <th>468691</th>
+      <td>468692</td>
+      <td>7.376594</td>
+      <td>48.612262</td>
+      <td>2218.50</td>
+      <td>22.1850</td>
+      <td>1452</td>
+      <td>14</td>
+      <td>2458</td>
+      <td>6243</td>
+      <td>-30.829910</td>
+      <td>-301616576</td>
+      <td>0.758155</td>
+      <td>0.190411</td>
+      <td>416.462891</td>
+      <td>18</td>
+      <td>-273.131836</td>
+      <td>-69.275391</td>
+      <td>302.972412</td>
+      <td>-0.009835</td>
+      <td>12</td>
+      <td>843576</td>
+      <td>18.453840</td>
+      <td>454.174988</td>
+      <td>100</td>
+    </tr>
+    <tr>
+      <th>462738</th>
+      <td>462739</td>
+      <td>7.363206</td>
+      <td>48.893333</td>
+      <td>1299.00</td>
+      <td>12.9900</td>
+      <td>1530</td>
+      <td>12</td>
+      <td>2215</td>
+      <td>6279</td>
+      <td>27.085413</td>
+      <td>-146318224</td>
+      <td>-0.848093</td>
+      <td>0.000530</td>
+      <td>263.739227</td>
+      <td>21</td>
+      <td>110.141113</td>
+      <td>30.604004</td>
+      <td>17.626221</td>
+      <td>0.086956</td>
+      <td>12</td>
+      <td>827881</td>
+      <td>19.378300</td>
+      <td>450.723511</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>978862</th>
+      <td>978863</td>
+      <td>9.042125</td>
+      <td>49.550580</td>
+      <td>2780.25</td>
+      <td>27.8025</td>
+      <td>1419</td>
+      <td>14</td>
+      <td>2590</td>
+      <td>6336</td>
+      <td>15.300125</td>
+      <td>-240752992</td>
+      <td>1.505054</td>
+      <td>-0.177774</td>
+      <td>424.673187</td>
+      <td>12</td>
+      <td>206.607666</td>
+      <td>194.658447</td>
+      <td>192.613281</td>
+      <td>-0.167651</td>
+      <td>14</td>
+      <td>725453</td>
+      <td>20.389563</td>
+      <td>456.661469</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>155636</th>
+      <td>155637</td>
+      <td>6.614136</td>
+      <td>49.562878</td>
+      <td>1665.25</td>
+      <td>16.6525</td>
+      <td>1470</td>
+      <td>14</td>
+      <td>2157</td>
+      <td>6094</td>
+      <td>4.690185</td>
+      <td>-326497536</td>
+      <td>-0.901392</td>
+      <td>-0.403319</td>
+      <td>280.093964</td>
+      <td>26</td>
+      <td>53.966064</td>
+      <td>-198.623779</td>
+      <td>-30.289062</td>
+      <td>0.367745</td>
+      <td>9</td>
+      <td>711778</td>
+      <td>22.860306</td>
+      <td>476.047302</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>264836</th>
+      <td>264837</td>
+      <td>6.899491</td>
+      <td>49.920169</td>
+      <td>1742.50</td>
+      <td>17.4250</td>
+      <td>1521</td>
+      <td>12</td>
+      <td>2077</td>
+      <td>6144</td>
+      <td>-1.932333</td>
+      <td>-280227296</td>
+      <td>1.694332</td>
+      <td>-0.145662</td>
+      <td>328.881500</td>
+      <td>25</td>
+      <td>-7.561035</td>
+      <td>-90.229980</td>
+      <td>37.742676</td>
+      <td>0.115312</td>
+      <td>16</td>
+      <td>638509</td>
+      <td>18.627163</td>
+      <td>446.605194</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>569329</th>
+      <td>569330</td>
+      <td>7.661671</td>
+      <td>49.713490</td>
+      <td>1236.50</td>
+      <td>12.3650</td>
+      <td>1482</td>
+      <td>15</td>
+      <td>1690</td>
+      <td>6535</td>
+      <td>9.911312</td>
+      <td>91682800</td>
+      <td>-2.013998</td>
+      <td>0.045590</td>
+      <td>154.322189</td>
+      <td>6</td>
+      <td>604.629395</td>
+      <td>510.784668</td>
+      <td>573.699707</td>
+      <td>0.007721</td>
+      <td>15</td>
+      <td>589327</td>
+      <td>22.766729</td>
+      <td>536.697205</td>
+      <td>39</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="nb">max</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="n">bins</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_10_0.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_10_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;forestheight&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;hm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;forestheight&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<span class="n">pearsonr</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;forestheight&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.4527925129990053
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_11_1.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_11_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">feat</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Y</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[26.3775],
+       [18.475 ],
+       [23.66  ],
+       ...,
+       [13.8125],
+       [14.5225],
+       [30.6525]])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[1460.        ,   13.        , 2825.        , ...,   19.97452354,
+         486.25692749,   87.        ],
+       [1539.        ,   17.        , 1880.        , ...,   17.80111313,
+         487.99758911,   74.        ],
+       [1510.        ,   15.        , 1784.        , ...,   18.66282463,
+         480.48782349,  100.        ],
+       ...,
+       [1535.        ,   16.        , 2140.        , ...,   20.49588776,
+         525.11340332,   18.        ],
+       [1532.        ,   14.        , 1777.        , ...,   21.25732994,
+         495.80603027,   27.        ],
+       [1549.        ,   14.        , 2139.        , ...,   18.1689415 ,
+         471.93032837,   89.        ]])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 18)
+</pre></div></div>
+</div>
+<p><strong>Model building</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<section id="Random-Forest-default-parameters">
+<h2>Random Forest default parameters<a class="headerlink" href="#Random-Forest-default-parameters" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RFReg</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;bootstrap&#39;: True,
+ &#39;ccp_alpha&#39;: 0.0,
+ &#39;criterion&#39;: &#39;squared_error&#39;,
+ &#39;max_depth&#39;: None,
+ &#39;max_features&#39;: &#39;auto&#39;,
+ &#39;max_leaf_nodes&#39;: None,
+ &#39;max_samples&#39;: None,
+ &#39;min_impurity_decrease&#39;: 0.0,
+ &#39;min_samples_leaf&#39;: 1,
+ &#39;min_samples_split&#39;: 2,
+ &#39;min_weight_fraction_leaf&#39;: 0.0,
+ &#39;n_estimators&#39;: 100,
+ &#39;n_jobs&#39;: None,
+ &#39;oob_score&#39;: False,
+ &#39;random_state&#39;: 42,
+ &#39;verbose&#39;: 0,
+ &#39;warm_start&#39;: False}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rfReg</span> <span class="o">=</span> <span class="n">RFReg</span><span class="p">()</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">dic_pred</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">pearsonr_all</span> <span class="o">=</span> <span class="p">[</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span><span class="n">y_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">pearsonr_all</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Random-Forest-tuning">
+<h2>Random Forest tuning<a class="headerlink" href="#Random-Forest-tuning" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p>“max_features”: number of features to consider when looking for the best split.</p></li>
+<li><p>“max_samples”: number of samples to draw from X to train each base estimator.</p></li>
+<li><p>“n_estimators”: identify the number of trees that must grow. It must be large enough so that the error is stabilized. Defoult 100.</p></li>
+<li><p>“max_depth”: max number of levels in each decision tree.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span><span class="n">RFReg</span><span class="p">())])</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;rf__max_features&#39;</span><span class="p">:(</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+        <span class="s1">&#39;rf__max_samples&#39;</span><span class="p">:(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">),</span>
+        <span class="s1">&#39;rf__n_estimators&#39;</span><span class="p">:(</span><span class="mi">500</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span>
+        <span class="s1">&#39;rf__max_depth&#39;</span><span class="p">:(</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">300</span><span class="p">)}</span>
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span><span class="n">parameters</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Fitting 5 folds for each of 72 candidates, totalling 360 fits
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rfReg</span> <span class="o">=</span> <span class="n">RFReg</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mf">0.33</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">max_samples</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">24</span> <span class="p">,</span> <span class="n">oob_score</span> <span class="o">=</span>  <span class="kc">True</span><span class="p">)</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">dic_pred</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">pearsonr_all_toone</span> <span class="o">=</span> <span class="p">[</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span><span class="n">y_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">pearsonr_all_toone</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.20414830330946446
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Best Training score: </span><span class="si">%0.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Optimal parameters:&#39;</span><span class="p">)</span>
+<span class="n">best_par</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">par_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">par_name</span><span class="p">,</span> <span class="n">best_par</span><span class="p">[</span><span class="n">par_name</span><span class="p">]))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Best Training score: 0.204
+Optimal parameters:
+        rf__max_depth: 500
+        rf__max_features: 0.33
+        rf__max_samples: 0.6
+        rf__n_estimators: 2000
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;orig&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fe1788e52b0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_27_1.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_27_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;orig&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fe17884cca0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_28_1.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_28_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">impt</span> <span class="o">=</span> <span class="p">[</span><span class="n">rfReg</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">feature_importances_</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">estimators_</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 1, 13,  0,  6,  8,  5,  4, 16,  3, 12, 15,  2, 14,  9,  7, 11, 10,
+       17])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">impt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">feat</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_31_0.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_31_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<p><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flags.</strong> The quality flags can be used to refine and select the best tree height estimation and use it as tree height observation.</p>
+<ul class="simple">
+<li><p>a?_95: tree hight (cm) at 95 quintile, for each algorithm</p></li>
+<li><p>min_rh_95: minimum value of tree hight (cm) ammong the 6 algorithms</p></li>
+<li><p>max_rh_95: maximum value of tree hight (cm) ammong the 6 algorithms</p></li>
+<li><p>BEAM: 1-4 coverage beam = lower power (worse) ; 5-8 power beam = higher power (better)</p></li>
+<li><p>digital_elev: digital mdoel elevation</p></li>
+<li><p>elev_low: elevation of center of lowest mode</p></li>
+<li><p>qc_a?: quality_flag for six algorithms quality_flag = 1 (better); = 0 (worse)</p></li>
+<li><p>se_a?: sensitivity for six algorithms sensitivity &lt; 0.95 (worse); sensitivity &gt; 0.95 (beter )</p></li>
+<li><p>deg_fg: (degrade_flag) not-degraded 0 (better) ; degraded &gt; 0 (worse)</p></li>
+<li><p>solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_6algorithms</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">height_6algorithms</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>a1_95</th>
+      <th>a2_95</th>
+      <th>a3_95</th>
+      <th>a4_95</th>
+      <th>a5_95</th>
+      <th>a6_95</th>
+      <th>min_rh_95</th>
+      <th>max_rh_95</th>
+      <th>BEAM</th>
+      <th>digital_elev</th>
+      <th>elev_low</th>
+      <th>qc_a1</th>
+      <th>qc_a2</th>
+      <th>qc_a3</th>
+      <th>qc_a4</th>
+      <th>qc_a5</th>
+      <th>qc_a6</th>
+      <th>se_a1</th>
+      <th>se_a2</th>
+      <th>se_a3</th>
+      <th>se_a4</th>
+      <th>se_a5</th>
+      <th>se_a6</th>
+      <th>deg_fg</th>
+      <th>solar_ele</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.050001</td>
+      <td>49.727499</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3120</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3120</td>
+      <td>3139</td>
+      <td>5</td>
+      <td>410.0</td>
+      <td>383.72153</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.962</td>
+      <td>0.984</td>
+      <td>0.968</td>
+      <td>0.962</td>
+      <td>0.989</td>
+      <td>0.979</td>
+      <td>0</td>
+      <td>17.7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6.050002</td>
+      <td>49.922155</td>
+      <td>1022</td>
+      <td>2303</td>
+      <td>970</td>
+      <td>872</td>
+      <td>5596</td>
+      <td>1524</td>
+      <td>872</td>
+      <td>5596</td>
+      <td>5</td>
+      <td>290.0</td>
+      <td>2374.14110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.948</td>
+      <td>0.990</td>
+      <td>0.960</td>
+      <td>0.948</td>
+      <td>0.994</td>
+      <td>0.980</td>
+      <td>0</td>
+      <td>43.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6.050002</td>
+      <td>48.602377</td>
+      <td>380</td>
+      <td>1336</td>
+      <td>332</td>
+      <td>362</td>
+      <td>1336</td>
+      <td>1340</td>
+      <td>332</td>
+      <td>1340</td>
+      <td>4</td>
+      <td>440.0</td>
+      <td>435.97781</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.947</td>
+      <td>0.975</td>
+      <td>0.956</td>
+      <td>0.947</td>
+      <td>0.981</td>
+      <td>0.968</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6.050009</td>
+      <td>48.151979</td>
+      <td>3153</td>
+      <td>3142</td>
+      <td>3142</td>
+      <td>3127</td>
+      <td>3138</td>
+      <td>3142</td>
+      <td>3127</td>
+      <td>3153</td>
+      <td>2</td>
+      <td>450.0</td>
+      <td>422.00537</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.930</td>
+      <td>0.970</td>
+      <td>0.943</td>
+      <td>0.930</td>
+      <td>0.978</td>
+      <td>0.962</td>
+      <td>0</td>
+      <td>-14.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.050010</td>
+      <td>49.588410</td>
+      <td>666</td>
+      <td>4221</td>
+      <td>651</td>
+      <td>33</td>
+      <td>5611</td>
+      <td>2723</td>
+      <td>33</td>
+      <td>5611</td>
+      <td>8</td>
+      <td>370.0</td>
+      <td>2413.74830</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.941</td>
+      <td>0.983</td>
+      <td>0.946</td>
+      <td>0.941</td>
+      <td>0.992</td>
+      <td>0.969</td>
+      <td>0</td>
+      <td>22.1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>6.050014</td>
+      <td>48.608456</td>
+      <td>787</td>
+      <td>1179</td>
+      <td>1187</td>
+      <td>761</td>
+      <td>1833</td>
+      <td>1833</td>
+      <td>761</td>
+      <td>1833</td>
+      <td>3</td>
+      <td>420.0</td>
+      <td>415.51581</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.952</td>
+      <td>0.979</td>
+      <td>0.961</td>
+      <td>0.952</td>
+      <td>0.986</td>
+      <td>0.975</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_6algorithms_sel</span> <span class="o">=</span> <span class="n">height_6algorithms</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;BEAM&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a4&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a5&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a6&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a1&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a3&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a4&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a5&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a6&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;deg_fg&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;solar_ele&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_6algorithms_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>a1_95</th>
+      <th>a2_95</th>
+      <th>a3_95</th>
+      <th>a4_95</th>
+      <th>a5_95</th>
+      <th>a6_95</th>
+      <th>min_rh_95</th>
+      <th>max_rh_95</th>
+      <th>BEAM</th>
+      <th>digital_elev</th>
+      <th>elev_low</th>
+      <th>qc_a1</th>
+      <th>qc_a2</th>
+      <th>qc_a3</th>
+      <th>qc_a4</th>
+      <th>qc_a5</th>
+      <th>qc_a6</th>
+      <th>se_a1</th>
+      <th>se_a2</th>
+      <th>se_a3</th>
+      <th>se_a4</th>
+      <th>se_a5</th>
+      <th>se_a6</th>
+      <th>deg_fg</th>
+      <th>solar_ele</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3303</td>
+      <td>3288</td>
+      <td>3296</td>
+      <td>3236</td>
+      <td>3857</td>
+      <td>3292</td>
+      <td>3236</td>
+      <td>3857</td>
+      <td>7</td>
+      <td>320.0</td>
+      <td>297.68533</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.971</td>
+      <td>0.988</td>
+      <td>0.976</td>
+      <td>0.971</td>
+      <td>0.992</td>
+      <td>0.984</td>
+      <td>0</td>
+      <td>-33.9</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>6.050039</td>
+      <td>47.995344</td>
+      <td>2762</td>
+      <td>2736</td>
+      <td>2740</td>
+      <td>2747</td>
+      <td>3893</td>
+      <td>2736</td>
+      <td>2736</td>
+      <td>3893</td>
+      <td>5</td>
+      <td>390.0</td>
+      <td>368.55121</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.975</td>
+      <td>0.990</td>
+      <td>0.979</td>
+      <td>0.975</td>
+      <td>0.994</td>
+      <td>0.987</td>
+      <td>0</td>
+      <td>-37.3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>6.050046</td>
+      <td>49.865317</td>
+      <td>1398</td>
+      <td>2505</td>
+      <td>2509</td>
+      <td>1316</td>
+      <td>2848</td>
+      <td>2505</td>
+      <td>1316</td>
+      <td>2848</td>
+      <td>6</td>
+      <td>340.0</td>
+      <td>330.40564</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.990</td>
+      <td>0.979</td>
+      <td>0.973</td>
+      <td>0.994</td>
+      <td>0.986</td>
+      <td>0</td>
+      <td>-18.2</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>6.050048</td>
+      <td>49.050020</td>
+      <td>984</td>
+      <td>943</td>
+      <td>947</td>
+      <td>958</td>
+      <td>2617</td>
+      <td>947</td>
+      <td>943</td>
+      <td>2617</td>
+      <td>6</td>
+      <td>300.0</td>
+      <td>291.22598</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.978</td>
+      <td>0.991</td>
+      <td>0.982</td>
+      <td>0.978</td>
+      <td>0.995</td>
+      <td>0.988</td>
+      <td>0</td>
+      <td>-35.4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>6.050049</td>
+      <td>48.391359</td>
+      <td>3362</td>
+      <td>3332</td>
+      <td>3336</td>
+      <td>3351</td>
+      <td>4467</td>
+      <td>3336</td>
+      <td>3332</td>
+      <td>4467</td>
+      <td>5</td>
+      <td>530.0</td>
+      <td>504.78122</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.988</td>
+      <td>0.977</td>
+      <td>0.973</td>
+      <td>0.992</td>
+      <td>0.984</td>
+      <td>0</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1267207</th>
+      <td>1267208</td>
+      <td>9.949829</td>
+      <td>49.216272</td>
+      <td>2160</td>
+      <td>2816</td>
+      <td>2816</td>
+      <td>2104</td>
+      <td>3299</td>
+      <td>2816</td>
+      <td>2104</td>
+      <td>3299</td>
+      <td>8</td>
+      <td>420.0</td>
+      <td>386.44556</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.980</td>
+      <td>0.993</td>
+      <td>0.984</td>
+      <td>0.980</td>
+      <td>0.995</td>
+      <td>0.989</td>
+      <td>0</td>
+      <td>-16.9</td>
+    </tr>
+    <tr>
+      <th>1267211</th>
+      <td>1267212</td>
+      <td>9.949856</td>
+      <td>49.881190</td>
+      <td>3190</td>
+      <td>3179</td>
+      <td>3179</td>
+      <td>3171</td>
+      <td>3822</td>
+      <td>3179</td>
+      <td>3171</td>
+      <td>3822</td>
+      <td>6</td>
+      <td>380.0</td>
+      <td>363.69348</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.968</td>
+      <td>0.986</td>
+      <td>0.974</td>
+      <td>0.968</td>
+      <td>0.990</td>
+      <td>0.982</td>
+      <td>0</td>
+      <td>-35.1</td>
+    </tr>
+    <tr>
+      <th>1267216</th>
+      <td>1267217</td>
+      <td>9.949880</td>
+      <td>49.873435</td>
+      <td>2061</td>
+      <td>2828</td>
+      <td>2046</td>
+      <td>2024</td>
+      <td>2828</td>
+      <td>2828</td>
+      <td>2024</td>
+      <td>2828</td>
+      <td>7</td>
+      <td>380.0</td>
+      <td>361.06812</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.967</td>
+      <td>0.988</td>
+      <td>0.974</td>
+      <td>0.967</td>
+      <td>0.993</td>
+      <td>0.983</td>
+      <td>0</td>
+      <td>-35.1</td>
+    </tr>
+    <tr>
+      <th>1267227</th>
+      <td>1267228</td>
+      <td>9.949958</td>
+      <td>49.127182</td>
+      <td>366</td>
+      <td>2307</td>
+      <td>1260</td>
+      <td>355</td>
+      <td>3531</td>
+      <td>2719</td>
+      <td>355</td>
+      <td>3531</td>
+      <td>6</td>
+      <td>500.0</td>
+      <td>493.52792</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.989</td>
+      <td>0.978</td>
+      <td>0.973</td>
+      <td>0.993</td>
+      <td>0.985</td>
+      <td>0</td>
+      <td>-36.0</td>
+    </tr>
+    <tr>
+      <th>1267237</th>
+      <td>1267238</td>
+      <td>9.949999</td>
+      <td>49.936763</td>
+      <td>2513</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2494</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2513</td>
+      <td>5</td>
+      <td>360.0</td>
+      <td>346.54227</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.968</td>
+      <td>0.988</td>
+      <td>0.974</td>
+      <td>0.968</td>
+      <td>0.993</td>
+      <td>0.983</td>
+      <td>0</td>
+      <td>-32.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 28 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_sel</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span> <span class="p">:</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span> <span class="p">,</span>
+                            <span class="s1">&#39;hm_sel&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a1_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a2_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a3_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a4_95&#39;</span><span class="p">]</span>
+                             <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a5_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a6_95&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;min_rh_95&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;max_rh_95&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">400</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>32.9475</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>27.4625</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>22.2925</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>9.5900</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>33.4625</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1267207</th>
+      <td>1267208</td>
+      <td>26.5200</td>
+    </tr>
+    <tr>
+      <th>1267211</th>
+      <td>1267212</td>
+      <td>31.8175</td>
+    </tr>
+    <tr>
+      <th>1267216</th>
+      <td>1267217</td>
+      <td>24.4075</td>
+    </tr>
+    <tr>
+      <th>1267227</th>
+      <td>1267228</td>
+      <td>16.6300</td>
+    </tr>
+    <tr>
+      <th>1267237</th>
+      <td>1267238</td>
+      <td>24.9100</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 2 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_hm_sel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span> <span class="n">predictors</span> <span class="p">,</span>  <span class="n">height_sel</span> <span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span> <span class="p">,</span>  <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span> <span class="p">,</span>  <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>dev-magnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.050001</td>
+      <td>49.727499</td>
+      <td>3139.00</td>
+      <td>1540</td>
+      <td>13</td>
+      <td>2113</td>
+      <td>5893</td>
+      <td>-10.486560</td>
+      <td>-238043120</td>
+      <td>1.158417</td>
+      <td>0.069094</td>
+      <td>353.983124</td>
+      <td>23</td>
+      <td>276.871094</td>
+      <td>46.444092</td>
+      <td>347.665405</td>
+      <td>0.042500</td>
+      <td>9</td>
+      <td>780403</td>
+      <td>19.798992</td>
+      <td>440.672211</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6.050002</td>
+      <td>49.922155</td>
+      <td>1454.75</td>
+      <td>1491</td>
+      <td>12</td>
+      <td>1993</td>
+      <td>5912</td>
+      <td>33.274361</td>
+      <td>-208915344</td>
+      <td>-1.755341</td>
+      <td>0.269112</td>
+      <td>267.511688</td>
+      <td>19</td>
+      <td>-49.526367</td>
+      <td>19.552734</td>
+      <td>-130.541748</td>
+      <td>0.182780</td>
+      <td>16</td>
+      <td>772777</td>
+      <td>20.889412</td>
+      <td>457.756195</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6.050002</td>
+      <td>48.602377</td>
+      <td>853.50</td>
+      <td>1521</td>
+      <td>17</td>
+      <td>2124</td>
+      <td>5983</td>
+      <td>0.045293</td>
+      <td>-137479792</td>
+      <td>1.908780</td>
+      <td>-0.016055</td>
+      <td>389.751160</td>
+      <td>21</td>
+      <td>93.257324</td>
+      <td>50.743652</td>
+      <td>384.522461</td>
+      <td>0.036253</td>
+      <td>14</td>
+      <td>898820</td>
+      <td>20.695877</td>
+      <td>481.879700</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6.050009</td>
+      <td>48.151979</td>
+      <td>3141.00</td>
+      <td>1526</td>
+      <td>16</td>
+      <td>2569</td>
+      <td>6130</td>
+      <td>-33.654274</td>
+      <td>-267223072</td>
+      <td>0.965787</td>
+      <td>0.067767</td>
+      <td>380.207703</td>
+      <td>27</td>
+      <td>542.401367</td>
+      <td>202.264160</td>
+      <td>386.156738</td>
+      <td>0.005139</td>
+      <td>15</td>
+      <td>831824</td>
+      <td>19.375000</td>
+      <td>479.410278</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.050010</td>
+      <td>49.588410</td>
+      <td>2065.25</td>
+      <td>1547</td>
+      <td>14</td>
+      <td>2108</td>
+      <td>5923</td>
+      <td>27.493824</td>
+      <td>-107809368</td>
+      <td>-0.162624</td>
+      <td>0.014065</td>
+      <td>308.042786</td>
+      <td>25</td>
+      <td>136.048340</td>
+      <td>146.835205</td>
+      <td>198.127441</td>
+      <td>0.028847</td>
+      <td>17</td>
+      <td>796962</td>
+      <td>18.777500</td>
+      <td>457.880066</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>6.050014</td>
+      <td>48.608456</td>
+      <td>1246.50</td>
+      <td>1515</td>
+      <td>19</td>
+      <td>2124</td>
+      <td>6010</td>
+      <td>-1.602039</td>
+      <td>17384282</td>
+      <td>1.447979</td>
+      <td>-0.018912</td>
+      <td>364.527100</td>
+      <td>18</td>
+      <td>221.339844</td>
+      <td>247.387207</td>
+      <td>480.387939</td>
+      <td>0.042747</td>
+      <td>14</td>
+      <td>897945</td>
+      <td>19.398880</td>
+      <td>474.331329</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>6.050016</td>
+      <td>48.571401</td>
+      <td>2938.75</td>
+      <td>1520</td>
+      <td>19</td>
+      <td>2169</td>
+      <td>6147</td>
+      <td>27.856503</td>
+      <td>-66516432</td>
+      <td>-1.073956</td>
+      <td>0.002280</td>
+      <td>254.679596</td>
+      <td>19</td>
+      <td>125.250488</td>
+      <td>87.865234</td>
+      <td>160.696777</td>
+      <td>0.037254</td>
+      <td>11</td>
+      <td>908426</td>
+      <td>20.170450</td>
+      <td>476.414520</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3294.75</td>
+      <td>1490</td>
+      <td>12</td>
+      <td>1995</td>
+      <td>5912</td>
+      <td>22.102139</td>
+      <td>-297770784</td>
+      <td>-1.402633</td>
+      <td>0.309765</td>
+      <td>294.927765</td>
+      <td>26</td>
+      <td>-86.729492</td>
+      <td>-145.584229</td>
+      <td>-190.062988</td>
+      <td>0.222435</td>
+      <td>15</td>
+      <td>772784</td>
+      <td>20.855963</td>
+      <td>457.195404</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>6.050020</td>
+      <td>48.822645</td>
+      <td>1623.50</td>
+      <td>1554</td>
+      <td>18</td>
+      <td>1973</td>
+      <td>6138</td>
+      <td>18.496584</td>
+      <td>-25336536</td>
+      <td>-0.800016</td>
+      <td>0.010370</td>
+      <td>240.493759</td>
+      <td>22</td>
+      <td>-51.470703</td>
+      <td>-245.886719</td>
+      <td>172.074707</td>
+      <td>0.004428</td>
+      <td>8</td>
+      <td>839132</td>
+      <td>21.812290</td>
+      <td>496.231110</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6.050024</td>
+      <td>49.847522</td>
+      <td>1400.00</td>
+      <td>1521</td>
+      <td>15</td>
+      <td>2187</td>
+      <td>5886</td>
+      <td>-5.660453</td>
+      <td>-278652608</td>
+      <td>1.477951</td>
+      <td>-0.068720</td>
+      <td>376.671143</td>
+      <td>12</td>
+      <td>277.297363</td>
+      <td>273.141846</td>
+      <td>-138.895996</td>
+      <td>0.098817</td>
+      <td>13</td>
+      <td>768873</td>
+      <td>21.137711</td>
+      <td>466.976685</td>
+      <td>70</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>11</td>
+      <td>6.050027</td>
+      <td>49.661237</td>
+      <td>1377.25</td>
+      <td>1527</td>
+      <td>13</td>
+      <td>2138</td>
+      <td>5862</td>
+      <td>32.941593</td>
+      <td>-197782352</td>
+      <td>1.054565</td>
+      <td>-0.026741</td>
+      <td>353.886627</td>
+      <td>16</td>
+      <td>-276.780762</td>
+      <td>-228.931152</td>
+      <td>128.637939</td>
+      <td>0.066099</td>
+      <td>20</td>
+      <td>786655</td>
+      <td>19.891481</td>
+      <td>457.219971</td>
+      <td>76</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>6.050039</td>
+      <td>47.995344</td>
+      <td>2746.25</td>
+      <td>1523</td>
+      <td>12</td>
+      <td>2612</td>
+      <td>6181</td>
+      <td>3.549103</td>
+      <td>-71279992</td>
+      <td>0.507727</td>
+      <td>-0.021408</td>
+      <td>322.920227</td>
+      <td>26</td>
+      <td>660.006104</td>
+      <td>92.722168</td>
+      <td>190.979736</td>
+      <td>-0.034787</td>
+      <td>16</td>
+      <td>784807</td>
+      <td>20.798000</td>
+      <td>460.501221</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>13</td>
+      <td>6.050041</td>
+      <td>49.573607</td>
+      <td>2022.75</td>
+      <td>1531</td>
+      <td>15</td>
+      <td>2139</td>
+      <td>5926</td>
+      <td>-22.304897</td>
+      <td>-202883312</td>
+      <td>-0.696421</td>
+      <td>0.033387</td>
+      <td>305.667908</td>
+      <td>26</td>
+      <td>427.658691</td>
+      <td>350.759521</td>
+      <td>329.772705</td>
+      <td>-0.036357</td>
+      <td>17</td>
+      <td>797521</td>
+      <td>20.767530</td>
+      <td>472.568970</td>
+      <td>81</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>14</td>
+      <td>6.050043</td>
+      <td>48.144718</td>
+      <td>2774.00</td>
+      <td>1523</td>
+      <td>15</td>
+      <td>2565</td>
+      <td>6152</td>
+      <td>4.912671</td>
+      <td>-14258724</td>
+      <td>-0.259974</td>
+      <td>0.060628</td>
+      <td>349.061615</td>
+      <td>22</td>
+      <td>1257.036133</td>
+      <td>575.686035</td>
+      <td>538.083984</td>
+      <td>-0.077422</td>
+      <td>16</td>
+      <td>830342</td>
+      <td>19.123642</td>
+      <td>481.308411</td>
+      <td>72</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>6.050046</td>
+      <td>49.865317</td>
+      <td>2229.25</td>
+      <td>1517</td>
+      <td>13</td>
+      <td>2191</td>
+      <td>5901</td>
+      <td>31.054762</td>
+      <td>-186807440</td>
+      <td>-1.375050</td>
+      <td>-0.126880</td>
+      <td>291.412537</td>
+      <td>7</td>
+      <td>1028.385498</td>
+      <td>915.806396</td>
+      <td>841.586182</td>
+      <td>0.024677</td>
+      <td>16</td>
+      <td>766444</td>
+      <td>19.941267</td>
+      <td>454.185089</td>
+      <td>54</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">height_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>32.9475</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>27.4625</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>22.2925</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>9.5900</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>33.4625</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1267207</th>
+      <td>1267208</td>
+      <td>26.5200</td>
+    </tr>
+    <tr>
+      <th>1267211</th>
+      <td>1267212</td>
+      <td>31.8175</td>
+    </tr>
+    <tr>
+      <th>1267216</th>
+      <td>1267217</td>
+      <td>24.4075</td>
+    </tr>
+    <tr>
+      <th>1267227</th>
+      <td>1267228</td>
+      <td>16.6300</td>
+    </tr>
+    <tr>
+      <th>1267237</th>
+      <td>1267238</td>
+      <td>24.9100</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 2 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_hm_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>dev-magnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3294.75</td>
+      <td>1490</td>
+      <td>12</td>
+      <td>1995</td>
+      <td>5912</td>
+      <td>22.102139</td>
+      <td>-297770784</td>
+      <td>-1.402633</td>
+      <td>0.309765</td>
+      <td>294.927765</td>
+      <td>26</td>
+      <td>-86.729492</td>
+      <td>-145.584229</td>
+      <td>-190.062988</td>
+      <td>0.222435</td>
+      <td>15</td>
+      <td>772784</td>
+      <td>20.855963</td>
+      <td>457.195404</td>
+      <td>86</td>
+      <td>32.9475</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+      <td>6.050039</td>
+      <td>47.995344</td>
+      <td>2746.25</td>
+      <td>1523</td>
+      <td>12</td>
+      <td>2612</td>
+      <td>6181</td>
+      <td>3.549103</td>
+      <td>-71279992</td>
+      <td>0.507727</td>
+      <td>-0.021408</td>
+      <td>322.920227</td>
+      <td>26</td>
+      <td>660.006104</td>
+      <td>92.722168</td>
+      <td>190.979736</td>
+      <td>-0.034787</td>
+      <td>16</td>
+      <td>784807</td>
+      <td>20.798000</td>
+      <td>460.501221</td>
+      <td>97</td>
+      <td>27.4625</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15</td>
+      <td>6.050046</td>
+      <td>49.865317</td>
+      <td>2229.25</td>
+      <td>1517</td>
+      <td>13</td>
+      <td>2191</td>
+      <td>5901</td>
+      <td>31.054762</td>
+      <td>-186807440</td>
+      <td>-1.375050</td>
+      <td>-0.126880</td>
+      <td>291.412537</td>
+      <td>7</td>
+      <td>1028.385498</td>
+      <td>915.806396</td>
+      <td>841.586182</td>
+      <td>0.024677</td>
+      <td>16</td>
+      <td>766444</td>
+      <td>19.941267</td>
+      <td>454.185089</td>
+      <td>54</td>
+      <td>22.2925</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16</td>
+      <td>6.050048</td>
+      <td>49.050020</td>
+      <td>959.00</td>
+      <td>1526</td>
+      <td>14</td>
+      <td>2081</td>
+      <td>6100</td>
+      <td>9.933455</td>
+      <td>-183562672</td>
+      <td>-0.382834</td>
+      <td>0.086874</td>
+      <td>246.288010</td>
+      <td>24</td>
+      <td>-12.283691</td>
+      <td>-58.179199</td>
+      <td>174.205566</td>
+      <td>0.094175</td>
+      <td>10</td>
+      <td>805730</td>
+      <td>19.849365</td>
+      <td>470.946533</td>
+      <td>78</td>
+      <td>9.5900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17</td>
+      <td>6.050049</td>
+      <td>48.391359</td>
+      <td>3346.25</td>
+      <td>1489</td>
+      <td>19</td>
+      <td>2486</td>
+      <td>5966</td>
+      <td>-6.957157</td>
+      <td>-273522688</td>
+      <td>2.989759</td>
+      <td>0.214769</td>
+      <td>474.409088</td>
+      <td>24</td>
+      <td>125.583008</td>
+      <td>6.154297</td>
+      <td>128.129150</td>
+      <td>0.017164</td>
+      <td>15</td>
+      <td>950190</td>
+      <td>21.179420</td>
+      <td>491.398376</td>
+      <td>85</td>
+      <td>33.4625</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>226887</th>
+      <td>1267208</td>
+      <td>9.949829</td>
+      <td>49.216272</td>
+      <td>2652.00</td>
+      <td>1510</td>
+      <td>21</td>
+      <td>2239</td>
+      <td>6711</td>
+      <td>-1.048068</td>
+      <td>-231616096</td>
+      <td>-2.679006</td>
+      <td>-0.096388</td>
+      <td>335.430817</td>
+      <td>5</td>
+      <td>1117.387451</td>
+      <td>91.064941</td>
+      <td>324.314453</td>
+      <td>-0.134163</td>
+      <td>10</td>
+      <td>865865</td>
+      <td>20.274633</td>
+      <td>518.567444</td>
+      <td>72</td>
+      <td>26.5200</td>
+    </tr>
+    <tr>
+      <th>226888</th>
+      <td>1267212</td>
+      <td>9.949856</td>
+      <td>49.881190</td>
+      <td>3181.75</td>
+      <td>1534</td>
+      <td>13</td>
+      <td>2056</td>
+      <td>6503</td>
+      <td>-34.868324</td>
+      <td>-279072288</td>
+      <td>1.083573</td>
+      <td>0.055990</td>
+      <td>320.695648</td>
+      <td>24</td>
+      <td>82.510742</td>
+      <td>81.327637</td>
+      <td>274.534668</td>
+      <td>-0.070041</td>
+      <td>10</td>
+      <td>855471</td>
+      <td>17.125103</td>
+      <td>473.745728</td>
+      <td>78</td>
+      <td>31.8175</td>
+    </tr>
+    <tr>
+      <th>226889</th>
+      <td>1267217</td>
+      <td>9.949880</td>
+      <td>49.873435</td>
+      <td>2440.75</td>
+      <td>1513</td>
+      <td>14</td>
+      <td>2031</td>
+      <td>6486</td>
+      <td>5.590047</td>
+      <td>-238339568</td>
+      <td>0.961292</td>
+      <td>-0.098397</td>
+      <td>319.854309</td>
+      <td>24</td>
+      <td>133.571045</td>
+      <td>120.405518</td>
+      <td>319.006470</td>
+      <td>0.135788</td>
+      <td>8</td>
+      <td>854918</td>
+      <td>18.293501</td>
+      <td>494.363525</td>
+      <td>85</td>
+      <td>24.4075</td>
+    </tr>
+    <tr>
+      <th>226890</th>
+      <td>1267228</td>
+      <td>9.949958</td>
+      <td>49.127182</td>
+      <td>1663.00</td>
+      <td>1541</td>
+      <td>16</td>
+      <td>2591</td>
+      <td>6632</td>
+      <td>32.355999</td>
+      <td>102099440</td>
+      <td>-1.016537</td>
+      <td>-0.002035</td>
+      <td>437.341034</td>
+      <td>25</td>
+      <td>-16.909180</td>
+      <td>53.518555</td>
+      <td>303.941162</td>
+      <td>0.020682</td>
+      <td>10</td>
+      <td>860474</td>
+      <td>18.277027</td>
+      <td>487.254395</td>
+      <td>97</td>
+      <td>16.6300</td>
+    </tr>
+    <tr>
+      <th>226891</th>
+      <td>1267238</td>
+      <td>9.949999</td>
+      <td>49.936763</td>
+      <td>2491.00</td>
+      <td>1533</td>
+      <td>11</td>
+      <td>2103</td>
+      <td>6495</td>
+      <td>16.743006</td>
+      <td>140822048</td>
+      <td>-1.090024</td>
+      <td>0.026729</td>
+      <td>306.659027</td>
+      <td>27</td>
+      <td>209.165039</td>
+      <td>104.304688</td>
+      <td>-10.632080</td>
+      <td>-0.007541</td>
+      <td>6</td>
+      <td>862879</td>
+      <td>17.010637</td>
+      <td>457.736267</td>
+      <td>85</td>
+      <td>24.9100</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 24 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">8000</span><span class="p">)</span>  <span class="o">&amp;</span> <span class="p">(</span> <span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">300</span> <span class="p">)]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>dev-magnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>195678</th>
+      <td>1097258</td>
+      <td>9.334078</td>
+      <td>49.619868</td>
+      <td>2794.00</td>
+      <td>1546</td>
+      <td>12</td>
+      <td>2124</td>
+      <td>6409</td>
+      <td>-11.649844</td>
+      <td>-229633024</td>
+      <td>1.316271</td>
+      <td>-0.013485</td>
+      <td>429.172455</td>
+      <td>22</td>
+      <td>-10.994385</td>
+      <td>-144.848633</td>
+      <td>-414.120850</td>
+      <td>0.086094</td>
+      <td>12</td>
+      <td>727521</td>
+      <td>19.890150</td>
+      <td>485.002502</td>
+      <td>58</td>
+      <td>27.9400</td>
+    </tr>
+    <tr>
+      <th>31711</th>
+      <td>174064</td>
+      <td>6.664047</td>
+      <td>49.425667</td>
+      <td>460.00</td>
+      <td>1503</td>
+      <td>18</td>
+      <td>2137</td>
+      <td>6066</td>
+      <td>25.703257</td>
+      <td>-101682208</td>
+      <td>1.240938</td>
+      <td>-0.103657</td>
+      <td>337.064728</td>
+      <td>8</td>
+      <td>171.120850</td>
+      <td>256.611328</td>
+      <td>554.586670</td>
+      <td>0.008597</td>
+      <td>12</td>
+      <td>743280</td>
+      <td>22.750713</td>
+      <td>485.201324</td>
+      <td>43</td>
+      <td>4.6000</td>
+    </tr>
+    <tr>
+      <th>3073</th>
+      <td>15673</td>
+      <td>6.090988</td>
+      <td>48.070861</td>
+      <td>1516.00</td>
+      <td>1525</td>
+      <td>14</td>
+      <td>2591</td>
+      <td>6158</td>
+      <td>59.335327</td>
+      <td>183848624</td>
+      <td>-1.517122</td>
+      <td>0.000638</td>
+      <td>338.694031</td>
+      <td>21</td>
+      <td>254.364990</td>
+      <td>275.723389</td>
+      <td>318.574219</td>
+      <td>0.009850</td>
+      <td>22</td>
+      <td>823079</td>
+      <td>20.399702</td>
+      <td>474.051086</td>
+      <td>85</td>
+      <td>15.1600</td>
+    </tr>
+    <tr>
+      <th>208592</th>
+      <td>1174938</td>
+      <td>9.551139</td>
+      <td>49.770397</td>
+      <td>2114.50</td>
+      <td>1523</td>
+      <td>15</td>
+      <td>1813</td>
+      <td>6698</td>
+      <td>-1.434988</td>
+      <td>-171646688</td>
+      <td>1.655684</td>
+      <td>0.009652</td>
+      <td>222.426636</td>
+      <td>24</td>
+      <td>48.300537</td>
+      <td>-122.063477</td>
+      <td>-256.039795</td>
+      <td>0.024145</td>
+      <td>23</td>
+      <td>746881</td>
+      <td>19.330082</td>
+      <td>491.192932</td>
+      <td>85</td>
+      <td>21.1450</td>
+    </tr>
+    <tr>
+      <th>34988</th>
+      <td>193179</td>
+      <td>6.717209</td>
+      <td>49.451559</td>
+      <td>2867.75</td>
+      <td>1536</td>
+      <td>16</td>
+      <td>2389</td>
+      <td>6013</td>
+      <td>-13.811592</td>
+      <td>-196965920</td>
+      <td>2.292098</td>
+      <td>0.094432</td>
+      <td>408.874817</td>
+      <td>24</td>
+      <td>213.646484</td>
+      <td>-10.833008</td>
+      <td>167.374756</td>
+      <td>0.017682</td>
+      <td>10</td>
+      <td>759015</td>
+      <td>21.862015</td>
+      <td>474.616150</td>
+      <td>85</td>
+      <td>28.6775</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>222158</th>
+      <td>1240666</td>
+      <td>9.821090</td>
+      <td>49.862307</td>
+      <td>1699.75</td>
+      <td>1514</td>
+      <td>16</td>
+      <td>1911</td>
+      <td>6502</td>
+      <td>-41.271114</td>
+      <td>-281414208</td>
+      <td>1.708344</td>
+      <td>-0.133984</td>
+      <td>337.290802</td>
+      <td>17</td>
+      <td>327.427002</td>
+      <td>180.356445</td>
+      <td>55.604492</td>
+      <td>-0.082052</td>
+      <td>10</td>
+      <td>833680</td>
+      <td>18.511948</td>
+      <td>484.010834</td>
+      <td>72</td>
+      <td>16.9975</td>
+    </tr>
+    <tr>
+      <th>44360</th>
+      <td>243097</td>
+      <td>6.842313</td>
+      <td>49.178386</td>
+      <td>2331.50</td>
+      <td>1527</td>
+      <td>12</td>
+      <td>2023</td>
+      <td>6268</td>
+      <td>43.187695</td>
+      <td>-64854832</td>
+      <td>-1.407103</td>
+      <td>-0.079063</td>
+      <td>215.257263</td>
+      <td>25</td>
+      <td>295.679688</td>
+      <td>-3.004883</td>
+      <td>31.070679</td>
+      <td>0.077709</td>
+      <td>9</td>
+      <td>782261</td>
+      <td>18.606712</td>
+      <td>459.909241</td>
+      <td>89</td>
+      <td>23.3150</td>
+    </tr>
+    <tr>
+      <th>53204</th>
+      <td>289337</td>
+      <td>6.961452</td>
+      <td>48.893853</td>
+      <td>3035.75</td>
+      <td>1534</td>
+      <td>12</td>
+      <td>2151</td>
+      <td>6302</td>
+      <td>-7.667385</td>
+      <td>-77615832</td>
+      <td>1.325887</td>
+      <td>0.034342</td>
+      <td>254.128601</td>
+      <td>29</td>
+      <td>876.000488</td>
+      <td>320.792236</td>
+      <td>415.007812</td>
+      <td>-0.007584</td>
+      <td>7</td>
+      <td>849604</td>
+      <td>18.075121</td>
+      <td>457.555237</td>
+      <td>97</td>
+      <td>30.3575</td>
+    </tr>
+    <tr>
+      <th>153080</th>
+      <td>871478</td>
+      <td>8.770948</td>
+      <td>49.718612</td>
+      <td>2819.50</td>
+      <td>1502</td>
+      <td>14</td>
+      <td>2861</td>
+      <td>5977</td>
+      <td>-70.388268</td>
+      <td>-292548320</td>
+      <td>3.220833</td>
+      <td>0.026796</td>
+      <td>594.417114</td>
+      <td>26</td>
+      <td>840.798584</td>
+      <td>389.013916</td>
+      <td>457.876953</td>
+      <td>-0.086764</td>
+      <td>15</td>
+      <td>700720</td>
+      <td>22.353367</td>
+      <td>454.097687</td>
+      <td>100</td>
+      <td>28.1950</td>
+    </tr>
+    <tr>
+      <th>165314</th>
+      <td>934856</td>
+      <td>8.934138</td>
+      <td>49.597953</td>
+      <td>3385.00</td>
+      <td>1443</td>
+      <td>15</td>
+      <td>2600</td>
+      <td>6274</td>
+      <td>-13.761218</td>
+      <td>-269654336</td>
+      <td>1.826682</td>
+      <td>0.077927</td>
+      <td>452.654755</td>
+      <td>29</td>
+      <td>8.197021</td>
+      <td>-129.706055</td>
+      <td>-394.708008</td>
+      <td>-0.049584</td>
+      <td>13</td>
+      <td>718822</td>
+      <td>20.384373</td>
+      <td>458.182953</td>
+      <td>85</td>
+      <td>33.8500</td>
+    </tr>
+  </tbody>
+</table>
+<p>10000 rows × 24 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">23</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">feat</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(226892, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(226892, 18)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pipeline</span> <span class="o">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">&#39;rf&#39;</span><span class="p">,</span><span class="n">RFReg</span><span class="p">())])</span>
+
+<span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;rf__max_features&#39;</span><span class="p">:(</span><span class="s2">&quot;log2&quot;</span><span class="p">,</span><span class="s2">&quot;sqrt&quot;</span><span class="p">,</span><span class="mf">0.33</span><span class="p">),</span>
+        <span class="s1">&#39;rf__max_samples&#39;</span><span class="p">:(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.7</span><span class="p">),</span>
+        <span class="s1">&#39;rf__n_estimators&#39;</span><span class="p">:(</span><span class="mi">500</span><span class="p">,</span><span class="mi">1000</span><span class="p">),</span>
+        <span class="s1">&#39;rf__max_depth&#39;</span><span class="p">:(</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">200</span><span class="p">)}</span>
+
+<span class="n">grid_search</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">pipeline</span><span class="p">,</span><span class="n">parameters</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">,</span><span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">grid_search</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Fitting 3 folds for each of 144 candidates, totalling 432 fits
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+GridSearchCV(cv=3, estimator=Pipeline(steps=[(&#39;rf&#39;, RandomForestRegressor())]),
+             n_jobs=-1,
+             param_grid={&#39;rf__max_depth&#39;: (50, 100, 200, 500),
+                         &#39;rf__max_features&#39;: (&#39;log2&#39;, &#39;sqrt&#39;, 0.33),
+                         &#39;rf__max_samples&#39;: (0.5, 0.6, 0.7, 0.8),
+                         &#39;rf__n_estimators&#39;: (500, 1000, 2000)},
+             scoring=&#39;r2&#39;, verbose=1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2046063266475514
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Best Training score: </span><span class="si">%0.3f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Optimal parameters:&#39;</span><span class="p">)</span>
+<span class="n">best_par</span> <span class="o">=</span> <span class="n">grid_search</span><span class="o">.</span><span class="n">best_estimator_</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">par_name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="si">%s</span><span class="s1">: </span><span class="si">%r</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">par_name</span><span class="p">,</span> <span class="n">best_par</span><span class="p">[</span><span class="n">par_name</span><span class="p">]))</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Best Training score: 0.205
+Optimal parameters:
+        rf__max_depth: 200
+        rf__max_features: 0.33
+        rf__max_samples: 0.7
+        rf__n_estimators: 1000
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">rfReg</span> <span class="o">=</span> <span class="n">RFReg</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="s1">&#39;sqrt&#39;</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">max_samples</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span><span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">dic_pred</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="p">[</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span><span class="n">y_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.9398826518204161, 0.4472629935798444]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;orig&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fe178803b20&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_54_1.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_54_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;orig&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;pred&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fe145e8b9d0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_55_1.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_55_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">impt</span> <span class="o">=</span> <span class="p">[</span><span class="n">rfReg</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">feature_importances_</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">estimators_</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 1, 13,  0,  5,  6,  8,  4, 12,  3, 16, 15,  2, 14,  7,  9, 11, 10,
+       17])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">impt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">feat</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_02RF_pred_58_0.png" src="../_images/CASESTUDY_Tree_Height_02RF_pred_58_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># import satalite indeces</span>
+<span class="n">glad_ard_SVVI_min</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_min.tif&quot;</span><span class="p">)</span>
+<span class="n">glad_ard_SVVI_med</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_med.tif&quot;</span><span class="p">)</span>
+<span class="n">glad_ard_SVVI_max</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_max.tif&quot;</span><span class="p">)</span>
+
+<span class="c1"># import climate</span>
+<span class="n">CHELSA_bio4</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio4.tif&quot;</span><span class="p">)</span>
+<span class="n">CHELSA_bio18</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio18.tif&quot;</span><span class="p">)</span>
+
+
+<span class="n">BLDFIE_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/BLDFIE_WeigAver.tif&quot;</span><span class="p">)</span>
+<span class="n">CECSOL_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CECSOL_WeigAver.tif&quot;</span><span class="p">)</span>
+<span class="n">ORCDRC_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/ORCDRC_WeigAver.tif&quot;</span><span class="p">)</span>
+
+
+
+
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">predictors_rasters</span> <span class="o">=</span> <span class="p">[</span><span class="n">glad_ard_SVVI_min</span><span class="p">,</span> <span class="n">glad_ard_SVVI_min</span><span class="p">,</span> <span class="n">glad_ard_SVVI_med</span><span class="p">,</span> <span class="n">glad_ard_SVVI_max</span><span class="p">]</span>
+<span class="n">stack</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">redictors_rasters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tree_Height_01DataExplore.html" class="btn btn-neutral float-left" title="Estimation of tree height using GEDI dataset" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../STUDENTSPROJECTS/index.html" class="btn btn-neutral float-right" title="1. 2021 SWEDEN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
