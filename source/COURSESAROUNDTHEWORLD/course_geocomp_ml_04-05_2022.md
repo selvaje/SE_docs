@@ -399,3 +399,29 @@ Reading materials for next Tuesday.
 * [Predicting into unknown space? Estimating the area of applicability of spatial prediction models](https://besjournals.onlinelibrary.wiley.com/doi/full/10.1111/2041-210X.13650)
 * [Spatial validation reveals poor predictive performance of large-scale ecological mapping models](https://www.nature.com/articles/s41467-020-18321-y)
 * [Spatial cross-validation is not the right way to evaluate map accuracy](https://www.sciencedirect.com/science/article/pii/S0304380021002489)
+
+
+## Lecture 10: 5th of May, 2022.
+### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
+
+In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described [# Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
+
+[Video Recording]()
+
+* [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20220510_GeoComp_IntroML_SVM.pdf) (F.)
+	* Defining learning 
+	* Supervised vs Unsupervised learning
+	* The framework of learning algorithms
+	
+* Example of Supervised learning using scikit-learn in python.
+	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred.ipynb) (SVM)(F.)
+		* Optimization of SVM
+		* Extension of SVM to regression (SVR)
+	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.ipynb) (RF) (A.)
+		* Random Forest basic concept
+		* Avoid random forest over-fitting
+		* Optimization of RF
+		* Prediction of RF model on raster tif.
+		
+
+	
