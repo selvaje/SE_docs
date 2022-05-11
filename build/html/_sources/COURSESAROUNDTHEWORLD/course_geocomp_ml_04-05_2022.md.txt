@@ -401,12 +401,12 @@ Reading materials for next Tuesday.
 * [Spatial cross-validation is not the right way to evaluate map accuracy](https://www.sciencedirect.com/science/article/pii/S0304380021002489)
 
 
-## Lecture 10: 5th of May, 2022.
+## Lecture 11: 10th of May, 2022.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
 
-In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described [# Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
+In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/2Dk5hM9X8F8PtMe3tIPU7Pn7zy87YKhL4M-Ap3V7pQc9pVn01eIr_Q3eKwHYsxxK.OqPxSu126mbmQ4BZ)
 
 * [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20220510_GeoComp_IntroML_SVM.pdf) (F.)
 	* Defining learning 
