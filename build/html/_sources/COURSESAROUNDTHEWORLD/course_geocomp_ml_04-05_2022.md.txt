@@ -426,7 +426,7 @@ In this class we will set the main fundamentals to implement machine learning in
 ## Lecture 12: 12th of May, 2022.
 ### Machine Learning (Antonio Fonseca)
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/s8m3sfWZNqpp5stVIYcTJ68fKXXmOFlUcf84KTdFPiEaDiWh8f8sxrkVlB8Ned2v.6QPOcY9gbIljEmr5)
 
 * [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lect_20220512_GeoComp_Perceptron.pdf)
 	* Links between SVM and Logistic Regression 
