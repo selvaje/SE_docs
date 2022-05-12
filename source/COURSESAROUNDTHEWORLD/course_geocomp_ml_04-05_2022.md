@@ -423,5 +423,19 @@ In this class we will set the main fundamentals to implement machine learning in
 		* Optimization of RF
 		* Prediction of RF model on raster tif.
 		
+## Lecture 12: 12th of May, 2022.
+### Machine Learning (Antonio Fonseca)
 
+[Video Recording]()
+
+* [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lectures/lect_20220512_GeoComp_Perceptron.pdf)
+	* Links between SVM and Logistic Regression 
+	* Review on Linear Regression 
+	* Minimizing loss functions
+	* Regularization
+
+* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.ipynb)
+	* The universal approximator
+	* Intro to optimizers 
+	* Hands-on tutorial
 	
