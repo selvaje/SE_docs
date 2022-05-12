@@ -428,7 +428,7 @@ In this class we will set the main fundamentals to implement machine learning in
 
 [Video Recording]()
 
-* [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lectures/lect_20220512_GeoComp_Perceptron.pdf)
+* [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lect_20220512_GeoComp_Perceptron.pdf)
 	* Links between SVM and Logistic Regression 
 	* Review on Linear Regression 
 	* Minimizing loss functions
