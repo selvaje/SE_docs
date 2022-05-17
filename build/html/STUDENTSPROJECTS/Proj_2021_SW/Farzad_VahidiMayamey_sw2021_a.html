@@ -121,7 +121,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02SVM_pred.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04Perceptron_pred.html">Estimation of tree height using GEDI dataset - Perceptron</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Perceptron 2</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
 <ul class="current">
@@ -470,7 +473,7 @@ div.rendered_html tbody tr:hover {
 <section id="Calculating-landcover-distribution">
 <h2><span class="section-number">1.1.1. </span>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Permalink to this headline"></a></h2>
 <p>we use two different layer: 1. <a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> ( left picture) 2. <a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> ( right picture)</p>
-<p><img alt="9748ac2ce2aa4b39b43e35f454119f10" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="665c03e59e6e4b1cb6462345d21305c5" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
+<p><img alt="255e0781191e40e89d6d6d6c4e06dc06" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="568edae96f4f41d0beab6759818678de" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
@@ -1172,7 +1175,7 @@ clipped/ramsarid_438.tif
 </pre></div></div>
 </div>
 <p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
-<p><img alt="d3b78c2b91684f77a11429987b7eba66" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p><img alt="e537da45620744dab2c538787e77be60" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
 <p>Extract all 25 classes</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
@@ -2540,7 +2543,7 @@ ramsarid_438
 <ul class="simple">
 <li><p>Layers: SAR intensity sentinel-1 image.</p></li>
 </ul>
-<p><img alt="e8864bc6e7944777acabce7e4c97d86a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p><img alt="99da45aa7d3b46828d55e77100e97af5" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
 <p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
 <p>we use thresholding method to extract open water from S1 layer</p>
 <p>First we move all layers to the crs: EPSG:4326</p>
@@ -2648,7 +2651,7 @@ Copying nodata values from source layers/slope.tif to destination crop/slope_cro
 </pre></div></div>
 </div>
 <p>we maskout values greater than <strong>-23</strong></p>
-<p><img alt="125c67d6e7e24a4f9439bb1da9b2cd40" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<p><img alt="83a83c06ed5244e58af368aea5b499ad" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
@@ -2666,7 +2669,7 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <ul class="simple">
 <li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
 </ul>
-<p><img alt="95ea92d1ff8844fd8878cfaf6ecfeb9c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="355e63ec37ad4bf3b34292d4b667184a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p><img alt="808443d5d2d14b7abba8fa2940d45a64" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="114ee9ad8d5d4317a6f02c2a4afc0ff0" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
 <p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
@@ -2811,7 +2814,7 @@ Writing crop/ClassificationFilterOutput.tif...: 100% [**************************
 </pre></div></div>
 </div>
 <p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
-<p><img alt="351b16827db445749d10eb6cfb8c188c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="45a2c276211c41ffbc69a24119219cc3" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<p><img alt="eab8a2f72dbd48a8acc208bc2c05a6ea" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="f9a97c2202fc4c9f8b3c045f578f335c" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
 </pre></div>
