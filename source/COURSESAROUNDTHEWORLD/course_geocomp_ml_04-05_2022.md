@@ -443,6 +443,9 @@ In this class we will set the main fundamentals to implement machine learning in
 ## Lecture 13: 17th of May, 2022.
 ### Machine Learning - (Antonio Fonseca)
 
+
+[Video Recording](https://yale.zoom.us/rec/share/3JpsqAfL8MvWGnQsWJhkOSQhLXX-5fclIV1oxMccapWaIJmR0wKxHzalVKdJ6_x6.6msW3LDz7RauC3Fq)
+
 * Perceptron 
 	* Quick recap
 	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
