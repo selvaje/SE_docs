@@ -424,7 +424,7 @@ In this class we will set the main fundamentals to implement machine learning in
 		* Prediction of RF model on raster tif.
 		
 ## Lecture 12: 12th of May, 2022.
-### Machine Learning (Antonio Fonseca)
+### Machine Learning - Perceptron (Antonio Fonseca)
 
 [Video Recording](https://yale.zoom.us/rec/share/s8m3sfWZNqpp5stVIYcTJ68fKXXmOFlUcf84KTdFPiEaDiWh8f8sxrkVlB8Ned2v.6QPOcY9gbIljEmr5)
 
@@ -439,3 +439,16 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Intro to optimizers 
 	* Hands-on tutorial
 	
+
+## Lecture 13: 17th of May, 2022.
+### Machine Learning - (Antonio Fonseca)
+
+* Perceptron 
+	* Quick recap
+	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
+	* Intro to gradient descent and optimizers
+
+* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220517_GeoComp_NeuralNets.pdf)
+	* The limitations of Perceptrons 
+	* Multi-layer Perceptron
+	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.ipynb)
