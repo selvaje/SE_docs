@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Perceptron for tree height modeling &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  <title>Estimation of tree height using GEDI dataset - Perceptron 2 &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
@@ -124,7 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="Tree_Height_02SVM_pred.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tree_Height_04Perceptron_pred.html">Estimation of tree height using GEDI dataset - Perceptron</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Perceptron for tree height modeling</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Perceptron 2</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Feedfoward-neural-network">Feedfoward neural network</a></li>
 </ul>
 </li>
@@ -163,7 +163,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
-      <li>Perceptron for tree height modeling</li>
+      <li>Estimation of tree height using GEDI dataset - Perceptron 2</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/CASESTUDY/Tree_Height_05NeuralNets_pred.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -443,23 +443,19 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Perceptron-for-tree-height-modeling">
-<h1>Perceptron for tree height modeling<a class="headerlink" href="#Perceptron-for-tree-height-modeling" title="Permalink to this headline"></a></h1>
+<section id="Estimation-of-tree-height-using-GEDI-dataset---Perceptron-2">
+<h1>Estimation of tree height using GEDI dataset - Perceptron 2<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Perceptron-2" title="Permalink to this headline"></a></h1>
+<p>Python packages intallation</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install torch torchvision torchaudio
+</pre></div>
+</div>
+<p>Ref: <a class="reference external" href="https://medium.com/biaslyai/pytorch-introduction-to-neural-network-feedforward-neural-network-model-e7231cff47cb">https://medium.com/biaslyai/pytorch-introduction-to-neural-network-feedforward-neural-network-model-e7231cff47cb</a></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># Ref: https://medium.com/biaslyai/pytorch-introduction-to-neural-network-feedforward-neural-network-model-e7231cff47cb</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Packages</span>
-
-<span class="sd">conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch</span>
-<span class="sd">conda install -c anaconda scikit-learn</span>
-<span class="sd">conda install pandas</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="kn">import</span> <span class="nn">os</span>
+<span></span><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -469,11 +465,16 @@ div.rendered_html tbody tr:hover {
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">r2_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Fix random seeds.</span>
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="n">seed</span><span class="o">=</span><span class="mi">31</span>
+</pre></div>
+</div>
+</div>
+<p>Fix random seeds</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">seed</span><span class="o">=</span><span class="mi">31</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
@@ -579,7 +580,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_7_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_7_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_10_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_10_1.png" />
 </div>
 </div>
 <p>Now we normalize the data</p>
@@ -627,7 +628,7 @@ div.rendered_html tbody tr:hover {
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_9_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_9_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_12_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_12_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -760,7 +761,7 @@ Test loss after Training 0.024563319981098175
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_15_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_15_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_18_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_18_1.png" />
 </div>
 </div>
 <p>Well, they all performed badly. What can we do to make this model better? One thing that immediatly jumps to our eyes is the fact that this data is very skewed. There are many ways to normalized sweked data. Check out this great post about normalization and popular power transformations <a class="reference external" href="https://www.baeldung.com/cs/normalizing-inputs-artificial-neural-network">power transformations</a>. Here I will introduce another one: the Quantile Transformation. Also, if you would like to see a great
@@ -832,7 +833,7 @@ comparison between transformations, check out this skelarn <a class="reference e
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_19_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_19_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_22_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_22_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -958,7 +959,7 @@ Epoch 1900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -995,7 +996,7 @@ Epoch 1900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_3.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1032,7 +1033,7 @@ Epoch 1900, train_loss: 0.0369, val_loss: 0.0365, r_value: 0.0102
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_21_5.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_24_5.png" />
 </div>
 </div>
 <p>Feel free to try other hyperparameters, but we already have seen that there is just so much a Perceptron can do. It’s time to scale up this problem. (BACK TO SLIDES)</p>
@@ -1177,7 +1178,7 @@ Epoch 1900, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2781
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1215,7 +1216,7 @@ Epoch 1900, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2965
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_3.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1253,7 +1254,7 @@ Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2774
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_5.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_5.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1291,7 +1292,7 @@ Epoch 1900, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2660
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_7.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_7.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_7.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_7.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1329,7 +1330,7 @@ Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2687
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_9.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_9.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_9.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_9.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1367,7 +1368,7 @@ Epoch 1900, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.1397
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_11.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_11.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_11.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_11.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1405,7 +1406,7 @@ Epoch 1900, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2687
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_13.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_13.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_13.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_13.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1443,7 +1444,7 @@ Epoch 1900, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.3041
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_15.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_15.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_15.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_15.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1481,7 +1482,7 @@ Epoch 1900, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2886
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_17.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_17.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_17.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_17.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1519,7 +1520,7 @@ Epoch 1900, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2546
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_19.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_19.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_19.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_19.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1557,7 +1558,7 @@ Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2754
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_21.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_21.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_21.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_21.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1595,7 +1596,7 @@ Epoch 1900, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.2509
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_23.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_23.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_23.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_23.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1633,7 +1634,7 @@ Epoch 1900, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2697
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_25.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_25.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_25.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_25.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1671,7 +1672,7 @@ Epoch 1900, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2959
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_27.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_27.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_27.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_27.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1709,7 +1710,7 @@ Epoch 1900, train_loss: 0.0338, val_loss: 0.0334, r_value: 0.3017
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_29.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_29.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_29.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_29.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1747,7 +1748,7 @@ Epoch 1900, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2602
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_31.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_31.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_31.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_31.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1785,7 +1786,7 @@ Epoch 1900, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2887
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_33.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_33.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_33.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_33.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -1823,7 +1824,7 @@ Epoch 1900, train_loss: 0.0359, val_loss: 0.0355, r_value: 0.2196
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_35.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_26_35.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_35.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_29_35.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1967,7 +1968,7 @@ Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2999
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_1.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_1.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2005,7 +2006,7 @@ Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2740
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_3.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_3.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_3.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2043,7 +2044,7 @@ Epoch 1900, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2484
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_5.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_5.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_5.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2081,7 +2082,7 @@ Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2767
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_7.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_7.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_7.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_7.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2119,7 +2120,7 @@ Epoch 1900, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2971
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_9.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_9.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_9.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_9.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2157,7 +2158,7 @@ Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2888
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_11.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_11.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_11.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_11.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2195,7 +2196,7 @@ Epoch 1900, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2634
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_13.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_13.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_13.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_13.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2233,7 +2234,7 @@ Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2781
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_15.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_15.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_15.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_15.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2271,7 +2272,7 @@ Epoch 1900, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2972
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_17.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_17.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_17.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_17.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2309,7 +2310,7 @@ Epoch 1900, train_loss: 0.0339, val_loss: 0.0334, r_value: 0.2997
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_19.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_19.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_19.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_19.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2347,7 +2348,7 @@ Epoch 1900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2666
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_21.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_21.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_21.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_21.png" />
 </div>
 </div>
 <div class="nboutput docutils container">
@@ -2385,7 +2386,7 @@ Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2834
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_23.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_28_23.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_23.png" src="../_images/CASESTUDY_Tree_Height_05NeuralNets_pred_31_23.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
