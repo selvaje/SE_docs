@@ -451,7 +451,14 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
 	* Intro to gradient descent and optimizers
 
+
+## Lecture 13: 17th of May, 2022.
+### Machine Learning - (Antonio Fonseca)
+
+[Video Recording](https://yale.zoom.us/rec/share/7empkIlVU6kQ6w4RiVNKidz12WvopLXPSScQGZEAiG64XkhsZOgFAdb9UGAO0Y1-.pOAKNJ5p-0Hl5h5i)
+
+
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220517_GeoComp_NeuralNets.pdf)
 	* The limitations of Perceptrons 
 	* Multi-layer Perceptron
-	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.ipynb)
+	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.html)
