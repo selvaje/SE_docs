@@ -481,7 +481,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* SHAP and saliency maps
 	* Tutorial: inspect the importance of features in the tree height dataset.
 
-* []Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
+* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
