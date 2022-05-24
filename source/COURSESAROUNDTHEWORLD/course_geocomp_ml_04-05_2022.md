@@ -452,7 +452,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Intro to gradient descent and optimizers
 
 
-## Lecture 13: 17th of May, 2022.
+## Lecture 14: 17th of May, 2022.
 ### Machine Learning - (Antonio Fonseca)
 
 [Video Recording](https://yale.zoom.us/rec/share/7empkIlVU6kQ6w4RiVNKidz12WvopLXPSScQGZEAiG64XkhsZOgFAdb9UGAO0Y1-.pOAKNJ5p-0Hl5h5i)
@@ -464,7 +464,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.html)
 	
 
-## Lecture 14: 24th of May, 2022.
+## Lecture 15: 24th of May, 2022.
 ### Machine Learning - (Antonio Fonseca)
 
 [Video Recording]()
