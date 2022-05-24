@@ -462,3 +462,26 @@ In this class we will set the main fundamentals to implement machine learning in
 	* The limitations of Perceptrons 
 	* Multi-layer Perceptron
 	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.html)
+	
+
+## Lecture 14: 24th of May, 2022.
+### Machine Learning - (Antonio Fonseca)
+
+[Video Recording]()
+
+* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220524_GeoComp_NeuralNets_3_CNNs.pdf)
+	* Quick recap
+	* Extra regularization techniques
+	* Capacity, Overfitting and Underfitting
+	* Debugging tips
+	* Family of optimizers
+	* Tutorial: more features and different optimizers
+
+* [Interpretability in Neural Nets](http://spatial-ecology.net/docs/build/html/CASESTUDY/NNs_pt3_SHAP.html)
+	* SHAP and saliency maps
+	* Tutorial: inspect the importance of features in the tree height dataset.
+
+* []Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite..html)
+	* Kernels, padding, pooling
+	* Classification tasks
+	* Tutorial: data batching, classification of satellite images
