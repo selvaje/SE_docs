@@ -467,7 +467,7 @@ In this class we will set the main fundamentals to implement machine learning in
 ## Lecture 15: 24th of May, 2022.
 ### Machine Learning - (Antonio Fonseca)
 
-[Video Recording]()
+[Video Recording](https://yale.zoom.us/rec/share/G337poDBcIbw2hG8QXQfM03gM2F4jtOEAtmgsk_iOrvXuDFwosY9Ks6xW0fAY4RY.gGDyZqBNgV1nxCYs)
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220524_GeoComp_NeuralNets_3_CNNs.pdf)
 	* Quick recap
