@@ -485,3 +485,15 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
+	
+
+## Lecture 16: 26th of May, 2022.
+### Machine Learning - (Antonio Fonseca)
+
+[Video Recording](https://yale.zoom.us/rec/share/s9X9WkrtqdP6Kp2l39mpbpKzIAYIji5gEGMpxO94RGGbdPEMN9OGYjv8zYlseq0m._fApeeCckuLd-BMJ)
+
+
+* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
+	* Kernels, padding, pooling
+	* Classification tasks
+	* Tutorial: data batching, classification of satellite images
