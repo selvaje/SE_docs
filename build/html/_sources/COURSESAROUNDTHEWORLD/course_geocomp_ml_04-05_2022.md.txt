@@ -497,3 +497,19 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
+
+
+
+## Lecture 17: 13th of June, 2022 (in presence week in Matera, Italy).
+### Google Earth Engine & pyjeo (Francesco Lovergine && Pieter Kempeneers)
+
+[Video Recording](https://yale.zoom.us/rec/share/W2hF_sSbsBajx0qINeWIY91NmuPdRS-ARlPWQCcZPIpl8prkzFQbJO0OdIYgD56k.3Awdz9nyE401ULAn)
+
+* [Google Earth Engine](  )
+	* GEE with Javascripts
+	* GEE with python buindings
+
+* [pyjeo](http://spatial-ecology.net/docs/source/lectures/lect_20220613_pyjeo_matera.pdf)
+	* [pyjeo installation and raster visualization](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html) 
+	* [pyjeo examples](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html) 
+
