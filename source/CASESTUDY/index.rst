@@ -24,3 +24,4 @@
    Tree_Height_05NeuralNets_pred.ipynb
    NNs_pt3_SHAP.ipynb
    CNN_satelite.ipynb
+   LSTMs_tutorial.ipynb

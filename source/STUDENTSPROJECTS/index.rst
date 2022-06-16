@@ -20,4 +20,16 @@
    Proj_2021_SW/SaeidAminjafariProject
    Proj_2021_SW/Tatiana_Klisho_project
    Proj_2021_SW/Juan_salinity_bash.Rmd
+
+
+============================================
+
+2022 MATERA
+-------------
+  
+.. toctree::
+   :titlesonly:   
+   :caption: MATERA 2022
+
+   Proj_2022_Matera/Damaged_trees_classification_RF_JGodziek.ipynb
 	     

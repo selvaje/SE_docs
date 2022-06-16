@@ -513,3 +513,19 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [pyjeo installation and raster visualization](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html) 
 	* [pyjeo examples](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html) 
 
+
+## Lecture 18: 15th of June, 2022 (in presence week in Matera, Italy).
+### LSTM and outdor navigation  (Antonio Fonseca, Giuseppe Amatulli) 
+
+
+
+* [Time series modelling with Long-Short Term memory (LSTM)](http://spatial-ecology.net/docs/build/html/CASESTUDY/LSTMs_tutorial.html)
+
+  	* [Video Recording](https://yale.zoom.us/rec/share/r4fRV7Bx4vZ2vOpvzG_oB6e5vmWib93_I0wi80xzF3rL2DouHRxVXWYY3Y4FFYkX.HlCSilEbwHHm7RBi)  
+
+* [Do not get lost in the wilderness](http://spatial-ecology.net/docs/build/html/OUTDOOR/outdoor_orientering.html)
+	 
+	* [Video Recording](https://yale.zoom.us/rec/share/30MJ2bFT0Wq0bRSziXPcQzeXKLC7s-XWHFwBze8Kq0ZF3MkU7oMZIB3QwW3GeO8s.FAWt72h8uMSQdwMJ)
+
+
+
