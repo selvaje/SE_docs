@@ -32,4 +32,5 @@
    :caption: MATERA 2022
 
    Proj_2022_Matera/Damaged_trees_classification_RF_JGodziek.ipynb
+   Proj_2022_Matera/Stream_Network_Abstraction_Alonso_Gonzalez.ipynb
 	     
