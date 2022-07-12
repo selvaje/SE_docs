@@ -33,4 +33,4 @@
 
    Proj_2022_Matera/Damaged_trees_classification_RF_Janusz_Godziek.ipynb
    Proj_2022_Matera/Stream_Network_Abstraction_Alonso_Gonzalez.ipynb
-	     
+   Proj_2022_Matera/Images_shadow_removal_Sebastian_Walter.ipynb
