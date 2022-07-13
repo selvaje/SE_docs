@@ -1,5 +1,5 @@
 # Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba
-[Presentation](http://spatial-ecology.net/docs/source/STUDENTSPROJECTS/Proj_2022_Matera/Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.pdf)
+[Presentation](http://spatial-ecology.net/docs/source/STUDENTSPROJECTS/Proj_2022_Matera/Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.pdf)  
 [Video recording](https://youtu.be/txgG2FRvln4)
 
 ## Introduction
@@ -193,10 +193,8 @@ r.out.gdal  input=dirs   output=$OUTPUT/dirs.tif      type=Int32  nodata=-9999  
 ![](./stream.png)
 *Figure 1. Stream network extracted with GRASS-GIS*
 
-
 ![](./subbasins.png)
 *Figure 2. Sub-basins extracted with GRASS-GIS*
-
 
 ### 2.3. Aggregate predictors by sub-basin
 ```{bash  eval=FALSE}
@@ -228,7 +226,7 @@ for file in $INPUT/*.tif; do
    r.stats.zonal method=average cover=predictor base=subb output=predictor_aggr --overwrite
    r.out.gdal  input=predictor_aggr output=$OUTPUT/$filename.tif type=Float32  nodata=-9999  --o  -c  -m -f  createopt="COMPRESS=LZW,ZLEVEL=9"
 done
-```
+
 ![](./tree.png)
 *Figure 3. Percent of tree cover aggregated by sub-basin.*
 
