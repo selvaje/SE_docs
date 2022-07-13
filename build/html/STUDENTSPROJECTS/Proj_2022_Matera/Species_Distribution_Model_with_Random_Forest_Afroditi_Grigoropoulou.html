@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.5. Afroditi Grigoropoulou: Species Distribution Model with Random Forest &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.7. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html" />
+    <link rel="prev" title="2.4. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+            <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction.html">Introdction to pyjeo: installation and raster visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02SVM_pred.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04Perceptron_pred.html">Estimation of tree height using GEDI dataset - Perceptron 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04Perceptron_pred_clean.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">The real data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-for-Regression-Using-the-Window-Method">LSTM for Regression Using the Window Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-for-Regression-with-Time-Steps">LSTM for Regression with Time Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-with-Memory-Between-Batches">LSTM with Memory Between Batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Stacked-LSTMs-with-Memory-Between-Batches">Stacked LSTMs with Memory Between Batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Adding-Early-Stopping">Adding Early Stopping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Multivariate-Time-series---Data">Multivariate Time-series - Data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Damaged_trees_classification_RF_Janusz_Godziek.html">2.1. Janusz Godziek: Damaged vs undamaged trees - Random Forest classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stream_Network_Abstraction_Alonso_Gonzalez.html">2.2. Alonso Gonzalez: Stream Network Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Images_shadow_removal_Sebastian_Walter.html">2.3. Sebastian Walter: Images shadow removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html">2.4. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Afroditi Grigoropoulou: Species Distribution Model with Random Forest</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#taxon-genus-prebaetodes-mayfly-occurring-in-a-drainage-basin-in-colombia">2.5.1. Taxon: genus Prebaetodes (Mayfly), occurring in a drainage basin in Colombia</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#goal-predict-which-subcatchments-provide-suitable-habitats-for-this-genus">2.5.2. Goal: Predict which subcatchments provide suitable habitats for this genus</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classify-the-subcatchments-of-the-basin-as-1-or-0-based-on-whether-their-habitat-is-suitable-or-not">2.5.3. Classify the subcatchments of the basin as 1 or 0, based on whether their habitat is suitable or not</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#random-forest-classification">2.6. Random forest classification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#extract-predictors-for-each-subcatchment-of-this-drainage-basin">2.6.1. 1. Extract predictors for each subcatchment of this drainage basin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-the-predictors-for-the-subcatchment-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data">2.6.2. 2. Extract the predictors for the subcatchment where the genus occurs, plus for 10,000 random subcatchments that will serve as pseudoabsence data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#run-sdm-with-random-forest">2.6.3. 3. Run SDM with random forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2.6.4. 1. Extract predictors for each subcatchment of this drainage basin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computational-unit">2.6.5. Computational unit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basin">2.6.6. Basin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subcatchments">2.6.7. Subcatchments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-bioclim-data">2.6.8. Extract BIOCLIM data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-land-cover-mean-proportion-per-subcatchment">2.6.9. Extract land cover mean proportion per subcatchment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-mean-and-sd-of-elevation-flow-accumulation-and-slope-gradient-per-subcatchment">2.6.10. Extract mean and sd of elevation, flow accumulation and slope gradient per subcatchment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#join-all-predictors-in-r">2.6.11. Join all predictors in R</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#extract-the-predictors-for-the-subcatchments-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data">2.6.12. 2. Extract the predictors for the subcatchments where the genus occurs, plus for 10,000 random subcatchments that will serve as pseudoabsence data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#for-the-prediction-we-need-the-subcatchment-raster-to-be-cropped-to-the-extent-of-the-basin">2.6.13. For the prediction, we need the subcatchment raster to be cropped to the extent of the basin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.6.14. 3. Run SDM with random forest</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict-with-fitted-model">2.6.15. Predict with fitted model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reclassify-subcatchment-raster-based-on-predicted-values">2.6.16. Reclassify subcatchment raster based on predicted values</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predicted-habitat-suitability">2.6.17. Predicted habitat suitability</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html">2.7. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modeling_debris_flow_source_areas_Txomin_Bornaetxea.html">2.8. Txomin Bornaetxea: Modeling debris flow source areas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html">2.9. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a> &raquo;</li>
+      <li><span class="section-number">2.5. </span>Afroditi Grigoropoulou: Species Distribution Model with Random Forest</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2022_Matera/Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="afroditi-grigoropoulou-species-distribution-model-with-random-forest">
+<h1><span class="section-number">2.5. </span>Afroditi Grigoropoulou: Species Distribution Model with Random Forest<a class="headerlink" href="#afroditi-grigoropoulou-species-distribution-model-with-random-forest" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://youtu.be/pNfXTdLFxBU">Video recording</a></p>
+<section id="taxon-genus-prebaetodes-mayfly-occurring-in-a-drainage-basin-in-colombia">
+<h2><span class="section-number">2.5.1. </span>Taxon: genus Prebaetodes (Mayfly), occurring in a drainage basin in Colombia<a class="headerlink" href="#taxon-genus-prebaetodes-mayfly-occurring-in-a-drainage-basin-in-colombia" title="Permalink to this headline"></a></h2>
+</section>
+<section id="goal-predict-which-subcatchments-provide-suitable-habitats-for-this-genus">
+<h2><span class="section-number">2.5.2. </span>Goal: Predict which subcatchments provide suitable habitats for this genus<a class="headerlink" href="#goal-predict-which-subcatchments-provide-suitable-habitats-for-this-genus" title="Permalink to this headline"></a></h2>
+</section>
+<section id="classify-the-subcatchments-of-the-basin-as-1-or-0-based-on-whether-their-habitat-is-suitable-or-not">
+<h2><span class="section-number">2.5.3. </span>Classify the subcatchments of the basin as 1 or 0, based on whether their habitat is suitable or not<a class="headerlink" href="#classify-the-subcatchments-of-the-basin-as-1-or-0-based-on-whether-their-habitat-is-suitable-or-not" title="Permalink to this headline"></a></h2>
+</section>
+</section>
+<section id="random-forest-classification">
+<h1><span class="section-number">2.6. </span>Random forest classification<a class="headerlink" href="#random-forest-classification" title="Permalink to this headline"></a></h1>
+<section id="extract-predictors-for-each-subcatchment-of-this-drainage-basin">
+<h2><span class="section-number">2.6.1. </span>1. Extract predictors for each subcatchment of this drainage basin<a class="headerlink" href="#extract-predictors-for-each-subcatchment-of-this-drainage-basin" title="Permalink to this headline"></a></h2>
+</section>
+<section id="extract-the-predictors-for-the-subcatchment-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data">
+<h2><span class="section-number">2.6.2. </span>2. Extract the predictors for the subcatchment where the genus occurs, plus for 10,000 random subcatchments that will serve as pseudoabsence data<a class="headerlink" href="#extract-the-predictors-for-the-subcatchment-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data" title="Permalink to this headline"></a></h2>
+</section>
+<section id="run-sdm-with-random-forest">
+<h2><span class="section-number">2.6.3. </span>3. Run SDM with random forest<a class="headerlink" href="#run-sdm-with-random-forest" title="Permalink to this headline"></a></h2>
+<p><img alt="picture 8" src="STUDENTSPROJECTS/Proj_2022_Matera/c39b7a011fd9ba654b90073095b250dc9fbdedde75ec43db1fe9e2c607de5a27.png" /><br />(https://ucmp.berkeley.edu/arthropoda/uniramia/ephemeroptera/mayfly.jpg)</p>
+</section>
+<section id="id1">
+<h2><span class="section-number">2.6.4. </span>1. Extract predictors for each subcatchment of this drainage basin<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>Set paths of output and input directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">WDIR</span><span class="o">=</span>xx
+<span class="nb">export</span> <span class="nv">CUDIR</span><span class="o">=</span>xx
+mkdir <span class="nv">$WDIR</span>/subc
+</pre></div>
+</div>
+<p>Visualize species dataset</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span> head -5 <span class="nv">$WDIR</span>/taxa/Prebaetodes_points.csv
+<span class="c1"># order_ID dataset_ID   occurrence_ID   genus       family       longitude       latitude country year    subcatchment_ID basin_ID  CU     elevation</span>
+<span class="c1"># E       051     000647545       Prebaetodes     Baetidae        -73.847944      6.0235  COL     2016    426156707       514490  33      1833.1</span>
+<span class="c1"># E       051     000668399       Prebaetodes     Baetidae        -72.9787        5.94842 COL     2018    426173837       514490  33      3193.5</span>
+<span class="c1"># E       051     000668413       Prebaetodes     Baetidae        -72.97908       5.94863 COL     2018    426173837       514490  33      3193.5</span>
+<span class="c1"># E       051     001118376       Prebaetodes     Baetidae        -75.48049       4.45153 COL     2013    426478538       514490  33      2389.9</span>
+</pre></div>
+</div>
+<p>Define Computational Unit (CU)</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">CU</span><span class="o">=</span><span class="k">$(</span>awk -F<span class="s1">&#39;\t&#39;</span> <span class="s1">&#39;FNR&gt;1 {print $12}&#39;</span> <span class="nv">$WDIR</span>/taxa/Prebaetodes_points.csv  <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
+<span class="nb">echo</span> CU <span class="nv">$CU</span> 
+<span class="c1"># CU 33</span>
+</pre></div>
+</div>
+</section>
+<section id="computational-unit">
+<h2><span class="section-number">2.6.5. </span>Computational unit<a class="headerlink" href="#computational-unit" title="Permalink to this headline"></a></h2>
+<p><img alt="picture 1" src="STUDENTSPROJECTS/Proj_2022_Matera/eb4c7468174fb13fe79d3f7d72a9c0de1929ee0c598130292a2fc5304a167f4d.png" /></p>
+<p>Define basin</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">BASIN</span><span class="o">=</span><span class="k">$(</span>awk -F<span class="s1">&#39;\t&#39;</span> <span class="s1">&#39;FNR&gt;1 {print $11}&#39;</span> <span class="nv">$WDIR</span>/taxa/*.csv  <span class="p">|</span> sort <span class="p">|</span> uniq<span class="k">)</span>
+<span class="nb">echo</span> BASIN <span class="nv">$BASIN</span>
+<span class="c1"># BASIN 514490</span>
+</pre></div>
+</div>
+</section>
+<section id="basin">
+<h2><span class="section-number">2.6.6. </span>Basin<a class="headerlink" href="#basin" title="Permalink to this headline"></a></h2>
+<p><img alt="picture 2" src="STUDENTSPROJECTS/Proj_2022_Matera/21686abeef86329331f4554bd6e7facee75ec66e859bcd40180d36bd6c3478a4.png" /></p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> CU <span class="nv">$CU</span> BASIN <span class="nv">$BASIN</span>
+<span class="c1"># CU 33 BASIN 514490</span>
+</pre></div>
+</div>
+</section>
+<section id="subcatchments">
+<h2><span class="section-number">2.6.7. </span>Subcatchments<a class="headerlink" href="#subcatchments" title="Permalink to this headline"></a></h2>
+<p><img alt="picture 3" src="STUDENTSPROJECTS/Proj_2022_Matera/5f0ba8da375ed991a37a68646444ec9d687a2ea1ce5f3d4823d4bd842b96aee7.png" /></p>
+<p>Inspect bioclim statistics file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5 <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_bio5.txt
+<span class="c1"># subcID min max range mean sd</span>
+<span class="c1"># 425395915 3018 3018 0 3018 0</span>
+<span class="c1"># 425395916 3018 3018 0 3018 0</span>
+<span class="c1"># 425395917 3018 3018 0 3018 0</span>
+<span class="c1"># 425395918 3017 3019 2 3017.5393258427 0.520504935526613</span>
+</pre></div>
+</div>
+<p>Each row corresponds to a subcatchment. We need to extract only the subcatchments belonging to the basin 514490</p>
+<p>Inspect file with subcatchment and basin IDs</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span> head -2 <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_BasinsIDs.txt
+<span class="c1"># subcID        X                   Y               MacrobasinID</span>
+<span class="c1"># 425395915  -74.8245833333333 11.0579166666667      514490</span>
+<span class="c1"># 425395916  -74.82125          11.0570833333333     514490</span>
+
+ tail <span class="m">2</span> <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_BasinsIDs.txt
+<span class="c1"># 428235083 -75.4554166666667 -14.99375             504121</span>
+<span class="c1"># 428235084 -75.4479166666667 -14.9929166666667     485074</span>
+</pre></div>
+</div>
+<p>A computational unit includes many basins. We need to extract the subcatchments of only 1 basin.</p>
+<p>First extract all the subcatchment IDs of the given basin, based on the basin ID</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>grep -w <span class="nv">$BASIN</span>  <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_BasinsIDs.txt <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span>  <span class="se">\</span>
+    &gt; <span class="nv">$WDIR</span>/subc/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_subc.txt
+</pre></div>
+</div>
+<p>See output file of subcatchment ids</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5 <span class="nv">$WDIR</span>/subc/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_subc.txt
+<span class="c1"># 425395915</span>
+<span class="c1"># 425395916</span>
+<span class="c1"># 425395917</span>
+<span class="c1"># 425395918</span>
+<span class="c1"># 425395919</span>
+</pre></div>
+</div>
+<p>Identify number of subcatchments in the basin 514490</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>wc -l <span class="nv">$WDIR</span>/subc/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_subc.txt
+<span class="c1"># 1278276 </span>
+</pre></div>
+</div>
+<p>Define the path of the file including the subcatchment IDs as a variable.
+We are going to use this file to extract the predictors for all the subcathcments of the Magdalena basin</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SUBCFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/subc/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_subc.txt
+</pre></div>
+</div>
+</section>
+<section id="extract-bioclim-data">
+<h2><span class="section-number">2.6.8. </span>Extract BIOCLIM data<a class="headerlink" href="#extract-bioclim-data" title="Permalink to this headline"></a></h2>
+<p>See files</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>ls <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats*bio*.txt   <span class="p">|</span> xargs -n <span class="m">1</span> basename <span class="p">|</span> head
+<span class="c1"># stats_33_bio10.txt</span>
+<span class="c1"># stats_33_bio11.txt</span>
+<span class="c1"># stats_33_bio12.txt</span>
+<span class="c1"># stats_33_bio13.txt</span>
+<span class="c1"># stats_33_bio14.txt</span>
+<span class="c1"># stats_33_bio15.txt</span>
+<span class="c1"># stats_33_bio16.txt</span>
+<span class="c1"># stats_33_bio17.txt</span>
+<span class="c1"># stats_33_bio18.txt</span>
+<span class="c1"># stats_33_bio19.txt</span>
+</pre></div>
+</div>
+<p>Inspect bioclim statistics file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5 <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_bio5.txt
+<span class="c1"># subcID min max range mean sd</span>
+<span class="c1"># 425395915 3018 3018 0 3018 0</span>
+<span class="c1"># 425395916 3018 3018 0 3018 0</span>
+<span class="c1"># 425395917 3018 3018 0 3018 0</span>
+<span class="c1"># 425395918 3017 3019 2 3017.5393258427 0.520504935526613</span>
+</pre></div>
+</div>
+<p>Create output directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir <span class="nv">$WDIR</span>/bioclim
+</pre></div>
+</div>
+<p>grep -W matches exact pattern, -f searches based on patterns given by a file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> ibio <span class="k">in</span> <span class="o">{</span><span class="m">5</span>,6,9,10,11<span class="o">}</span> <span class="p">;</span> <span class="k">do</span>
+    grep -wFf  <span class="nv">$SUBCFILE</span>   <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_bio<span class="si">${</span><span class="nv">ibio</span><span class="si">}</span>.txt  <span class="se">\</span>
+    &gt; <span class="nv">$WDIR</span>/bioclim/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_bio<span class="si">${</span><span class="nv">ibio</span><span class="si">}</span>.txt
+    <span class="c1">## insert header</span>
+    sed -i <span class="s2">&quot;1 i</span><span class="k">$(</span>head -1 <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_bio<span class="si">${</span><span class="nv">ibio</span><span class="si">}</span>.txt<span class="k">)</span><span class="s2">&quot;</span> <span class="nv">$WDIR</span>/bioclim/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_bio<span class="si">${</span><span class="nv">ibio</span><span class="si">}</span>.txt
+
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>check output file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5 <span class="nv">$WDIR</span>/bioclim/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_bio5.txt
+<span class="c1"># subcID bio5_min bio5_max bio5_range bio5_mean bio5_sd</span>
+<span class="c1"># 425395915 3018 3018 0 3018 0</span>
+<span class="c1"># 425395916 3018 3018 0 3018 0</span>
+<span class="c1"># 425395917 3018 3018 0 3018 0</span>
+<span class="c1"># 425395918 3017 3019 2 3017.5393258427 0.520504935526613</span>
+</pre></div>
+</div>
+<p>Same procedure but with xargs</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> ibio <span class="k">in</span> <span class="m">5</span> <span class="m">6</span> <span class="m">9</span> <span class="m">10</span> <span class="m">11</span> <span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span>  <span class="nv">$ibio</span> 
+<span class="k">done</span>   &gt; <span class="nv">$WDIR</span>/biovars_xargs.txt
+
+cat <span class="nv">$WDIR</span>/biovars_xargs.txt
+<span class="c1"># 5</span>
+<span class="c1"># 6</span>
+<span class="c1"># 9</span>
+<span class="c1"># 10</span>
+<span class="c1"># 11</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cat <span class="nv">$WDIR</span>/biovars_xargs.txt <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">5</span>  bash -c <span class="s1">$&#39;</span>
+<span class="s1">ibio=$1</span>
+
+<span class="s1">    echo &quot;subcID&quot; bio${ibio}_min bio${ibio}_max bio${ibio}_range bio${ibio}_mean bio${ibio}_sd &gt;  $WDIR/bioclim/stats_CU_${CU}_basin_${BASIN}_bio${ibio}.txt  </span>
+
+<span class="s1">    grep -wFf $SUBCFILE $CUDIR/CU_${CU}/out/stats_${CU}_bio${ibio}.txt &gt;&gt; $WDIR/bioclim/stats_CU_${CU}_basin_${BASIN}_bio${ibio}.txt</span>
+
+<span class="s1">&#39;</span> _
+
+wc -l <span class="nv">$WDIR</span>/bioclim/* 
+<span class="c1">#   1278277 /home/ag2688/project/GC_2022//bioclim/stats_CU_33_basin_514490_bio10.txt</span>
+<span class="c1">#   1278277 /home/ag2688/project/GC_2022//bioclim/stats_CU_33_basin_514490_bio11.txt</span>
+<span class="c1">#   1278277 /home/ag2688/project/GC_2022//bioclim/stats_CU_33_basin_514490_bio5.txt</span>
+<span class="c1">#   1278277 /home/ag2688/project/GC_2022//bioclim/stats_CU_33_basin_514490_bio6.txt</span>
+<span class="c1">#   1278277 /home/ag2688/project/GC_2022//bioclim/stats_CU_33_basin_514490_bio9.txt</span>
+</pre></div>
+</div>
+</section>
+<section id="extract-land-cover-mean-proportion-per-subcatchment">
+<h2><span class="section-number">2.6.9. </span>Extract land cover mean proportion per subcatchment<a class="headerlink" href="#extract-land-cover-mean-proportion-per-subcatchment" title="Permalink to this headline"></a></h2>
+<p>Inspect file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5  <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/mean_LCprop_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt
+<span class="c1"># subcID c100 c10 c110 c120 c130 c140 c150 c160 c170 c180 c190 c200 c20 c210 c220 c30 c40 c50 c60 c70 c80 c90</span>
+<span class="c1"># 425395915 0 0 0 0 0 0 0 0 0.256098 0 0 0 0 0.365854 0 0 0.0121951 0.365854 0 0 0 0</span>
+<span class="c1"># 425395916 0 0 0 0 0 0 0 0 0.509524 0 0 0 0 0.128571 0 0 0.0904762 0.271429 0 0 0 0</span>
+<span class="c1"># 425395917 0 0 0 0 0 0 0 0 0.333333 0 0 0.0641026 0 0.602564 0 0 0 0 0 0 0 0</span>
+<span class="c1"># 425395918 0 0 0 0 0 0 0 0 0.91469 0 0 0 0 0.011236 0 0 0.0740741 0 0 0 0 0</span>
+</pre></div>
+</div>
+<p>create output directory</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>mkdir <span class="nv">$WDIR</span>/LC
+</pre></div>
+</div>
+<p>Create output file by first inserting the header</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="k">$(</span>head -1 <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/mean_LCprop_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt<span class="k">)</span> &gt; <span class="nv">$WDIR</span>/LC/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_mean_LCprop.txt
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>Extract the land cover values per subcatchment
+<span class="sb">```</span>sh
+grep -wFf  <span class="nv">$SUBCFILE</span>  <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/mean_LCprop_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt  <span class="se">\</span>
+    &gt;&gt; <span class="nv">$WDIR</span>/LC/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_mean_LCprop.txt
+</pre></div>
+</div>
+</section>
+<section id="extract-mean-and-sd-of-elevation-flow-accumulation-and-slope-gradient-per-subcatchment">
+<h2><span class="section-number">2.6.10. </span>Extract mean and sd of elevation, flow accumulation and slope gradient per subcatchment<a class="headerlink" href="#extract-mean-and-sd-of-elevation-flow-accumulation-and-slope-gradient-per-subcatchment" title="Permalink to this headline"></a></h2>
+<p>Inspect tables</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -5  <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_streamorder.txt
+<span class="c1"># subcID next_stream prev_str01 prev_str02 prev_str03 prev_str04 strahler horton shreve hack topo_dim scheidegger drwal_old length stright sinosoid cum_length flow_accum out_dist source_elev outlet_elev elev_drop out_drop gradient</span>
+<span class="c1"># 425395915 425395926 0 0 0 0 1 1 1 2 6 2 1 1514.850301 1233.716941 1.227875 1514.850301 59446.808594 4630.377188 3.5 0.1 3.4 0 0.002244</span>
+<span class="c1"># 425395916 425395933 0 0 0 0 1 1 1 2 7 2 1 1532.600832 1303.739763 1.175542 1532.600832 34791.675781 4739.185951 3.3 0.2 3.2 0.1 0.002088</span>
+<span class="c1"># 425395917 425395921 0 0 0 0 1 1 1 2 2 2 1 1607.382511 1445.505848 1.111986 1607.382511 57713.539062 2827.177338 2 0 2 0 0.001244</span>
+<span class="c1"># 425395918 425395964 0 0 0 0 1 1 1 3 19 2 1 2050.53521 1751.405198 1.170794 2050.53521 0.983474 8825.73779 7.2 0.5 6.7 0 0.003267</span>
+</pre></div>
+</div>
+<p>for loop</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> VAR <span class="k">in</span> elev slopgrad flow chandistdwseg chandistupseg streamorder<span class="p">;</span> <span class="k">do</span> 
+
+    <span class="c1"># delete output file if it already exists</span>
+    <span class="o">[</span> -s <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt <span class="o">]</span> <span class="o">&amp;&amp;</span> rm <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
+    <span class="c1"># create directory for the output</span>
+    <span class="o">[</span> ! -d <span class="nv">$WDIR</span>/<span class="nv">$VAR</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> mkdir <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>
+
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$VAR</span> !<span class="o">=</span> <span class="s2">&quot;streamorder&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span> 
+
+        <span class="c1"># create output file by first inserting the header</span>
+        <span class="nb">echo</span> <span class="k">$(</span>cat <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt <span class="p">|</span> head -1 <span class="p">|</span> awk <span class="s1">&#39;{print $1, $5, $6}&#39;</span><span class="k">)</span>  <span class="se">\</span>
+            &gt; <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt 
+
+        <span class="c1"># extract the values per subcatchment</span>
+        grep -wFf  <span class="nv">$SUBCFILE</span>  &lt;<span class="o">(</span>awk <span class="s1">&#39;{print $1, $5, $6}&#39;</span> <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt<span class="o">)</span>  <span class="se">\</span>
+            &gt;&gt; <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
+
+
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$VAR</span> <span class="o">==</span> <span class="s2">&quot;streamorder&quot;</span> <span class="o">]</span> <span class="p">;</span> <span class="k">then</span> 
+
+        <span class="c1"># create output file by first inserting the header</span>
+        <span class="nb">echo</span> <span class="s2">&quot;subcID strahler&quot;</span> &gt; <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt 
+
+        <span class="c1"># extract the strahler column for each subcatchment</span>
+        grep -wFf  <span class="nv">$SUBCFILE</span> <span class="se">\</span>
+        &lt;<span class="o">(</span>awk -v <span class="nv">col1</span><span class="o">=</span>subcID -v <span class="nv">col2</span><span class="o">=</span>strahler <span class="s1">&#39;NR==1{for(i=1;i&lt;=NF;i++){if($i==col1)c1=i; if ($i==col2)c2=i;}} {print $c1 &quot; &quot; $c2}&#39;</span> <span class="se">\</span>
+        <span class="nv">$CUDIR</span>/CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt <span class="o">)</span> &gt;&gt; <span class="nv">$WDIR</span>/<span class="nv">$VAR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
+       
+    <span class="k">fi</span>
+
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Same procedure but with xargs</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> VAR <span class="k">in</span> elev slopgrad flow chandistdwseg chandistupseg streamorder <span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span>  <span class="nv">$VAR</span> 
+<span class="k">done</span>   &gt; <span class="nv">$WDIR</span>/vars_xargs.txt
+
+cat <span class="nv">$WDIR</span>/vars_xargs.txt
+<span class="c1"># elev</span>
+<span class="c1"># slopgrad</span>
+<span class="c1"># flow</span>
+<span class="c1"># chandistdwseg</span>
+<span class="c1"># chandistupseg</span>
+<span class="c1"># streamorder</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>cat <span class="nv">$WDIR</span>/vars_xargs.txt <span class="p">|</span> xargs -n <span class="m">1</span> -P <span class="m">6</span>  bash -c <span class="s1">$&#39;</span>
+<span class="s1">VAR=$1</span>
+
+<span class="s1">    [ -s $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt ] &amp;&amp; rm $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt</span>
+
+<span class="s1">    if [ $VAR != &quot;streamorder&quot; ] ; then </span>
+
+<span class="s1">        [ ! -d $WDIR/$VAR ] &amp;&amp; mkdir $WDIR/$VAR</span>
+
+<span class="s1">        echo &quot;subcID ${VAR}_mean ${VAR}_sd&quot; &gt; $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt </span>
+
+<span class="s1">        grep -wFf  $SUBCFILE  &lt;(awk \&#39;{print $1, $5, $6}\&#39; $CUDIR/CU_${CU}/out/stats_${CU}_${VAR}.txt)  &gt;&gt; $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt</span>
+<span class="s1">    fi</span>
+
+
+<span class="s1">    if [ $VAR == &quot;streamorder&quot; ] ; then </span>
+<span class="s1">        [ ! -d $WDIR/$VAR ] &amp;&amp; mkdir $WDIR/$VAR</span>
+
+<span class="s1">        echo &quot;subcID strahler&quot; &gt; $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt </span>
+
+<span class="s1">        grep -wFf  $SUBCFILE &lt;(awk -v col1=subcID -v col2=strahler \&#39;NR==1{for(i=1;i&lt;=NF;i++){if($i==col1)c1=i; if ($i==col2)c2=i;}} {print $c1 &quot; &quot; $c2}\&#39; $CUDIR/CU_${CU}/out/stats_${CU}_${VAR}.txt ) &gt;&gt; $WDIR/$VAR/stats_CU_${CU}_basin_${BASIN}_${VAR}.txt</span>
+<span class="s1">       </span>
+<span class="s1">    fi</span>
+<span class="s1">    </span>
+<span class="s1">    echo $CU $BASIN $VAR complete</span>
+
+
+<span class="s1">&#39;</span> _
+</pre></div>
+</div>
+</section>
+<section id="join-all-predictors-in-r">
+<h2><span class="section-number">2.6.11. </span>Join all predictors in R<a class="headerlink" href="#join-all-predictors-in-r" title="Permalink to this headline"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>R
+path &lt;- <span class="s2">&quot;xx&quot;</span>
+setwd<span class="o">(</span>path<span class="o">)</span>
+library<span class="o">(</span>dplyr<span class="o">)</span>
+library<span class="o">(</span>data.table<span class="o">)</span>
+library<span class="o">(</span>tidyverse<span class="o">)</span>
+
+<span class="c1"># all directories in the data folder</span>
+dirnames &lt;- list.dirs<span class="o">(</span>path, full.names <span class="o">=</span> F, <span class="nv">recursive</span> <span class="o">=</span> F<span class="o">)</span> 
+dirnames
+<span class="c1">#  [1] &quot;bioclim&quot;       &quot;chandistdwseg&quot; &quot;chandistupseg&quot; &quot;elev&quot;         </span>
+<span class="c1">#  [5] &quot;flow&quot;          &quot;LC&quot;            &quot;slopgrad&quot;      &quot;streamorder&quot;  </span>
+<span class="c1">#  [9] &quot;subc&quot;          &quot;taxa&quot;  </span>
+
+<span class="c1"># Loop iterating through all directories and importing files to be merged</span>
+d &lt;- NULL
+files_all &lt;- list<span class="o">()</span>
+<span class="nv">i</span><span class="o">=</span><span class="m">0</span>
+<span class="k">for</span><span class="o">(</span>d <span class="k">in</span> dirnames<span class="o">){</span>
+    <span class="nv">i</span><span class="o">=</span>i+1
+    filenames &lt;- list.files<span class="o">(</span>d,full.names <span class="o">=</span> T, all.files <span class="o">=</span> T, <span class="nv">pattern</span><span class="o">=</span><span class="s2">&quot;stats&quot;</span><span class="o">)</span>
+    <span class="k">if</span><span class="o">(</span>!identical<span class="o">(</span>filenames,character<span class="o">(</span><span class="m">0</span><span class="o">)))</span> <span class="o">{</span>
+        <span class="c1"># Import file</span>
+        files &lt;- lapply<span class="o">(</span>filenames,  fread, <span class="nv">header</span> <span class="o">=</span> T, <span class="nv">stringsAsFactors</span> <span class="o">=</span> F, <span class="nv">quote</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>, <span class="nv">keepLeadingZeros</span> <span class="o">=</span> T<span class="o">)</span>
+        <span class="c1"># join based on subcID</span>
+        filesj &lt;- files %&gt;% reduce<span class="o">(</span>left_join, <span class="nv">by</span> <span class="o">=</span> <span class="s2">&quot;subcID&quot;</span><span class="o">)</span>
+
+        files_all<span class="o">[[</span>i<span class="o">]]</span> &lt;- filesj
+    <span class="o">}</span>
+<span class="o">}</span>
+
+files_allj &lt;- files_all %&gt;% reduce<span class="o">(</span>left_join, <span class="nv">by</span> <span class="o">=</span> <span class="s2">&quot;subcID&quot;</span><span class="o">)</span>
+
+<span class="c1"># export table with all the predictors for all the subcatchments of the basin</span>
+fwrite<span class="o">(</span>files_allj, <span class="s2">&quot;stats_CU_33_basin_514490_all.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span>, row.names<span class="o">=</span>F, <span class="nv">quote</span><span class="o">=</span>F<span class="o">)</span>
+
+q<span class="o">()</span>
+</pre></div>
+</div>
+<p>Visualize selected columns in the final file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>awk <span class="s1">&#39;{print $1, $2, $3, $25, $30, $NF}&#39;</span>  stats_CU_33_basin_514490_all.txt  <span class="p">|</span> head -5
+<span class="c1"># subcID bio10_min bio10_max bio9_mean chandistupseg_sd strahler</span>
+<span class="c1"># 425395915 3007 3007 2994 424.215512470263 1</span>
+<span class="c1"># 425395916 3006 3007 2994 436.726188032742 1</span>
+<span class="c1"># 425395917 3007 3007 2994 451.771830664826 1</span>
+<span class="c1"># 425395918 3006 3007 2994 577.236937482746 1</span>
+</pre></div>
+</div>
+</section>
+<section id="extract-the-predictors-for-the-subcatchments-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data">
+<h2><span class="section-number">2.6.12. </span>2. Extract the predictors for the subcatchments where the genus occurs, plus for 10,000 random subcatchments that will serve as pseudoabsence data<a class="headerlink" href="#extract-the-predictors-for-the-subcatchments-where-the-genus-occurs-plus-for-10-000-random-subcatchments-that-will-serve-as-pseudoabsence-data" title="Permalink to this headline"></a></h2>
+<p>Get the IDs of the subcatchments where the genus occurs, in a file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>awk -F<span class="s1">&#39;\t&#39;</span> <span class="s1">&#39;NR&gt;1 {print $10}&#39;</span> <span class="nv">$WDIR</span>/taxa/Prebaetodes_points.csv <span class="p">|</span> sort <span class="p">|</span> uniq &gt; <span class="nv">$WDIR</span>/taxa/Prebaetodes_subc.txt
+
+head -5 <span class="nv">$WDIR</span>/taxa/Prebaetodes_subc.txt
+<span class="c1"># 426156707</span>
+<span class="c1"># 426173837</span>
+<span class="c1"># 426475409</span>
+<span class="c1"># 426475754</span>
+<span class="c1"># 426475915</span>
+</pre></div>
+</div>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="c1">## Get the subcIDs for 10,000 random rows for the pseudoabsences</span>
+cat <span class="nv">$SUBCFILE</span> <span class="p">|</span> shuf -n <span class="m">10000</span> &gt; taxa/pseudo_subc.txt
+</pre></div>
+</div>
+<p>Extract the predictors for the subcatchments of the file***</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> TAXON <span class="k">in</span> Prebaetodes <span class="p">;</span> <span class="k">do</span> 
+
+    <span class="c1">## add header</span>
+    head -1  <span class="nv">$WDIR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_all.txt <span class="se">\</span>
+        &gt; <span class="nv">$WDIR</span>/taxa/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">TAXON</span><span class="si">}</span>.txt
+
+    awk  <span class="s1">&#39;NR==FNR{searchstr[$1]; next} $1 in searchstr&#39;</span> <span class="nv">$WDIR</span>/taxa/<span class="si">${</span><span class="nv">TAXON</span><span class="si">}</span>_subc.txt  <span class="nv">$WDIR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_all.txt <span class="se">\</span>
+        &gt;&gt; <span class="nv">$WDIR</span>/taxa/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_<span class="si">${</span><span class="nv">TAXON</span><span class="si">}</span>.txt
+    
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Extract the predictors for the subcatchments of the pseudoabsence file</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head -1  <span class="nv">$WDIR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_all.txt <span class="se">\</span>
+    &gt; <span class="nv">$WDIR</span>/taxa/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_pseudo.txt    <span class="c1"># Add header</span>
+awk  <span class="s1">&#39;NR==FNR{searchstr[$1]; next} $1 in searchstr&#39;</span> <span class="nv">$WDIR</span>/taxa/pseudo_subc.txt <span class="nv">$WDIR</span>/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_all.txt <span class="se">\</span>
+    &gt;&gt; <span class="nv">$WDIR</span>/taxa/stats_CU_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_basin_<span class="si">${</span><span class="nv">BASIN</span><span class="si">}</span>_pseudo.txt
+</pre></div>
+</div>
+</section>
+<section id="for-the-prediction-we-need-the-subcatchment-raster-to-be-cropped-to-the-extent-of-the-basin">
+<h2><span class="section-number">2.6.13. </span>For the prediction, we need the subcatchment raster to be cropped to the extent of the basin<a class="headerlink" href="#for-the-prediction-we-need-the-subcatchment-raster-to-be-cropped-to-the-extent-of-the-basin" title="Permalink to this headline"></a></h2>
+<p>Load GRASS78</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /home/jg2657/bin/grass78m
+</pre></div>
+</div>
+<p>Set paths to hydrography data folder and the subcatchment data of the CU</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">DATA</span><span class="o">=</span>/gpfs/gibbs/pi/hydro/hydro/dataproces/MERIT_HYDRO
+<span class="nb">export</span> <span class="nv">SUBCATCHMENT</span><span class="o">=</span><span class="nv">$DATA</span>/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.tif 
+</pre></div>
+</div>
+<p>Extract basin of interest</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>grass78  -f -text --tmp-location  -c <span class="nv">$DATA</span>/lbasin_compUnit_tiles/bid<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.tif  <span class="s">&lt;&lt;EOF</span>
+<span class="s">r.external  input=$DATA/lbasin_compUnit_tiles/bid${CU}.tif  output=CU   --overwrite</span>
+
+<span class="s">r.external  input=$SUBCATCHMENT   output=subc   --overwrite</span>
+
+<span class="s"># mask out basins that don&#39;t have the desired basinID</span>
+<span class="s">r.mapcalc &quot; CU_$BASIN = if (CU == $BASIN , $BASIN , null() ) &quot;</span>
+<span class="s">g.region -a zoom=CU_$BASIN --o #### With the -a flag all four boundaries are adjusted to be even multiples of the resolution, aligning the region to the resolution supplied by the user. </span>
+<span class="s">                                #### The default is to align the region resolution to match the region boundaries.</span>
+
+<span class="s"># repeat for the subcatchments</span>
+<span class="s">r.mapcalc &quot; SUBC_$BASIN = if (CU_$BASIN == $BASIN , subc , null() ) &quot;</span>
+
+<span class="s"># export</span>
+<span class="s">r.out.gdal --o -f -c -m createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9,INTERLEAVE=BAND,TILED=YES&quot;  nodata=0   type=UInt32    format=GTiff input=SUBC_$BASIN output=$WDIR/subcatchment_${BASIN}.tif </span>
+
+
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">2.6.14. </span>3. Run SDM with random forest<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>R
+path &lt;- <span class="s2">&quot;xx&quot;</span>
+
+setwd<span class="o">(</span>path<span class="o">)</span>
+pacman::p_load<span class="o">(</span>data.table,ranger,parallel,doParallel,vip,raster,stringr,dplyr<span class="o">)</span>
+
+
+<span class="c1"># Import presence subcatchments with their predictors</span>
+pres &lt;- fread<span class="o">(</span><span class="s2">&quot;stats_CU_33_basin_514490_Prebaetodes.txt&quot;</span>, <span class="nv">header</span><span class="o">=</span>T, <span class="nv">keepLeadingZeros</span><span class="o">=</span>T, <span class="nv">stringsAsFactors</span> <span class="o">=</span> F, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="o">)</span> 
+head<span class="o">(</span>pres<span class="o">)</span>
+
+<span class="c1"># Import pseudoabsence subcatchments with their predictors</span>
+pseudo &lt;- fread<span class="o">(</span><span class="s2">&quot;stats_CU_33_basin_514490_pseudo.txt&quot;</span>, <span class="nv">header</span><span class="o">=</span>T<span class="o">)</span>
+head<span class="o">(</span>pseudo<span class="o">)</span>
+
+<span class="c1"># Add a column that indicates presence or absence of the genus (0|1)</span>
+pres<span class="nv">$occurrence</span> &lt;- rep<span class="o">(</span><span class="m">1</span>, nrow<span class="o">(</span>pres<span class="o">))</span>
+pseudo<span class="nv">$occurrence</span> &lt;- rep<span class="o">(</span><span class="m">0</span>, nrow<span class="o">(</span>pseudo<span class="o">))</span>
+
+<span class="c1"># join presences-absences</span>
+rf_data &lt;- rbind.data.frame<span class="o">(</span>pres, pseudo<span class="o">)</span>
+
+<span class="c1"># Exclude some predictor columns</span>
+rf_data &lt;- rf_data %&gt;% <span class="k">select</span><span class="o">(</span>!contains<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;min&quot;</span>, <span class="s2">&quot;max&quot;</span>, <span class="s2">&quot;range&quot;</span><span class="o">)))</span>
+
+<span class="c1">## Split data into train and test</span>
+set.seed<span class="o">(</span><span class="m">37</span><span class="o">)</span>
+
+
+<span class="c1"># Rescale</span>
+<span class="c1"># Define rescaling functions</span>
+slope_scale &lt;- <span class="k">function</span><span class="o">(</span>x, na.rm <span class="o">=</span> F<span class="o">)</span> <span class="o">(</span>x*0.000001<span class="o">)</span>
+clim_scale &lt;- <span class="k">function</span><span class="o">(</span>x, na.rm <span class="o">=</span> F<span class="o">)</span> <span class="o">(</span>x * <span class="m">0</span>.1<span class="o">)</span>
+offset &lt;- <span class="k">function</span><span class="o">(</span>x, na.rm <span class="o">=</span> F<span class="o">)</span> <span class="o">(</span>x - <span class="m">273</span>.15<span class="o">)</span>
+
+<span class="c1"># Apply rescaling functions</span>
+rf_data_rescale &lt;- rf_data  %&gt;%
+    mutate<span class="o">(</span>across<span class="o">(</span>contains<span class="o">(</span><span class="s2">&quot;slopgrad_mean&quot;</span><span class="o">)</span>, slope_scale<span class="o">))</span> %&gt;%
+    mutate<span class="o">(</span>across<span class="o">(</span>matches<span class="o">(</span><span class="s2">&quot;bio[0-9]+_mean&quot;</span><span class="o">)</span>, clim_scale<span class="o">))</span>  %&gt;%
+    mutate<span class="o">(</span>across<span class="o">(</span>starts_with<span class="o">(</span><span class="s2">&quot;bio[0-9]+_mean&quot;</span><span class="o">)</span>, offset<span class="o">))</span>
+
+
+rf_data &lt;- rf_data_rescale
+
+<span class="c1">## Convert occurrence column to factor to run the random forest</span>
+rf_data<span class="nv">$occurrence</span> &lt;- as.factor<span class="o">(</span>rf_data<span class="nv">$occurrence</span><span class="o">)</span>
+
+
+<span class="c1">## Split data into train and test</span>
+set.seed<span class="o">(</span><span class="m">37</span><span class="o">)</span>
+<span class="c1"># train.idx &lt;- sample(nrow(rf_data), 2/3 * nrow(rf_data))</span>
+<span class="c1"># data_train &lt;- rf_data[train.idx, ]</span>
+<span class="c1"># data_test &lt;- rf_data[-train.idx, ]</span>
+
+
+<span class="c1"># In random forests, there is no need for a separate test set to validate result.  </span>
+<span class="c1"># It is estimated internally, during the run, as follows:</span>
+<span class="c1"># As the forest is built on training data , each tree is tested on the 1/3rd of the samples (36.8%) not used in building that tree </span>
+<span class="c1"># (similar to validation data set). </span>
+<span class="c1"># This is the out of bag error estimate - an internal error estimate of a random forest as it is being constructed.</span>
+
+
+<span class="c1"># For parallel processing</span>
+cl&lt;-makePSOCKcluster<span class="o">(</span><span class="m">6</span><span class="o">)</span>
+registerDoParallel<span class="o">(</span>cl<span class="o">)</span>
+
+
+<span class="c1">## Down-sampling method for presence-only data</span>
+<span class="c1"># calculate sub-samples</span>
+presNum &lt;- nrow<span class="o">(</span>rf_data<span class="o">[</span>rf_data<span class="nv">$occurrence</span><span class="o">==</span><span class="m">1</span>,<span class="o">])</span>
+
+
+<span class="c1"># Ranger with down-sampling</span>
+spsize &lt;- c<span class="o">(</span><span class="s2">&quot;0&quot;</span> <span class="o">=</span> presNum/nrow<span class="o">(</span>rf_data<span class="o">)</span>, <span class="s2">&quot;1&quot;</span> <span class="o">=</span> presNum/nrow<span class="o">(</span>rf_data<span class="o">))</span> 
+rg &lt;- ranger<span class="o">(</span>rf_data<span class="nv">$occurrence</span> ~ ., 
+                 <span class="nv">data</span> <span class="o">=</span> rf_data<span class="o">[</span>,2:ncol<span class="o">(</span>rf_data<span class="o">)]</span>,
+                 num.trees <span class="o">=</span> <span class="m">1000</span>,
+                 <span class="nv">mtry</span><span class="o">=</span><span class="m">6</span>,
+                 <span class="nv">replace</span> <span class="o">=</span> T,
+                 sample.fraction <span class="o">=</span> spsize,
+                 oob.error <span class="o">=</span> T,
+                 keep.inbag <span class="o">=</span> TRUE,
+                 num.threads <span class="o">=</span> <span class="m">6</span>,
+                 <span class="nv">importance</span> <span class="o">=</span><span class="s1">&#39;impurity&#39;</span>, 
+                 <span class="nv">probability</span><span class="o">=</span>T<span class="o">)</span> 
+rg
+rg<span class="nv">$confusion</span>.matrix
+<span class="c1"># Type:                             Probability estimation </span>
+<span class="c1"># Number of trees:                  1000 </span>
+<span class="c1"># Sample size:                      10011 </span>
+<span class="c1"># Number of independent variables:  43 </span>
+<span class="c1"># Mtry:                             6 </span>
+<span class="c1"># Target node size:                 10 </span>
+<span class="c1"># Variable importance mode:         impurity </span>
+<span class="c1"># Splitrule:                        gini </span>
+<span class="c1"># OOB prediction error (Brier s.):  0.09524617 </span>
+
+
+<span class="o">(</span>mtry: Number of variables to possibly split at <span class="k">in</span> each node<span class="o">)</span>
+
+
+rg<span class="nv">$confusion</span>.matrix
+<span class="c1">#         predicted</span>
+<span class="c1"># true      0    1</span>
+<span class="c1">#    0    6025  642</span>
+<span class="c1">#    1      2    5</span>
+
+
+
+v1 &lt;- vip<span class="o">(</span>rg_all,num_features<span class="o">=</span><span class="m">30</span>, <span class="nv">horizontal</span><span class="o">=</span>T<span class="o">)</span>
+v1
+</pre></div>
+</div>
+<p><img alt="picture 7" src="STUDENTSPROJECTS/Proj_2022_Matera/ef611e8b826dd83e96bc51929d4d69f6c7cef187be054e8ce4d2b750102f98d3.png" /></p>
+</section>
+<section id="predict-with-fitted-model">
+<h2><span class="section-number">2.6.15. </span>Predict with fitted model<a class="headerlink" href="#predict-with-fitted-model" title="Permalink to this headline"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>subc_data &lt;- fread<span class="o">(</span><span class="s2">&quot;../stats_CU_33_basin_514490_all.txt&quot;</span>, <span class="nv">header</span><span class="o">=</span>T<span class="o">)</span>
+<span class="c1"># Exclude some columns </span>
+subc_data &lt;- subc_data %&gt;% <span class="k">select</span><span class="o">(</span>!contains<span class="o">(</span>c<span class="o">(</span><span class="s2">&quot;min&quot;</span>, <span class="s2">&quot;max&quot;</span>, <span class="s2">&quot;range&quot;</span><span class="o">)))</span>
+
+pred &lt;- predict<span class="o">(</span>rg, <span class="nv">data</span><span class="o">=</span>subc_data<span class="o">[</span>,!1<span class="o">])</span>
+prediction &lt;- data.frame<span class="o">(</span>subc_data<span class="o">[</span>,1<span class="o">]</span>, <span class="nv">pred_occur</span><span class="o">=</span>as.numeric<span class="o">(</span>as.character<span class="o">(</span>pred<span class="nv">$predictions</span><span class="o">)))</span>
+head<span class="o">(</span>prediction<span class="o">)</span>
+<span class="c1">#     subcID    pred_occur</span>
+<span class="c1"># 1 425395915          0</span>
+<span class="c1"># 2 425395916          0</span>
+<span class="c1"># 3 425395917          0</span>
+<span class="c1"># 4 425395918          0</span>
+<span class="c1"># 5 425395919          0</span>
+<span class="c1"># 6 425395920          0</span>
+
+
+<span class="c1">## Reclassify subcatchment raster in GRASS </span>
+<span class="c1">## create file with reclassification rules</span>
+setDT<span class="o">(</span>prediction<span class="o">)</span>
+prediction<span class="nv">$reclass</span> &lt;- str_c<span class="o">(</span>prediction<span class="nv">$subcID</span>,<span class="s2">&quot; = &quot;</span>, round<span class="o">(</span>prediction<span class="nv">$pred_occur</span>,2<span class="o">)</span>*100<span class="o">)</span>
+prediction &lt;- prediction<span class="o">[</span>,<span class="s1">&#39;reclass&#39;</span><span class="o">]</span>
+prediction &lt;- rbind.data.frame<span class="o">(</span>as.data.frame<span class="o">(</span>prediction<span class="o">)</span>, <span class="s2">&quot;* = 0&quot;</span><span class="o">)</span>
+head<span class="o">(</span>prediction<span class="o">)</span>
+
+fwrite<span class="o">(</span>prediction, <span class="s2">&quot;reclass_rules_pred_prob.txt&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot;\t&quot;</span>, row.names<span class="o">=</span>F, <span class="nv">quote</span><span class="o">=</span>F, col.names<span class="o">=</span>F<span class="o">)</span>    
+
+q<span class="o">()</span>
+</pre></div>
+</div>
+</section>
+<section id="reclassify-subcatchment-raster-based-on-predicted-values">
+<h2><span class="section-number">2.6.16. </span>Reclassify subcatchment raster based on predicted values<a class="headerlink" href="#reclassify-subcatchment-raster-based-on-predicted-values" title="Permalink to this headline"></a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MBFILE</span><span class="o">=</span><span class="nv">$WDIR</span>/subcatchment_512290.tif
+
+
+grass78 -f  --tmp-location  -c <span class="nv">$MBFILE</span>   <span class="o">&lt;&lt;&lt;</span>EOF
+
+    <span class="nb">export</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$MBFILE</span> .tif  <span class="k">)</span>
+    r.in.gdal --o <span class="nv">input</span><span class="o">=</span><span class="nv">$MBFILE</span>  <span class="nv">output</span><span class="o">=</span>subc    --overwrite
+
+    <span class="c1"># Reclassify</span>
+    r.reclass <span class="nv">input</span><span class="o">=</span>subc <span class="nv">output</span><span class="o">=</span>pred <span class="nv">rules</span><span class="o">=</span><span class="nv">$WDIR</span>/taxa/reclass_rules_pred_prob.txt --overwrite
+
+    <span class="c1"># export maps</span>
+    r.out.gdal --o -f -m -c <span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span> <span class="nv">type</span><span class="o">=</span>Int32  <span class="nv">format</span><span class="o">=</span>GTiff <span class="nv">nodata</span><span class="o">=</span>-9999 <span class="nv">input</span><span class="o">=</span>pred <span class="nv">output</span><span class="o">=</span><span class="nv">$WDIR</span>/taxa/pred_prob.tif
+
+EOF
+</pre></div>
+</div>
+</section>
+<section id="predicted-habitat-suitability">
+<h2><span class="section-number">2.6.17. </span>Predicted habitat suitability<a class="headerlink" href="#predicted-habitat-suitability" title="Permalink to this headline"></a></h2>
+<p><img alt="picture 9" src="STUDENTSPROJECTS/Proj_2022_Matera/61325c653ae51bb9c525f8e63e6fec4e2bc469a36998aef13a29e0a7f9677409.png" /></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html" class="btn btn-neutral float-left" title="2.4. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html" class="btn btn-neutral float-right" title="2.7. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
