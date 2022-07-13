@@ -226,6 +226,8 @@ for file in $INPUT/*.tif; do
    r.stats.zonal method=average cover=predictor base=subb output=predictor_aggr --overwrite
    r.out.gdal  input=predictor_aggr output=$OUTPUT/$filename.tif type=Float32  nodata=-9999  --o  -c  -m -f  createopt="COMPRESS=LZW,ZLEVEL=9"
 done
+```
+
 
 ![](./tree.png)
 *Figure 3. Percent of tree cover aggregated by sub-basin.*
@@ -313,7 +315,6 @@ library(maptools)
 # Save results
   st_write(prediction_sites, "./sdm/input/prediction_sites.gpkg",
          driver = "GPKG", append = F)
-
 ```
 
 
