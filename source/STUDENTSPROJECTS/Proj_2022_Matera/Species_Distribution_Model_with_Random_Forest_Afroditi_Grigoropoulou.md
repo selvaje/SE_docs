@@ -7,7 +7,8 @@
 ### Goal: Predict which subcatchments provide suitable habitats for this genus
 ### Classify the subcatchments of the basin as 1 or 0, based on whether their habitat is suitable or not
 
-# Random forest classification
+
+## Random forest classification
 ### 1. Extract predictors for each subcatchment of this drainage basin
 ### 2. Extract the predictors for the subcatchment where the genus occurs, plus for 10,000 random subcatchments that will serve as pseudoabsence data 
 ### 3. Run SDM with random forest
