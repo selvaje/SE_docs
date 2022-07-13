@@ -42,3 +42,11 @@
    Proj_2022_Matera/Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.md
    Proj_2022_Matera/Modeling_debris_flow_source_areas_Txomin_Bornaetxea.ipynb
    Proj_2022_Matera/Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.ipynb
+   Proj_2022_Matera/Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim
+   Proj_2022_Matera/Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.ipynb
+
+
+
+
+
+   
