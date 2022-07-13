@@ -44,9 +44,5 @@
    Proj_2022_Matera/Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.ipynb
    Proj_2022_Matera/Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim
    Proj_2022_Matera/Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.ipynb
-
-
-
-
-
-   
+   Proj_2022_Matera/Spatial_analysis_of_landfill_sites_in_Hesse_Germany_Roland_Halder.ipynb
+   Proj_2022_Matera/Ships_and_economic_activity_a_starter_Myriam_Marending.ipynb
