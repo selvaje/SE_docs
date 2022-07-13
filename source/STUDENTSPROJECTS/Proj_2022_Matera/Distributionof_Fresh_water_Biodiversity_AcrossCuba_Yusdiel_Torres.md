@@ -190,16 +190,13 @@ r.out.gdal  input=accums   output=$OUTPUT/accums.tif      type=Int32  nodata=-99
 r.out.gdal  input=dirs   output=$OUTPUT/dirs.tif      type=Int32  nodata=-9999  --o  -c  -m  -f createopt="COMPRESS=LZW,ZLEVEL=9
 ```
 
-![Figure 1. Stream network extracted with GRASS-GIS](./stream.png)
+![](./stream.png)
+*Figure 1. Stream network extracted with GRASS-GIS*
 
 
-```{r stream, echo=FALSE, fig.cap="Figure 1. Stream network extracted with GRASS-GIS", out.width = '100%'}
-knitr::include_graphics("./stream.png")
-```
+![](./subbasins.png)
+*Figure 2. Sub-basins extracted with GRASS-GIS*
 
-```{r sub, echo=FALSE, fig.cap="Figure 2. Sub-basins extracted with GRASS-GIS", out.width = '100%'}
-knitr::include_graphics("./subbasins.png")
-```
 
 ### 2.3. Aggregate predictors by sub-basin
 ```{bash  eval=FALSE}
@@ -232,38 +229,30 @@ for file in $INPUT/*.tif; do
    r.out.gdal  input=predictor_aggr output=$OUTPUT/$filename.tif type=Float32  nodata=-9999  --o  -c  -m -f  createopt="COMPRESS=LZW,ZLEVEL=9"
 done
 ```
+![](./tree.png)
+*Figure 3. Percent of tree cover aggregated by sub-basin.*
 
-```{r tree_aggr, echo=FALSE, fig.cap="Figure 3. Percent of tree cover aggregated by sub-basin", out.width = '100%'}
-knitr::include_graphics("./tree.png")
-```
+![](./slope.png)
+*Figure 4. Slope aggregated by sub-basin.*
 
-```{r slope_aggr, echo=FALSE, fig.cap="Figure 4. Slope aggregated by sub-basin", out.width = '100%'}
-knitr::include_graphics("./slope.png")
-```
+![](./accum.png)
+*Figure 5. Flow accumulation aggregated by sub-basin.*
 
-```{r flow_aggr, echo=FALSE, fig.cap="Figure 5. Flow accumulation aggregated by sub-basin", out.width = '100%'}
-knitr::include_graphics("./accum.png")
-```
+![](./bio01.png)
+*Figure 6. Annual mean temperature (x 10) aggregated by sub-basin.*
+
+![](./bio02.png)
+*Figure 7. Mean diurnal range (x 10) aggregated by sub-basin.*
+
+![](./bio04.png)
+*Figure 8. Temperature seasonality aggregated by sub-basin.*
 
 
-```{r bio1_aggr, echo=FALSE, fig.cap="Figure 6. Annual mean temperature (x 10) aggregated by sub-basin.", out.width = '100%'}
-knitr::include_graphics("./bio01.png")
-```
+![](./bio12.png)
+*Figure 9. Annual precipitation (mm).*
 
-```{r bio2_aggr, echo=FALSE, fig.cap="Figure 7. Mean diurnal range (x 10) aggregated by sub-basin.", out.width = '100%'}
-knitr::include_graphics("./bio02.png")
-```
-
-```{r bio4_aggr, echo=FALSE, fig.cap="Figure 8. Temperature seasonality aggregated by sub-basin.", out.width = '100%'}
-knitr::include_graphics("./bio04.png")
-```
-
-```{r bio12_aggr, echo=FALSE, fig.cap="Figure 9. Annual precipitation (mm).", out.width = '100%'}
-knitr::include_graphics("./bio12.png")
-```
-
-```{r bio14_aggr, echo=FALSE, fig.cap="Figure 10. Precipitation of the driest month (mm).", out.width = '100%'}
-knitr::include_graphics("./bio14.png")
+![](./bio14.png)
+*Figure 10. Precipitation of the driest month (mm).*
 ```
 ## 3. Biodiversity data
 Occurrence records were obtained from the scientific literature, unpublished thesis, Cuban scientific collections and online databases (GBIF, https://www.gbif.org, iNaturalist, https://www.inaturalist.org/).
@@ -958,7 +947,5 @@ for (sp in 1:length(files_names)) {
 }
 ```
 
-
-```{r results_model, echo=FALSE, fig.cap="Figure 11. Richness of freshwater species across Cuba predicted with a Spatial Linear Stream Network model. Top 10 species richness sub-basins are outlined.", out.width = '100%'}
-knitr::include_graphics("./richness.png")
-```
+![](./richness.png)
+*Figure 11. Richness of freshwater species across Cuba predicted with a Spatial Linear Stream Network model. Top 10 species richness sub-basins are outlined.*
