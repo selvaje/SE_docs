@@ -80,7 +80,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: 12th of April, 2022.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-[Video Recording](https://yale.zoom.us/rec/share/YquhUQpemJ-_GFO-sASbbfiHanHnxSwr0uhE4rLReEv4vm1SzjNw9kecPV6Xi_Yi.pJndoRaJZtsRQlUL)
+[Video Recording](https://youtu.be/gCQ33jknzZY)
 
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
@@ -211,7 +211,7 @@ You can perform:
 ## Lecture 4: 14th of April, 2022.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).
 
-[Video Recording](https://yale.zoom.us/rec/share/X6WdH8TiCujdF1MA99VSrGO8q5UK-IvLb7_m-YUasPz4kG80ommTsEYIU_mkzdlt.oBLfAcXXY0_UeLWh)
+[Video Recording](https://youtu.be/kBRW2Z5jX8M)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -245,7 +245,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: 19th of April, 2022.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).
 
-[Video Recording](https://yale.zoom.us/rec/share/fkEa6e1GGvnrVLvNsxWk3XgscbJbSM5Xfk58o-mYjMjNEm5obfwAL7_M4iQl5mSS.HY-TDFZqwGKnU3T9)
+[Video Recording](https://youtu.be/Yy5UaCOvuYo)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -278,7 +278,7 @@ Below, some suggestions of possible operations:
 ## Lecture 6: 21st of April, 2022.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-[Video Recording](https://yale.zoom.us/rec/share/ON671x4l_zb8lxXvUb4DtH5x4hjjwA6kB4vozg2HXMExapznq0tQPuLjuutpYnXR.fQPpgT2eZYrobTtB)
+[Video Recording](https://youtu.be/atchsCMQf5A)
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -292,7 +292,7 @@ This section introduces data manipulation for geospatial data processing on the 
 ## Lecture 7: 26th of April, 2022.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli & Longzhu Shen).
 
-[Video Recording](https://yale.zoom.us/rec/share/nN4qF1ZUObGL7MX-WEl2DRme0POKYYhDdYDtIbZ0ERYaxQzxVitoSoGmhwv-8HY8.cWSYSNYEaT1IsLYk)
+[Video Recording](https://youtu.be/GfmCRNMtFfs)
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
@@ -321,7 +321,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 28th of April, 2022.
 ### Modeling introduction (Longzhu Shen)
 
-[Video Recording](https://yale.zoom.us/rec/share/yoWuizgenTI_lY5-Ia8RFZZmn2V5hivUbZb35LxbHg45Zt1OeYam6JOCetwkYVfV.eQoeUTwFs2g7Cyhh)
+[Video Recording](https://youtu.be/IAGhK7mMgC8)
 
 * [Conditioning](http://spatial-ecology.net/docs/source/lectures/lect_20220428_Conditioning.pdf)
 	* Modelling theory
@@ -341,7 +341,7 @@ Reading materials:
 ## Lecture 9: 3rd of May, 2022.
 ### Probability theory & Tree height estimation (Longzhu Shen, Giuseppe Amatulli)
 
-[Video Recording](https://yale.zoom.us/rec/share/JTRk3aI9qgnnuLrkXPvN9Itsik6_iJ49AZ9pDofdqbzKrre-rAeKNX75ZwUGW6ST.uKlhCayMj4SsNlKe)
+[Video Recording](https://youtu.be/x1AEagMyIe0)
 
 
 * Recap of previous lecture 
@@ -369,7 +369,7 @@ Reading materials for next Tuesday.
 ## Lecture 10: 5th of May, 2022.
 ### Spatial statistic (Longzhu Shen)
 
-[Video Recording](https://yale.zoom.us/rec/share/4hWbNMTZ0w1lUySGae4MtGGfpjBVc46O6j6LIM3mPZ8xFczvaH5nsXTdiXMb9OhL.ZdCWNvGt6xUzRNJ3)
+[Video Recording](https://youtu.be/6Wd1yFJFrbI)
 
 * Recap: Probability Theory
 * [Introduction to Spatial Statistic](http://spatial-ecology.net/docs/source/lectures/lect_20220505_SDM.pdf)
@@ -400,7 +400,7 @@ Reading materials for next Tuesday.
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-[Video Recording](https://yale.zoom.us/rec/share/2Dk5hM9X8F8PtMe3tIPU7Pn7zy87YKhL4M-Ap3V7pQc9pVn01eIr_Q3eKwHYsxxK.OqPxSu126mbmQ4BZ)
+[Video Recording](https://youtu.be/DlxlqCXhY7I)
 
 * [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20220510_GeoComp_IntroML_SVM.pdf) (F.)
 	* Defining learning 
@@ -420,7 +420,7 @@ In this class we will set the main fundamentals to implement machine learning in
 ## Lecture 12: 12th of May, 2022.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-[Video Recording](https://yale.zoom.us/rec/share/s8m3sfWZNqpp5stVIYcTJ68fKXXmOFlUcf84KTdFPiEaDiWh8f8sxrkVlB8Ned2v.6QPOcY9gbIljEmr5)
+[Video Recording](https://youtu.be/00qQ4D1shjA)
 
 * [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lect_20220512_GeoComp_Perceptron.pdf)
 	* Links between SVM and Logistic Regression 
@@ -435,22 +435,19 @@ In this class we will set the main fundamentals to implement machine learning in
 	
 
 ## Lecture 13: 17th of May, 2022.
-### Machine Learning - (Antonio Fonseca)
+### Machine Learning -  Perceptron (Antonio Fonseca)
 
-
-[Video Recording](https://yale.zoom.us/rec/share/3JpsqAfL8MvWGnQsWJhkOSQhLXX-5fclIV1oxMccapWaIJmR0wKxHzalVKdJ6_x6.6msW3LDz7RauC3Fq)
+[Video Recording](https://youtu.be/vluWrlhVsrc)
 
 * Perceptron 
 	* Quick recap
 	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
 	* Intro to gradient descent and optimizers
 
+## Lecture 14: 19th of May, 2022.
+### Machine Learning - Multi-layer Perceptron (Antonio Fonseca)
 
-## Lecture 14: 17th of May, 2022.
-### Machine Learning - (Antonio Fonseca)
-
-[Video Recording](https://yale.zoom.us/rec/share/7empkIlVU6kQ6w4RiVNKidz12WvopLXPSScQGZEAiG64XkhsZOgFAdb9UGAO0Y1-.pOAKNJ5p-0Hl5h5i)
-
+[Video Recording](https://youtu.be/Qtr5MSsZYuY)
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220517_GeoComp_NeuralNets.pdf)
 	* The limitations of Perceptrons 
@@ -459,9 +456,9 @@ In this class we will set the main fundamentals to implement machine learning in
 	
 
 ## Lecture 15: 24th of May, 2022.
-### Machine Learning - (Antonio Fonseca)
+### Machine Learning - Capacity, Overfitting and Underfitting (Antonio Fonseca)
 
-[Video Recording](https://yale.zoom.us/rec/share/G337poDBcIbw2hG8QXQfM03gM2F4jtOEAtmgsk_iOrvXuDFwosY9Ks6xW0fAY4RY.gGDyZqBNgV1nxCYs)
+[Video Recording](https://youtu.be/4Vencg7KNdQ)
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20220524_GeoComp_NeuralNets_3_CNNs.pdf)
 	* Quick recap
@@ -479,47 +476,45 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
-	
 
 ## Lecture 16: 26th of May, 2022.
-### Machine Learning - (Antonio Fonseca)
+### Machine Learning - Convolutional Neural Networks (Antonio Fonseca)
 
-[Video Recording](https://yale.zoom.us/rec/share/s9X9WkrtqdP6Kp2l39mpbpKzIAYIji5gEGMpxO94RGGbdPEMN9OGYjv8zYlseq0m._fApeeCckuLd-BMJ)
-
+[Video Recording](https://youtu.be/-eSW9EmqEyc)
 
 * [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
 
-
-
 ## Lecture 17: 13th of June, 2022 (in presence week in Matera, Italy).
-### Google Earth Engine & pyjeo (Francesco Lovergine && Pieter Kempeneers)
+### pyjeo (Pieter Kempeneers)
 
-[Video Recording](https://yale.zoom.us/rec/share/W2hF_sSbsBajx0qINeWIY91NmuPdRS-ARlPWQCcZPIpl8prkzFQbJO0OdIYgD56k.3Awdz9nyE401ULAn)
-
-* [Google Earth Engine](  )
-	* GEE with Javascripts
-	* GEE with python buindings
+[Video Recording](https://youtu.be/B8ueuZPZE9s)
 
 * [pyjeo](http://spatial-ecology.net/docs/source/lectures/lect_20220613_pyjeo_matera.pdf)
 	* [pyjeo installation and raster visualization](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html) 
 	* [pyjeo examples](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html) 
 
+## Lecture 18: 13th of June, 2022 (in presence week in Matera, Italy).
+### Google Earth Engine (Francesco Lovergine)
 
-## Lecture 18: 15th of June, 2022 (in presence week in Matera, Italy).
-### LSTM and outdor navigation  (Antonio Fonseca, Giuseppe Amatulli) 
+[Video Recording](https://youtu.be/3OVA3zD99XE)
 
+* [Google Earth Engine](  )
+	* GEE with Javascripts
+	* GEE with python buindings
 
+## Lecture 19: 15th of June, 2022 (in presence week in Matera, Italy).
+### Long-Short Term Memory (Antonio Fonseca) 
+
+[Video Recording](https://youtu.be/qGMl_Be3_O8)  
 
 * [Time series modelling with Long-Short Term memory (LSTM)](http://spatial-ecology.net/docs/build/html/CASESTUDY/LSTMs_tutorial.html)
+	
+## Lecture 20: 15th of June, 2022 (in presence week in Matera, Italy).
+### Outdoor navigation  (Giuseppe Amatulli) 
 
-  	* [Video Recording](https://yale.zoom.us/rec/share/r4fRV7Bx4vZ2vOpvzG_oB6e5vmWib93_I0wi80xzF3rL2DouHRxVXWYY3Y4FFYkX.HlCSilEbwHHm7RBi)  
+[Video Recording](https://youtu.be/nG0rgT6v_m4)
 
 * [Do not get lost in the wilderness](http://spatial-ecology.net/docs/build/html/OUTDOOR/outdoor_orientering.html)
-	 
-	* [Video Recording](https://yale.zoom.us/rec/share/30MJ2bFT0Wq0bRSziXPcQzeXKLC7s-XWHFwBze8Kq0ZF3MkU7oMZIB3QwW3GeO8s.FAWt72h8uMSQdwMJ)
-
-
-
