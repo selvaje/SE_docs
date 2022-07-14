@@ -18,13 +18,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
   - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022_foto/course_geocomp_ml_04-05_2022.html)
 
-### Prelimanary Syllabus ###
-
-Some lectures and study cases can slightly change in accordance to the student level/needs. 
-
-  - [Preliminary Syllabus](https://docs.google.com/document/d/e/2PACX-1vTPgiWLwLs5c6V8gF2Qm36wdwtScbuw1eHa8S8Pn6i6MlJNiCH6kIum8BN_PsWLSm-zocpKPXSlUeug/pub)
-
-### Final Syllabus ###
+### Syllabus ###
 
 Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
 
@@ -32,7 +26,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 ## Lecture 1: 5th of April, 2022.
 ### Getting started: knowing each other and course introduction (Amatulli, Shen, Fonseca)
 
-[Video Recording](https://yale.zoom.us/rec/share/UNKZhoVPFrx6DZUfke_n3uYwGTI19lLLSV4QlUrSCdSdPh_B1NHOs63263TbV_6e.c_B9EuFw_fFM3L3J)
+[Video Recording](https://youtu.be/jII6A5VsJ6Q)
 
 This session introduces the overall course program and Linux operating system. 
 
@@ -47,7 +41,7 @@ This session introduces the overall course program and Linux operating system.
 ## Lecture 2: 7th of April, 2022. 
 ### Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
-[Video Recording](https://yale.zoom.us/rec/play/XKCXZCSnMgH-LACmPOts99E8BLuJbvLD3Tx71zFIMlwXBtBUo6zqCXeaU2121YOzT73PJidh4gw4F9Jv.gXBFvYHnesawIBRH)
+[Video Recording](https://youtu.be/IDfFa3ulC90)
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
