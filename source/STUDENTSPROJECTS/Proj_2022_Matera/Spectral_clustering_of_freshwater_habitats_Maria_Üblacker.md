@@ -83,9 +83,7 @@ stream_plot <- ggplot() +
 stream_plot
 
 ```
-
 ![stream network](stream_network.png)
-
 **MERIT DEM of Po river basin** 
 
 ```{r eval=FALSE}
@@ -117,9 +115,7 @@ elev <- ggplot() +
   ylab("Latitude") 
 
 ```
-
 ![Elevation](elevation.png)
-
 ### Example code for filtering data from text files by sub-catchment ID
 
 ```{bash eval=FALSE}
@@ -246,7 +242,6 @@ plt.tight_layout()
 plt.show()
 ```
 ![Variance dataset](variance_dataset.png)
-
 ```{python echo=FALSE}
 # Explained variance for the subset
 exp_var_pca_sub = pca_sub.explained_variance_ratio_
@@ -265,9 +260,7 @@ plt.tight_layout()
 
 plt.show()
 ```
-
 ![Variance subset](variance_subset.png)
-
 ```{python eval=FALSE}
 n_comp = 2
 pca = PCA(n_components = n_comp, svd_solver='full')
@@ -370,14 +363,9 @@ To compare the distribution of the whole dataset with the subset PC 1 and PC 2 w
 
 
 **Whole dataset**
-
 ![Componants of the whole dataset](comp_dataset.png)
-
 **Subset**
-
 ![Componants of the subset](comp_subset.png)
-
-
 ### Evaluation of the best number of clusters
 
 ```{python eval=F, echo=T}
@@ -390,10 +378,7 @@ visualizer.fit(env_var_std_sub)        # Fit the data to the visualizer
 visualizer.show()        # Finalize and render the figure
 
 ```
-
 ![Silhoutte](Sil.png)
-
-
 ```{python eval=F, echo=T}
 # Calinski Harabasz Score
 # k is range of number of clusters.
@@ -402,9 +387,7 @@ visualizer_ch.fit(env_var_std_sub)        # Fit data to visualizer
 visualizer_ch.show()        # Finalize and render figure
 
 ```
-
 ![Calinski Harabsz](ch.png)
-
 ### Spectral clustering 
 ```{python eval=F, echo=T}
 # Spectral clustering for 3 and 4 clusters
@@ -511,9 +494,7 @@ cluster_plot <- ggplot() +
 cluster_plot
 
 ```
-
 ![cluster2](cluster_plot.png)
-
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
 cluster<- fread("data/reclass4.csv")
 
@@ -540,9 +521,7 @@ cluster2_plot <- ggplot() +
 cluster2_plot
 
 ```
-
 ![cluster4](cluster_plot2.png)
-
 ### Conclusion
 
 - The use of a subset decreases the run time of the analysis substantially and allows the use of a cluster method which needs a similarity matrix as input
