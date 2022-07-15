@@ -1,4 +1,4 @@
-# Maria Üblacker: Spectral clustering of freshwater habitats"
+# Maria Üblacker: Spectral clustering of freshwater habitats
 
 ### Project description
 
@@ -10,7 +10,7 @@ For this project the following datasets were used:
 - CHELSA Bioclim (Karger et al., 2017)
 - ESA CCI Land cover  (ESA, 2017)
 
-Spectral clustering is a clustering method based on graph theory and needs a similarity matrix as input. Generating a similarity matrix from a large dataset can be challenging as it requires a high capacity of RAM. Therefore, a random subset was taken from the dataset. To verify that the variance of the sampled sub-catchments represents the variance of all sub-catchments within the Po river basin a Principal Component Analysis was conducted. The cluster analysis was then performed on the subset and clusters for the whole dataset were predicted using k-nearest neighbors. 
+Spectral clustering is a clustering method based on graph theory and needs a similarity matrix as input. Generating a similarity matrix of a large dataset can be challenging as it requires a high capacity of RAM. Therefore, a random subset was taken from the dataset. To verify that the variance of the sampled sub-catchments represents the variance of all sub-catchments within the Po river basin a Principal Component Analysis was conducted. The cluster analysis was then performed on the subset and clusters for the whole dataset were predicted using k-nearest neighbors. 
 
 ### Setup R Markdown Python Engine
 ```{r message=FALSE, warning=FALSE}
@@ -33,9 +33,8 @@ library(rgdal)  # Provides bindings to the 'Geospatial' Data Abstraction Library
 library(sf)  # Support for simple features
 library(raster) # Functions for raster and vector data
 library(ggplot2) # For creating plots
-library(ggnewscale)
+library(ggnewscale) # For using multiple scales in ggplot2
 library(RSQLite) # For reading gpkg
-library(knitr)
 ```
 
 ```{python message=FALSE, warning=FALSE}
@@ -44,8 +43,8 @@ import pandas as pd # For reading csv files
 
 import matplotlib.pyplot as plt # For creating plots
 import seaborn as sns # For creating plots
-import numpy as np 
 
+import numpy as np 
 from sklearn.preprocessing import StandardScaler # For scaling the data
 from sklearn.decomposition import PCA # For running a PCA
 from sklearn.cluster import SpectralClustering # For running spectral clustering
@@ -59,46 +58,11 @@ from yellowbrick.cluster import KElbowVisualizer # For calculating the Silhouett
 
 The stream network of the Po river basin has 382 157 stream reaches and the aggregated mean elevation of the sub-catchments ranges from 0 to 4458 m a.s.l.
 
-```{r include=FALSE}
-defined_theme <- function(base_size = 12, base_family = "") {
-  theme(text = element_text(family = base_family, size = base_size*96/72),
-        plot.title = element_text(size = rel(1.2), hjust = 0.5),
-        plot.background = element_rect(fill = NA),
-        panel.background = element_rect(fill = "white"),
-        panel.border = element_rect(color = "black", fill = NA, size = 0.25),
-        panel.grid.major = element_line(color = "grey85", size = 0.25),
-        panel.grid.minor = element_blank(),
-        axis.title = element_text(size = rel(0.8)),
-        axis.title.y = element_text(angle = 90,vjust = -0.2),
-        #axis.title.x = element_text(vjust = -0.2),
-        axis.text = element_text(size = rel(0.7)),
-        axis.text.x = element_text(angle = 0, vjust = 0, hjust = 0.5),
-        axis.line = element_line(color = "black", size = 0.25),
-        axis.ticks = element_line(size = 0.25),
-        legend.key = element_rect(color = NA, fill = NA),
-        legend.position = "bottom",
-        legend.direction = "horizontal",
-        legend.box = "vertical",
-        legend.key.size= unit(0.25, "cm"),
-        legend.spacing.y = unit(0.25, "cm"),
-        legend.spacing.x = unit(1, "cm"),
-        legend.text = element_text(size = rel(0.6)),
-        legend.title = element_text(face = "italic", size = rel(0.8)),
-        legend.justification = "left",
-        legend.box.just = "left",
-        plot.margin = unit(c(0.1,0.1,0.1,0.1),"mm"),
-        strip.background = element_blank(),
-        strip.text.x = element_text(size = rel(1.2)),
-        strip.text.y = element_blank()
-  )
-}
 
-```
-
-**Hydrography90m stream network of the Po river basin** \
+**Hydrography90m stream network of the Po river basin** 
 
 
-```{r  message=FALSE, warning=FALSE}
+```{r eval=FALSE}
 # Load data 
 
 sf_basin <- st_read(dsn = "data/hydrography/order_vect_59_clip.gpkg") 
@@ -120,11 +84,11 @@ stream_plot
 
 ```
 
+![stream network](stream_network.png)
 
+**MERIT DEM of Po river basin** 
 
-**MERIT DEM of Po river basin** \
-
-```{r  message=FALSE, warning=FALSE}
+```{r eval=FALSE}
 # Load the raster file of the digital elevation map (DEM)
 dem_file <- "data/elv_59_1173421.tif"
 dem <- raster(dem_file)
@@ -152,13 +116,10 @@ elev <- ggplot() +
   xlab("Longitude") +
   ylab("Latitude") 
 
-elev
 ```
 
+![Elevation](elevation.png)
 
-```{bash}
-wc -l data/envtbl/basin_59_1173421.csv
-```
 ### Example code for filtering data from text files by sub-catchment ID
 
 ```{bash eval=FALSE}
@@ -241,7 +202,6 @@ env_var_std_sub = sc.transform(env_var_sub)
 PCA was used to evaluate how many principal components describe 80% of the dataset and to evaluate if the variance of the subset is similar to the variance of the whole dataset.
 
 ```{python eval=FALSE}
-
 # Whole dataset
 pca = PCA(n_components=20)
 pca.fit(env_var_std)
@@ -263,35 +223,7 @@ train_pc_sub = pca_sub.fit_transform(env_var_std_sub)
 print("Subset")
 print(var_pca)
 print(sum_pca_sub)
-
 ```
-
-```{python echo=FALSE}
-
-# Whole dataset
-pca = PCA(n_components=20)
-pca.fit(env_var_std)
-var_pca = pca.explained_variance_ratio_
-sum_pca = var_pca.sum()
-train_pca = pca.fit_transform(env_var_std)
-
-print("Dataset")
-print(var_pca)
-print(sum_pca)
-
-# Subset
-pca_sub = PCA(n_components=20)
-pca_sub.fit(env_var_std_sub)
-var_pca_sub = pca_sub.explained_variance_ratio_
-sum_pca_sub = var_pca.sum()
-train_pc_sub = pca_sub.fit_transform(env_var_std_sub)
-
-print("Subset")
-print(var_pca)
-print(sum_pca_sub)
-
-```
-
 
 ```{python echo=FALSE}
 # Determine explained variance using explained_variance_ration_ attribute
@@ -313,7 +245,7 @@ plt.tight_layout()
 
 plt.show()
 ```
-
+![Variance dataset](variance_dataset.png)
 
 ```{python echo=FALSE}
 # Explained variance for the subset
@@ -334,9 +266,9 @@ plt.tight_layout()
 plt.show()
 ```
 
+![Variance subset](variance_subset.png)
 
 ```{python eval=FALSE}
-
 n_comp = 2
 pca = PCA(n_components = n_comp, svd_solver='full')
 components = pca.fit_transform(env_var_std)
@@ -436,19 +368,15 @@ plt.show()
 To compare the distribution of the whole dataset with the subset PC 1 and PC 2 were plotted. The color of each plot is indicating either the mean elevation, the distance to the outlet, or the min. temperature of the coldest month.
 
 
+
 **Whole dataset**
-```{r comp, echo = FALSE}
 
-knitr::include_graphics("data/comp_dataset.png")
-
-```
+![Componants of the whole dataset](comp_dataset.png)
 
 **Subset**
-```{r compsub, echo = FALSE}
 
-knitr::include_graphics("data/comp_subset.png")
+![Componants of the subset](comp_subset.png)
 
-```
 
 ### Evaluation of the best number of clusters
 
@@ -463,11 +391,7 @@ visualizer.show()        # Finalize and render the figure
 
 ```
 
-```{r sil, echo = FALSE}
-
-knitr::include_graphics("data/Sil.png")
-
-```
+![Silhoutte](Sil.png)
 
 
 ```{python eval=F, echo=T}
@@ -479,11 +403,7 @@ visualizer_ch.show()        # Finalize and render figure
 
 ```
 
-```{r ch, echo = FALSE}
-
-knitr::include_graphics("data/ch.png")
-
-```
+![Calinski Harabsz](ch.png)
 
 ### Spectral clustering 
 ```{python eval=F, echo=T}
@@ -558,55 +478,15 @@ gdal_edit -a_nodata -9999 $BASIN/reclass_subc_${CUNIT}_${BID}_cropped.tif
 To visualize the spatial extend of each cluster the reclassification table was joined with the gpkg attribute table of the stream network.
 The plots show the solution with 3 and 4 clusters. Colors are indicating which stream reach belongs to which cluster.
 
-```{r include=FALSE}
-# Define plot properties
-
-# Define theme
-
-defined_theme <- function(base_size = 12, base_family = "") {
-  theme(text = element_text(family = base_family, size = base_size*96/72),
-        plot.title = element_text(size = rel(1.2), hjust = 0.5),
-        plot.background = element_rect(fill = NA),
-        panel.background = element_rect(fill = "white"),
-        panel.border = element_rect(color = "black", fill = NA, size = 0.25),
-        panel.grid.major = element_line(color = "grey85", size = 0.25),
-        panel.grid.minor = element_blank(),
-        axis.title = element_text(size = rel(0.8)),
-        axis.title.y = element_text(angle = 90,vjust = -0.2),
-        #axis.title.x = element_text(vjust = -0.2),
-        axis.text = element_text(size = rel(0.7)),
-        axis.text.x = element_text(angle = 0, vjust = 0, hjust = 0.5),
-        axis.line = element_line(color = "black", size = 0.25),
-        axis.ticks = element_line(size = 0.25),
-        legend.key = element_rect(color = NA, fill = NA),
-        legend.position = "bottom",
-        legend.direction = "horizontal",
-        legend.box = "vertical",
-        legend.key.size= unit(0.3, "cm"),
-        legend.spacing.y = unit(0.25, "cm"),
-        legend.spacing.x = unit(0.25, "cm"),
-        legend.text = element_text(size = rel(1)),
-        legend.title = element_text(face = "italic", size = rel(1)),
-        legend.justification = "left",
-        legend.box.just = "left",
-        plot.margin = unit(c(0.1,0.1,0.1,0.1),"mm"),
-        strip.background = element_blank(),
-        strip.text.x = element_text(size = rel(1.2)),
-        strip.text.y = element_blank()
-  )
-}
-
-```
 
 ```{r message=FALSE, warning=FALSE}
-
 # Load data 
 
 sf_basin <- st_read(dsn = "data/hydrography/order_vect_59_clip.gpkg") 
 # To ensure the right protection
 # st_crs(sf_basin) <- "+proj=longlat +datum=WGS84" 
 
-cluster <- fread("/home/mueblacker/Documents/Glowabio/Code/matera_project/data/reclass.csv")
+cluster <- fread("data/reclass.csv")
 
 cluster <- cluster %>% 
   rename(stream = subcID) %>% 
@@ -632,10 +512,10 @@ cluster_plot
 
 ```
 
+![cluster2](cluster_plot.png)
+
 ```{r echo=FALSE, message=FALSE, warning=FALSE}
-
-
-cluster<- fread("/home/mueblacker/Documents/Glowabio/Code/matera_project/data/reclass4.csv")
+cluster<- fread("data/reclass4.csv")
 
 cluster <- cluster %>% 
   rename(stream = subcID) %>% 
@@ -660,6 +540,8 @@ cluster2_plot <- ggplot() +
 cluster2_plot
 
 ```
+
+![cluster4](cluster_plot2.png)
 
 ### Conclusion
 
