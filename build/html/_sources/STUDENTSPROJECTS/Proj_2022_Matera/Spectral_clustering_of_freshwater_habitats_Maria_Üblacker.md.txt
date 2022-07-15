@@ -1,5 +1,7 @@
 # Maria Üblacker: Spectral clustering of freshwater habitats
 
+[Video](https://youtu.be/BVjAwfhhT7g)
+
 ### Project description
 
 In the framework of this project spectral clustering was performed to identify groups of environmental unique freshwater habitats for the Po river basin located in the North of Italy. Freshwater habitats were defined by stream reaches and their associated sub-catchments based on the Hydrography90m dataset. Sub-catchments were characterized by 71 variables describing the geomorphology, the climate and the land cover. 
