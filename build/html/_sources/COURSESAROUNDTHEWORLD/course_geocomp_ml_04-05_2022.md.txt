@@ -488,7 +488,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Tutorial: data batching, classification of satellite images
 
 ## Lecture 17: 13th of June, 2022.
-#### In presence week in Matera, Italy
+**In presence week in Matera, Italy**
 ### pyjeo (Pieter Kempeneers)
 
 [Video Recording](https://youtu.be/B8ueuZPZE9s)
@@ -498,7 +498,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [pyjeo examples](http://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html) 
 
 ## Lecture 18: 13th of June, 2022.
-#### In presence week in Matera, Italy
+**In presence week in Matera, Italy**
 ### Google Earth Engine (Francesco Lovergine)
 
 [Video Recording](https://youtu.be/3OVA3zD99XE)
@@ -508,7 +508,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* GEE with python buindings
 
 ## Lecture 19: 15th of June, 2022.
-#### In presence week in Matera, Italy
+**In presence week in Matera, Italy**
 ### Long-Short Term Memory (Antonio Fonseca) 
 
 [Video Recording](https://youtu.be/qGMl_Be3_O8)  
@@ -516,7 +516,7 @@ In this class we will set the main fundamentals to implement machine learning in
 * [Time series modelling with Long-Short Term memory (LSTM)](http://spatial-ecology.net/docs/build/html/CASESTUDY/LSTMs_tutorial.html)
 	
 ## Lecture 20: 15th of June, 2022.
-#### In presence week in Matera, Italy
+**In presence week in Matera, Italy**
 ### Outdoor navigation  (Giuseppe Amatulli) 
 
 [Video Recording](https://youtu.be/nG0rgT6v_m4)

@@ -1,6 +1,6 @@
 # Maria Üblacker: Spectral clustering of freshwater habitats
 
-[Video](https://youtu.be/BVjAwfhhT7g)
+[Video recording](https://youtu.be/BVjAwfhhT7g)
 
 ### Project description
 
