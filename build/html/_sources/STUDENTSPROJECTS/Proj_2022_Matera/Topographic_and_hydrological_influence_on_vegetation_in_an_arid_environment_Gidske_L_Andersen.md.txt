@@ -1,5 +1,7 @@
 # Gidske L. Andersen: Topographic and hydrological influence on vegetation in an arid environment
 
+[Video recording](https://youtu.be/fM4FdKlbu1I)
+
 ## Background
 Arid lands are highly variable environments due to their water dependency and the high spatio-temporal variability of precipitation. But water is not only available to plants as run-off precipation, it is also availble as soil moisture (shallow and deep) and groundwater. These water resources are redistributed in and by the landscape. Vegetation has adapted to the variability of water resources in different ways and are found at places where water conditions are optimal, either in short term perspective (ephemeral species; where runoff is important) or in a long-term perspective (shrubs and trees; where soil moisture is stable). In this case study I will look into which topographical and hydrological parameters that influence vegetation patterns and to what degree they can model these patterns. Landsat data is used to extract vegetation indices (vegetation pattern) and SRTM is used for derivation of hydrological and topographical predictors. 
 
