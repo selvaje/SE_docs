@@ -308,7 +308,13 @@ https://glad.umd.edu/book/overview).</p>
 <section id="data-download">
 <h3><span class="section-number">2.7.2.1. </span>Data download<a class="headerlink" href="#data-download" title="Permalink to this headline"></a></h3>
 <p>Data for 2018 was downloaded with this code, where user:password should be replace</p>
-<p><code class="docutils literal notranslate"><span class="pre">%%bash</span> <span class="pre">for</span> <span class="pre">INTER</span> <span class="pre">in</span> <span class="pre">$(grep</span> <span class="pre">-e</span> <span class="pre">^2018</span> <span class="pre">geodata/glad_ard//16d_intervals.csv</span> <span class="pre">|</span> <span class="pre">awk</span> <span class="pre">'{</span> <span class="pre">$1=&quot;&quot;;</span> <span class="pre">print</span> <span class="pre">$0}')</span> <span class="pre">;</span> <span class="pre">do</span>&#160;&#160; <span class="pre">curl</span> <span class="pre">--connect-timeout</span> <span class="pre">600</span> <span class="pre">-u</span> <span class="pre">user:passwd</span> <span class="pre">-X</span> <span class="pre">GET</span> <span class="pre">https://glad.umd.edu/dataset/landsat_v1.1/18N/037E_18N/$INTER.tif</span> <span class="pre">-o</span> <span class="pre">project/glad_ard/$INTER.tif</span> <span class="pre">gdal_translate</span> <span class="pre">-co</span> <span class="pre">COMPRESS=DEFLATE</span> <span class="pre">-co</span> <span class="pre">ZLEVEL=9</span>&#160; <span class="pre">-projwin</span> <span class="pre">37</span> <span class="pre">18.86666</span> <span class="pre">37.4</span> <span class="pre">18.63333</span> <span class="pre">project/glad_ard/$INTER.tif</span> <span class="pre">project/glad_ard/${INTER}_crop.tif</span>&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">done</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span> INTER <span class="k">in</span> <span class="k">$(</span>grep -e ^2018 geodata/glad_ard//16d_intervals.csv <span class="p">|</span> awk <span class="s1">&#39;{ $1=&quot;&quot;; print $0}&#39;</span><span class="k">)</span> <span class="p">;</span> <span class="k">do</span>  
+    curl --connect-timeout <span class="m">600</span> -u user:passwd -X GET https://glad.umd.edu/dataset/landsat_v1.1/18N/037E_18N/<span class="nv">$INTER</span>.tif -o project/glad_ard/<span class="nv">$INTER</span>.tif
+    gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -projwin <span class="m">37</span> <span class="m">18</span>.86666 <span class="m">37</span>.4 <span class="m">18</span>.63333 project/glad_ard/<span class="nv">$INTER</span>.tif project/glad_ard/<span class="si">${</span><span class="nv">INTER</span><span class="si">}</span>_crop.tif      
+<span class="k">done</span>
+</pre></div>
+</div>
 <p>The images has 8 bands, where band 3 and 4 can be used to calculate vegetation indices. Band 8, BQA, is used for masking pixels with low quality (https://glad.umd.edu/ard/landsat-ard-methodology). In addition to clouds, there can also be low quality pixels seen as stripes (caused by sensor problems; see figure below).</p>
 <p>Due the arid characteristics of the area, the Soil Adjusted Vegetation Index (SAVI) is used:</p>
 <p>(NIR - Red)/(NIR + RED) + 0.5)) * 1.5</p>
@@ -2533,9 +2539,6 @@ jim.properties.getProjection()
 <li><p>look into other response variables that better catch the variability of the environment and try to distinguish among the long-lived and short-lived vegetation</p></li>
 <li><p>expand the area to include larger environmental variability</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">presentation</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">spatial</span><span class="o">-</span><span class="n">ecology</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">docs</span><span class="o">/</span><span class="n">build</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">STUDENTSPROJECTS</span><span class="o">/</span><span class="n">Proj_2022_Matera</span><span class="o">/</span><span class="n">aridveg_Gidske_Andersen</span><span class="o">.</span><span class="n">pdf</span><span class="p">)</span>
-</pre></div>
-</div>
 </section>
 </section>
 

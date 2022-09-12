@@ -87,11 +87,13 @@ The temporal series for each tile is labeled following this numerical nomenclatu
 
 Data for 2018 was downloaded with this code, where user:password should be replace
 
-`%%bash
+```bash
+%%bash
 for INTER in $(grep -e ^2018 geodata/glad_ard//16d_intervals.csv | awk '{ $1=""; print $0}') ; do  
     curl --connect-timeout 600 -u user:passwd -X GET https://glad.umd.edu/dataset/landsat_v1.1/18N/037E_18N/$INTER.tif -o project/glad_ard/$INTER.tif
     gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -projwin 37 18.86666 37.4 18.63333 project/glad_ard/$INTER.tif project/glad_ard/${INTER}_crop.tif      
-    done`
+done
+```
 
 The images has 8 bands, where band 3 and 4 can be used to calculate vegetation indices. Band 8, BQA, is used for masking pixels with low quality (https://glad.umd.edu/ard/landsat-ard-methodology). In addition to clouds, there can also be low quality pixels seen as stripes (caused by sensor problems; see figure below).
 
@@ -2751,7 +2753,3 @@ This case study was primarily for learning the tools and how bash, python, grass
 - look into other response variables that better catch the variability of the environment and try to distinguish among the long-lived and short-lived vegetation
 - expand the area to include larger environmental variability
 
-
-```python
-[presentation](http://spatial-ecology.net/docs/build/html/STUDENTSPROJECTS/Proj_2022_Matera/aridveg_Gidske_Andersen.pdf)
-```
