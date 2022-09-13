@@ -1,9 +1,7 @@
 # Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data 
+**Project: Global freshwater biodiversity, biogeography & conservation (GLOWABIO)**
 
 [Video recording](https://youtu.be/aFbKH1XVJ3M)
-
-## Project: Global freshwater biodiversity, biogeography & conservation (GLOWABIO)
-
 
 Gain a comprehensive picture of the current status of freshwater biodiversity
 
