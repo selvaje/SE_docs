@@ -1,8 +1,8 @@
-# Modelling freshwater biodiversity: setting the scene, from geo-data to text-data 
+# Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data 
 
-Jaime García
-------------
-## **PROJECT: *Global freshwater biodiversity, biogeography & conservation (GLOWABIO)***
+[Video recording](https://youtu.be/aFbKH1XVJ3M)
+
+## Project: Global freshwater biodiversity, biogeography & conservation (GLOWABIO)
 
 
 Gain a comprehensive picture of the current status of freshwater biodiversity
@@ -15,7 +15,7 @@ Gain a comprehensive picture of the current status of freshwater biodiversity
 
 * **Hydrography90m** dataset
 
-![Screenshot Hydrography90m paper](./Matera/Hydrography90m_01.png)
+![Screenshot Hydrography90m paper](Hydrography90m_01.png)
 
      * Detail stream channel delineation
      * 1.6 million drainage basins
@@ -32,7 +32,7 @@ Gain a comprehensive picture of the current status of freshwater biodiversity
 
 ## Sub-catchments as unit of analysis for freshwater biodiversity analysis
 
-![Sub-catchments](./Matera/sub-catchments.png)
+![Sub-catchments](sub-catchments.png)
 
 Is it better to create a set of scripts to derive and extract data, repetitively?
 
@@ -43,7 +43,7 @@ sub-catchments and later on make a rapid data extraction?
 
 ## Computational Units as units of data processing
 
-![Irregular Tiling System](./Matera/ITS.png)
+![Irregular Tiling System](ITS.png)
 
 ## Scripting procedures
 
@@ -67,7 +67,7 @@ Site_ID,Country,River,Longitude_X,Latitude_Y,Starting_year,Ending_year,NEW?
 ```
 2. stream segments as observation points
 
-![Stream segments and points](./Matera/linesPoints.png)
+![Stream segments and points](linesPoints.png)
 
 
 ```bash
@@ -87,7 +87,7 @@ ogr2ogr $DIR/points_$ref.gpkg $vect \
 Given the potential mismatches between the given coordinates and stream network
 output some observation would not overlap.
 
-![Snapping step 3](./Matera/snap_05.png)
+![Snapping step 3](snap_05.png)
 
 ```bash
 SnapPoint(){
@@ -172,7 +172,7 @@ cat ${OUTDIR}/coords_* >> ${OUTDIR}/snap_all.csv
 
 ### Calculating upstream basins from observation points
 
-![Upstream basins](./Matera/upstreamBasin.png)
+![Upstream basins](upstreamBasin.png)
 
 ```bash
 grass78 -f -text --tmp-location -c ${richt}/dir_${C}_msk.tif <<'EOF'
@@ -218,7 +218,7 @@ EOF
 ```
 ### _gdallocationinfo_:  at pixel value extraction
 
-![Value at pixel](./Matera/ValuePixel.png)
+![Value at pixel](ValuePixel.png)
 
 ```bash
 printf "%s\n" ${VAR}_${YEAR}_${MES} \
