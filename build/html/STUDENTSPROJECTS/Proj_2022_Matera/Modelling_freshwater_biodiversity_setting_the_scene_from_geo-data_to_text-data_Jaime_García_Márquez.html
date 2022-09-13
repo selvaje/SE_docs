@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.4. Modelling freshwater biodiversity: setting the scene, from geo-data to text-data &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/thebelab-helper.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.5. Maria Üblacker: Spectral clustering of freshwater habitats" href="Spectral_clustering_of_freshwater_habitats_Maria_%C3%9Cblacker.html" />
+    <link rel="prev" title="2.3. Sebastian Walter: Images shadow removal" href="Images_shadow_removal_Sebastian_Walter.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html" class="icon icon-home"> Spatial Ecology's code documentation
+            <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction.html">Introdction to pyjeo: installation and raster visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02SVM_pred.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04Perceptron_pred.html">Estimation of tree height using GEDI dataset - Perceptron 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04Perceptron_pred_clean.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">The real data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-for-Regression-Using-the-Window-Method">LSTM for Regression Using the Window Method</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-for-Regression-with-Time-Steps">LSTM for Regression with Time Steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#LSTM-with-Memory-Between-Batches">LSTM with Memory Between Batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Stacked-LSTMs-with-Memory-Between-Batches">Stacked LSTMs with Memory Between Batches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Adding-Early-Stopping">Adding Early Stopping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html#Multivariate-Time-series---Data">Multivariate Time-series - Data</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Damaged_trees_classification_RF_Janusz_Godziek.html">2.1. Janusz Godziek: Damaged vs undamaged trees - Random Forest classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stream_Network_Abstraction_Alonso_Gonzalez.html">2.2. Alonso Gonzalez: Stream Network Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Images_shadow_removal_Sebastian_Walter.html">2.3. Sebastian Walter: Images shadow removal</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.4. Modelling freshwater biodiversity: setting the scene, from geo-data to text-data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jaime-garcia">2.4.1. Jaime García</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#project-global-freshwater-biodiversity-biogeography-conservation-glowabio">2.4.2. <strong>PROJECT: <em>Global freshwater biodiversity, biogeography &amp; conservation (GLOWABIO)</em></strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#first-step-environmental-information">2.4.3. First step: environmental information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-preparation">2.4.4. Data preparation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sub-catchments-as-unit-of-analysis-for-freshwater-biodiversity-analysis">2.4.5. Sub-catchments as unit of analysis for freshwater biodiversity analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#computational-units-as-units-of-data-processing">2.4.6. Computational Units as units of data processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scripting-procedures">2.4.7. Scripting procedures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#observations">2.4.7.1. Observations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#snapping-observations-to-stream-network">2.4.7.2. Snapping observations to stream network</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calculating-upstream-basins-from-observation-points">2.4.7.3. Calculating upstream basins from observation points</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#gdallocationinfo-at-pixel-value-extraction">2.4.7.4. <em>gdallocationinfo</em>:  at pixel value extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stream-order-tables-from-vector-gpkg">2.4.7.5. Stream order tables from vector <em>.gpkg</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#r-univar-for-zonal-statistics">2.4.7.6. <em>r.univar</em> for zonal statistics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#land-cover">2.4.7.7. Land cover</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deriving-new-data">2.4.7.8. Deriving new data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-final-set-of-tables">2.4.7.9. The final set of tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Spectral_clustering_of_freshwater_habitats_Maria_%C3%9Cblacker.html">2.5. Maria Üblacker: Spectral clustering of freshwater habitats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html">2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Topographic_and_hydrological_influence_on_vegetation_in_an_arid_environment_Gidske_L_Andersen.html">2.7. Gidske L. Andersen: Topographic and hydrological influence on vegetation in an arid environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html">2.8. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modeling_debris_flow_source_areas_Txomin_Bornaetxea.html">2.9. Txomin Bornaetxea: Modeling debris flow source areas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html">2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.html">2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.html">2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ships_and_economic_activity_a_starter_Myriam_Marending.html">2.13. Myriam Marending: Ships and economic activity: a starter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html">2.14. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+          <li><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a> &raquo;</li>
+      <li><span class="section-number">2.4. </span>Modelling freshwater biodiversity: setting the scene, from geo-data to text-data</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2022_Matera/Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_García_Márquez.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="modelling-freshwater-biodiversity-setting-the-scene-from-geo-data-to-text-data">
+<h1><span class="section-number">2.4. </span>Modelling freshwater biodiversity: setting the scene, from geo-data to text-data<a class="headerlink" href="#modelling-freshwater-biodiversity-setting-the-scene-from-geo-data-to-text-data" title="Permalink to this headline"></a></h1>
+<section id="jaime-garcia">
+<h2><span class="section-number">2.4.1. </span>Jaime García<a class="headerlink" href="#jaime-garcia" title="Permalink to this headline"></a></h2>
+</section>
+<section id="project-global-freshwater-biodiversity-biogeography-conservation-glowabio">
+<h2><span class="section-number">2.4.2. </span><strong>PROJECT: <em>Global freshwater biodiversity, biogeography &amp; conservation (GLOWABIO)</em></strong><a class="headerlink" href="#project-global-freshwater-biodiversity-biogeography-conservation-glowabio" title="Permalink to this headline"></a></h2>
+<p>Gain a comprehensive picture of the current status of freshwater biodiversity</p>
+<ol class="simple">
+<li><p>habitat type delineation</p></li>
+<li><p>state-of-the-art machine learning models to map the diversity of aquatic insects</p></li>
+<li><p>applying novel systematic conservation network analyses</p></li>
+</ol>
+</section>
+<section id="first-step-environmental-information">
+<h2><span class="section-number">2.4.3. </span>First step: environmental information<a class="headerlink" href="#first-step-environmental-information" title="Permalink to this headline"></a></h2>
+<ul class="simple">
+<li><p><strong>Hydrography90m</strong> dataset</p></li>
+</ul>
+<p><img alt="Screenshot Hydrography90m paper" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/Hydrography90m_01.png" /></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="o">*</span> <span class="n">Detail</span> <span class="n">stream</span> <span class="n">channel</span> <span class="n">delineation</span>
+ <span class="o">*</span> <span class="mf">1.6</span> <span class="n">million</span> <span class="n">drainage</span> <span class="n">basins</span>
+ <span class="o">*</span> <span class="mi">726</span> <span class="n">million</span> <span class="n">unique</span> <span class="n">stream</span> <span class="n">segments</span> <span class="k">with</span> <span class="n">their</span> <span class="n">corresponding</span> <span class="n">sub</span><span class="o">-</span><span class="n">catchments</span>
+ <span class="o">*</span> <span class="n">stream</span> <span class="n">topographic</span> <span class="n">variables</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">slope</span><span class="p">,</span> <span class="n">gradients</span><span class="p">,</span> <span class="n">curvatures</span><span class="p">)</span>
+ <span class="o">*</span> <span class="n">stream</span> <span class="n">topological</span> <span class="n">variables</span> <span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">stream</span> <span class="n">order</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Land cover information (ESA Land Cover Data 1992-2018 , 250m)</p></li>
+<li><p>Climate (CHELSA database)</p></li>
+<li><p>Soil (SOILGRIDS database)</p></li>
+<li><p>Distance related measures (between observation’s locations)</p></li>
+</ul>
+</section>
+<section id="data-preparation">
+<h2><span class="section-number">2.4.4. </span>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline"></a></h2>
+</section>
+<section id="sub-catchments-as-unit-of-analysis-for-freshwater-biodiversity-analysis">
+<h2><span class="section-number">2.4.5. </span>Sub-catchments as unit of analysis for freshwater biodiversity analysis<a class="headerlink" href="#sub-catchments-as-unit-of-analysis-for-freshwater-biodiversity-analysis" title="Permalink to this headline"></a></h2>
+<p><img alt="Sub-catchments" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/sub-catchments.png" /></p>
+<p>Is it better to create a set of scripts to derive and extract data, repetitively?</p>
+<p><em>VS.</em></p>
+<p>Is it better to create a one time running scripts to generate text tables for all
+sub-catchments and later on make a rapid data extraction?</p>
+</section>
+<section id="computational-units-as-units-of-data-processing">
+<h2><span class="section-number">2.4.6. </span>Computational Units as units of data processing<a class="headerlink" href="#computational-units-as-units-of-data-processing" title="Permalink to this headline"></a></h2>
+<p><img alt="Irregular Tiling System" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/ITS.png" /></p>
+</section>
+<section id="scripting-procedures">
+<h2><span class="section-number">2.4.7. </span>Scripting procedures<a class="headerlink" href="#scripting-procedures" title="Permalink to this headline"></a></h2>
+<section id="observations">
+<h3><span class="section-number">2.4.7.1. </span>Observations<a class="headerlink" href="#observations" title="Permalink to this headline"></a></h3>
+<ol class="simple">
+<li><p>Research based datasets</p></li>
+</ol>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head Coordinates_forSami_3moSeason_24Nov2020.csv
+
+Site_ID,Country,River,Longitude_X,Latitude_Y,Starting_year,Ending_year,NEW?
+<span class="m">100000001</span>,France,Rhone,5.294382,45.829523,1980,2014,
+<span class="m">100000002</span>,France,Rhone,5.299435,45.8323815,1999,2014,
+<span class="m">100000003</span>,France,AUTHIE,1.918195639,50.30448305,1998,2014,
+<span class="m">100000004</span>,France,ANCRE,2.513745757,49.9332428,1995,2014,
+<span class="m">100000005</span>,France,NOYE,2.385456242,49.79422815,1997,2015,
+<span class="m">100000006</span>,France,SELLE,2.169124882,49.71432717,1997,2015,
+<span class="m">100000007</span>,France,EVOISSONS,2.016358357,49.74211763,1997,2015,
+<span class="m">100000009</span>,France,DOLLER,7.232714668,47.74561836,1997,2016,
+<span class="m">100000010</span>,France,THUR,7.264966594,47.82728771,1997,2016,
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>stream segments as observation points</p></li>
+</ol>
+<p><img alt="Stream segments and points" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/linesPoints.png" /></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create vector point file by extracting only the geometry points (original </span>
+<span class="c1"># files have lines and points as geometries) and removing points representing </span>
+<span class="c1"># outlets (cat = 0)</span>
+
+ogr2ogr <span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg <span class="nv">$vect</span> <span class="se">\</span>
+    -sql <span class="s2">&quot;SELECT * FROM vect WHERE ST_GeometryType(geom) LIKE &#39;POINT&#39; AND NOT cat = 0&quot;</span> <span class="se">\</span>
+    -nln points_<span class="nv">$ref</span> -nlt POINT
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="snapping-observations-to-stream-network">
+<h3><span class="section-number">2.4.7.2. </span>Snapping observations to stream network<a class="headerlink" href="#snapping-observations-to-stream-network" title="Permalink to this headline"></a></h3>
+<p>Given the potential mismatches between the given coordinates and stream network
+output some observation would not overlap.</p>
+<p><img alt="Snapping step 3" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/snap_05.png" /></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SnapPoint<span class="o">(){</span>
+
+<span class="c1"># unique id of the point </span>
+<span class="nb">export</span> <span class="nv">ID</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nb">export</span> <span class="nv">DIR</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nb">export</span> <span class="nv">TMP</span><span class="o">=</span><span class="nv">$3</span>
+
+<span class="c1"># path to basins info</span>
+<span class="nb">export</span> <span class="nv">BASIN</span><span class="o">=</span><span class="nv">$DIR</span>/basins
+
+<span class="c1"># prepare target folder</span>
+<span class="nb">export</span> <span class="nv">OUTDIR</span><span class="o">=</span><span class="nv">$TMP</span>/snappoints
+
+<span class="c1"># name of unique id identifier</span>
+<span class="nb">export</span> <span class="nv">SITE</span><span class="o">=</span><span class="k">$(</span> awk -F, <span class="s1">&#39;NR==1 {print $1}&#39;</span> <span class="nv">$DIR</span>/BasisDataBasinsIDs.csv <span class="k">)</span>
+
+<span class="c1"># identify macrobasin ID for that point</span>
+<span class="nb">export</span> <span class="nv">MAB</span><span class="o">=</span><span class="k">$(</span>awk -F, -v <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span> <span class="s1">&#39;$1==id {print $4}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+<span class="c1"># identify microbasin ID for that point</span>
+<span class="nb">export</span> <span class="nv">MIB</span><span class="o">=</span><span class="k">$(</span>awk -F, -v <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span> <span class="s1">&#39;$1==id {print $5}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+
+<span class="c1"># extract point of interest</span>
+ogr2ogr -where <span class="s2">&quot;</span><span class="nv">$SITE</span><span class="s2"> = </span><span class="nv">$ID</span><span class="s2">&quot;</span> -f GPKG <span class="nv">$TMP</span>/point_<span class="nv">$ID</span>.gpkg <span class="se">\</span>
+    <span class="nv">$DIR</span>/BasisDataBasinsIDs.gpkg 
+
+<span class="c1"># extract vector line (stream reach) associated with point</span>
+ogr2ogr -where <span class="s2">&quot;stream = </span><span class="si">${</span><span class="nv">MIB</span><span class="si">}</span><span class="s2">&quot;</span> -f GPKG <span class="nv">$TMP</span>/Microb_<span class="si">${</span><span class="nv">MIB</span><span class="si">}</span>.gpkg <span class="se">\</span>
+    <span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_stre_order.gpkg
+
+<span class="c1"># open grass session based on microbasin raster</span>
+grass78 -f -text --tmp-location -c <span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_mask.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">    # read in point of interest</span>
+<span class="s">    v.in.ogr input=$TMP/point_$ID.gpkg layer=orig_points output=point_$ID \</span>
+<span class="s">    type=point key=$SITE</span>
+
+<span class="s">    # read vector line representing stream reach</span>
+<span class="s">    v.in.ogr input=$TMP/Microb_$MIB.gpkg layer=orderV_bid${MAB} \</span>
+<span class="s">        output=streamReach_$MIB type=line key=stream</span>
+
+<span class="s">    # Raster with microbasins</span>
+<span class="s">    r.in.gdal input=$BASIN/basin_${MAB}/bid_${MAB}_micb.tif output=micb</span>
+
+<span class="s">    # extract microbasin of stream reach $MIB as raster</span>
+<span class="s">    r.mapcalc --o &quot;micr_${ID} = if(micb != ${MIB}, null(), 1)&quot;        </span>
+<span class="s">          </span>
+<span class="s">    # make the raster a vector points</span>
+<span class="s">    r.to.vect --o input=micr_${ID} output=micr_vp_${ID} type=point     </span>
+<span class="s">          </span>
+<span class="s">        # calculate maximum distance between all points in microbasin</span>
+<span class="s">        MAXDIST=0</span>
+<span class="s">        for i in \</span>
+<span class="s">        $( seq -s&#39; &#39; 2 $(v.info micr_vp_${ID}  | awk &#39;/points/{print $5}&#39;) )</span>
+<span class="s">        do</span>
+<span class="s">          newmax=$(awk -F&#39;|&#39; -v X=&quot;$i&quot; &#39;{print $X}&#39; \</span>
+<span class="s">          $TMP/dist_mat_p${ID}_${MAB}_${MIB}.txt | sort -n | tail -n1)</span>
+<span class="s">          if (( $(echo &quot;$newmax &gt; $MAXDIST&quot; | bc -l) ));then MAXDIST=$newmax;fi</span>
+<span class="s">        done</span>
+
+<span class="s">        v.net --o -s input=streamReach_${MIB}  points=point_${ID} \</span>
+<span class="s">        output=snap_${ID} operation=connect threshold=$MAXDIST arc_layer=1 \</span>
+<span class="s">        node_layer=2</span>
+
+<span class="s">        v.out.ascii input=snap_${ID} layer=2 separator=comma \</span>
+<span class="s">        &gt; ${OUTDIR}/coords_${ID}</span>
+
+<span class="s">EOF</span>
+<span class="o">}</span>
+
+<span class="nv">IDS</span><span class="o">=</span><span class="k">$(</span>awk -F, <span class="s1">&#39;NR &gt; 1 {print $1}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+
+<span class="nb">export</span> -f SnapPoint
+parallel -j <span class="m">40</span> SnapPoint ::: <span class="nv">$IDS</span> ::: <span class="nv">$DIR</span> ::: <span class="nv">$TMP</span>
+
+<span class="c1">#  Join all single tables in one file</span>
+<span class="nb">echo</span> XcoordSnap,YcoordSnap,Site_ID_snap &gt; <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
+cat <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/coords_* &gt;&gt; <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="calculating-upstream-basins-from-observation-points">
+<h3><span class="section-number">2.4.7.3. </span>Calculating upstream basins from observation points<a class="headerlink" href="#calculating-upstream-basins-from-observation-points" title="Permalink to this headline"></a></h3>
+<p><img alt="Upstream basins" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/upstreamBasin.png" /></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78 -f -text --tmp-location -c <span class="si">${</span><span class="nv">richt</span><span class="si">}</span>/dir_<span class="si">${</span><span class="nv">C</span><span class="si">}</span>_msk.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">#  read direction map</span>
+<span class="s">r.external --o input=${richt}/dir_${C}_msk.tif output=dir</span>
+
+<span class="s"># calculate the sub-basin</span>
+<span class="s">r.water.outlet --overwrite input=dir output=bf_${S} \</span>
+<span class="s">    coordinates=$(awk -F, -v micid=${S} &#39;BEGIN{OFS=&quot;,&quot;;} $4==micid {print $1,$2}&#39; \</span>
+<span class="s">    $DIR/Locations_snap.csv)</span>
+
+<span class="s"># zoom to the region of interest (only upstream basin extent)</span>
+<span class="s">g.region -a --o zoom=bf_${S}</span>
+
+<span class="s">#  Export the basin as tif file</span>
+<span class="s">r.out.gdal --o -f -c -m  createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; \</span>
+<span class="s">    type=Int32  format=GTiff nodata=0 \</span>
+<span class="s">    input=bf_${S} output=$TMP/upstreamB/ubasin_${S}.tif</span>
+
+<span class="s">EOF</span>
+
+<span class="c1">##  Cropping basin</span>
+<span class="c1">#gdal_polygonize.py -8 -f &quot;GPKG&quot; \</span>
+<span class="c1">#    $TMP/upstreamB/ubasin_${S}.tif \</span>
+<span class="c1">#    $TMP/upstreamB/ubasin_${S}.gpkg</span>
+
+<span class="c1">#EXTENSION=$( ogrinfo  $TMP/upstreamB/ubasin_${S}.gpkg -so -al \</span>
+<span class="c1">#                | grep Extent | grep -Eo &#39;[+-]?[0-9]+([.][0-9]+)?&#39; )</span>
+<span class="c1">#ulx=$( echo $EXTENSION | awk &#39;{print $1}&#39; )</span>
+<span class="c1">#uly=$( echo $EXTENSION | awk &#39;{print $4}&#39; )</span>
+<span class="c1">#lrx=$( echo $EXTENSION | awk &#39;{print $3}&#39; )</span>
+<span class="c1">#lry=$( echo $EXTENSION | awk &#39;{print $2}&#39; )</span>
+
+<span class="c1">#pkcrop  -co COMPRESS=LZW -co ZLEVEL=9 -nodata 0 \</span>
+<span class="c1">#    -i $TMP/upstreamB/ubasin_${S}.tif      \</span>
+<span class="c1">#    -ulx $ulx -uly $uly -lrx $lrx -lry $lry     \</span>
+<span class="c1">#    -o $TMP/upstreamB/UPS_basin_${S}.tif</span>
+
+<span class="c1">#gdal_edit.py -a_nodata 0  $TMP/upstreamB/UPS_basin_${S}.tif</span>
+</pre></div>
+</div>
+</section>
+<section id="gdallocationinfo-at-pixel-value-extraction">
+<h3><span class="section-number">2.4.7.4. </span><em>gdallocationinfo</em>:  at pixel value extraction<a class="headerlink" href="#gdallocationinfo-at-pixel-value-extraction" title="Permalink to this headline"></a></h3>
+<p><img alt="Value at pixel" src="STUDENTSPROJECTS/Proj_2022_Matera/Matera/ValuePixel.png" /></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span> <span class="se">\</span>
+<span class="k">$(</span>awk <span class="s1">&#39;FNR &gt; 1 {print $1, $2}&#39;</span> <span class="nv">$DIR</span>/coordinates_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt <span class="p">|</span> <span class="se">\</span>
+gdallocationinfo -valonly -geoloc  <span class="si">${</span><span class="nv">NITRO</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.tif<span class="k">)</span> <span class="p">|</span> <span class="se">\</span>
+awk <span class="s1">&#39;{gsub(&quot;-9999&quot;, &quot;na&quot;); print $0}&#39;</span> <span class="se">\</span>
+&gt; <span class="nv">$TMP</span>/NHO_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.txt
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1-10 CompUnit_88/stats_88_NH4.txt <span class="p">|</span> head
+
+subcID NH4_1961_01 NH4_1961_02 NH4_1961_03 NH4_1961_04 NH4_1961_05 NH4_1961_06 NH4_1961_07 NH4_1961_08 NH4_1961_09
+<span class="m">672966675</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966676</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966677</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966678</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966679</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966680</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966681</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966682</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+<span class="m">672966683</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="stream-order-tables-from-vector-gpkg">
+<h3><span class="section-number">2.4.7.5. </span>Stream order tables from vector <em>.gpkg</em><a class="headerlink" href="#stream-order-tables-from-vector-gpkg" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create csv file with all the information in the original stream order gpkg</span>
+ogr2ogr <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv <span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg <span class="se">\</span>
+    -f <span class="s2">&quot;CSV&quot;</span> -lco <span class="nv">STRING_QUOTING</span><span class="o">=</span>IF_NEEDED
+
+<span class="c1"># remove column 1 (duplicate of column 2)</span>
+cut -d<span class="s1">&#39;,&#39;</span> -f2-26 <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv &gt; <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv
+
+<span class="c1"># replace column name to use subcID</span>
+sed -i <span class="s1">&#39;s/stream/subcID/&#39;</span> <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv 
+
+<span class="c1"># make the file a space separated file</span>
+sed <span class="s1">&#39;s/,/\ /g&#39;</span> <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv <span class="se">\</span>
+    &gt;  <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.txt
+</pre></div>
+</div>
+<p>Output:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1-4,8-10,15,19,20-22 CompUnit_88/stats_88_streamorder.txt <span class="p">|</span> head
+
+subcID next_stream prev_str01 prev_str02 strahler horton shreve length flow_accum out_dist source_elev outlet_elev
+<span class="m">672966675</span> <span class="m">672966683</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">450</span>.669628 <span class="m">0</span>.096674 <span class="m">2195355</span>.435172 <span class="m">4951</span>.899902 <span class="m">4799</span>.100098
+<span class="m">672966676</span> <span class="m">672966683</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">307</span>.816565 <span class="m">0</span>.331547 <span class="m">2195212</span>.58211 <span class="m">4850</span>.300293 <span class="m">4765</span>.899902
+<span class="m">672966677</span> <span class="m">672966726</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">1292</span>.621946 <span class="m">0</span>.454999 <span class="m">2194935</span>.504722 <span class="m">5117</span>.100098 <span class="m">4558</span>.100098
+<span class="m">672966678</span> <span class="m">672966688</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">912</span>.321954 <span class="m">0</span>.116875 <span class="m">2195601</span>.629693 <span class="m">5075</span>.899902 <span class="m">4736</span>.700195
+<span class="m">672966679</span> <span class="m">672966691</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">655</span>.155787 <span class="m">0</span>.250029 <span class="m">2195252</span>.103611 <span class="m">4931</span>.300293 <span class="m">4693</span>.100098
+<span class="m">672966680</span> <span class="m">672966702</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">4</span> <span class="m">1</span> <span class="m">1371</span>.949734 <span class="m">0</span>.911024 <span class="m">2195630</span>.338561 <span class="m">5036</span>.100098 <span class="m">4640</span>
+<span class="m">672966681</span> <span class="m">672966695</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">3</span> <span class="m">1</span> <span class="m">554</span>.016373 <span class="m">0</span>.116935 <span class="m">2195527</span>.072482 <span class="m">4994</span>.600098 <span class="m">4854</span>.100098
+<span class="m">672966682</span> <span class="m">672966690</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">738</span>.737352 <span class="m">0</span>.237307 <span class="m">2192996</span>.272544 <span class="m">4863</span>.899902 <span class="m">4686</span>.899902
+<span class="m">672966683</span> <span class="m">672966688</span> <span class="m">672966676</span> <span class="m">672966675</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">215</span>.457805 <span class="m">0</span>.468194 <span class="m">2194904</span>.765545 <span class="m">4750</span>.800293 <span class="m">4718</span>.600098
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="r-univar-for-zonal-statistics">
+<h3><span class="section-number">2.4.7.6. </span><em>r.univar</em> for zonal statistics<a class="headerlink" href="#r-univar-for-zonal-statistics" title="Permalink to this headline"></a></h3>
+<p>The goal is to calculate different statistics (e.g. minimum, maximum, mean, etc.)
+within each subcatchment</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78  -f -text --tmp-location  -c <span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif  <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">#  Read files with subcatchments</span>
+<span class="s">r.in.gdal --o input=$DATFOLDE</span>R/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.tif <span class="se">\</span>
+    <span class="nv">output</span><span class="o">=</span>micb 
+
+<span class="k">for</span> file <span class="k">in</span> <span class="k">$(</span>find <span class="nv">$CHELSA</span> -name <span class="s1">&#39;*.tif&#39;</span><span class="k">)</span><span class="p">;</span>
+<span class="k">do</span>
+  <span class="nv">VAR</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> <span class="p">|</span> awk -F_ <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+  r.external <span class="nv">input</span><span class="o">=</span><span class="nv">$file</span> <span class="nv">output</span><span class="o">=</span><span class="nv">$VAR</span> --overwrite
+  
+  <span class="nb">echo</span> <span class="s2">&quot;subcID min max range mean sd&quot;</span> &gt; <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt  
+
+  r.univar -t --o <span class="nv">map</span><span class="o">=</span><span class="nv">$VAR</span> <span class="nv">zones</span><span class="o">=</span>micb <span class="nv">separator</span><span class="o">=</span>space <span class="p">|</span> <span class="se">\</span>
+      awk <span class="s1">&#39;NR &gt; 1 {print $1, $4, $5, $6, $7, $9}&#39;</span> <span class="se">\</span>
+      &gt;&gt; <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
+
+<span class="k">done</span>
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head CompUnit_88/stats_88_bio1.txt
+
+subcID min max range mean sd
+<span class="m">672966675</span> <span class="m">2672</span> <span class="m">2681</span> <span class="m">9</span> <span class="m">2674</span>.16 <span class="m">3</span>.84374817080571
+<span class="m">672966676</span> <span class="m">2681</span> <span class="m">2681</span> <span class="m">0</span> <span class="m">2681</span> <span class="m">0</span>
+<span class="m">672966677</span> <span class="m">2666</span> <span class="m">2697</span> <span class="m">31</span> <span class="m">2679</span>.87162162162 <span class="m">9</span>.29856164799971
+<span class="m">672966678</span> <span class="m">2673</span> <span class="m">2681</span> <span class="m">8</span> <span class="m">2678</span>.39534883721 <span class="m">3</span>.74873333578437
+<span class="m">672966679</span> <span class="m">2672</span> <span class="m">2697</span> <span class="m">25</span> <span class="m">2681</span>.52631578947 <span class="m">10</span>.2821686277388
+<span class="m">672966680</span> <span class="m">2673</span> <span class="m">2697</span> <span class="m">24</span> <span class="m">2682</span>.54347826087 <span class="m">7</span>.3869445794678
+<span class="m">672966681</span> <span class="m">2680</span> <span class="m">2689</span> <span class="m">9</span> <span class="m">2682</span>.1724137931 <span class="m">3</span>.85127802813054
+<span class="m">672966682</span> <span class="m">2686</span> <span class="m">2694</span> <span class="m">8</span> <span class="m">2689</span>.47916666667 <span class="m">3</span>.94751811977722
+<span class="m">672966683</span> <span class="m">2681</span> <span class="m">2681</span> <span class="m">0</span> <span class="m">2681</span> <span class="m">0</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="land-cover">
+<h3><span class="section-number">2.4.7.7. </span>Land cover<a class="headerlink" href="#land-cover" title="Permalink to this headline"></a></h3>
+<p>Selection of land cover categories</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat esa_categories.txt
+
+<span class="m">10</span>	cropland, rainfed	<span class="m">10</span>	<span class="m">11</span>	<span class="m">12</span>
+<span class="m">20</span>	cropland, irrigated or post-flooding	<span class="m">20</span>
+<span class="m">30</span>	Mosaic cropland <span class="o">(</span>&gt;50%<span class="o">)</span> / natural vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">30</span>
+<span class="m">40</span>	Mosaic natural vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&gt;50%<span class="o">)</span> / cropland <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">40</span>
+<span class="m">50</span>	Tree cover, broadleaved, evergreen, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">50</span>
+<span class="m">60</span>	Tree cover, broadleaved, deciduous, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">60</span> 	<span class="m">61</span>	<span class="m">62</span>
+<span class="m">70</span>	Tree cover, needleleaved, evergreen, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">70</span>	<span class="m">71</span>	<span class="m">72</span>
+<span class="m">80</span>	Tree cover, needleleaved, deciduous, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">80</span>	<span class="m">81</span>	<span class="m">82</span>
+<span class="m">90</span>	Tree cover, mixed leaf <span class="nb">type</span> <span class="o">(</span>broadleaved and needleleaved<span class="o">)</span>	<span class="m">90</span>
+<span class="m">100</span>	Mosaic tree and shrub <span class="o">(</span>&gt;50%<span class="o">)</span> / herbaceous cover <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">100</span>
+<span class="m">110</span>	Mosaic herbaceous cover <span class="o">(</span>&gt;50%<span class="o">)</span> / tree and shrub <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">110</span>
+<span class="m">120</span>	Shrubland	<span class="m">120</span>	<span class="m">121</span>	<span class="m">122</span>
+<span class="m">130</span>	Grassland	<span class="m">130</span>
+<span class="m">140</span>	Lichens and mosses	<span class="m">140</span>
+<span class="m">150</span>	Sparse vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&lt;<span class="m">15</span>%<span class="o">)</span>	<span class="m">150</span>	<span class="m">151</span>	<span class="m">152</span>	<span class="m">153</span>
+<span class="m">160</span>	Tree cover, flooded, fresh or brackish water	<span class="m">160</span>
+<span class="m">170</span>	Tree cover, flooded, saline water	<span class="m">170</span>
+<span class="m">180</span>	Shrub or herbaceous cover, flooded, fresh/saline/brackish water	<span class="m">180</span>
+<span class="m">190</span>	Urban areas	<span class="m">190</span>
+<span class="m">200</span>	Bare areas	<span class="m">200</span>	<span class="m">201</span>	<span class="m">202</span>
+<span class="m">210</span>	Water bodies	<span class="m">210</span>
+<span class="m">220</span>	Permanent snow and ice	<span class="m">220</span>
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">YEAR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="m">1991</span> + <span class="nv">$SLURM_ARRAY_TASK_ID</span> <span class="p">|</span> bc<span class="k">)</span>
+
+grass78  -f -text --tmp-location  -c <span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">#  Read files with subcatchments</span>
+<span class="s">r.in.gdal --o input=$DATFOLDER/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_${CU}.tif \</span>
+<span class="s">    output=micb </span>
+<span class="s"># read esa lc file</span>
+<span class="s">r.in.gdal --o -r input=$ESATIF/ESALC_${YEAR}.tif output=esalc</span>
+
+<span class="s">cut -d&#39; &#39; -f1 $DIR/../esa_categories.txt | xargs -I % -P 1 bash -c $&#39;</span>
+
+<span class="s">CAT=%</span>
+<span class="s">CATIDS=$(cat $DIR/../esa_categories.txt | cut -d \&#39;&quot;\&#39; -f3 \</span>
+<span class="s">    | awk -v CAT=$CAT \&#39;$1==CAT\&#39;)</span>
+
+<span class="s">echo &quot;$CATIDS = 1</span>
+<span class="s">* = NULL&quot; &gt; $TMP/esa_stats_${CU}/reclass_esa_${YEAR}_${CAT}_${CU}.txt</span>
+
+<span class="s">r.reclass --o input=esalc output=esalc_recl_${YEAR}_${CAT}_${CU} \</span>
+<span class="s">    rules=$TMP/esa_stats_${CU}/reclass_esa_${YEAR}_${CAT}_${CU}.txt</span>
+
+<span class="s"># Take $1 zone (microbasin), $3+$4 NON_null_cells+null_cells  </span>
+<span class="s"># (total number of cells in microbasin), $13 number of pixels with values </span>
+<span class="s"># (in this case same as $3 because values are 1 or 0). </span>
+<span class="s"># $13/($3+$4) &gt; proportion of cells with values </span>
+<span class="s"># (proportion of category i in microbasin)</span>
+
+<span class="s">echo &quot;c${CAT}_y${YEAR}&quot; &gt; $TMP/esa_stats_${CU}/stats_esa_${YEAR}_${CAT}_${CU}.txt</span>
+
+<span class="s">r.univar -t map=esalc_recl_${YEAR}_${CAT}_${CU} zones=micb separator=comma \</span>
+<span class="s">    | awk -F, \&#39;FNR &gt; 1 {print $13/($3+$4)}\&#39; \</span>
+<span class="s">    | awk \&#39;{gsub(&quot;nan&quot;, &quot;0&quot;); print $0}\&#39; \</span>
+<span class="s">    &gt;&gt; $TMP/esa_stats_${CU}/stats_esa_${YEAR}_${CAT}_${CU}.txt</span>
+
+<span class="s">&#39; _</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1,6,16,28,36-40 CompUnit_88/stats_88_LCprop.txt <span class="p">|</span> head
+
+subcID c130_y1992 c220_y1992 c130_y1993 c20_y1993 c210_y1993 c220_y1993 c30_y1993 c40_y1993
+<span class="m">672966675</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966676</span> <span class="m">0</span>.230769 <span class="m">0</span>.769231 <span class="m">0</span>.230769 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.769231 <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966677</span> <span class="m">0</span>.371622 <span class="m">0</span>.628378 <span class="m">0</span>.371622 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.628378 <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966678</span> <span class="m">0</span>.325581 <span class="m">0</span>.674419 <span class="m">0</span>.325581 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.674419 <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966679</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966680</span> <span class="m">0</span>.57971 <span class="m">0</span>.42029 <span class="m">0</span>.57971 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.42029 <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966681</span> <span class="m">0</span>.758621 <span class="m">0</span>.241379 <span class="m">0</span>.758621 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.241379 <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966682</span> <span class="m">1</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">672966683</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="deriving-new-data">
+<h3><span class="section-number">2.4.7.8. </span>Deriving new data<a class="headerlink" href="#deriving-new-data" title="Permalink to this headline"></a></h3>
+<p><strong>TASK:</strong> <em>calculate the average of all years for each land cover category</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+<span class="nv">INP</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nv">CAT</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nv">TMP</span><span class="o">=</span><span class="nv">$3</span>
+<span class="nv">OUT</span><span class="o">=</span><span class="nv">$4</span>
+
+<span class="c1">## create a sequence, comma separated, of the category and years of interest</span>
+<span class="nv">cl</span><span class="o">=</span><span class="k">$(for</span> j <span class="k">in</span> <span class="o">{</span><span class="m">1992</span>..2018<span class="o">}</span><span class="p">;</span><span class="k">do</span> <span class="nb">printf</span> <span class="s2">&quot;%s,&quot;</span> <span class="s2">&quot;c</span><span class="si">${</span><span class="nv">CAT</span><span class="si">}</span><span class="s2">_y</span><span class="si">${</span><span class="nv">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sed <span class="s1">&#39;s/,*$//g&#39;</span><span class="k">)</span>
+
+<span class="c1">## extract from the main table, only the columns of interest</span>
+awk -v <span class="nv">cols</span><span class="o">=</span><span class="nv">$cl</span> <span class="s1">&#39;</span>
+<span class="s1">    BEGIN {</span>
+<span class="s1">        split(cols,out,&quot;,&quot;)</span>
+<span class="s1">    }</span>
+<span class="s1">    NR == 1 {</span>
+<span class="s1">        for (i=1; i&lt;=NF; i++)</span>
+<span class="s1">            ix[$i] = i</span>
+<span class="s1">    }</span>
+<span class="s1">    NR &gt; 1 {</span>
+<span class="s1">        for(i=1; i &lt;= length(out); i++)</span>
+<span class="s1">            printf &quot;%s%s&quot;, $ix[out[i]], OFS</span>
+<span class="s1">        print &quot;&quot;</span>
+<span class="s1">    }</span>
+<span class="s1">&#39;</span> <span class="nv">$INP</span>  &gt; <span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt 
+
+<span class="c1">## calculate the mean of each row (each subcachtment) for all years</span>
+awk <span class="s1">&#39;{</span>
+<span class="s1">    sum = 0; </span>
+<span class="s1">    for (i = 1; i &lt;= NF; i++) sum += $i; </span>
+<span class="s1">    sum /= NF; </span>
+<span class="s1">    print sum</span>
+<span class="s1">}&#39;</span> <span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt  &gt; <span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt
+
+<span class="c1">## add header</span>
+<span class="nb">echo</span> <span class="s2">&quot;c</span><span class="nv">$CAT</span><span class="s2">&quot;</span> <span class="p">|</span> cat - <span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt &gt; <span class="nv">$OUT</span>/mean_c<span class="nv">$CAT</span>.txt
+</pre></div>
+</div>
+<p>Output</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head mean_LCprop_32.txt 
+
+subcID c100 c10 c110 c120 c130 c140 c150 c160 c170 c180 c190 c200 c20 c210 c220 c30 c40 c50 c60 c70 c80 c90
+<span class="m">422448376</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.241935 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.758065 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448377</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448378</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.76087 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.23913 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448379</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.142857 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.857143 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448380</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.945946 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.0540541 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448381</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.44 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.56 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448382</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.2 <span class="m">0</span>.75 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.05 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448383</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+<span class="m">422448384</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.357143 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.642857 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="the-final-set-of-tables">
+<h3><span class="section-number">2.4.7.9. </span>The final set of tables<a class="headerlink" href="#the-final-set-of-tables" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -lh CompUnit_88
+
+total 185G
+-rwxrwxrwx <span class="m">1</span> root glowabio  459M  stats_88_BasinsIDs.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  394M  stats_88_bio10.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  395M  stats_88_bio11.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  481M  stats_88_bio12.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  457M  stats_88_bio13.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  330M  stats_88_bio14.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  410M  stats_88_bio15.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  470M  stats_88_bio16.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  403M  stats_88_bio17.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  455M  stats_88_bio18.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  416M  stats_88_bio19.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  393M  stats_88_bio1.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  293M  stats_88_bio2.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  397M  stats_88_bio3.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  440M  stats_88_bio4.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  401M  stats_88_bio5.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  400M  stats_88_bio6.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  358M  stats_88_bio7.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  391M  stats_88_bio8.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  395M  stats_88_bio9.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  457M  stats_88_chancurv.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_chandistdwseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  366M  stats_88_chandistupcel.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_chandistupseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  329M  stats_88_chanelvdwcel.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  332M  stats_88_chanelvdwseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  331M  stats_88_chanelvupcel.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  332M  stats_88_chanelvupseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  453M  stats_88_changraddwseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  450M  stats_88_changradupcel.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  447M  stats_88_changradupseg.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  877M  stats_88_elev.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  238M  stats_88_flow1k.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio 1017M  stats_88_flow.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio   14G  stats_88_LCprop.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  <span class="m">7</span>,5G  stats_88_NH4.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  496M  stats_88_outdiffdwbasin.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  464M  stats_88_outdiffdwscatch.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  592M  stats_88_outdistdwbasin.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  499M  stats_88_outdistdwscatch.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  611M  stats_88_slopcmax.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  607M  stats_88_slopcmin.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  458M  stats_88_slopdiff.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  566M  stats_88_slopgrad.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  252M  stats_88_soil_ACDWRB.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_soil_AWCtS.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  367M  stats_88_soil_BDRICM.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  460M  stats_88_soil_BDRLOG.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  523M  stats_88_soil_BLDFIE.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_CECSOL.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  466M  stats_88_soil_CLYPPT.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_CRFVOL.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  277M  stats_88_soil_HISTPR.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  438M  stats_88_soil_ORCDRC.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  460M  stats_88_soil_PHIHOX.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  203M  stats_88_soil_SLGWRB.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_SLTPPT.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  467M  stats_88_soil_SNDPPT.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  315M  stats_88_soil_TEXMHT.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  443M  stats_88_soil_WWP.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio    <span class="m">29</span>  stats_88_strdiffdwfarth.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  473M  stats_88_strdiffupfarth.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  458M  stats_88_strdiffupnear.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio    <span class="m">29</span>  stats_88_strdistdwfarth.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  493M  stats_88_strdistprox.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  511M  stats_88_strdistupfarth.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  491M  stats_88_strdistupnear.txt
+-rwxrwxrwx <span class="m">1</span> root glowabio  <span class="m">1</span>,6G  stats_88_streamorder.txt
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Images_shadow_removal_Sebastian_Walter.html" class="btn btn-neutral float-left" title="2.3. Sebastian Walter: Images shadow removal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Spectral_clustering_of_freshwater_habitats_Maria_%C3%9Cblacker.html" class="btn btn-neutral float-right" title="2.5. Maria Üblacker: Spectral clustering of freshwater habitats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
