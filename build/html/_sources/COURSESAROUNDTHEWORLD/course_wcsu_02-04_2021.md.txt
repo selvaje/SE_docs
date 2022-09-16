@@ -18,7 +18,7 @@ In this course, students will learn GIS concepts by using open source software i
 * 01 February 2021 - OSGeoLive installation.
 
     - [Giuseppe Amatulli: Linux Distribution](http://spatial-ecology.net/docs/source/lectures/lect_20210201_LinuxDistrib.pdf)
-    - [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_for_Spatial_Ecology_course.html)
+    - [Giuseppe Amatulli: OSGeoLive installation](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)
     - [Longzhu Shen: Course policy](http://spatial-ecology.net/docs/source/lectures/lect_20210408_Policy.pdf)
 
 
