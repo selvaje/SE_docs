@@ -1,5 +1,5 @@
-# GeoComp & ML 2022 course
-## Geocomputation and Machine Learning for environmental applications
+# GeoComp & Modelling 2022 course
+## Geocomputation and Modelling for Vector-borne Disease
 ### 
 
 

@@ -4,7 +4,7 @@
 
 #### Student roster ####
 
-(1)  *Olaitan Omitola **
+(1) **Olaitan Omitola**
 
 Olaitan has a background in parasitology and has worked on various projects on the epidemiology and control of tropical diseases such as NTDs and malaria in Nigeria including the use of spatial analyses for disease mapping. He has more than five years’ experience conducting tropical disease research and data analyses with tools such SPSS, ArcGIS, R and Excel. Olaitan has an interest in vector biology and control, and is presently a research assistant at the Federal University of Agriculture Abeokuta.
 
@@ -34,7 +34,7 @@ Adenike, Taiwo Adekunle holds a Bachelor of science in computer science and mast
 ![](03_Taiwo_Adekunle_Adenike.jpg)
 
 ---
-(4)	**Elia_Muhima_Adrien**
+(4)	**Elia Muhima Adrien**
 
 
 Information Management Officer, Data Analyst and Project manager  with more than 6 years of experience using mobile data collection tools such as Kobo Toolbox, ODK, ESPEN Collect, ONA… advanced data analysis using R, Power BI, Tableau, Excel, SPSS… map designing with QGIS and ArcGIS. I have proven experience in management of technology projects development, integration and staff, For several organizations as a consultant I coordinate several, nutrition, epidemiological, WASH, Socio-economic surveys, cleaned data, … designed training materials for data collection and visualization.
@@ -42,3 +42,20 @@ Information Management Officer, Data Analyst and Project manager  with more than
 
 ![](04_Elia_Muhima_Adrien.jpg)
 
+
+(5)	**Omolola Olojede**
+
+
+![](05_Photo_Omolola.jpg)
+
+(6) **Joseph_Anumba**
+
+![](06_Joseph_Anumba.jpeg)
+
+(7) **Dyesse Yumba**
+
+
+(8) **Adigun Abbas**
+
+
+(9) **Ime Asangansi**
