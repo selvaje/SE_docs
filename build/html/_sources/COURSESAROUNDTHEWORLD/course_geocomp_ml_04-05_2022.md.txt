@@ -315,8 +315,6 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Salvitsky-Golay filtering
 		* Fourier Transform
 		* Wavelet
-		
-
 
 ## Lecture 8: 28th of April, 2022.
 ### Modeling introduction (Longzhu Shen)
