@@ -153,6 +153,8 @@ Remember always to work on
 
     cd /media/sf_LVM_shared/my_SE_data
 
+<!---
+
 ## Settings for running jupyterlab
 
 The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via "source ~/juplab__env/bin/activate" everytime that you wanna use jupyterlab 
@@ -166,3 +168,5 @@ The below instructions are needed to create a python virtual environment (in thi
     source ~/juplab_env/bin/activate    ### run this line everytime wanna use jupyterlab
     pip install -U pip
     pip3 install jupyterlab
+
+--->

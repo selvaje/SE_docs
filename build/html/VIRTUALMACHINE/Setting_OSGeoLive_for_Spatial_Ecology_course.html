@@ -53,6 +53,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
 <ul>
@@ -63,7 +64,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare OSGeoLive for Spatial Ecology courses</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#git-settings">Git Settings</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#settings-for-running-jupyterlab">Settings for running jupyterlab</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Setting_OSGeoLive_curso_para_Ecologia_Espacial.html">Prepare OSGeoLive para el curso de ecología espacial</a></li>
@@ -314,22 +314,23 @@ Remember always to work on</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span>
 </pre></div>
 </div>
-</section>
-<section id="settings-for-running-jupyterlab">
-<h2>Settings for running jupyterlab<a class="headerlink" href="#settings-for-running-jupyterlab" title="Permalink to this headline"></a></h2>
-<p>The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via “source ~/juplab__env/bin/activate” everytime that you wanna use jupyterlab</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span><span class="mf">.8</span><span class="o">-</span><span class="n">venv</span>
-<span class="n">python3</span> <span class="o">-</span><span class="n">m</span> <span class="n">venv</span> <span class="n">juplab_env</span>
-<span class="c1">## allow to use system python packages</span>
-<span class="n">sed</span> <span class="s1">&#39;s/false/true/g&#39;</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="n">pyvenv</span><span class="o">.</span><span class="n">cfg</span> <span class="o">&gt;</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="n">pyvenv_tmp</span><span class="o">.</span><span class="n">cfg</span> <span class="p">;</span>
-<span class="n">mv</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="n">pyvenv_tmp</span><span class="o">.</span><span class="n">cfg</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="n">pyvenv</span><span class="o">.</span><span class="n">cfg</span>
+<!---
 
-<span class="n">source</span> <span class="o">~/</span><span class="n">juplab_env</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>    <span class="c1">### run this line everytime wanna use jupyterlab</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">pip</span>
-<span class="n">pip3</span> <span class="n">install</span> <span class="n">jupyterlab</span>
-</pre></div>
-</div>
-</section>
+## Settings for running jupyterlab
+
+The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via "source ~/juplab__env/bin/activate" everytime that you wanna use jupyterlab 
+
+    sudo apt install python3.8-venv
+    python3 -m venv juplab_env
+    ## allow to use system python packages
+    sed 's/false/true/g' ~/juplab_env/pyvenv.cfg > ~/juplab_env/pyvenv_tmp.cfg ;
+    mv ~/juplab_env/pyvenv_tmp.cfg ~/juplab_env/pyvenv.cfg
+    
+    source ~/juplab_env/bin/activate    ### run this line everytime wanna use jupyterlab
+    pip install -U pip
+    pip3 install jupyterlab
+
+---></section>
 </section>
 
 
