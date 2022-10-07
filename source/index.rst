@@ -56,12 +56,6 @@ Table of Contents
    AWK/index
 
 .. toctree::
-   :maxdepth: 1
-   :caption: GNUPLOT
-
-   GNUPLOT/index 
-
-.. toctree::
    :maxdepth: 1   
    :caption: GDAL
 
