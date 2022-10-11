@@ -5,10 +5,6 @@ Outdoor Orienteering and Tracking**
 Dr. Giuseppe Amatulli  
 Research Scientist in GeoComputation and Spatial Science  
   
-  
-
-    
-![](../images/orientering.png)  
 
 ---------------------
 

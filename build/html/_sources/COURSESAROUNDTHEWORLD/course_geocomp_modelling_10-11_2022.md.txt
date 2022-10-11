@@ -3,7 +3,7 @@
 ### 
 
 
-**Online teaching or QA of an attended recorded lecture: October - December 2022, 8 weeks**
+**Online teaching or QA session of an attended recorded lecture: October - December 2022, 8 weeks**
 
 * Every Tuesday: starting from October 11th, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM  - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
 * Every Thursday: ending on December 1st, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
@@ -57,7 +57,9 @@ This session introduces the overall course program and Linux operating system.
 
 Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
-[Attend recorded lecture](https://youtu.be/IDfFa3ulC90) (to be attended before the QA lecture)
+
+
+[View recorded lecture](https://youtu.be/IDfFa3ulC90) before the QA session at 4PM.
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 * The www.spatial-ecology.net tutorial platform (Hands-on tutorial) 
@@ -94,7 +96,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 #### Lecture 3: 18th of October, 2022.
 Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-[Attend recorded lecture](https://youtu.be/gCQ33jknzZY) (to be attended before the QA lecture)
+[View recorded lecture](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -118,7 +120,7 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 #### Lecture 4: 20th of October, 2022.
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-[Attend recorded lecture](https://youtu.be/kBRW2Z5jX8M) (to be attended before the QA lecture)
+[View recorded lecture](https://youtu.be/kBRW2Z5jX8M) before the QA session at 4PM.
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -141,7 +143,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-[Attend recorded lecture](https://youtu.be/Yy5UaCOvuYo) (to be attended before the QA lecture)
+[View recorded lecture](https://youtu.be/Yy5UaCOvuYo) before the QA session at 4PM.
 
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
@@ -161,7 +163,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-[Attend recorded lecture](https://youtu.be/atchsCMQf5A) (to be attended before the QA lecture)
+[View recorded lecture](https://youtu.be/atchsCMQf5A) before the QA session at 4PM.
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -176,7 +178,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
 
-[Attend recorded lecture](https://youtu.be/GfmCRNMtFfs) (to be attended before the QA lecture)
+[View recorded lecture](https://youtu.be/GfmCRNMtFfs) before the QA session at 4PM.
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 

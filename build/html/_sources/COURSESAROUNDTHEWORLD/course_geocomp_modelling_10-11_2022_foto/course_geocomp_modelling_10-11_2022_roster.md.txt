@@ -38,7 +38,7 @@ Osun State University
 
 Adenike, Taiwo Adekunle holds a Bachelor of science in computer science and master of science in computer science from the University of Ibadan Nigeria. She is currently a part time lecturer at the center for Human Resources Development and lifelong learning (computer science department) of Osun State University, Nigeria where is undergoing her PhD program. She specialises In Bioinformatics and Artificial Intelligence with special interest in Computational Epidemiology
 
-![](03_Taiwo_Adekunle_Adenike.jpg)
+![](a03_Taiwo_Adekunle_Adenike.jpg)
 
 ---
 (4)	**Elia Muhima Adrien**
@@ -54,7 +54,18 @@ Information Management Officer, Data Analyst and Project manager  with more than
 (5) **Omolola Olojede**
 
 Public health official, Intervention coordinator  
-Federal Ministry of Health - Nigeria
+Federal Ministry of Health - Nigeria  
+Coordination of public health interventions in the country  
+
+
+With up to 15 years work experience in the onchocerciasis elimination programme, I am involved in
+planning and implementing entomological and epidemiological assessments for the elimination of
+onchocerciasis in Nigeria. During these years, I was trained on basic ArcGIS and QGIS by the African
+Programme for Onchocerciasis Control (APOC).  
+Through my training in public health (undergraduate and postgraduate) and on-the-job experience, I
+have a good understanding of the importance of modelling for making predictions in health-related
+programmes especially as it concerns the elimination of onchocerciasis. My skills amongst others
+include excellent use of the computer, both iOS and Windows.
 
 ![](05_Photo_Omolola.jpg)
 
@@ -64,12 +75,17 @@ Federal Ministry of Health - Nigeria
 Senior scientific officer, NTDs  
 Federal Ministry of Health - Nigeria
 
+oseph Anumba is an interdisciplinary researcher with core competence and certifications in public health parasitology, entomology, geoinformatics (GIS & remote sensing), education, ICT integration and computer programming.
+
+His research interest is in the use of cloud computing, geospatial analytics, and advanced statistical modelling methods in health research. He has led and been part of several interdisciplinary research teams answering key research questions in the field of parasitology/epidemiology, entomology, and the built environment. He is currently a senior scientific officer in the department of public health, Federal Ministry of Health and is responsible for research in the NTDs Control and Eliminations Programme- Nigeria.
+
+
 ![](06_Joseph_Anumba.jpeg)
 
 ---
 (7) **Dyesse Yumba**
 
-Data Manager
+Data Manager  
 ESPEN, WHO
 
 ---
@@ -81,11 +97,17 @@ National Centre for Remote Sensing, Jos, Nigeria
 ---
 (9) **Ime Asangansi**
 
+eHealth For Everyone  
+Epidemiologist/ Public health professional
+
+---
+(10) **Abimbola Modupe Adedeji** 
+
+Nigerian Institute of Medical Research (NIMR)  
+Data manager/ Statistician
+
 ---
 (11) **Judith Idemili Chidumebi** 
 
 Epidemiologist / Public health professional  
 eHealth For Everyone
-
----
-(10) **Abimbola Modupe Adedeji** 
