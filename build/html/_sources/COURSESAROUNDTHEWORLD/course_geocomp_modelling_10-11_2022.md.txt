@@ -50,7 +50,7 @@ This session introduces the overall course program and Linux operating system.
 * Get to know each other: trainers and participants (20min Round-table )
 * Course policy, homework, final project, trainers/students interactions.) (Tushar Sethi - 10min Lecture)
 * Linux environment, why and what to use to handling BigData. (Giuseppe Amatulli - 20min Lecture)
-* [Species distribution modelling](http://spatial-ecology.net/docs/source/lectures/lect_20221011_SDM_Overview.pdf) (Erin Stearns - 20min Lecture)
+* [SSpecies distribution modelling](http://spatial-ecology.net/docs/source/lectures/lect_20221011_SDM_Overview.pdf) (Erin Stearns - 20min Lecture)
 * Troubleshooting the OSGeoLive Linux Virtual Machine installation. Previous to the class, follow the instruction at [Setting OSGeoLive for Spatial Ecology course](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html) for installing the Linux Virtual Machine.
 
 #### Lecture 2: 13th of October, 2022.
