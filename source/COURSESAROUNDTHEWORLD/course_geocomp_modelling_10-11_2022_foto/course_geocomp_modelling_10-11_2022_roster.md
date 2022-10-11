@@ -83,10 +83,14 @@ His research interest is in the use of cloud computing, geospatial analytics, an
 ![](06_Joseph_Anumba.jpeg)
 
 ---
-(7) **Dyesse Yumba**
+(7) **Dyesse Yumba (Dyesse)**
 
 Data Manager  
 ESPEN, WHO
+
+Dyesse YUMBA is the data manager of ESPEN collect. He holds a professional license from the “Ecole Supérieur de Gestion et d’Administration des Entreprises” (ESGAE) and has 5 years of experience as a data manager at WHO AFRO and 3 years of experience as an enterprise application developer. Dyesse YUMBA contributed to the creation of ESPEN Collect which is a set of mobile data collection services that ESPEN makes available to countries organizing mapping and impact assessment surveys.
+
+![](07_Dyesse_Yumba.jpg)
 
 ---
 (8) **Adigun Abbas**

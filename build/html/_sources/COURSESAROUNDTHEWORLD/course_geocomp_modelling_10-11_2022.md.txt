@@ -46,12 +46,12 @@ Getting started: knowing each other and course introduction (G. Amatulli, E. Ste
 
 This session introduces the overall course program and Linux operating system.
 
-* Get to know each other: trainers and participants (30-40min Round-table )
-* Course objectives and schedule. (Giuseppe Amatulli - 10min Lecture)
+* [Course objectives and schedule](http://spatial-ecology.net/docs/source/lectures/lect_20221011_FMOHCourse_introduction.pdf). (Tushar - 10min Lecture)
+* Get to know each other: trainers and participants (20min Round-table )
 * Course policy, homework, final project, trainers/students interactions.) (Tushar Sethi - 10min Lecture)
 * Linux environment, why and what to use to handling BigData. (Giuseppe Amatulli - 20min Lecture)
 * Species distribution modelling (Erin Stearns - 20min Lecture)
-* Troubleshooting the OSGeoLive Linux Virtual Machine installation. Previous to the class, follow the instruction at Setting_OSGeoLive_for_Spatial_Ecology_course for installing the Linux Virtual Machine.
+* Troubleshooting the OSGeoLive Linux Virtual Machine installation. Previous to the class, follow the instruction at [Setting OSGeoLive for Spatial Ecology course](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html) for installing the Linux Virtual Machine.
 
 #### Lecture 2: 13th of October, 2022.
 
