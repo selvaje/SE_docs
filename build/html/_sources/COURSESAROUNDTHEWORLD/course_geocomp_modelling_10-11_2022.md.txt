@@ -44,11 +44,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 #### Lecture 1: 11th of October, 2022.
 Getting started: knowing each other and course introduction (G. Amatulli, E. Stearns, T. Sethi)
 
-<<<<<<< HEAD
-[Recorded Lecture](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J) (the password has been sent by e-mail. It  will be the same for all the recorded lecture). 
-=======
 Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J). Please check your email for the passcode (it will be the same passcode for all recordings).
->>>>>>> 32daa6a1a56e3e23a30aeccf4c5a02a0c68ab712
 
 This session introduces the overall course program and Linux operating system.
 
