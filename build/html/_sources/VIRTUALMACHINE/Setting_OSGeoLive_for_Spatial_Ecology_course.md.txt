@@ -64,6 +64,7 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
 
     sudo apt update      # update the repositories
     sudo apt upgrade -y  # installation of the sw
+    sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
 
 Add to Virtualbox additional add-on to improve the graphical user interface of the VM.
 If during the installation some screen pop-up asking some question just accept the default option.
