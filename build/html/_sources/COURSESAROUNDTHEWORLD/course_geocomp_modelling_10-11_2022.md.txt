@@ -1,6 +1,6 @@
 # GeoComp & Modelling 2022 course
 ## Geocomputation and Modelling for Vector-borne Disease
-### 
+###
 
 
 **Online teaching or QA session of an attended recorded lecture: October - December 2022, 8 weeks**
@@ -8,7 +8,7 @@
 * Every Tuesday: starting from October 11th, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM  - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
 * Every Thursday: ending on December 1st, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
 
-**On-site workshop: January 2022 - February 2023, 2 weeks in Abuja, Nigeria** 
+**On-site workshop: January 2022 - February 2023, 2 weeks in Abuja, Nigeria**
 
 * Monday to Friday, from January 30th to February 10th at 9AM - 5PM.
 
@@ -44,7 +44,11 @@ Below we are going to list day by day the final syllabus with the relatives link
 #### Lecture 1: 11th of October, 2022.
 Getting started: knowing each other and course introduction (G. Amatulli, E. Stearns, T. Sethi)
 
+<<<<<<< HEAD
 [Recorded Lecture](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J) (the password has been sent by e-mail. It  will be the same for all the recorded lecture). 
+=======
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J). Please check your email for the passcode (it will be the same passcode for all recordings).
+>>>>>>> 32daa6a1a56e3e23a30aeccf4c5a02a0c68ab712
 
 This session introduces the overall course program and Linux operating system.
 
@@ -64,7 +68,7 @@ Jump start into LINUX Bash programming (Giuseppe Amatulli)
 [View recorded lecture](https://youtu.be/IDfFa3ulC90) before the QA session at 4PM.
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
-* The www.spatial-ecology.net tutorial platform (Hands-on tutorial) 
+* The www.spatial-ecology.net tutorial platform (Hands-on tutorial)
 
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
@@ -135,7 +139,7 @@ This section introduces data manipulation for geospatial data processing on the 
 	* [Geographic Projections database](https://spatialreference.org/)
 	* The use of .VRT for splitting and merging images
 
-**Suggested assignments:** 
+**Suggested assignments:**
 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
 
@@ -203,12 +207,12 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Salvitsky-Golay filtering
 		* Fourier Transform
 		* Wavelet
-		
+
 
 Preparation for the geocomputation assignment:
 
-* QA 
-* scripting procedure, 
+* QA
+* scripting procedure,
 * file organisation
 * Compulsory assignment:
 
@@ -221,25 +225,25 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 
 * Giuseppe Amatulli: GIS for species distribution (Amatulli)
 	* Climate data ( https://www.worldclim.org/, https://chelsa-climate.org/)
-	* Digital Elevation Model (http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/) 
+	* Digital Elevation Model (http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)
 	* Satellite images (Modis, Landsat, Sentinel)
 	* Population data - (https://www.worldpop.org/, https://ghsl.jrc.ec.europa.eu/)
 * Species distribution modelling (SDM), implementation and algorithms  (Stearns, Amatulli)
-	* Regression vs classification 
+	* Regression vs classification
 	* Supervised vs unsupervised
 	* Classical statistical method vs machine learning
 	* Example of machine learning (RF, NN)
-	* 
+	*
 #### Lecture 9: 8th of November, 2022.
 
-* Sampling design for collecting presence and absence (Peter Diggle) 
+* Sampling design for collecting presence and absence (Peter Diggle)
 	* Spatial/temporal sampling design   
 
 #### Lecture 10: 10th of November, 2022.
 
 * Introduction to R (video recording or already existing video)
 * Working with spatial data in R (Stearns)
-	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf) 
+	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf)
 	* Attribute data operations
 	* Coordinate reference systems
 	* Plotting raster and vector data
@@ -253,11 +257,11 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 * Species Distribution Modelling (Stearns)
 	* Reducing dimensionality
 		* Principal components analysis (PCA)
-		* Non-metric multidimensional scaling (NMDS) 
-	* Normalisation 
-	* Pseudo absence 
+		* Non-metric multidimensional scaling (NMDS)
+	* Normalisation
+	* Pseudo absence
 	* Logistic regression
-	* GAM - GLM 
+	* GAM - GLM
 
 #### Lecture 12: 17th of November, 2022.
 
@@ -277,14 +281,14 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 
 * Model results for informing decision-making (E. Stearns)
 	* Communicating model results
-	* Translating continuous surface output to set of points 
+	* Translating continuous surface output to set of points
 	* Visualisation
 	* Clearly communicating confidence/uncertainty
 
 #### Lecture 15: 29th of November, 2022.
 
 * Connecting SDM for vector-borne disease modelling to overall disease epidemiology (Erin, maybe Jorge Cano)
-	* Vector-borne disease transmission dynamics 
+	* Vector-borne disease transmission dynamics
 	* What do non-human vector models reveal about disease prevalence that human prevalence does not?
 	* Connecting non-human vector model to human prevalence data
 
@@ -302,16 +306,12 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 	* WHO requirements
 	* Stop-MDA
 	* Why do flies matter?
-	* Entomological surveillance 
+	* Entomological surveillance
 * ONCHO blackfly environmental modelling and implementation
 	* Project overview
 	* Database
 		* ESPEN - Standard Co
 	* App component
 		* Dimagi & Standard Co
-	* ONCHO App for field work 
-* Last two days: student presentations. 
-
-
-
-
+	* ONCHO App for field work
+* Last two days: student presentations.
