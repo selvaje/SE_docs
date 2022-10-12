@@ -98,6 +98,10 @@ Dyesse YUMBA is the data manager of ESPEN collect. He holds a professional licen
 Statistician / Epidemiologist / Public health professional  
 National Centre for Remote Sensing, Jos, Nigeria
 
+Adigun Abbas has a background in Mathematics, and received training in Biostatistics. He also achieved a doctoral degree in Epidemiology from the Swiss tropical and public health institute, University Of Basel, Switzerland. His research interest pertains statistical modelling and Bayesian computation of large spatio-temporal data set associated with malaria, anaemia, neglected tropical disease, and epidemiology of environmental exposure.  
+
+![](08_Adigun_Abbas.jpg)
+
 ---
 (9) **Ime Asangansi (Ime)**
 
