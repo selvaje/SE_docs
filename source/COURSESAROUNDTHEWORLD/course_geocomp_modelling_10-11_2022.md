@@ -44,6 +44,8 @@ Below we are going to list day by day the final syllabus with the relatives link
 #### Lecture 1: 11th of October, 2022.
 Getting started: knowing each other and course introduction (G. Amatulli, E. Stearns, T. Sethi)
 
+[Recorded Lecture](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J) (the password has been sent by e-mail. It  will be the same for all the recorded lecture). 
+
 This session introduces the overall course program and Linux operating system.
 
 * [Course objectives and schedule](http://spatial-ecology.net/docs/source/lectures/lect_20221011_FMOHCourse_introduction.pdf). (Tushar - 10min Lecture)
