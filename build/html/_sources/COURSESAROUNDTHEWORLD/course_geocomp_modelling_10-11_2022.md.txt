@@ -232,7 +232,7 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 	*
 #### Lecture 9: 8th of November, 2022.
 
-* Sampling design for collecting presence and absence (Peter Diggle)
+* Sampling design for collecting presence and absence (Guest lecturer)
 	* Spatial/temporal sampling design   
 
 #### Lecture 10: 10th of November, 2022.
@@ -283,7 +283,7 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 
 #### Lecture 15: 29th of November, 2022.
 
-* Connecting SDM for vector-borne disease modelling to overall disease epidemiology (Erin, maybe Jorge Cano)
+* Connecting SDM for vector-borne disease modelling to overall disease epidemiology (Erin, guest lecturer)
 	* Vector-borne disease transmission dynamics
 	* What do non-human vector models reveal about disease prevalence that human prevalence does not?
 	* Connecting non-human vector model to human prevalence data
@@ -291,7 +291,7 @@ Participant deliverable: 10-15m Video presentation (live or recorded) + code for
 #### Lecture 16: 1st of December, 2022.
 
 * Landscape connectivity base on population genetics pattern.  (base on https://www.pnas.org/doi/abs/10.1073/pnas.2003201118) (Amatulli)
-* Dr. Louise Kelly-Hope
+* Guest lecturer
 
 
 ### On-site workshop: January 30th 2022 - February 10th 2023
