@@ -4,7 +4,7 @@
 
 #### Student roster ####
 
-(1) **Olaitan Omitola**
+(1) **Olaitan Omitola (Olaitan)**
 
 Federal University of Agriculture, Abeokuta - Nigeria  
 Research assistant / Parasitologist and epidemiologist
@@ -14,7 +14,7 @@ Olaitan has a background in parasitology and has worked on various projects on t
 ![](01_Olaitan_Omitola.jpg)
 
 ---
-(2)	**Ayodele Samuel Babalola**
+(2)	**Ayodele Samuel Babalola (Ayodele)**
 
 Malarial Research Unit  
 Department of pure and applied zoology  
@@ -29,7 +29,7 @@ Babalola Ayodele Samuel is a parasitologist and epidemiologist, with keen intere
 ![](02_Ayodele_Samuel_Babalola.jpeg)
 
 ---
-(3)	**Taiwo Adekunle Adenike**
+(3)	**Taiwo Adekunle Adenike (Taiwo)**
 
 Lecturer / PhD candidate  
 Human Resources Development and Lifelong Learning  
@@ -38,10 +38,10 @@ Osun State University
 
 Adenike, Taiwo Adekunle holds a Bachelor of science in computer science and master of science in computer science from the University of Ibadan Nigeria. She is currently a part time lecturer at the center for Human Resources Development and lifelong learning (computer science department) of Osun State University, Nigeria where is undergoing her PhD program. She specialises In Bioinformatics and Artificial Intelligence with special interest in Computational Epidemiology
 
-![](a03_Taiwo_Adekunle_Adenike.jpg)
+![](03_Taiwo_Adekunle_Adenike.jpg)
 
 ---
-(4)	**Elia Muhima Adrien**
+(4)	**Elia Muhima Adrien (Elia)**
 
 Information Management Officer, Data Analyst and Project manager  
 ESPEN, WHO
@@ -51,7 +51,7 @@ Information Management Officer, Data Analyst and Project manager  with more than
 ![](04_Elia_Muhima_Adrien.jpg)
 
 ---
-(5) **Omolola Olojede**
+(5) **Omolola Olojede (Lola)**
 
 Public health official, Intervention coordinator  
 Federal Ministry of Health - Nigeria  
@@ -70,7 +70,7 @@ include excellent use of the computer, both iOS and Windows.
 ![](05_Photo_Omolola.jpg)
 
 ---
-(6) **Joseph Anumba**
+(6) **Joseph Anumba (Joseph)**
 
 Senior scientific officer, NTDs  
 Federal Ministry of Health - Nigeria
@@ -93,25 +93,34 @@ Dyesse YUMBA is the data manager of ESPEN collect. He holds a professional licen
 ![](07_Dyesse_Yumba.jpg)
 
 ---
-(8) **Adigun Abbas**
+(8) **Adigun Abbas (Adigun)**
 
 Statistician / Epidemiologist / Public health professional  
 National Centre for Remote Sensing, Jos, Nigeria
 
 ---
-(9) **Ime Asangansi**
+(9) **Ime Asangansi (Ime)**
 
 eHealth For Everyone  
 Epidemiologist/ Public health professional
 
 ---
-(10) **Abimbola Modupe Adedeji** 
+(10) **Abimbola Modupe Adedeji (Abimbola)** 
 
-Nigerian Institute of Medical Research (NIMR)  
-Data manager/ Statistician
+Statistician/ Public Health Professional 
+Nigerian Institute of Medical Research, Lagos - Nigeria. 
+
+Abimbola has a background in statistics with more than ten years working experience. She has managed and analyzed many projects’ data, such as HIV, tuberculosis, hepatitis B and C, malaria, schistosomiasis, serological prevalence of Covid-19 in selected states in Nigeria, helicobacter pylori, cholera, hypertension and diabetes. Abimbola is proficient in the use of Stata, SPSS, Excel, Access, Oracle, RedCap, Survey CTO and Open Data Kit (ODK).
+
+![](10_Abimbola_Modupe_Adedeji.jpeg)
 
 ---
-(11) **Judith Idemili Chidumebi** 
+(11) **Judith Idemili Chidumebi (Judith)** 
 
 Epidemiologist / Public health professional  
 eHealth For Everyone
+
+Chidumebi Judith Idemili studied Master of Science in Applied Mathematical Sciences with Climate Change Impacts Modelling at Heriot-Watt University, Edinburgh, United Kingdom under the Commonwealth Scholarship Commission. She also holds a Bachelor of Science in Education/ Mathematics from the University of Nigeria, Nsukka. Her research interest focuses on mathematical modelling of infectious diseases, climate change and generally, Epidemiology. She is particularly interested in disease modelling for the mitigation of the impacts of climate-driven disease emergence and to redesign a pathway to quell future pandemics.
+
+
+![](11_Judith_Idemili_Chidumebi.jpg)
