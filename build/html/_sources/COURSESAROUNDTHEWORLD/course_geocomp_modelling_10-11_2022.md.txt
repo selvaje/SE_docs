@@ -44,7 +44,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 #### Lecture 1: 11th of October, 2022.
 Getting started: knowing each other and course introduction (G. Amatulli, E. Stearns, T. Sethi)
 
-Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J). Please check your email for the passcode (it will be the same passcode for all recordings).
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0Qh_DmRZI043Ami9Mphu4VmVucSPrYN6nt3XiXcb9DxDZwwVSRjtxjkmYxu9Ur97.Ox--mL9fKAosDs8J). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 This session introduces the overall course program and Linux operating system.
 
@@ -57,9 +57,13 @@ This session introduces the overall course program and Linux operating system.
 
 #### Lecture 2: 13th of October, 2022.
 
+This session meanly deal with installation issues on the virtual machine. Often errors are very similar among user, so pleas check carefully the material (text+video) at [Setting OSGeoLive for Spatial Ecology course](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)
+
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/nJzAruAmllChx4gKUgy1_D97ZeiweTq4J6mLlGp0QEmdFVM8wru9swyRS0ZMieEL.tvoNuhS3fMycRyhd). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+#### Lecture 3: 18th of October, 2022.
+
 Jump start into LINUX Bash programming (Giuseppe Amatulli)
-
-
 
 [View recorded lecture](https://youtu.be/IDfFa3ulC90) before the QA session at 4PM.
 
@@ -94,6 +98,8 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Unzip/untar files.
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new software.
 
+
+### Below syllabus under development. We will update it as the weeks comes through. 
 
 #### Lecture 3: 18th of October, 2022.
 Discovering the power of AWK programming language (Giuseppe Amatulli).
