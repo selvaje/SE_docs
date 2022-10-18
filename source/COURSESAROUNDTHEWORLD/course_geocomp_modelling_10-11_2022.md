@@ -107,41 +107,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 
 #### Lecture 4: 20th of October, 2022.
 
-Jump start into LINUX Bash programming (Giuseppe Amatulli)
-
-[View recorded lecture](https://youtu.be/IDfFa3ulC90) (start the video at 42:55 until the end) before the QA session at 4PM.  
-Follow the web page and type the commands directly on the terminal.
-
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
-* The www.spatial-ecology.net tutorial platform (Hands-on tutorial)
-
-* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
-	* Starting with Bash
-	* Special characters and Quoting
-	* The most important commands - Unix/Linux Command Reference
-	* Meta-characters and regular expression, their use.
-	* Concatenate process (pipe).
-	* String manipulation
-* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial)
-	* Pattern matching
-	* Sorting a file
-	* Append the command result to a file
-	* For loop and the use of variables
-	* If condition in a for loop
-	* Checking the flow statement
-	* Debugging
-
-**Suggested assignments:**
-
-These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics. Below, some suggestions of possible operations:
-
-* Get fast in navigating up and down in the directory using only the command line.
-* Copy/move files from a directory to another directory.
-* Search and use a command to copy a file from-to your pc to a Linux remote server.
-* Get fast on using keyboard shortcuts.
-* Perform a data download operation using wget or curl.
-* Unzip/untar files.
-* Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new software.
+Same program of the 3rd lecture (see above).
 
 ### Below syllabus under development. We will update it as the weeks comes through. 
 
