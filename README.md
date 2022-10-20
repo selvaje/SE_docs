@@ -20,7 +20,7 @@
   + Install [sphinx-rtd-theme](https://ubuntu.pkgs.org/22.04/ubuntu-main-amd64/sphinx-rtd-theme-common_1.0.0+dfsg-1_all.deb.html)
   + [recommonmark](https://recommonmark.readthedocs.io/en/latest/)
   + 'jupyter_sphinx',
-  + 'nbsphinx',
+  + [nbsphinx](https://nbsphinx.readthedocs.io/en/0.2.15/installation.html)
   + 'sphinx.ext.mathjax'
 + Clone this repo
 + Add `make_push_deploy.sh` script - ask Giuseppe. This file is listed in `.gitignore` thus not in the repo  
