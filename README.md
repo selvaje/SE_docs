@@ -17,5 +17,6 @@
 + Generate SSH key to add to Git profile, see [here](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for how.
 + Install [sshpass](https://ubuntu.pkgs.org/22.04/ubuntu-universe-arm64/sshpass_1.09-1_arm64.deb.html)
 + Install [Sphinx](https://www.sphinx-doc.org/en/master/usage/installation.html#linux)
++ Install [sphinx-rtd-theme](https://ubuntu.pkgs.org/22.04/ubuntu-main-amd64/sphinx-rtd-theme-common_1.0.0+dfsg-1_all.deb.html) 
 + Clone this repo
 + Add `make_push_deploy.sh` script - ask Giuseppe. This file is listed in `.gitignore` thus not in the repo  
