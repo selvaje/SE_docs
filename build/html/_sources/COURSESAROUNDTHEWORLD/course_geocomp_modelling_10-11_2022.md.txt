@@ -65,8 +65,9 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/n
 
 Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
-[View recorded lecture](https://youtu.be/IDfFa3ulC90) (see below for the time slot of each section) before the QA session at 4PM.  
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/AI6z2EIjPncaX3pwSP-OvzzRI3D8N7df7sBElOszmb1UMKs6iaBzL3tkFG9Oo-Ue.5zHot8__BVXczXnH). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
+[View recorded lecture](https://youtu.be/IDfFa3ulC90) (see below for the time slot of each section) before the QA session at 4PM.  
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 * The www.spatial-ecology.net tutorial platform (Hands-on tutorial)
