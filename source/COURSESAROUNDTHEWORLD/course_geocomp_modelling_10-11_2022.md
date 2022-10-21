@@ -72,8 +72,8 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/A
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 * The www.spatial-ecology.net tutorial platform (Hands-on tutorial)
 
-* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)  
-(Video 42:55 - 50:41'  skip the jupyter-lab installation; 59:16 - 1:32:10)  
+* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
+[Recorded lecture: 42:55 - 50:41; skip the jupyter-lab installation; 59:16 - 1:32:10](https://youtu.be/IDfFa3ulC90)  
 Follow the web page and type the commands directly on the terminal.  
 
 	* Starting with Bash
@@ -82,8 +82,9 @@ Follow the web page and type the commands directly on the terminal.
 	* Meta-characters and regular expression, their use.
 	* Concatenate process (pipe).
 	* String manipulation
-* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial)  
-(Video 1:36.15 - 2:19:00)  
+* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial).
+[Recorded lecture: 1:36.15 - 2:19:00](https://youtu.be/IDfFa3ulC90)
+
 (use the jupyther-notebook to open the bashinter_osgeo.ipynb)  
 
 	* Pattern matching
