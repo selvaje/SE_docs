@@ -108,9 +108,11 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 
 #### Lecture 4: 20th of October, 2022.
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/r1AsQ5FAZfMb8DLjz5Zd7A52wf7uS35jcO5Kmz-SBySUEY6x5f-zJCTQzTi1lhsZ.qqiTt1jhzatuvzDK). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 Same program of the 3rd lecture (see above).
 
-### Below syllabus under development. We will update it as the weeks comes through. 
+### Below syllabus under development. We will update it as the weeks comes through.
 
 #### Lecture 3: 18th of October, 2022.
 Discovering the power of AWK programming language (Giuseppe Amatulli).
