@@ -112,16 +112,15 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/r
 
 Same program of the 3rd lecture (see above).
 
-### Below syllabus under development. We will update it as the weeks comes through.
+#### Lecture 5: 25th of October, 2022.
 
-#### Lecture 3: 18th of October, 2022.
-Discovering the power of AWK programming language (Giuseppe Amatulli).
+Review of bash commands: [View recorded lecture: 00:00 - 41:30 ](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
 
-[View recorded lecture](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
+Discovering the power of AWK programming language: [View recorded lecture: 41:30 - 2:10:40](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
-* [Welcome to AWK world](http://spatial-ecology.net/docs/build/html/AWK/awk.html). Why to use AWK command line (Lecture).
+* [Welcome to AWK world](http://spatial-ecology.net/docs/build/html/AWK/awk.html). Why to use AWK command line (Lecture). [Recorded lecture: 41:30 - 1:24:50](https://youtu.be/gCQ33jknzZY).
 * The basic commands, command syntax  (Hands on tutorial).
 	* Built in variables
 	* Import variables
@@ -132,11 +131,13 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 	* A study case: Manipulate thousand of text file with BASH and AWK
 	* This session summarizes the use of BASH and AWK with a practical example of text file manipulation.
 
-* [Explain GSIM text files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) (Lecture).
+* [Explain GSIM text files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) (Lecture). [Recorded lecture: 1:25:10 - 2:05:20](https://youtu.be/gCQ33jknzZY)
 	* Data exploration (Hands on tutorial).
 	* Count number of observations
 	* Count how many observations per date
 	* Monthly MEAN distribution
+
+### Below syllabus under development. We will update it as the weeks comes through.
 
 #### Lecture 4: 20th of October, 2022.
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).

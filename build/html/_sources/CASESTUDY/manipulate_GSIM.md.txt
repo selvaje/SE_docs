@@ -1,12 +1,21 @@
 
 # Manipulate GSIM files
 
+----------
+
+[Recorded lecture: 1:25:10 - 2:05:20](https://youtu.be/gCQ33jknzZY)
+
+----------
+
 The Global Streamflow Indices and Metadata Archive (GSIM) – 
 
 [Part 1: The production of daily streamflow archive and metadata](https://www.earth-syst-sci-data.net/10/765/2018/)
 
 [Part 2: Quality Control, Time-series Indices and Homogeneity Assessment](https://www.earth-syst-sci-data.net/10/787/2018/essd-10-787-2018.html)
 
+----------
+
+Copy paste the following commands in to the terminal. No jupyther-notebook file is provided. 
 
 **Download the GSIM archive**
 
