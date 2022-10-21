@@ -85,8 +85,6 @@ Follow the web page and type the commands directly on the terminal.
 * [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial).
 [Recorded lecture: 1:36.15 - 2:19:00](https://youtu.be/IDfFa3ulC90)
 
-(use the jupyther-notebook to open the bashinter_osgeo.ipynb)  
-
 	* Pattern matching
 	* Sorting a file
 	* Append the command result to a file
