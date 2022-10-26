@@ -113,6 +113,8 @@ Same program of the 3rd lecture (see above).
 
 #### Lecture 5: 25th of October, 2022.
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/p3NnpW0PdvgrUFpEHdJIyjUbxbg4ipPAM6nMgaQ_qTOQb_JVRGMxVhIsIVnvoy91.nbgqmDirF_A6GdqV). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 Review of bash commands: [View recorded lecture: 00:00 - 41:30 ](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
 
 Discovering the power of AWK programming language: [View recorded lecture: 41:30 - 2:10:40](https://youtu.be/gCQ33jknzZY) before the QA session at 4PM.
@@ -136,22 +138,23 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 	* Count how many observations per date
 	* Monthly MEAN distribution
 
-### Below syllabus under development. We will update it as the weeks comes through.
+#### Lecture 6: 27th of October, 2022.
 
-#### Lecture 4: 20th of October, 2022.
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 [View recorded lecture](https://youtu.be/kBRW2Z5jX8M) before the QA session at 4PM.
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
+* Review of bash/awk commands: [View recorded lecture: 00:00 - 35:00 ](https://youtu.be/kBRW2Z5jX8M).
 
-* [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
-	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
-	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture)
-	* Understanding NoData Value
+* [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) for raster and vector analysis.
+	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html). [Recorded lecture: 35:00 - 1:28:45 ](https://youtu.be/kBRW2Z5jX8M)
+	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture). [Recorded lecture: 1:28:45 - 1:48:00 ](https://youtu.be/kBRW2Z5jX8M)
+	* Understanding NoData Value. [Recorded lecture: 1:47:55 - 2:06:00 ](https://youtu.be/kBRW2Z5jX8M)
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
+	* GDAL commands. [Recorded lecture: 2:06:00 - 2.19.43](https://youtu.be/kBRW2Z5jX8M)
 	* The use of .VRT for splitting and merging images
 
 **Suggested assignments:**
@@ -160,7 +163,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
 
-#### Lecture 5: 25th of October, 2022.
+#### Lecture 7: 1st of November, 2022.
 
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
@@ -176,24 +179,26 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
+	* GDAL commands. [Recorded lecture: ]( ))
 	* The use of .VRT for splitting and merging images
 * [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
 	* Transform a simple “for loop” in multicore “for loop”
 
-#### Lecture 6: 27th of October, 2022..
+#### Lecture 8: 3rd of November, 2022..
 
 Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
 [View recorded lecture](https://youtu.be/atchsCMQf5A) before the QA session at 4PM.
 
-This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
+This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. 
 
-
-* [for raster and vector analysis](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) .
 	* Masking operation
 	* Building a mosaic
 	* Image histogram and classification
 	* Zonal statistic
+
+
+### Below syllabus under development. We will update it as the weeks comes through.
 
 #### Lecture 7: 1st of November, 2022.
 
