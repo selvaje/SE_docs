@@ -155,7 +155,6 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
 	* GDAL commands. [Recorded lecture: 2:06:00 - 2.19.43](https://youtu.be/kBRW2Z5jX8M)
-	* The use of .VRT for splitting and merging images
 
 
 **Compulsory assignments: Get familiar with the gdal/ogr command line topics.**
@@ -173,15 +172,10 @@ This section introduces data manipulation for geospatial data processing on the 
 
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
-	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
-	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture)
-	* Understanding NoData Value
-	* Openev & QGIS for raster and vector visualization
-	* [Geographic Projections database](https://spatialreference.org/)
 	* GDAL commands. [Recorded lecture: 42:18 - 1:46:40](https://youtu.be/Yy5UaCOvuYo)
-	* The use of .VRT for splitting and merging images
-* [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html) [Recorded lecture: 1:46:40 - 2:11:45](https://youtu.be/Yy5UaCOvuYo)
+* [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html). [Recorded lecture: 1:46:40 - 2:11:45](https://youtu.be/Yy5UaCOvuYo)
 	* Transform a simple “for loop” in multicore “for loop”
+	* The use of .VRT for splitting and merging images
 
 #### Lecture 8: 3rd of November, 2022..
 
