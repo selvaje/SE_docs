@@ -157,6 +157,11 @@ This section introduces data manipulation for geospatial data processing on the 
 	* GDAL commands. [Recorded lecture: 2:06:00 - 2.19.43](https://youtu.be/kBRW2Z5jX8M)
 	* The use of .VRT for splitting and merging images
 
+
+**Compulsory assignments: Get familiar with the gdal/ogr command line topics.**
+
+Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision. Each student is going to show what has been download and explain the characteristic of the his/her raster.  
+
 **Suggested assignments:**
 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
