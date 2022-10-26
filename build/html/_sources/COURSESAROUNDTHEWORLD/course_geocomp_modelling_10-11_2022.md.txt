@@ -162,17 +162,11 @@ This section introduces data manipulation for geospatial data processing on the 
 
 Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision. Each student is going to show what has been download and explain the characteristic of the his/her raster.  
 
-**Suggested assignments:**
-
-These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
-
-* [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
-
 #### Lecture 7: 1st of November, 2022.
 
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-[View recorded lecture](https://youtu.be/Yy5UaCOvuYo) before the QA session at 4PM.
+[View recorded lecture starting from 42:18](https://youtu.be/Yy5UaCOvuYo) before the QA session at 4PM.
 
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
@@ -184,9 +178,9 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
-	* GDAL commands. [Recorded lecture: ]( ))
+	* GDAL commands. [Recorded lecture: 42:18 - 1:46:40](https://youtu.be/Yy5UaCOvuYo)
 	* The use of .VRT for splitting and merging images
-* [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
+* [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html) [Recorded lecture: 1:46:40 - 2:11:45](https://youtu.be/Yy5UaCOvuYo)
 	* Transform a simple “for loop” in multicore “for loop”
 
 #### Lecture 8: 3rd of November, 2022..
