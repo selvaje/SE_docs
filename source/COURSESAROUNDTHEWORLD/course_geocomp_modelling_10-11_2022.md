@@ -183,9 +183,9 @@ This section introduces data manipulation for geospatial data processing on the 
 
 Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision.
 
-Moreover, perform some raster or vector operations using the GDAL/OGR commands. Some operations may be includes: cropping the layers base on your study area extension, ensure that raster have been compressed properly (e.g. using -co COMPRESS=DEFLATE -co ZLEVEL=9 options), change pixel resolution, change projection, ensure that the nodata is set correctly.    
+Moreover, create a jupyter-notebook and perform some raster or vector operations using the GDAL/OGR commands. Some operations may be: cropping the layers base on your study area extension, ensure that raster have been compressed properly (e.g. using -co COMPRESS=DEFLATE -co ZLEVEL=9 options), change pixel resolution, change projection, ensure that the nodata is set correctly.    
 
-Each student is going to show what has been download, explain the characteristic of the rasters/vectors and show the GDAL/OGR operations that has been performed.
+Each student is going to **show the jupyter-notebook** and explain the characteristic of the rasters/vectors and show the GDAL/OGR operations that has been performed.
 
 #### Lecture 8: 3rd of November, 2022.
 
