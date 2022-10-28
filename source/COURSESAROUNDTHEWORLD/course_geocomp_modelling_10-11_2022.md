@@ -142,6 +142,8 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/02svSwjJQpiZ3slbK66JYLcR7S1X28ULQJMyOBnNTK-cE4sRkCtrbZSXwNDMthc.VbcOUDjiiOSBw4Ak). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 [View recorded lecture](https://youtu.be/kBRW2Z5jX8M) before the QA session at 4PM.
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
@@ -177,14 +179,23 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Transform a simple “for loop” in multicore “for loop”
 	* The use of .VRT for splitting and merging images
 
-#### Lecture 8: 3rd of November, 2022..
+**Compulsory assignments: Get familiar with the gdal/ogr command line topics.**
+
+Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision.
+
+Moreover, perform some raster or vector operations using the GDAL/OGR commands. Some operations may be includes: cropping the layers base on your study area extension, ensure that raster have been compressed properly (e.g. using -co COMPRESS=DEFLATE -co ZLEVEL=9 options), change pixel resolution, change projection, ensure that the nodata is set correctly.    
+
+Each student is going to show what has been download, explain the characteristic of the rasters/vectors and show the GDAL/OGR operations that has been performed.
+
+#### Lecture 8: 3rd of November, 2022.
 
 Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
 [View recorded lecture](https://youtu.be/atchsCMQf5A) before the QA session at 4PM.
 
-This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. 
+This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) libraries. 
 
+* [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. 
 	* Masking operation
 	* Building a mosaic
 	* Image histogram and classification
