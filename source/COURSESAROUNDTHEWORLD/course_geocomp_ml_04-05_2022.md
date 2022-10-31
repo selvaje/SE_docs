@@ -130,6 +130,12 @@ You can perform:
 
 **Compulsory assignment solution**
 
+---
+
+[Video explanation 00:00 - 32:50](https://www.youtube.com/watch?v=atchsCMQf5A)
+
+----
+
 *Solution 1*
 
 	# create output dir 

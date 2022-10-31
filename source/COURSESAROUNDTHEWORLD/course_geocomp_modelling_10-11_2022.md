@@ -195,7 +195,7 @@ Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) libraries. 
 
-* [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. 
+* [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. [Recorded lecture: 33:00 - 2.16.00](https://www.youtube.com/watch?v=atchsCMQf5A)  
 	* Masking operation
 	* Building a mosaic
 	* Image histogram and classification
