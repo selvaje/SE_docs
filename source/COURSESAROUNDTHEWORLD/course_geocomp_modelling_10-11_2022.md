@@ -167,11 +167,11 @@ Download some raster files and use gdalinfo to understand the image in terms of 
 
 Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/ecnFNieT4fQj_KpbF_pV-koi-0qQOudWtw2N1IieBNmY_O6KxnA4UKDkIQeEm-Kh.m_6HmUC4mdodvR8Y). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 [View recorded lecture starting from 42:18](https://youtu.be/Yy5UaCOvuYo) before the QA session at 4PM.
 
-
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
-
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
 	* GDAL commands. [Recorded lecture: 42:18 - 1:46:40](https://youtu.be/Yy5UaCOvuYo)
@@ -179,7 +179,7 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Transform a simple “for loop” in multicore “for loop”
 	* The use of .VRT for splitting and merging images
 
-**Compulsory assignments: Get familiar with the gdal/ogr command line topics.**
+**Compulsory assignments: Get familiar with the GDAL/OGR command line topics.**
 
 Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision.
 
@@ -195,23 +195,23 @@ Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) libraries. 
 
-* [PKTOOLS](http://pktools.nongnu.org/html/index.html) for raster and vector analysis. [Recorded lecture: 33:00 - 2.16.00](https://www.youtube.com/watch?v=atchsCMQf5A)  
+* [PKTOOLS](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) for raster and vector analysis. [Recorded lecture: 33:00 - 2.16.00](https://www.youtube.com/watch?v=atchsCMQf5A)  
 	* Masking operation
 	* Building a mosaic
 	* Image histogram and classification
 	* Zonal statistic
 
+**Compulsory assignments: Get familiar with the GDAL/OGR/PKTOOLS command line topics.**
 
-### Below syllabus under development. We will update it as the weeks comes through.
+Download some raster files and use gdalinfo to understand the image in terms of number of bands, pixel resolution, minimum and maximum data, no data value, extent precision.
 
-#### Lecture 7: 1st of November, 2022.
+Moreover, create a jupyter-notebook and perform some raster or vector operations using the GDAL/OGR commands. Some operations may be: cropping the layers base on your study area extension, ensure that raster have been compressed properly (e.g. using -co COMPRESS=DEFLATE -co ZLEVEL=9 options), change pixel resolution, change projection, ensure that the nodata is set correctly, calculate temporal average, set a mask in all the layers....etc.     
 
-Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
+Each student is going to **show the jupyter-notebook** and explain the characteristic of the rasters/vectors and show the GDAL/OGR/PKTOOLS operations that has been performed.
 
-[View recorded lecture](https://youtu.be/GfmCRNMtFfs) before the QA session at 4PM.
+**Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).**
 
-This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
-
+This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment. It is quite advanced so if you have full understood the previews lecture you can spend more time in watching the [Recorded lecture](https://www.youtube.com/watch?v=GfmCRNMtFfs)  
 
 * [Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html) (A.)
 	* Data download & cropping
@@ -233,18 +233,12 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 
-Preparation for the geocomputation assignment:
+### Below syllabus under development. We will update it as the weeks comes through.
 
-* QA
-* scripting procedure,
-* file organisation
-* Compulsory assignment:
-
-Participant deliverable: 10-15m Video presentation (live or recorded) + code for the geocomputation part.
 
 ### Modelling lectures session
 
-#### Lecture 8: 3rd of November, 2022.
+#### Lecture 9: 8th of November, 2022.
 
 
 * Giuseppe Amatulli: GIS for species distribution (Amatulli)
