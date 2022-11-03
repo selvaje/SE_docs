@@ -191,6 +191,8 @@ Each student is going to **show the jupyter-notebook** and explain the character
 
 Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/0bc-iqg6XNQaNw3hnHKjRFH9GBTA-BQTc8VZg6gvMWAPmCGwiLwu441YBxolVo-C.RyhG6ce_SsN4F7GR). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 [View recorded lecture](https://youtu.be/atchsCMQf5A) before the QA session at 4PM.
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html) libraries. 
