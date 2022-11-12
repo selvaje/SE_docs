@@ -237,12 +237,11 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 
 #### Lecture 9: 8th of November, 2022.
 
-Only supervision. Recorded lecture can be found [here](https://yale.zoom.us/rec/share/fc6bvkU8lwZQ42w4T2oGtHthW2lN9-NO98JK5V7LDRBPZDeS8rymLeWfdMv4v0zJ.oYa_eEn7CnDvsfkU
-Passcode: GeoComp2022!). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Only supervision. Recorded lecture can be found [here](https://yale.zoom.us/rec/share/fc6bvkU8lwZQ42w4T2oGtHthW2lN9-NO98JK5V7LDRBPZDeS8rymLeWfdMv4v0zJ.oYa_eEn7CnDvsfkU). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 #### Lecture 10: 10th of November, 2022.
 
-Only supervision. Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/ZgvdiB9yiBrFKZMNOqEODfgM6leXLq8jwuOgS2tK7beR3Lu_4D1RGYXIugQbdPuV.iOrRnaJaLk5PIoG0). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Only supervision assignment explanation. Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/ZgvdiB9yiBrFKZMNOqEODfgM6leXLq8jwuOgS2tK7beR3Lu_4D1RGYXIugQbdPuV.iOrRnaJaLk5PIoG0). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 
 #### Lecture 11: 15th of November, 2022.
@@ -251,7 +250,7 @@ Only supervision. Recorded lecture can be found [here](). Please check your emai
 
 #### Lecture 12: 17th of November, 2022.
 
-Supervision and assignment explanation/solution. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Supervision and assignment solution explanation. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 **Assignment**
 
