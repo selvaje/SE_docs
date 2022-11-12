@@ -235,6 +235,46 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 
+#### Lecture 9: 8th of November, 2022.
+
+Only supervision. Recorded lecture can be found [here](https://yale.zoom.us/rec/share/fc6bvkU8lwZQ42w4T2oGtHthW2lN9-NO98JK5V7LDRBPZDeS8rymLeWfdMv4v0zJ.oYa_eEn7CnDvsfkU
+Passcode: GeoComp2022!). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+#### Lecture 10: 10th of November, 2022.
+
+Only supervision. Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/ZgvdiB9yiBrFKZMNOqEODfgM6leXLq8jwuOgS2tK7beR3Lu_4D1RGYXIugQbdPuV.iOrRnaJaLk5PIoG0). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+
+#### Lecture 11: 15th of November, 2022.
+
+Only supervision. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+#### Lecture 12: 17th of November, 2022.
+
+Supervision and assignment explanation/solution. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+**Assignment**
+
+This assignment is compulsory and need to be delivered before 17th of November, 2022 12pm, Nigeria time.
+
+Please use this jupyter file by adding cell-codes and cell-text with your solution. Save the file as *assignment_fall2022_name_surname.ipynb* and send as e-mail attachment to *g.amatulli@spatial-ecology.net* and *Erin.Stearns@gatesfoundation.org*.
+
+The exercises are based on lectures and materials that we covered during the lectures.
+
+Enter in your */media/sf_LVM_shared/my_SE_data/exercise/*, save there your *assignment_fall2022_name_surname.ipynb* and start to solve the exercises by adding new cell-codes and cell-text.
+
+```
+cd ~/SE_data
+git pull
+rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+cd /media/sf_LVM_shared/my_SE_data/exercise
+mv assignment_fall2022.ipynb ssignment_fall2022_name_surname.ipynb
+jupyther-notebook ssignment_fall2022_name_surname.ipynb
+
+```
+
+  
+
 ### Below syllabus under development. We will update it as the weeks comes through.
 
 
@@ -253,7 +293,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 	* Supervised vs unsupervised
 	* Classical statistical method vs machine learning
 	* Example of machine learning (RF, NN)
-	*
+
 #### Lecture 9: 8th of November, 2022.
 
 * Sampling design for collecting presence and absence (Guest lecturer)
