@@ -235,20 +235,19 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 
-#### Lecture 9: 8th of November, 2022.
+#### Catch-up session 1: 8th of November, 2022.
 
 Only supervision. Recorded lecture can be found [here](https://yale.zoom.us/rec/share/fc6bvkU8lwZQ42w4T2oGtHthW2lN9-NO98JK5V7LDRBPZDeS8rymLeWfdMv4v0zJ.oYa_eEn7CnDvsfkU). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-#### Lecture 10: 10th of November, 2022.
+#### Catch-up session 2: 10th of November, 2022.
 
 Only supervision assignment explanation. Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/ZgvdiB9yiBrFKZMNOqEODfgM6leXLq8jwuOgS2tK7beR3Lu_4D1RGYXIugQbdPuV.iOrRnaJaLk5PIoG0). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-
-#### Lecture 11: 15th of November, 2022.
+#### Catch-up session 3: 15th of November, 2022.
 
 Only supervision. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-#### Lecture 12: 17th of November, 2022.
+#### Catch-up session 4: 17th of November, 2022.
 
 Supervision and assignment solution explanation. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
@@ -267,19 +266,18 @@ cd ~/SE_data
 git pull
 rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
 cd /media/sf_LVM_shared/my_SE_data/exercise
-mv assignment_fall2022.ipynb ssignment_fall2022_name_surname.ipynb
+mv assignment_fall2022.ipynb assignment_fall2022_name_surname.ipynb
 jupyther-notebook ssignment_fall2022_name_surname.ipynb
 
 ```
 
-  
 
 ### Below syllabus under development. We will update it as the weeks comes through.
 
 
 ### Modelling lectures session
 
-#### Lecture 9: 8th of November, 2022.
+#### Lecture 9:22nd of November, 2022.
 
 
 * Giuseppe Amatulli: GIS for species distribution (Amatulli)
@@ -293,12 +291,20 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Classical statistical method vs machine learning
 	* Example of machine learning (RF, NN)
 
-#### Lecture 9: 8th of November, 2022.
+#### Lecture 10: 24th of November, 2022
 
-* Sampling design for collecting presence and absence (Guest lecturer)
-	* Spatial/temporal sampling design   
+* Introduction to R (video recording or already existing video -  Erin)
+* Working with spatial data in R (Stearns)
+	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf) 
+	* Attribute data operations
+	* Coordinate reference systems
+	* Plotting raster and vector data
+	* Making maps
+	* Spatial data operations on
+	* Geometry operations
+	* Raster-vector interactions
 
-#### Lecture 10: 10th of November, 2022.
+#### Lecture 11: 29th of November, 2022.
 
 * Introduction to R (video recording or already existing video)
 * Working with spatial data in R (Stearns)
@@ -311,7 +317,7 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Geometry operations
 	* Raster-vector interactions
 
-#### Lecture 11: 15th of November, 2022.
+#### Lecture 12: 1st of December, 2022.
 
 * Species Distribution Modelling (Stearns)
 	* Reducing dimensionality
@@ -322,7 +328,7 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Logistic regression
 	* GAM - GLM
 
-#### Lecture 12: 17th of November, 2022.
+#### Lecture 13: 6th of December, 2022.
 
 * SDM - Random forest model (E. Stearns)
 	* Defining model building blocks
@@ -330,13 +336,13 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Predictive mapping
 
 
-#### Lecture 13: 22nd of November, 2022.
+#### Lecture 14: 8th of December, 2022.
 
 * Accuracy assessment (Amatulli)
 	* Training and testing dataset
 	* Cross Validation
 
-#### Lecture 14: 24th of November, 2022.
+#### Lecture 15: 13th of December, 2022.
 
 * Model results for informing decision-making (E. Stearns)
 	* Communicating model results
@@ -344,12 +350,20 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Visualisation
 	* Clearly communicating confidence/uncertainty
 
-#### Lecture 15: 29th of November, 2022.
+#### Lecture 16: 15th of December, 2022.
 
 * Connecting SDM for vector-borne disease modelling to overall disease epidemiology (Erin, guest lecturer)
 	* Vector-borne disease transmission dynamics
 	* What do non-human vector models reveal about disease prevalence that human prevalence does not?
 	* Connecting non-human vector model to human prevalence data
+
+
+
+
+
+
+
+
 
 #### Lecture 16: 1st of December, 2022.
 
