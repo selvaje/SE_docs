@@ -276,12 +276,12 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 
 Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/HO3xK4z9ZHj5Q-qzBLQT7rF7Am9hYCqxQ8glStrUq18iI-ouZRtX-1ZHD6q1cVJ8.y3kZtqolbl5xparY). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-* [GIS for species distribution](http://spatial-ecology.net/docs/source/lectures/lect_20221123_SDM_Overview.pdf) (Amatulli)
+* [GIS for species distribution](http://spatial-ecology.net/docs/source/lectures/lect_20221122_GIS_4species_distribution.pdf) (Amatulli)
 	* Climate data ( https://www.worldclim.org/, https://chelsa-climate.org/)
 	* Digital Elevation Model (http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)
 	* Satellite images (Modis, Landsat, Sentinel)
 	* Population data - (https://www.worldpop.org/, https://ghsl.jrc.ec.europa.eu/)
-* [Species distribution modelling (SDM), implementation and algorithms](http://spatial-ecology.net/docs/source/lectures/lect_20221122_GIS_4species_distribution.pdf) (Stearns)
+* [Species distribution modelling (SDM), implementation and algorithms](http://spatial-ecology.net/docs/source/lectures/lect_20221123_SDM_Overview.pdf) (Stearns)
 	* Regression vs classification
 	* Supervised vs unsupervised
 	* Classical statistical method vs machine learning
