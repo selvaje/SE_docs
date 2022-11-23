@@ -152,7 +152,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) for raster and vector analysis.
 	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html). [Recorded lecture: 35:00 - 1:28:45 ](https://youtu.be/kBRW2Z5jX8M)
-	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf) (Lecture). [Recorded lecture: 1:28:45 - 1:48:00 ](https://youtu.be/kBRW2Z5jX8M)
+	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/lect_20220414_Floating_point.pdf) (Lecture). [Recorded lecture: 1:28:45 - 1:48:00 ](https://youtu.be/kBRW2Z5jX8M)
 	* Understanding NoData Value. [Recorded lecture: 1:47:55 - 2:06:00 ](https://youtu.be/kBRW2Z5jX8M)
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
@@ -245,11 +245,11 @@ Only supervision assignment explanation. Recorded lecture can be found [here](ht
 
 #### Catch-up session 3: 15th of November, 2022.
 
-Only supervision. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Only supervision. 
 
 #### Catch-up session 4: 17th of November, 2022.
 
-Supervision and assignment solution explanation. Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Supervision and assignment solution explanation. Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/Fvvx3yTTp5jMcM0xKAL_ST7OtQFFOqj-f02MppS5M9ub7Rqz5Ivk1s4BW_PG_lSW._QC88gIP_SwIi8VN). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 **Assignment**
 
@@ -270,26 +270,23 @@ mv assignment_fall2022.ipynb assignment_fall2022_name_surname.ipynb
 jupyther-notebook ssignment_fall2022_name_surname.ipynb
 
 ```
-
-
-### Below syllabus under development. We will update it as the weeks comes through.
-
-
 ### Modelling lectures session
 
 #### Lecture 9:22nd of November, 2022.
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/HO3xK4z9ZHj5Q-qzBLQT7rF7Am9hYCqxQ8glStrUq18iI-ouZRtX-1ZHD6q1cVJ8.y3kZtqolbl5xparY). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-* Giuseppe Amatulli: GIS for species distribution (Amatulli)
+* [GIS for species distribution](http://spatial-ecology.net/docs/source/lectures/lect_20221123_SDM_Overview.pdf) (Amatulli)
 	* Climate data ( https://www.worldclim.org/, https://chelsa-climate.org/)
 	* Digital Elevation Model (http://hydro.iis.u-tokyo.ac.jp/~yamadai/MERIT_DEM/)
 	* Satellite images (Modis, Landsat, Sentinel)
 	* Population data - (https://www.worldpop.org/, https://ghsl.jrc.ec.europa.eu/)
-* Species distribution modelling (SDM), implementation and algorithms  (Stearns, Amatulli)
+* [Species distribution modelling (SDM), implementation and algorithms](http://spatial-ecology.net/docs/source/lectures/lect_20221122_GIS_4species_distribution.pdf) (Stearns)
 	* Regression vs classification
 	* Supervised vs unsupervised
 	* Classical statistical method vs machine learning
 	* Example of machine learning (RF, NN)
+
 
 #### Lecture 10: 24th of November, 2022
 
@@ -303,6 +300,9 @@ jupyther-notebook ssignment_fall2022_name_surname.ipynb
 	* Spatial data operations on
 	* Geometry operations
 	* Raster-vector interactions
+
+
+### Below syllabus under development. We will update it as the weeks comes through.
 
 #### Lecture 11: 29th of November, 2022.
 
