@@ -85,6 +85,11 @@ Table of Contents
 
    GRASS/index
 
+
+.. toctree::
+   :titlesonly:
+   :caption: ASSIGNMENTS/index
+   
 .. toctree::
    :maxdepth: 1               
    :caption: CASE STUDY

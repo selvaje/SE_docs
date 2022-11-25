@@ -32,7 +32,7 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
-   :caption: ASSIGNMENT/
+   :caption: ASSIGNMENTS
 
    ASSIGNMENT/assignment_fall2022_solutions.ipynb
    
