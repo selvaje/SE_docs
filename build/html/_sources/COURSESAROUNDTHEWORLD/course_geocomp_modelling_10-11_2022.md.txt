@@ -270,6 +270,9 @@ mv assignment_fall2022.ipynb assignment_fall2022_name_surname.ipynb
 jupyther-notebook ssignment_fall2022_name_surname.ipynb
 
 ```
+
+[Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENTS/assignment_fall2022_solutions.html)
+
 ### Modelling lectures session
 
 #### Lecture 9:22nd of November, 2022.
@@ -290,7 +293,7 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/H
 
 #### Lecture 10: 24th of November, 2022
 
-* [Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENT/assignment_fall2022_solutions.html) (Giuseppe)
+* [Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENTS/assignment_fall2022_solutions.html) (Giuseppe)
 * [Introduction to R](http://spatial-ecology.net/docs/build/html/R/R_Intro.html) (Giuseppe)
 
 ### Below syllabus under development. We will update it as the weeks comes through.
