@@ -85,10 +85,11 @@ Table of Contents
 
    GRASS/index
 
-
 .. toctree::
    :titlesonly:
-   :caption: ASSIGNMENTS/index
+   :caption: ASSIGNMENTS
+
+   ASSIGNMENTS/index
    
 .. toctree::
    :maxdepth: 1               
