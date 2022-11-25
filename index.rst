@@ -32,12 +32,6 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
-   :caption: ASSIGNMENTS
-
-   ASSIGNMENT/assignment_fall2022_solutions.ipynb
-   
-.. toctree::
-   :titlesonly:
    :caption: GEO DATA
 
    GEODATA/geomorpho90m/geomorpho90m.md
@@ -110,6 +104,12 @@ Documentation Contents
    GRASS/grass_intro.md
    GRASS/grass_hydro.ipynb
 
+.. toctree::
+   :titlesonly:
+   :caption: ASSIGNMENTS
+
+   ASSIGNMENT/assignment_fall2022_solutions.ipynb
+   
 .. toctree::
    :titlesonly:
    :maxdepth: 1
