@@ -290,7 +290,12 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/H
 
 #### Lecture 10: 24th of November, 2022
 
-* Introduction to R (video recording or already existing video -  Erin)
+* [Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENT/assignment_fall2022_solutions.html)(Giuseppe)
+* [Introduction to R](http://spatial-ecology.net/docs/build/html/R/R_Intro.html) (Giuseppe)
+
+### Below syllabus under development. We will update it as the weeks comes through.
+
+
 * Working with spatial data in R (Stearns)
 	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf) 
 	* Attribute data operations
@@ -302,7 +307,6 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/H
 	* Raster-vector interactions
 
 
-### Below syllabus under development. We will update it as the weeks comes through.
 
 #### Lecture 11: 29th of November, 2022.
 

@@ -32,6 +32,12 @@ Documentation Contents
 
 .. toctree::
    :titlesonly:
+   :caption: ASSIGNMENT/
+
+   ASSIGNMENT/assignment_fall2022_solutions.ipynb
+   
+.. toctree::
+   :titlesonly:
    :caption: GEO DATA
 
    GEODATA/geomorpho90m/geomorpho90m.md
