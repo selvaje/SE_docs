@@ -293,6 +293,8 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/H
 
 #### Lecture 10: 24th of November, 2022
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0aOd9wUSGHnNw6eMGhzJeRG1OF41qR3HMHgFLiKyO18wp6YAq9pdzToczWtv-JBW.VFJOzNaHw9SjVpj2). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
 * [Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENTS/assignment_fall2022_solutions.html) (Giuseppe)
 * [Introduction to R](http://spatial-ecology.net/docs/build/html/R/R_Intro.html) (Giuseppe)
 
