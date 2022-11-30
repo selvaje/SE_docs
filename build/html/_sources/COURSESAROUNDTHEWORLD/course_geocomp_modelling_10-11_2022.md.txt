@@ -298,8 +298,11 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0
 * [Assignment solutions](http://spatial-ecology.net/docs/build/html/ASSIGNMENTS/assignment_fall2022_solutions.html) (Giuseppe)
 * [Introduction to R](http://spatial-ecology.net/docs/build/html/R/R_Intro.html) (Giuseppe)
 
-### Below syllabus under development. We will update it as the weeks comes through.
 
+#### Lecture 11: 29th of November, 2022.
+
+
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/uJX2X6Lm43LfCIpNnuFCNSZw0VxNw2nvrIbLsJWMQzPtAuC9_kaVhQuNJ9pEdS8.simpfUjvieAUtt5_). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 * Working with spatial data in R (Stearns)
 	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf) 
@@ -311,6 +314,7 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0
 	* Geometry operations
 	* Raster-vector interactions
 
+### Below syllabus under development. We will update it as the weeks comes through.
 
 
 #### Lecture 11: 29th of November, 2022.
