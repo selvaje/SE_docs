@@ -5,5 +5,4 @@
    :caption: R
 
    R_Intro
-   lect11_exercises
-
+   lect11_spatial-data-in-r.html
