@@ -5,4 +5,5 @@
    :caption: R
 
    R_Intro
+   lect11_exercises.Rmd
 
