@@ -314,12 +314,11 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/u
 	* Geometry operations
 	* Raster-vector interactions
 
-### Below syllabus under development. We will update it as the weeks comes through.
+#### Lecture 12: 1st of December, 2022.
+
+Recorded lecture can be found [here]( https://gatesfoundation.zoom.us/rec/share/kd--OFL35hw2STfSjFxIL8kRZxUUbgWC-2j1SwPLPjCqHknirKjDL_Q5cGE6QSg.qqiCDWI7HV4VuQwB). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 
-#### Lecture 11: 29th of November, 2022.
-
-* Introduction to R (video recording or already existing video)
 * Working with spatial data in R (Stearns)
 	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf)
 	* Attribute data operations
@@ -330,32 +329,37 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/u
 	* Geometry operations
 	* Raster-vector interactions
 
-#### Lecture 12: 1st of December, 2022.
+#### Lecture 13: 6th of December, 2022.
 
-* Species Distribution Modelling (Stearns)
-	* Reducing dimensionality
-		* Principal components analysis (PCA)
-		* Non-metric multidimensional scaling (NMDS)
-	* Normalisation
+Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+* [Species Distribution Modeling](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM2_Vath_Rmodel.html) (Stearns)
+    * Spatial data visualization 
+	* Data normalization 
 	* Pseudo absence
 	* Logistic regression
-	* GAM - GLM
+	* GLM
 
-#### Lecture 13: 6th of December, 2022.
+### Below syllabus under development. We will update it as the weeks comes through.
+
+
+#### Lecture 14: 8th of December, 2022.
+
+
+peter
+
+#### Lecture 15: 8th of December, 2022.
 
 * SDM - Random forest model (E. Stearns)
 	* Defining model building blocks
 	* Tuning hyperparameters
 	* Predictive mapping
 
-
-#### Lecture 14: 8th of December, 2022.
-
 * Accuracy assessment (Amatulli)
 	* Training and testing dataset
 	* Cross Validation
 
-#### Lecture 15: 13th of December, 2022.
+#### Lecture 16: 13th of December, 2022.
 
 * Model results for informing decision-making (E. Stearns)
 	* Communicating model results
