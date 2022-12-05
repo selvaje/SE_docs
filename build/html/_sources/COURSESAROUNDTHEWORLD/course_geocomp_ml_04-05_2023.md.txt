@@ -4,10 +4,13 @@
 
 **Online teaching: April and May 2023, 8 weeks**
 
-* Start 28 March, every Tuesday and Thursday at 3 pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* Break during the entire week of 24 April
-* Resume 2 May, every Tuesday and Thursday at 3 pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* End 25 May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+
+* Start lecturing: 28 March, every Tuesday and Thursday at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* Catch-up session: Tuesday 25 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* Catch-up session: Thursday 27 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
+* Resume lecturing: 2 May, every Tuesday and Thursday at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* End lecturing 25: May, at 3pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+
 
 **In presence: June, 1 or 2 week in Matera, Italy** 
 
