@@ -304,7 +304,7 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0
 
 Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/uJX2X6Lm43LfCIpNnuFCNSZw0VxNw2nvrIbLsJWMQzPtAuC9_kaVhQuNJ9pEdS8.simpfUjvieAUtt5_). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-* Working with spatial data in R (Stearns)
+* [Geographic data in R](https://geocompr.robinlovelace.net/spatial-class.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
 	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf) 
 	* Attribute data operations
 	* Coordinate reference systems
@@ -319,19 +319,14 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/u
 Recorded lecture can be found [here]( https://gatesfoundation.zoom.us/rec/share/kd--OFL35hw2STfSjFxIL8kRZxUUbgWC-2j1SwPLPjCqHknirKjDL_Q5cGE6QSg.qqiCDWI7HV4VuQwB). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 
-* Working with spatial data in R (Stearns)
-	* Raster and vector ingestion in R (R packages: raster, terra, stars, sp, sf)
-	* Attribute data operations
-	* Coordinate reference systems
-	* Plotting raster and vector data
-	* Making maps
-	* Spatial data operations on
-	* Geometry operations
-	* Raster-vector interactions
+[Spatial Operations](https://geocompr.robinlovelace.net/spatial-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
+[Geometry Operations](https://geocompr.robinlovelace.net/geometry-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
+[Raster Vector](https://geocompr.robinlovelace.net/raster-vector.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
+
 
 #### Lecture 13: 6th of December, 2022.
 
-Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/c-xmM8XBWZZsyDKy5z8yKAEgefRCs3jWRTIEvyBfPUk0bXzXnspNE5X92705_oKl.2VNk3S_c_IwQePWW). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 * [Species Distribution Modeling](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM2_Vath_Rmodel.html) (Stearns)
     * Spatial data visualization 
@@ -340,13 +335,13 @@ Recorded lecture can be found [here](). Please check your email for the pass-cod
 	* Logistic regression
 	* GLM
 
-### Below syllabus under development. We will update it as the weeks comes through.
-
-
 #### Lecture 14: 8th of December, 2022.
 
 
 peter
+
+### Below syllabus under development. We will update it as the weeks comes through.
+
 
 #### Lecture 15: 8th of December, 2022.
 
