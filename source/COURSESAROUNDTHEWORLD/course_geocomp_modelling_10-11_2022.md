@@ -319,9 +319,9 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/u
 Recorded lecture can be found [here]( https://gatesfoundation.zoom.us/rec/share/kd--OFL35hw2STfSjFxIL8kRZxUUbgWC-2j1SwPLPjCqHknirKjDL_Q5cGE6QSg.qqiCDWI7HV4VuQwB). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 
-[Spatial Operations](https://geocompr.robinlovelace.net/spatial-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
-[Geometry Operations](https://geocompr.robinlovelace.net/geometry-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
-[Raster Vector](https://geocompr.robinlovelace.net/raster-vector.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))
+* [Spatial Operations](https://geocompr.robinlovelace.net/spatial-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))  
+* [Geometry Operations](https://geocompr.robinlovelace.net/geometry-operations.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))  
+* [Raster Vector](https://geocompr.robinlovelace.net/raster-vector.html)(Stearns, based on [Geocomputation with R](https://geocompr.robinlovelace.net/index.html))  
 
 
 #### Lecture 13: 6th of December, 2022.
