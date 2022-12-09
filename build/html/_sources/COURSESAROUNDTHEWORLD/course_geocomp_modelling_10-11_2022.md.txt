@@ -333,55 +333,78 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/c
 	* Data normalization 
 	* Pseudo absence
 	* Logistic regression
-	* GLM
+	* GLM 
 
 #### Lecture 14: 8th of December, 2022.
 
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0_cnl_cHMaR9I0iKLVibJPrOLmXaJiZ__Nf27p7H5Weig1lAAkB77V_jAm6qlu4.Tz4FqMYm6-lrP5Pj). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
-peter
-
-### Below syllabus under development. We will update it as the weeks comes through.
+[Spatio-temporal Design and Analysis](http://spatial-ecology.net/docs/source/lectures/lect_20221208_Spatio-temporal_Design_and_Analysis.pdf). (Peter J. Diggle)
 
 
-#### Lecture 15: 8th of December, 2022.
+* Spatial data-formats
+* Statistics and scientific method
+* Geospatial survey design
+* Geospatial survey analysis
+* From spatial to spatio-temporal
+   * longitudinal designs
+   * repeated cross-sectional designs
+   * adaptive designs
+* Reading list
 
-* SDM - Random forest model (E. Stearns)
-	* Defining model building blocks
-	* Tuning hyperparameters
-	* Predictive mapping
+
+#### Lecture 15: 13th of December, 2022.
+
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0_cnl_cHMaR9I0iKLVibJPrOLmXaJiZ__Nf27p7H5Weig1lAAkB77V_jAm6qlu4.Tz4FqMYm6-lrP5Pj). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+
+
+* [SDM1 : Montane woodcreper - Gecomputation](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM1_MWood_gecomp.html)
+   * Crop enviromental layers
+   * Download climate layers
+   * Building geomorphometric layers
+   * Masking
+
+* [SDM1 : Montane woodcreper - Modeling](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM1_MWood_Rmodel.html)
+   * Data Exploration
+      * Load observation presence dataset
+      * Load the environmental data layers
+      * Load expert range map
+   * Plot the environmental data layers
+   * Correlation plots
+   * Model fitting GLM
+   * Model Prediction GLM
+   * Model fitting Random Forest
+   * Model prediction Random Forest      
 
 * Accuracy assessment (Amatulli)
 	* Training and testing dataset
 	* Cross Validation
 
-#### Lecture 16: 13th of December, 2022.
-
-* Model results for informing decision-making (E. Stearns)
-	* Communicating model results
-	* Translating continuous surface output to set of points
-	* Visualisation
-	* Clearly communicating confidence/uncertainty
-
 #### Lecture 16: 15th of December, 2022.
 
-* Connecting SDM for vector-borne disease modelling to overall disease epidemiology (Erin, guest lecturer)
-	* Vector-borne disease transmission dynamics
-	* What do non-human vector models reveal about disease prevalence that human prevalence does not?
-	* Connecting non-human vector model to human prevalence data
+Recorded lecture can be found [here](). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
+* [SDM1 : Montane woodcreper - Gecomputation](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM1_MWood_gecomp.html)
+   * Crop enviromental layers
+   * Download climate layers
+   * Building geomorphometric layers
+   * Masking
 
+* [SDM1 : Montane woodcreper - Modeling](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM1_MWood_Rmodel.html)
+   * Data Exploration
+      * Load observation presence dataset
+      * Load the environmental data layers
+      * Load expert range map
+   * Plot the environmental data layers
+   * Correlation plots
+   * Model fitting GLM
+   * Model Prediction GLM
+   * Model fitting Random Forest
+   * Model prediction Random Forest      
 
-
-
-
-
-
-
-#### Lecture 16: 1st of December, 2022.
-
-* Landscape connectivity base on population genetics pattern.  (base on https://www.pnas.org/doi/abs/10.1073/pnas.2003201118) (Amatulli)
-* Guest lecturer
-
+* Accuracy assessment (Amatulli)
+	* Training and testing dataset
+	* Cross Validation
 
 ### On-site workshop: January 30th 2022 - February 10th 2023
 
