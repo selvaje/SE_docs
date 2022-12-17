@@ -382,7 +382,7 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/0
 
 #### Lecture 16: 15th of December, 2022.
 
-Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/yZDzYVBIIccKjphKAkzuiIiJwNwirMzBJXganZRb3sPDtddIkLOmIYp_2lWzpcRl.9sR5rqD83hn5ryfD). Please check your email for the pass-code (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/Nz1in6iYzF6nFYyhISdVuzvOD4YBf5lsNzXLMjQjhNsKo9-M9FjcxUZU7O1cMSL6.f6o5IHpVHUIqPTjU). Please check your email for the pass-code (it will be the same pass-code for all recordings).
 
 * [SDM1 : Montane woodcreper - Gecomputation](http://spatial-ecology.net/docs/build/html/CASESTUDY/SDM1_MWood_gecomp.html)
    * Crop enviromental layers
