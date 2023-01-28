@@ -71,13 +71,12 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
 
 **Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine**
 
-If the screen is very small try to enlarge, and if the enlargement is not working properly try to reboot. 
+If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot. 
 If you still have issues after the reboot, there are mainly two options:
-1) Re-intall the Virtual Box guest edition
-2) Use arandr for setting a customized resolution
+1) Re-install the Virtual Box guest edition
+2) Use "arandr" for setting a customized resolution
 
- 
-1) Re-intall the Virtual Box guest edition
+**Re-install the Virtual Box guest edition**
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
 
@@ -100,7 +99,7 @@ Open the terminal and type:
 At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
 
 
-**Workaround if Screen size/resolution is not working properly**
+**Use "arandr" for setting a customized resolution**
 
 For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr".
 
@@ -116,7 +115,7 @@ and following the below figure select the best resolution that suitable for your
 
 ![title](screenresolution1.png)
 
-You can also save the screen settings by ""Layout -> Save as" ->  leaving a default directory (~/.screenlayout/) 
+You can also save the screen settings by "Layout -> Save as" ->  leaving a default directory (~/.screenlayout/) 
 
 ![title](screenresolution2.png)
 
