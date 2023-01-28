@@ -15,28 +15,30 @@ Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://w
 
 **Download OSGeoLive**
 
-Open you browser and go to [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Click on the last version-folder and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 14 so vmdk file is osgeolive-14.0-amd64.vmdk.7z. The osgeolive-14.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-14.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-14.0-amd64.vmdk inside Virtualbox.
+Open you browser and go to [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Click on the last version-folder and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
 
 **Install OSGeoLive inside Virtualbox**
 
 Lunch Virtualbox from OS and follow the below instructions. 
 
-![title](Installation_vm_osgeo-live14_p0.png)
-![title](Installation_vm_osgeo-live14_p1.png)
-![title](Installation_vm_osgeo-live14_p2.png)
-![title](Installation_vm_osgeo-live14_p3.png)
-![title](Installation_vm_osgeo-live14_p4.png)
-![title](Installation_vm_osgeo-live14_p5.png)
-![title](Installation_vm_osgeo-live14_p6.png)
-![title](Installation_vm_osgeo-live14_p7.png)
-![title](Installation_vm_osgeo-live14_p8.png)
-![title](Installation_vm_osgeo-live14_p9.png)
+![title](Installation_vm_osgeo-live15_p0.png)
+![title](Installation_vm_osgeo-live15_p1.png)
+![title](Installation_vm_osgeo-live15_p2.png)
+![title](Installation_vm_osgeo-live15_p3.png)
+![title](Installation_vm_osgeo-live15_p4.png)
+![title](Installation_vm_osgeo-live15_p5.png)
+![title](Installation_vm_osgeo-live15_p6.png)
+![title](Installation_vm_osgeo-live15_p7.png)
+![title](Installation_vm_osgeo-live15_p8.png)
+![title](Installation_vm_osgeo-live15_p9.png)
+![title](Installation_vm_osgeo-live15_p10.png)
+![title](Installation_vm_osgeo-live15_p11.png)
 
 **Test your OSGeoLive Virtual Machine**
 
 If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
-![title](Installation_vm_osgeo-live14_p10.png)
+![title](Installation_vm_osgeo-live15_p12.png)
 
 **Setting you keyboard layout**
 
@@ -73,20 +75,43 @@ From the Virtualbox menu press Device > Insert Guest Addition CD image
 
 The download procedure will start and a screen will pop up:
 
-![title](GuestAddition1.png)
-
-press "insert", and if the below screen pop up 
+pres "cancel".
 
 ![title](GuestAddition2.png)
 
-pres "cancel".
 
 Open the terminal and type:
 
     cd /media/user/VBox_GAs_*
     sudo ./VBoxLinuxAdditions.run
 
-At this point you can reboot your machine. Now all screen setting, screen scale and drag/drop should work properly.
+At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
+
+
+**Workaround if Screen size/resolution is not working properly**
+
+For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr".
+
+Open the terminal and type:
+
+    sudo apt install arandr
+
+then run arandr in the terminal 
+
+    arandr
+
+and following the below figure select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.
+
+![title](screenresolution1.png)
+
+You can also save the screen settings by ""Layout -> Save as" ->  leaving a default directory (~/.screenlayout/) 
+
+![title](screenresolution2.png)
+
+Now the file screen_vm.sh need to save to ... to allow the autostart ween booting the vm. 
+
+    .....  
+
 
 **Test your shared folder**
 
