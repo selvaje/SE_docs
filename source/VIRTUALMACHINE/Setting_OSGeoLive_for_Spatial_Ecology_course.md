@@ -33,12 +33,14 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_osgeo-live15_p9.png)
 ![title](Installation_vm_osgeo-live15_p10.png)
 ![title](Installation_vm_osgeo-live15_p11.png)
+![title](Installation_vm_osgeo-live15_p12.png)
+
 
 **Test your OSGeoLive Virtual Machine**
 
 If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
-![title](Installation_vm_osgeo-live15_p12.png)
+![title](Installation_vm_osgeo-live15_p13.png)
 
 **Setting you keyboard layout**
 
@@ -56,11 +58,9 @@ Your keyboard layout will appear as below. Move up to select it as default keybo
 
 Open the terminal (black icon in the down left corner of the menubar, close to the firefox icon) and test if the keyboard layout is correct. 
 
-**Screen size/resolution of your OSGeoLive Virtual Machine**
+**Update the OS**
 
-If the screen is very small try to enlarge, and if the enlargement is not working properly try to reboot. Sometime the Virtual Box guest edition is not kick-in so you have to do the procedure dscribed below. 
-
-Open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
+The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
 Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option. 
 
@@ -68,10 +68,22 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt upgrade -y  # installation of the sw
     sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
 
-Add to Virtualbox additional add-on to improve the graphical user interface of the VM.
-If during the installation some screen pop-up asking some question just accept the default option.
+
+**Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine**
+
+If the screen is very small try to enlarge, and if the enlargement is not working properly try to reboot. 
+If you still have issues after the reboot, there are mainly two options:
+1) Re-intall the Virtual Box guest edition
+2) Use arandr for setting a customized resolution
+
+ 
+1) Re-intall the Virtual Box guest edition
+
+Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
 
 From the Virtualbox menu press Device > Insert Guest Addition CD image
+
+If during the installation some screen pop-up asking some question just accept the default option.
 
 The download procedure will start and a screen will pop up:
 
