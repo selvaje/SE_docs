@@ -5,7 +5,7 @@ In order to execute the Spatial Ecology exercise we will need first install the 
 
 [OSGeoLive](https://live.osgeo.org/en/index.html) is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around (source https://live.osgeo.org/en/index.html)
 
-You can follow the below instructions, moreover the [OSGeoLive installation YouTube video](https://youtu.be/wnRkkpaxqBU) can guide along the full procedure.  
+You can follow the below instructions, moreover the [OSGeoLive installation YouTube video](https://youtu.be/wnRkkpaxqBU) can guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current version.  
 
 For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk file that contains the virtualized OS.
 
@@ -108,9 +108,9 @@ You can also save the screen settings by ""Layout -> Save as" ->  leaving a defa
 
 ![title](screenresolution2.png)
 
-Now the file screen_vm.sh need to save to ... to allow the autostart ween booting the vm. 
+Now the script screen_vm.sh need to be run every time that you boot the machine. The easy way is to add to the ~/.bashrc. **But you will need to open the terminal to allow the enlargement**  
 
-    .....  
+    echo "bash ~/.screenlayout/screen_vm.sh"  >> ~/.bashrc
 
 
 **Test your shared folder**
@@ -158,7 +158,7 @@ You should see the rstudio software pop-up
 
 ## Git Settings 
 
-The below instructions together with the [Git Setting for the Spatial Ecology courses YouTube video](https://www.youtube.com/watch?v=QzMNHEStG0U&t=6s) can guide along the full procedure to retrive dataset and material for the courses.  
+The below instructions together with the [Git Setting for the Spatial Ecology courses YouTube video](https://www.youtube.com/watch?v=QzMNHEStG0U&t=6s) can guide along the full procedure to retrieve dataset and material for the courses.   
 
 The folder data 'SE\_data' from github will be download and you see under '/home/user/SE\_data'. If you have already the folder it will prompt an error: 'fatal: destination path 'SE_data' already exists and is not an empty directory'.
 
