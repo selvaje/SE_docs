@@ -135,10 +135,12 @@ If are able to list the folder then means that the sharing folder operation is p
 If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation so try to redo it.
 
 
-udo usermod -a -G vboxsf (your-kali-username)
+If you get permission denied in accessing '/media/sf_LVM_shared' run this commands 
 
-sudo chown -R (your-kali-username):users /media/(your-share-folder-name)
+    udo usermod -a -G vboxsf user
+    sudo chown -R user:users /media/sf_LVM_shared
 
+You will probably need to reboot to make the folder accessible. 
 
 **Populate OSGeoLive with additional software**
 
