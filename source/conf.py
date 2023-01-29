@@ -65,3 +65,8 @@ html_logo = './images/SE_compact.png'
 html_static_path = ['_static']
 
 nbsphinx_allow_errors = True
+
+# page excluded from the build
+
+exclude_patterns = [ ./VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md ] 
+    
