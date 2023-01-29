@@ -75,7 +75,7 @@ If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest 
 If you still have issues after the reboot, there are mainly two options:
 1) Re-install the Virtual Box guest edition
 2) Use "arandr" for setting a customized resolution
-
+x
 **Re-install the Virtual Box guest edition**
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
@@ -111,7 +111,7 @@ then run arandr in the terminal
 
     arandr
 
-and following the below figure select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.
+and following the below figure, select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.
 
 ![title](screenresolution1.png)
 
@@ -133,6 +133,12 @@ Another test that you should do, is to see if the shared folder is correctly don
 If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the OSGeoLive. 
 
 If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation so try to redo it.
+
+
+udo usermod -a -G vboxsf (your-kali-username)
+
+sudo chown -R (your-kali-username):users /media/(your-share-folder-name)
+
 
 **Populate OSGeoLive with additional software**
 
