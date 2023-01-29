@@ -83,7 +83,7 @@ Follow the web page and type the commands directly on the terminal.
 	* Concatenate process (pipe).
 	* String manipulation
 * [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial).
-[Recorded lecture: 1:36.15 - 2:19:00](https://youtu.be/IDfFa3ulC90)
+[Recorded lecture: 1:36:15 - 2:19:00](https://youtu.be/IDfFa3ulC90)
 
 	* Pattern matching
 	* Sorting a file

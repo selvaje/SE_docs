@@ -68,5 +68,5 @@ nbsphinx_allow_errors = True
 
 # page excluded from the build
 
-exclude_patterns = [ ./VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md ] 
+exclude_patterns = ['VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md'] 
     
