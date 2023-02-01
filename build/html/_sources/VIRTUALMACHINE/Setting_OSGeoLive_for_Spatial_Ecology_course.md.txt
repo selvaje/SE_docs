@@ -135,12 +135,12 @@ If are able to list the folder then means that the sharing folder operation is p
 If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation so try to redo it.
 
 
-If you get permission denied in accessing '/media/sf_LVM_shared' run this commands 
+If you get permission denied in accessing '/media/sf_LVM_shared' run this commands
 
-    udo usermod -a -G vboxsf user
+    sudo usermod -a -G vboxsf user
     sudo chown -R user:users /media/sf_LVM_shared
 
-You will probably need to reboot to make the folder accessible. 
+You will need to reboot to make the folder accessible. 
 
 **Populate OSGeoLive with additional software**
 
