@@ -185,10 +185,10 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 ## Lecture 8: 20th of April, 2023.
-### Geospatial python
+### Geospatial python (Francesco Lovergine)
 
-* rasterio 
-* pyjeo
+* rasterio
+
 	
 ## Catch-up session 1: 25th of November, 2023
 
@@ -198,28 +198,24 @@ Students will meet online with the teachers to review past material and solving 
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-## Lecture 9: 2nd of May, 2023.
-### Tree height estimation (Giuseppe Amatulli)
+## Lecture 9: 3nd of May, 2023.
+### Geospatial python (Pieter Kempeneers)
 
-* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
+* pyjeo 
 
-## Lecture 10: 4th of May, 2023.
-### Species Distribution Model
+## Lecture 10: 5th of May, 2023.
+### Geospatial python (Pieter Kempeneers)
 
-* Species Distribution Model (SDM)
-	* Theory of Ecology community 
-	* Single SDM 
-		* General linear model 
-		* Linear mixed model 
-		* Maxent
-		* Pseduo absence data 
-	* Joint SDM
 
-## Lecture 11: 9th of May, 2023.
+* pyjeo
+
+
+## Lecture 11: 10th of May, 2023.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
+	* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
 
 * [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20230510_GeoComp_IntroML_SVM.pdf) (F.)
 	* Defining learning 
@@ -234,9 +230,9 @@ In this class we will set the main fundamentals to implement machine learning in
 		* Random Forest basic concept
 		* Avoid random forest over-fitting
 		* Optimization of RF
-		* Prediction of RF model on raster tif.
+		* Prediction of RF model on raster tif
 		
-## Lecture 12: 11th of May, 2023.
+## Lecture 12: 12th of May, 2023.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
 
@@ -252,7 +248,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Hands-on tutorial
 	
 
-## Lecture 13: 16th of May, 2023.
+## Lecture 13: 17th of May, 2023.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
 
@@ -261,7 +257,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
 	* Intro to gradient descent and optimizers
 
-## Lecture 14: 18th of May, 2023.
+## Lecture 14: 19th of May, 2023.
 ### Machine Learning - Multi-layer Perceptron (Antonio Fonseca)
 
 
@@ -271,7 +267,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.html)
 	
 
-## Lecture 15: 23th of May, 2023.
+## Lecture 15: 24th of May, 2023.
 ### Machine Learning - Capacity, Overfitting and Underfitting (Antonio Fonseca)
 
 
@@ -292,7 +288,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
 
-## Lecture 16: 25th of May, 2023.
+## Lecture 16: 26th of May, 2023.
 ### Machine Learning - Convolutional Neural Networks (Antonio Fonseca)
 
 
