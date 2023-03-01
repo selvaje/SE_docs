@@ -12,14 +12,13 @@
 * End lecturing 26: May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 
 
-**In presence: June, 1 or 2 week in Matera, Italy** 
+**In presence: June, one week in Matera, Italy** 
 
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 
-We proposed two 1 or 2 weeks in accordance to the students willing 
+We proposed one week of hackathon. 
 
 * June 5th - 9th.
-* June 12th - 16th. 
 
 **Course objectives**
 

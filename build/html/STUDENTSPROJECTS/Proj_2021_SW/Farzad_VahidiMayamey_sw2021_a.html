@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -491,14 +488,14 @@ div.rendered_html tbody tr:hover {
 <section id="Calculating-landcover-distribution">
 <h2><span class="section-number">1.1.1. </span>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Permalink to this headline"></a></h2>
 <p>we use two different layer: 1. <a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> ( left picture) 2. <a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> ( right picture)</p>
-<p><img alt="7cb411b50ea24e2a9b36da133181243b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="50e78c654a9d4d5fbbc6aae261e862fd" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
+<p><img alt="3b252904c2b04f9ba16b2b2a47e65f7b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="9bcc45f702264d9ab6be6a7054fec431" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdalinfo nmd2018bas_ogeneraliserad_v1_1.tif <span class="p">|</span> more
+gdalinfo<span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>more
 </pre></div>
 </div>
 </div>
@@ -817,7 +814,7 @@ Band 1 Block=512x512 Type=Byte, ColorInterp=Palette
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdal_edit.py -a_nodata <span class="m">0</span> nmd2018bas_ogeneraliserad_v1_1.tif
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif
 </pre></div>
 </div>
 </div>
@@ -828,7 +825,7 @@ gdal_edit.py -a_nodata <span class="m">0</span> nmd2018bas_ogeneraliserad_v1_1.t
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> rms/*.gpkg<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .gpkg<span class="k">)</span><span class="p">;</span> gdalwarp -overwrite -srcnodata <span class="m">0</span> -dstnodata <span class="m">0</span> -crop_to_cutline -cutline <span class="nv">$file</span> nmd2018bas_ogeneraliserad_v1_1.tif clipped/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.tif<span class="p">;</span> <span class="k">done</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>rms/*.gpkg<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.gpkg<span class="k">)</span><span class="p">;</span><span class="w"> </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-dstnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-crop_to_cutline<span class="w"> </span>-cutline<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif<span class="w"> </span>clipped/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.tif<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -1114,7 +1111,7 @@ Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> clipped/*.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span><span class="p">;</span> pkstat -hist -rel -src_min <span class="m">2</span> -src_max <span class="m">128</span> -i <span class="nv">$file</span> &gt; hist/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span> <span class="k">done</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>clipped/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span><span class="p">;</span><span class="w"> </span>pkstat<span class="w"> </span>-hist<span class="w"> </span>-rel<span class="w"> </span>-src_min<span class="w"> </span><span class="m">2</span><span class="w"> </span>-src_max<span class="w"> </span><span class="m">128</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>hist/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -1193,7 +1190,7 @@ clipped/ramsarid_438.tif
 </pre></div></div>
 </div>
 <p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands - we have 25 classess in total - 7 of the classess are our main interest</p>
-<p><img alt="b5f1b1cebb7647bda7f3088e568d1bc0" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p><img alt="1263f8864dd24405a91a5ed992977070" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
 <p>Extract all 25 classes</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
@@ -1202,8 +1199,8 @@ clipped/ramsarid_438.tif
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1">#printf &quot;%s %.3f\n&quot;, $1, $2</span>
-<span class="k">for</span> file <span class="k">in</span> hist/*.txt<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .txt<span class="k">)</span><span class="p">;</span>
-awk <span class="s1">&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}&#39;</span> <span class="nv">$file</span> &gt; class_25/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>hist/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>class_25/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -1288,15 +1285,15 @@ hist/ramsarid_438.txt
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> hist/*.txt<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .txt<span class="k">)</span><span class="p">;</span>
-    awk <span class="s1">&#39;$1==111 || $1==112 || $1==113 || $1==114 ||$1==115 || $1==116 ||$1==117 || $1==118 {sum1+= $2}</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>hist/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+<span class="w">    </span>awk<span class="w"> </span><span class="s1">&#39;$1==111 || $1==112 || $1==113 || $1==114 ||$1==115 || $1==116 ||$1==117 || $1==118 {sum1+= $2}</span>
 <span class="s1">$1==121 || $1==122 || $1==123 || $1==124 ||$1==125 || $1==126 ||$1==127 || $1==128 {sum2+= $2}</span>
 <span class="s1">$1==2 {sum3+= $2}</span>
 <span class="s1">$1==3 {sum4+= $2}</span>
 <span class="s1">$1==41 || $1==42 {sum5+= $2}</span>
 <span class="s1">$1==51 || $1==52 || $1==53 {sum6+= $2}</span>
 <span class="s1">$1==61 || $1==62 {sum7+= $2}</span>
-<span class="s1">END{print (&quot;1.1 &quot;sum1); print (&quot;1.2 &quot;sum2); print(&quot;2 &quot;sum3); print(&quot;3 &quot;sum4); print(&quot;4 &quot;sum5); print(&quot;5 &quot;sum6); print(&quot;6 &quot;sum7)}&#39;</span> <span class="nv">$file</span> &gt; class_7/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
+<span class="s1">END{print (&quot;1.1 &quot;sum1); print (&quot;1.2 &quot;sum2); print(&quot;2 &quot;sum3); print(&quot;3 &quot;sum4); print(&quot;4 &quot;sum5); print(&quot;5 &quot;sum6); print(&quot;6 &quot;sum7)}&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>class_7/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -1380,8 +1377,8 @@ Now we want to add header to each of the text files<div class="nbinput docutils 
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> class_7/*.txt<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .txt<span class="k">)</span><span class="p">;</span>
-awk <span class="s1">&#39;BEGIN{print &quot;Class Ratio&quot;}1&#39;</span> <span class="nv">$file</span> &gt; head/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span> <span class="k">done</span> <span class="c1">#The 1 is to indicate to print every line of the file.</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>class_7/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;BEGIN{print &quot;Class Ratio&quot;}1&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>head/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="c1">#The 1 is to indicate to print every line of the file.</span>
 </pre></div>
 </div>
 </div>
@@ -2561,7 +2558,7 @@ ramsarid_438
 <ul class="simple">
 <li><p>Layers: SAR intensity sentinel-1 image.</p></li>
 </ul>
-<p><img alt="b680028868834146b63fdd9f5b36b88f" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p><img alt="c445243eb6374850ae09299352815705" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
 <p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
 <p>we use thresholding method to extract open water from S1 layer</p>
 <p>First we move all layers to the crs: EPSG:4326</p>
@@ -2571,9 +2568,9 @@ ramsarid_438
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-rm --force layers_reprj/*.tif
-<span class="k">for</span> file <span class="k">in</span> layers/*.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span> <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span><span class="p">;</span>
-gdalwarp -ot <span class="s2">&quot;Float32&quot;</span> -t_srs EPSG:4326 <span class="nv">$file</span> layers_reprj/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_reprj.tif<span class="p">;</span><span class="k">done</span>
+rm<span class="w"> </span>--force<span class="w"> </span>layers_reprj/*.tif
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span><span class="p">;</span>
+gdalwarp<span class="w"> </span>-ot<span class="w"> </span><span class="s2">&quot;Float32&quot;</span><span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>layers_reprj/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_reprj.tif<span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -2611,8 +2608,8 @@ Copying nodata values from source layers/slope.tif to destination layers_reprj/s
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1">#applying nodata value equal to zero</span>
-<span class="k">for</span> file <span class="k">in</span> layers/*.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span>
-gdal_edit.py -a_nodata -3.39999995214436425e+38 <span class="nv">$file</span><span class="p">;</span><span class="k">done</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span>
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -2633,10 +2630,10 @@ layers/slope.tif
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-rm --force crop/*.tif
-<span class="k">for</span> file <span class="k">in</span> layers/*.tif<span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$file</span><span class="p">;</span>
-  <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span>
-  gdalwarp -overwrite -te <span class="m">14</span>.6714649 <span class="m">58</span>.2914991 <span class="m">14</span>.9516494 <span class="m">58</span>.4129513 -tr <span class="m">0</span>.000269494585236 -0.000269494585236 <span class="nv">$file</span> crop/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
+rm<span class="w"> </span>--force<span class="w"> </span>crop/*.tif
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span>
+<span class="w">  </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-te<span class="w"> </span><span class="m">14</span>.6714649<span class="w"> </span><span class="m">58</span>.2914991<span class="w"> </span><span class="m">14</span>.9516494<span class="w"> </span><span class="m">58</span>.4129513<span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.000269494585236<span class="w"> </span>-0.000269494585236<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>crop/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -2669,15 +2666,15 @@ Copying nodata values from source layers/slope.tif to destination crop/slope_cro
 </pre></div></div>
 </div>
 <p>we maskout values greater than <strong>-23</strong></p>
-<p><img alt="b9c9b2a3aea04705990c4e2fd69d1998" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<p><img alt="bdd5cd60c6724915b4b42aa3874db665" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pkgetmask -max -23 -data <span class="m">2</span> -nodata <span class="m">0</span> -ot Byte -i crop/SAR_VH_crop.tif -o crop/water.tif<span class="p">;</span>
-gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat.tif<span class="p">;</span>
+pkgetmask<span class="w"> </span>-max<span class="w"> </span>-23<span class="w"> </span>-data<span class="w"> </span><span class="m">2</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-i<span class="w"> </span>crop/SAR_VH_crop.tif<span class="w"> </span>-o<span class="w"> </span>crop/water.tif<span class="p">;</span>
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/water.tif<span class="w">  </span>crop/wat.tif<span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -2687,7 +2684,7 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <ul class="simple">
 <li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
 </ul>
-<p><img alt="4c9eba4b517f4bb08f48ba7ff0e56e9b" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="2116bb2f30504ea09e1dfcb7c5c2654a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p><img alt="22ce26b61e6549ebb5c9ec930d94472a" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="93dc94ada0114d50bc4d7ac1d5436eb9" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
 <p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
@@ -2696,8 +2693,8 @@ gdalwarp -crop_to_cutline -cutline rms/ramsarid_23.gpkg crop/water.tif  crop/wat
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1">#crop the coherence, SAR, and slope .tif files by our wetland shape of interest to exclude the nan values</span>
-gdalwarp -crop_to_cutline -overwrite -srcnodata -3.39999995214436425e+38 -dstnodata -999 -cutline rms/ramsarid_23.gpkg crop/slope_crop.tif  crop/slope_crop_ready.tif<span class="p">;</span>
-gdalwarp -crop_to_cutline -overwrite -srcnodata -3.39999995214436425e+38 -dstnodata -999 -cutline rms/ramsarid_23.gpkg crop/coherence_crop.tif  crop/coherence_crop_ready.tif
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span>-dstnodata<span class="w"> </span>-999<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/slope_crop.tif<span class="w">  </span>crop/slope_crop_ready.tif<span class="p">;</span>
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span>-dstnodata<span class="w"> </span>-999<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/coherence_crop.tif<span class="w">  </span>crop/coherence_crop_ready.tif
 </pre></div>
 </div>
 </div>
@@ -2720,8 +2717,8 @@ Processing crop/coherence_crop.tif [1/1] : 0...10...20...30...40...50...60...70.
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1"># stck the tif</span>
-gdalbuildvrt -overwrite -separate crop/stack.vrt crop/coherence_crop_ready.tif crop/slope_crop_ready.tif
-gdalinfo -mm crop/stack.vrt
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>crop/stack.vrt<span class="w"> </span>crop/coherence_crop_ready.tif<span class="w"> </span>crop/slope_crop_ready.tif
+gdalinfo<span class="w"> </span>-mm<span class="w"> </span>crop/stack.vrt
 </pre></div>
 </div>
 </div>
@@ -2768,7 +2765,7 @@ Band 2 Block=128x128 Type=Float32, ColorInterp=Undefined
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1"># unsupervised classification</span>
-~/OTB/superbuild_install/bin/otbcli_KMeansClassification -in crop/stack.vrt -ts <span class="m">1000</span> -nc <span class="m">15</span> -maxit <span class="m">1000</span> -out crop/ClassificationFilterOutput.tif uint8
+~/OTB/superbuild_install/bin/otbcli_KMeansClassification<span class="w"> </span>-in<span class="w"> </span>crop/stack.vrt<span class="w"> </span>-ts<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-nc<span class="w"> </span><span class="m">15</span><span class="w"> </span>-maxit<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-out<span class="w"> </span>crop/ClassificationFilterOutput.tif<span class="w"> </span>uint8
 </pre></div>
 </div>
 </div>
@@ -2832,14 +2829,14 @@ Writing crop/ClassificationFilterOutput.tif...: 100% [**************************
 </pre></div></div>
 </div>
 <p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
-<p><img alt="cfe3977fbc324af79a590cc780280621" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="7059bf6bd5754287ab4ffe1af30e0790" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<p><img alt="7668a02e6b8b418284c93eb56858dabe" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="83b347496c3444d38383c8b1a18620d7" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pkgetmask -max <span class="m">12</span> -min <span class="m">12</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte -i crop/ClassificationFilterOutput.tif -o crop/veg.tif
+pkgetmask<span class="w"> </span>-max<span class="w"> </span><span class="m">12</span><span class="w"> </span>-min<span class="w"> </span><span class="m">12</span><span class="w"> </span>-data<span class="w"> </span><span class="m">1</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-i<span class="w"> </span>crop/ClassificationFilterOutput.tif<span class="w"> </span>-o<span class="w"> </span>crop/veg.tif
 </pre></div>
 </div>
 </div>
@@ -2859,8 +2856,8 @@ pkgetmask -max <span class="m">12</span> -min <span class="m">12</span> -data <s
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1">#convert .tif to .txt</span>
-gdal_translate -of XYZ crop/wat.tif crop/wat.txt
-gdal_translate -of XYZ crop/veg.tif crop/veg.txt
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>XYZ<span class="w"> </span>crop/wat.tif<span class="w"> </span>crop/wat.txt
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>XYZ<span class="w"> </span>crop/veg.tif<span class="w"> </span>crop/veg.txt
 
 </pre></div>
 </div>
@@ -2883,9 +2880,9 @@ Input file size is 792, 254
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 <span class="c1">#calculating number of pixels</span>
-awk <span class="s1">&#39;{print$3}&#39;</span> crop/wat.txt <span class="p">|</span> grep <span class="m">2</span> <span class="p">|</span> wc -l &gt; crop/final.txt<span class="p">;</span>
-awk <span class="s1">&#39;{print$3}&#39;</span> crop/veg.txt <span class="p">|</span> grep <span class="m">1</span> <span class="p">|</span> wc -l &gt;&gt; crop/final.txt<span class="p">;</span>
-cat crop/final.txt
+awk<span class="w"> </span><span class="s1">&#39;{print$3}&#39;</span><span class="w"> </span>crop/wat.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&gt;<span class="w"> </span>crop/final.txt<span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;{print$3}&#39;</span><span class="w"> </span>crop/veg.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&gt;&gt;<span class="w"> </span>crop/final.txt<span class="p">;</span>
+cat<span class="w"> </span>crop/final.txt
 </pre></div>
 </div>
 </div>
@@ -2903,7 +2900,7 @@ cat crop/final.txt
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert my_project.ipynb --to html
+<span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>my_project.ipynb<span class="w"> </span>--to<span class="w"> </span>html
 </pre></div>
 </div>
 </div>

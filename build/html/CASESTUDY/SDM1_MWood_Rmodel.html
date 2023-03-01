@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -625,7 +622,7 @@ The following objects are masked from ‘package:InformationValue’:
 <h2>Data Exploration<a class="headerlink" href="#Data-Exploration" title="Permalink to this headline"></a></h2>
 <p>We will use Montane woodcreper (Lepidocolaptes lacrymiger) as example species.</p>
 <p>This species has a large range, occurring from the coastal cordillera of Venezuela along the Andes south to south-east Peru and central Bolivia.</p>
-<p><img alt="a510f3166bdc4b9b992f86a9f249e079" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
+<p><img alt="48ae6beb57e34bacb17b34bfbe3d0e3d" class="no-scaled-link" src="../_images/Montane_Woodcreeper.jpg" style="width: 400px;" /></p>
 <section id="Read-in-points-data">
 <h3>Read in points data<a class="headerlink" href="#Read-in-points-data" title="Permalink to this headline"></a></h3>
 </section>
@@ -638,8 +635,8 @@ The following objects are masked from ‘package:InformationValue’:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span> <span class="n">points_field</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
- <span class="nf">str</span><span class="p">(</span><span class="n">points_field</span><span class="p">)</span>
+<span></span><span class="w"> </span><span class="n">points_field</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="nf">str</span><span class="p">(</span><span class="n">points_field</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -664,8 +661,8 @@ The following objects are masked from ‘package:InformationValue’:
 <span class="c1"># save(gbif_points , file=&quot;~/SE_data/exercise/geodata/SDM/gbif_points.Rdata&quot;)</span>
 <span class="nf">load</span><span class="p">(</span><span class="s">&quot;./geodata/SDM/gbif_points.Rdata&quot;</span><span class="p">)</span>
 <span class="n">points</span><span class="o">=</span><span class="nf">rbind.data.frame</span><span class="p">(</span>
-  <span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lon</span><span class="p">),</span>
-  <span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lon</span><span class="p">)</span>
+<span class="w">  </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">gbif_points</span><span class="o">$</span><span class="n">lon</span><span class="p">),</span>
+<span class="w">  </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="o">=</span><span class="n">points_field</span><span class="o">$</span><span class="n">lon</span><span class="p">)</span>
 <span class="p">)</span>
 <span class="nf">str</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
 </pre></div>
@@ -688,15 +685,15 @@ The following objects are masked from ‘package:InformationValue’:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">rCld</span>   <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_meanannual_crop_msk.tif&quot;</span><span class="p">)</span>
+<span></span><span class="n">rCld</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_meanannual_crop_msk.tif&quot;</span><span class="p">)</span>
 <span class="c1"># compute min and max</span>
-<span class="n">rCld</span>   <span class="o">=</span>  <span class="nf">setMinMax</span><span class="p">(</span><span class="n">rCld</span><span class="p">)</span>
-<span class="n">rCldIA</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_intra_crop_msk.tif&quot;</span><span class="p">)</span>
-<span class="n">rCldIA</span> <span class="o">=</span>  <span class="nf">setMinMax</span><span class="p">(</span><span class="n">rCldIA</span><span class="p">)</span>
-<span class="n">rElv</span>   <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_msk.tif&quot;</span><span class="p">)</span>
-<span class="n">rElv</span>   <span class="o">=</span>  <span class="nf">setMinMax</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
-<span class="n">rVeg</span>   <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop_msk.tif&quot;</span><span class="p">)</span>
-<span class="n">rVeg</span>   <span class="o">=</span>  <span class="nf">setMinMax</span><span class="p">(</span><span class="n">rVeg</span><span class="p">)</span>
+<span class="n">rCld</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="nf">setMinMax</span><span class="p">(</span><span class="n">rCld</span><span class="p">)</span>
+<span class="n">rCldIA</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/cloud/SA_intra_crop_msk.tif&quot;</span><span class="p">)</span>
+<span class="n">rCldIA</span><span class="w"> </span><span class="o">=</span><span class="w">  </span><span class="nf">setMinMax</span><span class="p">(</span><span class="n">rCldIA</span><span class="p">)</span>
+<span class="n">rElv</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_msk.tif&quot;</span><span class="p">)</span>
+<span class="n">rElv</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="nf">setMinMax</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
+<span class="n">rVeg</span><span class="w">   </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop_msk.tif&quot;</span><span class="p">)</span>
+<span class="n">rVeg</span><span class="w">   </span><span class="o">=</span><span class="w">  </span><span class="nf">setMinMax</span><span class="p">(</span><span class="n">rVeg</span><span class="p">)</span>
 <span class="n">rElv</span>
 </pre></div>
 </div>
@@ -719,7 +716,7 @@ Traceback:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">birdrange</span> <span class="o">&lt;-</span> <span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;./geodata/shp&quot;</span><span class="p">,</span> <span class="s">&quot;cartodb-query&quot;</span><span class="p">)</span>
+<span></span><span class="n">birdrange</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">readOGR</span><span class="p">(</span><span class="s">&quot;./geodata/shp&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;cartodb-query&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -740,7 +737,7 @@ It has 7 fields
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="nf">plot</span><span class="p">(</span><span class="n">rElv</span><span class="p">)</span>
-<span class="nf">points</span><span class="p">(</span><span class="n">points</span><span class="o">$</span><span class="n">lon</span><span class="p">,</span> <span class="n">points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="s">&quot;red&quot;</span><span class="p">,</span> <span class="n">cex</span> <span class="o">=</span> <span class="n">.</span><span class="m">3</span><span class="p">)</span>
+<span class="nf">points</span><span class="p">(</span><span class="n">points</span><span class="o">$</span><span class="n">lon</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="o">$</span><span class="n">lat</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">cex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">.</span><span class="m">3</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">birdrange</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -758,8 +755,8 @@ It has 7 fields
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># indicate that these data are presences</span>
-<span class="n">presence</span> <span class="o">&lt;-</span> <span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
-<span class="n">points</span> <span class="o">&lt;-</span> <span class="nf">cbind</span><span class="p">(</span><span class="n">points</span><span class="p">,</span><span class="n">presence</span><span class="p">)</span>
+<span class="n">presence</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">matrix</span><span class="p">(</span><span class="m">1</span><span class="p">,</span><span class="nf">nrow</span><span class="p">(</span><span class="n">points</span><span class="p">),</span><span class="m">1</span><span class="p">)</span>
+<span class="n">points</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">cbind</span><span class="p">(</span><span class="n">points</span><span class="p">,</span><span class="n">presence</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -834,7 +831,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># assign projection</span>
-<span class="nf">projection</span><span class="p">(</span><span class="n">points</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="s">&quot;+proj=longlat +datum=WGS84&quot;</span>
+<span class="nf">projection</span><span class="p">(</span><span class="n">points</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="s">&quot;+proj=longlat +datum=WGS84&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -847,7 +844,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 <span></span><span class="c1"># link to global sampling raster</span>
 <span class="c1"># first crop with the gdal and then load the cropversion</span>
 <span class="nf">system</span><span class="p">(</span><span class="s">&quot;gdal_translate -projwin -82 14 -59 -21 -co COMPRESS=DEFLATE -co ZLEVEL=9 ./geodata/SDM/eBirdSampling_filtered.tif ./geodata/SDM/eBirdSampling_filtered_crop.tif&quot;</span><span class="p">)</span>
-<span class="n">gsampling</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/SDM/eBirdSampling_filtered_crop.tif&quot;</span><span class="p">)</span>
+<span class="n">gsampling</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./geodata/SDM/eBirdSampling_filtered_crop.tif&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -884,8 +881,8 @@ values     : 0, 65535  (min, max)
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># convert to points within data region</span>
-<span class="n">samplingp</span> <span class="o">&lt;-</span> <span class="nf">as</span><span class="p">(</span><span class="n">gsampling</span><span class="p">,</span><span class="s">&quot;SpatialPointsDataFrame&quot;</span><span class="p">)</span>
-<span class="n">samplingp</span> <span class="o">&lt;-</span> <span class="n">samplingp</span><span class="p">[</span><span class="n">samplingp</span><span class="o">$</span><span class="n">eBirdSampling_filtered_crop</span><span class="o">&gt;</span><span class="m">0</span><span class="p">,]</span>
+<span class="n">samplingp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as</span><span class="p">(</span><span class="n">gsampling</span><span class="p">,</span><span class="s">&quot;SpatialPointsDataFrame&quot;</span><span class="p">)</span>
+<span class="n">samplingp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">samplingp</span><span class="p">[</span><span class="n">samplingp</span><span class="o">$</span><span class="n">eBirdSampling_filtered_crop</span><span class="o">&gt;</span><span class="m">0</span><span class="p">,]</span>
 <span class="nf">str</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
 <span class="nf">head</span><span class="p">(</span><span class="n">samplingp</span><span class="p">)</span>
 </pre></div>
@@ -933,12 +930,12 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span> <span class="c1"># edit column names</span>
- <span class="nf">colnames</span><span class="p">(</span><span class="n">samplingp</span><span class="o">@</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;observation&quot;</span><span class="p">)</span>
- <span class="n">samplingp</span><span class="o">$</span><span class="n">presence</span><span class="o">=</span><span class="m">0</span>
- <span class="nf">plot</span><span class="p">(</span><span class="n">samplingp</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">21</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">)</span><span class="c1">#absences</span>
- <span class="nf">plot</span><span class="p">(</span><span class="n">points</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="c1">#presences</span>
- <span class="nf">plot</span><span class="p">(</span><span class="n">birdrange</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;cyan&quot;</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="c1">#species range</span>
+<span></span><span class="w"> </span><span class="c1"># edit column names</span>
+<span class="w"> </span><span class="nf">colnames</span><span class="p">(</span><span class="n">samplingp</span><span class="o">@</span><span class="n">data</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;observation&quot;</span><span class="p">)</span>
+<span class="w"> </span><span class="n">samplingp</span><span class="o">$</span><span class="n">presence</span><span class="o">=</span><span class="m">0</span>
+<span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">samplingp</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="n">pch</span><span class="o">=</span><span class="m">21</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="n">.</span><span class="m">5</span><span class="p">)</span><span class="c1">#absences</span>
+<span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">points</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="c1">#presences</span>
+<span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="n">birdrange</span><span class="p">,</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;cyan&quot;</span><span class="p">,</span><span class="n">add</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span><span class="c1">#species range</span>
 </pre></div>
 </div>
 </div>
@@ -988,8 +985,8 @@ Data attributes:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pdata</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">points</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">samplingp</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">])</span>
-<span class="n">pdata</span><span class="o">@</span><span class="n">data</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">)]</span> <span class="o">&lt;-</span> <span class="nf">coordinates</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
+<span></span><span class="n">pdata</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">points</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">],</span><span class="n">samplingp</span><span class="p">[,</span><span class="s">&quot;presence&quot;</span><span class="p">])</span>
+<span class="n">pdata</span><span class="o">@</span><span class="n">data</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;lat&quot;</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">coordinates</span><span class="p">(</span><span class="n">pdata</span><span class="p">)</span>
 <span class="nf">table</span><span class="p">(</span><span class="n">pdata</span><span class="o">$</span><span class="n">presence</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1012,7 +1009,7 @@ Data attributes:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">env</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rCld</span><span class="p">,</span><span class="n">rCldIA</span><span class="p">,</span><span class="n">rElv</span><span class="p">,</span><span class="n">rVeg</span><span class="p">))</span>
+<span></span><span class="n">env</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span><span class="nf">c</span><span class="p">(</span><span class="n">rCld</span><span class="p">,</span><span class="n">rCldIA</span><span class="p">,</span><span class="n">rElv</span><span class="p">,</span><span class="n">rVeg</span><span class="p">))</span>
 <span class="n">env</span>
 </pre></div>
 </div>
@@ -1039,13 +1036,13 @@ max values :                  10000,              3790,                         
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># rename layers for convenience</span>
-<span class="n">vars</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;cld&quot;</span><span class="p">,</span><span class="s">&quot;cld_ia&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;forest&quot;</span><span class="p">)</span>
+<span class="n">vars</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;cld&quot;</span><span class="p">,</span><span class="s">&quot;cld_ia&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;forest&quot;</span><span class="p">)</span>
 
-<span class="nf">names</span><span class="p">(</span><span class="n">env</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="n">vars</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">env</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vars</span>
 
 <span class="c1"># visual result</span>
-<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
- <span class="c1"># check out the plot</span>
+<span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">15</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<span class="w"> </span><span class="c1"># check out the plot</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">env</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1063,7 +1060,7 @@ max values :                  10000,              3790,                         
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">senv</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">env</span><span class="p">[[</span><span class="n">vars</span><span class="p">]])</span>
+<span></span><span class="n">senv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">env</span><span class="p">[[</span><span class="n">vars</span><span class="p">]])</span>
 <span class="n">senv</span>
 <span class="c1"># this operation is quite long. Would be possible to do in gdal? how?</span>
 </pre></div>
@@ -1132,7 +1129,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">pdata</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span></span><span class="n">df.xact</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">pdata</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1141,7 +1138,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="o">!</span> <span class="nf">is.na</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">forest</span><span class="p">),])</span>
+<span></span><span class="n">df.xact</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="p">(</span><span class="n">df.xact</span><span class="p">[</span><span class="o">!</span><span class="w"> </span><span class="nf">is.na</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">forest</span><span class="p">),])</span>
 </pre></div>
 </div>
 </div>
@@ -1154,7 +1151,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">## convert to &#39;long&#39; format for easier plotting</span>
-<span class="n">df.xactl</span> <span class="o">&lt;-</span> <span class="n">reshape</span><span class="o">::</span><span class="nf">melt</span><span class="p">(</span><span class="n">df.xact</span><span class="o">@</span><span class="n">data</span><span class="p">,</span><span class="n">id.vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lat&quot;</span><span class="p">,</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;presence&quot;</span><span class="p">),</span><span class="n">variable.name</span><span class="o">=</span><span class="s">&quot;variable&quot;</span><span class="p">)</span>
+<span class="n">df.xactl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">reshape</span><span class="o">::</span><span class="nf">melt</span><span class="p">(</span><span class="n">df.xact</span><span class="o">@</span><span class="n">data</span><span class="p">,</span><span class="n">id.vars</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;lat&quot;</span><span class="p">,</span><span class="s">&quot;lon&quot;</span><span class="p">,</span><span class="s">&quot;presence&quot;</span><span class="p">),</span><span class="n">variable.name</span><span class="o">=</span><span class="s">&quot;variable&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1214,10 +1211,10 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="nf">ggplot</span><span class="p">(</span><span class="n">df.xactl</span><span class="p">,</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">value</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">presence</span><span class="p">))</span><span class="o">+</span><span class="nf">facet_wrap</span><span class="p">(</span><span class="o">~</span><span class="n">variable</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_point</span><span class="p">()</span><span class="o">+</span>
-  <span class="nf">stat_smooth</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;lm&quot;</span><span class="p">,</span> <span class="n">formula</span> <span class="o">=</span> <span class="n">y</span> <span class="o">~</span> <span class="n">x</span> <span class="o">+</span> <span class="nf">I</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="p">),</span> <span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;gam&quot;</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="n">y</span> <span class="o">~</span> <span class="nf">s</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">bs</span> <span class="o">=</span> <span class="s">&quot;cs&quot;</span><span class="p">))</span> <span class="o">+</span>
-  <span class="nf">theme</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="nf">element_text</span><span class="p">(</span><span class="n">size</span> <span class="o">=</span> <span class="m">20</span><span class="p">))</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">()</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">stat_smooth</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;lm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">formula</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nf">I</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="m">2</span><span class="p">),</span><span class="w"> </span><span class="n">col</span><span class="o">=</span><span class="s">&quot;red&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_smooth</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="s">&quot;gam&quot;</span><span class="p">,</span><span class="n">formula</span><span class="o">=</span><span class="n">y</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="nf">s</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">bs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cs&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">+</span>
+<span class="w">  </span><span class="nf">theme</span><span class="p">(</span><span class="n">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">element_text</span><span class="p">(</span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1232,13 +1229,13 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 <section id="Model-Fitting">
 <h3>Model Fitting<a class="headerlink" href="#Model-Fitting" title="Permalink to this headline"></a></h3>
 <p>cross validation</p>
-<p><img alt="2ef46bae984e46d6b7006cabf1fe85a7" class="no-scaled-link" src="../_images/cross_vld.gif" style="width: 600px;" /></p>
+<p><img alt="a88b3f68b611490191c192aa3fefe1b3" class="no-scaled-link" src="../_images/cross_vld.gif" style="width: 600px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span> <span class="o">&lt;-</span> <span class="nf">as.data.frame</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
+<span></span><span class="n">df.xact</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.data.frame</span><span class="p">(</span><span class="n">df.xact</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1247,7 +1244,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span> <span class="o">&lt;-</span> <span class="nf">kfold</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
+<span></span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">kfold</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1281,7 +1278,7 @@ Warning message in .hist1(raster(x, y[i]), maxpixels = maxpixels, main = main[y[
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.glm</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">presence</span><span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
+<span></span><span class="n">mdl.glm</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">presence</span><span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1342,8 +1339,8 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.glm1</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
-<span class="n">pred.glm2</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">2</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span></span><span class="n">pred.glm1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span class="n">pred.glm2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">df.xact</span><span class="p">[</span><span class="nf">which</span><span class="p">(</span><span class="n">df.xact</span><span class="o">$</span><span class="n">grp</span><span class="o">==</span><span class="m">2</span><span class="p">),</span><span class="n">vars</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1387,7 +1384,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">p1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span></span><span class="n">p1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm</span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1397,15 +1394,15 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">8</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">8</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
 <span class="nf">gplot</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="o">+</span><span class="nf">geom_tile</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">fill</span><span class="o">=</span><span class="n">value</span><span class="p">))</span><span class="o">+</span>
-  <span class="nf">scale_fill_gradientn</span><span class="p">(</span>
-    <span class="n">colours</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="s">&quot;red&quot;</span><span class="p">),</span>
-    <span class="n">na.value</span> <span class="o">=</span> <span class="s">&quot;transparent&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">),</span>
-               <span class="n">data</span><span class="o">=</span><span class="nf">fortify</span><span class="p">(</span><span class="n">birdrange</span><span class="p">),</span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;transparent&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span> <span class="o">=</span> <span class="n">lon</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">lat</span><span class="p">),</span> <span class="n">data</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">presence</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="o">+</span>
-  <span class="nf">coord_equal</span><span class="p">()</span>
+<span class="w">  </span><span class="nf">scale_fill_gradientn</span><span class="p">(</span>
+<span class="w">    </span><span class="n">colours</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;blue&quot;</span><span class="p">,</span><span class="s">&quot;green&quot;</span><span class="p">,</span><span class="s">&quot;yellow&quot;</span><span class="p">,</span><span class="s">&quot;orange&quot;</span><span class="p">,</span><span class="s">&quot;red&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">na.value</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;transparent&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_polygon</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">long</span><span class="p">,</span><span class="n">y</span><span class="o">=</span><span class="n">lat</span><span class="p">,</span><span class="n">group</span><span class="o">=</span><span class="n">group</span><span class="p">),</span>
+<span class="w">               </span><span class="n">data</span><span class="o">=</span><span class="nf">fortify</span><span class="p">(</span><span class="n">birdrange</span><span class="p">),</span><span class="n">fill</span><span class="o">=</span><span class="s">&quot;transparent&quot;</span><span class="p">,</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;darkred&quot;</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">geom_point</span><span class="p">(</span><span class="nf">aes</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lon</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lat</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">presence</span><span class="o">==</span><span class="m">1</span><span class="p">),</span><span class="n">col</span><span class="o">=</span><span class="s">&quot;black&quot;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span><span class="o">+</span>
+<span class="w">  </span><span class="nf">coord_equal</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1434,10 +1431,10 @@ Regions defined for each Polygons
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">ctrl</span> <span class="o">&lt;-</span> <span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span> <span class="o">=</span> <span class="s">&quot;cv&quot;</span><span class="p">,</span> <span class="n">number</span> <span class="o">=</span> <span class="m">10</span><span class="p">)</span>
+<span></span><span class="n">ctrl</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">trainControl</span><span class="p">(</span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;cv&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">)</span>
 
-<span class="n">mdl.glm.cv</span> <span class="o">&lt;-</span> <span class="nf">train</span><span class="p">(</span>  <span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span> <span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span>
-<span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span>  <span class="n">data</span> <span class="o">=</span> <span class="n">df.xact</span><span class="p">,</span> <span class="n">method</span> <span class="o">=</span> <span class="s">&quot;glm&quot;</span><span class="p">,</span> <span class="n">trControl</span> <span class="o">=</span> <span class="n">ctrl</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s">&#39;Accuracy&#39;</span><span class="p">)</span>
+<span class="n">mdl.glm.cv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">train</span><span class="p">(</span><span class="w">  </span><span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="n">cld</span><span class="o">+</span><span class="n">cld_ia</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">cld_ia</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">elev</span><span class="o">*</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">forest</span><span class="p">,</span>
+<span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span><span class="w">  </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">df.xact</span><span class="p">,</span><span class="w"> </span><span class="n">method</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;glm&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">trControl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctrl</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="o">=</span><span class="s">&#39;Accuracy&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1477,7 +1474,7 @@ Resampling results:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.raw</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;raw&quot;</span><span class="p">)</span>
+<span></span><span class="n">pred.mdl.glm.cv.raw</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span><span class="w"> </span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;raw&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1503,7 +1500,7 @@ Resampling results:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span></span><span class="n">pred.mdl.glm.cv.prob1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span><span class="w"> </span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.prob1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1520,7 +1517,7 @@ Resampling results:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.mdl.glm.cv.prob2</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span> <span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span></span><span class="n">pred.mdl.glm.cv.prob2</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">mdl.glm.cv</span><span class="w"> </span><span class="p">,</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;prob&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">pred.mdl.glm.cv.prob2</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1548,7 +1545,7 @@ Resampling results:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.rf</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span><span class="n">forest</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
+<span></span><span class="n">mdl.rf</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomForest</span><span class="p">(</span><span class="nf">as.factor</span><span class="p">(</span><span class="n">presence</span><span class="p">)</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cld</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cld_ia</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">elev</span><span class="w"> </span><span class="o">+</span><span class="n">forest</span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="nf">subset</span><span class="p">(</span><span class="n">df.xact</span><span class="p">,</span><span class="n">grp</span><span class="o">==</span><span class="m">1</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1587,7 +1584,7 @@ Confusion matrix:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.resp</span>  <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
+<span></span><span class="n">pred.rf.resp</span><span class="w">  </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">mdl.rf</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1615,8 +1612,8 @@ Confusion matrix:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.prob1</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="n">pred.rf.prob0</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span> <span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
+<span></span><span class="n">pred.rf.prob1</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">mdl.rf</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">pred.rf.prob0</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">mdl.rf</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;prob&#39;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">index</span><span class="o">=</span><span class="m">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1653,7 +1650,7 @@ Confusion matrix:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ</span> <span class="o">=</span> <span class="nf">raster</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="m">420</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="m">276</span><span class="p">,</span> <span class="n">xmn</span><span class="o">=</span><span class="m">-82</span><span class="p">,</span> <span class="n">xmx</span><span class="o">=</span><span class="m">-59</span><span class="p">,</span> <span class="n">ymn</span><span class="o">=</span><span class="m">-21</span><span class="p">,</span> <span class="n">ymx</span><span class="o">=</span><span class="m">14</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="s">&quot;+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0&quot;</span> <span class="p">,</span> <span class="n">vals</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span></span><span class="n">occ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="m">420</span><span class="p">,</span><span class="w"> </span><span class="n">ncols</span><span class="o">=</span><span class="m">276</span><span class="p">,</span><span class="w"> </span><span class="n">xmn</span><span class="o">=</span><span class="m">-82</span><span class="p">,</span><span class="w"> </span><span class="n">xmx</span><span class="o">=</span><span class="m">-59</span><span class="p">,</span><span class="w"> </span><span class="n">ymn</span><span class="o">=</span><span class="m">-21</span><span class="p">,</span><span class="w"> </span><span class="n">ymx</span><span class="o">=</span><span class="m">14</span><span class="p">,</span><span class="w"> </span><span class="n">crs</span><span class="o">=</span><span class="s">&quot;+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0&quot;</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">vals</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1687,18 +1684,18 @@ values     : 0, 0  (min, max)
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pointcount</span> <span class="o">=</span> <span class="nf">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">pts</span><span class="p">){</span>
-  <span class="c1"># make a raster of zeroes like the input</span>
-  <span class="n">r2</span> <span class="o">=</span> <span class="n">r</span>
-  <span class="n">r2</span><span class="p">[]</span> <span class="o">=</span> <span class="m">0</span>
-  <span class="c1"># get the cell index for each point and make a table:</span>
-  <span class="n">counts</span> <span class="o">=</span> <span class="nf">table</span><span class="p">(</span><span class="nf">cellFromXY</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">pts</span><span class="p">))</span>
-  <span class="c1"># fill in the raster with the counts from the cell index:</span>
-  <span class="n">r2</span><span class="p">[</span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">counts</span><span class="p">))]</span> <span class="o">=</span> <span class="n">counts</span>
-  <span class="nf">return</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
- <span class="p">}</span>
+<span></span><span class="n">pointcount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">function</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="n">pts</span><span class="p">){</span>
+<span class="w">  </span><span class="c1"># make a raster of zeroes like the input</span>
+<span class="w">  </span><span class="n">r2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r</span>
+<span class="w">  </span><span class="n">r2</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="w">  </span><span class="c1"># get the cell index for each point and make a table:</span>
+<span class="w">  </span><span class="n">counts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">table</span><span class="p">(</span><span class="nf">cellFromXY</span><span class="p">(</span><span class="n">r</span><span class="p">,</span><span class="n">pts</span><span class="p">))</span>
+<span class="w">  </span><span class="c1"># fill in the raster with the counts from the cell index:</span>
+<span class="w">  </span><span class="n">r2</span><span class="p">[</span><span class="nf">as.numeric</span><span class="p">(</span><span class="nf">names</span><span class="p">(</span><span class="n">counts</span><span class="p">))]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">counts</span>
+<span class="w">  </span><span class="nf">return</span><span class="p">(</span><span class="n">r2</span><span class="p">)</span>
+<span class="w"> </span><span class="p">}</span>
 
-<span class="n">occ_raster</span> <span class="o">&lt;-</span> <span class="nf">pointcount</span><span class="p">(</span><span class="n">occ</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span>
+<span class="n">occ_raster</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">pointcount</span><span class="p">(</span><span class="n">occ</span><span class="p">,</span><span class="w"> </span><span class="n">points</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1723,7 +1720,7 @@ values     : 0, 0  (min, max)
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point</span> <span class="o">=</span> <span class="nf">rasterToPoints</span><span class="p">(</span><span class="n">occ_raster</span> <span class="p">,</span> <span class="n">spatial</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
+<span></span><span class="n">occ_point</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">rasterToPoints</span><span class="p">(</span><span class="n">occ_raster</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">spatial</span><span class="o">=</span><span class="kc">TRUE</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1763,7 +1760,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point_sel</span> <span class="o">=</span> <span class="nf">subset</span><span class="p">(</span><span class="n">occ_point</span> <span class="p">,</span> <span class="p">(</span><span class="n">layer</span> <span class="o">&gt;</span> <span class="m">0</span> <span class="o">&amp;</span> <span class="n">layer</span> <span class="o">&lt;</span> <span class="m">100</span><span class="p">)</span>  <span class="p">)</span>
+<span></span><span class="n">occ_point_sel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">subset</span><span class="p">(</span><span class="n">occ_point</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">layer</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="m">100</span><span class="p">)</span><span class="w">  </span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1788,7 +1785,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">occ_point_sel_predictor</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">occ_point_sel</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span></span><span class="n">occ_point_sel_predictor</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">extract</span><span class="p">(</span><span class="n">senv</span><span class="p">,</span><span class="n">occ_point_sel</span><span class="p">,</span><span class="n">sp</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 <span class="nf">str</span><span class="p">(</span><span class="n">occ_point_sel_predictor</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1823,7 +1820,7 @@ Formal class &#39;SpatialPointsDataFrame&#39; [package &#34;sp&#34;] with 5 slot
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.rf.occ</span> <span class="o">&lt;-</span> <span class="nf">randomForest</span><span class="p">(</span> <span class="n">layer</span> <span class="o">~</span> <span class="n">cld</span> <span class="o">+</span> <span class="n">cld_ia</span> <span class="o">+</span> <span class="n">elev</span> <span class="o">+</span> <span class="n">forest</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">occ_point_sel_predictor</span> <span class="p">)</span>
+<span></span><span class="n">mdl.rf.occ</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomForest</span><span class="p">(</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="o">~</span><span class="w"> </span><span class="n">cld</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">cld_ia</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">elev</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">forest</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">occ_point_sel_predictor</span><span class="w"> </span><span class="p">)</span>
 <span class="n">mdl.rf.occ</span>
 </pre></div>
 </div>
@@ -1849,7 +1846,7 @@ No. of variables tried at each split: 1
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">pred.rf.occ</span> <span class="o">&lt;-</span> <span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span> <span class="p">,</span> <span class="n">mdl.rf.occ</span> <span class="p">,</span> <span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
+<span></span><span class="n">pred.rf.occ</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">raster</span><span class="o">::</span><span class="nf">predict</span><span class="p">(</span><span class="n">senv</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">mdl.rf.occ</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="n">type</span><span class="o">=</span><span class="s">&#39;response&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

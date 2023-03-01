@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -582,14 +579,14 @@ Text(-180, 25, &#39;A&#39;)
 <span></span>%%bash
 <span class="c1">#!/bin/bash</span>
 
-mkdir /home/tatiana/Documents/DATA/SSTERA5/ENSO/
+mkdir<span class="w"> </span>/home/tatiana/Documents/DATA/SSTERA5/ENSO/
 <span class="nv">output</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SSTERA5/ENSO/&quot;</span>
 <span class="nv">dir</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SSTERA5/&quot;</span>
-<span class="nb">cd</span> <span class="nv">$dir</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$dir</span>
 
-cdo -b F64 -fldmean -timselmean,12 -sellonlatbox,120,170,-5,5 -detrend download.nc <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc
-cdo sub <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc -timmean <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOa.nc
-cdo runmean,3 <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOa.nc <span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSO.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-fldmean<span class="w"> </span>-timselmean,12<span class="w"> </span>-sellonlatbox,120,170,-5,5<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc
+cdo<span class="w"> </span>sub<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOm.nc<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOa.nc
+cdo<span class="w"> </span>runmean,3<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSOa.nc<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>ENSO.nc
 </pre></div>
 </div>
 </div>
@@ -608,21 +605,21 @@ cdo runmean,3 <span class="si">${</span><span class="nv">output</span><span clas
 <span class="c1">#!/bin/bash</span>
 
 
-mkdir /home/tatiana/Documents/DATA/SLPERA5/NAO/
+mkdir<span class="w"> </span>/home/tatiana/Documents/DATA/SLPERA5/NAO/
 <span class="nv">output1</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SLPERA5/NAO/&quot;</span>
 <span class="nv">dir1</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SLPERA5/&quot;</span>
-<span class="nb">cd</span> <span class="nv">$dir1</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$dir1</span>
 
 
-cdo -b F64  -timselmean,5 -select,season<span class="o">=</span>NDJFM -remapnn,lon<span class="o">=</span><span class="m">37</span>.82/lat<span class="o">=</span><span class="m">25</span>.75 -detrend download.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc
-cdo -sub -fldmean <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc -timmean <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOha.nc
-cdo -b F64 -div <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOha.nc -timstd <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOhn.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w">  </span>-timselmean,5<span class="w"> </span>-select,season<span class="o">=</span>NDJFM<span class="w"> </span>-remapnn,lon<span class="o">=</span><span class="m">37</span>.82/lat<span class="o">=</span><span class="m">25</span>.75<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span>-fldmean<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOha.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-div<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOha.nc<span class="w"> </span>-timstd<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOhn.nc
 
-cdo -b F64 -timselmean,5 -select,season<span class="o">=</span>NDJFM -remapnn,lon<span class="o">=</span><span class="m">65</span>.08/lat<span class="o">=</span><span class="m">22</span>.73 -detrend download.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc
-cdo -sub -fldmean <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc -timmean <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOla.nc
-cdo -b F64 -div <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOla.nc -timstd <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOln.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-timselmean,5<span class="w"> </span>-select,season<span class="o">=</span>NDJFM<span class="w"> </span>-remapnn,lon<span class="o">=</span><span class="m">65</span>.08/lat<span class="o">=</span><span class="m">22</span>.73<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span>-fldmean<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOla.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-div<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOla.nc<span class="w"> </span>-timstd<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOm2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOln.nc
 
-cdo -sub <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOhn.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOln.nc <span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAO.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOhn.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAOln.nc<span class="w"> </span><span class="si">${</span><span class="nv">output1</span><span class="si">}</span>NAO.nc
 
 </pre></div>
 </div>
@@ -641,20 +638,20 @@ months.</p>
 <span class="c1">#!/bin/bash</span>
 
 
-mkdir /home/tatiana/Documents/DATA/SLPERA5/SNAO/
+mkdir<span class="w"> </span>/home/tatiana/Documents/DATA/SLPERA5/SNAO/
 <span class="nv">output2</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SLPERA5/SNAO/&quot;</span>
 
 
 
-cdo -b F64 -timselmean,3 -select,season<span class="o">=</span>JJA -remapnn,lon<span class="o">=</span><span class="m">37</span>.82/lat<span class="o">=</span><span class="m">25</span>.75 -detrend download.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc
-cdo -sub -fldmean <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc -timmean <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOha.nc
-cdo -b F64 -div <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOha.nc -timstd <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOhn.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-timselmean,3<span class="w"> </span>-select,season<span class="o">=</span>JJA<span class="w"> </span>-remapnn,lon<span class="o">=</span><span class="m">37</span>.82/lat<span class="o">=</span><span class="m">25</span>.75<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span>-fldmean<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOha.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-div<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOha.nc<span class="w"> </span>-timstd<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOhn.nc
 
-cdo -b F64 -timselmean,3 -select,season<span class="o">=</span>JJA -remapnn,lon<span class="o">=</span><span class="m">65</span>.08/lat<span class="o">=</span><span class="m">22</span>.73 -detrend download.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc
-cdo -sub -fldmean <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc -timmean <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOla.nc
-cdo -b F64 -div <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOla.nc -timstd <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOln.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-timselmean,3<span class="w"> </span>-select,season<span class="o">=</span>JJA<span class="w"> </span>-remapnn,lon<span class="o">=</span><span class="m">65</span>.08/lat<span class="o">=</span><span class="m">22</span>.73<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span>-fldmean<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOla.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-div<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOla.nc<span class="w"> </span>-timstd<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOm2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOln.nc
 
-cdo -sub <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOhn.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOln.nc <span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAO.nc
+cdo<span class="w"> </span>-sub<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOhn.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAOln.nc<span class="w"> </span><span class="si">${</span><span class="nv">output2</span><span class="si">}</span>SNAO.nc
 </pre></div>
 </div>
 </div>
@@ -672,20 +669,20 @@ cdo -sub <span class="si">${</span><span class="nv">output2</span><span class="s
 <span class="c1">#!/bin/bash</span>
 
 
-mkdir /home/tatiana/Documents/DATA/SSTERA5/AMO/
+mkdir<span class="w"> </span>/home/tatiana/Documents/DATA/SSTERA5/AMO/
 <span class="nv">output3</span><span class="o">=</span><span class="s2">&quot;/home/tatiana/Documents/DATA/SSTERA5/AMO/&quot;</span>
-<span class="nb">cd</span> <span class="nv">$dir</span>
+<span class="nb">cd</span><span class="w"> </span><span class="nv">$dir</span>
 
-cdo -b F64 -fldmean -yearmonmean -select,season<span class="o">=</span>JJA -sellonlatbox,-80,0,0,60 -detrend download.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc
-cdo -b F64 -sub <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc -timmean <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO1.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-fldmean<span class="w"> </span>-yearmonmean<span class="w"> </span>-select,season<span class="o">=</span>JJA<span class="w"> </span>-sellonlatbox,-80,0,0,60<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-sub<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO1.nc
 
-cdo -b F64 -fldmean -yearmonmean -select,season<span class="o">=</span>JJA -sellonlatbox,-180,180,-60,60 -detrend download.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc
-cdo -b F64 sub <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc -timmean <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO2.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>-fldmean<span class="w"> </span>-yearmonmean<span class="w"> </span>-select,season<span class="o">=</span>JJA<span class="w"> </span>-sellonlatbox,-180,180,-60,60<span class="w"> </span>-detrend<span class="w"> </span>download.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc
+cdo<span class="w"> </span>-b<span class="w"> </span>F64<span class="w"> </span>sub<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc<span class="w"> </span>-timmean<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMOm2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO2.nc
 
 
-cdo sub <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO1.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO2.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO_12.nc
+cdo<span class="w"> </span>sub<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO1.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO2.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO_12.nc
 
-cdo lowpass,10 <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO_12.nc <span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO.nc
+cdo<span class="w"> </span>lowpass,10<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO_12.nc<span class="w"> </span><span class="si">${</span><span class="nv">output3</span><span class="si">}</span>AMO.nc
 </pre></div>
 </div>
 </div>

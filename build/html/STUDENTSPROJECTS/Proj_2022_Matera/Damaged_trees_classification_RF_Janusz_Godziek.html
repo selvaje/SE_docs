@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -685,15 +682,15 @@ tile_download(gugik_DSM, file.path(getwd(), &#39;DSM&#39;), unzip = T) #download
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdalbuildvrt TA/GPN_DTM.vrt DTM/*.asc  <span class="c1">#built mosaic in .vrt format</span>
-gdal_translate -of GTiff -co <span class="s2">&quot;TILED=YES&quot;</span> -a_srs <span class="s2">&quot;epsg:2180&quot;</span> TA/GPN_DTM.vrt TA/GPN_DTM.tif <span class="c1">#convert from .vrt to .tif, set crs to epsg:2180</span>
-gdalwarp -cutline GPN_mask.shp -crop_to_cutline TA/GPN_DTM.tif TA/GPN_mask_DTM.tif <span class="c1">#crop tif to the boundary of shp</span>
+gdalbuildvrt<span class="w"> </span>TA/GPN_DTM.vrt<span class="w"> </span>DTM/*.asc<span class="w">  </span><span class="c1">#built mosaic in .vrt format</span>
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-co<span class="w"> </span><span class="s2">&quot;TILED=YES&quot;</span><span class="w"> </span>-a_srs<span class="w"> </span><span class="s2">&quot;epsg:2180&quot;</span><span class="w"> </span>TA/GPN_DTM.vrt<span class="w"> </span>TA/GPN_DTM.tif<span class="w"> </span><span class="c1">#convert from .vrt to .tif, set crs to epsg:2180</span>
+gdalwarp<span class="w"> </span>-cutline<span class="w"> </span>GPN_mask.shp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>TA/GPN_DTM.tif<span class="w"> </span>TA/GPN_mask_DTM.tif<span class="w"> </span><span class="c1">#crop tif to the boundary of shp</span>
 
-gdalbuildvrt TA/GPN_DSM.vrt DSM/*.asc  <span class="c1">#built mosaic in .vrt format</span>
-gdal_translate -of GTiff -co <span class="s2">&quot;TILED=YES&quot;</span> -a_srs <span class="s2">&quot;epsg:2180&quot;</span> TA/GPN_DSM.vrt TA/GPN_DSM.tif <span class="c1">#convert from .vrt to .tif, set crs to epsg:2180</span>
-gdalwarp -cutline GPN_mask.shp -crop_to_cutline TA/GPN_DSM.tif TA/GPN_mask_DSM.tif <span class="c1">#crop tif to the boundary of shp</span>
+gdalbuildvrt<span class="w"> </span>TA/GPN_DSM.vrt<span class="w"> </span>DSM/*.asc<span class="w">  </span><span class="c1">#built mosaic in .vrt format</span>
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-co<span class="w"> </span><span class="s2">&quot;TILED=YES&quot;</span><span class="w"> </span>-a_srs<span class="w"> </span><span class="s2">&quot;epsg:2180&quot;</span><span class="w"> </span>TA/GPN_DSM.vrt<span class="w"> </span>TA/GPN_DSM.tif<span class="w"> </span><span class="c1">#convert from .vrt to .tif, set crs to epsg:2180</span>
+gdalwarp<span class="w"> </span>-cutline<span class="w"> </span>GPN_mask.shp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>TA/GPN_DSM.tif<span class="w"> </span>TA/GPN_mask_DSM.tif<span class="w"> </span><span class="c1">#crop tif to the boundary of shp</span>
 
-gdal_calc.py -A TA/GPN_mask_DSM.tif -B TA/GPN_mask_DTM.tif --outfile<span class="o">=</span>TA/GPN_mask_VHM.tif --calc<span class="o">=</span><span class="s2">&quot;A - B&quot;</span>  <span class="c1">#calculate vegetation height model (VHM)</span>
+gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>TA/GPN_mask_DSM.tif<span class="w"> </span>-B<span class="w"> </span>TA/GPN_mask_DTM.tif<span class="w"> </span>--outfile<span class="o">=</span>TA/GPN_mask_VHM.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A - B&quot;</span><span class="w">  </span><span class="c1">#calculate vegetation height model (VHM)</span>
 </pre></div>
 </div>
 </div>

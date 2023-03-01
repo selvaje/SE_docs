@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -539,21 +536,21 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-mkdir TIF_files
+mkdir<span class="w"> </span>TIF_files
 
-<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span>ls -1 <span class="p">|</span> grep -v TIF_files<span class="k">)</span><span class="p">;</span> <span class="k">do</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>ls<span class="w"> </span>-1<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>TIF_files<span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 
-<span class="nv">input</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$i</span>/w001001.adf<span class="k">)</span>
+<span class="nv">input</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>/w001001.adf<span class="k">)</span>
 
-<span class="nv">output</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> TIF_files/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>.tif<span class="k">)</span>
+<span class="nv">output</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>TIF_files/<span class="si">${</span><span class="nv">i</span><span class="si">}</span>.tif<span class="k">)</span>
 
-gdal_translate -a_srs EPSG:2955 -of GTiff <span class="nv">$input</span> <span class="nv">$output</span><span class="p">;</span>
+gdal_translate<span class="w"> </span>-a_srs<span class="w"> </span>EPSG:2955<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span><span class="nv">$input</span><span class="w"> </span><span class="nv">$output</span><span class="p">;</span>
 
 <span class="k">done</span>
 
-gdal_merge.py -ot Float32 -of GTiff -o mooselake_merged_1x1.tif TIF_files/*.tif
+gdal_merge.py<span class="w"> </span>-ot<span class="w"> </span>Float32<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-o<span class="w"> </span>mooselake_merged_1x1.tif<span class="w"> </span>TIF_files/*.tif
 
-gdal_translate mooselake_merged_1x1.tif mooselake_merged_5x5.tif -tr <span class="m">5</span> <span class="m">5</span>
+gdal_translate<span class="w"> </span>mooselake_merged_1x1.tif<span class="w"> </span>mooselake_merged_5x5.tif<span class="w"> </span>-tr<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span>
 </pre></div>
 </div>
 </div>
@@ -576,45 +573,45 @@ gdal_translate mooselake_merged_1x1.tif mooselake_merged_5x5.tif -tr <span class
 
 <span class="c1"># Loop to extract only class 2 points (ground points) from LAZ files</span>
 
-<span class="k">for</span> i <span class="k">in</span> *.laz
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.laz
 
 <span class="k">do</span>
-    <span class="nb">echo</span> <span class="nv">$i</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span>
 
-    <span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="nv">$i</span> <span class="p">|</span> cut -f1 -d<span class="s1">&#39;.&#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="nv">name</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39;.&#39;</span><span class="k">)</span>
 
-    <span class="nv">name</span><span class="o">=</span><span class="nv">$name</span><span class="s2">&quot;_class2.laz&quot;</span>
+<span class="w">    </span><span class="nv">name</span><span class="o">=</span><span class="nv">$name</span><span class="s2">&quot;_class2.laz&quot;</span>
 
-    pdal translate <span class="nv">$i</span> <span class="nv">$name</span> --json class_2_filter.json
+<span class="w">    </span>pdal<span class="w"> </span>translate<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="nv">$name</span><span class="w"> </span>--json<span class="w"> </span>class_2_filter.json
 
-    <span class="c1"># Append the name of each file like file1 file2 file3 ...</span>
+<span class="w">    </span><span class="c1"># Append the name of each file like file1 file2 file3 ...</span>
 
-    <span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$file_list</span><span class="s2"> </span><span class="nv">$name</span><span class="s2">&quot;</span><span class="sb">`</span>
+<span class="w">    </span><span class="nv">file_list</span><span class="o">=</span><span class="sb">`</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$file_list</span><span class="s2"> </span><span class="nv">$name</span><span class="s2">&quot;</span><span class="sb">`</span>
 
-    <span class="nb">echo</span> <span class="nv">$file_list</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file_list</span>
 
 <span class="k">done</span>
 
 <span class="c1"># merge all the LAZ files that contain only class 2 points into one single file</span>
 
-pdal merge <span class="nv">$file_list</span> merged_file.laz
+pdal<span class="w"> </span>merge<span class="w"> </span><span class="nv">$file_list</span><span class="w"> </span>merged_file.laz
 
 
 <span class="c1">#to define the coordinate system</span>
 
-pdal pipeline proj_deff.json
+pdal<span class="w"> </span>pipeline<span class="w"> </span>proj_deff.json
 
 <span class="c1"># generate the multiband raster file with the measured values within each pixel with 2.5x2.5</span>
 
-pdal pipeline to_raster.json
+pdal<span class="w"> </span>pipeline<span class="w"> </span>to_raster.json
 
 <span class="c1"># resample the final dtm to 5x5 resolution</span>
 
-gdal_translate dtm_2_5_.tif dtm_5_.tif -tr <span class="m">5</span> <span class="m">5</span>
+gdal_translate<span class="w"> </span>dtm_2_5_.tif<span class="w"> </span>dtm_5_.tif<span class="w"> </span>-tr<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="m">5</span>
 
 <span class="c1"># fill the void pixels by IDW interpolation</span>
 
-gdal_fillnodata.py -md <span class="m">20</span> -of GTiff dtm_5_.tif dtm_5_idw.tif
+gdal_fillnodata.py<span class="w"> </span>-md<span class="w"> </span><span class="m">20</span><span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>dtm_5_.tif<span class="w"> </span>dtm_5_idw.tif
 </pre></div>
 </div>
 </div>
@@ -625,12 +622,12 @@ gdal_fillnodata.py -md <span class="m">20</span> -of GTiff dtm_5_.tif dtm_5_idw.
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/dtm/
-<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span><span class="p">;</span> gdalinfo <span class="nv">$i</span> <span class="p">|</span> grep NoData<span class="p">;</span> <span class="k">done</span>
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
-<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span><span class="p">;</span> gdalinfo <span class="nv">$i</span> <span class="p">|</span> grep Type<span class="p">;</span> <span class="k">done</span>
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
-<span class="k">for</span> i <span class="k">in</span> <span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span> <span class="k">do</span> <span class="nb">echo</span> <span class="nv">$i</span><span class="p">;</span> gdalinfo <span class="nv">$i</span> <span class="p">|</span> grep Pixel<span class="p">;</span> <span class="k">done</span>
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/dtm/
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="p">;</span><span class="w"> </span>gdalinfo<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>NoData<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="p">;</span><span class="w"> </span>gdalinfo<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Type<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;dtm_5_idw.tif mooselake_merged_5x5.tif&quot;</span><span class="k">)</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="p">;</span><span class="w"> </span>gdalinfo<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Pixel<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 </pre></div>
 </div>
 </div>
@@ -666,11 +663,11 @@ Pixel Size = (5.000000000000000,-5.000000000000000)
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/dtm/
-pkcomposite -i mooselake_merged_5x5.tif -i dtm_5_idw.tif -o /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/elevation2.tif -srcnodata -9999 -dstnodata -9999 -cr meanband
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
-gdal_edit.py -a_nodata -9999 elevation2.tif
-gdalinfo -mm elevation2.tif
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/dtm/
+pkcomposite<span class="w"> </span>-i<span class="w"> </span>mooselake_merged_5x5.tif<span class="w"> </span>-i<span class="w"> </span>dtm_5_idw.tif<span class="w"> </span>-o<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/elevation2.tif<span class="w"> </span>-srcnodata<span class="w"> </span>-9999<span class="w"> </span>-dstnodata<span class="w"> </span>-9999<span class="w"> </span>-cr<span class="w"> </span>meanband
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-9999<span class="w"> </span>elevation2.tif
+gdalinfo<span class="w"> </span>-mm<span class="w"> </span>elevation2.tif
 </pre></div>
 </div>
 </div>
@@ -714,9 +711,9 @@ gdalinfo -mm elevation2.tif
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/
-ogrinfo -so Valemount_landslide_inventory_2022.shp Valemount_landslide_inventory_2022 <span class="p">|</span> grep Count
-ogrinfo -so Valemount_landslide_inventory_2022.shp Valemount_landslide_inventory_2022 <span class="p">|</span> tail -10
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/
+ogrinfo<span class="w"> </span>-so<span class="w"> </span>Valemount_landslide_inventory_2022.shp<span class="w"> </span>Valemount_landslide_inventory_2022<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Count
+ogrinfo<span class="w"> </span>-so<span class="w"> </span>Valemount_landslide_inventory_2022.shp<span class="w"> </span>Valemount_landslide_inventory_2022<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
 </pre></div>
 </div>
 </div>
@@ -745,10 +742,10 @@ Channelize: String (10.0)
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/
-ogr2ogr -sql <span class="s2">&quot;SELECT * FROM Valemount_landslide_inventory_2022 WHERE Type=&#39;debris flow&#39; AND Lnds_zone=&#39;source&#39;&quot;</span> debris_flow_sources_2.shp Valemount_landslide_inventory_2022.shp
-ogrinfo -so debris_flow_sources_2.shp debris_flow_sources_2 <span class="p">|</span> grep Count
-ogrinfo -so debris_flow_sources_2.shp debris_flow_sources_2 <span class="p">|</span> tail -10
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/
+ogr2ogr<span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT * FROM Valemount_landslide_inventory_2022 WHERE Type=&#39;debris flow&#39; AND Lnds_zone=&#39;source&#39;&quot;</span><span class="w"> </span>debris_flow_sources_2.shp<span class="w"> </span>Valemount_landslide_inventory_2022.shp
+ogrinfo<span class="w"> </span>-so<span class="w"> </span>debris_flow_sources_2.shp<span class="w"> </span>debris_flow_sources_2<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Count
+ogrinfo<span class="w"> </span>-so<span class="w"> </span>debris_flow_sources_2.shp<span class="w"> </span>debris_flow_sources_2<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
 </pre></div>
 </div>
 </div>
@@ -890,9 +887,9 @@ Text(0.5, 1, &#39;Source Inventory&#39;)
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdal_calc.py -A /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/mask_1.tif <span class="se">\</span>
--B /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/inventory_clean_rast.tif <span class="se">\</span>
---calc<span class="o">=</span><span class="s2">&quot;A*B&quot;</span> --outfile /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/inventory_def.tif --NoDataValue<span class="o">=</span>-9999
+gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/mask_1.tif<span class="w"> </span><span class="se">\</span>
+-B<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/inventory_clean_rast.tif<span class="w"> </span><span class="se">\</span>
+--calc<span class="o">=</span><span class="s2">&quot;A*B&quot;</span><span class="w"> </span>--outfile<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/inventory_def.tif<span class="w"> </span>--NoDataValue<span class="o">=</span>-9999
 </pre></div>
 </div>
 </div>
@@ -928,11 +925,11 @@ gdal_calc.py -A /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
 <span class="c1"># calculate  slope</span>
-gdaldem slope -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> elevation.tif slope.tif
+gdaldem<span class="w"> </span>slope<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>elevation.tif<span class="w"> </span>slope.tif
 <span class="c1"># calculate  apect</span>
-gdaldem aspect -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> elevation.tif aspect.tif
+gdaldem<span class="w"> </span>aspect<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>elevation.tif<span class="w"> </span>aspect.tif
 </pre></div>
 </div>
 </div>
@@ -941,7 +938,7 @@ gdaldem aspect -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> <span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
+<span></span><span class="o">!</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
 <span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">rasterio</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
@@ -987,14 +984,14 @@ gdaldem aspect -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
+<span class="nb">cd</span><span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/Raster_variables/
 <span class="c1"># generate a virtual multiband layer with all the raster maps</span>
-gdalbuildvrt -separate variables_stack_2.vrt inventory_def.tif elevation.tif slope.tif aspect.tif flow_acc.tif
-gdalinfo variables_stack_2.vrt <span class="p">|</span> tail -23
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>variables_stack_2.vrt<span class="w"> </span>inventory_def.tif<span class="w"> </span>elevation.tif<span class="w"> </span>slope.tif<span class="w"> </span>aspect.tif<span class="w"> </span>flow_acc.tif
+gdalinfo<span class="w"> </span>variables_stack_2.vrt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-23
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
 <span class="c1"># generate the xyz table skipinig nodata pixels</span>
-gdal2xyz.py -allbands -skipnodata variables_stack_2.vrt /home/txomin/LVM_shared/Project/Valemount_data/valemount_source_dataset_2.txt
+gdal2xyz.py<span class="w"> </span>-allbands<span class="w"> </span>-skipnodata<span class="w"> </span>variables_stack_2.vrt<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/valemount_source_dataset_2.txt
 <span class="c1">#head -20 /home/txomin/LVM_shared/Project/Valemount_data/valemount_source_dataset_2.txt</span>
 
 </pre></div>
@@ -1006,7 +1003,7 @@ gdal2xyz.py -allbands -skipnodata variables_stack_2.vrt /home/txomin/LVM_shared/
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-head -20 /home/txomin/LVM_shared/Project/Valemount_data/valemount_source_dataset_2.txt
+head<span class="w"> </span>-20<span class="w"> </span>/home/txomin/LVM_shared/Project/Valemount_data/valemount_source_dataset_2.txt
 </pre></div>
 </div>
 </div>
@@ -2504,8 +2501,8 @@ array([0, 1])
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train data set&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2526,8 +2523,8 @@ number of pixels with value 0: 116501
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test data set&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3695,8 +3692,8 @@ range prediction test: -1.1966206427227377 --  1.1193402180140222
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Train data set&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_train</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3716,8 +3713,8 @@ number of pixels with value 0: 691
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Test data set&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 1: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;number of pixels with value 0: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">count_nonzero</span><span class="p">(</span><span class="n">Y_test</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>

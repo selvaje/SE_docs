@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -481,28 +478,28 @@ jupyter-notebook SDM1_MWood_gecomp.ipynb
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 <span class="c1"># test</span>
 <span class="c1"># define north south weast owest extent</span>
-<span class="nv">ulx</span><span class="o">=</span><span class="k">$(</span>ogrinfo -al -so geodata/shp/cartodb-query.shp <span class="p">|</span> grep Extent <span class="p">|</span> awk <span class="s1">&#39;{ gsub(&quot;\\(&quot;,&quot; &quot;); print int($2 -3)}&#39;</span><span class="k">)</span>
-<span class="nv">uly</span><span class="o">=</span><span class="k">$(</span>ogrinfo -al -so geodata/shp/cartodb-query.shp <span class="p">|</span> grep Extent <span class="p">|</span> awk <span class="s1">&#39;{ gsub(&quot;\\)&quot;,&quot; &quot;); print int($6 +3)}&#39;</span><span class="k">)</span>
-<span class="nv">lrx</span><span class="o">=</span><span class="k">$(</span>ogrinfo -al -so geodata/shp/cartodb-query.shp <span class="p">|</span> grep Extent <span class="p">|</span> awk <span class="s1">&#39;{ gsub(&quot;\\(&quot;,&quot; &quot;); print int($5 +3)}&#39;</span><span class="k">)</span>
-<span class="nv">lry</span><span class="o">=</span><span class="k">$(</span>ogrinfo -al -so geodata/shp/cartodb-query.shp <span class="p">|</span> grep Extent <span class="p">|</span> awk <span class="s1">&#39;{ gsub(&quot;\\)&quot;,&quot; &quot;); print int($3 -3)}&#39;</span><span class="k">)</span>
+<span class="nv">ulx</span><span class="o">=</span><span class="k">$(</span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-so<span class="w"> </span>geodata/shp/cartodb-query.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Extent<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub(&quot;\\(&quot;,&quot; &quot;); print int($2 -3)}&#39;</span><span class="k">)</span>
+<span class="nv">uly</span><span class="o">=</span><span class="k">$(</span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-so<span class="w"> </span>geodata/shp/cartodb-query.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Extent<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub(&quot;\\)&quot;,&quot; &quot;); print int($6 +3)}&#39;</span><span class="k">)</span>
+<span class="nv">lrx</span><span class="o">=</span><span class="k">$(</span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-so<span class="w"> </span>geodata/shp/cartodb-query.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Extent<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub(&quot;\\(&quot;,&quot; &quot;); print int($5 +3)}&#39;</span><span class="k">)</span>
+<span class="nv">lry</span><span class="o">=</span><span class="k">$(</span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-so<span class="w"> </span>geodata/shp/cartodb-query.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Extent<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub(&quot;\\)&quot;,&quot; &quot;); print int($3 -3)}&#39;</span><span class="k">)</span>
 
 <span class="c1">## Print the extent to confirm the lat long</span>
-<span class="nb">echo</span> <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span>
 <span class="c1">## croping</span>
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
-geodata/cloud/SA_intra.tif  geodata/cloud/SA_intra_crop.tif
+gdal_translate<span class="w"> </span>-projwin<span class="w">  </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+geodata/cloud/SA_intra.tif<span class="w">  </span>geodata/cloud/SA_intra_crop.tif
 
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
-geodata/cloud/SA_meanannual.tif  geodata/cloud/SA_meanannual_crop.tif
+gdal_translate<span class="w"> </span>-projwin<span class="w">  </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+geodata/cloud/SA_meanannual.tif<span class="w">  </span>geodata/cloud/SA_meanannual_crop.tif
 
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
-geodata/dem/SA_elevation_mn_GMTED2010_mn.tif  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif
+gdal_translate<span class="w"> </span>-projwin<span class="w">  </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+geodata/dem/SA_elevation_mn_GMTED2010_mn.tif<span class="w">  </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif
 
-gdal_translate -projwin  <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
-geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif  geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif
+gdal_translate<span class="w"> </span>-projwin<span class="w">  </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif<span class="w">  </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif
 
 </pre></div>
 </div>
@@ -537,11 +534,11 @@ Input file size is 5880, 8400
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 <span class="c1"># download temperature tmin and tmax from https://envicloud.wsl.ch/#/?prefix=chelsa%2Fchelsa_V1</span>
-<span class="k">for</span> var <span class="k">in</span> tmin tmax <span class="p">;</span> <span class="k">do</span>
-<span class="k">for</span> MM <span class="k">in</span> <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="p">;</span> <span class="k">do</span>
-gdal_translate -projwin -82 <span class="m">14</span> -59 -21 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  /vsicurl/https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V1/climatologies/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_1979-2013_V1.2_land.tif  geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_1979-2013_V1.2_land_crop.tif
+<span class="k">for</span><span class="w"> </span>var<span class="w"> </span><span class="k">in</span><span class="w"> </span>tmin<span class="w"> </span>tmax<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="k">for</span><span class="w"> </span>MM<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span><span class="m">03</span><span class="w"> </span><span class="m">04</span><span class="w"> </span><span class="m">05</span><span class="w"> </span><span class="m">06</span><span class="w"> </span><span class="m">07</span><span class="w"> </span><span class="m">08</span><span class="w"> </span><span class="m">09</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+gdal_translate<span class="w"> </span>-projwin<span class="w"> </span>-82<span class="w"> </span><span class="m">14</span><span class="w"> </span>-59<span class="w"> </span>-21<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>/vsicurl/https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V1/climatologies/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_1979-2013_V1.2_land.tif<span class="w">  </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_1979-2013_V1.2_land_crop.tif
 <span class="k">done</span>
 <span class="k">done</span>
 </pre></div>
@@ -608,10 +605,10 @@ Input file size is 43200, 20880
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 <span class="c1"># download precipitation from https://envicloud.wsl.ch/#/?prefix=chelsa%2Fchelsa_V1</span>
-<span class="k">for</span> MM <span class="k">in</span> <span class="m">01</span> <span class="m">02</span> <span class="m">03</span> <span class="m">04</span> <span class="m">05</span> <span class="m">06</span> <span class="m">07</span> <span class="m">08</span> <span class="m">09</span> <span class="m">10</span> <span class="m">11</span> <span class="m">12</span> <span class="p">;</span> <span class="k">do</span>
-gdal_translate -projwin -82 <span class="m">14</span> -59 -21 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> /vsicurl/https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V1/climatologies/prec/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land.tif  geodata/climate/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land_crop.tif
+<span class="k">for</span><span class="w"> </span>MM<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">01</span><span class="w"> </span><span class="m">02</span><span class="w"> </span><span class="m">03</span><span class="w"> </span><span class="m">04</span><span class="w"> </span><span class="m">05</span><span class="w"> </span><span class="m">06</span><span class="w"> </span><span class="m">07</span><span class="w"> </span><span class="m">08</span><span class="w"> </span><span class="m">09</span><span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">11</span><span class="w"> </span><span class="m">12</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+gdal_translate<span class="w"> </span>-projwin<span class="w"> </span>-82<span class="w"> </span><span class="m">14</span><span class="w"> </span>-59<span class="w"> </span>-21<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>/vsicurl/https://os.zhdk.cloud.switch.ch/envicloud/chelsa/chelsa_V1/climatologies/prec/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land.tif<span class="w">  </span>geodata/climate/CHELSA_prec_<span class="si">${</span><span class="nv">MM</span><span class="si">}</span>_V1.2_land_crop.tif
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -654,18 +651,18 @@ Input file size is 43200, 20880
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 
 <span class="c1"># calculate mean and stdev for tmax,</span>
-<span class="k">for</span> var <span class="k">in</span> tmin tmax <span class="p">;</span> <span class="k">do</span>
-gdalbuildvrt -overwrite -separate geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_*_1979-2013_V1.2_land_crop.tif
+<span class="k">for</span><span class="w"> </span>var<span class="w"> </span><span class="k">in</span><span class="w"> </span>tmin<span class="w"> </span>tmax<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_*_1979-2013_V1.2_land_crop.tif
 
-pkstatprofile -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -nodata -32768 -f  mean -i geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt -o geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif
-pkstatprofile -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -nodata -32768 -f stdev -i geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt -o geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif
+pkstatprofile<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-nodata<span class="w"> </span>-32768<span class="w"> </span>-f<span class="w">  </span>mean<span class="w"> </span>-i<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt<span class="w"> </span>-o<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif
+pkstatprofile<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-nodata<span class="w"> </span>-32768<span class="w"> </span>-f<span class="w"> </span>stdev<span class="w"> </span>-i<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop.vrt<span class="w"> </span>-o<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif
 
-gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif  geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean.tif
-gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev.tif
-rm -f geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif<span class="w">  </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev.tif
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_stdev_tmp.tif<span class="w"> </span>geodata/climate/CHELSA_<span class="si">${</span><span class="nv">var</span><span class="si">}</span>10_1979-2013_V1.2_land_crop_mean_tmp.tif
 
 <span class="k">done</span>
 </pre></div>
@@ -698,17 +695,17 @@ Input file size is 2760, 4200
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 
-gdalbuildvrt -overwrite -separate geodata/climate/CHELSA_prec_V1.2_land_crop.vrt geodata/climate/CHELSA_prec_*V1.2_land_crop.tif
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop.vrt<span class="w"> </span>geodata/climate/CHELSA_prec_*V1.2_land_crop.tif
 
-pkstatprofile -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -nodata -32768 -f  mean  -i geodata/climate/CHELSA_prec_V1.2_land_crop.vrt  -o geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif
-pkstatprofile -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -nodata -32768 -f  stdev -i geodata/climate/CHELSA_prec_V1.2_land_crop.vrt  -o geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif
+pkstatprofile<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-nodata<span class="w"> </span>-32768<span class="w"> </span>-f<span class="w">  </span>mean<span class="w">  </span>-i<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop.vrt<span class="w">  </span>-o<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif
+pkstatprofile<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-nodata<span class="w"> </span>-32768<span class="w"> </span>-f<span class="w">  </span>stdev<span class="w"> </span>-i<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop.vrt<span class="w">  </span>-o<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif
 
-gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif  geodata/climate/CHELSA_prec_V1.2_land_crop_mean.tif
-gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif geodata/climate/CHELSA_prec_V1.2_land_crop_stdev.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif<span class="w">  </span>geodata/climate/CHELSA_prec_V1.2_land_crop_mean.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_stdev.tif
 
-rm geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif  geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif
+rm<span class="w"> </span>geodata/climate/CHELSA_prec_V1.2_land_crop_mean_tmp.tif<span class="w">  </span>geodata/climate/CHELSA_prec_V1.2_land_crop_stdev_tmp.tif
 </pre></div>
 </div>
 </div>
@@ -739,7 +736,7 @@ Input file size is 2760, 4200
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 
 <span class="c1"># To calculate the slope by gdaldem slope in lat long you need to setup corretly the scale flag.</span>
 <span class="c1"># The slope scale value is 111120 at the equator and 0 at the north/south pole. In order to get the slope correctly</span>
@@ -748,9 +745,9 @@ Input file size is 2760, 4200
 <span class="c1"># Center      ( -70.5000000,  -3.5000000)</span>
 <span class="c1"># 111120 - (111120 /90 * 3.5) = 106798</span>
 
-gdaldem slope  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -scale <span class="m">106798</span> geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_slope.tif
-gdaldem aspect -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_aspect.tif
-gdaldem TRI    -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_tri.tif
+gdaldem<span class="w"> </span>slope<span class="w">  </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-scale<span class="w"> </span><span class="m">106798</span><span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_slope.tif
+gdaldem<span class="w"> </span>aspect<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_aspect.tif
+gdaldem<span class="w"> </span>TRI<span class="w">    </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_tri.tif
 </pre></div>
 </div>
 </div>
@@ -774,13 +771,13 @@ gdaldem TRI    -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLA
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">cd</span> /media/sf_LVM_shared/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise
 
-pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/cloud/SA_meanannual_crop.tif -o geodata/cloud/SA_meanannual_crop_msk.tif
-pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/cloud/SA_intra_crop.tif -o geodata/cloud/SA_intra_crop_msk.tif
+pksetmask<span class="w"> </span>-ot<span class="w"> </span>Int16<span class="w"> </span>-m<span class="w"> </span>geodata/mask/msk_1km.tif<span class="w"> </span>-msknodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-9999<span class="w"> </span>-i<span class="w"> </span>geodata/cloud/SA_meanannual_crop.tif<span class="w"> </span>-o<span class="w"> </span>geodata/cloud/SA_meanannual_crop_msk.tif
+pksetmask<span class="w"> </span>-ot<span class="w"> </span>Int16<span class="w"> </span>-m<span class="w"> </span>geodata/mask/msk_1km.tif<span class="w"> </span>-msknodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-9999<span class="w"> </span>-i<span class="w"> </span>geodata/cloud/SA_intra_crop.tif<span class="w"> </span>-o<span class="w"> </span>geodata/cloud/SA_intra_crop_msk.tif
 
-pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif -o geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_msk.tif
-pksetmask -ot Int16 -m geodata/mask/msk_1km.tif -msknodata <span class="m">0</span> -nodata -9999 -i geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif  -o geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop_msk.tif
+pksetmask<span class="w"> </span>-ot<span class="w"> </span>Int16<span class="w"> </span>-m<span class="w"> </span>geodata/mask/msk_1km.tif<span class="w"> </span>-msknodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-9999<span class="w"> </span>-i<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop.tif<span class="w"> </span>-o<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_crop_msk.tif
+pksetmask<span class="w"> </span>-ot<span class="w"> </span>Int16<span class="w"> </span>-m<span class="w"> </span>geodata/mask/msk_1km.tif<span class="w"> </span>-msknodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-9999<span class="w"> </span>-i<span class="w"> </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop.tif<span class="w">  </span>-o<span class="w"> </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013_crop_msk.tif
 </pre></div>
 </div>
 </div>

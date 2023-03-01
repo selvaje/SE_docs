@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -475,16 +472,16 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-<span class="nb">echo</span> ncols <span class="m">10</span>       &gt;  geodata_small/rast_ID.asc
-<span class="nb">echo</span> nrows <span class="m">10</span>       &gt;&gt; geodata_small/rast_ID.asc
-<span class="nb">echo</span> xllcorner <span class="m">0</span>    &gt;&gt; geodata_small/rast_ID.asc
-<span class="nb">echo</span> yllcorner <span class="m">0</span>    &gt;&gt; geodata_small/rast_ID.asc
-<span class="nb">echo</span> cellsize  <span class="m">1</span>    &gt;&gt; geodata_small/rast_ID.asc
+<span class="nb">echo</span><span class="w"> </span>ncols<span class="w"> </span><span class="m">10</span><span class="w">       </span>&gt;<span class="w">  </span>geodata_small/rast_ID.asc
+<span class="nb">echo</span><span class="w"> </span>nrows<span class="w"> </span><span class="m">10</span><span class="w">       </span>&gt;&gt;<span class="w"> </span>geodata_small/rast_ID.asc
+<span class="nb">echo</span><span class="w"> </span>xllcorner<span class="w"> </span><span class="m">0</span><span class="w">    </span>&gt;&gt;<span class="w"> </span>geodata_small/rast_ID.asc
+<span class="nb">echo</span><span class="w"> </span>yllcorner<span class="w"> </span><span class="m">0</span><span class="w">    </span>&gt;&gt;<span class="w"> </span>geodata_small/rast_ID.asc
+<span class="nb">echo</span><span class="w"> </span>cellsize<span class="w">  </span><span class="m">1</span><span class="w">    </span>&gt;&gt;<span class="w"> </span>geodata_small/rast_ID.asc
 
-awk <span class="s1">&#39; BEGIN {</span>
+awk<span class="w"> </span><span class="s1">&#39; BEGIN {</span>
 <span class="s1">for (row=1 ; row&lt;=10 ; row++)  {</span>
 <span class="s1">     for (col=1 ; col&lt;=10 ; col++) {</span>
-<span class="s1">         printf (&quot;%i &quot; , 16777200+col+(row-1)*10  ) } ; printf (&quot;\n&quot;)  }}&#39;</span> &gt;&gt; geodata_small/rast_ID.asc
+<span class="s1">         printf (&quot;%i &quot; , 16777200+col+(row-1)*10  ) } ; printf (&quot;\n&quot;)  }}&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>geodata_small/rast_ID.asc
 </pre></div>
 </div>
 </div>
@@ -495,7 +492,7 @@ awk <span class="s1">&#39; BEGIN {</span>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-cat geodata_small/rast_ID.asc
+cat<span class="w"> </span>geodata_small/rast_ID.asc
 </pre></div>
 </div>
 </div>
@@ -528,7 +525,7 @@ cellsize 1
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdal_translate -ot UInt32 -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> geodata_small/rast_ID.asc geodata_small/rast_ID.tif
+gdal_translate<span class="w"> </span>-ot<span class="w"> </span>UInt32<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata_small/rast_ID.asc<span class="w"> </span>geodata_small/rast_ID.tif
 </pre></div>
 </div>
 </div>
@@ -548,7 +545,7 @@ Input file size is 10, 10
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdal_calc.py ?????????????????????????????????????   --outfile<span class="o">=</span>geodata_small/rast_ID_mult.tif --overwrite
+gdal_calc.py<span class="w"> </span>?????????????????????????????????????<span class="w">   </span>--outfile<span class="o">=</span>geodata_small/rast_ID_mult.tif<span class="w"> </span>--overwrite
 </pre></div>
 </div>
 </div>
@@ -559,8 +556,8 @@ gdal_calc.py ?????????????????????????????????????   --outfile<span class="o">=<
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-gdal_translate  -of   AAIGrid  geodata_small/rast_ID_mult.tif  geodata_small/rast_ID_mult.asc
-cat geodata_small/rast_ID_mult.asc
+gdal_translate<span class="w">  </span>-of<span class="w">   </span>AAIGrid<span class="w">  </span>geodata_small/rast_ID_mult.tif<span class="w">  </span>geodata_small/rast_ID_mult.asc
+cat<span class="w"> </span>geodata_small/rast_ID_mult.asc
 </pre></div>
 </div>
 </div>

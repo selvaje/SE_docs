@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,7 +16,7 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -296,7 +293,7 @@ sub-catchments and later on make a rapid data extraction?</p>
 <ol class="simple">
 <li><p>Research based datasets</p></li>
 </ol>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head Coordinates_forSami_3moSeason_24Nov2020.csv
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>head<span class="w"> </span>Coordinates_forSami_3moSeason_24Nov2020.csv
 
 Site_ID,Country,River,Longitude_X,Latitude_Y,Starting_year,Ending_year,NEW?
 <span class="m">100000001</span>,France,Rhone,5.294382,45.829523,1980,2014,
@@ -318,9 +315,9 @@ Site_ID,Country,River,Longitude_X,Latitude_Y,Starting_year,Ending_year,NEW?
 <span class="c1"># files have lines and points as geometries) and removing points representing </span>
 <span class="c1"># outlets (cat = 0)</span>
 
-ogr2ogr <span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg <span class="nv">$vect</span> <span class="se">\</span>
-    -sql <span class="s2">&quot;SELECT * FROM vect WHERE ST_GeometryType(geom) LIKE &#39;POINT&#39; AND NOT cat = 0&quot;</span> <span class="se">\</span>
-    -nln points_<span class="nv">$ref</span> -nlt POINT
+ogr2ogr<span class="w"> </span><span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg<span class="w"> </span><span class="nv">$vect</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT * FROM vect WHERE ST_GeometryType(geom) LIKE &#39;POINT&#39; AND NOT cat = 0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-nln<span class="w"> </span>points_<span class="nv">$ref</span><span class="w"> </span>-nlt<span class="w"> </span>POINT
 </pre></div>
 </div>
 </section>
@@ -333,34 +330,34 @@ output some observation would not overlap.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>SnapPoint<span class="o">(){</span>
 
 <span class="c1"># unique id of the point </span>
-<span class="nb">export</span> <span class="nv">ID</span><span class="o">=</span><span class="nv">$1</span>
-<span class="nb">export</span> <span class="nv">DIR</span><span class="o">=</span><span class="nv">$2</span>
-<span class="nb">export</span> <span class="nv">TMP</span><span class="o">=</span><span class="nv">$3</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ID</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DIR</span><span class="o">=</span><span class="nv">$2</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">TMP</span><span class="o">=</span><span class="nv">$3</span>
 
 <span class="c1"># path to basins info</span>
-<span class="nb">export</span> <span class="nv">BASIN</span><span class="o">=</span><span class="nv">$DIR</span>/basins
+<span class="nb">export</span><span class="w"> </span><span class="nv">BASIN</span><span class="o">=</span><span class="nv">$DIR</span>/basins
 
 <span class="c1"># prepare target folder</span>
-<span class="nb">export</span> <span class="nv">OUTDIR</span><span class="o">=</span><span class="nv">$TMP</span>/snappoints
+<span class="nb">export</span><span class="w"> </span><span class="nv">OUTDIR</span><span class="o">=</span><span class="nv">$TMP</span>/snappoints
 
 <span class="c1"># name of unique id identifier</span>
-<span class="nb">export</span> <span class="nv">SITE</span><span class="o">=</span><span class="k">$(</span> awk -F, <span class="s1">&#39;NR==1 {print $1}&#39;</span> <span class="nv">$DIR</span>/BasisDataBasinsIDs.csv <span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">SITE</span><span class="o">=</span><span class="k">$(</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;NR==1 {print $1}&#39;</span><span class="w"> </span><span class="nv">$DIR</span>/BasisDataBasinsIDs.csv<span class="w"> </span><span class="k">)</span>
 
 <span class="c1"># identify macrobasin ID for that point</span>
-<span class="nb">export</span> <span class="nv">MAB</span><span class="o">=</span><span class="k">$(</span>awk -F, -v <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span> <span class="s1">&#39;$1==id {print $4}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MAB</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span>-F,<span class="w"> </span>-v<span class="w"> </span><span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;$1==id {print $4}&#39;</span><span class="w"> </span>BasisDataBasinsIDs.csv<span class="k">)</span>
 <span class="c1"># identify microbasin ID for that point</span>
-<span class="nb">export</span> <span class="nv">MIB</span><span class="o">=</span><span class="k">$(</span>awk -F, -v <span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span> <span class="s1">&#39;$1==id {print $5}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MIB</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span>-F,<span class="w"> </span>-v<span class="w"> </span><span class="nv">id</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;$1==id {print $5}&#39;</span><span class="w"> </span>BasisDataBasinsIDs.csv<span class="k">)</span>
 
 <span class="c1"># extract point of interest</span>
-ogr2ogr -where <span class="s2">&quot;</span><span class="nv">$SITE</span><span class="s2"> = </span><span class="nv">$ID</span><span class="s2">&quot;</span> -f GPKG <span class="nv">$TMP</span>/point_<span class="nv">$ID</span>.gpkg <span class="se">\</span>
-    <span class="nv">$DIR</span>/BasisDataBasinsIDs.gpkg 
+ogr2ogr<span class="w"> </span>-where<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$SITE</span><span class="s2"> = </span><span class="nv">$ID</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span>GPKG<span class="w"> </span><span class="nv">$TMP</span>/point_<span class="nv">$ID</span>.gpkg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$DIR</span>/BasisDataBasinsIDs.gpkg<span class="w"> </span>
 
 <span class="c1"># extract vector line (stream reach) associated with point</span>
-ogr2ogr -where <span class="s2">&quot;stream = </span><span class="si">${</span><span class="nv">MIB</span><span class="si">}</span><span class="s2">&quot;</span> -f GPKG <span class="nv">$TMP</span>/Microb_<span class="si">${</span><span class="nv">MIB</span><span class="si">}</span>.gpkg <span class="se">\</span>
-    <span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_stre_order.gpkg
+ogr2ogr<span class="w"> </span>-where<span class="w"> </span><span class="s2">&quot;stream = </span><span class="si">${</span><span class="nv">MIB</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>-f<span class="w"> </span>GPKG<span class="w"> </span><span class="nv">$TMP</span>/Microb_<span class="si">${</span><span class="nv">MIB</span><span class="si">}</span>.gpkg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_stre_order.gpkg
 
 <span class="c1"># open grass session based on microbasin raster</span>
-grass78 -f -text --tmp-location -c <span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_mask.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+grass78<span class="w"> </span>-f<span class="w"> </span>-text<span class="w"> </span>--tmp-location<span class="w"> </span>-c<span class="w"> </span><span class="nv">$BASIN</span>/basin_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>/bid_<span class="si">${</span><span class="nv">MAB</span><span class="si">}</span>_mask.tif<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">    # read in point of interest</span>
 <span class="s">    v.in.ogr input=$TMP/point_$ID.gpkg layer=orig_points output=point_$ID \</span>
@@ -399,14 +396,14 @@ grass78 -f -text --tmp-location -c <span class="nv">$BASIN</span>/basin_<span cl
 <span class="s">EOF</span>
 <span class="o">}</span>
 
-<span class="nv">IDS</span><span class="o">=</span><span class="k">$(</span>awk -F, <span class="s1">&#39;NR &gt; 1 {print $1}&#39;</span> BasisDataBasinsIDs.csv<span class="k">)</span>
+<span class="nv">IDS</span><span class="o">=</span><span class="k">$(</span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39;NR &gt; 1 {print $1}&#39;</span><span class="w"> </span>BasisDataBasinsIDs.csv<span class="k">)</span>
 
-<span class="nb">export</span> -f SnapPoint
-parallel -j <span class="m">40</span> SnapPoint ::: <span class="nv">$IDS</span> ::: <span class="nv">$DIR</span> ::: <span class="nv">$TMP</span>
+<span class="nb">export</span><span class="w"> </span>-f<span class="w"> </span>SnapPoint
+parallel<span class="w"> </span>-j<span class="w"> </span><span class="m">40</span><span class="w"> </span>SnapPoint<span class="w"> </span>:::<span class="w"> </span><span class="nv">$IDS</span><span class="w"> </span>:::<span class="w"> </span><span class="nv">$DIR</span><span class="w"> </span>:::<span class="w"> </span><span class="nv">$TMP</span>
 
 <span class="c1">#  Join all single tables in one file</span>
-<span class="nb">echo</span> XcoordSnap,YcoordSnap,Site_ID_snap &gt; <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
-cat <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/coords_* &gt;&gt; <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
+<span class="nb">echo</span><span class="w"> </span>XcoordSnap,YcoordSnap,Site_ID_snap<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
+cat<span class="w"> </span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/coords_*<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</span>/snap_all.csv
 </pre></div>
 </div>
 </section>
@@ -414,7 +411,7 @@ cat <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</
 <section id="calculating-upstream-basins-from-observation-points">
 <h3><span class="section-number">2.4.5.3. </span>Calculating upstream basins from observation points<a class="headerlink" href="#calculating-upstream-basins-from-observation-points" title="Permalink to this headline"></a></h3>
 <p><img alt="Upstream basins" src="../../_images/upstreamBasin.png" /></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78 -f -text --tmp-location -c <span class="si">${</span><span class="nv">richt</span><span class="si">}</span>/dir_<span class="si">${</span><span class="nv">C</span><span class="si">}</span>_msk.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78<span class="w"> </span>-f<span class="w"> </span>-text<span class="w"> </span>--tmp-location<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">richt</span><span class="si">}</span>/dir_<span class="si">${</span><span class="nv">C</span><span class="si">}</span>_msk.tif<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">#  read direction map</span>
 <span class="s">r.external --o input=${richt}/dir_${C}_msk.tif output=dir</span>
@@ -458,26 +455,26 @@ cat <span class="si">${</span><span class="nv">OUTDIR</span><span class="si">}</
 <section id="gdallocationinfo-at-pixel-value-extraction">
 <h3><span class="section-number">2.4.5.4. </span><em>gdallocationinfo</em>:  at pixel value extraction<a class="headerlink" href="#gdallocationinfo-at-pixel-value-extraction" title="Permalink to this headline"></a></h3>
 <p><img alt="Value at pixel" src="../../_images/ValuePixel.png" /></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span> <span class="se">\</span>
-<span class="k">$(</span>awk <span class="s1">&#39;FNR &gt; 1 {print $1, $2}&#39;</span> <span class="nv">$DIR</span>/coordinates_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt <span class="p">|</span> <span class="se">\</span>
-gdallocationinfo -valonly -geoloc  <span class="si">${</span><span class="nv">NITRO</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.tif<span class="k">)</span> <span class="p">|</span> <span class="se">\</span>
-awk <span class="s1">&#39;{gsub(&quot;-9999&quot;, &quot;na&quot;); print $0}&#39;</span> <span class="se">\</span>
-&gt; <span class="nv">$TMP</span>/NHO_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<span class="k">$(</span>awk<span class="w"> </span><span class="s1">&#39;FNR &gt; 1 {print $1, $2}&#39;</span><span class="w"> </span><span class="nv">$DIR</span>/coordinates_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span>-geoloc<span class="w">  </span><span class="si">${</span><span class="nv">NITRO</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.tif<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+awk<span class="w"> </span><span class="s1">&#39;{gsub(&quot;-9999&quot;, &quot;na&quot;); print $0}&#39;</span><span class="w"> </span><span class="se">\</span>
+&gt;<span class="w"> </span><span class="nv">$TMP</span>/NHO_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>/<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">YEAR</span><span class="si">}</span>_<span class="si">${</span><span class="nv">MES</span><span class="si">}</span>.txt
 </pre></div>
 </div>
 <p>Output</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1-10 CompUnit_88/stats_88_NH4.txt <span class="p">|</span> head
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1-10<span class="w"> </span>CompUnit_88/stats_88_NH4.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 
-subcID NH4_1961_01 NH4_1961_02 NH4_1961_03 NH4_1961_04 NH4_1961_05 NH4_1961_06 NH4_1961_07 NH4_1961_08 NH4_1961_09
-<span class="m">672966675</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966676</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966677</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966678</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966679</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966680</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966681</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966682</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
-<span class="m">672966683</span> na <span class="m">0</span>.271661728620529 <span class="m">0</span>.116426452994347 na na na na na na
+subcID<span class="w"> </span>NH4_1961_01<span class="w"> </span>NH4_1961_02<span class="w"> </span>NH4_1961_03<span class="w"> </span>NH4_1961_04<span class="w"> </span>NH4_1961_05<span class="w"> </span>NH4_1961_06<span class="w"> </span>NH4_1961_07<span class="w"> </span>NH4_1961_08<span class="w"> </span>NH4_1961_09
+<span class="m">672966675</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966676</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966677</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966678</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966679</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966680</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966681</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966682</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
+<span class="m">672966683</span><span class="w"> </span>na<span class="w"> </span><span class="m">0</span>.271661728620529<span class="w"> </span><span class="m">0</span>.116426452994347<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na<span class="w"> </span>na
 </pre></div>
 </div>
 </section>
@@ -485,33 +482,33 @@ subcID NH4_1961_01 NH4_1961_02 NH4_1961_03 NH4_1961_04 NH4_1961_05 NH4_1961_06 N
 <section id="stream-order-tables-from-vector-gpkg">
 <h3><span class="section-number">2.4.5.5. </span>Stream order tables from vector <em>.gpkg</em><a class="headerlink" href="#stream-order-tables-from-vector-gpkg" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># create csv file with all the information in the original stream order gpkg</span>
-ogr2ogr <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv <span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg <span class="se">\</span>
-    -f <span class="s2">&quot;CSV&quot;</span> -lco <span class="nv">STRING_QUOTING</span><span class="o">=</span>IF_NEEDED
+ogr2ogr<span class="w"> </span><span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv<span class="w"> </span><span class="nv">$DIR</span>/points_<span class="nv">$ref</span>.gpkg<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-f<span class="w"> </span><span class="s2">&quot;CSV&quot;</span><span class="w"> </span>-lco<span class="w"> </span><span class="nv">STRING_QUOTING</span><span class="o">=</span>IF_NEEDED
 
 <span class="c1"># remove column 1 (duplicate of column 2)</span>
-cut -d<span class="s1">&#39;,&#39;</span> -f2-26 <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv &gt; <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv
+cut<span class="w"> </span>-d<span class="s1">&#39;,&#39;</span><span class="w"> </span>-f2-26<span class="w"> </span><span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.csv<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv
 
 <span class="c1"># replace column name to use subcID</span>
-sed -i <span class="s1">&#39;s/stream/subcID/&#39;</span> <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv 
+sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/stream/subcID/&#39;</span><span class="w"> </span><span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv<span class="w"> </span>
 
 <span class="c1"># make the file a space separated file</span>
-sed <span class="s1">&#39;s/,/\ /g&#39;</span> <span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv <span class="se">\</span>
-    &gt;  <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.txt
+sed<span class="w"> </span><span class="s1">&#39;s/,/\ /g&#39;</span><span class="w"> </span><span class="nv">$TMP</span>/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder_cut.csv<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;<span class="w">  </span><span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">ref</span><span class="si">}</span>_streamorder.txt
 </pre></div>
 </div>
 <p>Output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1-4,8-10,15,19,20-22 CompUnit_88/stats_88_streamorder.txt <span class="p">|</span> head
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1-4,8-10,15,19,20-22<span class="w"> </span>CompUnit_88/stats_88_streamorder.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 
-subcID next_stream prev_str01 prev_str02 strahler horton shreve length flow_accum out_dist source_elev outlet_elev
-<span class="m">672966675</span> <span class="m">672966683</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">450</span>.669628 <span class="m">0</span>.096674 <span class="m">2195355</span>.435172 <span class="m">4951</span>.899902 <span class="m">4799</span>.100098
-<span class="m">672966676</span> <span class="m">672966683</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">307</span>.816565 <span class="m">0</span>.331547 <span class="m">2195212</span>.58211 <span class="m">4850</span>.300293 <span class="m">4765</span>.899902
-<span class="m">672966677</span> <span class="m">672966726</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">1292</span>.621946 <span class="m">0</span>.454999 <span class="m">2194935</span>.504722 <span class="m">5117</span>.100098 <span class="m">4558</span>.100098
-<span class="m">672966678</span> <span class="m">672966688</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">912</span>.321954 <span class="m">0</span>.116875 <span class="m">2195601</span>.629693 <span class="m">5075</span>.899902 <span class="m">4736</span>.700195
-<span class="m">672966679</span> <span class="m">672966691</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">1</span> <span class="m">1</span> <span class="m">655</span>.155787 <span class="m">0</span>.250029 <span class="m">2195252</span>.103611 <span class="m">4931</span>.300293 <span class="m">4693</span>.100098
-<span class="m">672966680</span> <span class="m">672966702</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">4</span> <span class="m">1</span> <span class="m">1371</span>.949734 <span class="m">0</span>.911024 <span class="m">2195630</span>.338561 <span class="m">5036</span>.100098 <span class="m">4640</span>
-<span class="m">672966681</span> <span class="m">672966695</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">3</span> <span class="m">1</span> <span class="m">554</span>.016373 <span class="m">0</span>.116935 <span class="m">2195527</span>.072482 <span class="m">4994</span>.600098 <span class="m">4854</span>.100098
-<span class="m">672966682</span> <span class="m">672966690</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">2</span> <span class="m">1</span> <span class="m">738</span>.737352 <span class="m">0</span>.237307 <span class="m">2192996</span>.272544 <span class="m">4863</span>.899902 <span class="m">4686</span>.899902
-<span class="m">672966683</span> <span class="m">672966688</span> <span class="m">672966676</span> <span class="m">672966675</span> <span class="m">2</span> <span class="m">2</span> <span class="m">2</span> <span class="m">215</span>.457805 <span class="m">0</span>.468194 <span class="m">2194904</span>.765545 <span class="m">4750</span>.800293 <span class="m">4718</span>.600098
+subcID<span class="w"> </span>next_stream<span class="w"> </span>prev_str01<span class="w"> </span>prev_str02<span class="w"> </span>strahler<span class="w"> </span>horton<span class="w"> </span>shreve<span class="w"> </span>length<span class="w"> </span>flow_accum<span class="w"> </span>out_dist<span class="w"> </span>source_elev<span class="w"> </span>outlet_elev
+<span class="m">672966675</span><span class="w"> </span><span class="m">672966683</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">450</span>.669628<span class="w"> </span><span class="m">0</span>.096674<span class="w"> </span><span class="m">2195355</span>.435172<span class="w"> </span><span class="m">4951</span>.899902<span class="w"> </span><span class="m">4799</span>.100098
+<span class="m">672966676</span><span class="w"> </span><span class="m">672966683</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">307</span>.816565<span class="w"> </span><span class="m">0</span>.331547<span class="w"> </span><span class="m">2195212</span>.58211<span class="w"> </span><span class="m">4850</span>.300293<span class="w"> </span><span class="m">4765</span>.899902
+<span class="m">672966677</span><span class="w"> </span><span class="m">672966726</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1292</span>.621946<span class="w"> </span><span class="m">0</span>.454999<span class="w"> </span><span class="m">2194935</span>.504722<span class="w"> </span><span class="m">5117</span>.100098<span class="w"> </span><span class="m">4558</span>.100098
+<span class="m">672966678</span><span class="w"> </span><span class="m">672966688</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">912</span>.321954<span class="w"> </span><span class="m">0</span>.116875<span class="w"> </span><span class="m">2195601</span>.629693<span class="w"> </span><span class="m">5075</span>.899902<span class="w"> </span><span class="m">4736</span>.700195
+<span class="m">672966679</span><span class="w"> </span><span class="m">672966691</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">655</span>.155787<span class="w"> </span><span class="m">0</span>.250029<span class="w"> </span><span class="m">2195252</span>.103611<span class="w"> </span><span class="m">4931</span>.300293<span class="w"> </span><span class="m">4693</span>.100098
+<span class="m">672966680</span><span class="w"> </span><span class="m">672966702</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">4</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1371</span>.949734<span class="w"> </span><span class="m">0</span>.911024<span class="w"> </span><span class="m">2195630</span>.338561<span class="w"> </span><span class="m">5036</span>.100098<span class="w"> </span><span class="m">4640</span>
+<span class="m">672966681</span><span class="w"> </span><span class="m">672966695</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">554</span>.016373<span class="w"> </span><span class="m">0</span>.116935<span class="w"> </span><span class="m">2195527</span>.072482<span class="w"> </span><span class="m">4994</span>.600098<span class="w"> </span><span class="m">4854</span>.100098
+<span class="m">672966682</span><span class="w"> </span><span class="m">672966690</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">738</span>.737352<span class="w"> </span><span class="m">0</span>.237307<span class="w"> </span><span class="m">2192996</span>.272544<span class="w"> </span><span class="m">4863</span>.899902<span class="w"> </span><span class="m">4686</span>.899902
+<span class="m">672966683</span><span class="w"> </span><span class="m">672966688</span><span class="w"> </span><span class="m">672966676</span><span class="w"> </span><span class="m">672966675</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">215</span>.457805<span class="w"> </span><span class="m">0</span>.468194<span class="w"> </span><span class="m">2194904</span>.765545<span class="w"> </span><span class="m">4750</span>.800293<span class="w"> </span><span class="m">4718</span>.600098
 </pre></div>
 </div>
 </section>
@@ -520,39 +517,39 @@ subcID next_stream prev_str01 prev_str02 strahler horton shreve length flow_accu
 <h3><span class="section-number">2.4.5.6. </span><em>r.univar</em> for zonal statistics<a class="headerlink" href="#r-univar-for-zonal-statistics" title="Permalink to this headline"></a></h3>
 <p>The goal is to calculate different statistics (e.g. minimum, maximum, mean, etc.)
 within each subcatchment</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78  -f -text --tmp-location  -c <span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif  <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grass78<span class="w">  </span>-f<span class="w"> </span>-text<span class="w"> </span>--tmp-location<span class="w">  </span>-c<span class="w"> </span><span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif<span class="w">  </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">#  Read files with subcatchments</span>
-<span class="s">r.in.gdal --o input=$DATFOLDE</span>R/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.tif <span class="se">\</span>
-    <span class="nv">output</span><span class="o">=</span>micb 
+<span class="s">r.in.gdal --o input=$DATFOLDE</span>R/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span><span class="nv">output</span><span class="o">=</span>micb<span class="w"> </span>
 
-<span class="k">for</span> file <span class="k">in</span> <span class="k">$(</span>find <span class="nv">$CHELSA</span> -name <span class="s1">&#39;*.tif&#39;</span><span class="k">)</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>find<span class="w"> </span><span class="nv">$CHELSA</span><span class="w"> </span>-name<span class="w"> </span><span class="s1">&#39;*.tif&#39;</span><span class="k">)</span><span class="p">;</span>
 <span class="k">do</span>
-  <span class="nv">VAR</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> <span class="p">|</span> awk -F_ <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
-  r.external <span class="nv">input</span><span class="o">=</span><span class="nv">$file</span> <span class="nv">output</span><span class="o">=</span><span class="nv">$VAR</span> --overwrite
-  
-  <span class="nb">echo</span> <span class="s2">&quot;subcID min max range mean sd&quot;</span> &gt; <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt  
+<span class="w">  </span><span class="nv">VAR</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-F_<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+<span class="w">  </span>r.external<span class="w"> </span><span class="nv">input</span><span class="o">=</span><span class="nv">$file</span><span class="w"> </span><span class="nv">output</span><span class="o">=</span><span class="nv">$VAR</span><span class="w"> </span>--overwrite
+<span class="w">  </span>
+<span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;subcID min max range mean sd&quot;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt<span class="w">  </span>
 
-  r.univar -t --o <span class="nv">map</span><span class="o">=</span><span class="nv">$VAR</span> <span class="nv">zones</span><span class="o">=</span>micb <span class="nv">separator</span><span class="o">=</span>space <span class="p">|</span> <span class="se">\</span>
-      awk <span class="s1">&#39;NR &gt; 1 {print $1, $4, $5, $6, $7, $9}&#39;</span> <span class="se">\</span>
-      &gt;&gt; <span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
+<span class="w">  </span>r.univar<span class="w"> </span>-t<span class="w"> </span>--o<span class="w"> </span><span class="nv">map</span><span class="o">=</span><span class="nv">$VAR</span><span class="w"> </span><span class="nv">zones</span><span class="o">=</span>micb<span class="w"> </span><span class="nv">separator</span><span class="o">=</span>space<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>awk<span class="w"> </span><span class="s1">&#39;NR &gt; 1 {print $1, $4, $5, $6, $7, $9}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">      </span>&gt;&gt;<span class="w"> </span><span class="nv">$DIR</span>/out/stats_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_<span class="si">${</span><span class="nv">VAR</span><span class="si">}</span>.txt
 
 <span class="k">done</span>
 </pre></div>
 </div>
 <p>Output</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head CompUnit_88/stats_88_bio1.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head<span class="w"> </span>CompUnit_88/stats_88_bio1.txt
 
-subcID min max range mean sd
-<span class="m">672966675</span> <span class="m">2672</span> <span class="m">2681</span> <span class="m">9</span> <span class="m">2674</span>.16 <span class="m">3</span>.84374817080571
-<span class="m">672966676</span> <span class="m">2681</span> <span class="m">2681</span> <span class="m">0</span> <span class="m">2681</span> <span class="m">0</span>
-<span class="m">672966677</span> <span class="m">2666</span> <span class="m">2697</span> <span class="m">31</span> <span class="m">2679</span>.87162162162 <span class="m">9</span>.29856164799971
-<span class="m">672966678</span> <span class="m">2673</span> <span class="m">2681</span> <span class="m">8</span> <span class="m">2678</span>.39534883721 <span class="m">3</span>.74873333578437
-<span class="m">672966679</span> <span class="m">2672</span> <span class="m">2697</span> <span class="m">25</span> <span class="m">2681</span>.52631578947 <span class="m">10</span>.2821686277388
-<span class="m">672966680</span> <span class="m">2673</span> <span class="m">2697</span> <span class="m">24</span> <span class="m">2682</span>.54347826087 <span class="m">7</span>.3869445794678
-<span class="m">672966681</span> <span class="m">2680</span> <span class="m">2689</span> <span class="m">9</span> <span class="m">2682</span>.1724137931 <span class="m">3</span>.85127802813054
-<span class="m">672966682</span> <span class="m">2686</span> <span class="m">2694</span> <span class="m">8</span> <span class="m">2689</span>.47916666667 <span class="m">3</span>.94751811977722
-<span class="m">672966683</span> <span class="m">2681</span> <span class="m">2681</span> <span class="m">0</span> <span class="m">2681</span> <span class="m">0</span>
+subcID<span class="w"> </span>min<span class="w"> </span>max<span class="w"> </span>range<span class="w"> </span>mean<span class="w"> </span>sd
+<span class="m">672966675</span><span class="w"> </span><span class="m">2672</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">2674</span>.16<span class="w"> </span><span class="m">3</span>.84374817080571
+<span class="m">672966676</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966677</span><span class="w"> </span><span class="m">2666</span><span class="w"> </span><span class="m">2697</span><span class="w"> </span><span class="m">31</span><span class="w"> </span><span class="m">2679</span>.87162162162<span class="w"> </span><span class="m">9</span>.29856164799971
+<span class="m">672966678</span><span class="w"> </span><span class="m">2673</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">2678</span>.39534883721<span class="w"> </span><span class="m">3</span>.74873333578437
+<span class="m">672966679</span><span class="w"> </span><span class="m">2672</span><span class="w"> </span><span class="m">2697</span><span class="w"> </span><span class="m">25</span><span class="w"> </span><span class="m">2681</span>.52631578947<span class="w"> </span><span class="m">10</span>.2821686277388
+<span class="m">672966680</span><span class="w"> </span><span class="m">2673</span><span class="w"> </span><span class="m">2697</span><span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="m">2682</span>.54347826087<span class="w"> </span><span class="m">7</span>.3869445794678
+<span class="m">672966681</span><span class="w"> </span><span class="m">2680</span><span class="w"> </span><span class="m">2689</span><span class="w"> </span><span class="m">9</span><span class="w"> </span><span class="m">2682</span>.1724137931<span class="w"> </span><span class="m">3</span>.85127802813054
+<span class="m">672966682</span><span class="w"> </span><span class="m">2686</span><span class="w"> </span><span class="m">2694</span><span class="w"> </span><span class="m">8</span><span class="w"> </span><span class="m">2689</span>.47916666667<span class="w"> </span><span class="m">3</span>.94751811977722
+<span class="m">672966683</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">2681</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 </section>
@@ -560,35 +557,35 @@ subcID min max range mean sd
 <section id="land-cover">
 <h3><span class="section-number">2.4.5.7. </span>Land cover<a class="headerlink" href="#land-cover" title="Permalink to this headline"></a></h3>
 <p>Selection of land cover categories</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat esa_categories.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>esa_categories.txt
 
-<span class="m">10</span>	cropland, rainfed	<span class="m">10</span>	<span class="m">11</span>	<span class="m">12</span>
-<span class="m">20</span>	cropland, irrigated or post-flooding	<span class="m">20</span>
-<span class="m">30</span>	Mosaic cropland <span class="o">(</span>&gt;50%<span class="o">)</span> / natural vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">30</span>
-<span class="m">40</span>	Mosaic natural vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&gt;50%<span class="o">)</span> / cropland <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">40</span>
-<span class="m">50</span>	Tree cover, broadleaved, evergreen, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">50</span>
-<span class="m">60</span>	Tree cover, broadleaved, deciduous, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">60</span> 	<span class="m">61</span>	<span class="m">62</span>
-<span class="m">70</span>	Tree cover, needleleaved, evergreen, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">70</span>	<span class="m">71</span>	<span class="m">72</span>
-<span class="m">80</span>	Tree cover, needleleaved, deciduous, closed to open <span class="o">(</span>&gt;15%<span class="o">)</span>	<span class="m">80</span>	<span class="m">81</span>	<span class="m">82</span>
-<span class="m">90</span>	Tree cover, mixed leaf <span class="nb">type</span> <span class="o">(</span>broadleaved and needleleaved<span class="o">)</span>	<span class="m">90</span>
-<span class="m">100</span>	Mosaic tree and shrub <span class="o">(</span>&gt;50%<span class="o">)</span> / herbaceous cover <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">100</span>
-<span class="m">110</span>	Mosaic herbaceous cover <span class="o">(</span>&gt;50%<span class="o">)</span> / tree and shrub <span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span>	<span class="m">110</span>
-<span class="m">120</span>	Shrubland	<span class="m">120</span>	<span class="m">121</span>	<span class="m">122</span>
-<span class="m">130</span>	Grassland	<span class="m">130</span>
-<span class="m">140</span>	Lichens and mosses	<span class="m">140</span>
-<span class="m">150</span>	Sparse vegetation <span class="o">(</span>tree, shrub, herbaceous cover<span class="o">)</span> <span class="o">(</span>&lt;<span class="m">15</span>%<span class="o">)</span>	<span class="m">150</span>	<span class="m">151</span>	<span class="m">152</span>	<span class="m">153</span>
-<span class="m">160</span>	Tree cover, flooded, fresh or brackish water	<span class="m">160</span>
-<span class="m">170</span>	Tree cover, flooded, saline water	<span class="m">170</span>
-<span class="m">180</span>	Shrub or herbaceous cover, flooded, fresh/saline/brackish water	<span class="m">180</span>
-<span class="m">190</span>	Urban areas	<span class="m">190</span>
-<span class="m">200</span>	Bare areas	<span class="m">200</span>	<span class="m">201</span>	<span class="m">202</span>
-<span class="m">210</span>	Water bodies	<span class="m">210</span>
-<span class="m">220</span>	Permanent snow and ice	<span class="m">220</span>
+<span class="m">10</span><span class="w">	</span>cropland,<span class="w"> </span>rainfed<span class="w">	</span><span class="m">10</span><span class="w">	</span><span class="m">11</span><span class="w">	</span><span class="m">12</span>
+<span class="m">20</span><span class="w">	</span>cropland,<span class="w"> </span>irrigated<span class="w"> </span>or<span class="w"> </span>post-flooding<span class="w">	</span><span class="m">20</span>
+<span class="m">30</span><span class="w">	</span>Mosaic<span class="w"> </span>cropland<span class="w"> </span><span class="o">(</span>&gt;50%<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>natural<span class="w"> </span>vegetation<span class="w"> </span><span class="o">(</span>tree,<span class="w"> </span>shrub,<span class="w"> </span>herbaceous<span class="w"> </span>cover<span class="o">)</span><span class="w"> </span><span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span><span class="w">	</span><span class="m">30</span>
+<span class="m">40</span><span class="w">	</span>Mosaic<span class="w"> </span>natural<span class="w"> </span>vegetation<span class="w"> </span><span class="o">(</span>tree,<span class="w"> </span>shrub,<span class="w"> </span>herbaceous<span class="w"> </span>cover<span class="o">)</span><span class="w"> </span><span class="o">(</span>&gt;50%<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>cropland<span class="w"> </span><span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span><span class="w">	</span><span class="m">40</span>
+<span class="m">50</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>broadleaved,<span class="w"> </span>evergreen,<span class="w"> </span>closed<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span><span class="o">(</span>&gt;15%<span class="o">)</span><span class="w">	</span><span class="m">50</span>
+<span class="m">60</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>broadleaved,<span class="w"> </span>deciduous,<span class="w"> </span>closed<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span><span class="o">(</span>&gt;15%<span class="o">)</span><span class="w">	</span><span class="m">60</span><span class="w"> 	</span><span class="m">61</span><span class="w">	</span><span class="m">62</span>
+<span class="m">70</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>needleleaved,<span class="w"> </span>evergreen,<span class="w"> </span>closed<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span><span class="o">(</span>&gt;15%<span class="o">)</span><span class="w">	</span><span class="m">70</span><span class="w">	</span><span class="m">71</span><span class="w">	</span><span class="m">72</span>
+<span class="m">80</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>needleleaved,<span class="w"> </span>deciduous,<span class="w"> </span>closed<span class="w"> </span>to<span class="w"> </span>open<span class="w"> </span><span class="o">(</span>&gt;15%<span class="o">)</span><span class="w">	</span><span class="m">80</span><span class="w">	</span><span class="m">81</span><span class="w">	</span><span class="m">82</span>
+<span class="m">90</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>mixed<span class="w"> </span>leaf<span class="w"> </span><span class="nb">type</span><span class="w"> </span><span class="o">(</span>broadleaved<span class="w"> </span>and<span class="w"> </span>needleleaved<span class="o">)</span><span class="w">	</span><span class="m">90</span>
+<span class="m">100</span><span class="w">	</span>Mosaic<span class="w"> </span>tree<span class="w"> </span>and<span class="w"> </span>shrub<span class="w"> </span><span class="o">(</span>&gt;50%<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>herbaceous<span class="w"> </span>cover<span class="w"> </span><span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span><span class="w">	</span><span class="m">100</span>
+<span class="m">110</span><span class="w">	</span>Mosaic<span class="w"> </span>herbaceous<span class="w"> </span>cover<span class="w"> </span><span class="o">(</span>&gt;50%<span class="o">)</span><span class="w"> </span>/<span class="w"> </span>tree<span class="w"> </span>and<span class="w"> </span>shrub<span class="w"> </span><span class="o">(</span>&lt;<span class="m">50</span>%<span class="o">)</span><span class="w">	</span><span class="m">110</span>
+<span class="m">120</span><span class="w">	</span>Shrubland<span class="w">	</span><span class="m">120</span><span class="w">	</span><span class="m">121</span><span class="w">	</span><span class="m">122</span>
+<span class="m">130</span><span class="w">	</span>Grassland<span class="w">	</span><span class="m">130</span>
+<span class="m">140</span><span class="w">	</span>Lichens<span class="w"> </span>and<span class="w"> </span>mosses<span class="w">	</span><span class="m">140</span>
+<span class="m">150</span><span class="w">	</span>Sparse<span class="w"> </span>vegetation<span class="w"> </span><span class="o">(</span>tree,<span class="w"> </span>shrub,<span class="w"> </span>herbaceous<span class="w"> </span>cover<span class="o">)</span><span class="w"> </span><span class="o">(</span>&lt;<span class="m">15</span>%<span class="o">)</span><span class="w">	</span><span class="m">150</span><span class="w">	</span><span class="m">151</span><span class="w">	</span><span class="m">152</span><span class="w">	</span><span class="m">153</span>
+<span class="m">160</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>flooded,<span class="w"> </span>fresh<span class="w"> </span>or<span class="w"> </span>brackish<span class="w"> </span>water<span class="w">	</span><span class="m">160</span>
+<span class="m">170</span><span class="w">	</span>Tree<span class="w"> </span>cover,<span class="w"> </span>flooded,<span class="w"> </span>saline<span class="w"> </span>water<span class="w">	</span><span class="m">170</span>
+<span class="m">180</span><span class="w">	</span>Shrub<span class="w"> </span>or<span class="w"> </span>herbaceous<span class="w"> </span>cover,<span class="w"> </span>flooded,<span class="w"> </span>fresh/saline/brackish<span class="w"> </span>water<span class="w">	</span><span class="m">180</span>
+<span class="m">190</span><span class="w">	</span>Urban<span class="w"> </span>areas<span class="w">	</span><span class="m">190</span>
+<span class="m">200</span><span class="w">	</span>Bare<span class="w"> </span>areas<span class="w">	</span><span class="m">200</span><span class="w">	</span><span class="m">201</span><span class="w">	</span><span class="m">202</span>
+<span class="m">210</span><span class="w">	</span>Water<span class="w"> </span>bodies<span class="w">	</span><span class="m">210</span>
+<span class="m">220</span><span class="w">	</span>Permanent<span class="w"> </span>snow<span class="w"> </span>and<span class="w"> </span>ice<span class="w">	</span><span class="m">220</span>
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">YEAR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="m">1991</span> + <span class="nv">$SLURM_ARRAY_TASK_ID</span> <span class="p">|</span> bc<span class="k">)</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">YEAR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="m">1991</span><span class="w"> </span>+<span class="w"> </span><span class="nv">$SLURM_ARRAY_TASK_ID</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>bc<span class="k">)</span>
 
-grass78  -f -text --tmp-location  -c <span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif <span class="s">&lt;&lt;&#39;EOF&#39;</span>
+grass78<span class="w">  </span>-f<span class="w"> </span>-text<span class="w"> </span>--tmp-location<span class="w">  </span>-c<span class="w"> </span><span class="nv">$DATFOLDER</span>/CompUnit_msk/msk_<span class="si">${</span><span class="nv">CU</span><span class="si">}</span>_msk.tif<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">#  Read files with subcatchments</span>
 <span class="s">r.in.gdal --o input=$DATFOLDER/CompUnit_basin_lbasin_clump_reclas/basin_lbasin_clump_${CU}.tif \</span>
@@ -626,18 +623,18 @@ grass78  -f -text --tmp-location  -c <span class="nv">$DATFOLDER</span>/CompUnit
 </pre></div>
 </div>
 <p>Output</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut -d<span class="s2">&quot; &quot;</span> -f1,6,16,28,36-40 CompUnit_88/stats_88_LCprop.txt <span class="p">|</span> head
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cut<span class="w"> </span>-d<span class="s2">&quot; &quot;</span><span class="w"> </span>-f1,6,16,28,36-40<span class="w"> </span>CompUnit_88/stats_88_LCprop.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
 
-subcID c130_y1992 c220_y1992 c130_y1993 c20_y1993 c210_y1993 c220_y1993 c30_y1993 c40_y1993
-<span class="m">672966675</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966676</span> <span class="m">0</span>.230769 <span class="m">0</span>.769231 <span class="m">0</span>.230769 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.769231 <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966677</span> <span class="m">0</span>.371622 <span class="m">0</span>.628378 <span class="m">0</span>.371622 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.628378 <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966678</span> <span class="m">0</span>.325581 <span class="m">0</span>.674419 <span class="m">0</span>.325581 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.674419 <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966679</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966680</span> <span class="m">0</span>.57971 <span class="m">0</span>.42029 <span class="m">0</span>.57971 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.42029 <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966681</span> <span class="m">0</span>.758621 <span class="m">0</span>.241379 <span class="m">0</span>.758621 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.241379 <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966682</span> <span class="m">1</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">672966683</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span>
+subcID<span class="w"> </span>c130_y1992<span class="w"> </span>c220_y1992<span class="w"> </span>c130_y1993<span class="w"> </span>c20_y1993<span class="w"> </span>c210_y1993<span class="w"> </span>c220_y1993<span class="w"> </span>c30_y1993<span class="w"> </span>c40_y1993
+<span class="m">672966675</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966676</span><span class="w"> </span><span class="m">0</span>.230769<span class="w"> </span><span class="m">0</span>.769231<span class="w"> </span><span class="m">0</span>.230769<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.769231<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966677</span><span class="w"> </span><span class="m">0</span>.371622<span class="w"> </span><span class="m">0</span>.628378<span class="w"> </span><span class="m">0</span>.371622<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.628378<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966678</span><span class="w"> </span><span class="m">0</span>.325581<span class="w"> </span><span class="m">0</span>.674419<span class="w"> </span><span class="m">0</span>.325581<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.674419<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966679</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966680</span><span class="w"> </span><span class="m">0</span>.57971<span class="w"> </span><span class="m">0</span>.42029<span class="w"> </span><span class="m">0</span>.57971<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.42029<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966681</span><span class="w"> </span><span class="m">0</span>.758621<span class="w"> </span><span class="m">0</span>.241379<span class="w"> </span><span class="m">0</span>.758621<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.241379<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966682</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">672966683</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 </section>
@@ -653,10 +650,10 @@ subcID c130_y1992 c220_y1992 c130_y1993 c20_y1993 c210_y1993 c220_y1993 c30_y199
 <span class="nv">OUT</span><span class="o">=</span><span class="nv">$4</span>
 
 <span class="c1">## create a sequence, comma separated, of the category and years of interest</span>
-<span class="nv">cl</span><span class="o">=</span><span class="k">$(for</span> j <span class="k">in</span> <span class="o">{</span><span class="m">1992</span>..2018<span class="o">}</span><span class="p">;</span><span class="k">do</span> <span class="nb">printf</span> <span class="s2">&quot;%s,&quot;</span> <span class="s2">&quot;c</span><span class="si">${</span><span class="nv">CAT</span><span class="si">}</span><span class="s2">_y</span><span class="si">${</span><span class="nv">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span> <span class="k">done</span> <span class="p">|</span> sed <span class="s1">&#39;s/,*$//g&#39;</span><span class="k">)</span>
+<span class="nv">cl</span><span class="o">=</span><span class="k">$(for</span><span class="w"> </span>j<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span><span class="m">1992</span>..2018<span class="o">}</span><span class="p">;</span><span class="k">do</span><span class="w"> </span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%s,&quot;</span><span class="w"> </span><span class="s2">&quot;c</span><span class="si">${</span><span class="nv">CAT</span><span class="si">}</span><span class="s2">_y</span><span class="si">${</span><span class="nv">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,*$//g&#39;</span><span class="k">)</span>
 
 <span class="c1">## extract from the main table, only the columns of interest</span>
-awk -v <span class="nv">cols</span><span class="o">=</span><span class="nv">$cl</span> <span class="s1">&#39;</span>
+awk<span class="w"> </span>-v<span class="w"> </span><span class="nv">cols</span><span class="o">=</span><span class="nv">$cl</span><span class="w"> </span><span class="s1">&#39;</span>
 <span class="s1">    BEGIN {</span>
 <span class="s1">        split(cols,out,&quot;,&quot;)</span>
 <span class="s1">    }</span>
@@ -669,110 +666,110 @@ awk -v <span class="nv">cols</span><span class="o">=</span><span class="nv">$cl<
 <span class="s1">            printf &quot;%s%s&quot;, $ix[out[i]], OFS</span>
 <span class="s1">        print &quot;&quot;</span>
 <span class="s1">    }</span>
-<span class="s1">&#39;</span> <span class="nv">$INP</span>  &gt; <span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt 
+<span class="s1">&#39;</span><span class="w"> </span><span class="nv">$INP</span><span class="w">  </span>&gt;<span class="w"> </span><span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt<span class="w"> </span>
 
 <span class="c1">## calculate the mean of each row (each subcachtment) for all years</span>
-awk <span class="s1">&#39;{</span>
+awk<span class="w"> </span><span class="s1">&#39;{</span>
 <span class="s1">    sum = 0; </span>
 <span class="s1">    for (i = 1; i &lt;= NF; i++) sum += $i; </span>
 <span class="s1">    sum /= NF; </span>
 <span class="s1">    print sum</span>
-<span class="s1">}&#39;</span> <span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt  &gt; <span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt
+<span class="s1">}&#39;</span><span class="w"> </span><span class="nv">$TMP</span>/subset_<span class="nv">$CAT</span>.txt<span class="w">  </span>&gt;<span class="w"> </span><span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt
 
 <span class="c1">## add header</span>
-<span class="nb">echo</span> <span class="s2">&quot;c</span><span class="nv">$CAT</span><span class="s2">&quot;</span> <span class="p">|</span> cat - <span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt &gt; <span class="nv">$OUT</span>/mean_c<span class="nv">$CAT</span>.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;c</span><span class="nv">$CAT</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cat<span class="w"> </span>-<span class="w"> </span><span class="nv">$TMP</span>/mean_<span class="nv">$CAT</span>.txt<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$OUT</span>/mean_c<span class="nv">$CAT</span>.txt
 </pre></div>
 </div>
 <p>Output</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head mean_LCprop_32.txt 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>head<span class="w"> </span>mean_LCprop_32.txt<span class="w"> </span>
 
-subcID c100 c10 c110 c120 c130 c140 c150 c160 c170 c180 c190 c200 c20 c210 c220 c30 c40 c50 c60 c70 c80 c90
-<span class="m">422448376</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.241935 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.758065 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448377</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448378</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.76087 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.23913 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448379</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.142857 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.857143 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448380</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.945946 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.0540541 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448381</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.44 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.56 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448382</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.2 <span class="m">0</span>.75 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.05 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448383</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">1</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
-<span class="m">422448384</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.357143 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>.642857 <span class="m">0</span> <span class="m">0</span> <span class="m">0</span> <span class="m">0</span>
+subcID<span class="w"> </span>c100<span class="w"> </span>c10<span class="w"> </span>c110<span class="w"> </span>c120<span class="w"> </span>c130<span class="w"> </span>c140<span class="w"> </span>c150<span class="w"> </span>c160<span class="w"> </span>c170<span class="w"> </span>c180<span class="w"> </span>c190<span class="w"> </span>c200<span class="w"> </span>c20<span class="w"> </span>c210<span class="w"> </span>c220<span class="w"> </span>c30<span class="w"> </span>c40<span class="w"> </span>c50<span class="w"> </span>c60<span class="w"> </span>c70<span class="w"> </span>c80<span class="w"> </span>c90
+<span class="m">422448376</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.241935<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.758065<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448377</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448378</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.76087<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.23913<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448379</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.142857<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.857143<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448380</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.945946<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.0540541<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448381</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.44<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.56<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448382</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.2<span class="w"> </span><span class="m">0</span>.75<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.05<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448383</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
+<span class="m">422448384</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.357143<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>.642857<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 </section>
 <hr class="docutils" />
 <section id="the-final-set-of-tables">
 <h3><span class="section-number">2.4.5.9. </span>The final set of tables<a class="headerlink" href="#the-final-set-of-tables" title="Permalink to this headline"></a></h3>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls -lh CompUnit_88
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls<span class="w"> </span>-lh<span class="w"> </span>CompUnit_88
 
-total 185G
--rwxrwxrwx <span class="m">1</span> root glowabio  459M  stats_88_BasinsIDs.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  394M  stats_88_bio10.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  395M  stats_88_bio11.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  481M  stats_88_bio12.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  457M  stats_88_bio13.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  330M  stats_88_bio14.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  410M  stats_88_bio15.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  470M  stats_88_bio16.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  403M  stats_88_bio17.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  455M  stats_88_bio18.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  416M  stats_88_bio19.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  393M  stats_88_bio1.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  293M  stats_88_bio2.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  397M  stats_88_bio3.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  440M  stats_88_bio4.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  401M  stats_88_bio5.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  400M  stats_88_bio6.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  358M  stats_88_bio7.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  391M  stats_88_bio8.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  395M  stats_88_bio9.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  457M  stats_88_chancurv.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_chandistdwseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  366M  stats_88_chandistupcel.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_chandistupseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  329M  stats_88_chanelvdwcel.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  332M  stats_88_chanelvdwseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  331M  stats_88_chanelvupcel.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  332M  stats_88_chanelvupseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  453M  stats_88_changraddwseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  450M  stats_88_changradupcel.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  447M  stats_88_changradupseg.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  877M  stats_88_elev.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  238M  stats_88_flow1k.txt
--rwxrwxrwx <span class="m">1</span> root glowabio 1017M  stats_88_flow.txt
--rwxrwxrwx <span class="m">1</span> root glowabio   14G  stats_88_LCprop.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  <span class="m">7</span>,5G  stats_88_NH4.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  496M  stats_88_outdiffdwbasin.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  464M  stats_88_outdiffdwscatch.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  592M  stats_88_outdistdwbasin.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  499M  stats_88_outdistdwscatch.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  611M  stats_88_slopcmax.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  607M  stats_88_slopcmin.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  458M  stats_88_slopdiff.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  566M  stats_88_slopgrad.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  252M  stats_88_soil_ACDWRB.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  414M  stats_88_soil_AWCtS.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  367M  stats_88_soil_BDRICM.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  460M  stats_88_soil_BDRLOG.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  523M  stats_88_soil_BLDFIE.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_CECSOL.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  466M  stats_88_soil_CLYPPT.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_CRFVOL.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  277M  stats_88_soil_HISTPR.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  438M  stats_88_soil_ORCDRC.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  460M  stats_88_soil_PHIHOX.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  203M  stats_88_soil_SLGWRB.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  465M  stats_88_soil_SLTPPT.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  467M  stats_88_soil_SNDPPT.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  315M  stats_88_soil_TEXMHT.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  443M  stats_88_soil_WWP.txt
--rwxrwxrwx <span class="m">1</span> root glowabio    <span class="m">29</span>  stats_88_strdiffdwfarth.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  473M  stats_88_strdiffupfarth.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  458M  stats_88_strdiffupnear.txt
--rwxrwxrwx <span class="m">1</span> root glowabio    <span class="m">29</span>  stats_88_strdistdwfarth.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  493M  stats_88_strdistprox.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  511M  stats_88_strdistupfarth.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  491M  stats_88_strdistupnear.txt
--rwxrwxrwx <span class="m">1</span> root glowabio  <span class="m">1</span>,6G  stats_88_streamorder.txt
+total<span class="w"> </span>185G
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>459M<span class="w">  </span>stats_88_BasinsIDs.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>394M<span class="w">  </span>stats_88_bio10.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>395M<span class="w">  </span>stats_88_bio11.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>481M<span class="w">  </span>stats_88_bio12.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>457M<span class="w">  </span>stats_88_bio13.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>330M<span class="w">  </span>stats_88_bio14.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>410M<span class="w">  </span>stats_88_bio15.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>470M<span class="w">  </span>stats_88_bio16.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>403M<span class="w">  </span>stats_88_bio17.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>455M<span class="w">  </span>stats_88_bio18.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>416M<span class="w">  </span>stats_88_bio19.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>393M<span class="w">  </span>stats_88_bio1.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>293M<span class="w">  </span>stats_88_bio2.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>397M<span class="w">  </span>stats_88_bio3.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>440M<span class="w">  </span>stats_88_bio4.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>401M<span class="w">  </span>stats_88_bio5.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>400M<span class="w">  </span>stats_88_bio6.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>358M<span class="w">  </span>stats_88_bio7.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>391M<span class="w">  </span>stats_88_bio8.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>395M<span class="w">  </span>stats_88_bio9.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>457M<span class="w">  </span>stats_88_chancurv.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>414M<span class="w">  </span>stats_88_chandistdwseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>366M<span class="w">  </span>stats_88_chandistupcel.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>414M<span class="w">  </span>stats_88_chandistupseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>329M<span class="w">  </span>stats_88_chanelvdwcel.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>332M<span class="w">  </span>stats_88_chanelvdwseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>331M<span class="w">  </span>stats_88_chanelvupcel.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>332M<span class="w">  </span>stats_88_chanelvupseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>453M<span class="w">  </span>stats_88_changraddwseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>450M<span class="w">  </span>stats_88_changradupcel.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>447M<span class="w">  </span>stats_88_changradupseg.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>877M<span class="w">  </span>stats_88_elev.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>238M<span class="w">  </span>stats_88_flow1k.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w"> </span>1017M<span class="w">  </span>stats_88_flow.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">   </span>14G<span class="w">  </span>stats_88_LCprop.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span><span class="m">7</span>,5G<span class="w">  </span>stats_88_NH4.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>496M<span class="w">  </span>stats_88_outdiffdwbasin.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>464M<span class="w">  </span>stats_88_outdiffdwscatch.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>592M<span class="w">  </span>stats_88_outdistdwbasin.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>499M<span class="w">  </span>stats_88_outdistdwscatch.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>611M<span class="w">  </span>stats_88_slopcmax.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>607M<span class="w">  </span>stats_88_slopcmin.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>458M<span class="w">  </span>stats_88_slopdiff.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>566M<span class="w">  </span>stats_88_slopgrad.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>252M<span class="w">  </span>stats_88_soil_ACDWRB.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>414M<span class="w">  </span>stats_88_soil_AWCtS.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>367M<span class="w">  </span>stats_88_soil_BDRICM.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>460M<span class="w">  </span>stats_88_soil_BDRLOG.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>523M<span class="w">  </span>stats_88_soil_BLDFIE.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>465M<span class="w">  </span>stats_88_soil_CECSOL.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>466M<span class="w">  </span>stats_88_soil_CLYPPT.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>465M<span class="w">  </span>stats_88_soil_CRFVOL.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>277M<span class="w">  </span>stats_88_soil_HISTPR.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>438M<span class="w">  </span>stats_88_soil_ORCDRC.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>460M<span class="w">  </span>stats_88_soil_PHIHOX.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>203M<span class="w">  </span>stats_88_soil_SLGWRB.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>465M<span class="w">  </span>stats_88_soil_SLTPPT.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>467M<span class="w">  </span>stats_88_soil_SNDPPT.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>315M<span class="w">  </span>stats_88_soil_TEXMHT.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>443M<span class="w">  </span>stats_88_soil_WWP.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">    </span><span class="m">29</span><span class="w">  </span>stats_88_strdiffdwfarth.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>473M<span class="w">  </span>stats_88_strdiffupfarth.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>458M<span class="w">  </span>stats_88_strdiffupnear.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">    </span><span class="m">29</span><span class="w">  </span>stats_88_strdistdwfarth.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>493M<span class="w">  </span>stats_88_strdistprox.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>511M<span class="w">  </span>stats_88_strdistupfarth.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span>491M<span class="w">  </span>stats_88_strdistupnear.txt
+-rwxrwxrwx<span class="w"> </span><span class="m">1</span><span class="w"> </span>root<span class="w"> </span>glowabio<span class="w">  </span><span class="m">1</span>,6G<span class="w">  </span>stats_88_streamorder.txt
 </pre></div>
 </div>
 </section>

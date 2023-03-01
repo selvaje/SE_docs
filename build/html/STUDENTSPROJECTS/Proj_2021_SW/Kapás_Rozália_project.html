@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -502,7 +499,7 @@ vegetation layers two quality layers (e.g.: pixel reliability) can be found in t
 
 <span class="c1">#this is the dataset for 2019-23th Apr (day 113) and 14th Sept (day 257)</span>
 
-<span class="o">!</span>chmod <span class="m">777</span> <span class="m">7526883448</span>-download.sh
+<span class="o">!</span>chmod<span class="w"> </span><span class="m">777</span><span class="w"> </span><span class="m">7526883448</span>-download.sh
 
 <span class="c1">#this opens it</span>
 <span class="o">!</span>./7526883448-download.sh
@@ -535,17 +532,17 @@ Username (kapasroz):
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-gdalinfo MOD13Q1.A2019177.h19v03.061.2020303064255.hdf <span class="p">|</span> head -20
+gdalinfo<span class="w"> </span>MOD13Q1.A2019177.h19v03.061.2020303064255.hdf<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
 
 <span class="c1">#easier if we put file</span>
 
 <span class="nv">file</span><span class="o">=</span>MOD13Q1.A2019177.h19v03.061.2020303064255.hdf
 
 <span class="c1">#do some grepping to see the coordinates, do they look good!actually this shows northern and some others are southern Sweden in a different granule</span>
-gdalinfo <span class="nv">$file</span> <span class="p">|</span> grep BOUNDINGCOORDINATE
+gdalinfo<span class="w"> </span><span class="nv">$file</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>BOUNDINGCOORDINATE
 
 <span class="c1">#check subdataset</span>
-gdalinfo <span class="nv">$file</span> <span class="p">|</span> grep SUBDATASET
+gdalinfo<span class="w"> </span><span class="nv">$file</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>SUBDATASET
 
 
 </pre></div>
@@ -651,9 +648,9 @@ Metadata:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdalinfo D177_12.tif
+<span></span><span class="o">!</span>gdalinfo<span class="w"> </span>D177_12.tif
 
-<span class="o">!</span>pkstat -hist  -nbin  <span class="m">20</span> -src_min <span class="m">1</span>  -i   D177_12.tif
+<span class="o">!</span>pkstat<span class="w"> </span>-hist<span class="w">  </span>-nbin<span class="w">  </span><span class="m">20</span><span class="w"> </span>-src_min<span class="w"> </span><span class="m">1</span><span class="w">  </span>-i<span class="w">   </span>D177_12.tif
 </pre></div>
 </div>
 </div>
@@ -909,11 +906,11 @@ Band 1 Block=4800x1 Type=Byte, ColorInterp=Gray
 
 <span class="c1">#create mask -&gt; no need because we can use PR layer as a ready-made mask</span>
 
-pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">2</span>  -max  <span class="m">3</span> -data <span class="m">1</span> -data <span class="m">0</span> -nodata -1 -ot Byte  -i D177_12_1.tif  -o D177_12_mask.tif
+pkgetmask<span class="w">  </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-min<span class="w">  </span><span class="m">2</span><span class="w">  </span>-max<span class="w">  </span><span class="m">3</span><span class="w"> </span>-data<span class="w"> </span><span class="m">1</span><span class="w"> </span>-data<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-1<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w">  </span>-i<span class="w"> </span>D177_12_1.tif<span class="w">  </span>-o<span class="w"> </span>D177_12_mask.tif
 
-pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">2</span>  -max  <span class="m">3</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i D177_12.tif  -o D177_12_mask_a.tif
+pkgetmask<span class="w">  </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-min<span class="w">  </span><span class="m">2</span><span class="w">  </span>-max<span class="w">  </span><span class="m">3</span><span class="w"> </span>-data<span class="w"> </span><span class="m">1</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w">  </span>-i<span class="w"> </span>D177_12.tif<span class="w">  </span>-o<span class="w"> </span>D177_12_mask_a.tif
 
-gdalinfo D177_12_mask.tif
+gdalinfo<span class="w"> </span>D177_12_mask.tif
 </pre></div>
 </div>
 </div>
@@ -997,7 +994,7 @@ bash: line 4:  1817 Aborted                 (core dumped) pkgetmask -co COMPRESS
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdalinfo NDVI_177_mm.tif
+<span></span><span class="o">!</span>gdalinfo<span class="w"> </span>NDVI_177_mm.tif
 </pre></div>
 </div>
 </div>
@@ -1049,7 +1046,7 @@ Band 1 Block=6159x1 Type=Int16, ColorInterp=Gray
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdalwarp -t_srs <span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span> D177_01.mm.tif NDVI_177_mm.tif
+<span></span><span class="o">!</span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span><span class="w"> </span>D177_01.mm.tif<span class="w"> </span>NDVI_177_mm.tif
 </pre></div>
 </div>
 </div>
@@ -1071,7 +1068,7 @@ Processing D177_01.mm.tif [1/1] : 0Using internal nodata values (e.g. 0) for ima
 <span></span><span class="c1">#do roi based on Sörmlands county corner coordinates</span>
 <span class="c1">#-projwin &lt;ulx&gt; &lt;uly&gt; &lt;lrx&gt; &lt;lry&gt;</span>
 
-<span class="o">!</span>gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -projwin  <span class="m">537677</span>.9583 <span class="m">6596837</span>.340000002 <span class="m">650159</span>.7350000003 <span class="m">6500104</span>.746 NDVI_177_mm.tif  NDVI_177_mm_crop.tif
+<span class="o">!</span>gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-projwin<span class="w">  </span><span class="m">537677</span>.9583<span class="w"> </span><span class="m">6596837</span>.340000002<span class="w"> </span><span class="m">650159</span>.7350000003<span class="w"> </span><span class="m">6500104</span>.746<span class="w"> </span>NDVI_177_mm.tif<span class="w">  </span>NDVI_177_mm_crop.tif
 
 
 </pre></div>
@@ -1095,9 +1092,9 @@ Input file size is 6159, 5505
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#recalculate the NDVi values</span>
 
-<span class="o">!</span>gdal_calc.py -A NDVI_177_mm.tif --type<span class="o">=</span>Float32 --calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span> --outfile<span class="o">=</span>NDVI_177_mm_reclass.tif
+<span class="o">!</span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>NDVI_177_mm.tif<span class="w"> </span>--type<span class="o">=</span>Float32<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>NDVI_177_mm_reclass.tif
 
-<span class="o">!</span>gdalinfo NDVI_177_mm_reclass.tif
+<span class="o">!</span>gdalinfo<span class="w"> </span>NDVI_177_mm_reclass.tif
 
 </pre></div>
 </div>
@@ -1146,7 +1143,7 @@ Band 1 Block=4800x1 Type=Float32, ColorInterp=Gray
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>ogrinfo -al -geom<span class="o">=</span>NO   TUVA/Sodermanland/Sodermanland_grassland_v1.shp <span class="p">|</span> head -80
+<span></span><span class="o">!</span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w">   </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80
 </pre></div>
 </div>
 </div>
@@ -1243,10 +1240,10 @@ OGRFeature(Sodermanland_grassland_v1):1
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>pkextractogr -srcnodata -3.4028234663852886e+38 -r mean -r min - r max  -i NDVI_177_mm.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp -o stat_NDVI_177_v1.shp
-<span class="o">!</span>pkextractogr -srcnodata <span class="m">0</span> -r mean -r min - r max  -i NDVI_177_mm_reclass.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp -o stat_NDVI_177_reclass.shp
+<span></span><span class="o">!</span>pkextractogr<span class="w"> </span>-srcnodata<span class="w"> </span>-3.4028234663852886e+38<span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>min<span class="w"> </span>-<span class="w"> </span>r<span class="w"> </span>max<span class="w">  </span>-i<span class="w"> </span>NDVI_177_mm.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w"> </span>-o<span class="w"> </span>stat_NDVI_177_v1.shp
+<span class="o">!</span>pkextractogr<span class="w"> </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>min<span class="w"> </span>-<span class="w"> </span>r<span class="w"> </span>max<span class="w">  </span>-i<span class="w"> </span>NDVI_177_mm_reclass.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w"> </span>-o<span class="w"> </span>stat_NDVI_177_reclass.shp
 
-<span class="o">!</span>pkextractogr -f CSV -srcnodata -3.4028234663852886e+38 -r mean -r stdev -r min  -i NDVI_177_mm_reclass.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp  -o  stat_NDVI_177_reclass_v1.csv
+<span class="o">!</span>pkextractogr<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>-srcnodata<span class="w"> </span>-3.4028234663852886e+38<span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>stdev<span class="w"> </span>-r<span class="w"> </span>min<span class="w">  </span>-i<span class="w"> </span>NDVI_177_mm_reclass.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w">  </span>-o<span class="w">  </span>stat_NDVI_177_reclass_v1.csv
 </pre></div>
 </div>
 </div>
@@ -1267,14 +1264,14 @@ processing layer Sodermanland_grassland_v1
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-R --vanilla -q
-<span class="nv">ndvi_177</span> <span class="o">=</span> read.csv2 <span class="o">(</span><span class="s2">&quot;/media/sf_LVM_shared/stat_NDVI_177_reclass_v1.csv&quot;</span>, <span class="nv">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span> , <span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
+R<span class="w"> </span>--vanilla<span class="w"> </span>-q
+<span class="nv">ndvi_177</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>read.csv2<span class="w"> </span><span class="o">(</span><span class="s2">&quot;/media/sf_LVM_shared/stat_NDVI_177_reclass_v1.csv&quot;</span>,<span class="w"> </span><span class="nv">sep</span><span class="o">=</span><span class="s2">&quot;,&quot;</span><span class="w"> </span>,<span class="w"> </span><span class="nv">header</span><span class="o">=</span>TRUE<span class="o">)</span>
 
-library <span class="o">(</span>ggplot2<span class="o">)</span>
+library<span class="w"> </span><span class="o">(</span>ggplot2<span class="o">)</span>
 
-ggplot<span class="o">(</span>stat_NDVI_177_reclass_v1, aes<span class="o">(</span><span class="nv">x</span> <span class="o">=</span> NATURTYP1, <span class="nv">y</span> <span class="o">=</span> mean, <span class="nv">fill</span><span class="o">=</span>NATURTYP1<span class="o">))</span>+
-  geom_boxplot<span class="o">(</span><span class="nv">size</span><span class="o">=</span><span class="m">0</span>.5, <span class="nv">alpha</span><span class="o">=</span><span class="m">0</span>.8<span class="o">)</span>+
-  theme_classic<span class="o">()</span>
+ggplot<span class="o">(</span>stat_NDVI_177_reclass_v1,<span class="w"> </span>aes<span class="o">(</span><span class="nv">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>NATURTYP1,<span class="w"> </span><span class="nv">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>mean,<span class="w"> </span><span class="nv">fill</span><span class="o">=</span>NATURTYP1<span class="o">))</span>+
+<span class="w">  </span>geom_boxplot<span class="o">(</span><span class="nv">size</span><span class="o">=</span><span class="m">0</span>.5,<span class="w"> </span><span class="nv">alpha</span><span class="o">=</span><span class="m">0</span>.8<span class="o">)</span>+
+<span class="w">  </span>theme_classic<span class="o">()</span>
 </pre></div>
 </div>
 </div>
@@ -1292,8 +1289,8 @@ transform all hdf file to tif and warp it. Or create a vrt and work on that. I c
 
 <span class="c1">#this one works for all files with all layer</span>
 
-    <span class="k">for</span> i <span class="k">in</span> *.hdf<span class="p">;</span> <span class="k">do</span>
-    gdal_translate  <span class="nv">$i</span> <span class="nv">$i</span>.tif<span class="p">;</span> <span class="k">done</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.hdf<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span>gdal_translate<span class="w">  </span><span class="nv">$i</span><span class="w"> </span><span class="nv">$i</span>.tif<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 
 
 <span class="c1">##</span>
@@ -1305,11 +1302,11 @@ transform all hdf file to tif and warp it. Or create a vrt and work on that. I c
 
 <span class="c1">#try this</span>
 
-       <span class="k">for</span> file <span class="k">in</span> *.hdf <span class="p">;</span> <span class="k">do</span>
-        <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .hdf<span class="k">)</span>
-        gdalwarp -of GTiff<span class="se">\</span>
-        -t_srs <span class="s1">&#39;+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs&#39;</span> -tr <span class="m">100</span> <span class="m">100</span><span class="se">\</span>
-        <span class="s1">&#39;HDF4_EOS:EOS_GRID:&#39;</span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s1">&#39;:MODIS_Grid_16DAY_250m_500m_VI:&quot;250m 16 days NDVI&quot;&#39;</span> <span class="si">${</span><span class="nv">file</span><span class="si">}</span>_NDVI.tif
+<span class="w">       </span><span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.hdf<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">        </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.hdf<span class="k">)</span>
+<span class="w">        </span>gdalwarp<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="se">\</span>
+<span class="w">        </span>-t_srs<span class="w"> </span><span class="s1">&#39;+proj=sinu +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs&#39;</span><span class="w"> </span>-tr<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="m">100</span><span class="se">\</span>
+<span class="w">        </span><span class="s1">&#39;HDF4_EOS:EOS_GRID:&#39;</span><span class="si">${</span><span class="nv">file</span><span class="si">}</span><span class="s1">&#39;:MODIS_Grid_16DAY_250m_500m_VI:&quot;250m 16 days NDVI&quot;&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>_NDVI.tif
 </pre></div>
 </div>
 </div>
@@ -1620,31 +1617,31 @@ Input file size is 4800, 4800
 <span class="c1">#sd 1 flag creates one layer (NDVI) stacked on each other</span>
 
 <span class="c1">#media/sf_LVM_shared/2019-day113-257/first_2019</span>
-<span class="o">!</span>gdalbuildvrt -sd <span class="m">1</span> -separate NDVI_first.vrt MOD13Q1.*.hdf
+<span class="o">!</span>gdalbuildvrt<span class="w"> </span>-sd<span class="w"> </span><span class="m">1</span><span class="w"> </span>-separate<span class="w"> </span>NDVI_first.vrt<span class="w"> </span>MOD13Q1.*.hdf
 
 <span class="c1">#media/sf_LVM_shared/2019-day113-257/second_2019</span>
 
-<span class="o">!</span>gdalbuildvrt -sd <span class="m">1</span> -separate NDVI_second.vrt MOD13Q1.*.hdf
+<span class="o">!</span>gdalbuildvrt<span class="w"> </span>-sd<span class="w"> </span><span class="m">1</span><span class="w"> </span>-separate<span class="w"> </span>NDVI_second.vrt<span class="w"> </span>MOD13Q1.*.hdf
 
 
 <span class="c1">#media/sf_LVM_shared/2019-day113-257/first_2019</span>
-<span class="o">!</span>gdalbuildvrt -sd <span class="m">12</span> -separate PR_first.vrt MOD13Q1.*.hdf
+<span class="o">!</span>gdalbuildvrt<span class="w"> </span>-sd<span class="w"> </span><span class="m">12</span><span class="w"> </span>-separate<span class="w"> </span>PR_first.vrt<span class="w"> </span>MOD13Q1.*.hdf
 
 <span class="c1">#media/sf_LVM_shared/2019-day113-257/second_2019</span>
 
-<span class="o">!</span>gdalbuildvrt -sd <span class="m">12</span> -separate PR_second.vrt MOD13Q1.*.hdf
+<span class="o">!</span>gdalbuildvrt<span class="w"> </span>-sd<span class="w"> </span><span class="m">12</span><span class="w"> </span>-separate<span class="w"> </span>PR_second.vrt<span class="w"> </span>MOD13Q1.*.hdf
 
 
 
 <span class="c1">##check gdalinfo</span>
-<span class="o">!</span>gdalinfo NDVI_first.vrt
-<span class="o">!</span>gdalinfo PR_second.vrt
+<span class="o">!</span>gdalinfo<span class="w"> </span>NDVI_first.vrt
+<span class="o">!</span>gdalinfo<span class="w"> </span>PR_second.vrt
 
 <span class="c1">#1o band represents the 10 different 16-days composite and use pkstatprofile to calculate mean</span>
 <span class="c1">#and std for the two period</span>
 <span class="c1">#calculate the median for the PR</span>
 
-<span class="o">!</span>openev NDVI_first.vrt
+<span class="o">!</span>openev<span class="w"> </span>NDVI_first.vrt
 
 
 </pre></div>
@@ -1777,23 +1774,23 @@ Band 27 Block=128x128 Type=Int16, ColorInterp=Undefined
 
 <span></span><span class="c1"># create the tif file on the vrt stack</span>
 
-<span class="o">!</span>pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata -3000 -f mean -f stdev  -i NDVI_first.vrt -o NDVI_first_mean_stdev.tif
+<span class="o">!</span>pkstatprofile<span class="w"> </span>-co<span class="w">  </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-nodata<span class="w"> </span>-3000<span class="w"> </span>-f<span class="w"> </span>mean<span class="w"> </span>-f<span class="w"> </span>stdev<span class="w">  </span>-i<span class="w"> </span>NDVI_first.vrt<span class="w"> </span>-o<span class="w"> </span>NDVI_first_mean_stdev.tif
 
-<span class="o">!</span>pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata -3000 -f mean -f min -f max -i NDVI_first.vrt -o NDVI_first_mean_min_max.tif
+<span class="o">!</span>pkstatprofile<span class="w"> </span>-co<span class="w">  </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-nodata<span class="w"> </span>-3000<span class="w"> </span>-f<span class="w"> </span>mean<span class="w"> </span>-f<span class="w"> </span>min<span class="w"> </span>-f<span class="w"> </span>max<span class="w"> </span>-i<span class="w"> </span>NDVI_first.vrt<span class="w"> </span>-o<span class="w"> </span>NDVI_first_mean_min_max.tif
 
-<span class="o">!</span>pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata -3000 -f mean -f min -f max -i NDVI_second.vrt -o NDVI_second_mean_min_max.tif
+<span class="o">!</span>pkstatprofile<span class="w"> </span>-co<span class="w">  </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-nodata<span class="w"> </span>-3000<span class="w"> </span>-f<span class="w"> </span>mean<span class="w"> </span>-f<span class="w"> </span>min<span class="w"> </span>-f<span class="w"> </span>max<span class="w"> </span>-i<span class="w"> </span>NDVI_second.vrt<span class="w"> </span>-o<span class="w"> </span>NDVI_second_mean_min_max.tif
 
 
 <span class="c1">#do it for the PR layer , right way to do it?</span>
 
-<span class="o">!</span>pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata <span class="m">255</span> -f median -i PR_first.vrt -o PR_first_median.tif
+<span class="o">!</span>pkstatprofile<span class="w"> </span>-co<span class="w">  </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-nodata<span class="w"> </span><span class="m">255</span><span class="w"> </span>-f<span class="w"> </span>median<span class="w"> </span>-i<span class="w"> </span>PR_first.vrt<span class="w"> </span>-o<span class="w"> </span>PR_first_median.tif
 
-<span class="o">!</span>pkstatprofile -co  <span class="nv">COMPRESS</span><span class="o">=</span>LZW -nodata <span class="m">255</span> -f median -i PR_second.vrt -o PR_second_median.tif
+<span class="o">!</span>pkstatprofile<span class="w"> </span>-co<span class="w">  </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>-nodata<span class="w"> </span><span class="m">255</span><span class="w"> </span>-f<span class="w"> </span>median<span class="w"> </span>-i<span class="w"> </span>PR_second.vrt<span class="w"> </span>-o<span class="w"> </span>PR_second_median.tif
 
 
-<span class="o">!</span>pkstat -hist  -nbin  <span class="m">20</span> -src_min <span class="m">0</span>  -i     NDVI_first_mean_min_max.tif
+<span class="o">!</span>pkstat<span class="w"> </span>-hist<span class="w">  </span>-nbin<span class="w">  </span><span class="m">20</span><span class="w"> </span>-src_min<span class="w"> </span><span class="m">0</span><span class="w">  </span>-i<span class="w">     </span>NDVI_first_mean_min_max.tif
 
-<span class="o">!</span>pkstat -hist  -nbin <span class="m">20</span> -src_min <span class="m">0</span>  -i     PR_second_median.tif
+<span class="o">!</span>pkstat<span class="w"> </span>-hist<span class="w">  </span>-nbin<span class="w"> </span><span class="m">20</span><span class="w"> </span>-src_min<span class="w"> </span><span class="m">0</span><span class="w">  </span>-i<span class="w">     </span>PR_second_median.tif
 
 
 
@@ -1817,13 +1814,13 @@ FileOpenError
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#reproject to be able to extract the values from it with the help of shp file</span>
 
-<span class="o">!</span>gdalwarp -t_srs <span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span> NDVI_first_mean_min_max.tif NDVI_reproj_first.tif
+<span class="o">!</span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span><span class="w"> </span>NDVI_first_mean_min_max.tif<span class="w"> </span>NDVI_reproj_first.tif
 
-<span class="o">!</span>gdalwarp -t_srs <span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span> NDVI_first_mean_min_max.tif NDVI_reproj_second.tif
+<span class="o">!</span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span><span class="w"> </span>NDVI_first_mean_min_max.tif<span class="w"> </span>NDVI_reproj_second.tif
 
-<span class="o">!</span>gdalwarp -t_srs <span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span> PR_first_median.tif PR_first_median_reproj_first.tif
+<span class="o">!</span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span><span class="w"> </span>PR_first_median.tif<span class="w"> </span>PR_first_median_reproj_first.tif
 
-<span class="o">!</span>gdalwarp -t_srs <span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span> PR_second_median.tif PR_second_median_reproj_second.tif
+<span class="o">!</span>gdalwarp<span class="w"> </span>-t_srs<span class="w"> </span><span class="s2">&quot;+proj=utm +zone=33 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs&quot;</span><span class="w"> </span>PR_second_median.tif<span class="w"> </span>PR_second_median_reproj_second.tif
 
 </pre></div>
 </div>
@@ -1837,14 +1834,14 @@ FileOpenError
 <span></span>%%bash
 <span class="c1">#on the fly</span>
 
-pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
--m PR_first_median_reproj_first.tif --operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span> --msknodata <span class="m">2</span> --nodata <span class="m">0</span> --operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span> --msknodata <span class="m">3</span> --nodata <span class="m">0</span> <span class="se">\</span>
--i NDVI_reproj_first.tif -o NDVI_reproj_first.mm.tif
+pksetmask<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+-m<span class="w"> </span>PR_first_median_reproj_first.tif<span class="w"> </span>--operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="w"> </span>--msknodata<span class="w"> </span><span class="m">2</span><span class="w"> </span>--nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>--operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="w"> </span>--msknodata<span class="w"> </span><span class="m">3</span><span class="w"> </span>--nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-i<span class="w"> </span>NDVI_reproj_first.tif<span class="w"> </span>-o<span class="w"> </span>NDVI_reproj_first.mm.tif
 
 
-pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> <span class="se">\</span>
--m PR_second_median_reproj_second.tif --operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span> --msknodata <span class="m">2</span> --nodata <span class="m">0</span> --operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span> --msknodata <span class="m">3</span> --nodata <span class="m">0</span> <span class="se">\</span>
--i NDVI_reproj_second.tif -o NDVI_reproj_second.mm.tif
+pksetmask<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="se">\</span>
+-m<span class="w"> </span>PR_second_median_reproj_second.tif<span class="w"> </span>--operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="w"> </span>--msknodata<span class="w"> </span><span class="m">2</span><span class="w"> </span>--nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>--operator<span class="o">=</span><span class="s1">&#39;&gt;&#39;</span><span class="w"> </span>--msknodata<span class="w"> </span><span class="m">3</span><span class="w"> </span>--nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+-i<span class="w"> </span>NDVI_reproj_second.tif<span class="w"> </span>-o<span class="w"> </span>NDVI_reproj_second.mm.tif
 </pre></div>
 </div>
 </div>
@@ -1854,9 +1851,9 @@ pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdal_calc.py -A NDVI_reproj_first.mm.tif --type<span class="o">=</span>Float32 --calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span> --outfile<span class="o">=</span>NDVI_reproj_first.mm_reclass.tif
+<span></span><span class="o">!</span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>NDVI_reproj_first.mm.tif<span class="w"> </span>--type<span class="o">=</span>Float32<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>NDVI_reproj_first.mm_reclass.tif
 
-<span class="o">!</span>gdal_calc.py -A NDVI_reproj_second.mm.tif --type<span class="o">=</span>Float32 --calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span> --outfile<span class="o">=</span>NDVI_reproj_second.mm_reclass.tif
+<span class="o">!</span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span>NDVI_reproj_second.mm.tif<span class="w"> </span>--type<span class="o">=</span>Float32<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;A*0.0001&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>NDVI_reproj_second.mm_reclass.tif
 
 
 </pre></div>
@@ -1872,7 +1869,7 @@ pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 <span></span>%%bash
 
 <span class="c1">#all grasslands with types</span>
-ogrinfo -al -geom<span class="o">=</span>NO   TUVA/naturtyper/AoB_Naturtypsyta2016.shp <span class="p">|</span> head -80
+ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w">   </span>TUVA/naturtyper/AoB_Naturtypsyta2016.shp<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80
 
 </pre></div>
 </div>
@@ -1970,8 +1967,8 @@ OGRFeature(AoB_Naturtypsyta2016):1
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>pkextractogr -f CSV -srcnodata -3.4028234663852886e+38 -r mean -r stdev -r min  -i NDVI_reproj_first.mm_reclass.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp  -o  stat_NDVI_first.csv
-<span class="o">!</span>pkextractogr -f CSV -srcnodata -3.4028234663852886e+38 -r mean -r stdev -r min  -i NDVI_reproj_second.mm_reclass.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp -o  stat_NDVI_second.csv
+<span></span><span class="o">!</span>pkextractogr<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>-srcnodata<span class="w"> </span>-3.4028234663852886e+38<span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>stdev<span class="w"> </span>-r<span class="w"> </span>min<span class="w">  </span>-i<span class="w"> </span>NDVI_reproj_first.mm_reclass.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w">  </span>-o<span class="w">  </span>stat_NDVI_first.csv
+<span class="o">!</span>pkextractogr<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>-srcnodata<span class="w"> </span>-3.4028234663852886e+38<span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>stdev<span class="w"> </span>-r<span class="w"> </span>min<span class="w">  </span>-i<span class="w"> </span>NDVI_reproj_second.mm_reclass.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w"> </span>-o<span class="w">  </span>stat_NDVI_second.csv
 </pre></div>
 </div>
 </div>
@@ -2037,11 +2034,11 @@ OGRFeature(AoB_Naturtypsyta2016):1
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
 
-gdalinfo /media/sf_LVM_shared/TUVA/NMD_Tillaggsskikt_Markanvandning<span class="p">|</span> head -80
+gdalinfo<span class="w"> </span>/media/sf_LVM_shared/TUVA/NMD_Tillaggsskikt_Markanvandning<span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80
 
 TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif
 
-openev TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif
+openev<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif
 
 
 </pre></div>
@@ -2148,7 +2145,7 @@ bash: line 2: openev: command not found
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>pkgetmask  -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -min  <span class="m">5</span>  -max  <span class="m">255</span> -data <span class="m">1</span> -nodata <span class="m">0</span> -ot Byte  -i  TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif -o TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif
+<span></span><span class="o">!</span>pkgetmask<span class="w">  </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-min<span class="w">  </span><span class="m">5</span><span class="w">  </span>-max<span class="w">  </span><span class="m">255</span><span class="w"> </span>-data<span class="w"> </span><span class="m">1</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w">  </span>-i<span class="w">  </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif<span class="w"> </span>-o<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif
 </pre></div>
 </div>
 </div>
@@ -2160,7 +2157,7 @@ bash: line 2: openev: command not found
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#alternatively we can use this</span>
 
-<span class="o">!</span>gdalwarp -ot Byte -of GTiff -tr <span class="m">250</span>.0 -250.0 -tap -cutline TUVA/Sodermanland/Sodermanland_grassland_v1.shp -crop_to_cutline -dstnodata <span class="m">255</span>.0 -co -of GTiff -co <span class="nv">COMPRESS</span><span class="o">=</span>LZW TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif -o TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif NDVI_first_CLIPPED.tif
+<span class="o">!</span>gdalwarp<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-tr<span class="w"> </span><span class="m">250</span>.0<span class="w"> </span>-250.0<span class="w"> </span>-tap<span class="w"> </span>-cutline<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-dstnodata<span class="w"> </span><span class="m">255</span>.0<span class="w"> </span>-co<span class="w"> </span>-of<span class="w"> </span>GTiff<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>LZW<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif<span class="w"> </span>-o<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif<span class="w"> </span>NDVI_first_CLIPPED.tif
 </pre></div>
 </div>
 </div>
@@ -2171,7 +2168,7 @@ bash: line 2: openev: command not found
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#get grazed and no grazed in csv</span>
 
-<span class="o">!</span>pkextractogr -f CSV -srcnodata <span class="m">0</span> -r mean -r stdev -r min  -i TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif -o TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif -s TUVA/Sodermanland/Sodermanland_grassland_v1.shp  -o  grazed.csv
+<span class="o">!</span>pkextractogr<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>stdev<span class="w"> </span>-r<span class="w"> </span>min<span class="w">  </span>-i<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1.tif<span class="w"> </span>-o<span class="w"> </span>TUVA/NMD_Tillaggsskikt_Markanvandning/NMD_markanv_bete_v1_mask.tif<span class="w"> </span>-s<span class="w"> </span>TUVA/Sodermanland/Sodermanland_grassland_v1.shp<span class="w">  </span>-o<span class="w">  </span>grazed.csv
 
 </pre></div>
 </div>
@@ -2214,7 +2211,7 @@ ggplot(ndvi_shift, aes(x = grazing, y = ndvi_change, fill=grazing))+
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert rozalia_project.ipynb --to html
+<span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>rozalia_project.ipynb<span class="w"> </span>--to<span class="w"> </span>html
 </pre></div>
 </div>
 </div>

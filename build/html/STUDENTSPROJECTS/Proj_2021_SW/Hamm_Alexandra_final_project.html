@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -556,16 +553,16 @@ often go together. The results show, however, that there is no preferential aspe
 <span class="c1"># this is the script I ran as a .sh file. Hence the /bin/bash</span>
 <span class="c1">#!/bin/bash</span>
 
-<span class="nb">declare</span> -a <span class="nv">provinces</span><span class="o">=(</span><span class="s2">&quot;Svalbard&quot;</span> <span class="s2">&quot;Greenland&quot;</span><span class="o">)</span>
-<span class="k">for</span> PROVINCE <span class="k">in</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">provinces</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">;</span> <span class="k">do</span>
-    <span class="nv">STRINGFIX</span><span class="o">=</span><span class="si">${</span><span class="nv">PROVINCE</span><span class="p">// /_</span><span class="si">}</span> <span class="c1"># in case of the russian regions, spaces needed to changed to underscores (Siberia Federal District to Siberia_Federal_District)</span>
-    <span class="nb">cd</span> /home/alex/modeling/data/arcticdem/
-    mkdir <span class="nv">$STRINGFIX</span>
-    ogr2ogr -where <span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;&#39;</span><span class="nv">$PROVINCE</span><span class="s2">&#39;&quot;</span> <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_3413.shp ../ArcticDEM_Tile_Index_Rel7/TM_WORLD_3413.shp
-    ogr2ogr -clipsrc ../ArcticDEM_Tile_Index_Rel7/cont_permafrost_3413.shp <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_cont_permafrost_3413.shp <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_3413.shp
-    ogr2ogr -clipsrc <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_cont_permafrost_3413.shp <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_tiles.shp ../ArcticDEM_Tile_Index_Rel7/ArcticDEM_Tile_Index_Rel7.shp
-    <span class="nb">echo</span> extracting tile list
-    ogrinfo -al <span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_tiles.shp -geom<span class="o">=</span>NO <span class="p">|</span> grep <span class="s1">&#39;tile (String)&#39;</span> <span class="p">|</span> sort <span class="p">|</span> uniq <span class="p">|</span> awk <span class="s1">&#39;{ print $4 }&#39;</span> &gt; <span class="nv">$STRINGFIX</span>/tile_list.txt
+<span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span><span class="nv">provinces</span><span class="o">=(</span><span class="s2">&quot;Svalbard&quot;</span><span class="w"> </span><span class="s2">&quot;Greenland&quot;</span><span class="o">)</span>
+<span class="k">for</span><span class="w"> </span>PROVINCE<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">provinces</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="nv">STRINGFIX</span><span class="o">=</span><span class="si">${</span><span class="nv">PROVINCE</span><span class="p">// /_</span><span class="si">}</span><span class="w"> </span><span class="c1"># in case of the russian regions, spaces needed to changed to underscores (Siberia Federal District to Siberia_Federal_District)</span>
+<span class="w">    </span><span class="nb">cd</span><span class="w"> </span>/home/alex/modeling/data/arcticdem/
+<span class="w">    </span>mkdir<span class="w"> </span><span class="nv">$STRINGFIX</span>
+<span class="w">    </span>ogr2ogr<span class="w"> </span>-where<span class="w"> </span><span class="nv">NAME</span><span class="o">=</span><span class="s2">&quot;&#39;</span><span class="nv">$PROVINCE</span><span class="s2">&#39;&quot;</span><span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_3413.shp<span class="w"> </span>../ArcticDEM_Tile_Index_Rel7/TM_WORLD_3413.shp
+<span class="w">    </span>ogr2ogr<span class="w"> </span>-clipsrc<span class="w"> </span>../ArcticDEM_Tile_Index_Rel7/cont_permafrost_3413.shp<span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_cont_permafrost_3413.shp<span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_3413.shp
+<span class="w">    </span>ogr2ogr<span class="w"> </span>-clipsrc<span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_cont_permafrost_3413.shp<span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_tiles.shp<span class="w"> </span>../ArcticDEM_Tile_Index_Rel7/ArcticDEM_Tile_Index_Rel7.shp
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>extracting<span class="w"> </span>tile<span class="w"> </span>list
+<span class="w">    </span>ogrinfo<span class="w"> </span>-al<span class="w"> </span><span class="si">${</span><span class="nv">STRINGFIX</span><span class="si">}</span>_tiles.shp<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s1">&#39;tile (String)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $4 }&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$STRINGFIX</span>/tile_list.txt
 <span class="k">done</span>
 
 </pre></div>
@@ -578,7 +575,7 @@ often go together. The results show, however, that there is no preferential aspe
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-less tile_list.txt
+less<span class="w"> </span>tile_list.txt
 </pre></div>
 </div>
 </div>
@@ -622,65 +619,65 @@ less tile_list.txt
 
 <span class="c1">#!/bin/bash</span>
 <span class="nv">direc</span><span class="o">=</span><span class="nv">$1</span>
-<span class="nb">cd</span> /home/alex/modeling/data/arcticdem/<span class="si">${</span><span class="nv">direc</span><span class="si">}</span>
-<span class="nv">subdirec</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$PWD</span><span class="k">)</span>
-rm all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-touch all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-rm all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-touch all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-<span class="nv">file_count</span><span class="o">=</span><span class="k">$(</span>less tile_list.txt <span class="p">|</span> wc -l<span class="k">)</span>
+<span class="nb">cd</span><span class="w"> </span>/home/alex/modeling/data/arcticdem/<span class="si">${</span><span class="nv">direc</span><span class="si">}</span>
+<span class="nv">subdirec</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$PWD</span><span class="k">)</span>
+rm<span class="w"> </span>all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+touch<span class="w"> </span>all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+rm<span class="w"> </span>all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+touch<span class="w"> </span>all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+<span class="nv">file_count</span><span class="o">=</span><span class="k">$(</span>less<span class="w"> </span>tile_list.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
 <span class="nv">counter</span><span class="o">=</span><span class="m">1</span>
 
-<span class="k">while</span> <span class="nb">read</span> entry<span class="p">;</span> <span class="k">do</span>
-    <span class="c1"># downloading</span>
-    <span class="nb">echo</span> downloading tile <span class="nv">$entry</span>...
-    wget -q http://data.pgc.umn.edu/elev/dem/setsm/ArcticDEM/mosaic/v3.0/10m/<span class="nv">$entry</span>/<span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0.tar.gz
-    <span class="c1"># unzipping</span>
-    tar -xzvf <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0.tar.gz -C /home/alex/modeling/data/arcticdem/<span class="si">${</span><span class="nv">direc</span><span class="si">}</span> <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif
-    <span class="c1"># extracting extend</span>
-    <span class="nv">ulx</span><span class="o">=</span><span class="k">$(</span>gdalinfo <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif <span class="p">|</span> grep <span class="s2">&quot;Upper Left&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print  $3  }&#39;</span><span class="k">)</span>
-    <span class="nv">uly</span><span class="o">=</span><span class="k">$(</span>gdalinfo <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif <span class="p">|</span> grep <span class="s2">&quot;Upper Left&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print  $4  }&#39;</span><span class="k">)</span>
-    <span class="nv">lrx</span><span class="o">=</span><span class="k">$(</span>gdalinfo <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif <span class="p">|</span> grep <span class="s2">&quot;Lower Right&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print $3  }&#39;</span><span class="k">)</span>
-    <span class="nv">lry</span><span class="o">=</span><span class="k">$(</span>gdalinfo <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif <span class="p">|</span> grep <span class="s2">&quot;Lower Right&quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print $4  }&#39;</span><span class="k">)</span>
-    <span class="c1"># &quot;clipping&quot; mask to extend of the tif</span>
-    gdalwarp -ot Byte -te <span class="nv">$ulx</span> <span class="nv">$lry</span> <span class="nv">$lrx</span> <span class="nv">$uly</span> -tr <span class="m">10</span> <span class="m">10</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  ../<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>_cont_permafrost_raster.tif mask_subset.tif -overwrite
-    gdal_edit.py -a_ullr <span class="nv">$ulx</span> <span class="nv">$uly</span> <span class="nv">$lrx</span> <span class="nv">$lry</span> mask_subset.tif
-    <span class="c1"># mask values in the .tif with the new mask so that only values inside the continuous permafrost area are considered</span>
-    pksetmask -m mask_subset.tif -msknodata <span class="m">0</span> -nodata -9999 -i <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif -o <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif
-    <span class="c1"># calculate SLOPE</span>
-    gdaldem slope <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_slope.tif
-    <span class="c1"># This next command is an alternative classification in commonly recognized slope classes</span>
-    <span class="c1">#gdal_calc.py -A ${entry}_slope.tif --outfile=${entry}_reclass.tif --calc=&quot;1*(A&lt;=3)+2*((A&gt;3)*(A&lt;=9))+3*((A&gt;9)*(A&lt;=15))+4*((A&gt;15)*(A&lt;=30))+5*((A&gt;30)*(A&lt;=60))+6*(A&gt;60)&quot; --overwrite</span>
-    <span class="c1"># reclassify values so they fall within the classes of interest</span>
-    gdal_calc.py -A <span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_slope.tif --outfile<span class="o">=</span><span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_reclass.tif --calc<span class="o">=</span><span class="s2">&quot;0*(A&lt;=5)+10*((A&gt;5)*(A&lt;=15))+20*((A&gt;15)*(A&lt;=25))+30*(A&gt;25)&quot;</span> --overwrite
-    <span class="c1"># calculate histogram</span>
-    pkstat --hist -src_min <span class="m">0</span> -src_max <span class="m">35</span> -i <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass.tif &gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_temp.txt
-    <span class="c1"># extract the values with the 4 different classes</span>
-    sed -n -e 1p -e 11p -e 21p -e 31p <span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_hist_temp.txt &gt; <span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_hist_values_temp.txt
-    <span class="c1">#sed -n -e 2p -e 3p -e 4p -e 5p -e 6p -e 7p ${entry}_hist_temp.txt &gt; ${entry}_hist_values_temp.txt</span>
-    <span class="c1"># use awk to only get the actual number, not the class-value</span>
-    awk  <span class="s1">&#39;{ print $2 }&#39;</span> <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_temp.txt &gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt
-    <span class="c1"># save the name of the tile as additional information</span>
-    <span class="nb">echo</span> <span class="si">${</span><span class="nv">entry</span><span class="si">}</span> &gt;&gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt
-    <span class="c1"># paste ouptut into a file that collects all the histogram values for all the tiles</span>
-    less <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt &gt;&gt; all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-    <span class="c1"># Repeat the same process with different classes for ASPECT</span>
-    gdaldem aspect <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_aspect.tif
-    gdal_calc.py -A <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_aspect.tif --outfile<span class="o">=</span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass_as.tif --calc<span class="o">=</span><span class="s2">&quot;1*(A==-1)+2*((A&gt;=0)*(A&lt;=22.5))+3*((A&gt;22.5)*(A&lt;=67.5))+4*((A&gt;67.5)*(A&lt;=112.5))+5*((A&gt;112.5)*(A&lt;=157.5))+6*((A&gt;157.5)*(A&lt;=202.5))+7*((A&gt;202.5)*(A&lt;=247.5))+8*((A&gt;247.5)*(A&lt;=292.5))+9*((A&gt;292.5)*(A&lt;=337.5))+2*((A&gt;337.5)*(A&lt;=360))&quot;</span> --overwrite
-    pkstat --hist -src_min <span class="m">0</span> -src_max <span class="m">35</span> -i <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass_as.tif &gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_as_temp.txt
-    sed -n -e 2p -e 3p -e 4p -e 5p -e 6p -e 7p -e 8p -e 9p -e 10p <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_as_temp.txt &gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_as_temp.txt
-    awk  <span class="s1">&#39;{ print $2 }&#39;</span> <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_as_temp.txt &gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt
-    <span class="nb">echo</span> <span class="si">${</span><span class="nv">entry</span><span class="si">}</span> &gt;&gt; <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt
-    less <span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt &gt;&gt; all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
-    <span class="c1"># remove tmeporary files and all the tiffs to save space</span>
-    rm *.tif
-    rm *_temp.txt
-    <span class="c1"># print progress</span>
-    <span class="nb">echo</span> progress: <span class="nv">$counter</span>/<span class="nv">$file_count</span>
-    <span class="c1"># increase counter</span>
-    <span class="o">((</span>counter++<span class="o">))</span>
-    rm *.tar.gz
-<span class="k">done</span> &lt;tile_list.txt
+<span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>entry<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">    </span><span class="c1"># downloading</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>downloading<span class="w"> </span>tile<span class="w"> </span><span class="nv">$entry</span>...
+<span class="w">    </span>wget<span class="w"> </span>-q<span class="w"> </span>http://data.pgc.umn.edu/elev/dem/setsm/ArcticDEM/mosaic/v3.0/10m/<span class="nv">$entry</span>/<span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0.tar.gz
+<span class="w">    </span><span class="c1"># unzipping</span>
+<span class="w">    </span>tar<span class="w"> </span>-xzvf<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0.tar.gz<span class="w"> </span>-C<span class="w"> </span>/home/alex/modeling/data/arcticdem/<span class="si">${</span><span class="nv">direc</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif
+<span class="w">    </span><span class="c1"># extracting extend</span>
+<span class="w">    </span><span class="nv">ulx</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Upper Left&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print  $3  }&#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="nv">uly</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Upper Left&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print  $4  }&#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="nv">lrx</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Lower Right&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print $3  }&#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="nv">lry</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="s2">&quot;Lower Right&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ gsub (&quot;[(),]&quot;,&quot; &quot;) ; print $4  }&#39;</span><span class="k">)</span>
+<span class="w">    </span><span class="c1"># &quot;clipping&quot; mask to extend of the tif</span>
+<span class="w">    </span>gdalwarp<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-te<span class="w"> </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span>-tr<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">10</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>../<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>_cont_permafrost_raster.tif<span class="w"> </span>mask_subset.tif<span class="w"> </span>-overwrite
+<span class="w">    </span>gdal_edit.py<span class="w"> </span>-a_ullr<span class="w"> </span><span class="nv">$ulx</span><span class="w"> </span><span class="nv">$uly</span><span class="w"> </span><span class="nv">$lrx</span><span class="w"> </span><span class="nv">$lry</span><span class="w"> </span>mask_subset.tif
+<span class="w">    </span><span class="c1"># mask values in the .tif with the new mask so that only values inside the continuous permafrost area are considered</span>
+<span class="w">    </span>pksetmask<span class="w"> </span>-m<span class="w"> </span>mask_subset.tif<span class="w"> </span>-msknodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-nodata<span class="w"> </span>-9999<span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_10m_v3.0_reg_dem.tif<span class="w"> </span>-o<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif
+<span class="w">    </span><span class="c1"># calculate SLOPE</span>
+<span class="w">    </span>gdaldem<span class="w"> </span>slope<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_slope.tif
+<span class="w">    </span><span class="c1"># This next command is an alternative classification in commonly recognized slope classes</span>
+<span class="w">    </span><span class="c1">#gdal_calc.py -A ${entry}_slope.tif --outfile=${entry}_reclass.tif --calc=&quot;1*(A&lt;=3)+2*((A&gt;3)*(A&lt;=9))+3*((A&gt;9)*(A&lt;=15))+4*((A&gt;15)*(A&lt;=30))+5*((A&gt;30)*(A&lt;=60))+6*(A&gt;60)&quot; --overwrite</span>
+<span class="w">    </span><span class="c1"># reclassify values so they fall within the classes of interest</span>
+<span class="w">    </span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_slope.tif<span class="w"> </span>--outfile<span class="o">=</span><span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_reclass.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;0*(A&lt;=5)+10*((A&gt;5)*(A&lt;=15))+20*((A&gt;15)*(A&lt;=25))+30*(A&gt;25)&quot;</span><span class="w"> </span>--overwrite
+<span class="w">    </span><span class="c1"># calculate histogram</span>
+<span class="w">    </span>pkstat<span class="w"> </span>--hist<span class="w"> </span>-src_min<span class="w"> </span><span class="m">0</span><span class="w"> </span>-src_max<span class="w"> </span><span class="m">35</span><span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass.tif<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_temp.txt
+<span class="w">    </span><span class="c1"># extract the values with the 4 different classes</span>
+<span class="w">    </span>sed<span class="w"> </span>-n<span class="w"> </span>-e<span class="w"> </span>1p<span class="w"> </span>-e<span class="w"> </span>11p<span class="w"> </span>-e<span class="w"> </span>21p<span class="w"> </span>-e<span class="w"> </span>31p<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_hist_temp.txt<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="p">:</span><span class="nv">0</span><span class="p">:</span><span class="nv">5</span><span class="si">}</span>_hist_values_temp.txt
+<span class="w">    </span><span class="c1">#sed -n -e 2p -e 3p -e 4p -e 5p -e 6p -e 7p ${entry}_hist_temp.txt &gt; ${entry}_hist_values_temp.txt</span>
+<span class="w">    </span><span class="c1"># use awk to only get the actual number, not the class-value</span>
+<span class="w">    </span>awk<span class="w">  </span><span class="s1">&#39;{ print $2 }&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_temp.txt<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt
+<span class="w">    </span><span class="c1"># save the name of the tile as additional information</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt
+<span class="w">    </span><span class="c1"># paste ouptut into a file that collects all the histogram values for all the tiles</span>
+<span class="w">    </span>less<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_temp.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>all_tiles_slope_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+<span class="w">    </span><span class="c1"># Repeat the same process with different classes for ASPECT</span>
+<span class="w">    </span>gdaldem<span class="w"> </span>aspect<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_msk.tif<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_aspect.tif
+<span class="w">    </span>gdal_calc.py<span class="w"> </span>-A<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_aspect.tif<span class="w"> </span>--outfile<span class="o">=</span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass_as.tif<span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;1*(A==-1)+2*((A&gt;=0)*(A&lt;=22.5))+3*((A&gt;22.5)*(A&lt;=67.5))+4*((A&gt;67.5)*(A&lt;=112.5))+5*((A&gt;112.5)*(A&lt;=157.5))+6*((A&gt;157.5)*(A&lt;=202.5))+7*((A&gt;202.5)*(A&lt;=247.5))+8*((A&gt;247.5)*(A&lt;=292.5))+9*((A&gt;292.5)*(A&lt;=337.5))+2*((A&gt;337.5)*(A&lt;=360))&quot;</span><span class="w"> </span>--overwrite
+<span class="w">    </span>pkstat<span class="w"> </span>--hist<span class="w"> </span>-src_min<span class="w"> </span><span class="m">0</span><span class="w"> </span>-src_max<span class="w"> </span><span class="m">35</span><span class="w"> </span>-i<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_reclass_as.tif<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_as_temp.txt
+<span class="w">    </span>sed<span class="w"> </span>-n<span class="w"> </span>-e<span class="w"> </span>2p<span class="w"> </span>-e<span class="w"> </span>3p<span class="w"> </span>-e<span class="w"> </span>4p<span class="w"> </span>-e<span class="w"> </span>5p<span class="w"> </span>-e<span class="w"> </span>6p<span class="w"> </span>-e<span class="w"> </span>7p<span class="w"> </span>-e<span class="w"> </span>8p<span class="w"> </span>-e<span class="w"> </span>9p<span class="w"> </span>-e<span class="w"> </span>10p<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_as_temp.txt<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_as_temp.txt
+<span class="w">    </span>awk<span class="w">  </span><span class="s1">&#39;{ print $2 }&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_hist_values_as_temp.txt<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt
+<span class="w">    </span>less<span class="w"> </span><span class="si">${</span><span class="nv">entry</span><span class="si">}</span>_pixel_count_as_temp.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>all_tiles_aspect_<span class="si">${</span><span class="nv">subdirec</span><span class="si">}</span>.txt
+<span class="w">    </span><span class="c1"># remove tmeporary files and all the tiffs to save space</span>
+<span class="w">    </span>rm<span class="w"> </span>*.tif
+<span class="w">    </span>rm<span class="w"> </span>*_temp.txt
+<span class="w">    </span><span class="c1"># print progress</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span>progress:<span class="w"> </span><span class="nv">$counter</span>/<span class="nv">$file_count</span>
+<span class="w">    </span><span class="c1"># increase counter</span>
+<span class="w">    </span><span class="o">((</span>counter++<span class="o">))</span>
+<span class="w">    </span>rm<span class="w"> </span>*.tar.gz
+<span class="k">done</span><span class="w"> </span>&lt;tile_list.txt
 
 </pre></div>
 </div>

@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -635,7 +632,7 @@ it the output looks anything like a handwritten digit. You might try interpolati
 <span class="c1"># Training and Evaluation routines</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">loss_fn</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a standard training loop, which leaves some parts to be filled in.</span>
 <span class="sd">    INPUT:</span>
 <span class="sd">    :param model: an untrained pytorch model</span>
@@ -683,7 +680,7 @@ it the output looks anything like a handwritten digit. You might try interpolati
             <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; Train loss: </span><span class="si">{:.4f}</span><span class="s2">. Test loss: </span><span class="si">{:.4f}</span><span class="s2">. Time: </span><span class="si">{:.4f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">train_loader</span><span class="p">,</span><span class="n">verbose</span><span class="p">),</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">test_loader</span><span class="p">,</span><span class="n">verbose</span><span class="p">),</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)))</span> <span class="c1">#TODO: implement the evaluate function to provide performance statistics during training.</span>
 
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">evaluation_set</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluates the given model on the given dataset.</span>
 <span class="sd">    Returns the percentage of correct classifications out of total classifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -2442,7 +2439,7 @@ split: 10000
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">Autoencoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Linear activation in the middle (instead of an activation function)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -2515,7 +2512,7 @@ split: 10000
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="k">class</span> <span class="nc">Autoencoder</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Linear activation in the middle (instead of an activation function and relus)</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -3487,7 +3484,7 @@ part, you’ll build your own GAN in PyTorch, and test it on the MNIST dataset.<
 
 
 <span class="k">def</span> <span class="nf">train_discriminator</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">real_data</span><span class="p">,</span> <span class="n">fake_data</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Train the discriminator on a minibatch of data.</span>
 <span class="sd">    INPUTS</span>
 <span class="sd">        :param optimizer: the optimizer used for training</span>
@@ -3522,7 +3519,7 @@ part, you’ll build your own GAN in PyTorch, and test it on the MNIST dataset.<
     <span class="k">return</span> <span class="n">D_loss</span>
 
 <span class="k">def</span> <span class="nf">train_generator</span><span class="p">(</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">fake_data</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Performs a single training step on the generator.</span>
 <span class="sd">    :param optimizer: the optimizer</span>
 <span class="sd">    :param fake_data: forgeries, created by the generator from random noise. (Done before calling this function.)</span>
@@ -4765,7 +4762,7 @@ Text(0.5, 0.98, &#39;After 1000 epochs&#39;)
 
 <span class="c1"># Training and Evaluation routines</span>
 <span class="k">def</span> <span class="nf">train_FF</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="n">loss_fn</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">test_loader</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is a standard training loop, which leaves some parts to be filled in.</span>
 <span class="sd">    INPUT:</span>
 <span class="sd">    :param model: an untrained pytorch model</span>
@@ -4835,7 +4832,7 @@ Text(0.5, 0.98, &#39;After 1000 epochs&#39;)
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
 <span class="k">def</span> <span class="nf">evaluate_FF</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">evaluation_set</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluates the given model on the given dataset.</span>
 <span class="sd">    Returns the percentage of correct classifications out of total classifications.</span>
 <span class="sd">    &quot;&quot;&quot;</span>

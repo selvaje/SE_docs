@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -512,7 +509,7 @@ div.rendered_html tbody tr:hover {
 <p>The varied thrush breeds in western North America from Alaska to northern California.</p>
 <p>It is migratory, with northern breeders moving south within or somewhat beyond the breeding range.</p>
 <p>Other populations may only move altitudinally.</p>
-<p><img alt="b495f8f83d1c4a0abb41bcdf5176b700" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
+<p><img alt="2034f052df0e42c09d94858db579000b" class="no-scaled-link" src="../_images/varied_thrush.jpg" style="width: 400px;" /></p>
 <section id="Read-in-data">
 <h3>Read in data<a class="headerlink" href="#Read-in-data" title="Permalink to this headline"></a></h3>
 <div class="nbinput nblast docutils container">
@@ -520,8 +517,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">vath.data</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_2004.csv&quot;</span><span class="p">)</span>
-<span class="n">vath.val</span> <span class="o">&lt;-</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_VALIDATION.csv&quot;</span><span class="p">)</span>
+<span></span><span class="n">vath.data</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_2004.csv&quot;</span><span class="p">)</span>
+<span class="n">vath.val</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;./txt/vath_VALIDATION.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -560,10 +557,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># split dataset by presence</span>
-<span class="n">vath.pres</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,]</span>
-<span class="n">vath.abs</span> <span class="o">&lt;-</span> <span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,]</span>
-<span class="n">vath.pres.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
-<span class="n">vath.abs.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.abs</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.pres</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,]</span>
+<span class="n">vath.abs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">vath.data</span><span class="p">[</span><span class="n">vath.data</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,]</span>
+<span class="n">vath.pres.xy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.pres</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.abs.xy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.abs</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -573,9 +570,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># validation dataset</span>
-<span class="n">vath.val.pres</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
-<span class="n">vath.val.abs</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
-<span class="n">vath.val.xy</span> <span class="o">&lt;-</span> <span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.pres</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.abs</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[</span><span class="n">vath.val</span><span class="o">$</span><span class="n">VATH</span><span class="o">==</span><span class="m">0</span><span class="p">,</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
+<span class="n">vath.val.xy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">as.matrix</span><span class="p">(</span><span class="n">vath.val</span><span class="p">[,</span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
@@ -613,10 +610,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># env layers</span>
-<span class="n">elev</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/elev.gri&quot;</span><span class="p">)</span> <span class="c1"># elevation</span>
-<span class="n">canopy</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/cc2.gri&quot;</span><span class="p">)</span> <span class="c1"># canopy slope</span>
-<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/mesic.gri&quot;</span><span class="p">)</span> <span class="c1"># mesic forest</span>
-<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/precip.gri&quot;</span><span class="p">)</span> <span class="c1"># precipitation</span>
+<span class="n">elev</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/elev.gri&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># elevation</span>
+<span class="n">canopy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/cc2.gri&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># canopy slope</span>
+<span class="n">mesic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/mesic.gri&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># mesic forest</span>
+<span class="n">precip</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">raster</span><span class="p">(</span><span class="s">&quot;./R_db/precip.gri&quot;</span><span class="p">)</span><span class="w"> </span><span class="c1"># precipitation</span>
 </pre></div>
 </div>
 </div>
@@ -626,7 +623,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#check maps</span>
-<span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">canopy</span><span class="p">)</span>
+<span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="w"> </span><span class="n">canopy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -641,7 +638,7 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="w"> </span><span class="n">mesic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -733,15 +730,15 @@ values     : 23, 287  (min, max)
 </pre></div></div>
 </div>
 <p>Interpolation</p>
-<p><img alt="e0e057a1544348beaf52c2c71a14cb00" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
+<p><img alt="f5a144ebc61243a2990c6a62207e9000" class="no-scaled-link" src="../_images/interpolation.png" style="width: 800px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># resampling</span>
-<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mesic</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;ngb&quot;</span><span class="p">)</span>
-<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">precip</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span> <span class="s">&quot;bilinear&quot;</span><span class="p">)</span>
+<span class="n">mesic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">mesic</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ngb&quot;</span><span class="p">)</span>
+<span class="n">precip</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">resample</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">precip</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="n">elev</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;bilinear&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -751,8 +748,8 @@ values     : 23, 287  (min, max)
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#crop to same extent</span>
-<span class="n">mesic</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
-<span class="n">precip</span> <span class="o">&lt;-</span> <span class="nf">mask</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span> <span class="n">elev</span><span class="p">)</span>
+<span class="n">mesic</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span><span class="w"> </span><span class="n">elev</span><span class="p">)</span>
+<span class="n">precip</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">mask</span><span class="p">(</span><span class="n">precip</span><span class="p">,</span><span class="w"> </span><span class="n">elev</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -761,7 +758,7 @@ values     : 23, 287  (min, max)
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="n">precip</span><span class="p">,</span> <span class="n">mesic</span><span class="p">)</span>
+<span></span><span class="nf">compareRaster</span><span class="p">(</span><span class="n">elev</span><span class="p">,</span><span class="n">precip</span><span class="p">,</span><span class="w"> </span><span class="n">mesic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -777,8 +774,8 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># creat a forest layer at 1km resolution</span>
-<span class="n">fw.1km</span> <span class="o">&lt;-</span> <span class="nf">focalWeight</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="m">1000</span><span class="p">,</span> <span class="s">&#39;circle&#39;</span><span class="p">)</span>
-<span class="n">mesic1km</span> <span class="o">&lt;-</span> <span class="nf">focal</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span> <span class="n">w</span><span class="o">=</span><span class="n">fw.1km</span><span class="p">,</span> <span class="n">fun</span><span class="o">=</span><span class="s">&quot;mean&quot;</span><span class="p">,</span> <span class="n">na.rm</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
+<span class="n">fw.1km</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">focalWeight</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span><span class="w"> </span><span class="m">1000</span><span class="p">,</span><span class="w"> </span><span class="s">&#39;circle&#39;</span><span class="p">)</span>
+<span class="n">mesic1km</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">focal</span><span class="p">(</span><span class="n">mesic</span><span class="p">,</span><span class="w"> </span><span class="n">w</span><span class="o">=</span><span class="n">fw.1km</span><span class="p">,</span><span class="w"> </span><span class="n">fun</span><span class="o">=</span><span class="s">&quot;mean&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">na.rm</span><span class="o">=</span><span class="bp">T</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -788,8 +785,8 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#create raster stacck</span>
-<span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">stack</span><span class="p">(</span><span class="n">canopy</span><span class="p">,</span> <span class="n">elev</span><span class="p">,</span> <span class="n">mesic</span><span class="p">,</span> <span class="n">mesic1km</span><span class="p">,</span> <span class="n">precip</span><span class="p">)</span>
-<span class="nf">names</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span> <span class="s">&quot;elev&quot;</span><span class="p">,</span> <span class="s">&quot;mesic&quot;</span><span class="p">,</span> <span class="s">&quot;mesic1km&quot;</span><span class="p">,</span> <span class="s">&quot;precip&quot;</span><span class="p">)</span>
+<span class="n">layers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">stack</span><span class="p">(</span><span class="n">canopy</span><span class="p">,</span><span class="w"> </span><span class="n">elev</span><span class="p">,</span><span class="w"> </span><span class="n">mesic</span><span class="p">,</span><span class="w"> </span><span class="n">mesic1km</span><span class="p">,</span><span class="w"> </span><span class="n">precip</span><span class="p">)</span>
+<span class="nf">names</span><span class="p">(</span><span class="n">layers</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesic&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -798,8 +795,8 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">11</span><span class="p">)</span>
-<span class="nf">plot</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">cex.axis</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.lab</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.main</span><span class="o">=</span><span class="m">2.5</span><span class="p">,</span><span class="n">legend.args</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span> <span class="n">side</span><span class="o">=</span><span class="m">1</span><span class="p">,</span> <span class="n">cex.lab</span> <span class="o">=</span> <span class="m">3</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="m">2.3</span><span class="p">))</span>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">11</span><span class="p">)</span>
+<span class="nf">plot</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">cex.axis</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.lab</span><span class="o">=</span><span class="m">2</span><span class="p">,</span><span class="n">cex.main</span><span class="o">=</span><span class="m">2.5</span><span class="p">,</span><span class="n">legend.args</span><span class="o">=</span><span class="nf">list</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="kc">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">side</span><span class="o">=</span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">cex.lab</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span><span class="p">,</span><span class="w"> </span><span class="n">line</span><span class="o">=</span><span class="m">2.3</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -815,7 +812,7 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">18</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">16</span><span class="p">)</span>
 <span class="nf">pairs</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="n">maxpixels</span><span class="o">=</span><span class="m">1000</span><span class="p">,</span><span class="n">cex</span><span class="o">=</span><span class="m">0.5</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -834,7 +831,7 @@ TRUE</div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#drop correlated layer (mesic)</span>
 
-<span class="n">layers</span> <span class="o">&lt;-</span> <span class="nf">dropLayer</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="m">3</span><span class="p">)</span>
+<span class="n">layers</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">dropLayer</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="w"> </span><span class="m">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -847,8 +844,8 @@ TRUE</div>
 <span class="c1"># 2000 was chosen for the illustration purpose.</span>
 <span class="c1"># This number can be much larger in real practice.</span>
 
-<span class="n">back.xy</span> <span class="o">&lt;-</span> <span class="nf">randomPoints</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">vath.pres.xy</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="m">2000</span><span class="p">)</span>
-<span class="nf">colnames</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span>
+<span class="n">back.xy</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">randomPoints</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="n">vath.pres.xy</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">=</span><span class="m">2000</span><span class="p">)</span>
+<span class="nf">colnames</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;EASTING&quot;</span><span class="p">,</span><span class="s">&quot;NORTHING&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -885,7 +882,7 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span> <span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
+<span></span><span class="nf">options</span><span class="p">(</span><span class="n">repr.plot.width</span><span class="o">=</span><span class="m">9</span><span class="p">,</span><span class="w"> </span><span class="n">repr.plot.height</span><span class="o">=</span><span class="m">9</span><span class="p">)</span>
 <span class="nf">plot</span><span class="p">(</span><span class="n">elev</span><span class="p">)</span>
 <span class="nf">points</span><span class="p">(</span><span class="n">back.xy</span><span class="p">)</span>
 </pre></div>
@@ -904,9 +901,9 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#extract GIS data</span>
-<span class="n">pres.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.pres.xy</span><span class="p">)</span>
-<span class="n">back.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">back.xy</span><span class="p">)</span>
-<span class="n">val.idpv</span> <span class="o">&lt;-</span> <span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span> <span class="n">vath.val.xy</span><span class="p">)</span>
+<span class="n">pres.idpv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="w"> </span><span class="n">vath.pres.xy</span><span class="p">)</span>
+<span class="n">back.idpv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="w"> </span><span class="n">back.xy</span><span class="p">)</span>
+<span class="n">val.idpv</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">extract</span><span class="p">(</span><span class="n">layers</span><span class="p">,</span><span class="w"> </span><span class="n">vath.val.xy</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -916,9 +913,9 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#link data</span>
-<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.pres.xy</span><span class="p">,</span> <span class="n">pres.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
-<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">back.xy</span><span class="p">,</span> <span class="n">back.idpv</span><span class="p">,</span> <span class="n">pres</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
-<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.val</span><span class="p">,</span> <span class="n">val.idpv</span><span class="p">)</span>
+<span class="n">df.pres</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.pres.xy</span><span class="p">,</span><span class="w"> </span><span class="n">pres.idpv</span><span class="p">,</span><span class="w"> </span><span class="n">pres</span><span class="o">=</span><span class="m">1</span><span class="p">)</span>
+<span class="n">df.back</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">back.xy</span><span class="p">,</span><span class="w"> </span><span class="n">back.idpv</span><span class="p">,</span><span class="w"> </span><span class="n">pres</span><span class="o">=</span><span class="m">0</span><span class="p">)</span>
+<span class="n">df.val</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">data.frame</span><span class="p">(</span><span class="n">vath.val</span><span class="p">,</span><span class="w"> </span><span class="n">val.idpv</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -957,9 +954,9 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1">#remove any potential NAs</span>
-<span class="n">df.pres</span> <span class="o">&lt;-</span> <span class="n">df.pres</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),]</span>
-<span class="n">df.back</span> <span class="o">&lt;-</span> <span class="n">df.back</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),]</span>
-<span class="n">df.val</span> <span class="o">&lt;-</span> <span class="n">df.val</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),]</span>
+<span class="n">df.pres</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df.pres</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.pres</span><span class="p">),]</span>
+<span class="n">df.back</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df.back</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.back</span><span class="p">),]</span>
+<span class="n">df.val</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">df.val</span><span class="p">[</span><span class="nf">complete.cases</span><span class="p">(</span><span class="n">df.val</span><span class="p">),]</span>
 </pre></div>
 </div>
 </div>
@@ -969,7 +966,7 @@ TRUE</div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># merge together</span>
-<span class="n">df.all</span> <span class="o">&lt;-</span> <span class="nf">rbind</span><span class="p">(</span><span class="n">df.pres</span><span class="p">,</span> <span class="n">df.back</span><span class="p">)</span>
+<span class="n">df.all</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">rbind</span><span class="p">(</span><span class="n">df.pres</span><span class="p">,</span><span class="w"> </span><span class="n">df.back</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1009,8 +1006,8 @@ TRUE</div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># data transformation</span>
 <span class="c1"># Scaling and centering the environmental variables to zero mean and variance of 1</span>
-<span class="n">predictors</span> <span class="o">&lt;-</span> <span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
-<span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
+<span class="n">predictors</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="s">&quot;canopy&quot;</span><span class="p">,</span><span class="s">&quot;elev&quot;</span><span class="p">,</span><span class="s">&quot;mesic1km&quot;</span><span class="p">,</span><span class="s">&quot;precip&quot;</span><span class="p">)</span>
+<span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">df.all</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1057,7 +1054,7 @@ TRUE</div>
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">mdl.vath</span> <span class="o">&lt;-</span> <span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span> <span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span> <span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
+<span></span><span class="n">mdl.vath</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">glm</span><span class="p">(</span><span class="n">pres</span><span class="o">~</span><span class="n">canopy</span><span class="o">+</span><span class="n">elev</span><span class="o">+</span><span class="nf">I</span><span class="p">(</span><span class="n">elev</span><span class="o">^</span><span class="m">2</span><span class="p">)</span><span class="o">+</span><span class="n">mesic1km</span><span class="o">+</span><span class="n">precip</span><span class="p">,</span><span class="w"> </span><span class="n">family</span><span class="o">=</span><span class="nf">binomial</span><span class="p">(</span><span class="n">link</span><span class="o">=</span><span class="n">logit</span><span class="p">),</span><span class="w"> </span><span class="n">data</span><span class="o">=</span><span class="n">df.all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1113,7 +1110,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span> <span class="o">&lt;-</span> <span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
+<span></span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">]</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">scale</span><span class="p">(</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1122,7 +1119,7 @@ Number of Fisher Scoring iterations: 8
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span> <span class="o">&lt;-</span> <span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
+<span></span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">mdl.vath</span><span class="p">,</span><span class="n">df.val</span><span class="p">[,</span><span class="n">predictors</span><span class="p">],</span><span class="n">type</span><span class="o">=</span><span class="s">&quot;response&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1156,13 +1153,13 @@ Number of Fisher Scoring iterations: 8
 </table></div>
 </div>
 <p>confusion matrix</p>
-<p><img alt="35f5cf50422f49c4ba3df5248acd0cab" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
+<p><img alt="6c608822f65b49cc88c30cd4f57b2b0f" class="no-scaled-link" src="../_images/confusion_matrix.png" style="width: 900px;" /></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-r notranslate"><div class="highlight"><pre>
-<span></span><span class="n">cutoff</span> <span class="o">&lt;-</span> <span class="nf">optimalCutoff</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span> <span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
+<span></span><span class="n">cutoff</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nf">optimalCutoff</span><span class="p">(</span><span class="n">df.val</span><span class="o">$</span><span class="n">VATH</span><span class="p">,</span><span class="w"> </span><span class="n">df.val</span><span class="o">$</span><span class="n">pred</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1259,7 @@ Number of Fisher Scoring iterations: 8
 0.0774</div>
 </div>
 <p>ROC curves</p>
-<p><img alt="4979a62ba9da4e0cbe993c3505c9926c" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
+<p><img alt="afb006fa8a314d9da278c4207c04ae52" class="no-scaled-link" src="../_images/ROC_curves.png" style="width: 600px;" /></p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[141]:
 </pre></div>

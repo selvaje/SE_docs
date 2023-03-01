@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -511,7 +508,7 @@ methods to estimate water level changes in lakes. This method has high spatial a
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>gdalinfo Project/ccAll
+<span></span><span class="o">!</span>gdalinfo<span class="w"> </span>Project/ccAll
 </pre></div>
 </div>
 </div>
@@ -673,8 +670,8 @@ Band 41 Block=9219x1 Type=Float32, ColorInterp=Undefined
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo Project/ccAll <span class="p">|</span> grep Band_ <span class="p">|</span> wc -l<span class="k">)</span>
-<span class="nb">echo</span> <span class="nv">$nBands</span>
+<span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span>Project/ccAll<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Band_<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$nBands</span>
 </pre></div>
 </div>
 </div>
@@ -693,14 +690,14 @@ Band 41 Block=9219x1 Type=Float32, ColorInterp=Undefined
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo Project/ccAll <span class="p">|</span> grep Band_ <span class="p">|</span> wc -l<span class="k">)</span>
-<span class="k">for</span> band <span class="k">in</span> <span class="sb">`</span>seq <span class="m">1</span> <span class="nv">$nBands</span><span class="sb">`</span><span class="p">;</span> <span class="k">do</span>   <span class="c1"># a for loop through all bands (images)</span>
-    <span class="nb">echo</span> <span class="s2">&quot;Band </span><span class="nv">$band</span><span class="s2">:&quot;</span>            <span class="c1"># show the band number in progress</span>
-    gdal_translate -of  XYZ -b <span class="nv">$band</span> Project/ccAll Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt  <span class="c1">#convert the quality image to a text file (B*.txt)</span>
-    awk <span class="s1">&#39;{if ($3&lt;0.25) {print $1,$2,0 } else {print $1,$2,1 }}&#39;</span> Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt &gt; Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt <span class="c1"># The pixel values with quality&lt;0.25 are set to 0 and otherwise are set to 1 in file B*.txt and write the new values to a new file (mask*.txt)</span>
-    gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -ot Byte Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.tif <span class="c1"># Convert mask*.txt files to mask*.tif files</span>
-    rm -f Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt <span class="c1"># remove the created text files in previous steps</span>
-    rm -f Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt <span class="c1"># remove the created text files in previous steps</span>
+<span class="nv">nBands</span><span class="o">=</span><span class="k">$(</span>gdalinfo<span class="w"> </span>Project/ccAll<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Band_<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="k">)</span>
+<span class="k">for</span><span class="w"> </span>band<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="sb">`</span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="nv">$nBands</span><span class="sb">`</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">   </span><span class="c1"># a for loop through all bands (images)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Band </span><span class="nv">$band</span><span class="s2">:&quot;</span><span class="w">            </span><span class="c1"># show the band number in progress</span>
+<span class="w">    </span>gdal_translate<span class="w"> </span>-of<span class="w">  </span>XYZ<span class="w"> </span>-b<span class="w"> </span><span class="nv">$band</span><span class="w"> </span>Project/ccAll<span class="w"> </span>Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w">  </span><span class="c1">#convert the quality image to a text file (B*.txt)</span>
+<span class="w">    </span>awk<span class="w"> </span><span class="s1">&#39;{if ($3&lt;0.25) {print $1,$2,0 } else {print $1,$2,1 }}&#39;</span><span class="w"> </span>Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w"> </span>&gt;<span class="w"> </span>Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w"> </span><span class="c1"># The pixel values with quality&lt;0.25 are set to 0 and otherwise are set to 1 in file B*.txt and write the new values to a new file (mask*.txt)</span>
+<span class="w">    </span>gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-ot<span class="w"> </span>Byte<span class="w"> </span>Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w"> </span>Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.tif<span class="w"> </span><span class="c1"># Convert mask*.txt files to mask*.tif files</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>Project/<span class="s2">&quot;B</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w"> </span><span class="c1"># remove the created text files in previous steps</span>
+<span class="w">    </span>rm<span class="w"> </span>-f<span class="w"> </span>Project/<span class="s2">&quot;mask</span><span class="nv">$band</span><span class="s2">&quot;</span>.txt<span class="w"> </span><span class="c1"># remove the created text files in previous steps</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -713,8 +710,8 @@ change maps.</strong></p>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> i <span class="k">in</span> <span class="o">{</span>A..Z<span class="o">}</span><span class="p">;</span> <span class="k">do</span>
-<span class="nb">echo</span> <span class="nv">$i</span> &gt;&gt; letters.txt <span class="c1"># type letters A to Z in 26 lins of letters.txt</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="o">{</span>A..Z<span class="o">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$i</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>letters.txt<span class="w"> </span><span class="c1"># type letters A to Z in 26 lins of letters.txt</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -724,7 +721,7 @@ change maps.</strong></p>
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/letters.txt
+<span></span><span class="o">!</span>cat<span class="w"> </span>Project/letters.txt
 </pre></div>
 </div>
 </div>
@@ -780,7 +777,7 @@ done &gt; list.txt
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/list.txt
+<span></span><span class="o">!</span>cat<span class="w"> </span>Project/list.txt
 </pre></div>
 </div>
 </div>
@@ -823,8 +820,8 @@ done &gt; list.txt
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># change list.txt file to a single line file</span>
-<span class="o">!</span>grep - list.txt <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39; &#39;</span> &gt; ls.txt
-<span class="o">!</span><span class="nv">var</span><span class="o">=</span><span class="k">$(</span>cat ls.txt<span class="k">)</span>
+<span class="o">!</span>grep<span class="w"> </span>-<span class="w"> </span>list.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>&gt;<span class="w"> </span>ls.txt
+<span class="o">!</span><span class="nv">var</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>ls.txt<span class="k">)</span>
 </pre></div>
 </div>
 </div>
@@ -833,7 +830,7 @@ done &gt; list.txt
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span><span class="nb">echo</span> <span class="nv">$var</span>
+<span></span><span class="o">!</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$var</span>
 </pre></div>
 </div>
 </div>
@@ -863,7 +860,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/multiply.txt
+<span></span><span class="o">!</span>cat<span class="w"> </span>Project/multiply.txt
 </pre></div>
 </div>
 </div>
@@ -906,7 +903,7 @@ Z
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># change multiply.txt file to a single line file</span>
-<span class="o">!</span>grep . multiply.txt <span class="p">|</span> tr <span class="s1">&#39;\n&#39;</span> <span class="s1">&#39; &#39;</span> &gt; multiply2.txt
+<span class="o">!</span>grep<span class="w"> </span>.<span class="w"> </span>multiply.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span><span class="s1">&#39;\n&#39;</span><span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>&gt;<span class="w"> </span>multiply2.txt
 </pre></div>
 </div>
 </div>
@@ -915,7 +912,7 @@ Z
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/multiply2.txt
+<span></span><span class="o">!</span>cat<span class="w"> </span>Project/multiply2.txt
 </pre></div>
 </div>
 </div>
@@ -933,7 +930,7 @@ A * B * C * D * E * F * G * H * I * J * K * L * M * N * O * P * Q * R * S * T * 
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># multiply the first 26 mask*.tif images</span>
-<span class="o">!</span>gdal_calc.py --type<span class="o">=</span>Byte --overwrite  <span class="nv">$var</span> --co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>   --calc<span class="o">=</span><span class="s2">&quot;( </span><span class="k">$(</span>cat multiply2.txt<span class="k">)</span><span class="s2"> )&quot;</span> --outfile<span class="o">=</span>mask1_26.tif
+<span class="o">!</span>gdal_calc.py<span class="w"> </span>--type<span class="o">=</span>Byte<span class="w"> </span>--overwrite<span class="w">  </span><span class="nv">$var</span><span class="w"> </span>--co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">   </span>--calc<span class="o">=</span><span class="s2">&quot;( </span><span class="k">$(</span>cat<span class="w"> </span>multiply2.txt<span class="k">)</span><span class="s2"> )&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>mask1_26.tif
 </pre></div>
 </div>
 </div>
@@ -969,7 +966,7 @@ gdal_calc.py --type=Byte --overwrite  $var --co=COMPRESS=DEFLATE --co=ZLEVEL=9  
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Multiply the last two masks we got and create the final maskAll.tif file</span>
-<span class="o">!</span>gdal_calc.py --type<span class="o">=</span>Byte --overwrite  -A mask1_26.tif -B mask27_41.tif --co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>   --calc<span class="o">=</span><span class="s2">&quot;( A * B )&quot;</span> --outfile<span class="o">=</span>maskAll.tif
+<span class="o">!</span>gdal_calc.py<span class="w"> </span>--type<span class="o">=</span>Byte<span class="w"> </span>--overwrite<span class="w">  </span>-A<span class="w"> </span>mask1_26.tif<span class="w"> </span>-B<span class="w"> </span>mask27_41.tif<span class="w"> </span>--co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">   </span>--calc<span class="o">=</span><span class="s2">&quot;( A * B )&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>maskAll.tif
 </pre></div>
 </div>
 </div>
@@ -1022,7 +1019,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Accumulate each field of timesS.txt</span>
-<span class="o">!</span>awk <span class="s1">&#39;{ for (i=1; i&lt;=NF; ++i) {sum[i]+=$i; $i=sum[i] }; print $0}&#39;</span> timeS.txt &gt; timesAcc.txt
+<span class="o">!</span>awk<span class="w"> </span><span class="s1">&#39;{ for (i=1; i&lt;=NF; ++i) {sum[i]+=$i; $i=sum[i] }; print $0}&#39;</span><span class="w"> </span>timeS.txt<span class="w"> </span>&gt;<span class="w"> </span>timesAcc.txt
 </pre></div>
 </div>
 </div>
@@ -1032,7 +1029,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># the number of high-quality pixels</span>
-<span class="o">!</span>awk <span class="s1">&#39;{print NF}&#39;</span> Project/timesAcc.txt
+<span class="o">!</span>awk<span class="w"> </span><span class="s1">&#39;{print NF}&#39;</span><span class="w"> </span>Project/timesAcc.txt
 </pre></div>
 </div>
 </div>
@@ -1090,8 +1087,8 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>awk <span class="s1">&#39;BEGIN{ORS=&quot; &quot;;} {if ($3!=0) {print &quot;0&quot; } }&#39;</span> G1.txt &gt; zero.txt #create a line of zeros
-<span class="o">!</span>sed <span class="s2">&quot;1i\\</span><span class="nv">$con</span><span class="s2">&quot;</span> timesAcc.txt &gt; tsAcc.txt #add zeros to the <span class="nb">time</span> series of the accumulated phase change <span class="o">(</span>first line: we assume that the phase of the first date was zero<span class="o">)</span>
+<span></span><span class="o">!</span>awk<span class="w"> </span><span class="s1">&#39;BEGIN{ORS=&quot; &quot;;} {if ($3!=0) {print &quot;0&quot; } }&#39;</span><span class="w"> </span>G1.txt<span class="w"> </span>&gt;<span class="w"> </span>zero.txt<span class="w"> </span>#create<span class="w"> </span>a<span class="w"> </span>line<span class="w"> </span>of<span class="w"> </span>zeros
+<span class="o">!</span>sed<span class="w"> </span><span class="s2">&quot;1i\\</span><span class="nv">$con</span><span class="s2">&quot;</span><span class="w"> </span>timesAcc.txt<span class="w"> </span>&gt;<span class="w"> </span>tsAcc.txt<span class="w"> </span>#add<span class="w"> </span>zeros<span class="w"> </span>to<span class="w"> </span>the<span class="w"> </span><span class="nb">time</span><span class="w"> </span>series<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>accumulated<span class="w"> </span>phase<span class="w"> </span>change<span class="w"> </span><span class="o">(</span>first<span class="w"> </span>line:<span class="w"> </span>we<span class="w"> </span>assume<span class="w"> </span>that<span class="w"> </span>the<span class="w"> </span>phase<span class="w"> </span>of<span class="w"> </span>the<span class="w"> </span>first<span class="w"> </span>date<span class="w"> </span>was<span class="w"> </span>zero<span class="o">)</span>
 </pre></div>
 </div>
 </div>
@@ -1100,7 +1097,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>cat Project/zero.txt
+<span></span><span class="o">!</span>cat<span class="w"> </span>Project/zero.txt
 </pre></div>
 </div>
 </div>
@@ -1118,7 +1115,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># number of pixels</span>
-<span class="o">!</span>awk <span class="s1">&#39;{print NF}&#39;</span> Project/tsAcc.txt
+<span class="o">!</span>awk<span class="w"> </span><span class="s1">&#39;{print NF}&#39;</span><span class="w"> </span>Project/tsAcc.txt
 </pre></div>
 </div>
 </div>
@@ -1177,7 +1174,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># number of dates</span>
-<span class="o">!</span>awk <span class="s1">&#39;{print NR}&#39;</span> Project/tsAcc.txt
+<span class="o">!</span>awk<span class="w"> </span><span class="s1">&#39;{print NR}&#39;</span><span class="w"> </span>Project/tsAcc.txt
 </pre></div>
 </div>
 </div>
@@ -1236,7 +1233,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># add the water level of the gauging station to the last column of the tsAcc.txt file</span>
-<span class="o">!</span> awk <span class="s1">&#39;{getline to_add &lt; &quot;field.txt&quot;; print $0,to_add}&#39;</span> tsAcc.txt &gt; tsAcc.txt
+<span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{getline to_add &lt; &quot;field.txt&quot;; print $0,to_add}&#39;</span><span class="w"> </span>tsAcc.txt<span class="w"> </span>&gt;<span class="w"> </span>tsAcc.txt
 </pre></div>
 </div>
 </div>
@@ -1262,7 +1259,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>sort -k1 -n corr.txt <span class="p">|</span> tail -10
+<span></span><span class="o">!</span>sort<span class="w"> </span>-k1<span class="w"> </span>-n<span class="w"> </span>corr.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10
 </pre></div>
 </div>
 </div>
@@ -1288,7 +1285,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert myProject.ipynb --to html
+<span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>myProject.ipynb<span class="w"> </span>--to<span class="w"> </span>html
 </pre></div>
 </div>
 </div>
@@ -1306,7 +1303,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span>jupyter nbconvert SaeidAminjafariProject.ipynb --to html
+<span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>SaeidAminjafariProject.ipynb<span class="w"> </span>--to<span class="w"> </span>html
 </pre></div>
 </div>
 </div>

@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
@@ -19,7 +16,7 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -316,9 +313,9 @@ https://glad.umd.edu/book/overview).</p>
 <h3><span class="section-number">2.7.2.1. </span>Data download<a class="headerlink" href="#data-download" title="Permalink to this headline"></a></h3>
 <p>Data for 2018 was downloaded with this code, where user:password should be replace</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-<span class="k">for</span> INTER <span class="k">in</span> <span class="k">$(</span>grep -e ^2018 geodata/glad_ard//16d_intervals.csv <span class="p">|</span> awk <span class="s1">&#39;{ $1=&quot;&quot;; print $0}&#39;</span><span class="k">)</span> <span class="p">;</span> <span class="k">do</span>  
-    curl --connect-timeout <span class="m">600</span> -u user:passwd -X GET https://glad.umd.edu/dataset/landsat_v1.1/18N/037E_18N/<span class="nv">$INTER</span>.tif -o project/glad_ard/<span class="nv">$INTER</span>.tif
-    gdal_translate -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span>  -projwin <span class="m">37</span> <span class="m">18</span>.86666 <span class="m">37</span>.4 <span class="m">18</span>.63333 project/glad_ard/<span class="nv">$INTER</span>.tif project/glad_ard/<span class="si">${</span><span class="nv">INTER</span><span class="si">}</span>_crop.tif      
+<span class="k">for</span><span class="w"> </span>INTER<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="k">$(</span>grep<span class="w"> </span>-e<span class="w"> </span>^2018<span class="w"> </span>geodata/glad_ard//16d_intervals.csv<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ $1=&quot;&quot;; print $0}&#39;</span><span class="k">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w">  </span>
+<span class="w">    </span>curl<span class="w"> </span>--connect-timeout<span class="w"> </span><span class="m">600</span><span class="w"> </span>-u<span class="w"> </span>user:passwd<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span>https://glad.umd.edu/dataset/landsat_v1.1/18N/037E_18N/<span class="nv">$INTER</span>.tif<span class="w"> </span>-o<span class="w"> </span>project/glad_ard/<span class="nv">$INTER</span>.tif
+<span class="w">    </span>gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-projwin<span class="w"> </span><span class="m">37</span><span class="w"> </span><span class="m">18</span>.86666<span class="w"> </span><span class="m">37</span>.4<span class="w"> </span><span class="m">18</span>.63333<span class="w"> </span>project/glad_ard/<span class="nv">$INTER</span>.tif<span class="w"> </span>project/glad_ard/<span class="si">${</span><span class="nv">INTER</span><span class="si">}</span>_crop.tif<span class="w">      </span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -343,25 +340,25 @@ https://glad.umd.edu/book/overview).</p>
 <section id="calculate-vegetation-index">
 <h3><span class="section-number">2.7.2.2. </span>Calculate vegetation index<a class="headerlink" href="#calculate-vegetation-index" title="Permalink to this headline"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> project/glad_ard/*_crop.tif<span class="p">;</span> <span class="k">do</span> 
-  <span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif <span class="k">)</span>
-  <span class="c1">#echo $file</span>
-  <span class="c1">#VI</span>
-  gdal_calc.py  --type<span class="o">=</span>Float32 --overwrite -A <span class="nv">$file</span> --A_band<span class="o">=</span><span class="m">3</span> -B <span class="nv">$file</span> --B_band<span class="o">=</span><span class="m">4</span> <span class="se">\</span>
-  --co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> --calc<span class="o">=</span><span class="s2">&quot;(B.astype(float))/(A.astype(float))&quot;</span> --outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_VI.tif <span class="se">\</span>
-  --quiet
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>project/glad_ard/*_crop.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<span class="w">  </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="w"> </span><span class="k">)</span>
+<span class="w">  </span><span class="c1">#echo $file</span>
+<span class="w">  </span><span class="c1">#VI</span>
+<span class="w">  </span>gdal_calc.py<span class="w">  </span>--type<span class="o">=</span>Float32<span class="w"> </span>--overwrite<span class="w"> </span>-A<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--A_band<span class="o">=</span><span class="m">3</span><span class="w"> </span>-B<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--B_band<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(B.astype(float))/(A.astype(float))&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_VI.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--quiet
 
-  <span class="c1">#NDVI</span>
-  gdal_calc.py  --type<span class="o">=</span>Float32 --overwrite -A <span class="nv">$file</span> --A_band<span class="o">=</span><span class="m">3</span> -B <span class="nv">$file</span> --B_band<span class="o">=</span><span class="m">4</span> <span class="se">\</span>
-  --co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> --calc<span class="o">=</span><span class="s2">&quot;(B.astype(float)- A.astype(float))/(B.astype(float) + A.astype(float))&quot;</span> <span class="se">\</span>
-  --outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_NDVI.tif <span class="se">\</span>
-  --quiet
-    
-  <span class="c1">#SAVI</span>
-  gdal_calc.py  --type<span class="o">=</span>Float32 --overwrite -A <span class="nv">$file</span> --A_band<span class="o">=</span><span class="m">3</span> -B <span class="nv">$file</span> --B_band<span class="o">=</span><span class="m">4</span> <span class="se">\</span>
-  --co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE --co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> --calc<span class="o">=</span><span class="s2">&quot;((B.astype(float)- A.astype(float))/(B.astype(float) + A.astype(float) + 0.5)) * 1.5&quot;</span> <span class="se">\</span>
-  --outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_SAVI.tif <span class="se">\</span>
-  --quiet
+<span class="w">  </span><span class="c1">#NDVI</span>
+<span class="w">  </span>gdal_calc.py<span class="w">  </span>--type<span class="o">=</span>Float32<span class="w"> </span>--overwrite<span class="w"> </span>-A<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--A_band<span class="o">=</span><span class="m">3</span><span class="w"> </span>-B<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--B_band<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;(B.astype(float)- A.astype(float))/(B.astype(float) + A.astype(float))&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_NDVI.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--quiet
+<span class="w">    </span>
+<span class="w">  </span><span class="c1">#SAVI</span>
+<span class="w">  </span>gdal_calc.py<span class="w">  </span>--type<span class="o">=</span>Float32<span class="w"> </span>--overwrite<span class="w"> </span>-A<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--A_band<span class="o">=</span><span class="m">3</span><span class="w"> </span>-B<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>--B_band<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>--calc<span class="o">=</span><span class="s2">&quot;((B.astype(float)- A.astype(float))/(B.astype(float) + A.astype(float) + 0.5)) * 1.5&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outfile<span class="o">=</span>project/glad_ard/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_SAVI.tif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--quiet
 
 <span class="k">done</span>
 </pre></div>
@@ -385,15 +382,15 @@ done
 </div>
 <p><strong>Checking nodata and statistics for the VIs</strong></p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-gdalinfo project/glad_ard/875_crop_SAVI_m.tif <span class="p">|</span>grep -E <span class="s1">&#39;NoData&#39;</span> 
+gdalinfo<span class="w"> </span>project/glad_ard/875_crop_SAVI_m.tif<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s1">&#39;NoData&#39;</span><span class="w"> </span>
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="n">NoData</span> <span class="n">Value</span><span class="o">=-</span><span class="mi">99</span>
 </pre></div>
 </div>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> project/glad_ard/*crop_SAVI_m.tif<span class="p">;</span> <span class="k">do</span>
-pkinfo -i <span class="nv">$file</span> -stats<span class="p">|</span>awk <span class="s1">&#39;{print $0}&#39;</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>project/glad_ard/*crop_SAVI_m.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+pkinfo<span class="w"> </span>-i<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>-stats<span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $0}&#39;</span>
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -748,12 +745,12 @@ with open(&quot;output.txt&quot;, &quot;a&quot;) as f:
 
 <span class="c1">#make recode rules from txt-file</span>
 
-paste -d<span class="s2">&quot;:&quot;</span> <span class="se">\</span>
-    &lt;<span class="o">(</span>awk <span class="s1">&#39;{print $1}&#39;</span> output.txt <span class="p">|</span> head -n19<span class="o">)</span> <span class="se">\</span>
-    &lt;<span class="o">(</span>awk <span class="s1">&#39;NR&gt;1{print $1}&#39;</span> output.txt<span class="o">)</span> <span class="se">\</span>
-    &lt;<span class="o">(</span><span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="o">{</span><span class="m">1</span>..19<span class="o">})</span> <span class="se">\</span>
-    &lt;<span class="o">(</span><span class="nb">printf</span> <span class="s2">&quot;%s\n&quot;</span> <span class="o">{</span><span class="m">1</span>..19<span class="o">})</span> <span class="se">\</span>
-    &gt; rules.txt
+paste<span class="w"> </span>-d<span class="s2">&quot;:&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="o">(</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span>output.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n19<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="o">(</span>awk<span class="w"> </span><span class="s1">&#39;NR&gt;1{print $1}&#39;</span><span class="w"> </span>output.txt<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="o">(</span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..19<span class="o">})</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;<span class="o">(</span><span class="nb">printf</span><span class="w"> </span><span class="s2">&quot;%s\n&quot;</span><span class="w"> </span><span class="o">{</span><span class="m">1</span>..19<span class="o">})</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&gt;<span class="w"> </span>rules.txt
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>!wc -l rules.txt

@@ -9,9 +9,6 @@
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
       <link rel="stylesheet" href="../_static/thebelab.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
   
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
@@ -19,9 +16,9 @@
         <script src="../_static/doctools.js"></script>
         <script src="../_static/thebelab-helper.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.20.0/dist/embed-amd.js"></script>
+        <script src="https://unpkg.com/@jupyter-widgets/html-manager@^0.13.0/dist/embed-amd.js"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
-        <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
         <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -474,7 +471,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># check the value range of the mask image</span>
-<span class="o">!</span> gdalinfo -mm geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+<span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
 </pre></div>
 </div>
 </div>
@@ -529,7 +526,7 @@ Band 1 Block=5880x1 Type=Int16, ColorInterp=Gray
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># open the file to be sure that the ocean is labeled as -9999 no data</span>
-<span class="o">!</span> /usr/bin/openev/bin/openev geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+<span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
 </pre></div>
 </div>
 </div>
@@ -550,7 +547,7 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># check the value range of the input image</span>
-<span class="o">!</span> gdalinfo -mm geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif
+<span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif
 </pre></div>
 </div>
 </div>
@@ -611,9 +608,9 @@ Band 1 Block=5880x1 Type=UInt16, ColorInterp=Gray
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -ot Int16 <span class="se">\</span>
--m  geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif -msknodata -9999 -nodata -1 <span class="se">\</span>
--i  geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif -o geodata/vegetation/SA_tree_mn_percentage_GFC2013_msk.tif
+pksetmask<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-ot<span class="w"> </span>Int16<span class="w"> </span><span class="se">\</span>
+-m<span class="w">  </span>geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w"> </span>-msknodata<span class="w"> </span>-9999<span class="w"> </span>-nodata<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
+-i<span class="w">  </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif<span class="w"> </span>-o<span class="w"> </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013_msk.tif
 </pre></div>
 </div>
 </div>
@@ -631,7 +628,7 @@ pksetmask -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -c
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># open the file to be sure that the ocean is labeled as -1 no data</span>
-<span class="o">!</span> /usr/bin/openev/bin/openev geodata/vegetation/SA_tree_mn_percentage_GFC2013_msk.tif
+<span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>geodata/vegetation/SA_tree_mn_percentage_GFC2013_msk.tif
 </pre></div>
 </div>
 </div>
@@ -656,7 +653,7 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> ls geodata/landsat_ct/
+<span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>geodata/landsat_ct/
 </pre></div>
 </div>
 </div>
@@ -676,7 +673,7 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># open all the tiles</span>
-<span class="o">!</span> /usr/bin/openev/bin/openev geodata/landsat_ct/*.tif
+<span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>geodata/landsat_ct/*.tif
 </pre></div>
 </div>
 </div>
@@ -698,9 +695,9 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-rm -f geodata/landsat_ct/alltif_tile.*
-gdaltindex geodata/landsat_ct/alltif_tile.shp  geodata/landsat_ct/????_???_med_B1.tif   <span class="c1">### perfect 100%%</span>
-ls -l geodata/landsat_ct/
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/landsat_ct/alltif_tile.*
+gdaltindex<span class="w"> </span>geodata/landsat_ct/alltif_tile.shp<span class="w">  </span>geodata/landsat_ct/????_???_med_B1.tif<span class="w">   </span><span class="c1">### perfect 100%%</span>
+ls<span class="w"> </span>-l<span class="w"> </span>geodata/landsat_ct/
 </pre></div>
 </div>
 </div>
@@ -740,7 +737,7 @@ total 364
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># open all the tif tiles and the vector-tile</span>
-<span class="o">!</span> qgis geodata/landsat_ct/*.tif geodata/landsat_ct/alltif_tile.gpkg
+<span class="o">!</span><span class="w"> </span>qgis<span class="w"> </span>geodata/landsat_ct/*.tif<span class="w"> </span>geodata/landsat_ct/alltif_tile.gpkg
 </pre></div>
 </div>
 </div>
@@ -770,21 +767,21 @@ total 364
 <span></span>%%bash
 <span class="c1"># for each tile change all the pixel value to 1 or 2 or 3</span>
 <span class="nv">n</span><span class="o">=</span><span class="m">1</span>
-<span class="k">for</span> file <span class="k">in</span> geodata/landsat_ct/????_???_med_B1.tif<span class="p">;</span> <span class="k">do</span>
-<span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span>
-pkgetmask -min -1 -max <span class="m">999999999</span> -data <span class="nv">$n</span> -co <span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE -co <span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span> -ot Byte -i <span class="nv">$file</span> -o geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif
-gdal_edit.py -a_nodata <span class="m">0</span> geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif
-<span class="nv">n</span><span class="o">=</span><span class="k">$(</span>expr <span class="nv">$n</span> + <span class="m">1</span><span class="k">)</span>
-gdalinfo -mm geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif <span class="p">|</span> grep Comp
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/landsat_ct/????_???_med_B1.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span>
+pkgetmask<span class="w"> </span>-min<span class="w"> </span>-1<span class="w"> </span>-max<span class="w"> </span><span class="m">999999999</span><span class="w"> </span>-data<span class="w"> </span><span class="nv">$n</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-i<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>-o<span class="w"> </span>geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif
+<span class="nv">n</span><span class="o">=</span><span class="k">$(</span>expr<span class="w"> </span><span class="nv">$n</span><span class="w"> </span>+<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/landsat_ct/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_byte.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Comp
 <span class="k">done</span>
 
 <span class="c1"># build a vrt in order to combine the created tif</span>
-gdalbuildvrt -overwrite   geodata/landsat_ct/all_byte.vrt   geodata/landsat_ct/*_byte.tif
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w">   </span>geodata/landsat_ct/all_byte.vrt<span class="w">   </span>geodata/landsat_ct/*_byte.tif
 
 <span class="c1"># run polygonize</span>
-rm -f geodata/landsat_ct/alltif_tile_poligonize.gpkg
-gdal_polygonize.py  geodata/landsat_ct/all_byte.vrt geodata/landsat_ct/alltif_tile_poligonize.gpkg
-rm -f geodata/landsat_ct/all_byte.vrt geodata/landsat_ct/*_byte.tif
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/landsat_ct/alltif_tile_poligonize.gpkg
+gdal_polygonize.py<span class="w">  </span>geodata/landsat_ct/all_byte.vrt<span class="w"> </span>geodata/landsat_ct/alltif_tile_poligonize.gpkg
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/landsat_ct/all_byte.vrt<span class="w"> </span>geodata/landsat_ct/*_byte.tif
 </pre></div>
 </div>
 </div>
@@ -819,7 +816,7 @@ rm -f geodata/landsat_ct/all_byte.vrt geodata/landsat_ct/*_byte.tif
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> qgis geodata/landsat_ct/????_???_med_B1.tif geodata/landsat_ct/alltif_tile_poligonize.gpkg
+<span></span><span class="o">!</span><span class="w"> </span>qgis<span class="w"> </span>geodata/landsat_ct/????_???_med_B1.tif<span class="w"> </span>geodata/landsat_ct/alltif_tile_poligonize.gpkg
 </pre></div>
 </div>
 </div>
@@ -856,7 +853,7 @@ rm -f geodata/landsat_ct/all_byte.vrt geodata/landsat_ct/*_byte.tif
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># open the tif file and drow the polingons save it as LST/polygons_zonal.gpkg</span>
-<span class="o">!</span> qgis geodata/LST/LST_MOYDmax_month1.tif geodata/LST/polygons_zonal.gpkg
+<span class="o">!</span><span class="w"> </span>qgis<span class="w"> </span>geodata/LST/LST_MOYDmax_month1.tif<span class="w"> </span>geodata/LST/polygons_zonal.gpkg
 </pre></div>
 </div>
 </div>
@@ -905,7 +902,7 @@ processing layer polygons_zonal
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># check the results</span>
-<span class="o">!</span> ogrinfo -al -geom<span class="o">=</span>NO geodata/LST/polygons_zonal_month1.gpkg
+<span class="o">!</span><span class="w"> </span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w"> </span>geodata/LST/polygons_zonal_month1.gpkg
 </pre></div>
 </div>
 </div>
@@ -992,7 +989,7 @@ processing layer polygons_zonal
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># check the results</span>
-<span class="o">!</span> ogrinfo -al -geom<span class="o">=</span>NO geodata/LST/polygons_zonal_allmonth.gpkg
+<span class="o">!</span><span class="w"> </span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w"> </span>geodata/LST/polygons_zonal_allmonth.gpkg
 </pre></div>
 </div>
 </div>
@@ -1115,7 +1112,7 @@ done
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> head  geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv
+<span></span><span class="o">!</span><span class="w"> </span>head<span class="w">  </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv
 </pre></div>
 </div>
 </div>
@@ -1142,8 +1139,8 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># select only the lon and lat information</span>
-<span class="o">!</span> awk -F , <span class="s1">&#39;{ if(NR&gt;1) print $1,$2}&#39;</span>  geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv &gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt
-<span class="o">!</span> head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt
+<span class="o">!</span><span class="w"> </span>awk<span class="w"> </span>-F<span class="w"> </span>,<span class="w"> </span><span class="s1">&#39;{ if(NR&gt;1) print $1,$2}&#39;</span><span class="w">  </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints.csv<span class="w"> </span>&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt
+<span class="o">!</span><span class="w"> </span>head<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt
 </pre></div>
 </div>
 </div>
@@ -1172,7 +1169,7 @@ done
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># build a vrt having one tif for each band of the vrt using the -separate option</span>
-<span class="o">!</span> gdalbuildvrt -overwrite -separate  ./geodata/all_tif.vrt   ./geodata/cloud/SA_intra.tif ./geodata/cloud/SA_meanannual.tif ./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif ./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif
+<span class="o">!</span><span class="w"> </span>gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w">  </span>./geodata/all_tif.vrt<span class="w">   </span>./geodata/cloud/SA_intra.tif<span class="w"> </span>./geodata/cloud/SA_meanannual.tif<span class="w"> </span>./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif<span class="w"> </span>./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif
 </pre></div>
 </div>
 </div>
@@ -1192,9 +1189,9 @@ done
 <span></span>%%bash
 <span class="c1"># extract at each point and twist from 1 column to 4 column using the option awk &#39;ORS=NR%4?FS:RS&#39;.</span>
 <span class="c1"># The number 4 identifies the number of bands in the vrt</span>
-gdallocationinfo -geoloc -wgs84 -valonly ./geodata/all_tif.vrt &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt <span class="se">\</span>
-<span class="p">|</span> awk <span class="s1">&#39;ORS=NR%4?FS:RS&#39;</span> &gt;  geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt
-head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt
+gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span>./geodata/all_tif.vrt<span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="w"> </span><span class="se">\</span>
+<span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;ORS=NR%4?FS:RS&#39;</span><span class="w"> </span>&gt;<span class="w">  </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt
+head<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt
 </pre></div>
 </div>
 </div>
@@ -1220,9 +1217,9 @@ head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> <span class="nb">echo</span> <span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span> &gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-<span class="o">!</span> paste -d <span class="s2">&quot; &quot;</span> geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt &gt;&gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-<span class="o">!</span> head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+<span></span><span class="o">!</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+<span class="o">!</span><span class="w"> </span>paste<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_extract.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+<span class="o">!</span><span class="w"> </span>head<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
 </pre></div>
 </div>
 </div>
@@ -1250,9 +1247,9 @@ Long Lat SA_intra SA_meanannual SA_elevation SA_tree
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="k">for</span> file <span class="k">in</span> ./geodata/cloud/SA_intra.tif ./geodata/cloud/SA_meanannual.tif ./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif ./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif <span class="p">;</span> <span class="k">do</span>
-<span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename <span class="nv">$file</span> .tif<span class="k">)</span>
-gdallocationinfo -geoloc -wgs84 -valonly <span class="nv">$file</span> &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt &gt; geodata/shp/<span class="nv">$filename</span>.txt
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>./geodata/cloud/SA_intra.tif<span class="w"> </span>./geodata/cloud/SA_meanannual.tif<span class="w"> </span>./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif<span class="w"> </span>./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span>
+gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="w"> </span>&gt;<span class="w"> </span>geodata/shp/<span class="nv">$filename</span>.txt
 <span class="k">done</span>
 </pre></div>
 </div>
@@ -1264,8 +1261,8 @@ gdallocationinfo -geoloc -wgs84 -valonly <span class="nv">$file</span> &lt; geod
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-head geodata/shp/SA_intra.txt
-wc -l  geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_mn_GMTED2010_mn,SA_tree_mn_percentage_GFC2013<span class="o">}</span>.txt
+head<span class="w"> </span>geodata/shp/SA_intra.txt
+wc<span class="w"> </span>-l<span class="w">  </span>geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_mn_GMTED2010_mn,SA_tree_mn_percentage_GFC2013<span class="o">}</span>.txt
 </pre></div>
 </div>
 </div>
@@ -1296,10 +1293,10 @@ wc -l  geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_m
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="o">!</span> awk <span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span> geodata/shp/SA_intra.txt <span class="p">|</span> wc -l
-<span class="o">!</span> awk <span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span> geodata/shp/SA_meanannual.txt <span class="p">|</span> wc -l
-<span class="o">!</span> awk <span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span> geodata/shp/SA_elevation_mn_GMTED2010_mn.txt <span class="p">|</span> wc -l
-<span class="o">!</span> awk <span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span> geodata/shp/SA_tree_mn_percentage_GFC2013.txt <span class="p">|</span> wc -l
+<span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span><span class="w"> </span>geodata/shp/SA_intra.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span><span class="w"> </span>geodata/shp/SA_meanannual.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span><span class="w"> </span>geodata/shp/SA_elevation_mn_GMTED2010_mn.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+<span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{  if(NF==1) print  NF }&#39;</span><span class="w"> </span>geodata/shp/SA_tree_mn_percentage_GFC2013.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
 </pre></div>
 </div>
 </div>
@@ -1320,9 +1317,9 @@ wc -l  geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_m
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">echo</span> <span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span> &gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-paste -d <span class="s2">&quot; &quot;</span> geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_mn_GMTED2010_mn,SA_tree_mn_percentage_GFC2013<span class="o">}</span>.txt &gt;&gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+paste<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="w"> </span>geodata/shp/<span class="o">{</span>SA_intra,SA_meanannual,SA_elevation_mn_GMTED2010_mn,SA_tree_mn_percentage_GFC2013<span class="o">}</span>.txt<span class="w"> </span>&gt;&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+head<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
 </pre></div>
 </div>
 </div>
@@ -1350,13 +1347,13 @@ Long Lat SA_intra SA_meanannual SA_elevation SA_tree
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="nb">echo</span> <span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span> &gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-paste -d <span class="s2">&quot; &quot;</span> geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt &lt;<span class="o">(</span>gdallocationinfo -geoloc -wgs84 -valonly ./geodata/cloud/SA_intra.tif &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span> <span class="se">\</span>
-&lt;<span class="o">(</span>gdallocationinfo -geoloc -wgs84 -valonly ./geodata/cloud/SA_meanannual.tif &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span> <span class="se">\</span>
-&lt;<span class="o">(</span>gdallocationinfo -geoloc -wgs84 -valonly ./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span> <span class="se">\</span>
-&lt;<span class="o">(</span>gdallocationinfo -geoloc -wgs84 -valonly ./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif &lt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span> <span class="se">\</span>
-&gt;&gt; geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
-head geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Long Lat SA_intra SA_meanannual SA_elevation SA_tree&quot;</span><span class="w"> </span>&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+paste<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="w"> </span>&lt;<span class="o">(</span>gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span>./geodata/cloud/SA_intra.tif<span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+&lt;<span class="o">(</span>gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span>./geodata/cloud/SA_meanannual.tif<span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+&lt;<span class="o">(</span>gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span>./geodata/dem/SA_elevation_mn_GMTED2010_mn.tif<span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+&lt;<span class="o">(</span>gdallocationinfo<span class="w"> </span>-geoloc<span class="w"> </span>-wgs84<span class="w"> </span>-valonly<span class="w"> </span>./geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif<span class="w"> </span>&lt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y.txt<span class="o">)</span><span class="w"> </span><span class="se">\</span>
+&gt;&gt;<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
+head<span class="w"> </span>geodata/shp/Lepidocolaptes_lacrymiger_allpoints_x_y_extract.txt
 </pre></div>
 </div>
 </div>
