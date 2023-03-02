@@ -6,8 +6,6 @@ sudo apt install nexus-tools npm nodejs
 
 pip install --upgrade pip
 pip3 install jupyterlab
-
-pip install ipywidgets
 pip install jupyterlab_widgets
 
 pip install 'ipywidgets==7.2.1' --force-reinstall
@@ -16,9 +14,11 @@ pip install Mapping
 jupyter nbextension enable --py widgetsnbextension
 jupyter labextension install @jupyter-widgets/html-manager
 
-
-
 sudo apt install  npm
 ### change collections to collections.abc
 emacs /home/selv/.local/lib/python3.10/site-packages/ipywidgets/widgets/interaction.py
 emacs /home/selv/.local/lib/python3.10/site-packages/ipywidgets/widgets/widget_selection.py 
+
+
+#####
+git remote set-url origin git@github.com:selvaje/SE_docs.git 
