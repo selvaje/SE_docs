@@ -7,7 +7,18 @@ In order to execute the Spatial Ecology exercise we will need first install the 
 
 You can follow the below instructions, moreover the [OSGeoLive installation YouTube video](https://youtu.be/wnRkkpaxqBU) can guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current version.  
 
-For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk file that contains the virtualized OS.
+
+**Software requirements**
+
+For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk file that contains the virtualized OS.  
+
+**Hardware requirements - Hard disk**
+
+Be sure to have at least 60 GIGA of free space in your hard disk before to start the VM installation procedure. Avoid the use of USB-external-hard-disk, due that the USB connection will slow down the VM performance.  
+
+**Hardware requirements - RAM**
+
+Be sure that your computer have at lest 8 GIGA ram (more better). Indeed with the VM running and the zoom session open for following the lecture the 8GIGA will be barely on the limit.  
 
 **Install Virtualbox**
 
@@ -15,7 +26,7 @@ Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://w
 
 **Download OSGeoLive**
 
-Open you browser and go to [https://sourceforge.net/projects/osgeo-live/files/](https://sourceforge.net/projects/osgeo-live/files/). Click on the last version-folder and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
+Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
 
 **Install OSGeoLive inside Virtualbox**
 
