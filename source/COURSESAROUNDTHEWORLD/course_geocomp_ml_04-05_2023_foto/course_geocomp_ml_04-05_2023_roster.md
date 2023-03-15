@@ -32,7 +32,7 @@ Swedish University for Agricultural Sciences (Sweden)
 
 ---
 
-(5) **Charlotte	Weinstein**
+(6) **Charlotte	Weinstein**
 
 ![](06_Charlotte_Weinstein.jpg)
 
@@ -41,6 +41,9 @@ Swedish University for Agricultural Sciences (Sweden)
 (9) **Oliver-Valentin Dinter**
 
 Alexandru Ioan Cuza University of Iasi - Romania
+University of Tours - France
+
+![](09_Oliver-Valentin_Dinter.jpg)
 
 ---
 
@@ -52,9 +55,13 @@ Yale University - USA
 
 ---
 
-(11) **Juana Mercedes Perlaza Rodriguez**
+(11) **Juana Mercedes Perlaza Rodriguez (Ecuador)**
 
-![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg) 
+University of Basilicata (DiCEM) - School of Architecture, Italy
+
+![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg)
+
+
 
 ---
 
@@ -71,6 +78,14 @@ Wageningen University and Research - Netherlands.
 DePaul University, University of Illinois-Chicago - USA
 
 ![](16_Cassandra_Follett.jpg)
+
+---
+
+(17) **Alexander_Mkrtchian (Alex) (Ukraine)**
+
+Leibniz Institute of Agricultural Development in Transition Economies (Germany)
+
+![](17_Alexander_Mkrtchian.jpg)
 
 ---
 
@@ -149,6 +164,14 @@ Epidemiologist / Public health professional
 eHealth For Everyone
 
 ![](26_Judith_Idemili_Chidumebi.jpg)
+
+---
+
+(31) **Olha Kachalova (Ukraine)**
+
+The Silva Tarouca Research Institute for Landscape and Ornamental Gardening -  Czech Republic
+
+![](31_Olha_Kachalova.jpg)
 
 ---
 
