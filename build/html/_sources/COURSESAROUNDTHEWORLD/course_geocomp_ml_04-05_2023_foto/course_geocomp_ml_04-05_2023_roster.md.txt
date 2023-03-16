@@ -4,7 +4,7 @@
 
 #### Student affiliation and their origin  ####
 
-![](Physical-World-Map-3360.jpg)
+![](Physical-World-Map-3360a.jpg)
 
 #### Student roster ####
 
@@ -81,7 +81,7 @@ DePaul University, University of Illinois-Chicago - USA
 
 ---
 
-(17) **Alexander_Mkrtchian (Alex) (Ukraine)**
+(17) **Alexander Mkrtchian (Alex) (Ukraine)**
 
 Leibniz Institute of Agricultural Development in Transition Economies (Germany)
 
@@ -106,6 +106,7 @@ Research assistant / Parasitologist and epidemiologist
 ![](21_Olaitan_Omitola.jpg)
 
 ---
+
 (2)	**Ayodele Samuel Babalola (Nigeria)**
 
 Malarial Research Unit  
@@ -164,6 +165,14 @@ Epidemiologist / Public health professional
 eHealth For Everyone
 
 ![](26_Judith_Idemili_Chidumebi.jpg)
+
+---
+
+(30) **Fengchao Sun (China)** 
+
+School of the Environment, Yale University - USA
+
+![](30_Fengchao_Sun.jpg)
 
 ---
 
