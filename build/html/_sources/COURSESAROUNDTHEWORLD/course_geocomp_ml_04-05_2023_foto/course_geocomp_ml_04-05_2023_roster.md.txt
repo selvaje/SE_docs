@@ -8,7 +8,15 @@
 
 #### Student roster ####
 
-(3)  **Carola Stolle (Germany)**
+(1) **Bibek Raj Shrestha (Nepal)**
+
+Global Institute for Interdisciplinary Studies (GIIS) - Nepal
+
+![](01_Bibek_Shrestha.jpg)
+
+---
+
+(3) **Carola Stolle (Germany)**
 
 METER Group AG, Germany/US
 
@@ -18,7 +26,7 @@ METER Group AG, Germany/US
 
 (4) **Linn_Yiqi (China)**
 
-Swedish University of Agricultural Sciences (Sweden)
+Swedish University of Agricultural Sciences - Sweden
 
 ![](04_Linn_Yiqi.jpg)
 
@@ -26,19 +34,21 @@ Swedish University of Agricultural Sciences (Sweden)
 
 (5) **Olivia Anderson (USA)**
 
-Swedish University for Agricultural Sciences (Sweden)
+Swedish University for Agricultural Sciences - Sweden
 
 ![](05_Olivia_Anderson.jpg)
 
 ---
 
-(6) **Charlotte	Weinstein**
+(6) **Charlotte	Weinstein (USA)**
+
+Chesapeake Conservancy - USA
 
 ![](06_Charlotte_Weinstein.jpg)
 
 ---
 
-(9) **Oliver-Valentin Dinter**
+1) (9) **Oliver-Valentin Dinter (Romania)**
 
 Alexandru Ioan Cuza University of Iasi - Romania
 University of Tours - France
@@ -101,7 +111,6 @@ Heidelberg University - Germany
 
 Federal University of Agriculture, Abeokuta - Nigeria  
 Research assistant / Parasitologist and epidemiologist
-
 
 ![](21_Olaitan_Omitola.jpg)
 
