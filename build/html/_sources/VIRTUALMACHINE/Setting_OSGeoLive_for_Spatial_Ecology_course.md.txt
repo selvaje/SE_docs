@@ -55,7 +55,7 @@ If you follow all the steps correctly the OSGeoLive Virtual Machine you should p
 
 ![title](Installation_vm_osgeo-live15_p13.png)
 
-### Setting you keyboard layout**
+### Setting you keyboard layout
 
 If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore on the left bottom corner write "keyboard" in the search box, and select Keyboard and Mouse.
 
@@ -91,7 +91,7 @@ If you still have issues after the reboot, there are mainly two options:
 1) Re-install the Virtual Box guest edition
 2) Use "arandr" for setting a customized resolution
 
-**skip this part if everything is working fine**  
+**Skip this part if everything is working fine (go directly to [Test your shared folder](https://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html#test-your-shared-folder))**  
 
 ### Re-install the Virtual Box guest edition
 
@@ -159,7 +159,7 @@ If you get permission denied in accessing '/media/sf_LVM_shared' run this comman
 You will need to reboot to make the folder accessible. 
 
 ## Populate OSGeoLive with additional software
-
+### Install geo-software
 At this point the OSGeoLive Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
 
     cd /tmp/
