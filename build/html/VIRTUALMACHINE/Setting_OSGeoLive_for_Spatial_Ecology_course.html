@@ -61,6 +61,28 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Prepare OSGeoLive for Spatial Ecology courses</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#software-requirements">Software requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hardware-requirements">Hardware requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hard-disk">Hard disk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ram">RAM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-virtualbox">Install Virtualbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#download-osgeolive">Download OSGeoLive</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-osgeolive-inside-virtualbox">Install OSGeoLive inside Virtualbox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-your-osgeolive-virtual-machine">Test your OSGeoLive Virtual Machine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-you-keyboard-layout">Setting you keyboard layout**</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-the-os">Update the OS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine">Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition">Re-install the Virtual Box guest edition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-arandr-for-setting-a-customized-resolution">Use “arandr” for setting a customized resolution</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#test-your-shared-folder">Test your shared folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#populate-osgeolive-with-additional-software">Populate OSGeoLive with additional software</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#test-installed-additional-software">Test installed additional software</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#git-settings">Git Settings</a></li>
 </ul>
 </li>
@@ -215,17 +237,31 @@
 <p>In order to execute the Spatial Ecology exercise we will need first install the OSGeoLive Linux Virtual Machine and then populate with additional software and data.</p>
 <p><a class="reference external" href="https://live.osgeo.org/en/index.html">OSGeoLive</a> is a self-contained bootable DVD, USB thumb drive or Virtual Machine based on Lubuntu, that allows you to try a wide variety of open source geospatial software without installing anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around (source https://live.osgeo.org/en/index.html)</p>
 <p>You can follow the below instructions, moreover the <a class="reference external" href="https://youtu.be/wnRkkpaxqBU">OSGeoLive installation YouTube video</a> can guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current version.</p>
-<p><strong>Software requirements</strong></p>
+<section id="software-requirements">
+<h2>Software requirements<a class="headerlink" href="#software-requirements" title="Permalink to this headline"></a></h2>
 <p>For running a Virtual Machine in your OS we need a virtualization software such as <a class="reference external" href="https://www.virtualbox.org/">Virtualbox</a> and a vmdk file that contains the virtualized OS.</p>
-<p><strong>Hardware requirements - Hard disk</strong></p>
+</section>
+<section id="hardware-requirements">
+<h2>Hardware requirements<a class="headerlink" href="#hardware-requirements" title="Permalink to this headline"></a></h2>
+<section id="hard-disk">
+<h3>Hard disk<a class="headerlink" href="#hard-disk" title="Permalink to this headline"></a></h3>
 <p>Be sure to have at least 60 GIGA of free space in your hard disk before to start the VM installation procedure. Avoid the use of USB-external-hard-disk, due that the USB connection will slow down the VM performance.</p>
-<p><strong>Hardware requirements - RAM</strong></p>
+</section>
+<section id="ram">
+<h3>RAM<a class="headerlink" href="#ram" title="Permalink to this headline"></a></h3>
 <p>Be sure that your computer have at lest 8 GIGA ram (more better). Indeed with the VM running and the zoom session open for following the lecture the 8GIGA will be barely on the limit.</p>
-<p><strong>Install Virtualbox</strong></p>
+</section>
+</section>
+<section id="install-virtualbox">
+<h2>Install Virtualbox<a class="headerlink" href="#install-virtualbox" title="Permalink to this headline"></a></h2>
 <p>Open you browser and go to <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads">https://www.virtualbox.org/wiki/Downloads</a> and base on your OS download the Virtualbox executable and install it.</p>
-<p><strong>Download OSGeoLive</strong></p>
+</section>
+<section id="download-osgeolive">
+<h2>Download OSGeoLive<a class="headerlink" href="#download-osgeolive" title="Permalink to this headline"></a></h2>
 <p>Open you browser and go to <a class="reference external" href="https://download.osgeo.org/livedvd/releases/15.0/">https://download.osgeo.org/livedvd/releases/15.0/</a> and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using <a class="reference external" href="https://www.7-zip.org">7zip</a>. Mac users can use <a class="reference external" href="https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12">The Unarchiver</a> for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.</p>
-<p><strong>Install OSGeoLive inside Virtualbox</strong></p>
+</section>
+<section id="install-osgeolive-inside-virtualbox">
+<h2>Install OSGeoLive inside Virtualbox<a class="headerlink" href="#install-osgeolive-inside-virtualbox" title="Permalink to this headline"></a></h2>
 <p>Lunch Virtualbox from OS and follow the below instructions.</p>
 <p><img alt="title" src="../_images/Installation_vm_osgeo-live15_p0.png" />
 <img alt="title" src="../_images/Installation_vm_osgeo-live15_p1.png" />
@@ -240,10 +276,14 @@
 <img alt="title" src="../_images/Installation_vm_osgeo-live15_p10.png" />
 <img alt="title" src="../_images/Installation_vm_osgeo-live15_p11.png" />
 <img alt="title" src="../_images/Installation_vm_osgeo-live15_p12.png" /></p>
-<p><strong>Test your OSGeoLive Virtual Machine</strong></p>
+</section>
+<section id="test-your-osgeolive-virtual-machine">
+<h2>Test your OSGeoLive Virtual Machine<a class="headerlink" href="#test-your-osgeolive-virtual-machine" title="Permalink to this headline"></a></h2>
 <p>If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:</p>
 <p><img alt="title" src="../_images/Installation_vm_osgeo-live15_p13.png" /></p>
-<p><strong>Setting you keyboard layout</strong></p>
+</section>
+<section id="setting-you-keyboard-layout">
+<h2>Setting you keyboard layout**<a class="headerlink" href="#setting-you-keyboard-layout" title="Permalink to this headline"></a></h2>
 <p>If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore on the left bottom corner write “keyboard” in the search box, and select Keyboard and Mouse.</p>
 <p><img alt="title" src="../_images/keyboard_setting1.png" /></p>
 <p>Then select “Keyboard Layout” &gt; “Add” and select your keyboard layout in accordance to your country and language.</p>
@@ -251,7 +291,9 @@
 <p>Your keyboard layout will appear as below. Move up to select it as default keyboard layout.</p>
 <p><img alt="title" src="../_images/keyboard_setting3.png" /></p>
 <p>Open the terminal (black icon in the down left corner of the menubar, close to the firefox icon) and test if the keyboard layout is correct.</p>
-<p><strong>Update the OS</strong></p>
+</section>
+<section id="update-the-os">
+<h2>Update the OS<a class="headerlink" href="#update-the-os" title="Permalink to this headline"></a></h2>
 <p>The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is <strong>“user”</strong>. For security what you type is not shown, anyway it is recorded. After typed the password press enter.</p>
 <p>Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>      <span class="c1"># update the repositories</span>
@@ -259,15 +301,18 @@
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">linux</span><span class="o">-</span><span class="n">generic</span> <span class="n">linux</span><span class="o">-</span><span class="n">headers</span><span class="o">-</span><span class="n">generic</span> <span class="n">linux</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">generic</span> <span class="c1"># install the &quot;The following packages have been kept back:&quot;</span>
 </pre></div>
 </div>
-<p><strong>Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine</strong></p>
+</section>
+<section id="troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine">
+<h2>Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine<a class="headerlink" href="#troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine" title="Permalink to this headline"></a></h2>
 <p>If the screen is very small try to enlarge clicking “”View -&gt; Auto-resize Guest Display”, and if the enlargement is not working properly try to reboot.
 If you still have issues after the reboot, there are mainly two options:</p>
 <ol class="simple">
 <li><p>Re-install the Virtual Box guest edition</p></li>
 <li><p>Use “arandr” for setting a customized resolution
-x
-<strong>Re-install the Virtual Box guest edition</strong></p></li>
+x</p></li>
 </ol>
+<section id="re-install-the-virtual-box-guest-edition">
+<h3>Re-install the Virtual Box guest edition<a class="headerlink" href="#re-install-the-virtual-box-guest-edition" title="Permalink to this headline"></a></h3>
 <p>Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below.</p>
 <p>From the Virtualbox menu press Device &gt; Insert Guest Addition CD image</p>
 <p>If during the installation some screen pop-up asking some question just accept the default option.</p>
@@ -280,7 +325,9 @@ x
 </pre></div>
 </div>
 <p>At this point you can reboot your machine. Now all screen setting, screen scale (View -&gt; Auto-resize Guest Display) and drag/drop should work properly.</p>
-<p><strong>Use “arandr” for setting a customized resolution</strong></p>
+</section>
+<section id="use-arandr-for-setting-a-customized-resolution">
+<h3>Use “arandr” for setting a customized resolution<a class="headerlink" href="#use-arandr-for-setting-a-customized-resolution" title="Permalink to this headline"></a></h3>
 <p>For some OS the “Auto-resize Guest Display” is not working properly. Therefore is possible to select a customized resolution by installing “arandr”.</p>
 <p>Open the terminal and type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">arandr</span>
@@ -298,7 +345,10 @@ x
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="s2">&quot;bash ~/.screenlayout/screen_vm.sh&quot;</span>  <span class="o">&gt;&gt;</span> <span class="o">~/.</span><span class="n">bashrc</span>
 </pre></div>
 </div>
-<p><strong>Test your shared folder</strong></p>
+</section>
+</section>
+<section id="test-your-shared-folder">
+<h2>Test your shared folder<a class="headerlink" href="#test-your-shared-folder" title="Permalink to this headline"></a></h2>
 <p>Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span>
 </pre></div>
@@ -311,7 +361,9 @@ x
 </pre></div>
 </div>
 <p>You will need to reboot to make the folder accessible.</p>
-<p><strong>Populate OSGeoLive with additional software</strong></p>
+</section>
+<section id="populate-osgeolive-with-additional-software">
+<h2>Populate OSGeoLive with additional software<a class="headerlink" href="#populate-osgeolive-with-additional-software" title="Permalink to this headline"></a></h2>
 <p>At this point the OSGeoLive Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">selvaje</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">install_additional_sw_data_4SE_courses</span><span class="o">.</span><span class="n">sh</span>
@@ -319,7 +371,8 @@ x
 </pre></div>
 </div>
 <p>as before the sudo password is <strong>“user”</strong>.</p>
-<p><strong>Test installed additional software</strong></p>
+<section id="test-installed-additional-software">
+<h3>Test installed additional software<a class="headerlink" href="#test-installed-additional-software" title="Permalink to this headline"></a></h3>
 <p>In the bash terminal run the following lines one by one. Close the window that each time pop-up.</p>
 <p>Test <a class="reference external" href="http://pktools.nongnu.org/html/index.html">pktools</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pkfilter</span> <span class="o">--</span><span class="n">help</span>
@@ -337,6 +390,8 @@ x
 </pre></div>
 </div>
 <p>You should see the rstudio software pop-up</p>
+</section>
+</section>
 <section id="git-settings">
 <h2>Git Settings<a class="headerlink" href="#git-settings" title="Permalink to this headline"></a></h2>
 <p>The below instructions together with the <a class="reference external" href="https://www.youtube.com/watch?v=QzMNHEStG0U&amp;t=6s">Git Setting for the Spatial Ecology courses YouTube video</a> can guide along the full procedure to retrieve dataset and material for the courses.</p>

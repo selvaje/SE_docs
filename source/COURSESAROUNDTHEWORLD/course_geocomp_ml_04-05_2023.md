@@ -40,7 +40,7 @@ This session introduces the overall course program and Linux operating system.
 
 Time below in CEST
 * 05:00 - 05:15  Giuseppe Amatulli: course objective & background/interest & bash/gdal/pktools introduction - teaching role.
-* 05:15 - 05:30  Antonio Fonseca: background/interest & machine learning introduction - teaching role.  (Antonion then you can leave the call)
+* 05:15 - 05:30  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
 * 05:30 - 05:45  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
 * 05:45 - 06:00  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
 * 06:00 - 06:15  Longzhu Shen: background/interest & stat/math subjects - supervision role.

@@ -8,27 +8,28 @@ In order to execute the Spatial Ecology exercise we will need first install the 
 You can follow the below instructions, moreover the [OSGeoLive installation YouTube video](https://youtu.be/wnRkkpaxqBU) can guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current version.  
 
 
-**Software requirements**
+## Software requirements
 
 For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk file that contains the virtualized OS.  
 
-**Hardware requirements - Hard disk**
+## Hardware requirements
+### Hard disk
 
 Be sure to have at least 60 GIGA of free space in your hard disk before to start the VM installation procedure. Avoid the use of USB-external-hard-disk, due that the USB connection will slow down the VM performance.  
 
-**Hardware requirements - RAM**
+### RAM
 
 Be sure that your computer have at lest 8 GIGA ram (more better). Indeed with the VM running and the zoom session open for following the lecture the 8GIGA will be barely on the limit.  
 
-**Install Virtualbox**
+## Install Virtualbox
 
 Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. 
 
-**Download OSGeoLive**
+## Download OSGeoLive
 
 Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
 
-**Install OSGeoLive inside Virtualbox**
+## Install OSGeoLive inside Virtualbox
 
 Lunch Virtualbox from OS and follow the below instructions. 
 
@@ -47,13 +48,13 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_osgeo-live15_p12.png)
 
 
-**Test your OSGeoLive Virtual Machine**
+## Test your OSGeoLive Virtual Machine
 
 If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
 ![title](Installation_vm_osgeo-live15_p13.png)
 
-**Setting you keyboard layout**
+## Setting you keyboard layout**
 
 If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore on the left bottom corner write "keyboard" in the search box, and select Keyboard and Mouse.
 
@@ -69,7 +70,7 @@ Your keyboard layout will appear as below. Move up to select it as default keybo
 
 Open the terminal (black icon in the down left corner of the menubar, close to the firefox icon) and test if the keyboard layout is correct. 
 
-**Update the OS**
+## Update the OS
 
 The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
@@ -80,14 +81,14 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
 
 
-**Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine**
+## Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine
 
 If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot. 
 If you still have issues after the reboot, there are mainly two options:
 1) Re-install the Virtual Box guest edition
 2) Use "arandr" for setting a customized resolution
 x
-**Re-install the Virtual Box guest edition**
+### Re-install the Virtual Box guest edition
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
 
@@ -101,7 +102,6 @@ pres "cancel".
 
 ![title](GuestAddition2.png)
 
-
 Open the terminal and type:
 
     cd /media/user/VBox_GAs_*
@@ -110,7 +110,7 @@ Open the terminal and type:
 At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
 
 
-**Use "arandr" for setting a customized resolution**
+### Use "arandr" for setting a customized resolution
 
 For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr".
 
@@ -135,7 +135,7 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
     echo "bash ~/.screenlayout/screen_vm.sh"  >> ~/.bashrc
 
 
-**Test your shared folder**
+## Test your shared folder
 
 Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run 
 
@@ -153,7 +153,7 @@ If you get permission denied in accessing '/media/sf_LVM_shared' run this comman
 
 You will need to reboot to make the folder accessible. 
 
-**Populate OSGeoLive with additional software**
+## Populate OSGeoLive with additional software
 
 At this point the OSGeoLive Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
 
@@ -163,7 +163,7 @@ At this point the OSGeoLive Virtual Machine is ready to install additional softw
 
 as before the sudo password is **"user"**.
 
-**Test installed additional software**
+### Test installed additional software
 
 In the bash terminal run the following lines one by one. Close the window that each time pop-up.
 
