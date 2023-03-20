@@ -25,11 +25,12 @@ Be sure that your computer have at lest 8 GIGA ram (more better). Indeed with th
 
 Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. 
 
-## Download OSGeoLive
+## Install OSGeoLive
+### Download OSGeoLive
 
 Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
 
-## Install OSGeoLive inside Virtualbox
+### Install OSGeoLive inside Virtualbox
 
 Lunch Virtualbox from OS and follow the below instructions. 
 
@@ -48,13 +49,13 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_osgeo-live15_p12.png)
 
 
-## Test your OSGeoLive Virtual Machine
+### Test your OSGeoLive Virtual Machine
 
 If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
 ![title](Installation_vm_osgeo-live15_p13.png)
 
-## Setting you keyboard layout**
+### Setting you keyboard layout**
 
 If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore on the left bottom corner write "keyboard" in the search box, and select Keyboard and Mouse.
 
@@ -70,7 +71,7 @@ Your keyboard layout will appear as below. Move up to select it as default keybo
 
 Open the terminal (black icon in the down left corner of the menubar, close to the firefox icon) and test if the keyboard layout is correct. 
 
-## Update the OS
+### Update the OS
 
 The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
@@ -83,11 +84,15 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
 
 ## Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine
 
-If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot. 
-If you still have issues after the reboot, there are mainly two options:
+If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot.
+ 
+If you still have issues after the reboot, there are mainly two options:  
+
 1) Re-install the Virtual Box guest edition
 2) Use "arandr" for setting a customized resolution
-x
+
+**skip this part if everything is working fine**  
+
 ### Re-install the Virtual Box guest edition
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
