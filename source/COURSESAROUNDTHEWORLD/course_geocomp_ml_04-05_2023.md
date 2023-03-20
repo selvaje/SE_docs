@@ -36,7 +36,22 @@ Below we are going to list day by day the final syllabus with the relatives link
 ## Lecture 1: 28th of March, 2023.
 ### Getting started: knowing each other and course introduction (Amatulli, Fonseca)
 
-This session introduces the overall course program and Linux operating system. 
+This session introduces the overall course program and Linux operating system.  
+
+Time below in CEST
+* 05:00 - 05:15  Giuseppe Amatulli: course objective & background/interest & bash/gdal/pktools introduction - teaching role.
+* 05:15 - 05:30  Antonio Fonseca: background/interest & machine learning introduction - teaching role.  (Antonion then you can leave the call)
+* 05:30 - 05:45  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
+* 05:45 - 06:00  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
+* 06:00 - 06:15  Longzhu Shen: background/interest & stat/math subjects - supervision role.
+* 06:15 - 06:20  Tushar Sethi background/interest - communication/administration role
+* 06:20 - 06:40  Break 
+* 06:40 - 07:30  Students round table + QA of the course. 
+* 07:30 - 07:45  Virtual machine installation review, QA & troubleshooting.
+
+
+<!---
+
 
 * Get to know each other: trainers and participants (30-40min Round-table )
 * [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20230404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)
@@ -45,6 +60,7 @@ This session introduces the overall course program and Linux operating system.
 * [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20230405_SpatStat.pdf) (Giuseppe Amatulli - 20min Lecture)
 * [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/lect_20230405_IntroML.pdf) (Antonio Fonseca - 20min Lecture)
 
+--->
 
 ## Lecture 2: 30th of March, 2023. 
 ### Jump start into LINUX Bash programming (Giuseppe Amatulli)

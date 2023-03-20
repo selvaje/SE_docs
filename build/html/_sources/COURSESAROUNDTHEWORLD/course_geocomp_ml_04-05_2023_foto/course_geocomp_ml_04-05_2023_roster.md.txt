@@ -71,8 +71,6 @@ University of Basilicata (DiCEM) - School of Architecture, Italy
 
 ![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg)
 
-
-
 ---
 
 (13)  **Jan-Markus Homberger (Germany)**
@@ -208,3 +206,9 @@ Wageningen University and Research - Netherlands
 ![](32_Laurent_Bataille.jpg)
 
 ---
+
+(34) **Valdrich	Fernandes**
+
+Wageningen University and Research - Netherlands
+
+![](34_Valdrich_Fernandes.jpg)
