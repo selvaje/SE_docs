@@ -2,9 +2,18 @@
 ## Geocomputation and Machine Learning for environmental applications
 ### 
 
+#### Spatial Ecology course trainers ####
+
+Giuseppe Amatulli  
+Antonio Fonseca
+Francesco Lovergine
+Pieter Kempeneers
+Longzhu Shen
+
 #### Student affiliation and their origin  ####
 
 ![](Physical-World-Map-3360a.jpg)
+
 
 #### Student roster ####
 
@@ -113,20 +122,6 @@ Research assistant / Parasitologist and epidemiologist
 ![](21_Olaitan_Omitola.jpg)
 
 ---
-
-(2)	**Ayodele Samuel Babalola (Nigeria)**
-
-Malarial Research Unit  
-Department of pure and applied zoology  
-Federal University of Agriculture, Abeokuta, Nigeria  
-
-Nigerian Institute of Medical Research (NIMR),  
-Molecular and medical entomology laboratory,  
-Parasitologist and epidemiologist
-
-![](02_Ayodele_Samuel_Babalola.jpeg)
-
----
 (15)	**Taiwo Adekunle Adenike (Nigeria)**
 
 Lecturer / PhD candidate  
@@ -199,7 +194,7 @@ The Silva Tarouca Research Institute for Landscape and Ornamental Gardening -  C
 
 ---
 
-(32) **Laurent Bataille (Netherlands)**
+(32) **Laurent Bataille (Belgium)**
 
 Wageningen University and Research - Netherlands
 
@@ -212,3 +207,17 @@ Wageningen University and Research - Netherlands
 Wageningen University and Research - Netherlands
 
 ![](34_Valdrich_Fernandes.jpg)
+
+---
+
+(35)	**Ayodele Samuel Babalola (Nigeria)**
+
+Malarial Research Unit  
+Department of pure and applied zoology  
+Federal University of Agriculture, Abeokuta, Nigeria  
+
+Nigerian Institute of Medical Research (NIMR),  
+Molecular and medical entomology laboratory,  
+Parasitologist and epidemiologist
+
+![](35_Ayodele_Samuel_Babalola.jpeg)

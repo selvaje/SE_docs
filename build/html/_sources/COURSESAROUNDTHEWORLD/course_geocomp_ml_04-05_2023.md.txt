@@ -24,6 +24,8 @@ We proposed one week of hackathon.
 
 In this course, students will be introduced to an array of powerful open-source geocomputation tools and machine learning methodologies under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.
 
+**All the class will be recorded. The video link will be posted in the syllabus below**  
+
 ### Class roster  ###
 
   - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023_foto/course_geocomp_ml_04-05_2023_roster.html)
@@ -34,7 +36,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 
 ## Lecture 1: 28th of March, 2023.
-### Getting started: knowing each other and course introduction (Amatulli, Fonseca)
+### Getting started: knowing each other and course introduction.
 
 This session introduces the overall course program and Linux operating system.  
 

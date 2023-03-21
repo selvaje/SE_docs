@@ -1,6 +1,6 @@
 # Spatial Ecology course trainers
 
-**Giuseppe Amatulli, PhD**
+## Giuseppe Amatulli, PhD
 
 Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
@@ -18,7 +18,7 @@ Giuseppe holds a research scientist position at Yale University in the US, and h
 
 Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Information Science from Wageningen University, and MSc in Forestry from Bari University. His time away from coding is spent leading adventure trips in remote locations, which involve canyoning, caving, rafting and hiking.
 
-**Longzhu Shen, PhD** 
+## Longzhu Shen, PhD 
 
 Scientific Advisor, Spatial Ecology; l.shen at spatial-ecology.net
 
@@ -34,7 +34,7 @@ Longzhu has previously worked as research scientist position at Cambridge Univer
 
 Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post-doctoral research in toxicology and molecular design at Yale University. In his spare time, he enjoys hiking, skateboarding and traveling.
 
-** Antonio Fonseca, M.Sc. ** 
+## Antonio Fonseca, M.Sc., almost PhD. 
 
 [website](https://ahof1704.github.io/)
 [Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
