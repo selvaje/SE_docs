@@ -4,11 +4,11 @@
 
 #### Spatial Ecology course trainers ####
 
-Giuseppe Amatulli  
-Antonio Fonseca
-Francesco Lovergine
-Pieter Kempeneers
-Longzhu Shen
+[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd)  
+[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd)  
+Francesco Lovergine  
+Pieter Kempeneers  
+[Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd)  
 
 #### Student affiliation and their origin  ####
 
@@ -167,6 +167,14 @@ Epidemiologist / Public health professional
 eHealth For Everyone
 
 ![](26_Judith_Idemili_Chidumebi.jpg)
+
+---
+
+(27) **Eric	Carvalho (Brasil)** 
+
+RADAMBRASIL Herbarium - Brasil
+
+![](27_Eric_Carvalho.jpg)
 
 ---
 
