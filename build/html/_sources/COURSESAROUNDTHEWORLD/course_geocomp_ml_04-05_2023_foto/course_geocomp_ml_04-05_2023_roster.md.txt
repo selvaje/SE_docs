@@ -4,16 +4,16 @@
 
 #### Spatial Ecology course trainers ####
 
-[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd)  
-[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd)  
-Francesco Lovergine  
-Pieter Kempeneers  
-[Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd)  
+[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (teacher - course organizer)  
+[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (teacher)  
+Francesco Lovergine (teacher)  
+Pieter Kempeneers (teacher)  
+[Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd) (math/stat advisor)  
+[Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)
 
 #### Student affiliation and their origin  ####
 
 ![](Physical-World-Map-3360a.jpg)
-
 
 #### Student roster ####
 
@@ -68,7 +68,7 @@ University of Tours - France
 
 (10) **Samuel Tsao (Taiwan)**
 
-Yale University - USA
+School of the Environment, Yale University - USA
 
 ![](10_Samuel_Tsao.jpg)
 
@@ -210,7 +210,7 @@ Wageningen University and Research - Netherlands
 
 ---
 
-(34) **Valdrich	Fernandes**
+(34) **Valdrich	Fernandes (India)**
 
 Wageningen University and Research - Netherlands
 
@@ -229,3 +229,25 @@ Molecular and medical entomology laboratory,
 Parasitologist and epidemiologist
 
 ![](35_Ayodele_Samuel_Babalola.jpeg)
+
+---
+
+(37)	**Milutin Milenkovic (Serbia)**
+
+International Institute for Applied Systems Analysis (IIASA) - Austria  
+Advancing Systems Analysis (ASA) Program,  
+Novel Data Ecosystems for Sustainability (NoDES) Research Group  
+
+![](37_Milutin_Milenkovic.jpg)
+
+---
+
+(38)	**Martin Hofer (Austria)**
+
+International Institute for Applied Systems Analysis (IIASA) - Austria  
+Advancing Systems Analysis (ASA) Program,  
+Novel Data Ecosystems for Sustainability (NoDES) Research Group  
+
+![](38_Martin_Hofer.jpg)
+
+---
