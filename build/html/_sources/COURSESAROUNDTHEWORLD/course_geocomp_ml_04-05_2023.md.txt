@@ -40,15 +40,16 @@ Below we are going to list day by day the final syllabus with the relatives link
 This session introduces the overall course program and Linux operating system.  
 
 Time below in CEST
-* 17:00 - 17:10  Tushar Sethi background/interest & course objective - communication/administration role.
-* 17:10 - 05:25  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
-* 17:25 - 05:40  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
-* 17:40 - 05:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
+
+* 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
+* 17:10 - 17:25  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
+* 17:25 - 17:40  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
+* 17:40 - 17:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
 * 18:55 - 18:10  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
 * 18:10 - 18:25  Longzhu Shen: background/interest & stat/math subjects - supervision role.
-* 06:25 - 06:40  Break 
-* 06:40 - 07:30  Students round table + QA of the course. 
-* 07:30 - 07:45  Virtual machine installation review, QA & troubleshooting.
+* 18:25 - 18:45  Break 
+* 18:40 - 19:20  Students round table + QA of the course. 
+* 19:20 - 19:45  Virtual machine installation review, QA & troubleshooting.
 
 <!---
 
