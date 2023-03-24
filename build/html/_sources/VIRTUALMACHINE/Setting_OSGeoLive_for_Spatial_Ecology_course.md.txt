@@ -185,11 +185,16 @@ Test [OpenEV](http://openev.sourceforge.net)
 
 You should see the openev software popup and open the the tif file. 
 
+<!---
+
+
 Test  [R studio](https://rstudio.com)
 
     rstudio
 
 You should see the rstudio software pop-up
+
+--->
 
 ## Git Settings 
 
