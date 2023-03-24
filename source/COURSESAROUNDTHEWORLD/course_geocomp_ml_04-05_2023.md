@@ -34,23 +34,21 @@ In this course, students will be introduced to an array of powerful open-source 
 
 Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
 
-
 ## Lecture 1: 28th of March, 2023.
 ### Getting started: knowing each other and course introduction.
 
 This session introduces the overall course program and Linux operating system.  
 
 Time below in CEST
-* 05:00 - 05:15  Giuseppe Amatulli: course objective & background/interest & bash/gdal/pktools introduction - teaching role.
-* 05:15 - 05:30  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
-* 05:30 - 05:45  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
-* 05:45 - 06:00  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
-* 06:00 - 06:15  Longzhu Shen: background/interest & stat/math subjects - supervision role.
-* 06:15 - 06:20  Tushar Sethi background/interest - communication/administration role
-* 06:20 - 06:40  Break 
+* 17:00 - 17:10  Tushar Sethi background/interest & course objective - communication/administration role.
+* 17:10 - 05:25  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
+* 17:25 - 05:40  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
+* 17:40 - 05:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
+* 18:55 - 18:10  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
+* 18:10 - 18:25  Longzhu Shen: background/interest & stat/math subjects - supervision role.
+* 06:25 - 06:40  Break 
 * 06:40 - 07:30  Students round table + QA of the course. 
 * 07:30 - 07:45  Virtual machine installation review, QA & troubleshooting.
-
 
 <!---
 
