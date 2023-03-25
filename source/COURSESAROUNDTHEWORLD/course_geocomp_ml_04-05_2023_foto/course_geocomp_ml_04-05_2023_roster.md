@@ -57,7 +57,17 @@ Chesapeake Conservancy - USA
 
 ---
 
-1) (9) **Oliver-Valentin Dinter (Romania)**
+(7) **Fernanda Desimon (Brazil)** 
+
+Forest Engineer & Software Engineer Student - Brazil  
+Researcher at Palmtech, a startup affiliated  
+to Universidade Estadual do Maranhão (UEMA)
+
+![](07_Fernanda_Desimon.jpg)
+
+---
+
+(9) **Oliver-Valentin Dinter (Romania)**
 
 Alexandru Ioan Cuza University of Iasi - Romania
 University of Tours - France
@@ -79,6 +89,14 @@ School of the Environment, Yale University - USA
 University of Basilicata (DiCEM) - School of Architecture, Italy
 
 ![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg)
+
+---
+
+(12) **John Paul	Payopay (Philippines)**
+
+University of the Philippines - Philippines
+
+![](12_John Paul	Payopay.jpg)
 
 ---
 
@@ -111,6 +129,15 @@ Leibniz Institute of Agricultural Development in Transition Economies (Germany)
 Heidelberg University - Germany
 
 ![](18_Weiser_Fern.jpg)
+
+---
+
+(20) **Roisin Stanbrook (USA)**
+
+Dung Beetle Conservation And Ecology - USA  
+https://roisinstanbrook.com/  
+
+![](20_Roisin_Stanbrook.jpg)
 
 ---
 
