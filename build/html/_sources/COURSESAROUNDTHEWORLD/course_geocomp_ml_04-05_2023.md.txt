@@ -1,7 +1,7 @@
 # GeoComp & ML 2023 course
 ## Geocomputation and Machine Learning for environmental applications
 
-(Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/))  
+(Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
 
 **Online teaching: April and May 2023, 8 weeks**
 
