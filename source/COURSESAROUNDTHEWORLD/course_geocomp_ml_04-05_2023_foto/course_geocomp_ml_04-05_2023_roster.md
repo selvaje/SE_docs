@@ -4,7 +4,7 @@
 
 #### Spatial Ecology course trainers ####
 
-[Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)
+[Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (teacher - course organizer)  
 [Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (teacher)  
 Francesco Lovergine (teacher)  
