@@ -13,7 +13,7 @@ Pieter Kempeneers (teacher)
 
 #### Student affiliation and their origin  ####
 
-![](Physical-World-Map-3360a.jpg)
+![](Physical-World-Map.jpg)
 
 #### Student roster ####
 
@@ -56,7 +56,7 @@ Swedish University for Agricultural Sciences - Sweden
 
 ---
 
-(6_6) **Charlotte	Weinstein (USA)**
+(6_6) **Charlotte Weinstein (USA)**
 
 Chesapeake Conservancy - USA
 
@@ -64,9 +64,9 @@ Chesapeake Conservancy - USA
 
 ---
 
-(7_7) **Fernanda Desimon (Brazil)** 
+(7_7) **Fernanda Desimon (Brasil)** 
 
-Forest Engineer & Software Engineer Student - Brazil  
+Forest Engineer & Software Engineer Student - Brasil  
 Researcher at Palmtech, a startup affiliated  
 to Universidade Estadual do Maranhão (UEMA)
 
