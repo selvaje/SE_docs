@@ -12,6 +12,9 @@
 * Resume lecturing: 3 May, every **Wednesday and Friday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 * End lecturing 26: May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 
+Classes zoom link https://yale.zoom.us/j/91607041228?pwd=eUJuaWozcnFRRXFIQzVwV2lhKzNLdz09  
+
+Password has been sent by e-mail on March 27.  
 
 **In presence: June, one week in Matera, Italy** 
 
