@@ -1,15 +1,15 @@
-# Spatial Ecology's 2022 course
+# Spatial Ecology's 2023 course
 ## Geocomputation and Machine Learning for environmental applications
 ### 
 
 #### Spatial Ecology course trainers ####
 
+[Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (teacher - course organizer)  
 [Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (teacher)  
 Francesco Lovergine (teacher)  
 Pieter Kempeneers (teacher)  
 [Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd) (math/stat advisor)  
-[Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)
 
 #### Student affiliation and their origin  ####
 
