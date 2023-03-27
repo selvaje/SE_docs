@@ -17,15 +17,22 @@ Pieter Kempeneers (teacher)
 
 #### Student roster ####
 
-(1) **Bibek Raj Shrestha (Nepal)**
+(1_1) **Bibek Raj Shrestha (Nepal)**
 
 Global Institute for Interdisciplinary Studies (GIIS) - Nepal
 
 ![](01_Bibek_Shrestha.jpg)
 
+
+(2_2) **Amanda	Cutler (USA)**
+
+Brown University, USA
+
+![](02_Amanda_Cutler.jpg)
+
 ---
 
-(3) **Carola Stolle (Germany)**
+(3_3) **Carola Stolle (Germany)**
 
 METER Group AG, Germany/US
 
@@ -33,7 +40,7 @@ METER Group AG, Germany/US
 
 ---
 
-(4) **Linn_Yiqi (China)**
+(4_4) **Linn_Yiqi (China)**
 
 Swedish University of Agricultural Sciences - Sweden
 
@@ -41,7 +48,7 @@ Swedish University of Agricultural Sciences - Sweden
 
 ---
 
-(5) **Olivia Anderson (USA)**
+(5_5) **Olivia Anderson (USA)**
 
 Swedish University for Agricultural Sciences - Sweden
 
@@ -49,7 +56,7 @@ Swedish University for Agricultural Sciences - Sweden
 
 ---
 
-(6) **Charlotte	Weinstein (USA)**
+(6_6) **Charlotte	Weinstein (USA)**
 
 Chesapeake Conservancy - USA
 
@@ -57,7 +64,7 @@ Chesapeake Conservancy - USA
 
 ---
 
-(7) **Fernanda Desimon (Brazil)** 
+(7_7) **Fernanda Desimon (Brazil)** 
 
 Forest Engineer & Software Engineer Student - Brazil  
 Researcher at Palmtech, a startup affiliated  
@@ -67,7 +74,7 @@ to Universidade Estadual do Maranhão (UEMA)
 
 ---
 
-(9) **Oliver-Valentin Dinter (Romania)**
+(8_9) **Oliver-Valentin Dinter (Romania)**
 
 Alexandru Ioan Cuza University of Iasi - Romania
 University of Tours - France
@@ -76,7 +83,7 @@ University of Tours - France
 
 ---
 
-(10) **Samuel Tsao (Taiwan)**
+(9_10) **Samuel Tsao (Taiwan)**
 
 School of the Environment, Yale University - USA
 
@@ -84,23 +91,16 @@ School of the Environment, Yale University - USA
 
 ---
 
-(11) **Juana Mercedes Perlaza Rodriguez (Ecuador)**
+(10_11) **Juana Mercedes Perlaza Rodriguez (Ecuador)**
 
 University of Basilicata (DiCEM) - School of Architecture, Italy
 
 ![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg)
 
----
-
-(12) **John Paul	Payopay (Philippines)**
-
-University of the Philippines - Philippines
-
-![](12_John Paul	Payopay.jpg)
 
 ---
 
-(13)  **Jan-Markus Homberger (Germany)**
+(11_13)  **Jan-Markus Homberger (Germany)**
 
 Wageningen University and Research - Netherlands.
 
@@ -108,7 +108,7 @@ Wageningen University and Research - Netherlands.
 
 ---
 
-(16)  **Cassandra Follett (Cassie) (USA)**
+(12_16)  **Cassandra Follett (Cassie) (USA)**
 
 DePaul University, University of Illinois-Chicago - USA
 
@@ -116,7 +116,7 @@ DePaul University, University of Illinois-Chicago - USA
 
 ---
 
-(17) **Alexander Mkrtchian (Alex) (Ukraine)**
+(13_17) **Alexander Mkrtchian (Alex) (Ukraine)**
 
 Leibniz Institute of Agricultural Development in Transition Economies (Germany)
 
@@ -124,32 +124,7 @@ Leibniz Institute of Agricultural Development in Transition Economies (Germany)
 
 ---
 
-(18)  **Hannah Weiser (Germany)**
-
-Heidelberg University - Germany
-
-![](18_Weiser_Fern.jpg)
-
----
-
-(20) **Roisin Stanbrook (USA)**
-
-Dung Beetle Conservation And Ecology - USA  
-https://roisinstanbrook.com/  
-
-![](20_Roisin_Stanbrook.jpg)
-
----
-
-(21) **Olaitan Omitola (Nigeria)**
-
-Federal University of Agriculture, Abeokuta - Nigeria  
-Research assistant / Parasitologist and epidemiologist
-
-![](21_Olaitan_Omitola.jpg)
-
----
-(15)	**Taiwo Adekunle Adenike (Nigeria)**
+(14_15)	**Taiwo Adekunle Adenike (Nigeria)**
 
 Lecturer / PhD candidate  
 Human Resources Development and Lifelong Learning  
@@ -159,7 +134,33 @@ Osun State University
 ![](15_Taiwo_Adekunle_Adenike.jpg)
 
 ---
-(22) **Omolola Olojede (Lola) (Nigeria)**
+
+(15_18)  **Hannah Weiser (Germany)**
+
+Heidelberg University - Germany
+
+![](18_Weiser_Fern.jpg)
+
+---
+
+(16_20) **Roisin Stanbrook (USA)**
+
+Dung Beetle Conservation And Ecology - USA  
+https://roisinstanbrook.com/  
+
+![](20_Roisin_Stanbrook.jpg)
+
+---
+
+(17_21) **Olaitan Omitola (Nigeria)**
+
+Federal University of Agriculture, Abeokuta - Nigeria  
+Research assistant / Parasitologist and epidemiologist
+
+![](21_Olaitan_Omitola.jpg)
+
+---
+(18_22) **Omolola Olojede (Lola) (Nigeria)**
 
 Public health official, Intervention coordinator  
 Federal Ministry of Health - Nigeria  
@@ -169,7 +170,7 @@ Coordination of public health interventions in the country
 
 ---
 
-(25) **Abimbola Modupe Adedeji (Bimbo) (Nigeria)** 
+(19_25) **Abimbola Modupe Adedeji (Bimbo) (Nigeria)** 
 
 Statistician/ Public Health Professional 
 Nigerian Institute of Medical Research, Lagos - Nigeria. 
@@ -179,7 +180,7 @@ Nigerian Institute of Medical Research, Lagos - Nigeria.
 
 ---
 
-(28) **Adigun Abbas (Nigeria)**
+(20_28) **Adigun Abbas (Nigeria)**
 
 Statistician / Epidemiologist / Public health professional  
 National Centre for Remote Sensing, Jos, Nigeria
@@ -188,7 +189,7 @@ National Centre for Remote Sensing, Jos, Nigeria
 
 ---
 
-(26) **Judith Idemili Chidumebi (Judith) (Nigeria)** 
+(21_26) **Judith Idemili Chidumebi (Judith) (Nigeria)** 
 
 Epidemiologist / Public health professional  
 eHealth For Everyone
@@ -197,7 +198,7 @@ eHealth For Everyone
 
 ---
 
-(27) **Eric	Carvalho (Brasil)** 
+(22_27) **Eric	Carvalho (Brasil)** 
 
 RADAMBRASIL Herbarium - Brasil
 
@@ -205,7 +206,7 @@ RADAMBRASIL Herbarium - Brasil
 
 ---
 
-(29) **Nils Ratnaweera (Sri Lanka	)**
+(23_29) **Nils Ratnaweera (Sri Lanka)**
 
 Zurich Universtiy of Applied Sciences - Switzerland
 
@@ -213,7 +214,7 @@ Zurich Universtiy of Applied Sciences - Switzerland
 
 ---
 
-(30) **Fengchao Sun (China)** 
+(24_30) **Fengchao Sun (China)** 
 
 School of the Environment, Yale University - USA
 
@@ -221,7 +222,7 @@ School of the Environment, Yale University - USA
 
 ---
 
-(31) **Olha Kachalova (Ukraine)**
+(25_31) **Olha Kachalova (Ukraine)**
 
 The Silva Tarouca Research Institute for Landscape and Ornamental Gardening -  Czech Republic
 
@@ -229,7 +230,7 @@ The Silva Tarouca Research Institute for Landscape and Ornamental Gardening -  C
 
 ---
 
-(32) **Laurent Bataille (Belgium)**
+(26_32) **Laurent Bataille (Belgium)**
 
 Wageningen University and Research - Netherlands
 
@@ -237,7 +238,7 @@ Wageningen University and Research - Netherlands
 
 ---
 
-(34) **Valdrich	Fernandes (India)**
+(27_34) **Valdrich Fernandes (India)**
 
 Wageningen University and Research - Netherlands
 
@@ -245,7 +246,7 @@ Wageningen University and Research - Netherlands
 
 ---
 
-(35)	**Ayodele Samuel Babalola (Nigeria)**
+(28_35)	**Ayodele Samuel Babalola (Nigeria)**
 
 Malarial Research Unit  
 Department of pure and applied zoology  
@@ -259,7 +260,7 @@ Parasitologist and epidemiologist
 
 ---
 
-(37)	**Milutin Milenkovic (Serbia)**
+(29_37)	**Milutin Milenkovic (Serbia)**
 
 International Institute for Applied Systems Analysis (IIASA) - Austria  
 Advancing Systems Analysis (ASA) Program,  
@@ -269,7 +270,7 @@ Novel Data Ecosystems for Sustainability (NoDES) Research Group
 
 ---
 
-(38)	**Martin Hofer (Austria)**
+(30_38)	**Martin Hofer (Austria)**
 
 International Institute for Applied Systems Analysis (IIASA) - Austria  
 Advancing Systems Analysis (ASA) Program,  
