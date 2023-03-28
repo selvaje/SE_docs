@@ -42,7 +42,10 @@ Below we are going to list day by day the final syllabus with the relatives link
 ## Lecture 1: 28th of March, 2023.
 ### Getting started: knowing each other and course introduction.
 
-This session introduces the overall course program and Linux operating system.  
+This session introduces the objective of the course and a round table among the students and the teachers.  
+
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/u3u_VHXjvGLktYsfxDsflrEYP3UzqGPrAvTcbul5lMX_AOir1lWl7az7wUok2Q1K.hPy7MRIuHwySA5pA).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 Time below in CEST
 
@@ -57,7 +60,6 @@ Time below in CEST
 * 19:20 - 19:45  Virtual machine installation review, QA & troubleshooting.
 
 <!---
-
 
 * Get to know each other: trainers and participants (30-40min Round-table )
 * [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20230404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)

@@ -5,10 +5,10 @@
 #### Spatial Ecology course trainers ####
 
 [Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)  
-[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (teacher - course organizer)  
-[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (teacher)  
-Francesco Lovergine (teacher)  
-Pieter Kempeneers (teacher)  
+[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)  
+[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)  
+Francesco Lovergine (geopython teacher)  
+Pieter Kempeneers (pyjeo teacher)  
 [Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd) (math/stat advisor)  
 
 #### Student affiliation and their origin  ####
