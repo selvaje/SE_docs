@@ -55,6 +55,9 @@ If you follow all the steps correctly the OSGeoLive Virtual Machine you should p
 
 ![title](Installation_vm_osgeo-live15_p13.png)
 
+If the OSGeoLive start with a black screen with a "kernel panic message" means that there are still some settings that are not allowing the virtualization. 
+This [page](https://techcult.com/enable-virtualization-windows-10/) is a good tutorial for solving the issues in Windows-10 and [this one](https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11) for Windows-11. 
+
 ### Setting you keyboard layout
 
 If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore on the left bottom corner write "keyboard" in the search box, and select Keyboard and Mouse.

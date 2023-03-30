@@ -15,6 +15,8 @@ Pieter Kempeneers (pyjeo teacher)
 
 ![](Physical-World-Map.jpg)
 
+---
+
 #### Student roster ####
 
 (1_1) **Bibek Raj Shrestha (Nepal)**
@@ -23,6 +25,7 @@ Global Institute for Interdisciplinary Studies (GIIS) - Nepal
 
 ![](01_Bibek_Shrestha.jpg)
 
+---
 
 (2_2) **Amanda	Cutler (USA)**
 
