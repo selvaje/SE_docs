@@ -75,9 +75,11 @@ Time below in CEST
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
-* The www.spatial-ecology.net tutorial platform (Hands-on tutorial) 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/SrXTi8g-ygdPFCRh4k1At3qxgH5PPfj7S5fxZZwuUV95sI3qGqFuL-hZhutoXMMc._8UE2x-zvOdUUGjE).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
+*
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
 	* Special characters and Quoting

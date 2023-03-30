@@ -227,7 +227,7 @@ Now we need copy the /home/user/SE_data to an independent directory the:
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
-The */media/sf_LVM_shared/my_SE_data* is your working directory. Do not touch the *~/SE_data* folder 
+The */media/sf_LVM_shared/my_SE_data* is your working directory. Do not touch the *~/SE_data* folder!! 
 
 ---
 
