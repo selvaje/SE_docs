@@ -214,38 +214,44 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 We are going to retrieve dataset and material for the first time using *git clone*
 
     
-    cd ~                                          # enter in the /home/user
+    cd /home/user                                 # enter in user home
     git clone https://github.com/selvaje/SE_data  # download the data 
-
 
 If the download succeed you should see the *SE_data* folder 
 
-    ls ~/SE_data 
+    ls -l /home/user/SE_data 
 
 
-Now we need copy the ~/SE_data to an independent directory the */media/sf_LVM_shared/my_SE_data*
+Now we need copy the /home/user/SE_data to an independent directory the:  
+*/media/sf_LVM_shared/my_SE_data*
 
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
-The */media/sf_LVM_shared/my_SE_data* is your working directory. Do not touch the *~/SE_data*
+The */media/sf_LVM_shared/my_SE_data* is your working directory. Do not touch the *~/SE_data* folder 
+
+---
 
 Every time that we need to download more data from the git repository, follow this procedure 
 
 
-    
-    cd ~/SE_data
+    cd /home/user/SE_data
     git pull
-    rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+    rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
-
-Now you should be ready to follow the lectures of the Spatial Ecology courses.
+Now you should be ready to follow the lectures of the Spatial Ecology courses.  
 Remember always to work on */media/sf_LVM_shared/my_SE_data*
 
 ---
 
-If any reason the the git clone commands give some error  
+If any reason the the git clone commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync*.
+
+    cd /home/user
+    rm -ry /home/user/SE_data
+    git pull
+    rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
+    cd /media/sf_LVM_shared/my_SE_data
 
 <!---
 
