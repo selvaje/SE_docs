@@ -211,7 +211,7 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 
 --->
 
-We are going to retrieve dataset and material for the first time using *git clone*
+We are going to retrieve dataset and material for the first time using *git clone*.
 
     
     cd /home/user                                 # enter in user home
@@ -220,7 +220,6 @@ We are going to retrieve dataset and material for the first time using *git clon
 If the download succeed you should see the *SE_data* folder 
 
     ls -l /home/user/SE_data 
-
 
 Now we need copy the /home/user/SE_data to an independent directory the:  
 */media/sf_LVM_shared/my_SE_data*
@@ -245,7 +244,7 @@ Remember always to work on */media/sf_LVM_shared/my_SE_data*
 
 ---
 
-If any reason the the git clone commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync*.
+If for any reason the the *git clone* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
 
     cd /home/user
     rm -ry /home/user/SE_data
