@@ -112,6 +112,10 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: 4th of April, 2023.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/RhaTbFABDTBo7zhi0VHfecRfv5yfM0UVCcK-w7mSGo_JCiAcZSV3w6UQJLho3EKf.B78PL64nVHMVMtog).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
 
@@ -154,14 +158,10 @@ You can perform:
 - table re-organization    
 - data filtering 
 
-
-
 ## Lecture 4: 6th of April, 2023.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
-
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
 	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
@@ -176,7 +176,6 @@ This section introduces data manipulation for geospatial data processing on the 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
-
 
 ## Lecture 5: 11th of April, 2023.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
