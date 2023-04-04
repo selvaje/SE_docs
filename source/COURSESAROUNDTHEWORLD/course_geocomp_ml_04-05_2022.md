@@ -128,6 +128,8 @@ You can perform:
 - table re-organization    
 - data filtering 
 
+<!---
+
 **Compulsory assignment solution**
 
 ---
@@ -213,6 +215,8 @@ You can perform:
 
 	ls   output1/*_ID_x_y_mean.txt | wc -l ## 1644
 	ls   output2/*_ID_x_y_mean.txt | wc -l ## 1642
+
+--->
 
 ## Lecture 4: 14th of April, 2022.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli & Longzhu Shen).

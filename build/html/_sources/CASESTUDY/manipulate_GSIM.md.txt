@@ -19,6 +19,7 @@ Copy paste the following commands in to the terminal. No jupyther-notebook file 
 
 **Download the GSIM archive**
 
+    cd /media/sf_LVM_shared
     mkdir -p GSIM/zip
     cd  GSIM/zip
     wget https://store.pangaea.de/Publications/GudmundssonL-etal_2018/GSIM_indices.zip
