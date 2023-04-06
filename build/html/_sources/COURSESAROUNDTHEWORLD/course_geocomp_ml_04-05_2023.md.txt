@@ -161,6 +161,9 @@ You can perform:
 ## Lecture 4: 6th of April, 2023.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/b0qfZWugKjMElRq6a9-buYuiu9siwRovcP8uXc8HjHFXnp10ydavXrhqrvaoMOR5.dpFjs40DfNstB22J).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
@@ -171,8 +174,11 @@ This section introduces data manipulation for geospatial data processing on the 
 	* [Geographic Projections database](https://spatialreference.org/)
 	* The use of .VRT for splitting and merging images
 
-
 **Suggested assignments:**
+
+Get familiar with *gdalinfo* & *gdal_edit.py* using your data or the tif file stored in the SE_data. 
+
+---
 
 Watch this lecture to get more insight on the different data type  
 
