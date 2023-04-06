@@ -171,6 +171,13 @@ This section introduces data manipulation for geospatial data processing on the 
 	* [Geographic Projections database](https://spatialreference.org/)
 	* The use of .VRT for splitting and merging images
 
+
+**Compulsory assignments:**
+
+Watch this lecture to get more insight on the different data type
+
+Numerical System Decimal vs Binary. [Recorded lecture: 1:28:45 - 1:48:00](https://youtu.be/kBRW2Z5jX8M?t=5328)
+
 **Suggested assignments:**
 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
