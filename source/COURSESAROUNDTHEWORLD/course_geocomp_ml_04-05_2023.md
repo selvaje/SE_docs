@@ -193,6 +193,10 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: 11th of April, 2023.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZSSyCbfx1xY6vSqIYVFAQF8vb0tNYGegGXfk8RoteuQz2aMzJDN5EOhcWFgaDz-Q.XarlhTclEu1pL76u).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
 
@@ -203,6 +207,9 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
 	* The use of .VRT for splitting and merging images
+
+**Compulsory assignments:**
+
 * [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
 	* Transform a simple “for loop” in multicore “for loop”
 
@@ -216,7 +223,6 @@ Below, some suggestions of possible operations:
 	* Using wget and/or curl download geographic dataset from an official repository
 	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
-	* Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
 ## Lecture 6: 13st of April, 2023.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
@@ -229,6 +235,11 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Building a mosaic
 	* Image histogram and classification
 	* Zonal statistic
+
+**Suggested assignments:**
+
+* Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
+
 
 ## Lecture 7: 18th of April, 2023.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
