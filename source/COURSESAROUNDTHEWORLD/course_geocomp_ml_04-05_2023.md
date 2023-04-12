@@ -210,6 +210,8 @@ This section introduces data manipulation for geospatial data processing on the 
 
 **Compulsory assignments:**
 
+* This assignment focus in attending a video recording lecture aiming to push the precessing in the multi-core environment.  
+
 * [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
 	* Transform a simple “for loop” in multicore “for loop”
 
