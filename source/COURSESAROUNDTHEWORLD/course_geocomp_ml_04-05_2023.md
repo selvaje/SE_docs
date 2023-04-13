@@ -238,13 +238,21 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Image histogram and classification
 	* Zonal statistic
 
+**Compulsory assignments:**
+
+Before the 18th of April, 2023, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 18th of April, 2023 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
+
 **Suggested assignments:**
 
+* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
+* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 * Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
 
 ## Lecture 7: 18th of April, 2023.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
+
+[Video Recording](https://youtu.be/GfmCRNMtFfs)
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
