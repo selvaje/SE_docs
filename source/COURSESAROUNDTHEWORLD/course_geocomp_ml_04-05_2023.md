@@ -229,8 +229,11 @@ Below, some suggestions of possible operations:
 ## Lecture 6: 13st of April, 2023.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/-u44RxvH7PImGPDgmL6Hh_MI8WKVM-x7O9FzaZ8RGnBWm_Mw3TktfSJvFk7P3jpI.wRhLBqy17FXAY6mc).
+Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
 * [for raster and vector analysis](http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html) .
 	* Masking operation
