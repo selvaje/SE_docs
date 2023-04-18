@@ -435,8 +435,86 @@ You can perform:</p>
 <li><p>table re-organization</p></li>
 <li><p>data filtering</p></li>
 </ul>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">GSIM</span><span class="o">/</span><span class="nb">zip</span><span class="o">/</span><span class="n">GSIM_indices</span><span class="o">/</span><span class="n">TIMESERIES</span><span class="o">/</span><span class="n">monthly</span>
+<span class="n">cp</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">manipulate_GSIM_assignment_solutions</span><span class="o">.</span><span class="n">sh</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">GSIM</span><span class="o">/</span><span class="nb">zip</span><span class="o">/</span><span class="n">GSIM_indices</span><span class="o">/</span><span class="n">TIMESERIES</span><span class="o">/</span><span class="n">monthly</span>
+</pre></div>
+</div>
+<hr class="docutils" />
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##### create output dir </span>
+<span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="n">output1</span>   <span class="n">output2</span> <span class="n">output3</span> 
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>#########Solution 1 #########*</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm -f output1/*.txt
+
+# Creates a txt file with the list of all uniq dates
+
+awk -F , &#39;{ if(NF&gt;5) { if ($1 &gt; 0) { print $1 }}}&#39;  US_00090*.mon  | sort | uniq &gt; output1/dates.txt
+
+# Creates a txt file with the list of all uniq station ID, longitude, latitude. 
+
+
+
+paste -d &quot; &quot; &lt;(grep gsim.no   US_00090*.mon | awk &#39;{print $4}&#39;) \
+         &lt;(grep longitude US_00090*.mon | awk &#39;{print $4}&#39;) \
+         &lt;(grep latitude  US_00090*.mon | awk &#39;{print $4}&#39;) | sort -k 1,1 &gt; output1/ID_x_y.txt
+
+## loop trought the dates.txt 
+
+for DATE in $(cat output1/dates.txt ) ; do 
+echo processing $DATE
+
+grep ^$DATE US_00090*.mon  | awk &#39;{ gsub(&quot;:&quot;,&quot; &quot;); gsub(&quot;,&quot;,&quot; &quot;);if($3!=&quot;NA&quot;){print substr($1,1,10),$3}}&#39; | sort -k 1,1 &gt; output1/${DATE}_ID_mean.txt 
+
+join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  &gt; output1/${DATE}_ID_x_y_mean.txt
+</pre></div>
+</div>
+<p>rm output1/${DATE}_ID_mean.txt</p>
+<p>done</p>
+<hr class="docutils" />
+<p>#########Solution 2 #########</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm -f output2/*.txt 
+#loop over all US files
+n=0
+for i in US_00090*.mon ; do
+#pull out information of interest
+gsim=$(awk &#39;NR==11 {print $4}&#39; $i)
+lat=$(awk &#39;NR==15 {print $4}&#39; $i)
+long=$(awk &#39;NR==16 {print $4}&#39; $i)
+
+#make new directory with name of gsim ID to store txt files in
+mkdir $output$gsim
+
+#awk uses these and spits out txt files named by the date
+n=$(expr $n + 1)
+echo $gsim $n
+
+awk -v gsim=$gsim -v lat=$lat -v long=$long -v output=$output \
+&#39; NR&gt;22 {gsub(&quot;,&quot;,&quot; &quot;); if($2!=&quot;NA&quot;){print gsim,long,lat,$2 &gt;&gt; &quot;output2/&quot;$1&quot;_ID_x_y_mean.txt&quot;}}&#39; $i
+
+rm -r $gsim
+done
+</pre></div>
+</div>
+<hr class="docutils" />
+<p>#########Solution 3 #########</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>rm -f output3/*.txt
+
+awk &#39;{gsub(&quot;,&quot;, &quot;&quot;);
+ gsub(&quot;\t&quot;, &quot; &quot;);
+ if($2==&quot;gsim.no&quot;)   {station=$4};
+ if($2==&quot;latitude&quot;)  {lat=$4};
+ if($2==&quot;longitude&quot;) {lon=$4};
+ if($1 ~ /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ &amp;&amp; $2!=&quot;NA&quot; )
+ { print station, lat , lon , $2 &gt; &quot;output3/&quot;substr($1,1,7)&quot;_ID_x_y_mean.txt&quot; }
+ }&#39; US_00090*.mon 
+</pre></div>
+</div>
 </section>
 </section>
+<hr class="docutils" />
 <section id="lecture-4-6th-of-april-2023">
 <h2>Lecture 4: 6th of April, 2023.<a class="headerlink" href="#lecture-4-6th-of-april-2023" title="Permalink to this headline"></a></h2>
 <section id="manipulate-geographical-data-with-gdal-ogr-giuseppe-amatulli">
