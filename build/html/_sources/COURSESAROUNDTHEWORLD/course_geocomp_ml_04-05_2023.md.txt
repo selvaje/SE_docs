@@ -343,7 +343,11 @@ Before the 18th of April, 2023, watch the "Manipulate Landsat data with GDAL and
 ## Lecture 7: 18th of April, 2023.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
 
-[Video Recording](https://youtu.be/GfmCRNMtFfs)
+
+[Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs)
+
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/_arKIL_6JB4kYm9cWksPDJsnu4ayjo_DYkXMXMwbAWGtV74hNcLY03fC52kvlT3n.jxhulUwUxJojg9fN). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
