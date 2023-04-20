@@ -374,6 +374,9 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 20th of April, 2023.
 ### Geospatial python (Francesco Lovergine)
 
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+
 * rasterio
 
 	
