@@ -380,11 +380,11 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQ
 * rasterio
 
 	
-## Catch-up session 1: 25th of November, 2023
+## Catch-up session 1: 25th of April, 2023
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-## Catch-up session 2: 27th of November, 2023.
+## Catch-up session 2: 27th of April, 2023.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
