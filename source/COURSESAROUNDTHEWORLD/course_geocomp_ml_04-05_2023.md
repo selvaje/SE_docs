@@ -374,8 +374,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 20th of April, 2023.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
-
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 * rasterio
 
@@ -384,9 +383,13 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQ
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-## Catch-up session 2: 27th of April, 2023.
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/Y56V6IB4Dg6wlUjBl2FVrAbnkIl6TAdjlDx5hS9HJxXY_vIM5i15NDF1uxxqht1N.mx4TbSDp382wA1Ff). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+## Catch-up session 2: 27th of April, 2023.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
+
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/nGPLFnJNJyEu1-W6FUZ5B1DPdh_Sr7d4nr13ap1SbWQfcyRz7SlQADHcaosRQY4r.J05o-Mne34IAS1gx). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 ## Lecture 9: 3nd of May, 2023.
 ### Geospatial python (Pieter Kempeneers)

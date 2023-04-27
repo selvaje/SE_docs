@@ -244,11 +244,11 @@ Remember always to work on */media/sf_LVM_shared/my_SE_data*
 
 ---
 
-If for any reason the the *git clone* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
+If for any reason the the *git pull* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
 
     cd /home/user
     rm -ry /home/user/SE_data
-    git pull
+    git clone https://github.com/selvaje/SE_data
     rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
