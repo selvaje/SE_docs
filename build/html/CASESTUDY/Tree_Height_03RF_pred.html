@@ -101,6 +101,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">1. RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
 <ul>
@@ -472,6 +474,12 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction">
 <h1>Estimation of tree height using GEDI dataset - Random Forest prediction<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction" title="Permalink to this headline"></a></h1>
+<p>In order to run this notebook, please do what follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd  /media/sf_LVM_shared/my_SE_data/exercise
+pip3 install pyspatialml
+jupyter-notebook Tree_Height_03RF_pred
+</pre></div>
+</div>
 <div class="line-block">
 <div class="line">Find a relationship between tree height and enviromental predictors to be able to predict out side the GEDI observation.</div>
 <div class="line">The model, in its simplest form, looks like the following:</div>
@@ -500,8 +508,8 @@ div.rendered_html tbody tr:hover {
 </ul>
 <section id="Random-forest">
 <h2>Random forest<a class="headerlink" href="#Random-forest" title="Permalink to this headline"></a></h2>
-<p>Random forest is a Supervised Machine Learning Algorithm that is used widely in <strong>Classification</strong> (response categorical variables) and <strong>Regression</strong> (response continuous variables) problems. It builds decision trees on different samples and takes their majority vote for classification and average in case of regression.</p>
-<p>One of the most important features of the Random Forest Algorithm is that it can handle continuous and categorical variables as predictors without any assamption on their data distribution, dimension, and even if the predictors are autocorrelated. You can use it as large pot where you use all you predictors variables.</p>
+<p>Random forest is a Supervised Machine Learning Algorithm that is used widely in <strong>Classification</strong> (containing categorical variables) and <strong>Regression</strong> (response continuous variables) problems. It builds decision trees on different samples and takes their majority vote for classification and average in case of regression.</p>
+<p>One of the most important features of the Random Forest Algorithm is that it can handle continuous and categorical variables predictors without any assamption on their data distribution, dimension, and even if the predictors are autocorrelated.</p>
 <div class="line-block">
 <div class="line"><strong>Bagging</strong></div>
 <div class="line">Bagging, also known as Bootstrap Aggregation is the ensemble technique used by random forest. Choosesing a random sample from the data set it is creating a tree. Each tree is generated from the samples (Bootstrap Samples) provided by the Original Data with replacement known as row sampling. This step of row sampling with replacement is called bootstrap. Each is trained independently which generates results. The final output is based on majority voting after combining the results of all models.
@@ -519,33 +527,29 @@ This step which involves combining all the results and generating output based o
 </ul>
 <p>(source <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/">https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/</a>)</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
-<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/Random_Forest.jpg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/Random_Forest.jpg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_4_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_03RF_pred_4_0.jpg" style="width: 600px; height: 400px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_5_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_03RF_pred_5_0.jpg" style="width: 700px; height: 700px;" />
 </div>
 </div>
 <div class="line-block">
 <div class="line"><strong>Random Forest exercise</strong></div>
-<div class="line">In this exercise we will use Random Forest Regression algorithm with the <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> python package to estimage the tree height. In last step, we are going to use the <a class="reference external" href="https://pyspatialml.readthedocs.io/en/latest/index.html">Pyspatialml</a> for the spatial prediction on the raster files described in tif</div>
+<div class="line">In this exercise we will use Random Forest Regression algorithm with the <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> python package to estimage the tree height. In last step, we are going to use the <a class="reference external" href="https://pyspatialml.readthedocs.io/en/latest/index.html">Pyspatialml</a> for the spatial prediction on the raster files.</div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install Pyspatialml
-</pre></div>
-</div>
-<p><strong>Import library</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -568,7 +572,7 @@ This step which involves combining all the results and generating output based o
 <section id="Import-raw-data,-extracted-predictors-and-show-the-data-distribution">
 <h2>Import raw data, extracted predictors and show the data distribution<a class="headerlink" href="#Import-raw-data,-extracted-predictors-and-show-the-data-distribution" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -581,7 +585,7 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -894,7 +898,7 @@ This step which involves combining all the results and generating output based o
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -903,7 +907,7 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -913,7 +917,7 @@ This step which involves combining all the results and generating output based o
 </div>
 <p>Plotting the data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -931,7 +935,7 @@ This step which involves combining all the results and generating output based o
 </div>
 <p>Select only tree with height less then 70m (highest tree in germany 67m <a class="reference external" href="https://visit.freiburg.de/en/attractions/waldtraut-germany-s-tallest-tree">https://visit.freiburg.de/en/attractions/waldtraut-germany-s-tallest-tree</a>)</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -943,7 +947,7 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -993,274 +997,274 @@ This step which involves combining all the results and generating output based o
   </thead>
   <tbody>
     <tr>
-      <th>872178</th>
-      <td>872179</td>
-      <td>8.772581</td>
-      <td>49.714933</td>
-      <td>212.50</td>
-      <td>2.1250</td>
-      <td>1503</td>
-      <td>14</td>
-      <td>2866</td>
-      <td>6028</td>
-      <td>-3.931900</td>
-      <td>-213877408</td>
-      <td>2.512895</td>
-      <td>0.096170</td>
-      <td>516.147644</td>
-      <td>0</td>
-      <td>903.373047</td>
-      <td>533.976074</td>
-      <td>223.241211</td>
-      <td>-0.117382</td>
+      <th>211869</th>
+      <td>211870</td>
+      <td>6.763981</td>
+      <td>49.923656</td>
+      <td>2504.00</td>
+      <td>25.0400</td>
+      <td>1533</td>
       <td>13</td>
-      <td>723799</td>
-      <td>22.449127</td>
-      <td>475.613708</td>
-      <td>79</td>
-    </tr>
-    <tr>
-      <th>500857</th>
-      <td>500858</td>
-      <td>7.464461</td>
-      <td>49.623168</td>
-      <td>917.00</td>
-      <td>9.1700</td>
-      <td>1540</td>
-      <td>15</td>
-      <td>1899</td>
-      <td>6211</td>
-      <td>6.591823</td>
-      <td>-282356256</td>
-      <td>0.807505</td>
-      <td>-0.102080</td>
-      <td>389.780334</td>
-      <td>22</td>
-      <td>199.039062</td>
-      <td>298.529297</td>
-      <td>363.786621</td>
-      <td>-0.036253</td>
-      <td>11</td>
-      <td>619835</td>
-      <td>19.662125</td>
-      <td>463.219116</td>
-      <td>100</td>
-    </tr>
-    <tr>
-      <th>323332</th>
-      <td>323333</td>
-      <td>7.041806</td>
-      <td>48.448750</td>
-      <td>3224.75</td>
-      <td>32.2475</td>
-      <td>1360</td>
-      <td>16</td>
-      <td>3459</td>
-      <td>6054</td>
-      <td>19.351595</td>
-      <td>-127179080</td>
-      <td>0.869966</td>
-      <td>0.144863</td>
-      <td>539.989075</td>
-      <td>26</td>
-      <td>-27.761963</td>
-      <td>-23.405762</td>
-      <td>-89.702148</td>
-      <td>-0.307340</td>
-      <td>24</td>
-      <td>969414</td>
-      <td>22.950663</td>
-      <td>459.358398</td>
-      <td>85</td>
-    </tr>
-    <tr>
-      <th>141582</th>
-      <td>141583</td>
-      <td>6.561226</td>
-      <td>49.469128</td>
-      <td>2899.00</td>
-      <td>28.9900</td>
-      <td>1544</td>
-      <td>12</td>
-      <td>2245</td>
-      <td>6074</td>
-      <td>-56.291782</td>
-      <td>-236613616</td>
-      <td>1.922161</td>
-      <td>-0.035257</td>
-      <td>331.519592</td>
+      <td>2114</td>
+      <td>6069</td>
+      <td>-51.807003</td>
+      <td>-204555312</td>
+      <td>1.713994</td>
+      <td>-0.030101</td>
+      <td>356.479462</td>
       <td>23</td>
-      <td>665.146484</td>
-      <td>94.720703</td>
-      <td>158.346191</td>
-      <td>-0.061353</td>
+      <td>168.107666</td>
+      <td>0.701416</td>
+      <td>-27.481689</td>
+      <td>0.001850</td>
+      <td>15</td>
+      <td>667874</td>
+      <td>19.075720</td>
+      <td>444.208923</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>1243664</th>
+      <td>1243665</td>
+      <td>9.833275</td>
+      <td>49.526917</td>
+      <td>649.25</td>
+      <td>6.4925</td>
+      <td>1534</td>
+      <td>15</td>
+      <td>2102</td>
+      <td>6516</td>
+      <td>0.582322</td>
+      <td>-200281328</td>
+      <td>-0.082161</td>
+      <td>0.021150</td>
+      <td>338.562622</td>
+      <td>23</td>
+      <td>663.329102</td>
+      <td>66.410156</td>
+      <td>208.560791</td>
+      <td>-0.054791</td>
+      <td>8</td>
+      <td>801897</td>
+      <td>18.012062</td>
+      <td>487.378571</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>862800</th>
+      <td>862801</td>
+      <td>8.747207</td>
+      <td>49.396667</td>
+      <td>4145.25</td>
+      <td>41.4525</td>
+      <td>1464</td>
+      <td>13</td>
+      <td>2770</td>
+      <td>6187</td>
+      <td>-5.705454</td>
+      <td>-193031872</td>
+      <td>2.207440</td>
+      <td>0.082736</td>
+      <td>471.601471</td>
+      <td>29</td>
+      <td>682.764160</td>
+      <td>196.173340</td>
+      <td>410.016113</td>
+      <td>-0.105913</td>
       <td>9</td>
-      <td>733138</td>
-      <td>19.429295</td>
-      <td>449.283020</td>
+      <td>687733</td>
+      <td>19.400467</td>
+      <td>449.129852</td>
       <td>85</td>
     </tr>
     <tr>
-      <th>857786</th>
-      <td>857787</td>
-      <td>8.732884</td>
-      <td>49.889220</td>
-      <td>2356.00</td>
-      <td>23.5600</td>
-      <td>1534</td>
-      <td>12</td>
-      <td>2361</td>
-      <td>6467</td>
-      <td>34.290249</td>
-      <td>-87513128</td>
-      <td>-1.106307</td>
-      <td>-0.016480</td>
-      <td>179.532364</td>
-      <td>27</td>
-      <td>197.832520</td>
-      <td>283.815674</td>
-      <td>360.765625</td>
-      <td>-0.003575</td>
-      <td>9</td>
-      <td>623369</td>
-      <td>18.716999</td>
-      <td>473.101593</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>748590</th>
-      <td>748591</td>
-      <td>8.401779</td>
-      <td>49.702189</td>
-      <td>3238.25</td>
-      <td>32.3825</td>
-      <td>1539</td>
-      <td>17</td>
-      <td>1924</td>
-      <td>6594</td>
-      <td>-11.810678</td>
-      <td>-97597936</td>
-      <td>-1.667313</td>
-      <td>0.003826</td>
-      <td>89.614937</td>
-      <td>21</td>
-      <td>378.935303</td>
-      <td>-92.358887</td>
-      <td>112.199219</td>
-      <td>-0.003051</td>
-      <td>5</td>
-      <td>624145</td>
-      <td>20.682150</td>
-      <td>524.337280</td>
-      <td>78</td>
-    </tr>
-    <tr>
-      <th>816221</th>
-      <td>816222</td>
-      <td>8.636404</td>
-      <td>49.738341</td>
-      <td>3526.25</td>
-      <td>35.2625</td>
-      <td>1502</td>
-      <td>14</td>
-      <td>2475</td>
-      <td>6371</td>
-      <td>10.890288</td>
-      <td>-23041260</td>
-      <td>-0.726972</td>
-      <td>-0.103524</td>
-      <td>231.248123</td>
-      <td>25</td>
-      <td>404.782227</td>
-      <td>261.536377</td>
-      <td>453.965820</td>
-      <td>0.047365</td>
-      <td>11</td>
-      <td>637962</td>
-      <td>18.618427</td>
-      <td>472.087921</td>
-      <td>87</td>
-    </tr>
-    <tr>
-      <th>1099405</th>
-      <td>1099406</td>
-      <td>9.339143</td>
-      <td>49.700987</td>
-      <td>205.50</td>
-      <td>2.0550</td>
-      <td>1495</td>
-      <td>15</td>
-      <td>2094</td>
-      <td>6619</td>
-      <td>4.807510</td>
-      <td>20254866</td>
-      <td>-1.877263</td>
-      <td>-0.126719</td>
-      <td>185.742264</td>
-      <td>3</td>
-      <td>765.513428</td>
-      <td>618.325928</td>
-      <td>578.000732</td>
-      <td>-0.133659</td>
-      <td>14</td>
-      <td>717809</td>
-      <td>20.441570</td>
-      <td>503.452728</td>
-      <td>27</td>
-    </tr>
-    <tr>
-      <th>1031869</th>
-      <td>1031870</td>
-      <td>9.167911</td>
-      <td>49.070142</td>
-      <td>197.50</td>
-      <td>1.9750</td>
-      <td>1513</td>
+      <th>184466</th>
+      <td>184467</td>
+      <td>6.692364</td>
+      <td>48.311297</td>
+      <td>902.75</td>
+      <td>9.0275</td>
+      <td>1503</td>
       <td>16</td>
-      <td>2230</td>
-      <td>6689</td>
-      <td>23.209263</td>
-      <td>-21237448</td>
-      <td>-1.547910</td>
-      <td>-0.002255</td>
-      <td>170.389755</td>
-      <td>5</td>
-      <td>707.500488</td>
-      <td>420.511963</td>
-      <td>394.517334</td>
-      <td>-0.010262</td>
-      <td>7</td>
-      <td>783229</td>
-      <td>22.032221</td>
-      <td>550.120239</td>
-      <td>20</td>
+      <td>2458</td>
+      <td>6333</td>
+      <td>2.532082</td>
+      <td>-153840256</td>
+      <td>-0.687262</td>
+      <td>-0.040297</td>
+      <td>326.341187</td>
+      <td>12</td>
+      <td>-155.665771</td>
+      <td>-179.105957</td>
+      <td>-273.086426</td>
+      <td>0.005218</td>
+      <td>11</td>
+      <td>938821</td>
+      <td>19.768513</td>
+      <td>504.342621</td>
+      <td>86</td>
     </tr>
     <tr>
-      <th>238279</th>
-      <td>238280</td>
-      <td>6.829212</td>
-      <td>49.605072</td>
-      <td>2299.25</td>
-      <td>22.9925</td>
-      <td>1374</td>
+      <th>210193</th>
+      <td>210194</td>
+      <td>6.759972</td>
+      <td>48.427197</td>
+      <td>1215.75</td>
+      <td>12.1575</td>
+      <td>1499</td>
+      <td>11</td>
+      <td>2473</td>
+      <td>6283</td>
+      <td>-34.008671</td>
+      <td>-184876336</td>
+      <td>0.869934</td>
+      <td>0.029229</td>
+      <td>331.943359</td>
+      <td>26</td>
+      <td>214.386475</td>
+      <td>39.022705</td>
+      <td>-19.717529</td>
+      <td>-0.010323</td>
       <td>20</td>
-      <td>2471</td>
-      <td>5637</td>
-      <td>-1.107219</td>
-      <td>-231400208</td>
-      <td>3.262866</td>
-      <td>-0.053148</td>
-      <td>652.094299</td>
+      <td>937918</td>
+      <td>18.850109</td>
+      <td>450.874207</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>485841</th>
+      <td>485842</td>
+      <td>7.421320</td>
+      <td>48.972783</td>
+      <td>2629.50</td>
+      <td>26.2950</td>
+      <td>1443</td>
+      <td>13</td>
+      <td>2366</td>
+      <td>6249</td>
+      <td>-12.187319</td>
+      <td>-237638256</td>
+      <td>0.527734</td>
+      <td>0.184359</td>
+      <td>317.114014</td>
       <td>25</td>
-      <td>-73.620850</td>
-      <td>-115.895508</td>
-      <td>11.251831</td>
-      <td>0.180824</td>
-      <td>28</td>
-      <td>711901</td>
-      <td>21.820713</td>
-      <td>432.980743</td>
-      <td>96</td>
+      <td>55.184082</td>
+      <td>58.465332</td>
+      <td>91.532715</td>
+      <td>-0.045335</td>
+      <td>10</td>
+      <td>828316</td>
+      <td>19.876814</td>
+      <td>445.643494</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>120379</th>
+      <td>120380</td>
+      <td>6.482271</td>
+      <td>49.914016</td>
+      <td>2173.00</td>
+      <td>21.7300</td>
+      <td>1538</td>
+      <td>16</td>
+      <td>1847</td>
+      <td>6105</td>
+      <td>-17.632570</td>
+      <td>-197189520</td>
+      <td>-1.088760</td>
+      <td>-0.035505</td>
+      <td>272.008911</td>
+      <td>23</td>
+      <td>-126.860352</td>
+      <td>-195.746094</td>
+      <td>75.838867</td>
+      <td>-0.008322</td>
+      <td>18</td>
+      <td>728450</td>
+      <td>19.971024</td>
+      <td>459.339722</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>388316</th>
+      <td>388317</td>
+      <td>7.193769</td>
+      <td>48.376309</td>
+      <td>527.00</td>
+      <td>5.2700</td>
+      <td>1460</td>
+      <td>11</td>
+      <td>2972</td>
+      <td>6227</td>
+      <td>24.105930</td>
+      <td>-287456672</td>
+      <td>-1.292012</td>
+      <td>0.108061</td>
+      <td>523.706970</td>
+      <td>11</td>
+      <td>309.591309</td>
+      <td>440.787842</td>
+      <td>600.310059</td>
+      <td>0.088250</td>
+      <td>17</td>
+      <td>870673</td>
+      <td>20.666460</td>
+      <td>459.003754</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>825800</th>
+      <td>825801</td>
+      <td>8.663616</td>
+      <td>49.674021</td>
+      <td>2836.25</td>
+      <td>28.3625</td>
+      <td>1533</td>
+      <td>14</td>
+      <td>2789</td>
+      <td>6461</td>
+      <td>19.265608</td>
+      <td>-253300688</td>
+      <td>-0.924922</td>
+      <td>-0.056384</td>
+      <td>208.336411</td>
+      <td>26</td>
+      <td>155.725586</td>
+      <td>211.511230</td>
+      <td>500.423096</td>
+      <td>0.082024</td>
+      <td>10</td>
+      <td>649353</td>
+      <td>20.394165</td>
+      <td>502.623260</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1116257</th>
+      <td>1116258</td>
+      <td>9.384341</td>
+      <td>49.143288</td>
+      <td>1670.00</td>
+      <td>16.7000</td>
+      <td>1527</td>
+      <td>14</td>
+      <td>2207</td>
+      <td>6644</td>
+      <td>8.773687</td>
+      <td>-330216832</td>
+      <td>-0.236958</td>
+      <td>-0.159152</td>
+      <td>255.992538</td>
+      <td>26</td>
+      <td>154.274658</td>
+      <td>110.248535</td>
+      <td>181.868408</td>
+      <td>0.074600</td>
+      <td>5</td>
+      <td>780885</td>
+      <td>19.781750</td>
+      <td>518.130005</td>
+      <td>72</td>
     </tr>
   </tbody>
 </table>
@@ -1268,7 +1272,7 @@ This step which involves combining all the results and generating output based o
 </div>
 <p>Plotting response variables distribution</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1286,7 +1290,7 @@ This step which involves combining all the results and generating output based o
 </div>
 <p>The Global Forest Canopy Height, 2019 map has been release in 2020 (scientific publication <a class="reference external" href="https://doi.org/10.1016/j.rse.2020.112165">https://doi.org/10.1016/j.rse.2020.112165</a>). The authors use a regression tree model that was calibrated and applied to each individual Landsat GLAD ARD tile (1 × 1◦) in a “moving window” mode. Such tree height estimation is storede in forestheight.tiff and in the table as forestheight column. A correlation plot and its pearson coefficient is show below.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1301,12 +1305,12 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fe53807ac70&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7fa02257ddb0&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1317,7 +1321,7 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1327,12 +1331,12 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.4527925129990053
+0.4527925129990046
 </pre></div></div>
 </div>
 <p>We will try to beats such error estimation using a more advance ML tecnques and different enviromental predictors that better express the ecological condition.</p>
@@ -1341,7 +1345,7 @@ This step which involves combining all the results and generating output based o
 <h2>Data set splitting<a class="headerlink" href="#Data-set-splitting" title="Permalink to this headline"></a></h2>
 <p>Split the dataset (predictors_sel) in order to create response variable vs predictors variables (we are excluding forestheight predictors).</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1353,7 +1357,7 @@ This step which involves combining all the results and generating output based o
 </div>
 <p>Double ceck that we select the right columns</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1362,7 +1366,7 @@ This step which involves combining all the results and generating output based o
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1376,7 +1380,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1385,7 +1389,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1394,7 +1398,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1403,7 +1407,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1413,7 +1417,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 <p>Create 4 dataset for training and testing the algorithm</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1429,7 +1433,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 <p>Random Forest can be implemented using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">RandomForestRegressor in scikit-learn</a></p>
 <p>Training Random Forest using default parameters</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1439,19 +1443,20 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 {&#39;bootstrap&#39;: True,
  &#39;ccp_alpha&#39;: 0.0,
- &#39;criterion&#39;: &#39;squared_error&#39;,
+ &#39;criterion&#39;: &#39;mse&#39;,
  &#39;max_depth&#39;: None,
  &#39;max_features&#39;: &#39;auto&#39;,
  &#39;max_leaf_nodes&#39;: None,
  &#39;max_samples&#39;: None,
  &#39;min_impurity_decrease&#39;: 0.0,
+ &#39;min_impurity_split&#39;: None,
  &#39;min_samples_leaf&#39;: 1,
  &#39;min_samples_split&#39;: 2,
  &#39;min_weight_fraction_leaf&#39;: 0.0,
@@ -1464,7 +1469,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1479,16 +1484,16 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.6045516697930429, 0.5165166299857089]
+[0.6043347073198263, 0.5189400044676861]
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1498,12 +1503,12 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.2645722993587867
+0.2651550005190103
 </pre></div></div>
 </div>
 <div class="line-block">
@@ -1549,7 +1554,7 @@ for par_name in sorted(parameters.keys()):
 </div>
 <p>Tracking the error rate trend as in <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html">https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1563,12 +1568,12 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fe5380249d0&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7fa02261eec0&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1579,7 +1584,7 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1593,12 +1598,12 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fe537f7f880&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7fa03153b3a0&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1609,7 +1614,7 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1619,7 +1624,7 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1628,17 +1633,17 @@ for par_name in sorted(parameters.keys()):
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
+array([ 1, 13,  0,  4,  6,  8, 16,  2,  5, 15, 12,  3, 11,  7,  9, 14, 10,
        17])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1674,7 +1679,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 <li><p>solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1685,7 +1690,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1929,7 +1934,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1952,7 +1957,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1961,7 +1966,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2362,7 +2367,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 <p>Calculate the mean height excluidng the maximum and minimum values</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2373,7 +2378,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2382,7 +2387,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2471,7 +2476,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 <p>Merge the new height with the predictors table, using the ID as Primary Key</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2480,7 +2485,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2489,7 +2494,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2705,7 +2710,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2714,7 +2719,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2723,7 +2728,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2773,139 +2778,139 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
   </thead>
   <tbody>
     <tr>
-      <th>143789</th>
-      <td>815169</td>
-      <td>8.632821</td>
-      <td>49.034831</td>
-      <td>3044.25</td>
-      <td>1518</td>
-      <td>17</td>
-      <td>2335</td>
-      <td>6493</td>
-      <td>3.804472</td>
-      <td>59137836</td>
-      <td>-1.245918</td>
-      <td>0.009648</td>
-      <td>199.027420</td>
-      <td>26</td>
-      <td>449.903320</td>
-      <td>30.683350</td>
-      <td>98.910889</td>
-      <td>0.022706</td>
-      <td>6</td>
-      <td>724983</td>
-      <td>18.189413</td>
-      <td>472.922943</td>
-      <td>85</td>
-      <td>30.4425</td>
-    </tr>
-    <tr>
-      <th>44159</th>
-      <td>242052</td>
-      <td>6.839339</td>
-      <td>48.227700</td>
-      <td>2073.00</td>
-      <td>1376</td>
-      <td>22</td>
-      <td>3196</td>
-      <td>6137</td>
-      <td>-60.841110</td>
-      <td>-314753952</td>
-      <td>1.452752</td>
-      <td>0.041967</td>
-      <td>623.728943</td>
-      <td>25</td>
-      <td>-37.671143</td>
-      <td>15.598389</td>
-      <td>-129.838623</td>
-      <td>-0.118565</td>
-      <td>35</td>
-      <td>960418</td>
-      <td>21.139074</td>
-      <td>441.945343</td>
-      <td>85</td>
-      <td>20.7300</td>
-    </tr>
-    <tr>
-      <th>104121</th>
-      <td>578712</td>
-      <td>7.688297</td>
-      <td>49.853221</td>
-      <td>2746.00</td>
-      <td>1530</td>
-      <td>13</td>
-      <td>1928</td>
-      <td>6140</td>
-      <td>-34.775543</td>
-      <td>-195900432</td>
-      <td>1.506492</td>
-      <td>-0.029628</td>
-      <td>411.755463</td>
-      <td>26</td>
-      <td>456.291504</td>
-      <td>-77.499512</td>
-      <td>190.601807</td>
-      <td>-0.030758</td>
-      <td>15</td>
-      <td>572910</td>
-      <td>17.918188</td>
-      <td>451.509552</td>
-      <td>97</td>
-      <td>27.4600</td>
-    </tr>
-    <tr>
-      <th>121530</th>
-      <td>689773</td>
-      <td>8.026682</td>
-      <td>49.412415</td>
-      <td>2263.50</td>
-      <td>1468</td>
+      <th>83357</th>
+      <td>447901</td>
+      <td>7.325923</td>
+      <td>49.296261</td>
+      <td>1988.00</td>
+      <td>1504</td>
       <td>11</td>
-      <td>1898</td>
-      <td>6305</td>
-      <td>33.684132</td>
-      <td>-154102208</td>
-      <td>-0.757823</td>
-      <td>-0.120561</td>
-      <td>283.114105</td>
-      <td>26</td>
-      <td>-32.457275</td>
-      <td>-169.748535</td>
-      <td>-326.925049</td>
-      <td>0.201635</td>
-      <td>18</td>
-      <td>721018</td>
-      <td>18.552692</td>
-      <td>464.347565</td>
-      <td>85</td>
-      <td>22.6350</td>
+      <td>1973</td>
+      <td>6329</td>
+      <td>-27.310654</td>
+      <td>-311542144</td>
+      <td>1.611667</td>
+      <td>-0.059867</td>
+      <td>315.589905</td>
+      <td>22</td>
+      <td>99.902344</td>
+      <td>182.999268</td>
+      <td>358.212158</td>
+      <td>-0.027319</td>
+      <td>13</td>
+      <td>852606</td>
+      <td>18.866175</td>
+      <td>470.286011</td>
+      <td>75</td>
+      <td>19.8800</td>
     </tr>
     <tr>
-      <th>63153</th>
-      <td>338027</td>
-      <td>7.074375</td>
-      <td>49.232423</td>
-      <td>1900.50</td>
-      <td>1480</td>
+      <th>213105</th>
+      <td>1196478</td>
+      <td>9.622623</td>
+      <td>49.833063</td>
+      <td>2220.25</td>
+      <td>1520</td>
       <td>13</td>
-      <td>2053</td>
-      <td>6239</td>
-      <td>47.012951</td>
-      <td>-34345416</td>
-      <td>-1.655371</td>
-      <td>-0.091201</td>
-      <td>237.077621</td>
-      <td>20</td>
-      <td>40.280762</td>
-      <td>191.425537</td>
-      <td>-3.062012</td>
-      <td>0.130362</td>
+      <td>1875</td>
+      <td>6606</td>
+      <td>-20.839262</td>
+      <td>-279513600</td>
+      <td>-0.550544</td>
+      <td>0.038211</td>
+      <td>244.721085</td>
+      <td>15</td>
+      <td>112.770508</td>
+      <td>-38.957520</td>
+      <td>-107.884766</td>
+      <td>-0.153021</td>
+      <td>11</td>
+      <td>770768</td>
+      <td>19.954826</td>
+      <td>507.755493</td>
+      <td>54</td>
+      <td>22.2025</td>
+    </tr>
+    <tr>
+      <th>58293</th>
+      <td>313301</td>
+      <td>7.017546</td>
+      <td>49.874260</td>
+      <td>1389.75</td>
+      <td>1525</td>
+      <td>14</td>
+      <td>2127</td>
+      <td>6080</td>
+      <td>-16.012159</td>
+      <td>-287215200</td>
+      <td>1.066931</td>
+      <td>-0.218266</td>
+      <td>424.159332</td>
+      <td>22</td>
+      <td>-59.042236</td>
+      <td>-32.115967</td>
+      <td>126.038086</td>
+      <td>0.068847</td>
       <td>13</td>
-      <td>794537</td>
-      <td>20.181999</td>
-      <td>484.392090</td>
-      <td>79</td>
-      <td>19.0050</td>
+      <td>619919</td>
+      <td>19.761299</td>
+      <td>465.827271</td>
+      <td>85</td>
+      <td>13.8975</td>
+    </tr>
+    <tr>
+      <th>54985</th>
+      <td>297876</td>
+      <td>6.981116</td>
+      <td>48.889372</td>
+      <td>1883.25</td>
+      <td>1525</td>
+      <td>13</td>
+      <td>2161</td>
+      <td>6330</td>
+      <td>8.863924</td>
+      <td>431331168</td>
+      <td>-1.713272</td>
+      <td>0.013969</td>
+      <td>221.787323</td>
+      <td>23</td>
+      <td>560.937012</td>
+      <td>101.161133</td>
+      <td>27.694336</td>
+      <td>-0.025228</td>
+      <td>7</td>
+      <td>847969</td>
+      <td>18.343138</td>
+      <td>464.072418</td>
+      <td>67</td>
+      <td>18.8325</td>
+    </tr>
+    <tr>
+      <th>18698</th>
+      <td>98303</td>
+      <td>6.397619</td>
+      <td>49.380758</td>
+      <td>2965.00</td>
+      <td>1538</td>
+      <td>11</td>
+      <td>2367</td>
+      <td>6042</td>
+      <td>23.690971</td>
+      <td>-80957808</td>
+      <td>-0.130503</td>
+      <td>-0.035726</td>
+      <td>276.400085</td>
+      <td>25</td>
+      <td>230.774902</td>
+      <td>120.549805</td>
+      <td>309.234375</td>
+      <td>0.012809</td>
+      <td>13</td>
+      <td>740733</td>
+      <td>18.482462</td>
+      <td>444.627533</td>
+      <td>78</td>
+      <td>29.6500</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2935,139 +2940,139 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
       <td>...</td>
     </tr>
     <tr>
-      <th>85959</th>
-      <td>463220</td>
-      <td>7.364289</td>
-      <td>49.006977</td>
-      <td>3450.50</td>
-      <td>1494</td>
+      <th>60228</th>
+      <td>322853</td>
+      <td>7.040689</td>
+      <td>49.728151</td>
+      <td>3375.00</td>
+      <td>1402</td>
       <td>12</td>
-      <td>2352</td>
-      <td>6193</td>
-      <td>2.693601</td>
-      <td>-49939724</td>
-      <td>-1.639730</td>
-      <td>-0.089378</td>
-      <td>313.716644</td>
-      <td>26</td>
-      <td>363.479492</td>
-      <td>-116.296387</td>
-      <td>95.510010</td>
-      <td>-0.059095</td>
-      <td>11</td>
-      <td>886926</td>
-      <td>18.380312</td>
-      <td>460.264801</td>
-      <td>99</td>
-      <td>34.5050</td>
+      <td>2362</td>
+      <td>5810</td>
+      <td>17.660843</td>
+      <td>15303386</td>
+      <td>1.776377</td>
+      <td>0.010083</td>
+      <td>517.456360</td>
+      <td>25</td>
+      <td>172.217773</td>
+      <td>256.016113</td>
+      <td>213.990967</td>
+      <td>-0.079195</td>
+      <td>25</td>
+      <td>663180</td>
+      <td>21.064062</td>
+      <td>430.348450</td>
+      <td>85</td>
+      <td>33.7500</td>
     </tr>
     <tr>
-      <th>222400</th>
-      <td>1242022</td>
-      <td>9.826905</td>
-      <td>49.181223</td>
-      <td>3382.50</td>
-      <td>1510</td>
-      <td>19</td>
-      <td>2349</td>
-      <td>6637</td>
-      <td>32.044640</td>
-      <td>-125240416</td>
-      <td>-2.068509</td>
-      <td>-0.184956</td>
-      <td>338.459137</td>
+      <th>42226</th>
+      <td>231457</td>
+      <td>6.810772</td>
+      <td>48.268025</td>
+      <td>2707.00</td>
+      <td>1409</td>
+      <td>15</td>
+      <td>3120</td>
+      <td>6229</td>
+      <td>0.276158</td>
+      <td>-217058432</td>
+      <td>-0.143515</td>
+      <td>-0.099901</td>
+      <td>471.342743</td>
+      <td>25</td>
+      <td>-153.505615</td>
+      <td>-142.315430</td>
+      <td>-232.547607</td>
+      <td>-0.198644</td>
+      <td>29</td>
+      <td>955008</td>
+      <td>20.322662</td>
+      <td>441.391357</td>
+      <td>85</td>
+      <td>27.0700</td>
+    </tr>
+    <tr>
+      <th>49495</th>
+      <td>271346</td>
+      <td>6.916373</td>
+      <td>49.514878</td>
+      <td>3097.25</td>
+      <td>1536</td>
+      <td>13</td>
+      <td>2213</td>
+      <td>6140</td>
+      <td>-0.606761</td>
+      <td>-299815488</td>
+      <td>0.547743</td>
+      <td>-0.104366</td>
+      <td>365.085297</td>
       <td>24</td>
-      <td>281.717529</td>
-      <td>179.264893</td>
-      <td>264.452637</td>
-      <td>0.017225</td>
+      <td>29.947266</td>
+      <td>-2.760986</td>
+      <td>204.209473</td>
+      <td>0.163875</td>
       <td>14</td>
-      <td>836909</td>
-      <td>19.674150</td>
-      <td>505.846466</td>
+      <td>789703</td>
+      <td>20.452227</td>
+      <td>469.161865</td>
       <td>85</td>
-      <td>33.8250</td>
+      <td>30.9725</td>
     </tr>
     <tr>
-      <th>23418</th>
-      <td>124266</td>
-      <td>6.497753</td>
-      <td>49.806452</td>
-      <td>2038.75</td>
-      <td>1524</td>
+      <th>11</th>
+      <td>40</td>
+      <td>6.050120</td>
+      <td>48.058094</td>
+      <td>3012.25</td>
+      <td>1521</td>
       <td>14</td>
-      <td>1954</td>
-      <td>6178</td>
-      <td>0.290976</td>
-      <td>-245096976</td>
-      <td>-1.431028</td>
-      <td>0.158236</td>
-      <td>217.341431</td>
-      <td>12</td>
-      <td>-82.375977</td>
-      <td>-4.113770</td>
-      <td>249.067627</td>
-      <td>0.006056</td>
-      <td>11</td>
-      <td>711148</td>
-      <td>21.360710</td>
-      <td>482.407990</td>
-      <td>78</td>
-      <td>20.3875</td>
+      <td>2474</td>
+      <td>6191</td>
+      <td>-15.363133</td>
+      <td>-195105152</td>
+      <td>1.290480</td>
+      <td>-0.043498</td>
+      <td>331.926483</td>
+      <td>25</td>
+      <td>750.277832</td>
+      <td>12.481934</td>
+      <td>206.658447</td>
+      <td>-0.008241</td>
+      <td>15</td>
+      <td>820336</td>
+      <td>19.240412</td>
+      <td>474.946625</td>
+      <td>85</td>
+      <td>30.1225</td>
     </tr>
     <tr>
-      <th>156064</th>
-      <td>888098</td>
-      <td>8.808580</td>
-      <td>49.732382</td>
-      <td>4020.75</td>
-      <td>1482</td>
-      <td>14</td>
-      <td>2699</td>
-      <td>6202</td>
-      <td>-4.201675</td>
-      <td>-254775360</td>
-      <td>1.657472</td>
-      <td>0.202774</td>
-      <td>423.492188</td>
-      <td>26</td>
-      <td>135.752930</td>
-      <td>245.324951</td>
-      <td>135.681396</td>
-      <td>-0.070500</td>
-      <td>12</td>
-      <td>718918</td>
-      <td>20.607891</td>
-      <td>479.666687</td>
-      <td>85</td>
-      <td>40.2075</td>
-    </tr>
-    <tr>
-      <th>167521</th>
-      <td>945767</td>
-      <td>8.963623</td>
-      <td>49.916197</td>
-      <td>2305.00</td>
-      <td>1541</td>
-      <td>11</td>
-      <td>2211</td>
-      <td>6546</td>
-      <td>1.471319</td>
-      <td>-231895872</td>
-      <td>-0.941885</td>
-      <td>0.033445</td>
-      <td>168.339615</td>
-      <td>22</td>
-      <td>241.616699</td>
-      <td>78.248291</td>
-      <td>129.840820</td>
-      <td>0.112844</td>
-      <td>11</td>
-      <td>680662</td>
-      <td>19.252268</td>
-      <td>506.577423</td>
-      <td>85</td>
-      <td>23.0500</td>
+      <th>185044</th>
+      <td>1039892</td>
+      <td>9.187669</td>
+      <td>49.500969</td>
+      <td>1117.00</td>
+      <td>1472</td>
+      <td>15</td>
+      <td>2561</td>
+      <td>6294</td>
+      <td>10.249912</td>
+      <td>-141432176</td>
+      <td>1.770781</td>
+      <td>-0.046596</td>
+      <td>483.281250</td>
+      <td>27</td>
+      <td>-15.297119</td>
+      <td>-161.964844</td>
+      <td>-210.821777</td>
+      <td>-0.015172</td>
+      <td>23</td>
+      <td>761513</td>
+      <td>19.522852</td>
+      <td>437.534729</td>
+      <td>38</td>
+      <td>11.1700</td>
     </tr>
   </tbody>
 </table>
@@ -3075,7 +3080,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3086,7 +3091,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3095,7 +3100,7 @@ array([ 1, 13,  0,  6,  8,  4, 16,  2,  5, 15, 12,  3, 11,  7, 14,  9, 10,
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -3109,7 +3114,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3118,7 +3123,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -3127,7 +3132,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3136,7 +3141,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -3145,7 +3150,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3160,7 +3165,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 <h2>Random Forest default parameters with select row base on quality flag<a class="headerlink" href="#Random-Forest-default-parameters-with-select-row-base-on-quality-flag" title="Permalink to this headline"></a></h2>
 <p>Training Random Forest using default parameters</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3173,7 +3178,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3183,12 +3188,12 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.36202198818906683
+0.37582774369799943
 </pre></div></div>
 </div>
 </section>
@@ -3196,7 +3201,7 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 <h2>Final assesment<a class="headerlink" href="#Final-assesment" title="Permalink to this headline"></a></h2>
 <p><strong>Selected data</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3206,17 +3211,17 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.7405031288359375, 0.616599717521936]
+[0.747400101639897, 0.615726616845201]
 </pre></div></div>
 </div>
 <p><strong>All data</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3225,17 +3230,17 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[0.6045516697930429, 0.5165166299857089]
+[0.6043347073198263, 0.5189400044676861]
 </pre></div></div>
 </div>
 <p><strong>Publication results</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3244,12 +3249,12 @@ array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-0.4527925129990053
+0.4527925129990046
 </pre></div></div>
 </div>
 <p>Tone the RF</p>
@@ -3284,7 +3289,7 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3298,12 +3303,12 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fe534a3ef10&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7fa0315145e0&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -3314,7 +3319,7 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3328,12 +3333,12 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nboutput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-[&lt;matplotlib.lines.Line2D at 0x7fe534a189a0&gt;]
+[&lt;matplotlib.lines.Line2D at 0x7fa0226b4d30&gt;]
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -3344,7 +3349,7 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3354,7 +3359,7 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3363,17 +3368,17 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-array([ 1, 13,  0, 16,  6,  4,  5,  8,  2,  3, 15, 11, 12,  9, 14,  7, 10,
+array([ 1, 13,  0,  6, 16,  4,  8,  5,  3,  2, 15, 11, 12,  9, 14,  7, 10,
        17])
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3393,55 +3398,72 @@ array([ 1, 13,  0, 16,  6,  4,  5,  8,  2,  3, 15, 11, 12,  9, 14,  7, 10,
 <section id="Predict-on-the-raster-using-pyspatialml">
 <h3>Predict on the raster using pyspatialml<a class="headerlink" href="#Predict-on-the-raster-using-pyspatialml" title="Permalink to this headline"></a></h3>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># import satalite indeces</span>
-<span class="n">glad_ard_SVVI_min</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_min.tif&quot;</span><span class="p">)</span>
-<span class="n">glad_ard_SVVI_med</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_med.tif&quot;</span><span class="p">)</span>
-<span class="n">glad_ard_SVVI_max</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_max.tif&quot;</span><span class="p">)</span>
+<span class="n">glad_ard_SVVI_min</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_min.tif&quot;</span>
+<span class="n">glad_ard_SVVI_med</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_med.tif&quot;</span>
+<span class="n">glad_ard_SVVI_max</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_max.tif&quot;</span>
 
 <span class="c1"># import climate</span>
-<span class="n">CHELSA_bio4</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio4.tif&quot;</span><span class="p">)</span>
-<span class="n">CHELSA_bio18</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio18.tif&quot;</span><span class="p">)</span>
+<span class="n">CHELSA_bio4</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio4.tif&quot;</span>
+<span class="n">CHELSA_bio18</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio18.tif&quot;</span>
 
 <span class="c1"># soil</span>
-<span class="n">BLDFIE_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/BLDFIE_WeigAver.tif&quot;</span><span class="p">)</span>
-<span class="n">CECSOL_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/CECSOL_WeigAver.tif&quot;</span><span class="p">)</span>
-<span class="n">ORCDRC_WeigAver</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/ORCDRC_WeigAver.tif&quot;</span><span class="p">)</span>
+<span class="n">BLDFIE_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/BLDFIE_WeigAver.tif&quot;</span>
+<span class="n">CECSOL_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CECSOL_WeigAver.tif&quot;</span>
+<span class="n">ORCDRC_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/ORCDRC_WeigAver.tif&quot;</span>
 
 <span class="c1"># Geomorphological</span>
-<span class="n">elev</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/elev.tif&quot;</span><span class="p">)</span>
-<span class="n">convergence</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/convergence.tif&quot;</span><span class="p">)</span>
-<span class="n">northness</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/northness.tif&quot;</span><span class="p">)</span>
-<span class="n">eastness</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/eastness.tif&quot;</span><span class="p">)</span>
-<span class="n">devmagnitude</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/dev-magnitude.tif&quot;</span><span class="p">)</span>
+<span class="n">elev</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/elev.tif&quot;</span>
+<span class="n">convergence</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/convergence.tif&quot;</span>
+<span class="n">northness</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/northness.tif&quot;</span>
+<span class="n">eastness</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/eastness.tif&quot;</span>
+<span class="n">devmagnitude</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/devmagnitude.tif&quot;</span>
 
 <span class="c1"># Hydrography</span>
-<span class="n">cti</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/cti.tif&quot;</span><span class="p">)</span>
-<span class="n">outlet_dist_dw_basin</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/outlet_dist_dw_basin.tif&quot;</span><span class="p">)</span>
+<span class="n">cti</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/cti.tif&quot;</span>
+<span class="n">outlet_dist_dw_basin</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/outlet_dist_dw_basin.tif&quot;</span>
 
 <span class="c1"># Soil climate</span>
 
-<span class="n">SBIO3_Isothermality_5_15cm</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/SBIO3_Isothermality_5_15cm.tif&quot;</span><span class="p">)</span>
-<span class="n">SBIO4_Temperature_Seasonality_5_15cm</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/SBIO4_Temperature_Seasonality_5_15cm.tif&quot;</span><span class="p">)</span>
+<span class="n">SBIO3_Isothermality_5_15cm</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/SBIO3_Isothermality_5_15cm.tif&quot;</span>
+<span class="n">SBIO4_Temperature_Seasonality_5_15cm</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/SBIO4_Temperature_Seasonality_5_15cm.tif&quot;</span>
 
 <span class="c1"># forest</span>
 
-<span class="n">treecover</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;tree_height/geodata_raster/treecover.tif&quot;</span><span class="p">)</span>
-
+<span class="n">treecover</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/treecover.tif&quot;</span>
 </pre></div>
 </div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">treecover</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;tree_height/geodata_raster/treecover.tif&#39;
+</pre></div></div>
+</div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">predictors_rasters</span> <span class="o">=</span> <span class="p">[</span><span class="n">glad_ard_SVVI_min</span><span class="p">,</span> <span class="n">glad_ard_SVVI_med</span><span class="p">,</span> <span class="n">glad_ard_SVVI_max</span><span class="p">,</span>
                       <span class="n">CHELSA_bio4</span><span class="p">,</span><span class="n">CHELSA_bio18</span><span class="p">,</span>
-                      <span class="n">BLDFIE_WeigAver</span><span class="p">,</span><span class="n">CECSOL_WeigAver</span><span class="p">,</span> <span class="n">ORCDRC_WeigAver</span><span class="p">,</span>
+                      <span class="n">BLDFIE_WeigAver</span><span class="p">,</span><span class="n">CECSOL_WeigAver</span><span class="p">,</span><span class="n">ORCDRC_WeigAver</span><span class="p">,</span>
                       <span class="n">elev</span><span class="p">,</span><span class="n">convergence</span><span class="p">,</span><span class="n">northness</span><span class="p">,</span><span class="n">eastness</span><span class="p">,</span><span class="n">devmagnitude</span><span class="p">,</span><span class="n">cti</span><span class="p">,</span><span class="n">outlet_dist_dw_basin</span><span class="p">,</span>
                       <span class="n">SBIO3_Isothermality_5_15cm</span><span class="p">,</span><span class="n">SBIO4_Temperature_Seasonality_5_15cm</span><span class="p">,</span><span class="n">treecover</span><span class="p">]</span>
 
@@ -3450,7 +3472,7 @@ array([ 1, 13,  0, 16,  6,  4,  5,  8,  2,  3, 15, 11, 12,  9, 14,  7, 10,
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3459,7 +3481,7 @@ array([ 1, 13,  0, 16,  6,  4,  5,  8,  2,  3, 15, 11, 12,  9, 14,  7, 10,
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -3475,7 +3497,7 @@ array([ 1, 13,  0, 16,  6,  4,  5,  8,  2,  3, 15, 11, 12,  9, 14,  7, 10,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_83_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_83_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_84_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_84_0.png" />
 </div>
 </div>
 </section>
