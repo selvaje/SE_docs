@@ -8,7 +8,6 @@ Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE
 
     mkdir  -p   /home/user/my_SE_data/exercise
     cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
-    conda deactivate 
 
 **Starting GRASS**
 
@@ -32,7 +31,7 @@ The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION a
 
 **Start GRASS by command line**
 
-    grass76 -text /home/user/my_SE_data/exercise/grassdb/europe/PERMANENT/
+    grass --text /home/user/my_SE_data/exercise/grassdb/europe/PERMANENT/
 
 Once you are running GRASS through the bash shell terminal you can always start the graphical user interface with:
 
@@ -55,13 +54,13 @@ The g.gisenv command informs you of your current GRASS environment settings
 
 If you started GRASS correctly you should visualize the following lines on your terminal
 
-GISDBASE=/home/user/my_SE_data/exercise/grassdb  
+GISDBASE=/home/user/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe  
 GRASS_GUI=wxpython  
 GUI=text  
 PID=2790  
 MAPSET=PERMANENT  
-GRASS 7.6.1 (europe):~ >  
+GRASS europe/PERMANENT:exercise >  
 
 Running GRASS through the bash shell terminal allows you to use all command line functionality of both GRASS and shell. As an example you can type:
 
@@ -69,7 +68,7 @@ Running GRASS through the bash shell terminal allows you to use all command line
 
 and visualize all files available in your shell current working directory. This means that all your output files produced by bash command lines functionality will be saved in the current working directory (if not specified differently). Many non-geographical GRASS output features such as text file reports or images will be saved as well in the current working directory. 
 
-The GRASS 7.6.1 (europe):~ >  
+The GRASS europe/PERMANENT:exercise >  
 
 inform you are currently working in the home folder. See
 
@@ -87,11 +86,11 @@ It is a good working habit within GRASS to set bash shell working directory the 
 
 On the terminal you will no longer see
 
-GRASS 7.6.1 (europe):~ >  
- 
+GRASS europe/PERMANENT:exercise >
+
 but
 
-GRASS 7.6.1 (europe):/home/user/my_SE_data/exercise/grassdb:~ >  
+GRASS europe/PERMANENT:grassdb: >  
 
 and you will be aware tif your current bash shell working directory match your GRASS location directory.
 
@@ -107,17 +106,17 @@ The g.mapset command allows you to change the GRASS working directory and succes
 
 Now you should see the following settings:
 
-GRASS 7.6.1 (europe):/home/user/my_SE_data/exercise/grassdb >  
+GRASS europe/PCEM:grassdb >  
 
     g.gisenv  
 
-GISDBASE=/home/user/my_SE_data/exercise/grassdb  
-LOCATION_NAME=europe  
-GRASS_GUI=wxpython  
-GUI=text  
-PID=2790  
-MAPSET=PCEM  
-GRASS 7.6.1 (europe):~ >  
+GISDBASE=/home/user/my_SE_data/exercise/grassdb
+LOCATION_NAME=europe
+MAPSET=PCEM
+GRASS_GUI=wxpython
+GUI=text
+PID=3918
+GRASS europe/PCEM:grassdb >
 
 **Manage MAPSET**
 
@@ -198,7 +197,6 @@ We now resample the g.region at 20km using the res=new_res option and will set 7
 
     g.region res=20000 -p
 
-
 projection: 99 (Lambert Azimuthal Equal Area)  
 zone:       0  
 datum:      ** unknown (default: WGS84) **  
@@ -221,7 +219,6 @@ we can create a new forest/non-forest map with the new extent and resolution usi
 Now create the two other maps:
 
     g.region alpine@PCEMstat res=10000 -p
-
 
 projection: 99 (Lambert Azimuthal Equal Area)  
 zone:       0  
