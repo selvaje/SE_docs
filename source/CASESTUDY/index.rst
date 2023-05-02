@@ -17,11 +17,12 @@
    NN-day2.ipynb
    NN-day3.ipynb
    Tree_Height_01DataExplore.ipynb
-   Tree_Height_02SVM_pred.ipynb
+   Tree_Height_02Predictors_extraction.ipynb
    Tree_Height_03RF_pred.ipynb
-   Tree_Height_04Perceptron_pred.ipynb 
-   Tree_Height_04Perceptron_pred_clean.ipynb
-   Tree_Height_05NeuralNets_pred.ipynb
+   Tree_Height_04SVM_pred.ipynb
+   Tree_Height_05Perceptron_pred.ipynb 
+   Tree_Height_05Perceptron_pred_clean.ipynb
+   Tree_Height_06NeuralNets_pred.ipynb
    NNs_pt3_SHAP.ipynb
    CNN_satelite.ipynb
    LSTMs_tutorial.ipynb
