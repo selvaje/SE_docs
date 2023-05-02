@@ -127,7 +127,6 @@
 <li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#1.0-Reminder">1.0 Reminder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Running-rio-tool-and-using-the-bash-shell-and-its-tools">Running <code class="docutils literal notranslate"><span class="pre">rio</span></code> tool and using the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell and its tools</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#by-Francesco-Lovergine">by Francesco Lovergine</a></li>
@@ -481,26 +480,14 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Estimation-of-tree-height-using-GEDI-dataset---Predictors-extraction-at-point-location">
 <h1>Estimation of tree height using GEDI dataset - Predictors extraction at point location<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Predictors-extraction-at-point-location" title="Permalink to this headline"></a></h1>
-<section id="1.0-Reminder">
-<h2>1.0 Reminder<a class="headerlink" href="#1.0-Reminder" title="Permalink to this headline"></a></h2>
-<p>You need to access the dataset we will use in this notebook and later too. You already should have downloaded it and stored in the right folder, as follows:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/SE_data
-git pull
-rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
-cd  /media/sf_LVM_shared/my_SE_data/exercise
-
-pip3 install gdown # Google Drive access
-
-[ -f tree_height.tar.gz ] || ~/.local/bin/gdown 1Y60EuLsfmTICTX-U_FxcE1odNAf04bd-
-[ -d tree_height ] || tar xvf tree_height.tar.gz
-</pre></div>
-</div>
-<p>Also, you should already installed <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> package as follows:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install rasterio
+<p>The tree_height Dataset is available following the procedure described at <a class="reference external" href="https://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html">https://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html</a></p>
+<p>In order to run this notebook, please do what follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd  /media/sf_LVM_shared/my_SE_data/exercise
+pip3 install rasterio
+jupyter-notebook Tree_Height_02Predictors_extraction
 </pre></div>
 </div>
 <p><em>Hint: you should never use ``pip3`` under ``sudo``, else you could break your system-wide Python environment in very creative and subtle ways.</em></p>
-</section>
 <section id="Introduction">
 <h2>Introduction<a class="headerlink" href="#Introduction" title="Permalink to this headline"></a></h2>
 <p>The main objectives of this tutorial is to show several ways how to extract pixel value at point location.</p>
