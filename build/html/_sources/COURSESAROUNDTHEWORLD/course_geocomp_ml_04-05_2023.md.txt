@@ -394,14 +394,21 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/nGPLFnJNJy
 ## Lecture 9: 3nd of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
-* pyjeo 
+
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aP2swAhhMT2gzsmmSFUc2bFwPqUbfinvQX_PuS7NmqER_7ffmxdtr0c7nHm7wLnd.ySGdfud0ZG9Ocw66). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+The first part of the video recording (00:00 - 49:45) has been dedicate to trouble shouting the installation of pyjeo (anyway with the new install_pyjeo.sh that you find in the git-repository it should be fine). 
+Rather the second part (49:45 - until the end) is the real pyjeo lectures. 
+
+* pyjeo
+	* [Introduction to pyjeo - Lecture](http://spatial-ecology.net/docs/source/lectures/lect_20230503_pyjeo.pdf)
+	* [Introduction to pyjeo - hands on](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
 
 ## Lecture 10: 5th of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
-
 * pyjeo
-
+	* [Performing raster and vector operations in Python using pyjeo](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html)
 
 ## Lecture 11: 10th of May, 2023.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
