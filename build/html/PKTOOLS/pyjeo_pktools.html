@@ -94,7 +94,11 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Performing raster and vector operations in Python using pyjeo</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Creating-masks">Creating masks</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Applying-masks">Applying masks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise:-check-if-pktools-and-pyjeo-results-are-equal">Exercise: check if pktools and pyjeo results are equal</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Composite-images">Composite images</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise">Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Exercise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Exercise</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Using-tiling-mechanism">Using tiling mechanism</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Filter-images">Filter images</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Images-statistics">Images statistics</a></li>
@@ -511,11 +515,11 @@ pkgetmask<span class="w">  </span>-co<span class="w"> </span><span class="nv">CO
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 1: 157734 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 1 -max 2 -data 1 -nodata 0 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhA.tif
+bash: line 1: 296062 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 1 -max 2 -data 1 -nodata 0 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhA.tif
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 2: 157755 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 5 -max 8 -data 1 -nodata 0 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhB.tif
+bash: line 2: 296076 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 5 -max 8 -data 1 -nodata 0 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhB.tif
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 3: 157771 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 0 -max 10 -data 0 -nodata 1 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhC.tif
+bash: line 3: 296089 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 0 -max 10 -data 0 -nodata 1 -ot Byte -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_trhC.tif
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -641,7 +645,7 @@ pksetmask<span class="w"> </span>-co<span class="w"> </span><span class="nv">COM
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 5: 157790 Aborted                 (core dumped) pksetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -m geodata/vegetation/ETmean08-11_01_trhA.tif -msknodata 1 -nodata -9 -m geodata/vegetation/ETmean08-11_01_trhB.tif -msknodata 1 -nodata -5 -m geodata/vegetation/ETmean08-11_01_trhC.tif -msknodata 1 -nodata -10 -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_msk.tif
+bash: line 5: 296105 Aborted                 (core dumped) pksetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -m geodata/vegetation/ETmean08-11_01_trhA.tif -msknodata 1 -nodata -9 -m geodata/vegetation/ETmean08-11_01_trhB.tif -msknodata 1 -nodata -5 -m geodata/vegetation/ETmean08-11_01_trhC.tif -msknodata 1 -nodata -10 -i geodata/vegetation/ETmean08-11.tif -o geodata/vegetation/ETmean08-11_01_msk.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -737,8 +741,57 @@ Cell <span class="ansi-green-fg">In[7], line 1</span>
 </pre></div></div>
 </div>
 <p>The result can then be written on disk if needed:</p>
+</section>
+<section id="Exercise:-check-if-pktools-and-pyjeo-results-are-equal">
+<h2>Exercise: check if pktools and pyjeo results are equal<a class="headerlink" href="#Exercise:-check-if-pktools-and-pyjeo-results-are-equal" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">jim0</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">(</span><span class="s1">&#39;geodata/vegetation/ETmean08-11_01_msk.tif&#39;</span><span class="p">)</span>
+<span class="n">jim0</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">isEqual</span><span class="p">(</span><span class="n">jim</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[8], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> jim0 <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/vegetation/ETmean08-11_01_msk.tif</span><span style="color: rgb(175,0,0)">&#39;</span>)
+<span class="ansi-green-intense-fg ansi-bold">      2</span> jim0<span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>isEqual(jim)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">isEqual</span><span class="p">(</span><span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">(</span><span class="s1">&#39;geodata/vegetation/ETmean08-11_01_msk.tif&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[9], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>isEqual(pj<span style="color: rgb(98,98,98)">.</span>Jim(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/vegetation/ETmean08-11_01_msk.tif</span><span style="color: rgb(175,0,0)">&#39;</span>))
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -753,7 +806,7 @@ Cell <span class="ansi-green-fg">In[7], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[8], line 1</span>
+Cell <span class="ansi-green-fg">In[10], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>io<span style="color: rgb(98,98,98)">.</span>write(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/vegetation/ETmean08-11_01_msk_pyjeo.tif</span><span style="color: rgb(175,0,0)">&#39;</span>, co <span style="color: rgb(98,98,98)">=</span> [<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">COMPRESS=DEFLATE</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">ZLEVEL=9</span><span style="color: rgb(175,0,0)">&#39;</span>])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
@@ -765,7 +818,7 @@ Cell <span class="ansi-green-fg">In[8], line 1</span>
 <p><strong>pktools</strong></p>
 <p>Create a mask to apply during the composite</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -780,7 +833,7 @@ pkgetmask<span class="w">  </span>-co<span class="w"> </span><span class="nv">CO
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 1: 157810 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 0 -max 25 -data 0 -nodata 1 -ot Byte -i geodata/LST/LST_MOYDmax_month1.tif -o geodata/LST/LST_MOYDmax_month1-msk.tif
+bash: line 1: 296120 Aborted                 (core dumped) pkgetmask -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 0 -max 25 -data 0 -nodata 1 -ot Byte -i geodata/LST/LST_MOYDmax_month1.tif -o geodata/LST/LST_MOYDmax_month1-msk.tif
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -798,7 +851,7 @@ bash: line 1: 157810 Aborted                 (core dumped) pkgetmask -co COMPRES
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[9], line 1</span>
+Cell <span class="ansi-green-fg">In[11], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkgetmask  -co COMPRESS=DEFLATE -co ZLEVEL=9 -min 0 -max 25 -data 0 -nodata 1 -ot Byte -i geodata/LST/LST_MOYDmax_month1.tif -o geodata/LST/LST_MOYDmax_month1-msk.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -828,7 +881,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </div>
 <p>Calculate mean and standard deviation with several images with <a class="reference external" href="http://pktools.nongnu.org/html/md_pkcomposite.html">pkcomposite</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -853,13 +906,13 @@ FileOpenError geodata/LST/LST_MOYDmax_month?.tif
 ERROR 1: Attempt to create -2147483648x-2147483648 dataset is illegal,sizes must be larger than zero.
 Warning: could not write geotransform information in geodata/LST/LST_MOYDmax_monthMean.tif
 Warning: could not write projection information in geodata/LST/LST_MOYDmax_monthMean.tif
-bash: line 3: 157827 Segmentation fault      (core dumped) pkcomposite $(for file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif; do echo -i $file; done) -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr mean -dstnodata 0 -co COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthMean.tif
+bash: line 3: 296136 Segmentation fault      (core dumped) pkcomposite $(for file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif; do echo -i $file; done) -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr mean -dstnodata 0 -co COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthMean.tif
 FileOpenError geodata/LST/LST_MOYDmax_month?.tif
 FileOpenError geodata/LST/LST_MOYDmax_month??.tif
 ERROR 1: Attempt to create -2147483648x-2147483648 dataset is illegal,sizes must be larger than zero.
 Warning: could not write geotransform information in geodata/LST/LST_MOYDmax_monthStdev.tif
 Warning: could not write projection information in geodata/LST/LST_MOYDmax_monthStdev.tif
-bash: line 7: 157846 Segmentation fault      (core dumped) pkcomposite $(for file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif; do echo -i $file; done) -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr stdev -dstnodata -1 -co COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthStdev.tif
+bash: line 7: 296151 Segmentation fault      (core dumped) pkcomposite $(for file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif; do echo -i $file; done) -m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr stdev -dstnodata -1 -co COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthStdev.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -869,7 +922,7 @@ bash: line 7: 157846 Segmentation fault      (core dumped) pkcomposite $(for fil
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[10], line 1</span>
+Cell <span class="ansi-green-fg">In[12], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkcomposite $(for file in geodata/LST/LST_MOYDmax_month??.tif geodata/LST/LST_MOYDmax_month?.tif; do echo -i $file; done) </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\\</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">-m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr mean   -dstnodata 0 </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\\</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">-co  COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthMean.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkcomposite $(for file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif; do echo -i $file; done) </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\\</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">-m geodata/LST/LST_MOYDmax_month1-msk.tif -msknodata 0 -cr stdev   -dstnodata -1 </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\\</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">-co  COMPRESS=LZW -co ZLEVEL=9 -o geodata/LST/LST_MOYDmax_monthStdev.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -899,7 +952,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </div>
 <p>An alternative way is to use <a class="reference external" href="http://pktools.nongnu.org/html/pkstatprofile.html">pkstatprofile</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -938,7 +991,7 @@ FileOpenError
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[11], line 1</span>
+Cell <span class="ansi-green-fg">In[13], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># Create a multiband vrt</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">gdalbuildvrt -overwrite -separate geodata/LST/LST_MOYDmax_month.vrt geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># Calculate mean and standard deviation</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkstatprofile -co  COMPRESS=LZW -nodata 0 -f mean -f stdev  -i geodata/LST/LST_MOYDmax_month.vrt -o geodata/LST/LST_MOYDmax_month_mean_stdev.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -968,8 +1021,9 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </div>
 <p><strong>pyjeo</strong></p>
 <p>In pyjeo, we can can composite images using <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html?highlight=reduceplane#geometry._Geometry.reducePlane">reducePlane</a></p>
+<p>First we create a Jim object for all monthly GeoTIFF files containing LST data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -983,21 +1037,11 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <span class="n">mask</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">()</span>
 <span class="n">jim</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files1</span> <span class="o">+</span> <span class="n">files2</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
     <span class="n">month</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;LST_MOYDmax_month&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.tif&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
     <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;2019-&#39;</span> <span class="o">+</span> <span class="n">month</span> <span class="o">+</span> <span class="s1">&#39;-01&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
     <span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">stackPlane</span><span class="p">(</span><span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">(</span><span class="n">file</span><span class="p">))</span>
     <span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">setDimension</span><span class="p">(</span><span class="n">date</span><span class="p">,</span> <span class="s1">&#39;plane&#39;</span><span class="p">,</span> <span class="n">append</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 <span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">setDimension</span><span class="p">([</span><span class="s1">&#39;LST&#39;</span><span class="p">],</span> <span class="s1">&#39;band&#39;</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;crop&quot;</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropPlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span>
-<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;set mask&quot;</span><span class="p">)</span>
-<span class="n">jim</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reduce plane&quot;</span><span class="p">)</span>
-<span class="n">mean</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1008,7 +1052,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[12], line 8</span>
+Cell <span class="ansi-green-fg">In[14], line 8</span>
 <span class="ansi-green-intense-fg ansi-bold">      5</span> files2 <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(0,135,0)">sorted</span>(Path(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/LST/</span><span style="color: rgb(175,0,0)">&#39;</span>)<span style="color: rgb(98,98,98)">.</span>glob(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">LST_MOYDmax_month??.tif</span><span style="color: rgb(175,0,0)">&#39;</span>))
 <span class="ansi-green-intense-fg ansi-bold">      7</span> <span style="color: rgb(95,135,135)">#create single band multi-plane image</span>
 <span class="ansi-green-fg">----&gt; 8</span> mask <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim()
@@ -1018,11 +1062,126 @@ Cell <span class="ansi-green-fg">In[12], line 8</span>
 <span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getDimension</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[15], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>getDimension()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Exercise">
+<h2>Exercise<a class="headerlink" href="#Exercise" title="Permalink to this headline"></a></h2>
+<p>use the Xarray representation of Jim to display details on the dimension and variables of the jim object</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">jim</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[16], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>We then create a mask based on the first month (plane is 0) and calculate the mean composite</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;crop&quot;</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropPlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;mask&quot;</span><span class="p">)</span>
+<span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">mask</span> <span class="o">&lt;=</span> <span class="mi">25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;set mask&quot;</span><span class="p">)</span>
+<span class="n">jim</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;reduce plane&quot;</span><span class="p">)</span>
+<span class="n">mean</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">nodata</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+crop
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[17], line 2</span>
+<span class="ansi-green-intense-fg ansi-bold">      1</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">crop</span><span style="color: rgb(175,0,0)">&#34;</span>)
+<span class="ansi-green-fg">----&gt; 2</span> mask <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>cropPlane(jim, <span style="color: rgb(98,98,98)">0</span>)
+<span class="ansi-green-intense-fg ansi-bold">      3</span> <span style="color: rgb(0,135,0)">print</span>(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">mask</span><span style="color: rgb(175,0,0)">&#34;</span>)
+<span class="ansi-green-intense-fg ansi-bold">      4</span> mask <span style="color: rgb(98,98,98)">=</span> (mask <span style="color: rgb(98,98,98)">&gt;</span><span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0</span>) <span style="color: rgb(98,98,98)">&amp;</span> (mask <span style="color: rgb(98,98,98)">&lt;</span><span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">25</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="id1">
+<h2>Exercise<a class="headerlink" href="#id1" title="Permalink to this headline"></a></h2>
+<p>The reducePlane operation takes a long time to process. The reason is the nodata value that complicates the calculation considerably. Create a new composite <code class="docutils literal notranslate"><span class="pre">mean_alldata</span></code> that does take into account all pixel values (without considering nodata values). Notice how the execution time is reduced…</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">mean_alldata</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="n">rule</span> <span class="o">=</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[18], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> mean_alldata <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>reducePlane(jim, rule <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">mean</span><span style="color: rgb(175,0,0)">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
 <p><strong>Bridging pyjeo to Numpy</strong></p>
 <p>Pyjeo has been designed to allow for <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/2_tutorial.html#bridging-jim-to-third-party-packages">bridging</a> Jim raster image objects to third party libraries such as Numpy.</p>
 <p>We will re-use the mask Jim object to store the results.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1044,7 +1203,7 @@ Cell <span class="ansi-green-fg">In[12], line 8</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[13], line 3</span>
+Cell <span class="ansi-green-fg">In[19], line 3</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">numpy</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> <span class="ansi-bold" style="color: rgb(0,0,255)">np</span>
 <span class="ansi-green-fg">----&gt; 3</span> <span class="ansi-yellow-bg">mask</span><span style="color: rgb(98,98,98)">.</span>pixops<span style="color: rgb(98,98,98)">.</span>convert(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">GDT_Float32</span><span style="color: rgb(175,0,0)">&#39;</span>)
 <span class="ansi-green-intense-fg ansi-bold">      4</span> jim<span style="color: rgb(98,98,98)">.</span>np()[jim<span style="color: rgb(98,98,98)">.</span>np()<span style="color: rgb(98,98,98)">==</span><span style="color: rgb(98,98,98)">0</span>] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>nan
@@ -1055,7 +1214,7 @@ Cell <span class="ansi-green-fg">In[13], line 3</span>
 </div>
 <p>We can avoid NaN in the resulting image by replacing it with 0</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1071,7 +1230,7 @@ Cell <span class="ansi-green-fg">In[13], line 3</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[14], line 1</span>
+Cell <span class="ansi-green-fg">In[20], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> mask<span style="color: rgb(98,98,98)">.</span>np()[:] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>nan_to_num(np<span style="color: rgb(98,98,98)">.</span>nanmean(<span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>np(), axis<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>), nan<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>)
 <span class="ansi-green-intense-fg ansi-bold">      2</span> mask<span style="color: rgb(98,98,98)">.</span>np(<span style="color: rgb(98,98,98)">1</span>)[:] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>nan_to_num(np<span style="color: rgb(98,98,98)">.</span>nanstd(jim<span style="color: rgb(98,98,98)">.</span>np(), axis<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>), nan<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>)
 
@@ -1080,7 +1239,7 @@ Cell <span class="ansi-green-fg">In[14], line 1</span>
 </div>
 <p>Even better is to avoid duplication of data to reduce memory footprint</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1097,7 +1256,7 @@ Cell <span class="ansi-green-fg">In[14], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[15], line 1</span>
+Cell <span class="ansi-green-fg">In[21], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> mask<span style="color: rgb(98,98,98)">.</span>np()[:] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>nan_to_num(np<span style="color: rgb(98,98,98)">.</span>nanmean(<span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>np(), axis<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>), copy <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, nan<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>)
 <span class="ansi-green-intense-fg ansi-bold">      2</span> mask<span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>stackBand(mask)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> mask<span style="color: rgb(98,98,98)">.</span>np(<span style="color: rgb(98,98,98)">1</span>)[:] <span style="color: rgb(98,98,98)">=</span> np<span style="color: rgb(98,98,98)">.</span>nan_to_num(np<span style="color: rgb(98,98,98)">.</span>nanstd(jim<span style="color: rgb(98,98,98)">.</span>np(), axis<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>), copy <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">False</span>, nan<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">0</span>)
@@ -1106,7 +1265,7 @@ Cell <span class="ansi-green-fg">In[15], line 1</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1116,8 +1275,8 @@ Cell <span class="ansi-green-fg">In[15], line 1</span>
 <span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">132</span><span class="p">)</span>  <span class="c1"># middle</span>
 <span class="n">ax3</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">133</span><span class="p">)</span>  <span class="c1"># right side</span>
 <span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">()[</span><span class="mi">0</span><span class="p">,:,:])</span>
-<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">np</span><span class="p">(</span><span class="mi">0</span><span class="p">))</span>
-<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">np</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">np</span><span class="p">()[:,:])</span>
+<span class="n">ax3</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">mask</span><span class="o">.</span><span class="n">np</span><span class="p">(</span><span class="mi">1</span><span class="p">)[:,:])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1129,12 +1288,12 @@ Cell <span class="ansi-green-fg">In[15], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[16], line 6</span>
+Cell <span class="ansi-green-fg">In[22], line 6</span>
 <span class="ansi-green-intense-fg ansi-bold">      4</span> ax2 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">132</span>)  <span style="color: rgb(95,135,135)"># middle</span>
 <span class="ansi-green-intense-fg ansi-bold">      5</span> ax3 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">133</span>)  <span style="color: rgb(95,135,135)"># right side</span>
 <span class="ansi-green-fg">----&gt; 6</span> ax1<span style="color: rgb(98,98,98)">.</span>imshow(<span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>np()[<span style="color: rgb(98,98,98)">0</span>,:,:])
-<span class="ansi-green-intense-fg ansi-bold">      7</span> ax2<span style="color: rgb(98,98,98)">.</span>imshow(mask<span style="color: rgb(98,98,98)">.</span>np(<span style="color: rgb(98,98,98)">0</span>))
-<span class="ansi-green-intense-fg ansi-bold">      8</span> ax3<span style="color: rgb(98,98,98)">.</span>imshow(mask<span style="color: rgb(98,98,98)">.</span>np(<span style="color: rgb(98,98,98)">1</span>))
+<span class="ansi-green-intense-fg ansi-bold">      7</span> ax2<span style="color: rgb(98,98,98)">.</span>imshow(mask<span style="color: rgb(98,98,98)">.</span>np()[:,:])
+<span class="ansi-green-intense-fg ansi-bold">      8</span> ax3<span style="color: rgb(98,98,98)">.</span>imshow(mask<span style="color: rgb(98,98,98)">.</span>np(<span style="color: rgb(98,98,98)">1</span>)[:,:])
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
 </pre></div></div>
@@ -1151,12 +1310,12 @@ Cell <span class="ansi-green-fg">In[16], line 6</span>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PKTOOLS_pyjeo_pktools_33_2.png" src="../_images/PKTOOLS_pyjeo_pktools_33_2.png" />
+<img alt="../_images/PKTOOLS_pyjeo_pktools_44_2.png" src="../_images/PKTOOLS_pyjeo_pktools_44_2.png" />
 </div>
 </div>
 <p><strong>Bridging pyjeo to Xarray</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1171,14 +1330,14 @@ Cell <span class="ansi-green-fg">In[16], line 6</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[17], line 1</span>
+Cell <span class="ansi-green-fg">In[23], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1193,14 +1352,14 @@ Cell <span class="ansi-green-fg">In[17], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[18], line 1</span>
+Cell <span class="ansi-green-fg">In[24], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> xrmean <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">.</span>where(jim<span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">!=</span><span style="color: rgb(98,98,98)">0</span>)<span style="color: rgb(98,98,98)">.</span>mean(dim <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">time</span><span style="color: rgb(175,0,0)">&#39;</span>, skipna<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1215,14 +1374,14 @@ Cell <span class="ansi-green-fg">In[18], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[19], line 1</span>
+Cell <span class="ansi-green-fg">In[25], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> xrstd <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">.</span>where(jim<span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">!=</span><span style="color: rgb(98,98,98)">0</span>)<span style="color: rgb(98,98,98)">.</span>std(dim <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">time</span><span style="color: rgb(175,0,0)">&#39;</span>, skipna<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1237,14 +1396,14 @@ Cell <span class="ansi-green-fg">In[19], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[20], line 1</span>
+Cell <span class="ansi-green-fg">In[26], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">.</span>isel(time <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0</span>)<span style="color: rgb(98,98,98)">.</span>LST<span style="color: rgb(98,98,98)">.</span>plot(cmap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">gray</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1259,14 +1418,14 @@ Cell <span class="ansi-green-fg">In[20], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[21], line 1</span>
+Cell <span class="ansi-green-fg">In[27], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">xrmean</span><span style="color: rgb(98,98,98)">.</span>LST<span style="color: rgb(98,98,98)">.</span>plot(cmap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">gray</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;xrmean&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1281,17 +1440,101 @@ Cell <span class="ansi-green-fg">In[21], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[22], line 1</span>
+Cell <span class="ansi-green-fg">In[28], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">xrstd</span><span style="color: rgb(98,98,98)">.</span>LST<span style="color: rgb(98,98,98)">.</span>plot(cmap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">gray</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;xrstd&#39; is not defined
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">Xarray supports many operations on time series. For instance, we can alculate the seasonal median of LST.</div>
+<div class="line">Hint: check this website on <a class="reference external" href="https://docs.digitalearthafrica.org/en/latest/sandbox/notebooks/Frequently_used_code/Working_with_time.html">Digital Earth Africa</a></div>
+</div>
+<p>Xarray has implemented convenient wrappers for plotting. Plot the 12 months of LST via Xarray representation of Jim</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">jim</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">LST</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[29], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>xr()<span style="color: rgb(98,98,98)">.</span>LST<span style="color: rgb(98,98,98)">.</span>plot(col<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">time</span><span style="color: rgb(175,0,0)">&#39;</span>, col_wrap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">6</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="id2">
+<h2>Exercise<a class="headerlink" href="#id2" title="Permalink to this headline"></a></h2>
+<p>Xarray has implemented convenient wrappers for plotting. Plot the four seasons in four different colums (see same website on <a class="reference external" href="https://docs.digitalearthafrica.org/en/latest/sandbox/notebooks/Frequently_used_code/Working_with_time.html">Digital Earth Africa</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds_seasonal</span><span class="o">.</span><span class="n">LST</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">col</span><span class="o">=</span><span class="s1">&#39;season&#39;</span><span class="p">,</span> <span class="n">col_wrap</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[30], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">ds_seasonal</span><span style="color: rgb(98,98,98)">.</span>LST<span style="color: rgb(98,98,98)">.</span>plot(col<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">season</span><span style="color: rgb(175,0,0)">&#39;</span>, col_wrap<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(98,98,98)">4</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;ds_seasonal&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">ds_seasonal</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+Cell <span class="ansi-green-fg">In[31], line 1</span>
+<span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">ds_seasonal</span>
+
+<span class="ansi-red-fg">NameError</span>: name &#39;ds_seasonal&#39; is not defined
 </pre></div></div>
 </div>
 </section>
 <section id="Using-tiling-mechanism">
 <h2>Using tiling mechanism<a class="headerlink" href="#Using-tiling-mechanism" title="Permalink to this headline"></a></h2>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1317,7 +1560,7 @@ Cell <span class="ansi-green-fg">In[22], line 1</span>
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1342,13 +1585,13 @@ Cell <span class="ansi-green-fg">In[22], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[24], line 10</span>
+Cell <span class="ansi-green-fg">In[33], line 10</span>
 <span class="ansi-green-intense-fg ansi-bold">      7</span> ax<span style="color: rgb(98,98,98)">.</span>append(fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">224</span>))
 <span class="ansi-green-intense-fg ansi-bold">      9</span> <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> tileindex <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> <span style="color: rgb(0,135,0)">range</span>(<span style="color: rgb(98,98,98)">4</span>):
 <span class="ansi-green-fg">---&gt; 10</span>     ax[tileindex]<span style="color: rgb(98,98,98)">.</span>imshow(<span class="ansi-yellow-bg">reduceTile</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">tileindex</span><span class="ansi-yellow-bg">)</span><span style="color: rgb(98,98,98)">.</span>np())
 <span class="ansi-green-intense-fg ansi-bold">     11</span> plt<span style="color: rgb(98,98,98)">.</span>show()
 
-Cell <span class="ansi-green-fg">In[23], line 4</span>, in <span class="ansi-cyan-fg">reduceTile</span><span class="ansi-blue-fg">(tileindex)</span>
+Cell <span class="ansi-green-fg">In[32], line 4</span>, in <span class="ansi-cyan-fg">reduceTile</span><span class="ansi-blue-fg">(tileindex)</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span> <span style="color: rgb(0,0,255)">reduceTile</span>(tileindex):
 <span class="ansi-green-fg">----&gt; 4</span>     jim <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim()
 <span class="ansi-green-intense-fg ansi-bold">      5</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">for</span> file <span class="ansi-bold" style="color: rgb(175,0,255)">in</span> files1 <span style="color: rgb(98,98,98)">+</span> files2:
@@ -1369,7 +1612,7 @@ Cell <span class="ansi-green-fg">In[23], line 4</span>, in <span class="ansi-cya
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PKTOOLS_pyjeo_pktools_43_2.png" src="../_images/PKTOOLS_pyjeo_pktools_43_2.png" />
+<img alt="../_images/PKTOOLS_pyjeo_pktools_61_2.png" src="../_images/PKTOOLS_pyjeo_pktools_61_2.png" />
 </div>
 </div>
 </section>
@@ -1378,7 +1621,7 @@ Cell <span class="ansi-green-fg">In[23], line 4</span>, in <span class="ansi-cya
 <p><strong>pktools</strong></p>
 <p>Aggregating and filtering images using <a class="reference external" href="http://pktools.nongnu.org/html/pkfilter.html">pkfilter</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1396,9 +1639,9 @@ pkfilter<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMP
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 2: 157879 Aborted                 (core dumped) pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 10 -dy 10 -f mean -d 10 -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif
+bash: line 2: 296184 Aborted                 (core dumped) pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 10 -dy 10 -f mean -d 10 -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 4: 157893 Aborted                 (core dumped) pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 11 -dy 11 -f mean -circ -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif
+bash: line 4: 296198 Aborted                 (core dumped) pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 11 -dy 11 -f mean -circ -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1408,7 +1651,7 @@ bash: line 4: 157893 Aborted                 (core dumped) pkfilter -co COMPRESS
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[25], line 1</span>
+Cell <span class="ansi-green-fg">In[34], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># mean aggregation </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 10 -dy 10 -f mean -d 10 -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># mean circular moving window</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkfilter -co COMPRESS=DEFLATE -co ZLEVEL=9 -nodata 0 -ot Float32 -dx 11 -dy 11 -f mean -circ  -i geodata/LST/LST_MOYDmax_monthMean.tif -o geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -1437,9 +1680,9 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </pre></div></div>
 </div>
 <p><strong>pyjeo</strong></p>
-<p>In pyjeo, we can can use <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html?highlight=filter2d#ngbops._NgbOps.filter2d">filter</a> method, but more functions are available via bridging pyjeo to third party libraries such as <a href="#id1"><span class="problematic" id="id2">`scipy &lt;&gt;`__</span></a></p>
+<p>In pyjeo, we can can use <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html?highlight=filter2d#ngbops._NgbOps.filter2d">filter</a> method, but more functions are available via bridging pyjeo to third party libraries such as <a href="#id3"><span class="problematic" id="id4">`scipy &lt;&gt;`__</span></a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1464,7 +1707,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[26], line 1</span>
+Cell <span class="ansi-green-fg">In[35], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pyjeo</span> <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pj</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">pathlib</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Path
 <span class="ansi-green-intense-fg ansi-bold">      3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span> <span class="ansi-bold" style="color: rgb(0,0,255)">scipy</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ndimage
@@ -1473,7 +1716,7 @@ Cell <span class="ansi-green-fg">In[26], line 1</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1494,7 +1737,7 @@ Cell <span class="ansi-green-fg">In[26], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[27], line 5</span>
+Cell <span class="ansi-green-fg">In[36], line 5</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> ax1 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">121</span>)  <span style="color: rgb(95,135,135)"># left side</span>
 <span class="ansi-green-intense-fg ansi-bold">      4</span> ax2 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">122</span>)  <span style="color: rgb(95,135,135)"># right side</span>
 <span class="ansi-green-fg">----&gt; 5</span> ax1<span style="color: rgb(98,98,98)">.</span>imshow(<span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>np())
@@ -1516,11 +1759,11 @@ Cell <span class="ansi-green-fg">In[27], line 5</span>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PKTOOLS_pyjeo_pktools_49_2.png" src="../_images/PKTOOLS_pyjeo_pktools_49_2.png" />
+<img alt="../_images/PKTOOLS_pyjeo_pktools_67_2.png" src="../_images/PKTOOLS_pyjeo_pktools_67_2.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1533,7 +1776,7 @@ Cell <span class="ansi-green-fg">In[27], line 5</span>
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1562,7 +1805,7 @@ array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1577,14 +1820,14 @@ array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[29], line 1</span>
+Cell <span class="ansi-green-fg">In[38], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> mean <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>ngbops<span style="color: rgb(98,98,98)">.</span>firfilter2d(jim, taps<span style="color: rgb(98,98,98)">=</span>unit_circle(<span style="color: rgb(98,98,98)">10</span>), norm<span style="color: rgb(98,98,98)">=</span><span class="ansi-bold" style="color: rgb(0,135,0)">True</span>, pad<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">symmetric</span><span style="color: rgb(175,0,0)">&#39;</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1605,7 +1848,7 @@ Cell <span class="ansi-green-fg">In[29], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[30], line 5</span>
+Cell <span class="ansi-green-fg">In[39], line 5</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> ax1 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">121</span>)  <span style="color: rgb(95,135,135)"># left side</span>
 <span class="ansi-green-intense-fg ansi-bold">      4</span> ax2 <span style="color: rgb(98,98,98)">=</span> fig<span style="color: rgb(98,98,98)">.</span>add_subplot(<span style="color: rgb(98,98,98)">122</span>)  <span style="color: rgb(95,135,135)"># right side</span>
 <span class="ansi-green-fg">----&gt; 5</span> ax1<span style="color: rgb(98,98,98)">.</span>imshow(<span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>np())
@@ -1627,12 +1870,12 @@ Cell <span class="ansi-green-fg">In[30], line 5</span>
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PKTOOLS_pyjeo_pktools_52_2.png" src="../_images/PKTOOLS_pyjeo_pktools_52_2.png" />
+<img alt="../_images/PKTOOLS_pyjeo_pktools_70_2.png" src="../_images/PKTOOLS_pyjeo_pktools_70_2.png" />
 </div>
 </div>
 <p>More functions are available via bridging pyjeo to third party libraries such as Multidimensional image processing from <a class="reference external" href="https://docs.scipy.org/doc/scipy/tutorial/ndimage.html">scipy</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1650,7 +1893,7 @@ Cell <span class="ansi-green-fg">In[30], line 5</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[31], line 1</span>
+Cell <span class="ansi-green-fg">In[40], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> jim_filtered <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(jim)
 <span class="ansi-green-intense-fg ansi-bold">      2</span> jim_filtered<span style="color: rgb(98,98,98)">.</span>np()[:] <span style="color: rgb(98,98,98)">=</span> ndimage<span style="color: rgb(98,98,98)">.</span>gaussian_filter(jim<span style="color: rgb(98,98,98)">.</span>np(), sigma <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">2</span>)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> ndimage<span style="color: rgb(98,98,98)">.</span>gaussian_filter(jim<span style="color: rgb(98,98,98)">.</span>np(), sigma <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">2</span>, output<span style="color: rgb(98,98,98)">=</span>jim<span style="color: rgb(98,98,98)">.</span>np())
@@ -1664,7 +1907,7 @@ Cell <span class="ansi-green-fg">In[31], line 1</span>
 <p><strong>pktools</strong></p>
 <p>Aggregating and filtering images using <a class="reference external" href="http://pktools.nongnu.org/html/pkstat.html">pkstat</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1690,7 +1933,7 @@ head: cannot open &#39;geodata/temperature/ug_bio_3.hist&#39; for reading: No su
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[32], line 1</span>
+Cell <span class="ansi-green-fg">In[41], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkstat -hist  -src_min 0  -i geodata/temperature/ug_bio_3.tif &gt; geodata/temperature/ug_bio_3.hist</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">head geodata/temperature/ug_bio_3.hist</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -1719,7 +1962,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1739,7 +1982,7 @@ FileOpenError
 <p><strong>pyjeo</strong></p>
 <p>In pyjeo, we can can use <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html?highlight=getstats#stats._Stats.getStats">getStats</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1758,7 +2001,7 @@ FileOpenError
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[34], line 2</span>
+Cell <span class="ansi-green-fg">In[43], line 2</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> fn <span style="color: rgb(98,98,98)">=</span> Path(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/temperature/ug_bio_3.tif</span><span style="color: rgb(175,0,0)">&#39;</span>)
 <span class="ansi-green-fg">----&gt; 2</span> jim <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(fn)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> stats <span style="color: rgb(98,98,98)">=</span> jim<span style="color: rgb(98,98,98)">.</span>stats<span style="color: rgb(98,98,98)">.</span>getStats(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">histogram</span><span style="color: rgb(175,0,0)">&#39;</span>, src_min <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0</span>)
@@ -1768,7 +2011,7 @@ Cell <span class="ansi-green-fg">In[34], line 2</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1787,7 +2030,7 @@ Cell <span class="ansi-green-fg">In[34], line 2</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[35], line 2</span>
+Cell <span class="ansi-green-fg">In[44], line 2</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> fn <span style="color: rgb(98,98,98)">=</span> Path(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/vegetation/GPPstdev08-11.tif</span><span style="color: rgb(175,0,0)">&#39;</span>)
 <span class="ansi-green-fg">----&gt; 2</span> jim <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(fn)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> stats <span style="color: rgb(98,98,98)">=</span> jim<span style="color: rgb(98,98,98)">.</span>stats<span style="color: rgb(98,98,98)">.</span>getStats(<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">histogram</span><span style="color: rgb(175,0,0)">&#39;</span>, src_min <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0</span>, nbin <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">20</span>)
@@ -1797,7 +2040,7 @@ Cell <span class="ansi-green-fg">In[35], line 2</span>
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1817,7 +2060,7 @@ Cell <span class="ansi-green-fg">In[35], line 2</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[36], line 2</span>
+Cell <span class="ansi-green-fg">In[45], line 2</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> fig <span style="color: rgb(98,98,98)">=</span> plt<span style="color: rgb(98,98,98)">.</span>figure(figsize <span style="color: rgb(98,98,98)">=</span> (<span style="color: rgb(98,98,98)">10</span>, <span style="color: rgb(98,98,98)">5</span>))
 <span class="ansi-green-fg">----&gt; 2</span> plt<span style="color: rgb(98,98,98)">.</span>bar(<span class="ansi-yellow-bg">stats</span>[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">bin</span><span style="color: rgb(175,0,0)">&#39;</span>],stats[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">histogram</span><span style="color: rgb(175,0,0)">&#39;</span>])
 <span class="ansi-green-intense-fg ansi-bold">      3</span> plt<span style="color: rgb(98,98,98)">.</span>xlabel(<span style="color: rgb(175,0,0)">&#34;</span><span style="color: rgb(175,0,0)">pixel value</span><span style="color: rgb(175,0,0)">&#34;</span>)
@@ -1840,7 +2083,7 @@ Cell <span class="ansi-green-fg">In[36], line 2</span>
 <p><strong>pktools</strong></p>
 <p>Aggregating and filtering images using <a class="reference external" href="http://pktools.nongnu.org/html/pkreclass.html">pkreclass</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -1857,7 +2100,7 @@ pkreclass<span class="w"> </span>-co<span class="w"> </span><span class="nv">COM
 <div class="highlight"><pre>
 bash: line 1: geodata/temperature/reclass_ug_bio_3.txt: No such file or directory
 terminate called after throwing an instance of &#39;std::__cxx11::basic_string&lt;char, std::char_traits&lt;char&gt;, std::allocator&lt;char&gt; &gt;&#39;
-bash: line 2: 157932 Aborted                 (core dumped) pkreclass -co COMPRESS=DEFLATE -co ZLEVEL=9 -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif -o geodata/temperature/reclass_ug_bio_3.tif
+bash: line 2: 296237 Aborted                 (core dumped) pkreclass -co COMPRESS=DEFLATE -co ZLEVEL=9 -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif -o geodata/temperature/reclass_ug_bio_3.tif
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1867,7 +2110,7 @@ bash: line 2: 157932 Aborted                 (core dumped) pkreclass -co COMPRES
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[37], line 1</span>
+Cell <span class="ansi-green-fg">In[46], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkstat -hist -i geodata/temperature/ug_bio_3.tif | grep -v </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"> 0</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"> | awk </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">{</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"> if ($1&lt;75) </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">{</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">print $1, 0} else </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">{</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">print $1 , 1}}</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"> &gt; geodata/temperature/reclass_ug_bio_3.txt</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkreclass -co COMPRESS=DEFLATE -co ZLEVEL=9 -code geodata/temperature/reclass_ug_bio_3.txt -i geodata/temperature/ug_bio_3.tif  -o geodata/temperature/reclass_ug_bio_3.tif</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -1898,7 +2141,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <p><strong>pyjeo</strong></p>
 <p>In pyjeo, we can can use <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html?highlight=reclass#classify._Classify.reclass">reclass</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1932,7 +2175,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[38], line 2</span>
+Cell <span class="ansi-green-fg">In[47], line 2</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> fn <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/temperature/ug_bio_3.tif</span><span style="color: rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-fg">----&gt; 2</span> jim <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(fn)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> <span style="color: rgb(0,135,0)">print</span>(jim<span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>getDataType())
@@ -1943,7 +2186,7 @@ Cell <span class="ansi-green-fg">In[38], line 2</span>
 </div>
 <p>However, we can do it much simpler:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1960,7 +2203,7 @@ Cell <span class="ansi-green-fg">In[38], line 2</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[39], line 1</span>
+Cell <span class="ansi-green-fg">In[48], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">jim</span>[jim <span style="color: rgb(98,98,98)">&lt;</span> <span style="color: rgb(98,98,98)">75</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">0</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> jim[jim <span style="color: rgb(98,98,98)">&gt;</span><span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">75</span>] <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">1</span>
 <span class="ansi-green-intense-fg ansi-bold">      3</span> <span style="color: rgb(0,135,0)">print</span>(reclass<span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>isEqual(jim))
@@ -1974,7 +2217,7 @@ Cell <span class="ansi-green-fg">In[39], line 1</span>
 <p><strong>pktools</strong></p>
 <p>Aggregating and filtering images using <a class="reference external" href="http://pktools.nongnu.org/html/pkextractogr.html">extractogr</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -2006,7 +2249,7 @@ FileOpenError
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[40], line 1</span>
+Cell <span class="ansi-green-fg">In[49], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">rm -f geodata/shp/polygons_stat.*</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkextractogr -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/polygons.sqlite -o geodata/shp/polygons_stat.sqlite</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkextractogr -f </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">ESRI Shapefile</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#34;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"> -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/polygons.sqlite -o geodata/shp/polygons_stat.shp</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># we can also create a csv that can be manipulate later on with awk</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">rm  -f geodata/shp/polygons_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkextractogr -f CSV -srcnodata -339999995214436424907732413799364296704   -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/polygons.sqlite -o geodata/shp/polygons_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -2035,8 +2278,29 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 </pre></div></div>
 </div>
 <p><strong>Zonal statistic (point extraction)</strong></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">functools</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="k">def</span> <span class="nf">timer</span><span class="p">(</span><span class="n">func</span><span class="p">):</span>
+    <span class="nd">@functools</span><span class="o">.</span><span class="n">wraps</span><span class="p">(</span><span class="n">func</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">wrapper_timer</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">value</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">perf_counter</span><span class="p">()</span>
+        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Elapsed time: </span><span class="si">{</span><span class="n">elapsed_time</span><span class="si">:</span><span class="s2">0.4f</span><span class="si">}</span><span class="s2"> seconds&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">value</span>
+    <span class="k">return</span> <span class="n">wrapper_timer</span>
+</pre></div>
+</div>
+</div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -2066,7 +2330,7 @@ FileOpenError
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">CalledProcessError</span>                        Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[41], line 1</span>
+Cell <span class="ansi-green-fg">In[51], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg" style="color: rgb(98,98,98)">.</span><span class="ansi-yellow-bg">run_cell_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">bash</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># at point location</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">rm -f geodata/shp/point_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkextractogr -f CSV -srcnodata -339999995214436424907732413799364296704 -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/presence.shp -o geodata/shp/point_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)"># at point location + 1 pixel around </span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">rm -f geodata/shp/point-buf_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">pkextractogr -f CSV -buf 2 -srcnodata -339999995214436424907732413799364296704 -r mean -r stdev -r min -i geodata/vegetation/GPPmean08-11.tif -s geodata/shp/presence.shp -o geodata/shp/point-buf_stat.csv</span><span class="ansi-yellow-bg ansi-bold" style="color: rgb(175,95,0)">\n</span><span class="ansi-yellow-bg" style="color: rgb(175,0,0)">&#39;</span><span class="ansi-yellow-bg">)</span>
 
 File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/core/interactiveshell.py:2430</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_cell_magic</span><span class="ansi-blue-fg">(self, magic_name, line, cell)</span>
@@ -2098,7 +2362,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <p>In pyjeo, we can can use <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html#geometry._GeometryVect.extract">extract</a></p>
 <p>output in SQLite format</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2110,7 +2374,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <span class="n">v</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">JimVect</span><span class="p">(</span><span class="n">vfn</span><span class="p">)</span>
 <span class="n">output</span> <span class="o">=</span> <span class="s1">&#39;geodata/shp/temp.sqlite&#39;</span>
 <span class="n">Path</span><span class="p">(</span><span class="n">output</span><span class="p">)</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">missing_ok</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
-<span class="n">extracted1</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">jim</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;stdev&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">],</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">srcnodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">extracted1</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="n">jim</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="s1">&#39;stdev&#39;</span><span class="p">,</span> <span class="s1">&#39;min&#39;</span><span class="p">],</span> <span class="n">srcnodata</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2121,7 +2385,7 @@ File <span class="ansi-green-fg">~/.local/lib/python3.10/site-packages/IPython/c
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[42], line 3</span>
+Cell <span class="ansi-green-fg">In[52], line 3</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> fn <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/vegetation/GPPmean08-11.tif</span><span style="color: rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> vfn <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/shp/polygons.sqlite</span><span style="color: rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-fg">----&gt; 3</span> jim <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>Jim(fn)
@@ -2133,7 +2397,7 @@ Cell <span class="ansi-green-fg">In[42], line 3</span>
 </div>
 <p>output in ESRI Shapefile format</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2150,7 +2414,7 @@ Cell <span class="ansi-green-fg">In[42], line 3</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[43], line 3</span>
+Cell <span class="ansi-green-fg">In[53], line 3</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> output <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/shp/temp.shp</span><span style="color: rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> Path(output)<span style="color: rgb(98,98,98)">.</span>unlink(missing_ok <span style="color: rgb(98,98,98)">=</span> <span class="ansi-bold" style="color: rgb(0,135,0)">True</span>)
 <span class="ansi-green-fg">----&gt; 3</span> extracted2 <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>extract(v, jim, rule<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">mean</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">stdev</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">min</span><span style="color: rgb(175,0,0)">&#39;</span>], output<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/shp/temp.shp</span><span style="color: rgb(175,0,0)">&#39;</span>, oformat<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">ESRI Shapefile</span><span style="color: rgb(175,0,0)">&#39;</span>, srcnodata <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>)
@@ -2160,7 +2424,7 @@ Cell <span class="ansi-green-fg">In[43], line 3</span>
 </div>
 <p>calculate in memory and get result in dictionary</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2175,7 +2439,7 @@ Cell <span class="ansi-green-fg">In[43], line 3</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[44], line 1</span>
+Cell <span class="ansi-green-fg">In[54], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> extracted3 <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>extract(v, jim, rule<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">allpoints</span><span style="color: rgb(175,0,0)">&#39;</span>], output<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">temp1</span><span style="color: rgb(175,0,0)">&#39;</span>, oformat<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Memory</span><span style="color: rgb(175,0,0)">&#39;</span>, srcnodata <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>)
 
 <span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
@@ -2183,7 +2447,7 @@ Cell <span class="ansi-green-fg">In[44], line 1</span>
 </div>
 <p>In pandas format</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2198,7 +2462,7 @@ Cell <span class="ansi-green-fg">In[44], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[45], line 1</span>
+Cell <span class="ansi-green-fg">In[55], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> pd<span style="color: rgb(98,98,98)">.</span>DataFrame(<span class="ansi-yellow-bg">extracted3</span><span style="color: rgb(98,98,98)">.</span>dict())
 
 <span class="ansi-red-fg">NameError</span>: name &#39;extracted3&#39; is not defined
@@ -2206,7 +2470,7 @@ Cell <span class="ansi-green-fg">In[45], line 1</span>
 </div>
 <p>Extract point data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2223,7 +2487,7 @@ Cell <span class="ansi-green-fg">In[45], line 1</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[46], line 2</span>
+Cell <span class="ansi-green-fg">In[56], line 2</span>
 <span class="ansi-green-intense-fg ansi-bold">      1</span> vfn <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">geodata/shp/presence.shp</span><span style="color: rgb(175,0,0)">&#39;</span>
 <span class="ansi-green-fg">----&gt; 2</span> v <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">pj</span><span style="color: rgb(98,98,98)">.</span>JimVect(vfn)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> extracted4 <span style="color: rgb(98,98,98)">=</span> pj<span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>extract(v, jim, rule<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">mean</span><span style="color: rgb(175,0,0)">&#39;</span>], output<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">point</span><span style="color: rgb(175,0,0)">&#39;</span>, oformat<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Memory</span><span style="color: rgb(175,0,0)">&#39;</span>, srcnodata <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>)
@@ -2233,7 +2497,7 @@ Cell <span class="ansi-green-fg">In[46], line 2</span>
 </div>
 <p>Extract points with buffer to calculate mean and standard deviation and minimum</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -2250,7 +2514,7 @@ Cell <span class="ansi-green-fg">In[46], line 2</span>
 <div class="highlight"><pre>
 <span class="ansi-red-fg">---------------------------------------------------------------------------</span>
 <span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-Cell <span class="ansi-green-fg">In[47], line 1</span>
+Cell <span class="ansi-green-fg">In[57], line 1</span>
 <span class="ansi-green-fg">----&gt; 1</span> buffer <span style="color: rgb(98,98,98)">=</span> <span class="ansi-yellow-bg">jim</span><span style="color: rgb(98,98,98)">.</span>properties<span style="color: rgb(98,98,98)">.</span>getDeltaX()<span style="color: rgb(98,98,98)">*</span><span style="color: rgb(98,98,98)">1</span>
 <span class="ansi-green-intense-fg ansi-bold">      2</span> extracted5 <span style="color: rgb(98,98,98)">=</span> pj<span style="color: rgb(98,98,98)">.</span>geometry<span style="color: rgb(98,98,98)">.</span>extract(v, jim, rule<span style="color: rgb(98,98,98)">=</span>[<span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">mean</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">stdev</span><span style="color: rgb(175,0,0)">&#39;</span>, <span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">min</span><span style="color: rgb(175,0,0)">&#39;</span>], output<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">point_buf</span><span style="color: rgb(175,0,0)">&#39;</span>, oformat<span style="color: rgb(98,98,98)">=</span><span style="color: rgb(175,0,0)">&#39;</span><span style="color: rgb(175,0,0)">Memory</span><span style="color: rgb(175,0,0)">&#39;</span>, srcnodata <span style="color: rgb(98,98,98)">=</span> <span style="color: rgb(98,98,98)">-</span><span style="color: rgb(98,98,98)">1</span>, buffer <span style="color: rgb(98,98,98)">=</span> buffer)
 <span class="ansi-green-intense-fg ansi-bold">      3</span> pd<span style="color: rgb(98,98,98)">.</span>DataFrame(extracted5<span style="color: rgb(98,98,98)">.</span>dict())
@@ -2260,7 +2524,7 @@ Cell <span class="ansi-green-fg">In[47], line 1</span>
 </div>
 <p><strong>Remove all the output</strong></p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
