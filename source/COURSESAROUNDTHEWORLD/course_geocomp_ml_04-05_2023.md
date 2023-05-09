@@ -427,7 +427,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* The framework of learning algorithms
 	
 * Example of Supervised learning using scikit-learn in python.
-	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred.html) (SVM)(F.)
+	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred_2023.html) (SVM)(F.)
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
 	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.)
@@ -446,7 +446,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* Minimizing loss functions
 	* Regularization
 
-* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
+* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred_2023.html)
 	* The universal approximator
 	* Intro to optimizers 
 	* Hands-on tutorial
