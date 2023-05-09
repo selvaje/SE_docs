@@ -407,6 +407,10 @@ Rather the second part (49:45 - until the end) is the real pyjeo lectures.
 ## Lecture 10: 5th of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/nww5jGtTNUl90Zu34OCVz2sO-RWnlA9Pf8_IqGe4fNOszwgcS0L1135GvouuGxwC.T8KlsTSIutrvO9iV). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+Always do the git pull to get the new scripts.
+
 * pyjeo
 	* [Performing raster and vector operations in Python using pyjeo](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html)
 
