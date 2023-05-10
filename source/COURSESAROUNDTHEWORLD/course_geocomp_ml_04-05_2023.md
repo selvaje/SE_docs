@@ -419,7 +419,7 @@ Always do the git pull to get the new scripts.
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
+* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) [Video recording](https://youtu.be/x1AEagMyIe0?t=5220))
 
 * [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20230510_GeoComp_IntroML_SVM.pdf) (F.)
 	* Defining learning 
@@ -430,7 +430,7 @@ In this class we will set the main fundamentals to implement machine learning in
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred_2023.html) (SVM)(F.)
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
-	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.)
+	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) [Video recording](https://youtu.be/DlxlqCXhY7I?t=4780)
 		* Random Forest basic concept
 		* Avoid random forest over-fitting
 		* Optimization of RF
