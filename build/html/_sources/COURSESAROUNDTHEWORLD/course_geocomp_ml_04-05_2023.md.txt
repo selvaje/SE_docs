@@ -431,7 +431,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 	* The framework of learning algorithms
 	
 * Example of Supervised learning using scikit-learn in python.
-	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred_2023.html) (SVM)(F.)
+	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html) (SVM)(F.)
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
 	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
@@ -444,7 +444,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
 * Example of Supervised learning using scikit-learn in python.
-	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred_2023.html) (SVM)(F.)
+	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html) (SVM)(F.)
 	    * jupther-notebook Tree_Height_04SVM_pred_2023.ipynb 
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
