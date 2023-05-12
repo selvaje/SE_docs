@@ -443,9 +443,10 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 ## Lecture 12: 12th of May, 2023.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZIG72BDwKOGhpKpIvCzxu7LtZa-z-kDkrhvZaqjToIoQ9OcxO16pVDJgyZYQD3Kd.OImkOUSE7eJpl5ot). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
 * Example of Supervised learning using scikit-learn in python.
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html) (SVM)(F.)
-	    * jupther-notebook Tree_Height_04SVM_pred_2023.ipynb 
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
 
@@ -455,15 +456,13 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 	* Minimizing loss functions
 	* Regularization
 
+## Lecture 13: 17th of May, 2023.
+### Machine Learning -  Perceptron (Antonio Fonseca)
+
 * [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_pred_2023.html)
 	* The universal approximator
 	* Intro to optimizers 
 	* Hands-on tutorial
-	
-
-## Lecture 13: 17th of May, 2023.
-### Machine Learning -  Perceptron (Antonio Fonseca)
-
 
 * Perceptron 
 	* Quick recap
