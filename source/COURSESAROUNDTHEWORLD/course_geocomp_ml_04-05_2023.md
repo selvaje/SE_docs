@@ -443,6 +443,11 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 ## Lecture 12: 12th of May, 2023.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
+* Example of Supervised learning using scikit-learn in python.
+	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02SVM_pred_2023.html) (SVM)(F.)
+	    * jupther-notebook Tree_Height_04SVM_pred_2023.ipynb 
+		* Optimization of SVM
+		* Extension of SVM to regression (SVR)
 
 * [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lect_20230512_GeoComp_Perceptron.pdf)
 	* Links between SVM and Logistic Regression 
@@ -450,7 +455,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 	* Minimizing loss functions
 	* Regularization
 
-* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred_2023.html)
+* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_pred_2023.html)
 	* The universal approximator
 	* Intro to optimizers 
 	* Hands-on tutorial
