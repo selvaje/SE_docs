@@ -459,15 +459,17 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZIG72BDwKOGh
 ## Lecture 13: 17th of May, 2023.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-* [Perceptron](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_pred_2023.html)
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8mZ-30cAEQK5aPyEaFCQgq_J592BBs2UyeUeei-0D-DLgJI_pQLXa.VWjKjwXo6Z5AlUyI). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+
+* [Perceptron and neural network](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
+
 	* The universal approximator
 	* Intro to optimizers 
-	* Hands-on tutorial
-
-* Perceptron 
-	* Quick recap
-	* [Hands-on tutorial](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04Perceptron_pred.html)
 	* Intro to gradient descent and optimizers
+
+* [Perceptron introduction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2023.html)
+
+* [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2023.ipyn)
 
 ## Lecture 14: 19th of May, 2023.
 ### Machine Learning - Multi-layer Perceptron (Antonio Fonseca)
