@@ -469,7 +469,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8
 
 * [Perceptron introduction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2023.html)
 
-* [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2023.ipyn)
+* [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2023.html)
 
 ## Lecture 14: 19th of May, 2023.
 ### Machine Learning - Multi-layer Perceptron (Antonio Fonseca)
