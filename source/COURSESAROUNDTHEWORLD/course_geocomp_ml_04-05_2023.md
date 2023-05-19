@@ -376,8 +376,8 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
-* rasterio
-
+* [Raseterio introduction](http://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html)
+* [Estimation of tree height using GEDI dataset - Predictors extraction at point location](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
 	
 ## Catch-up session 1: 25th of April, 2023
 
@@ -472,14 +472,14 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8
 * [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2023.html)
 
 ## Lecture 14: 19th of May, 2023.
-### Machine Learning - Multi-layer Perceptron (Antonio Fonseca)
+### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic2M382g5eZ3QGP0aFdINYyBQ93tWU9zhIHnDZcjj9K0sbmJTAg3L7.IUlXKd1eEmsdjlGq). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
-* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
-	* The limitations of Perceptrons 
-	* Multi-layer Perceptron
-	* [Training: the forward and back-propagation](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05NeuralNets_pred.html)
-	
+* [Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
+  * Forward Propagation
+  * Back Propagation
+* [Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2023](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2023.html)
 
 ## Lecture 15: 24th of May, 2023.
 ### Machine Learning - Capacity, Overfitting and Underfitting (Antonio Fonseca)
