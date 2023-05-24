@@ -482,10 +482,11 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic
 * [Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2023](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2023.html)
 
 ## Lecture 15: 24th of May, 2023.
-### Machine Learning - Capacity, Overfitting and Underfitting (Antonio Fonseca)
+### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/pYnDxnw498ykeUQANhcGCMn_cwWGF1ijS4d-3y9mN_S8k9K37eKhZga37oD4z12R.WxX4pPKxAv6A6dL9). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
-* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230524_GeoComp_NeuralNets_3_CNNs.pdf)
+* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230524_GeoComp_NeuralNets_CNNs.pdf)
 	* Quick recap
 	* Extra regularization techniques
 	* Capacity, Overfitting and Underfitting
@@ -493,11 +494,10 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic
 	* Family of optimizers
 	* Tutorial: more features and different optimizers
 
-* [Interpretability in Neural Nets](http://spatial-ecology.net/docs/build/html/CASESTUDY/NNs_pt3_SHAP.html)
-	* SHAP and saliency maps
-	* Tutorial: inspect the importance of features in the tree height dataset.
-
-* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
+* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_2023.html)
+	* Kernels, padding, pooling
+	* Classification tasks
+	* Tutorial: data batching, classification of satellite images
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
@@ -506,8 +506,5 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic
 ### Machine Learning - Convolutional Neural Networks (Antonio Fonseca)
 
 
-* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite.html)
-	* Kernels, padding, pooling
-	* Classification tasks
-	* Tutorial: data batching, classification of satellite images
+
 
