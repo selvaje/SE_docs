@@ -503,8 +503,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/pYnDxnw498yk
 	* Tutorial: data batching, classification of satellite images
 
 ## Lecture 16: 26th of May, 2023.
-### Machine Learning - Convolutional Neural Networks (Antonio Fonseca)
+### Machine Learning - Papers discussion (Antonio Fonseca)
 
-
-
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/asnWRfagfx2rv__3WfgJjRpL2CHyAHiCOpMcLNLLLInEnKcVWohjBhxtXukUg_S4.2T99AZXF6ydEQmXy). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
