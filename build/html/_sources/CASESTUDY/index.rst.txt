@@ -31,3 +31,6 @@
    CNN_satelite_2022.ipynb
    CNN_satelite_2023.ipynb
    LSTMs_tutorial.ipynb
+   CNN_satelite_with_GPT_code_2023.ipynb
+   Classification_pyjeo_sklearn_2023.ipynb
+   GEEviaPython_2023.ipynb

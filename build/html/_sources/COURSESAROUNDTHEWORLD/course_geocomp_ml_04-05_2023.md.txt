@@ -423,7 +423,7 @@ Recorded lecture can be found [here](https://youtu.be/x_5QpmQtWIQ?si=RcVAp-z3O0B
 ## Lecture 12: 12th of May, 2023.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=12).
+Recorded lecture can be found [here](https://youtu.be/923iugllDF0?si=7BueM2JAPbYBJg0k).
 
 * Example of Supervised learning using scikit-learn in python.
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html) (SVM)(F.)
@@ -486,4 +486,35 @@ Recorded lecture can be found [here](https://youtu.be/28QnxspZwFg?si=8G1clFPt6gm
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://youtu.be/4Vq_PINaTE8?si=XDqUhCDQS8KUBjqc).
+
+## Lecture 17: 6th of June, 2023.
+In presence week in Matera, Italy
+
+### Using GPT (Antonio Fonseca)
+
+Recorded lecture can be found [here](https://youtu.be/nffKt6GdLXw).
+
+* [Using GPT as your coding partner](http://spatial-ecology.net/docs/source/lectures/lect_20230606_GPT_for_coding.pdf)
+	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2023.ipynb)
+
+## Lecture 18: 6th of June, 2023.
+In presence week in Matera, Italy
+
+### Pyjeo in combination with sklearn (Pieter Kempeneers)
+
+Recorded lecture can be found [here](https://youtu.be/udQAO2JimTc).
+
+* Classification in python using pyjeo and sklearn
+	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/Classification_pyjeo_sklearn_2023.ipynb)
+
+
+## Lecture 19: 6th of June, 2023.
+In presence week in Matera, Italy
+
+### Google Earth Engine (GEE) (Francesco Lovergine)
+
+Recorded lecture can be found [here](https://youtu.be/n4zgNY41LgM).
+
+* Use of GEE with Javascripts and python buinding.
+	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2023.ipynb)
 
