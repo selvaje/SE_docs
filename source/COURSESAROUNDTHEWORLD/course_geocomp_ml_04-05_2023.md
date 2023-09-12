@@ -495,7 +495,7 @@ In presence week in Matera, Italy
 Recorded lecture can be found [here](https://youtu.be/nffKt6GdLXw).
 
 * [Using GPT as your coding partner](http://spatial-ecology.net/docs/source/lectures/lect_20230606_GPT_for_coding.pdf)
-	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2023.ipynb)
+	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2023.ipynb)
 
 ## Lecture 18: 6th of June, 2023.
 In presence week in Matera, Italy
@@ -505,7 +505,7 @@ In presence week in Matera, Italy
 Recorded lecture can be found [here](https://youtu.be/udQAO2JimTc).
 
 * Classification in python using pyjeo and sklearn
-	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/Classification_pyjeo_sklearn_2023.ipynb)
+	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/Classification_pyjeo_sklearn_2023.ipynb)
 
 
 ## Lecture 19: 6th of June, 2023.
@@ -516,5 +516,5 @@ In presence week in Matera, Italy
 Recorded lecture can be found [here](https://youtu.be/n4zgNY41LgM).
 
 * Use of GEE with Javascripts and python buinding.
-	* [Hands on]((http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2023.ipynb)
+	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2023.ipynb)
 
