@@ -15,7 +15,6 @@
 Classes zoom link:  
 [https://yale.zoom.us/j/91607041228?pwd=eUJuaWozcnFRRXFIQzVwV2lhKzNLdz09](https://yale.zoom.us/j/91607041228?pwd=eUJuaWozcnFRRXFIQzVwV2lhKzNLdz09)
 
-Password has been sent by e-mail on March 27.  
 
 **In presence: June, one week in Matera, Italy** 
 
@@ -44,8 +43,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/u3u_VHXjvGLktYsfxDsflrEYP3UzqGPrAvTcbul5lMX_AOir1lWl7az7wUok2Q1K.hPy7MRIuHwySA5pA).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=1).
 
 Time below in CEST
 
@@ -75,8 +73,7 @@ Time below in CEST
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/SrXTi8g-ygdPFCRh4k1At3qxgH5PPfj7S5fxZZwuUV95sI3qGqFuL-hZhutoXMMc._8UE2x-zvOdUUGjE).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=1).
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
@@ -113,8 +110,6 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/RhaTbFABDTBo7zhi0VHfecRfv5yfM0UVCcK-w7mSGo_JCiAcZSV3w6UQJLho3EKf.B78PL64nVHMVMtog).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
-
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -250,7 +245,6 @@ done
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/b0qfZWugKjMElRq6a9-buYuiu9siwRovcP8uXc8HjHFXnp10ydavXrhqrvaoMOR5.dpFjs40DfNstB22J).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -282,8 +276,6 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZSSyCbfx1xY6vSqIYVFAQF8vb0tNYGegGXfk8RoteuQz2aMzJDN5EOhcWFgaDz-Q.XarlhTclEu1pL76u).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
-
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -319,7 +311,6 @@ Below, some suggestions of possible operations:
 
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/-u44RxvH7PImGPDgmL6Hh_MI8WKVM-x7O9FzaZ8RGnBWm_Mw3TktfSJvFk7P3jpI.wRhLBqy17FXAY6mc).
-Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -346,7 +337,7 @@ Before the 18th of April, 2023, watch the "Manipulate Landsat data with GDAL and
 
 [Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs)
 
-Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/_arKIL_6JB4kYm9cWksPDJsnu4ayjo_DYkXMXMwbAWGtV74hNcLY03fC52kvlT3n.jxhulUwUxJojg9fN). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/_arKIL_6JB4kYm9cWksPDJsnu4ayjo_DYkXMXMwbAWGtV74hNcLY03fC52kvlT3n.jxhulUwUxJojg9fN). 
 
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
@@ -374,7 +365,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 20th of April, 2023.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6WtXltgDMQmBzHQEpqo_9Z75yJd8Bf2XFfoZazwkfPpyD97p9qw8c9_LZaBz59DC.QKnz85cPa6roBPAf). 
 
 * [Raseterio introduction](http://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html)
 * [Estimation of tree height using GEDI dataset - Predictors extraction at point location](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
@@ -395,7 +386,7 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/nGPLFnJNJy
 ### Geospatial python (Pieter Kempeneers)
 
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aP2swAhhMT2gzsmmSFUc2bFwPqUbfinvQX_PuS7NmqER_7ffmxdtr0c7nHm7wLnd.ySGdfud0ZG9Ocw66). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aP2swAhhMT2gzsmmSFUc2bFwPqUbfinvQX_PuS7NmqER_7ffmxdtr0c7nHm7wLnd.ySGdfud0ZG9Ocw66). 
 
 The first part of the video recording (00:00 - 49:45) has been dedicate to trouble shouting the installation of pyjeo (anyway with the new install_pyjeo.sh that you find in the git-repository it should be fine). 
 Rather the second part (49:45 - until the end) is the real pyjeo lectures. 
@@ -407,7 +398,7 @@ Rather the second part (49:45 - until the end) is the real pyjeo lectures.
 ## Lecture 10: 5th of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/nww5jGtTNUl90Zu34OCVz2sO-RWnlA9Pf8_IqGe4fNOszwgcS0L1135GvouuGxwC.T8KlsTSIutrvO9iV). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/nww5jGtTNUl90Zu34OCVz2sO-RWnlA9Pf8_IqGe4fNOszwgcS0L1135GvouuGxwC.T8KlsTSIutrvO9iV). 
 
 Always do the git pull to get the new scripts.
 
@@ -420,8 +411,7 @@ Always do the git pull to get the new scripts.
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fAqxTrWeNFrK125W2XeJM2C7ZpmEkGztVwHeE6UrZIddN6tmxylsU9.dD3HEpr4pu0Ar7MA). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
-
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fAqxTrWeNFrK125W2XeJM2C7ZpmEkGztVwHeE6UrZIddN6tmxylsU9.dD3HEpr4pu0Ar7MA). 
 
 * [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
@@ -443,7 +433,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/OIIq3ZVoK6fA
 ## Lecture 12: 12th of May, 2023.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZIG72BDwKOGhpKpIvCzxu7LtZa-z-kDkrhvZaqjToIoQ9OcxO16pVDJgyZYQD3Kd.OImkOUSE7eJpl5ot). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZIG72BDwKOGhpKpIvCzxu7LtZa-z-kDkrhvZaqjToIoQ9OcxO16pVDJgyZYQD3Kd.OImkOUSE7eJpl5ot). 
 
 * Example of Supervised learning using scikit-learn in python.
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html) (SVM)(F.)
@@ -459,7 +449,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/ZIG72BDwKOGh
 ## Lecture 13: 17th of May, 2023.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8mZ-30cAEQK5aPyEaFCQgq_J592BBs2UyeUeei-0D-DLgJI_pQLXa.VWjKjwXo6Z5AlUyI). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8mZ-30cAEQK5aPyEaFCQgq_J592BBs2UyeUeei-0D-DLgJI_pQLXa.VWjKjwXo6Z5AlUyI). 
 
 * [Perceptron and neural network](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
 
@@ -474,7 +464,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/AYrsDF1MPNm8
 ## Lecture 14: 19th of May, 2023.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic2M382g5eZ3QGP0aFdINYyBQ93tWU9zhIHnDZcjj9K0sbmJTAg3L7.IUlXKd1eEmsdjlGq). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic2M382g5eZ3QGP0aFdINYyBQ93tWU9zhIHnDZcjj9K0sbmJTAg3L7.IUlXKd1eEmsdjlGq). 
 
 * [Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
   * Forward Propagation
@@ -484,7 +474,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/kpJYNqPjG2Ic
 ## Lecture 15: 24th of May, 2023.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/pYnDxnw498ykeUQANhcGCMn_cwWGF1ijS4d-3y9mN_S8k9K37eKhZga37oD4z12R.WxX4pPKxAv6A6dL9). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/pYnDxnw498ykeUQANhcGCMn_cwWGF1ijS4d-3y9mN_S8k9K37eKhZga37oD4z12R.WxX4pPKxAv6A6dL9). 
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230524_GeoComp_NeuralNets_CNNs.pdf)
 	* Quick recap
@@ -505,5 +495,5 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/pYnDxnw498yk
 ## Lecture 16: 26th of May, 2023.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/asnWRfagfx2rv__3WfgJjRpL2CHyAHiCOpMcLNLLLInEnKcVWohjBhxtXukUg_S4.2T99AZXF6ydEQmXy). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/asnWRfagfx2rv__3WfgJjRpL2CHyAHiCOpMcLNLLLInEnKcVWohjBhxtXukUg_S4.2T99AZXF6ydEQmXy). 
 
