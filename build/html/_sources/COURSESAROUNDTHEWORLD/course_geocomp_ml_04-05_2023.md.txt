@@ -42,7 +42,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=1).
+Recorded lecture can be found [here](https://youtu.be/4BaS-mmQhOQ?si=MIMhr-FcizX9GUG1).
 
 Time below in CEST
 
@@ -72,7 +72,7 @@ Time below in CEST
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=2).
+Recorded lecture can be found [here](https://youtu.be/Bi6NgkbYZBg?si=0asCXLGz1BZRvv5J).
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
@@ -108,7 +108,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: 4th of April, 2023.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=3).
+Recorded lecture can be found [here](https://youtu.be/z8uuvPdXVqA?si=5PxmhtrbSL50fIOa).
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -236,14 +236,10 @@ done
 ---
 
 
-
-
-
-
 ## Lecture 4: 6th of April, 2023.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=4).
+Recorded lecture can be found [here](https://youtu.be/pBakH2DlBU0?si=xd_wAltX5U-aB4n2).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -274,7 +270,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: 11th of April, 2023.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=5).
+Recorded lecture can be found [here](https://youtu.be/s-WLwHn1544?si=SXUh7SE_flR_0BiT).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -308,7 +304,7 @@ Below, some suggestions of possible operations:
 ## Lecture 6: 13st of April, 2023.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=6).
+Recorded lecture can be found [here](https://youtu.be/ZSWsBENWtgc?si=a6fupvRyQLqGPrSs).
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -335,7 +331,7 @@ Before the 18th of April, 2023, watch the "Manipulate Landsat data with GDAL and
 
 [Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs)
 
-Recorded of the QA can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=7).
+Recorded of the QA can be found [here](https://youtu.be/BSgV05oPzNQ?si=h1-D-jpbQiBm-REk).
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
@@ -361,7 +357,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: 20th of April, 2023.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=8). 
+Recorded lecture can be found [here](https://youtu.be/kpoMaOAtGc4?si=0POujgKJnZ09_7Ij). 
 
 * [Raseterio introduction](http://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html)
 * [Estimation of tree height using GEDI dataset - Predictors extraction at point location](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
@@ -381,8 +377,7 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/nGPLFnJNJy
 ## Lecture 9: 3nd of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
-
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=9). 
+Recorded lecture can be found [here](https://youtu.be/uTpUj0VhEJw?si=A7-VWS59kXvXlusZ). 
 
 The first part of the video recording (00:00 - 49:45) has been dedicate to trouble shouting the installation of pyjeo (anyway with the new install_pyjeo.sh that you find in the git-repository it should be fine). 
 Rather the second part (49:45 - until the end) is the real pyjeo lectures. 
@@ -394,7 +389,7 @@ Rather the second part (49:45 - until the end) is the real pyjeo lectures.
 ## Lecture 10: 5th of May, 2023.
 ### Geospatial python (Pieter Kempeneers)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/nww5jGtTNUl90Zu34OCVz2sO-RWnlA9Pf8_IqGe4fNOszwgcS0L1135GvouuGxwC.T8KlsTSIutrvO9iV). 
+Recorded lecture can be found [here](https://youtu.be/9oGk4Hp1v5k?si=Xf1qA8ylgdj7xx-L). 
 
 Always do the git pull to get the new scripts.
 
@@ -406,7 +401,7 @@ Always do the git pull to get the new scripts.
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=11). 
+Recorded lecture can be found [here](https://youtu.be/x_5QpmQtWIQ?si=RcVAp-z3O0BLf2Zm). 
 
 * [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
@@ -444,7 +439,7 @@ Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ
 ## Lecture 13: 17th of May, 2023.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=13).
+Recorded lecture can be found [here](https://youtu.be/-QlMybUCl1U?si=JpeXkFQHKGqmIeYW).
 
 * [Perceptron and neural network](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
 
@@ -459,7 +454,7 @@ Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ
 ## Lecture 14: 19th of May, 2023.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=14).
+Recorded lecture can be found [here](https://youtu.be/l1a5d90jOWs?si=oNQ8kiuWUDwYZk9l).
 
 * [Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf)
   * Forward Propagation
@@ -469,7 +464,7 @@ Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ
 ## Lecture 15: 24th of May, 2023.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=15).
+Recorded lecture can be found [here](https://youtu.be/28QnxspZwFg?si=8G1clFPt6gmDYleD).
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20230524_GeoComp_NeuralNets_CNNs.pdf)
 	* Quick recap
@@ -490,5 +485,5 @@ Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ
 ## Lecture 16: 26th of May, 2023.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://www.youtube.com/watch?v=4BaS-mmQhOQ&list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk&index=16).
+Recorded lecture can be found [here](https://youtu.be/4Vq_PINaTE8?si=XDqUhCDQS8KUBjqc).
 
