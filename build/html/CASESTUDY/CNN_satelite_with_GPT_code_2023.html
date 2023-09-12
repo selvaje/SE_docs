@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Classification in Python using pyjeo and sklearn" href="Classification_pyjeo_sklearn_2023.html" />
-    <link rel="prev" title="The real data" href="LSTMs_tutorial.html" /> 
+    <link rel="prev" title="Use of LSTM for time-series predictions" href="LSTMs_tutorial.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -139,22 +139,12 @@
 <li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Sweeping-with-WandB">Sweeping with WandB</a></li>
-<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-a-smarter-search">Using a smarter search</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html">The real data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#LSTM-for-Regression-Using-the-Window-Method">LSTM for Regression Using the Window Method</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#LSTM-for-Regression-with-Time-Steps">LSTM for Regression with Time Steps</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#LSTM-with-Memory-Between-Batches">LSTM with Memory Between Batches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#Stacked-LSTMs-with-Memory-Between-Batches">Stacked LSTMs with Memory Between Batches</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#Adding-Early-Stopping">Adding Early Stopping</a></li>
-<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html#Multivariate-Time-series---Data">Multivariate Time-series - Data</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Dataset-decription:-SAT">Dataset decription: SAT</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Accessing-GPT-4">Accessing GPT-4</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html">Use of LSTM for time-series predictions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Dataset-decription:-SAT">Dataset decription: SAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Accessing-GPT-4">Accessing GPT-4</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Prompt:-“Can-you-make-me-the-pytorch-implementation-of-a-CNN-to-classify-the-sat-6-full-dataset”">Prompt: “Can you make me the pytorch implementation of a CNN to classify the sat-6-full dataset”</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Prompt:-“Can-you-please-save-the-best-checkpoint-according-to-the-validation-loss-during-training?”">Prompt: “Can you please save the best checkpoint according to the validation loss during training?”</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Prompt:-“Can-you-please-save-the-best-checkpoint-according-to-the-validation-loss-during-training?”">Prompt: “Can you please save the best checkpoint according to the validation loss during training?”</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Prompt:-Can-you-log-accuracy-and-loss-to-wandb-during-training?">Prompt: Can you log accuracy and loss to wandb during training?</a></li>
 </ul>
 </li>
@@ -553,9 +543,8 @@ cuda
 </pre></div></div>
 </div>
 <p>Now that we have an autoencoder working on MNIST, let’s use this model to visualize some geodata. For the next section we will use the SAT-6 (<a class="reference external" href="https://csc.lsu.edu/~saikat/deepsat/">https://csc.lsu.edu/~saikat/deepsat/</a>)</p>
-</section>
 <section id="Dataset-decription:-SAT">
-<h1>Dataset decription: SAT<a class="headerlink" href="#Dataset-decription:-SAT" title="Permalink to this headline"></a></h1>
+<h2>Dataset decription: SAT<a class="headerlink" href="#Dataset-decription:-SAT" title="Permalink to this headline"></a></h2>
 <p>SAT-6 consists of a total of 405,000 image patches each of size 28x28 and covering 6 landcover classes - barren land, trees, grassland, roads, buildings and water bodies. 324,000 images (comprising of four-fifths of the total dataset) were chosen as the training dataset and 81,000 (one fifths) were chosen as the testing dataset. Similar to SAT-4, the training and test sets were selected from disjoint NAIP tiles. Once generated, the images in the dataset were randomized in the same way as that
 for SAT-4. The specifications for the various landcover classes of SAT-4 and SAT-6 were adopted from those used in the National Land Cover Data (NLCD) algorithm.</p>
 <p>The datasets are encoded as MATLAB .mat files that can be read using the standard load command in MATLAB. Each sample image is 28x28 pixels and consists of 4 bands - red, green, blue and near infrared. The training and test labels are 1x4 and 1x6 vectors for SAT-4 and SAT-6 respectively having a single 1 indexing a particular class from 0 through 4 or 6 and 0 values at all other indices.</p>
@@ -569,8 +558,9 @@ for SAT-4. The specifications for the various landcover classes of SAT-4 and SAT
 <p>Labels: - Building = 0 - Barren_land = 1 - Tree=2 - Grassland=3 - Road = 4 - Water = 5</p>
 </section>
 <section id="Accessing-GPT-4">
-<h1>Accessing GPT-4<a class="headerlink" href="#Accessing-GPT-4" title="Permalink to this headline"></a></h1>
+<h2>Accessing GPT-4<a class="headerlink" href="#Accessing-GPT-4" title="Permalink to this headline"></a></h2>
 <p>We will be using <a class="reference external" href="https://www.perplexity.ai/">Perplexity</a> to ask GPT to create code for us. You can create a free account.</p>
+</section>
 <section id="Prompt:-“Can-you-make-me-the-pytorch-implementation-of-a-CNN-to-classify-the-sat-6-full-dataset”">
 <h2><a class="reference external" href="https://www.perplexity.ai/search/368ba448-d6b3-4973-b00b-2950a9128947?s=c">Prompt</a>: “Can you make me the pytorch implementation of a CNN to classify the sat-6-full dataset”<a class="headerlink" href="#Prompt:-“Can-you-make-me-the-pytorch-implementation-of-a-CNN-to-classify-the-sat-6-full-dataset”" title="Permalink to this headline"></a></h2>
 <p>Access the link above to see the full conversation. After a few back and forth iterations, we got the code below. NOTE: I had to fix the permutation myself to put the data in the shape: (samples, channels, width, heigth)</p>
@@ -886,9 +876,8 @@ Accuracy on the test set: 99 %
 </div>
 <p>Ok, 99% of accuracy is not bad at all, but if we want to use this trained model, we will want to save checkpoints based on the validation loss. So let’s ask GPT to do it</p>
 </section>
-</section>
 <section id="Prompt:-“Can-you-please-save-the-best-checkpoint-according-to-the-validation-loss-during-training?”">
-<h1>Prompt: “Can you please save the best checkpoint according to the validation loss during training?”<a class="headerlink" href="#Prompt:-“Can-you-please-save-the-best-checkpoint-according-to-the-validation-loss-during-training?”" title="Permalink to this headline"></a></h1>
+<h2>Prompt: “Can you please save the best checkpoint according to the validation loss during training?”<a class="headerlink" href="#Prompt:-“Can-you-please-save-the-best-checkpoint-according-to-the-validation-loss-during-training?”" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
@@ -1259,6 +1248,7 @@ Accuracy on the test set: 98 %
 </pre></div></div>
 </div>
 <p>It would be nice to have these logs plotted to wandb. Let’s ask GPT to do that for us.</p>
+</section>
 <section id="Prompt:-Can-you-log-accuracy-and-loss-to-wandb-during-training?">
 <h2>Prompt: Can you log accuracy and loss to wandb during training?<a class="headerlink" href="#Prompt:-Can-you-log-accuracy-and-loss-to-wandb-during-training?" title="Permalink to this headline"></a></h2>
 <div class="nbinput nblast docutils container">
@@ -1654,7 +1644,7 @@ x_test.shape:  torch.Size([64, 4, 28, 28])
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_CNN_satelite_with_GPT_code_2023_24_1.png" src="../_images/CASESTUDY_CNN_satelite_with_GPT_code_2023_24_1.png" />
+<img alt="../_images/CASESTUDY_CNN_satelite_with_GPT_code_2023_26_1.png" src="../_images/CASESTUDY_CNN_satelite_with_GPT_code_2023_26_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1673,7 +1663,7 @@ x_test.shape:  torch.Size([64, 4, 28, 28])
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="LSTMs_tutorial.html" class="btn btn-neutral float-left" title="The real data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="LSTMs_tutorial.html" class="btn btn-neutral float-left" title="Use of LSTM for time-series predictions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="Classification_pyjeo_sklearn_2023.html" class="btn btn-neutral float-right" title="Classification in Python using pyjeo and sklearn" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
