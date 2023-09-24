@@ -3,7 +3,7 @@
 
 (Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
 
-**Online teaching: April and May 2024, 10 weeks**
+**Online teaching: April and May 2024, 9 weeks**
 
 
 * Start lecturing: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
@@ -13,7 +13,7 @@
 * End lecturing: 30 May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 
 
-**In presence: June 10-14, one week in Matera, Italy** 
+**In-person week: June 10-14, coding hackathon in Matera, Italy** 
 
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 
@@ -28,7 +28,45 @@ In this course, students will be introduced to an array of powerful open-source 
 
   - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024_foto/course_geocomp_ml_04-05_2024_roster.html)
 
-### Syllabus ###
+---
+
+### Syllabus overview ###
+
+
+<table>
+    <tr>
+        <td>Subject</td>
+        <td>n. lectures</td>
+    </tr>
+    <tr>
+        <td>LINUX:</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>BASH/AWK:</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>GDAL/PKTOOLS:  </td>
+        <td>4</td>
+    </tr>
+    <tr>
+        <td>GEO-PYTHON:</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>GRASS:</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>ML:</td>
+        <td>6</td>
+    </tr>
+</table>
+
+---
+
+### Detailed syllabus ###
 
 Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
 
@@ -500,18 +538,23 @@ Recorded lecture can be found [here]().
 
 
 ## Lecture 18: Wednesday, 22nd of May, 2024.
-### Hydrology analysis using GRASS (Giuseppe Amatulli)
+### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Compute flow accumulation 
 		* Extract stream network and delineate basins
-		* r.stream.* add-on 
+		* r.stream.* add-ons
 
 ## Lecture 19:  Thursday, 30th of May, 2024.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
 
+
+## In-person week: June 10-14, coding hackathon in Matera, Italy
+
+
+<!---
 ## Lecture 17: 6th of June, 2024.
 In presence week in Matera, Italy
 
@@ -543,3 +586,4 @@ Recorded lecture can be found [here]().
 * Use of GEE with Javascripts and python buinding.
 	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2024.html)
 
+--->
