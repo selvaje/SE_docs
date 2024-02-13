@@ -30,10 +30,23 @@ contains 26 subfolders labelled in accordance to the geomorphometry layer name (
 
 Global visualization of the 250m is visible at [OpenLandMap.org](ttps://openlandmap.org/) under Relief/Geology Item, starting from 1.7 Cosine of the aspect. All the data layers are distributed under: [Creative Commons Attribution 4.0 International](https://creativecommons.org/licenses/by/4.0/). The download can be done by clicking procedure or by command line scripting routine. The last one can be achieved by [https://rclone.org](https://rclone.org) by following the Google Drive procedure authentification at [https://rclone.org/drive/](https://rclone.org/drive/). You will need to authenticate reclone with your Google Drive account and then share the geomorphometry_v.1.0 folder with your own Google Drive. Afterwards, you will be able to mount your Google Drive and access directly to the geomorphometry_v.1.0 archive. You will need a fast connection to download the full archive. The download of the 90m resolution in WGS84 can be also done from [www.opentopography.org](https://portal.opentopography.org/dataspace/dataset?opentopoID=OTDS.012020.4326.1). Using the [opentopography_tiles.txt](http://spatial-ecology.net/docs/source/GEODATA/geomorpho90m/opentopography_tiles.txt) it possible to download the full globe. 
 
+
+
+    ### list the files 
+    aws s3 ls   s3://dataspace/OTDS.012020.4326.1/raster/aspect-cosine/    --endpoint-url https://opentopography.s3.sdsc.edu --no-sign-request
+
+    ### download a single file
+    aws s3 cp  s3://dataspace/OTDS.012020.4326.1/raster/aspect-cosine/aspect-cosine_90M_s60w180.tar.gz   .     --endpoint-url https://opentopography.s3.sdsc.edu --no-sign-request 
+
+    ### downlad the tile list
     wget http://spatial-ecology.net/docs/source/GEODATA/geomorpho90m/opentopography_tiles.txt
+
+    ### download all the tiles from the aspect-cosine repository 
     for tile in $(cat opentopography_tiles.txt); do
-    wget https://cloud.sdsc.edu/v1/AUTH_opentopography/hosted_data/OTDS.012020.4326.1/raster/aspect-cosine/aspect-cosine_90M_$tile.tar.gz
+    aws s3 cp  s3://dataspace/OTDS.012020.4326.1/raster/aspect-cosine/aspect-cosine_90M_$tile.tar.gz .  --endpoint-url https://opentopography.s3.sdsc.edu --no-sign-request
     done
+
+
 
 **Tiling System under WGS84 Geographic Coordinate System**
 
