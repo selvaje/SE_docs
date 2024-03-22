@@ -34,26 +34,25 @@ Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](h
 
 Lunch Virtualbox from OS and follow the below instructions. 
 
-![title](Installation_vm_osgeo-live15_p0.png)
-![title](Installation_vm_osgeo-live15_p1.png)
-![title](Installation_vm_osgeo-live15_p2.png)
-![title](Installation_vm_osgeo-live15_p3.png)
-![title](Installation_vm_osgeo-live15_p4.png)
-![title](Installation_vm_osgeo-live15_p5.png)
-![title](Installation_vm_osgeo-live15_p6.png)
-![title](Installation_vm_osgeo-live15_p7.png)
-![title](Installation_vm_osgeo-live15_p8.png)
-![title](Installation_vm_osgeo-live15_p9.png)
-![title](Installation_vm_osgeo-live15_p10.png)
-![title](Installation_vm_osgeo-live15_p11.png)
-![title](Installation_vm_osgeo-live15_p12.png)
-
+![title](Installation_vm_osgeo-live16_p0.png)
+![title](Installation_vm_osgeo-live16_p1.png)
+![title](Installation_vm_osgeo-live16_p2.png)
+![title](Installation_vm_osgeo-live16_p3.png)
+![title](Installation_vm_osgeo-live16_p4.png)
+![title](Installation_vm_osgeo-live16_p5.png)
+![title](Installation_vm_osgeo-live16_p6.png)
+![title](Installation_vm_osgeo-live16_p7.png)
+![title](Installation_vm_osgeo-live16_p8.png)
+![title](Installation_vm_osgeo-live16_p9.png)
+![title](Installation_vm_osgeo-live16_p10.png)
+![title](Installation_vm_osgeo-live16_p11.png)
+![title](Installation_vm_osgeo-live16_p12.png)
 
 ### Test your OSGeoLive Virtual Machine
 
 If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
-![title](Installation_vm_osgeo-live15_p13.png)
+![title](Installation_vm_osgeo-live16_p13.png)
 
 If the OSGeoLive start with a black screen with a "kernel panic message" means that there are still some settings that are not allowing the virtualization. 
 This [page](https://techcult.com/enable-virtualization-windows-10/) is a good tutorial for solving the issues in Windows-10 and [this one](https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11) for Windows-11. 
@@ -83,7 +82,16 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt update      # update the repositories
     sudo apt upgrade -y  # installation of the sw
     sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
+    sudo apt autoremove -y
 
+
+
+    sudo apt-get install virtualbox-guest-additions-iso
+    sudo mkdir -p /media/user/VBox_GAs 
+    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/    VBox_GAs
+    cd /media/user/VBox_GAs
+    sudo chmod 777 ./VBoxLinuxAdditions.run 
+    sudo ./VBoxLinuxAdditions.run
 
 ## Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine
 
@@ -96,13 +104,13 @@ If you still have issues after the reboot, there are mainly two options:
 
 **Skip this part if everything is working fine (go directly to [Test your shared folder](https://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html#test-your-shared-folder))**  
 
-### Re-install the Virtual Box guest edition
+### Re-install the Virtual Box guest edition with the GUI
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
 
 From the Virtualbox menu press Device > Insert Guest Addition CD image
 
-If during the installation some screen pop-up asking some question just accept the default option.
+If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install " Virtual Box guest edition with the CL" (see below). 
 
 The download procedure will start and a screen will pop up:
 
@@ -118,9 +126,31 @@ Open the terminal and type:
 At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
 
 
+### Re-install the Virtual Box guest edition with the CL 
+
+If for some reason you were not able to install "Virtual Box guest edition with the GUI" you can try with the "Virtual Box guest edition with the CL". 
+
+
+    sudo apt-get install virtualbox-guest-additions-iso
+    sudo mkdir -p /media/user/VBox_GAs 
+    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/    VBox_GAs
+    cd /media/user/VBox_GAs
+    sudo chmod 777 ./VBoxLinuxAdditions.run 
+    sudo ./VBoxLinuxAdditions.run
+
+At this point you can reboot.
+
+Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
+
+Use lsmod from the command line, as it will tell you not only if it's installed, but properly loaded:
+
+    lsmod | grep vboxguest 
+
+vboxguest    57344  6 vboxsf   # the number can be different
+
 ### Use "arandr" for setting a customized resolution
 
-For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr".
+For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr". Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
 
 Open the terminal and type:
 
@@ -244,13 +274,26 @@ Remember always to work on */media/sf_LVM_shared/my_SE_data*
 
 ---
 
-If for any reason the the *git pull* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
+If for any reason the *git pull* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
 
     cd /home/user
     rm -ry /home/user/SE_data
     git clone https://github.com/selvaje/SE_data
     rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
+
+
+## Install jupyter lab
+
+We are going to use jupyter lab as main scripting editor. Here how to install 
+
+
+    pip3 install -U jupyterlab
+
+Test jupyter lab
+
+    jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
+
 
 <!---
 

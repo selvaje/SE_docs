@@ -78,7 +78,8 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine">Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition">Re-install the Virtual Box guest edition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition-with-the-gui">Re-install the Virtual Box guest edition with the GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition-with-the-cl">Re-install the Virtual Box guest edition with the CL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-arandr-for-setting-a-customized-resolution">Use “arandr” for setting a customized resolution</a></li>
 </ul>
 </li>
@@ -89,6 +90,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#git-settings">Git Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-jupyter-lab">Install jupyter lab</a></li>
 </ul>
 </li>
 </ul>
@@ -274,24 +276,24 @@
 <section id="install-osgeolive-inside-virtualbox">
 <h3>Install OSGeoLive inside Virtualbox<a class="headerlink" href="#install-osgeolive-inside-virtualbox" title="Permalink to this headline"></a></h3>
 <p>Lunch Virtualbox from OS and follow the below instructions.</p>
-<p><img alt="title" src="../_images/Installation_vm_osgeo-live15_p0.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p1.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p2.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p3.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p4.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p5.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p6.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p7.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p8.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p9.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p10.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p11.png" />
-<img alt="title" src="../_images/Installation_vm_osgeo-live15_p12.png" /></p>
+<p><img alt="title" src="../_images/Installation_vm_osgeo-live16_p0.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p1.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p2.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p3.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p4.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p5.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p6.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p7.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p8.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p9.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p10.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p11.png" />
+<img alt="title" src="../_images/Installation_vm_osgeo-live16_p12.png" /></p>
 </section>
 <section id="test-your-osgeolive-virtual-machine">
 <h3>Test your OSGeoLive Virtual Machine<a class="headerlink" href="#test-your-osgeolive-virtual-machine" title="Permalink to this headline"></a></h3>
 <p>If you follow all the steps correctly the OSGeoLive Virtual Machine you should pop-up in the Virtual Box window showing something like this:</p>
-<p><img alt="title" src="../_images/Installation_vm_osgeo-live15_p13.png" /></p>
+<p><img alt="title" src="../_images/Installation_vm_osgeo-live16_p13.png" /></p>
 <p>If the OSGeoLive start with a black screen with a “kernel panic message” means that there are still some settings that are not allowing the virtualization.
 This <a class="reference external" href="https://techcult.com/enable-virtualization-windows-10/">page</a> is a good tutorial for solving the issues in Windows-10 and <a class="reference external" href="https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11">this one</a> for Windows-11.</p>
 </section>
@@ -312,6 +314,16 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>      <span class="c1"># update the repositories</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>  <span class="c1"># installation of the sw</span>
 <span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">linux</span><span class="o">-</span><span class="n">generic</span> <span class="n">linux</span><span class="o">-</span><span class="n">headers</span><span class="o">-</span><span class="n">generic</span> <span class="n">linux</span><span class="o">-</span><span class="n">image</span><span class="o">-</span><span class="n">generic</span> <span class="c1"># install the &quot;The following packages have been kept back:&quot;</span>
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">autoremove</span> <span class="o">-</span><span class="n">y</span>
+
+
+
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualbox</span><span class="o">-</span><span class="n">guest</span><span class="o">-</span><span class="n">additions</span><span class="o">-</span><span class="n">iso</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs</span> 
+<span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">loop</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">VBoxGuestAdditions</span><span class="o">.</span><span class="n">iso</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span>    <span class="n">VBox_GAs</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">777</span> <span class="o">./</span><span class="n">VBoxLinuxAdditions</span><span class="o">.</span><span class="n">run</span> 
+<span class="n">sudo</span> <span class="o">./</span><span class="n">VBoxLinuxAdditions</span><span class="o">.</span><span class="n">run</span>
 </pre></div>
 </div>
 </section>
@@ -325,11 +337,11 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 <li><p>Use “arandr” for setting a customized resolution</p></li>
 </ol>
 <p><strong>Skip this part if everything is working fine (go directly to <a class="reference external" href="https://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html#test-your-shared-folder">Test your shared folder</a>)</strong></p>
-<section id="re-install-the-virtual-box-guest-edition">
-<h3>Re-install the Virtual Box guest edition<a class="headerlink" href="#re-install-the-virtual-box-guest-edition" title="Permalink to this headline"></a></h3>
+<section id="re-install-the-virtual-box-guest-edition-with-the-gui">
+<h3>Re-install the Virtual Box guest edition with the GUI<a class="headerlink" href="#re-install-the-virtual-box-guest-edition-with-the-gui" title="Permalink to this headline"></a></h3>
 <p>Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below.</p>
 <p>From the Virtualbox menu press Device &gt; Insert Guest Addition CD image</p>
-<p>If during the installation some screen pop-up asking some question just accept the default option.</p>
+<p>If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install “ Virtual Box guest edition with the CL” (see below).</p>
 <p>The download procedure will start and a screen will pop up:</p>
 <p>pres “cancel”.</p>
 <p><img alt="title" src="../_images/GuestAddition2.png" /></p>
@@ -340,9 +352,28 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 </div>
 <p>At this point you can reboot your machine. Now all screen setting, screen scale (View -&gt; Auto-resize Guest Display) and drag/drop should work properly.</p>
 </section>
+<section id="re-install-the-virtual-box-guest-edition-with-the-cl">
+<h3>Re-install the Virtual Box guest edition with the CL<a class="headerlink" href="#re-install-the-virtual-box-guest-edition-with-the-cl" title="Permalink to this headline"></a></h3>
+<p>If for some reason you were not able to install “Virtual Box guest edition with the GUI” you can try with the “Virtual Box guest edition with the CL”.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualbox</span><span class="o">-</span><span class="n">guest</span><span class="o">-</span><span class="n">additions</span><span class="o">-</span><span class="n">iso</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs</span> 
+<span class="n">sudo</span> <span class="n">mount</span> <span class="o">-</span><span class="n">o</span> <span class="n">loop</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">virtualbox</span><span class="o">/</span><span class="n">VBoxGuestAdditions</span><span class="o">.</span><span class="n">iso</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span>    <span class="n">VBox_GAs</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="mi">777</span> <span class="o">./</span><span class="n">VBoxLinuxAdditions</span><span class="o">.</span><span class="n">run</span> 
+<span class="n">sudo</span> <span class="o">./</span><span class="n">VBoxLinuxAdditions</span><span class="o">.</span><span class="n">run</span>
+</pre></div>
+</div>
+<p>At this point you can reboot.</p>
+<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
+<p>Use lsmod from the command line, as it will tell you not only if it’s installed, but properly loaded:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">lsmod</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">vboxguest</span> 
+</pre></div>
+</div>
+<p>vboxguest    57344  6 vboxsf   # the number can be different</p>
+</section>
 <section id="use-arandr-for-setting-a-customized-resolution">
 <h3>Use “arandr” for setting a customized resolution<a class="headerlink" href="#use-arandr-for-setting-a-customized-resolution" title="Permalink to this headline"></a></h3>
-<p>For some OS the “Auto-resize Guest Display” is not working properly. Therefore is possible to select a customized resolution by installing “arandr”.</p>
+<p>For some OS the “Auto-resize Guest Display” is not working properly. Therefore is possible to select a customized resolution by installing “arandr”. Anyway follow this route only if “Virtual Box guest edition” did not solve the problem.</p>
 <p>Open the terminal and type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">arandr</span>
 </pre></div>
@@ -446,12 +477,23 @@ The folder data 'SE\_data' from github will be download and you see under '/home
 </div>
 <p>Now you should be ready to follow the lectures of the Spatial Ecology courses.<br />Remember always to work on <em>/media/sf_LVM_shared/my_SE_data</em></p>
 <hr class="docutils" />
-<p>If for any reason the the <em>git pull</em> commands give a synchronized error you need to remove the <em>/home/user/SE_data</em> and repeat the <em>git clone</em> and <em>rsync</em> operation.</p>
+<p>If for any reason the <em>git pull</em> commands give a synchronized error you need to remove the <em>/home/user/SE_data</em> and repeat the <em>git clone</em> and <em>rsync</em> operation.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span>
 <span class="n">rm</span> <span class="o">-</span><span class="n">ry</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">SE_data</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">selvaje</span><span class="o">/</span><span class="n">SE_data</span>
 <span class="n">rsync</span> <span class="o">-</span><span class="n">hvrPt</span> <span class="o">--</span><span class="n">ignore</span><span class="o">-</span><span class="n">existing</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">SE_data</span><span class="o">/*</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span>
+</pre></div>
+</div>
+</section>
+<section id="install-jupyter-lab">
+<h2>Install jupyter lab<a class="headerlink" href="#install-jupyter-lab" title="Permalink to this headline"></a></h2>
+<p>We are going to use jupyter lab as main scripting editor. Here how to install</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip3</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">jupyterlab</span>
+</pre></div>
+</div>
+<p>Test jupyter lab</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">lab</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grass_hydro</span><span class="o">.</span><span class="n">ipynb</span>
 </pre></div>
 </div>
 <!---
