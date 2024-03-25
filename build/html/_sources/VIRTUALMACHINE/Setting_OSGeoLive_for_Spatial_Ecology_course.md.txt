@@ -28,7 +28,7 @@ Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://w
 ## Install OSGeoLive
 ### Download OSGeoLive
 
-Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 16 so vmdk file is osgeolive-16.0-amd64.vmdk.7z. The osgeolive-16.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-16.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-16.0-amd64.vmdk inside Virtualbox.
+Open you browser and go to [https://download.osgeo.org/livedvd/releases/16.0/](https://download.osgeo.org/livedvd/releases/16.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 16 so vmdk file is osgeolive-16.0-amd64.vmdk.7z. The osgeolive-16.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-16.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-16.0-amd64.vmdk inside Virtualbox.
 
 ### Install OSGeoLive inside Virtualbox
 
