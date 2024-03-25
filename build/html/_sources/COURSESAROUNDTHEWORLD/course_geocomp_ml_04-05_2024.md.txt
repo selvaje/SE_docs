@@ -87,7 +87,7 @@ Time below in CEST
 * 18:10 - 18:25  Longzhu Shen: background/interest & stat/math subjects - supervision role.
 * 18:25 - 18:45  Break
 * 18:40 - 19:20  Students round table + QA of the course. 
-* 19:20 - 19:45  Virtual machine installation review, QA & troubleshooting.
+* 19:20 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
 
 <!---
 
@@ -100,7 +100,20 @@ Time below in CEST
 
 --->
 
-## Lecture 2: Thursday, 4th of March, 2024. 
+
+## Catch-up session 0: Wednesday, 3rd of April, 2024
+
+This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. Be sure that following OSGeoLive 16.0 Virtual Machine features are present: 
+
+* The OSGeoLive 16.0 Virtual Machine internet connection is working fine - open a browser and search for something. 
+* The OSGeoLive 16.0 Virtual Machine screen is wide and you can expand and switch back to your native OS without issues.
+* The shared folder has been correctly installed. Check if the /media/sf_LVM_shared is visible. 
+* The /home/user/SE_data/ has been download and that the /media/sf_LVM_shared/my_SE_data is visible and you can see the sub-folder.
+* The OSGeoLive 16.0 Virtual Machine Keyboard Layout has been set in accordance to your keyboard, and that the letter that you type correspond in what you see. 
+
+If one or more of these features are not working properly show up in the Catch-up session. 
+
+## Lecture 2: Thursday, 4th of April, 2024. 
 ### Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.

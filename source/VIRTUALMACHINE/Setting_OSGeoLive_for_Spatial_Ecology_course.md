@@ -28,7 +28,7 @@ Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://w
 ## Install OSGeoLive
 ### Download OSGeoLive
 
-Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 15 so vmdk file is osgeolive-15.0-amd64.vmdk.7z. The osgeolive-15.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-15.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-15.0-amd64.vmdk inside Virtualbox.
+Open you browser and go to [https://download.osgeo.org/livedvd/releases/15.0/](https://download.osgeo.org/livedvd/releases/15.0/) and proceed to  download the osgeolive-??.0-amd64.vmdk.7z. At the time of writing the last version is 16 so vmdk file is osgeolive-16.0-amd64.vmdk.7z. The osgeolive-16.0-amd64.vmdk.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the osgeolive-16.0-amd64.vmdk.7z. A this point you are ready to load the osgeolive-16.0-amd64.vmdk inside Virtualbox.
 
 ### Install OSGeoLive inside Virtualbox
 
@@ -84,15 +84,6 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
     sudo apt autoremove -y
 
-
-
-    sudo apt-get install virtualbox-guest-additions-iso
-    sudo mkdir -p /media/user/VBox_GAs 
-    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/    VBox_GAs
-    cd /media/user/VBox_GAs
-    sudo chmod 777 ./VBoxLinuxAdditions.run 
-    sudo ./VBoxLinuxAdditions.run
-
 ## Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine
 
 If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot.
@@ -106,7 +97,7 @@ If you still have issues after the reboot, there are mainly two options:
 
 ### Re-install the Virtual Box guest edition with the GUI
 
-Sometime the Virtual Box guest edition is not installed correctly so you have to do the procedure described below. 
+Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below. 
 
 From the Virtualbox menu press Device > Insert Guest Addition CD image
 
@@ -142,7 +133,7 @@ At this point you can reboot.
 
 Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
-Use lsmod from the command line, as it will tell you not only if it's installed, but properly loaded:
+Use *lsmod* from the command line, as it will tell you not only if it's installed, but properly loaded:
 
     lsmod | grep vboxguest 
 
@@ -150,7 +141,7 @@ vboxguest    57344  6 vboxsf   # the number can be different
 
 ### Use "arandr" for setting a customized resolution
 
-For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing "arandr". Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
+For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing *arandr*. Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
 
 Open the terminal and type:
 
@@ -189,7 +180,7 @@ If you get permission denied in accessing '/media/sf_LVM_shared' run this comman
     sudo usermod -a -G vboxsf user
     sudo chown -R user:users /media/sf_LVM_shared
 
-You will need to reboot to make the folder accessible. 
+**You will need to reboot to make the folder accessible.**
 
 ## Populate OSGeoLive with additional software
 ### Install geo-software
@@ -199,7 +190,7 @@ At this point the OSGeoLive Virtual Machine is ready to install additional softw
     wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_additional_sw_data_4SE_courses.sh
     sudo bash ./install_additional_sw_data_4SE_courses.sh
 
-as before the sudo password is **"user"**.
+as before the sudo password is **user**.
 
 ### Test installed additional software
 
@@ -209,7 +200,7 @@ Test [pktools](http://pktools.nongnu.org/html/index.html)
 
     pkfilter --help
  
-You should see the pkfilter manual instructions 
+You should see the pkfilter manual instructions. 
  
 Test [OpenEV](http://openev.sourceforge.net)
  
@@ -234,13 +225,6 @@ You should see the rstudio software pop-up
 The below instructions together with the [Git Setting for the Spatial Ecology courses YouTube video](https://www.youtube.com/watch?v=QzMNHEStG0U&t=6s) can guide along the full procedure to retrieve dataset and material for the courses.   
 
 
-<!---
-The folder data 'SE\_data' from github will be download and you see under '/home/user/SE\_data'. If you have already the folder it will prompt an error: 'fatal: destination path 'SE_data' already exists and is not an empty directory'.
-
-![title](Git_setting_4courses.png)
-
---->
-
 We are going to retrieve dataset and material for the first time using *git clone*.
 
     
@@ -252,7 +236,7 @@ If the download succeed you should see the *SE_data* folder
     ls -l /home/user/SE_data 
 
 Now we need copy the /home/user/SE_data to an independent directory the:  
-*/media/sf_LVM_shared/my_SE_data*
+*/media/sf\_\LVM\_shared/my\_SE\_data*
 
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
@@ -270,7 +254,7 @@ Every time that we need to download more data from the git repository, follow th
     cd /media/sf_LVM_shared/my_SE_data
 
 Now you should be ready to follow the lectures of the Spatial Ecology courses.  
-Remember always to work on */media/sf_LVM_shared/my_SE_data*
+Remember always to work on */media/sf\_LVM\_shared/my\_SE\_data*
 
 ---
 
@@ -294,6 +278,7 @@ Test jupyter lab
 
     jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
 
+Get familiar with the jupyter lab GUI.
 
 <!---
 
