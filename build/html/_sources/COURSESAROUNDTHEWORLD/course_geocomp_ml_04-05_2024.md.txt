@@ -9,8 +9,8 @@
 * Start lecturing: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 * Catch-up session: Tuesday 30 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
 * Catch-up session: Thursday 2 May: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
-* Resume lecturing: 7 May, every **Tuesday, Wednesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* End lecturing: 30 May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* Resume lecturing: 7 May, every **Tuesday, Wednesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
+* End lecturing: 30 May, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
 
 
 **In-person week: June 10-14, coding hackathon in Matera, Italy** 
@@ -400,12 +400,10 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 ## Lecture 8: Thursday, 25th of April, 2024.
-### Geospatial python (Francesco Lovergine)
+### To be defined (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](). 
 
-* [Raseterio introduction](http://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html)
-* [Estimation of tree height using GEDI dataset - Predictors extraction at point location](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
 	
 ## Catch-up session 1: Tuesday, 30th of April, 2024
 
@@ -420,26 +418,16 @@ Students will meet online with the teachers to review past material and solving 
 Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 ## Lecture 9: Tuesday, 7th of May, 2024.
-### Geospatial python (Pieter Kempeneers)
+### Geospatial python (Francesco Lovergine)
 
 Recorded lecture can be found [here](). 
 
-The first part of the video recording (00:00 - 49:45) has been dedicate to trouble shouting the installation of pyjeo (anyway with the new install_pyjeo.sh that you find in the git-repository it should be fine). 
-Rather the second part (49:45 - until the end) is the real pyjeo lectures. 
-
-* pyjeo
-	* [Introduction to pyjeo - Lecture](http://spatial-ecology.net/docs/source/lectures/lect_20240503_pyjeo.pdf)
-	* [Introduction to pyjeo - hands on](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
 
 ## Lecture 10: 9th of May, 2024.
-### Geospatial python (Pieter Kempeneers)
+### Geospatial python (Francesco Lovergine)
 
 Recorded lecture can be found [here](). 
 
-Always do the git pull to get the new scripts.
-
-* pyjeo
-	* [Performing raster and vector operations in Python using pyjeo](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html)
 
 ## Lecture 11: Tuesday, 14th of May, 2024.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)

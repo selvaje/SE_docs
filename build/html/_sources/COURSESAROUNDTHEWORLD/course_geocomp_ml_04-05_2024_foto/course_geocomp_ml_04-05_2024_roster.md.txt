@@ -8,7 +8,6 @@
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)  
 [Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)  
 Francesco Lovergine (geopython teacher)  
-[Longzhu Shen](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#longzhu-shen-phd) (math/stat advisor)  
 
 #### Student affiliation and their origin  ####
 
@@ -37,23 +36,23 @@ University of Potsdam
 (5_3) **Talha Malik**
 
 Earth and related environmental sciences. International Environmental Doctoral School
-Centre for Polar Studies, University of Silesia, Katowice, Poland.
+Centre for Polar Studies, University of Silesia, Katowice - Poland.
 
 ![](03_talha_malik.jpg)
 
 ---
 
-(6_4) **Saverio	Mancino**
+(6_4) **Saverio	Mancino - Italy**
 
-Department of Earth and Geo-Environmental Science University of Bari
+Department of Earth and Geo-Environmental Science University of Bari - Italy
 
 ![](04_saverio_mancino.jpg)
 
 ---
 
-(7_5) **Anna	Sblano**
+(7_5) **Anna	Sblano - Italy**
 
-Department of Earth and Geo-Environmental Science University of Bari
+Department of Earth and Geo-Environmental Science University of Bari -Italy
 
 ![](05_anna_sblano.jpg)
 
@@ -61,7 +60,7 @@ Department of Earth and Geo-Environmental Science University of Bari
 
 (12_6) **Luca	de Guttry**
 
-University of Florence, Italy
+University of Florence - Italy
 
 ![]()
 
@@ -103,7 +102,7 @@ National Uiversity of Modern Languages Lahore - Pakistan
 
 Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
 
-![]()
+![](11_chiara_aquino.jpg)
 
 ---
 
@@ -183,7 +182,7 @@ Ca' Foscari University of Venice - Italy
 
 University of Basilicata - Italy
 
-![](26_Judith_Idemili_Chidumebi.jpg)
+![](21_muhammad_asif.jpg)
 
 ---
 
