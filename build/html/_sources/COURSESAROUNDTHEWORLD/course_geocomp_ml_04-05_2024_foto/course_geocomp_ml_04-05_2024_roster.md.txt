@@ -18,213 +18,203 @@ Francesco Lovergine (geopython teacher)
 
 #### Student roster ####
 
-(1_1) ** **
+(2_1) **Gabriel	Ortega**
 
+Czech University of Life Sciences, Czechia
 
-
-![](01_Bibek_Shrestha.jpg)
-
----
-
-(2_2) ** **
-
-
-
-![](02_Amanda_Cutler.jpg)
+![]()
 
 ---
 
-(3_3) ****
+(4_2) ** Camilo Zamora Ospina**
 
+University of Potsdam
 
-
-![](03_Carola_Stolle.jpg)
-
----
-
-(4_4) ****
-
-
-
-![](04_Linn_Yiqi.jpg)
+![](02_camilo_zamora.jpg)
 
 ---
 
-(5_5) ****
+(5_3) **Talha Malik**
 
+Earth and related environmental sciences. International Environmental Doctoral School
+Centre for Polar Studies, University of Silesia, Katowice, Poland.
 
-![](05_Olivia_Anderson.jpg)
-
----
-
-(6_6) ****
-
-
-![](06_Charlotte_Weinstein.jpg)
+![](03_talha_malik.jpg)
 
 ---
 
-(7_7) **** 
+(6_4) **Saverio	Mancino**
 
+Department of Earth and Geo-Environmental Science University of Bari
 
-
-![](07_Fernanda_Desimon.jpg)
-
----
-
-(8_9) ****
-
-
-
-![](09_Oliver-Valentin_Dinter.jpg)
+![](04_saverio_mancino.jpg)
 
 ---
 
-(9_10) ****
+(7_5) **Anna	Sblano**
 
+Department of Earth and Geo-Environmental Science University of Bari
 
-
-![](10_Samuel_Tsao.jpg)
-
----
-
-(10_11) ****
-
-
-
-![](11_Juana_Mercedes_Perlaza_Rodriguez.jpg)
-
+![](05_anna_sblano.jpg)
 
 ---
 
-(11_13)  ****
+(12_6) **Luca	de Guttry**
 
+University of Florence, Italy
 
-
-![](13_Jan-Markus_Homberger.jpg)
-
----
-
-(12_16)  ****
-
-
-
-![](16_Cassandra_Follett.jpg)
+![]()
 
 ---
 
-(13_17) ****
+(13_7) **Anastasia Andrews** 
 
+Georg-August University Goettingen, Germany
 
-
-![](17_Alexander_Mkrtchian.jpg)
-
----
-
-(14_15)	****
-
-
-
-![](15_Taiwo_Adekunle_Adenike.jpg)
+![]()
 
 ---
 
-(15_18)  ****
+(15_8) **Boney Anna Joseph - India**
 
+Technical University Berlin - Germany
 
-
-![](18_Weiser_Fern.jpg)
-
----
-
-(16_20) ****
-
-
-
-![](20_Roisin_Stanbrook.jpg)
+![]()
 
 ---
 
-(17_21) ****
+(16_9) **Hsing-Hsuan Chen - Taiwan**
 
+Utrecht University
 
-
-![](21_Olaitan_Omitola.jpg)
-
----
-(18_22) ****
-
-
-
-![](22_Omolola_Olojede.jpg)
+![](09_hsing-hsuan_chen.jpg)
 
 ---
 
-(19_25) **** 
+(17_10) **Asma Mansoor - Pakistan**
 
+National Uiversity of Modern Languages Lahore - Pakistan
 
-
-
-![](25_Abimbola_Modupe_Adedeji.jpeg)
-
----
-
-(20_28) ****
-
-
-
-![](28_Adigun_Abbas.jpg)
+![](10_asma_mansoor.jpg)
 
 ---
 
-(21_26) **** 
+(18_11)  **Chiara Aquino - Italy**
+
+Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
+
+![]()
+
+---
+
+(19_12)  **Issam	Boukhris**
+
+Tuscia Unversity & Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
+
+![]()
+
+---
+
+(20_17) **Lucy Bastin**
+
+Aston University - UK
+
+![]()
+
+---
+
+(14_15)	**Marta	Jemeljanova**
+
+University of Tartu - Estonia
+
+![]()
+
+---
+
+(23_15)  **Akshay Raj Manocha**
+
+University of Silesia, Katowice - Poland
+
+![]()
+
+---
+
+(24_16) **Komar Javanmardi**
+
+Utrecht University - The Netherlands
+
+![]()
+
+---
+
+(25_17) **Laura	Jimenez**
+
+University of Chile - Chile
+
+![]()
+
+---
+(18_22) **Keerat	Singh**
+
+University of Virginia - USA
+
+![]()
+
+---
+
+(30_19) **Taylor	Maavara - USA** 
+
+University of Leeds - UK
 
 
+![]()
+
+---
+
+(31_20) **Catarina Midões**
+
+Ca' Foscari University of Venice - Italy
+
+![]()
+
+---
+
+(33_21) **Muhammad Asif** 
+
+University of Basilicata - Italy
 
 ![](26_Judith_Idemili_Chidumebi.jpg)
 
 ---
 
-(22_27) **** 
+(22_27) **Giulia	Ronchetti - Italy** 
 
+Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 
-![](27_Eric_Carvalho.jpg)
-
----
-
-(23_29) ****
-
-
-![](29_Nils_Ratnaweera.jpg)
+![](22_giulia_ronchetti.jpg)
 
 ---
 
-(24_30) **** 
+(36_23) **Leonardo Mancusi - Italy**
 
+Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 
-
-![](30_Fengchao_Sun.jpg)
-
----
-
-(25_31) ****
-
-
-
-![](31_Olha_Kachalova.jpg)
+![]()
 
 ---
 
-(26_32) ****
+(24_24) **Nikita	Murin - Estonia** 
 
+Estonian Land Board - Estonia
 
-![](32_Laurent_Bataille.jpg)
+![](24_nikita_murin.jpg)
 
 ---
 
-(27_34) ****
+(38_25) **Mariantonietta	La Marra - Italy**
 
+University of Salento - Italy
 
-![](34_Valdrich_Fernandes.jpg)
+![]()
 
 ---

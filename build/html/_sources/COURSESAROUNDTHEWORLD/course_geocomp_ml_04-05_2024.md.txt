@@ -81,10 +81,8 @@ Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 17:10 - 17:25  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
-* 17:25 - 17:40  Pieter Kempeneers: background/interest & pyjeo introduction - teaching role.
 * 17:40 - 17:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
 * 18:55 - 18:10  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
-* 18:10 - 18:25  Longzhu Shen: background/interest & stat/math subjects - supervision role.
 * 18:25 - 18:45  Break
 * 18:40 - 19:20  Students round table + QA of the course. 
 * 19:20 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
