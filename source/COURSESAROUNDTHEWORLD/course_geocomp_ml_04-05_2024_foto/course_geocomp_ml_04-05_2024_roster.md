@@ -17,6 +17,8 @@ Francesco Lovergine (geopython teacher)
 
 #### Student roster ####
 
+![](zoom_class.png)
+
 (2_1) **Gabriel Ortega - Chile**
 
 Czech University of Life Sciences, Czechia
@@ -25,9 +27,9 @@ Czech University of Life Sciences, Czechia
 
 ---
 
-(4_2) ** Camilo Zamora Ospina**
+(4_2) **Camilo Zamora Ospina**
 
-University of Potsdam
+University of Potsdam - Poland
 
 ![](02_camilo_zamora.jpg)
 
@@ -106,7 +108,7 @@ Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
 
 ---
 
-(19_12)  **Issam	Boukhris**
+(19_12)  **Issam	Boukhris - Marocco**
 
 Tuscia Unversity & Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
 
@@ -118,7 +120,7 @@ Tuscia Unversity & Euro-Mediterranean Center on Climate Change (CMCC) Foundation
 
 Aston University - UK
 
-![]()
+![](13_lucy_bastin.jpg)
 
 ---
 
@@ -153,15 +155,15 @@ University of Chile - Chile
 ![](17_laura_jimenez.jpg)
 
 ---
-(28_18) **Keerat	Singh**
+(28_18) **Keerat	Singh - USA**
 
 University of Virginia - USA
 
-![]()
+![](18_keerat_singh.jpg)
 
 ---
 
-(30_19) **Taylor	Maavara - USA** 
+(30_19) **Taylor	Maavara - Canada** 
 
 University of Leeds - UK
 
@@ -169,7 +171,7 @@ University of Leeds - UK
 
 ---
 
-(31_20) **Catarina Midões**
+(31_20) **Catarina Midões - Portugal**
 
 Ca' Foscari University of Venice - Italy
 
@@ -185,7 +187,7 @@ University of Basilicata - Italy
 
 ---
 
-(22_22 ) **Giulia	Ronchetti - Italy** 
+(22_22 ) **Giulia Ronchetti - Italy** 
 
 Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 

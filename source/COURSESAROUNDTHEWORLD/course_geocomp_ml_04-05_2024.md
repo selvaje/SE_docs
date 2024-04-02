@@ -13,7 +13,8 @@
 * End lecturing: 30 May, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
 
 
-**In-person week: June 10-14, coding hackathon in Matera, Italy** 
+**In-person week: June 10-14, coding hackathon in Matera, Italy**
+
 **In-person week: June 17-21, extended study group in Matera, Italy**
 
 
@@ -77,7 +78,10 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here1](https://yale.zoom.us/rec/share/sS-Tc3LG8Cb7st-Jo3q_9DiwUgr9sYrt5IlkokIyQnIMhnklLFe4vpTwO4wwVSjd.5MKvARc_8UROYh5x) and 
+[here2](https://yale.zoom.us/rec/share/wKG5J2bP-zSWxXjR8aIwYw5TkmEsNIXWU4JVMRu9rWNH0VxTx3w5Yjq5Ou47y886.xSC5fYAGtirM-0as?startTime=1712078021000)
+
+
 
 Time below in CEST
 
