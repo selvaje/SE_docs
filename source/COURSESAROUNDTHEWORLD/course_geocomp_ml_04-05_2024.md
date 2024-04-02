@@ -14,6 +14,8 @@
 
 
 **In-person week: June 10-14, coding hackathon in Matera, Italy** 
+**In-person week: June 17-21, extended study group in Matera, Italy**
+
 
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 
@@ -80,7 +82,7 @@ Recorded lecture can be found [here]().
 Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 17:40 - 17:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
+* 17:10 - 17:30  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
 * 17:30 - 17:45  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
 * 17:45 - 18:00  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
 * 18:15 - 18:30  Break

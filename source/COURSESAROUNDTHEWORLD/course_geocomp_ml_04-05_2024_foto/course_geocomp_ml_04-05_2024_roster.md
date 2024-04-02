@@ -11,7 +11,7 @@ Francesco Lovergine (geopython teacher)
 
 #### Student affiliation and their origin  ####
 
-![](Physical-World-Map.jpg)
+![](Physical-World-Map_2024.jpg)
 
 ---
 
