@@ -82,7 +82,7 @@ Recorded lecture can be found [here]().
 Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 17:10 - 17:30  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
+* 17:10 - 17:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_Course_introduction.pdf).
 * 17:30 - 17:45  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
 * 17:45 - 18:00  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
 * 18:15 - 18:30  Break
