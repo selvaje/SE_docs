@@ -80,12 +80,12 @@ Recorded lecture can be found [here]().
 Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 17:10 - 17:25  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
 * 17:40 - 17:55  Giuseppe Amatulli: background/interest & bash/gdal/pktools introduction - teaching role.
-* 18:55 - 18:10  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
-* 18:25 - 18:45  Break
-* 18:40 - 19:20  Students round table + QA of the course. 
-* 19:20 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 17:30 - 17:45  Antonio Fonseca: background/interest & machine learning introduction - teaching role.
+* 17:45 - 18:00  Francesco Lovergine: background/interest & geo-python introduction - teaching role.
+* 18:15 - 18:30  Break
+* 18:30 - 19:15  Students round table + QA of the course. 
+* 19:15 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
 
 <!---
 

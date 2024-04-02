@@ -17,11 +17,11 @@ Francesco Lovergine (geopython teacher)
 
 #### Student roster ####
 
-(2_1) **Gabriel	Ortega**
+(2_1) **Gabriel Ortega - Chile**
 
 Czech University of Life Sciences, Czechia
 
-![]()
+![](01_gabriel_ortega.jpg)
 
 ---
 
@@ -58,11 +58,11 @@ Department of Earth and Geo-Environmental Science University of Bari -Italy
 
 ---
 
-(12_6) **Luca	de Guttry**
+(12_6) **Luca de Guttry - Italy**
 
-University of Florence - Italy
+Faculty of Agriculture, University of Florence - Italy
 
-![]()
+![](06_luca_de_guttry.jpg)
 
 ---
 
@@ -78,7 +78,7 @@ Georg-August University Goettingen, Germany
 
 Technical University Berlin - Germany
 
-![]()
+![](08_boney_anna_joseph.jpg)
 
 ---
 
@@ -92,7 +92,7 @@ Utrecht University
 
 (17_10) **Asma Mansoor - Pakistan**
 
-National Uiversity of Modern Languages Lahore - Pakistan
+National University of Modern Languages Lahore - Pakistan
 
 ![](10_asma_mansoor.jpg)
 
@@ -122,11 +122,11 @@ Aston University - UK
 
 ---
 
-(14_15)	**Marta	Jemeljanova**
+(14_15)	**Marta	Jemeljanova - Latvia**
 
 University of Tartu - Estonia
 
-![]()
+![](14_marta_jemeljanova.jpg)
 
 ---
 
@@ -138,22 +138,22 @@ University of Silesia, Katowice - Poland
 
 ---
 
-(24_16) **Komar Javanmardi**
+(24_16) **Komar Javanmardi - Iran**
 
 Utrecht University - The Netherlands
 
-![]()
+![](16_komar_javanmardi.jpg)
 
 ---
 
-(25_17) **Laura	Jimenez**
+(25_17) **Laura Jimenez - Mexico**
 
 University of Chile - Chile
 
-![]()
+![](17_laura_jimenez.jpg)
 
 ---
-(18_22) **Keerat	Singh**
+(28_18) **Keerat	Singh**
 
 University of Virginia - USA
 
@@ -165,8 +165,7 @@ University of Virginia - USA
 
 University of Leeds - UK
 
-
-![]()
+![](19_taylor_maavara.jpg)
 
 ---
 
@@ -198,7 +197,7 @@ Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 
 Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 
-![]()
+![](23_leonardo_mancusi.jpg)
 
 ---
 
@@ -214,6 +213,6 @@ Estonian Land Board - Estonia
 
 University of Salento - Italy
 
-![]()
+![](25_mariantonietta_la_marra.jpg)
 
 ---
