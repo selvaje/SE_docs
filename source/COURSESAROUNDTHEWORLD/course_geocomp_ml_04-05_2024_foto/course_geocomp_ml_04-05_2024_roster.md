@@ -66,11 +66,11 @@ Faculty of Agriculture, University of Florence - Italy
 
 ---
 
-(13_7) **Anastasia Andrews** 
+(13_7) **Anastasia Andrews - Germany** 
 
 Georg-August University Goettingen, Germany
 
-![]()
+![](07_anastasia_andrews.jpg)
 
 ---
 
@@ -114,7 +114,7 @@ Tuscia Unversity & Euro-Mediterranean Center on Climate Change (CMCC) Foundation
 
 ---
 
-(20_17) **Lucy Bastin**
+(20_13) **Lucy Bastin**
 
 Aston University - UK
 
@@ -122,7 +122,7 @@ Aston University - UK
 
 ---
 
-(14_15)	**Marta	Jemeljanova - Latvia**
+(21_14)	**Marta	Jemeljanova - Latvia**
 
 University of Tartu - Estonia
 
