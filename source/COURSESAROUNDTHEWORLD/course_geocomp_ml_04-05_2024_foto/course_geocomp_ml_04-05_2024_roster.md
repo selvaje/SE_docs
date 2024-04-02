@@ -130,11 +130,11 @@ University of Tartu - Estonia
 
 ---
 
-(23_15)  **Akshay Raj Manocha**
+(23_15)  **Akshay Raj Manocha - India**
 
 University of Silesia, Katowice - Poland
 
-![]()
+![](15_akshay_raj_manocha.jpg)
 
 ---
 
@@ -173,7 +173,7 @@ University of Leeds - UK
 
 Ca' Foscari University of Venice - Italy
 
-![]()
+![](20_catarina_midoes.jpg)
 
 ---
 
@@ -185,7 +185,7 @@ University of Basilicata - Italy
 
 ---
 
-(22_27) **Giulia	Ronchetti - Italy** 
+(22_22 ) **Giulia	Ronchetti - Italy** 
 
 Ricerca sul Sistema Energetico - RSE S.p.A. - Italy
 
