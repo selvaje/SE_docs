@@ -23,6 +23,8 @@ Francesco Lovergine (geopython teacher)
 
 Czech University of Life Sciences, Czechia
 
+(expertise: )
+
 ![](01_gabriel_ortega.jpg)
 
 ---

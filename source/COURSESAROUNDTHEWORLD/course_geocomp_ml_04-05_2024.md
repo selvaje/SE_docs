@@ -122,7 +122,7 @@ If one or more of these features are not working properly show up in the Catch-u
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/PLYtzO4P9AohnCTyk2knX_CRdMAD_QAHFv5bPym3OkM93IFRqvRwQRTrw8ni6FIN.sDitSrwM6R2r9EyO).
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
