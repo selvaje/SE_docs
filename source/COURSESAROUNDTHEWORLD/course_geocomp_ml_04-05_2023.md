@@ -153,7 +153,7 @@ You can perform:
 - data filtering 
 
 ---
-
+<!---
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
     cp /home/user/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
 
@@ -232,7 +232,7 @@ done
      { print station, lat , lon , $2 > "output3/"substr($1,1,7)"_ID_x_y_mean.txt" }
      }' US_00090*.mon 
 
-
+--->
 ---
 
 
