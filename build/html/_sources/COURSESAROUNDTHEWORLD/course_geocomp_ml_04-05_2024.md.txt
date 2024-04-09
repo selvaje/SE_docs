@@ -175,24 +175,24 @@ This session is fundamental for data filtering and preparation, bulk data downlo
 	* This session summarizes the use of BASH and AWK with a practical example of text file manipulation.
 
 
-* [Explain GSIM text files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) (Lecture).
+* [Explain GSIM text files](http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html) (Listen to the recorded video lecture and proceed with self-learning mode.)
 	* Data exploration (Hands on tutorial).
 	* Count number of observations
 	* Count how many observations per date
 	* Monthly MEAN distribution
 	
-**Compulsory assignments:**
+**Suggested assignments:**
 
-These assignment is compulsory and need to be delivered before ??th of April, 2024 12pm, UTC time. Please send the jupyter file or sh file (name as name\_surname.ipynb or name\_surname.sh ) as e-mail attachment  to g.amatulli@spatial-ecology.net.
+Please send the jupyter file or sh file (name as name\_surname.ipynb or name\_surname.sh ) as e-mail attachment  to g.amatulli@spatial-ecology.net.
 
 Using the bash (and/or awk) language manipulate the GSIM/US*.mon files in order to create txt files, one for each month-year, that includes the station ID, latitude, longitude and the MEAN value.
  
-The final output will be n text file (form *FirstDateOfTheSeries* to LastDateOfTheSeries) with the following structure: 
+The final output will be n text files (form *FirstDateOfTheSeries* to LastDateOfTheSeries) with the following structure: 
 
 
     cat 2002-01.txt 
 
- Gsim.no latitude longitude MEAN   
+ Gsim.no     latitude    longitude   MEAN   
  US_0001971	33.79427255 -84.4743747 0.916785714285714  
  US_0001977	33.65666667 -84.6736111 74.5558064516129  
 
@@ -231,7 +231,7 @@ You can perform:
              <(grep longitude US_00090*.mon | awk '{print $4}') \
              <(grep latitude  US_00090*.mon | awk '{print $4}') | sort -k 1,1 > output1/ID_x_y.txt
 
-    ## loop trought the dates.txt 
+    ## loop trough the dates.txt 
 
     for DATE in $(cat output1/dates.txt ) ; do 
     echo processing $DATE
