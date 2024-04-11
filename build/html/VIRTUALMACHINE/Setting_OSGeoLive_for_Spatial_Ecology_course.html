@@ -77,9 +77,9 @@
 <li class="toctree-l3"><a class="reference internal" href="#update-the-os">Update the OS</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine">Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition-with-the-gui">Re-install the Virtual Box guest edition with the GUI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#re-install-the-virtual-box-guest-edition-with-the-cl">Re-install the Virtual Box guest edition with the CL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-osgeolive-virtual-machine">Troubleshooting screen size/resolution and shared folder of your OSGeoLive Virtual Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-virtual-box-guest-edition-with-the-gui">Install the Virtual Box guest edition with the GUI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-virtual-box-guest-edition-with-the-cl">Install the Virtual Box guest edition with the CL</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#use-arandr-for-setting-a-customized-resolution">Use “arandr” for setting a customized resolution</a></li>
 </ul>
 </li>
@@ -319,17 +319,17 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 </div>
 </section>
 </section>
-<section id="troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine">
-<h2>Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine<a class="headerlink" href="#troubleshooting-screen-size-resolution-of-your-osgeolive-virtual-machine" title="Permalink to this headline"></a></h2>
+<section id="troubleshooting-screen-size-resolution-and-shared-folder-of-your-osgeolive-virtual-machine">
+<h2>Troubleshooting screen size/resolution and shared folder of your OSGeoLive Virtual Machine<a class="headerlink" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-osgeolive-virtual-machine" title="Permalink to this headline"></a></h2>
+<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
 <p>If the screen is very small try to enlarge clicking “”View -&gt; Auto-resize Guest Display”, and if the enlargement is not working properly try to reboot.</p>
 <p>If you still have issues after the reboot, there are mainly two options:</p>
 <ol class="simple">
-<li><p>Re-install the Virtual Box guest edition</p></li>
+<li><p>Install the Virtual Box guest edition</p></li>
 <li><p>Use “arandr” for setting a customized resolution</p></li>
 </ol>
-<p><strong>Skip this part if everything is working fine (go directly to <a class="reference external" href="https://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html#test-your-shared-folder">Test your shared folder</a>)</strong></p>
-<section id="re-install-the-virtual-box-guest-edition-with-the-gui">
-<h3>Re-install the Virtual Box guest edition with the GUI<a class="headerlink" href="#re-install-the-virtual-box-guest-edition-with-the-gui" title="Permalink to this headline"></a></h3>
+<section id="install-the-virtual-box-guest-edition-with-the-gui">
+<h3>Install the Virtual Box guest edition with the GUI<a class="headerlink" href="#install-the-virtual-box-guest-edition-with-the-gui" title="Permalink to this headline"></a></h3>
 <p>Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below.</p>
 <p>From the Virtualbox menu press Device &gt; Insert Guest Addition CD image</p>
 <p>If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install “ Virtual Box guest edition with the CL” (see below).</p>
@@ -343,8 +343,8 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 </div>
 <p>At this point you can reboot your machine. Now all screen setting, screen scale (View -&gt; Auto-resize Guest Display) and drag/drop should work properly.</p>
 </section>
-<section id="re-install-the-virtual-box-guest-edition-with-the-cl">
-<h3>Re-install the Virtual Box guest edition with the CL<a class="headerlink" href="#re-install-the-virtual-box-guest-edition-with-the-cl" title="Permalink to this headline"></a></h3>
+<section id="install-the-virtual-box-guest-edition-with-the-cl">
+<h3>Install the Virtual Box guest edition with the CL<a class="headerlink" href="#install-the-virtual-box-guest-edition-with-the-cl" title="Permalink to this headline"></a></h3>
 <p>If for some reason you were not able to install “Virtual Box guest edition with the GUI” you can try with the “Virtual Box guest edition with the CL”.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualbox</span><span class="o">-</span><span class="n">guest</span><span class="o">-</span><span class="n">additions</span><span class="o">-</span><span class="n">iso</span>
 <span class="n">sudo</span> <span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">VBox_GAs</span> 
@@ -390,7 +390,7 @@ This <a class="reference external" href="https://techcult.com/enable-virtualizat
 </pre></div>
 </div>
 <p>If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the OSGeoLive.</p>
-<p>If you get an error “ls: cannot access ‘/media/sf_LVM_shared’: No such file or directory” means that you did not correctly done the sharing folder operation so try to redo it.</p>
+<p>If you get an error “ls: cannot access ‘/media/sf_LVM_shared’: No such file or directory” means that you did not correctly done the sharing folder operation or the Virtual Box Guest Additions installation, thus try to redo it.</p>
 <p>If you get permission denied in accessing ‘/media/sf_LVM_shared’ run this commands</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">usermod</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">G</span> <span class="n">vboxsf</span> <span class="n">user</span>
 <span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">user</span><span class="p">:</span><span class="n">users</span> <span class="o">/</span><span class="n">media</span><span class="o">/</span><span class="n">sf_LVM_shared</span>

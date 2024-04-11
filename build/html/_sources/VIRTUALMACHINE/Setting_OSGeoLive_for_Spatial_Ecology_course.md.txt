@@ -84,18 +84,18 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
     sudo apt autoremove -y
 
-## Troubleshooting screen size/resolution of your OSGeoLive Virtual Machine
+## Troubleshooting screen size/resolution and shared folder of your OSGeoLive Virtual Machine
+
+Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
 If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot.
  
 If you still have issues after the reboot, there are mainly two options:  
 
-1) Re-install the Virtual Box guest edition
+1) Install the Virtual Box guest edition
 2) Use "arandr" for setting a customized resolution
 
-**Skip this part if everything is working fine (go directly to [Test your shared folder](https://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html#test-your-shared-folder))**  
-
-### Re-install the Virtual Box guest edition with the GUI
+### Install the Virtual Box guest edition with the GUI
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below. 
 
@@ -117,7 +117,7 @@ Open the terminal and type:
 At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
 
 
-### Re-install the Virtual Box guest edition with the CL 
+### Install the Virtual Box guest edition with the CL 
 
 If for some reason you were not able to install "Virtual Box guest edition with the GUI" you can try with the "Virtual Box guest edition with the CL". 
 
@@ -172,7 +172,7 @@ Another test that you should do, is to see if the shared folder is correctly don
    
 If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the OSGeoLive. 
 
-If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation so try to redo it.
+If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation or the Virtual Box Guest Additions installation, thus try to redo it.
 
 
 If you get permission denied in accessing '/media/sf_LVM_shared' run this commands
