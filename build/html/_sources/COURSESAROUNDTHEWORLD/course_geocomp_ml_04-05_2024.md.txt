@@ -296,7 +296,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
 	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
-	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/lect_20240414_Floating_point.pdf) (Lecture)
+	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/lect_20220414_Floating_point.pdf) (Lecture [Video recorded 1:28:50 - 1:40:00](https://www.youtube.com/watch?v=kBRW2Z5jX8M))
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
