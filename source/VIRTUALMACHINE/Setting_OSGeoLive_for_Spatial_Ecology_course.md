@@ -124,7 +124,7 @@ If for some reason you were not able to install "Virtual Box guest edition with 
 
     sudo apt-get install virtualbox-guest-additions-iso
     sudo mkdir -p /media/user/VBox_GAs 
-    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/    VBox_GAs
+    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
     cd /media/user/VBox_GAs
     sudo chmod 777 ./VBoxLinuxAdditions.run 
     sudo ./VBoxLinuxAdditions.run
@@ -273,6 +273,8 @@ We are going to use jupyter lab as main scripting editor. Here how to install
 
 
     pip3 install -U jupyterlab
+    echo "PATH=$PATH:/home/user/.local/bin" >> /home/user/.bashrc
+    source /home/user/.bashrc 
 
 Test jupyter lab
 
