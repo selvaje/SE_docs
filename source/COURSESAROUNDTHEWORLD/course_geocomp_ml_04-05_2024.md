@@ -290,13 +290,12 @@ done
 ## Lecture 4: Thursday, 11th of April, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/1f4FotdNXZI0-67aYdJ3lzpN6B1kvO1rU491FZgLRNm_RPQM-MAF6bWslDo11PFN.P9WiMAZ1vWLCk5Ig).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
 	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
-	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/lect_20220414_Floating_point.pdf) (Lecture [Video recorded 1:28:50 - 1:40:00](https://www.youtube.com/watch?v=kBRW2Z5jX8M))
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
@@ -309,8 +308,8 @@ Get familiar with *gdalinfo* & *gdal_edit.py* using your data or the tif file st
 ---
 
 Watch this lecture to get more insight on the different data type  
-
-Numerical System Decimal vs Binary. [Recorded lecture: 1:28:45 - 1:48:00](https://youtu.be/kBRW2Z5jX8M?t=5328)
+* 
+[Numerical System Decimal vs Binary](http://spatial-ecology.net/docs/source/lectures/lect_20220414_Floating_point.pdf). [Recorded lecture: 1:28:45 - 1:48:00](https://youtu.be/kBRW2Z5jX8M?t=5328)
 
 ---
 
