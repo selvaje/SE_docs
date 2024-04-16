@@ -126,8 +126,7 @@ If for some reason you were not able to install "Virtual Box guest edition with 
     sudo mkdir -p /media/user/VBox_GAs 
     sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
     cd /media/user/VBox_GAs
-    sudo chmod 777 ./VBoxLinuxAdditions.run 
-    sudo ./VBoxLinuxAdditions.run
+    sudo bash ./VBoxLinuxAdditions.run
 
 At this point you can reboot.
 
