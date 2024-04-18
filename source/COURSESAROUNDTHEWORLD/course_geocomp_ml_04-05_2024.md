@@ -202,7 +202,7 @@ You can perform:
 - table re-organization    
 - data filtering 
 
-<!---
+
 ---
 
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
@@ -283,7 +283,6 @@ done
      { print station, lat , lon , $2 > "output3/"substr($1,1,7)"_ID_x_y_mean.txt" }
      }' US_00090*.mon 
 
---->
 ---
 
 
@@ -366,7 +365,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 **Compulsory assignments:**
 
-Before the 22th of April, 2024, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 22th of April, 2024 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
+Before the 23th of April, 2024, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 22th of April, 2024 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
 
 **Suggested assignments:**
 
