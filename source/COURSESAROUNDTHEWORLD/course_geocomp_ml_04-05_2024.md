@@ -353,7 +353,7 @@ Below, some suggestions of possible operations:
 ## Lecture 6: Thursday, 18st of April, 2024.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://youtu.be/UmEkNCi7udQ).
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -365,7 +365,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 **Compulsory assignments:**
 
-Before the 23th of April, 2024, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 22th of April, 2024 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
+Before the 23rd of April, 2024, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 23rd of April, 2024 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
 
 **Suggested assignments:**
 
@@ -374,7 +374,7 @@ Before the 23th of April, 2024, watch the "Manipulate Landsat data with GDAL and
 * Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
 
-## Lecture 7: Tuesday, 22nd of April, 2024.
+## Lecture 7: Tuesday, 23rd of April, 2024.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
 
 
