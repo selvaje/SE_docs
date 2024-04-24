@@ -380,9 +380,13 @@ Before the 23rd of April, 2024, watch the "Manipulate Landsat data with GDAL and
 
 [Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
 
-Recorded of the QA can be found [here]().
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/FweehTk43QlyuEGgWRPHmoPODVGxlA0_c9FlQxqleC7LNN00AuVn0LSF17LjdvkX.JrhAllkL3ioTcvbM).
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
+
+* [Spectral Temporal Information for Missing Data Reconstruction (STIMDR) of Landsat Reflectance Time Series](https://www.mdpi.com/2072-4292/14/1/172)
+
+* [A method for predicting large-area missing observations in Landsat time series using spectral-temporal metrics](https://www.sciencedirect.com/science/article/pii/S030324342100026X?via%3Dihub)
 
 * [Temporal interpolation of landsat images](http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html) (A.)
 	* Data download & cropping
@@ -391,7 +395,8 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 	* Temporal interpolation
 	* Plotting the temporal interpolation for band 1
 	* Assessing the temporal interpolation
-* [Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20240426_Approximation.pdf)  (S.)
+* [Temporal analysis: Approximation](http://spatial-ecology.net/docs/source/lectures/lect_20240423_Approximation.pdf) 
+[Lonzhu Shen : Video Recording of the lecture 45:20 - 1:04:50 ](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
 	* Polynomial Interpolation
 	* Piecewise Interpolation
 		* Cubic Spline
