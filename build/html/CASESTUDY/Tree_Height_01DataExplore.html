@@ -483,10 +483,19 @@ cd  /media/sf_LVM_shared/my_SE_data/exercise
 pip install gdown
 ~/.local/bin/gdown 1Y60EuLsfmTICTX-U_FxcE1odNAf04bd-
 tar -xvzf tree_height.tar.gz
-jupyter-lab Tree_Height_01DataExplore.ipynb
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3  install scikit-gstat geopandas rasterio seaborn
+
+# create a python avarage
+python3 -m venv $HOME/venv  --system-site-packages
+# enter in the enviroment.
+source $HOME/venv/bin/activate
+
+# install python library
+pip3 install &#39;xarray&gt;=2022.3.0&#39; --upgrade --ignore-installed --force-reinstall
+pip3 install &#39;numpy&gt;=1.23&#39; --upgrade --ignore-installed --force-reinstall
+pip3 install  scikit-learn scikit-gstat geopandas rasterio seaborn
+
+# Start jupyter lab insede the python venv evenviroment
+jupyter lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 </section>
@@ -496,8 +505,8 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 <p>GEDI’s Level 2A Geolocated Elevation and Height Metrics Product (GEDI02_A) is primarily composed of Relative Height (RH) metrics of canopy height stored at different percentiles.</p>
 <p>The GEDI02_A product is provided in HDF5 format and has a spatial resolution (average footprint) of 25 meters. The GEDI02_A data product contains 156 layers for each of the eight beams, including ground elevation, canopy top height, relative return energy metrics (e.g., canopy vertical structure), and many other interpreted products from the return waveforms.</p>
 <p>The <a class="reference external" href="https://git.earthdata.nasa.gov/projects/LPDUR/repos/gedi-subsetter/browse">GEDI_Subsetter.py</a> allows the conversion of the HDF5 format in to txt files. During the conversion several parameters can be extracted. The full list can be found at <a class="reference external" href="https://lpdaac.usgs.gov/documents/982/gedi_l2a_dictionary_P003_v2.html">https://lpdaac.usgs.gov/documents/982/gedi_l2a_dictionary_P003_v2.html</a> , and a general description is stored at <a class="reference external" href="https://lpdaac.usgs.gov/documents/986/GEDI02_UserGuide_V2.pdf">https://lpdaac.usgs.gov/documents/986/GEDI02_UserGuide_V2.pdf</a></p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -515,23 +524,6 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area stderr docutils container">
-<div class="highlight"><pre>
-/home/user/.local/lib/python3.10/site-packages/skgstat/models.py:23: NumbaDeprecationWarning: <span class="ansi-bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  def spherical(h, r, c0, b=0):
-/home/user/.local/lib/python3.10/site-packages/skgstat/models.py:87: NumbaDeprecationWarning: <span class="ansi-bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  def exponential(h, r, c0, b=0):
-/home/user/.local/lib/python3.10/site-packages/skgstat/models.py:149: NumbaDeprecationWarning: <span class="ansi-bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  def gaussian(h, r, c0, b=0):
-/home/user/.local/lib/python3.10/site-packages/skgstat/models.py:214: NumbaDeprecationWarning: <span class="ansi-bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  def cubic(h, r, c0, b=0):
-/home/user/.local/lib/python3.10/site-packages/skgstat/models.py:278: NumbaDeprecationWarning: <span class="ansi-bold">The &#39;nopython&#39; keyword argument was not supplied to the &#39;numba.jit&#39; decorator. The implicit default value for this argument is currently False, but it will be changed to True in Numba 0.59.0. See https://numba.readthedocs.io/en/stable/reference/deprecation.html#deprecation-of-object-mode-fall-back-behaviour-when-using-jit for details.</span>
-  def stable(h, r, c0, s, b=0):
-</pre></div></div>
-</div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -546,7 +538,7 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" style="width: 500px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_4_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_4_0.png" style="width: 500px; height: 300px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -563,7 +555,7 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_5_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -580,7 +572,7 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.png" style="width: 500px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_6_0.png" style="width: 500px; height: 300px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -597,7 +589,7 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.jpg" style="width: 500px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_7_0.jpg" style="width: 500px; height: 300px;" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -614,7 +606,7 @@ jupyter-lab Tree_Height_01DataExplore.ipynb
 </pre></div>
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_9_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_9_0.png" style="width: 600px; height: 300px;" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.png" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_01DataExplore_8_0.png" style="width: 600px; height: 300px;" />
 </div>
 </div>
 </section>
@@ -723,7 +715,7 @@ tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_16_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_16_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_15_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_15_1.png" />
 </div>
 </div>
 <p><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flags.</strong> The quality flags can be used to refine and select the best tree height estimation and use it as tree height observation.</p>
@@ -1558,7 +1550,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_34_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_33_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_33_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1577,7 +1569,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_35_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_34_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_34_0.png" />
 </div>
 </div>
 <p><strong>Climate data obained from the</strong><a class="reference external" href="https://chelsa-climate.org/bioclim/">CHELSA</a><strong>dataset.</strong></p>
@@ -1613,7 +1605,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_37_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_36_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_36_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1631,7 +1623,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_38_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_37_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_37_0.png" />
 </div>
 </div>
 <p><strong>Soil data obained from the</strong><a class="reference external" href="https://soilgrids.org/">SOILGRID</a></p>
@@ -1668,7 +1660,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_40_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_39_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_39_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1687,7 +1679,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_41_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_40_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_40_0.png" />
 </div>
 </div>
 <p><strong>Geomorphological data obtained from</strong><a class="reference external" href="http://spatial-ecology.net/docs/build/html/GEODATA/geomorpho90m/geomorpho90m.html">geomorpho90m</a></p>
@@ -1730,7 +1722,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_43_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_42_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_42_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1751,7 +1743,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_44_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_43_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_43_0.png" />
 </div>
 </div>
 <p><strong>Hydrography data obtained from</strong><a class="reference external" href="https://essd.copernicus.org/preprints/essd-2022-9/">hydromorpho90m</a></p>
@@ -1785,7 +1777,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_46_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_45_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_45_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1803,7 +1795,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_47_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_46_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_46_0.png" />
 </div>
 </div>
 <p><strong>Soil data obtained from</strong><a class="reference external" href="https://zenodo.org/record/4558732#.YmqPg3VfiV4">Global Soil Bioclimatic variables</a></p>
@@ -1837,7 +1829,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_49_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_48_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_48_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1855,7 +1847,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_50_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_49_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_49_0.png" />
 </div>
 </div>
 <p><strong>Forest cover in percentage obtained from</strong><a class="reference external" href="https://earthenginepartners.appspot.com/science-2013-global-forest/download_v1.7.html">Global Forest Change</a></p>
@@ -1886,7 +1878,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_52_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_51_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_51_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1903,7 +1895,7 @@ Band 1 Block=16000x1 Type=Float32, ColorInterp=Gray
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_53_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_52_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_52_0.png" />
 </div>
 </div>
 <p><strong>Forest height in percentage obtained from</strong><a class="reference external" href="https://glad.umd.edu/dataset/gedi">Forest Height</a></p>
@@ -1936,7 +1928,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_55_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_55_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_54_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_54_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1953,7 +1945,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_56_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_56_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_55_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_55_0.png" />
 </div>
 </div>
 <p><strong>Latitude and longittude obtained from GRASS (r.latlong)[https://grass.osgeo.org/grass78/manuals/r.latlong.html]</strong></p>
@@ -1987,7 +1979,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_58_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_58_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_57_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_57_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -2005,7 +1997,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_59_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_59_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_58_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_58_0.png" />
 </div>
 </div>
 <p><strong>File storing enviromental predictors at each point location.</strong></p>
@@ -2518,7 +2510,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_64_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_64_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_63_0.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_63_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -2545,7 +2537,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_64_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_64_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -2572,7 +2564,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_65_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -2599,7 +2591,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_67_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_67_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_66_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -2714,7 +2706,7 @@ different enviromental predictors that better express the ecolocacal condition.<
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_70_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_70_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_01DataExplore_69_1.png" src="../_images/CASESTUDY_Tree_Height_01DataExplore_69_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">

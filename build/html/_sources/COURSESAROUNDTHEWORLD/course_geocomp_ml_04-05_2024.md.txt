@@ -413,6 +413,13 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 
 Recorded lecture can be found [here](). 
 
+	* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
+
+	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
+		* Random Forest basic concept
+		* Avoid random forest over-fitting
+		* Optimization of RF
+		* Prediction of RF model on raster tif
 	
 ## Catch-up session 1: Tuesday, 30th of April, 2024
 
@@ -438,14 +445,13 @@ Recorded lecture can be found [here]().
 Recorded lecture can be found [here](). 
 
 
+
 ## Lecture 11: Tuesday, 14th of May, 2024.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
 Recorded lecture can be found [here](). 
-
-* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
 * [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20240510_GeoComp_IntroML_SVM.pdf) (F.)
 	* Defining learning 
@@ -456,11 +462,6 @@ Recorded lecture can be found [here]().
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (SVM)(F.)
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
-	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
-		* Random Forest basic concept
-		* Avoid random forest over-fitting
-		* Optimization of RF
-		* Prediction of RF model on raster tif
 
 ## Lecture 12: Wednesday, 15th of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
