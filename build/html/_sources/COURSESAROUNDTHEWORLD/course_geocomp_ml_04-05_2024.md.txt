@@ -3,14 +3,15 @@
 
 (Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
 
-**Online teaching: April and May 2024, 9 weeks**
+**Online teaching: April and June 2024, 10 weeks**
 
 
-* Start lecturing: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* Catch-up session: Tuesday 30 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* Catch-up session: Thursday 2 May: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
-* Resume lecturing: 7 May, every **Tuesday, Wednesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-* End lecturing: 30 May, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
+* **Start lecturing**: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* **Catch-up session**: Tuesday 30 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
+* **Catch-up session**: Thursday 2 May: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
+* **Resume lecturing**: 7 May, every **Tuesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
+* **GRASS week**: 21-22-23 May, **Tuesday, Wednesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
+* **End lecturing**: 6 June, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
 
 
 **In-person week: June 10-14, coding hackathon in Matera, Italy**
@@ -447,7 +448,6 @@ Recorded lecture can be found [here]().
 Recorded lecture can be found [here](). 
 
 
-
 ## Lecture 11: Tuesday, 14th of May, 2024.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
 
@@ -465,17 +465,8 @@ Recorded lecture can be found [here]().
 		* Optimization of SVM
 		* Extension of SVM to regression (SVR)
 
-## Lecture 12: Wednesday, 15th of May, 2024.
-### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-   * [GRASS architecture](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
-		* GRASS GUI
-		* GRASS command structure
-		* GRASS working environment
-		* GRASS Location/Mapset
-		* GRASS scripting procedure in BASH
-
-## Lecture 13: Thursday, 16th of May, 2024.
+## Lecture 12: Thursday, 16th of May, 2024.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -491,7 +482,35 @@ Recorded lecture can be found [here]().
 	* Minimizing loss functions
 	* Regularization
 
-## Lecture 14: Tuesday, 21th of May, 2024.
+
+## Lecture 13: Tuesday, 21st of May, 2024.
+### Introduction to GRASS (1) (Giuseppe Amatulli)
+
+   * [GRASS architecture](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+		* GRASS GUI
+		* GRASS command structure
+		* GRASS working environment
+		* GRASS Location/Mapset
+		* GRASS scripting procedure in BASH
+
+## Lecture 14: Wednesday, 22nd of May, 2024.
+### Geocomputing with grass GRASS (2) (Giuseppe Amatulli)
+
+   * [GRASS computation]()
+		* Importing and exporting raster/vector 
+		* Buffer operation 
+		* Map calc in grass
+		* Raster statistic
+
+## Lecture 15: Thursday, 23rd of May, 2024.
+### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+
+   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
+		* Compute flow accumulation 
+		* Extract stream network and delineate basins
+		* r.stream.* add-ons
+
+## Lecture 16: Tuesday, 28st of May, 2024.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -507,16 +526,7 @@ Recorded lecture can be found [here]().
 * [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2024.html)
 
 
-## Lecture 15: Wednesday, 22nd of May, 2024.
-### Geocomputing with grass GRASS (2) (Giuseppe Amatulli)
-
-   * [GRASS computation]()
-		* Importing and exporting raster/vector 
-		* Buffer operation 
-		* Map calc in grass
-		* Raster statistic
-
-## Lecture 16: Thursday, 23th of May, 2024.
+## Lecture 17: Thursday, 30th of May, 2024.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -526,7 +536,7 @@ Recorded lecture can be found [here]().
   * Back Propagation
 * [Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html)
 
-## Lecture 17: Tuesday, 28th of May, 2024.
+## Lecture 18: Tuesday, 4th of June, 2024.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -548,15 +558,7 @@ Recorded lecture can be found [here]().
 	* Tutorial: data batching, classification of satellite images
 
 
-## Lecture 18: Wednesday, 22nd of May, 2024.
-### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
-
-   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
-		* Compute flow accumulation 
-		* Extract stream network and delineate basins
-		* r.stream.* add-ons
-
-## Lecture 19:  Thursday, 30th of May, 2024.
+## Lecture 19:  Thursday, 6th of June, 2024.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
