@@ -415,11 +415,13 @@ Recorded lecture can be found [here]().
 
 * [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
+**Compulsory assignments:**
+
 * [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
-		* Random Forest basic concept
-		* Avoid random forest over-fitting
-		* Optimization of RF
-		* Prediction of RF model on raster tif
+	* Random Forest basic concept
+	* Avoid random forest over-fitting
+	* Optimization of RF
+	* Prediction of RF model on raster tif
 	
 ## Catch-up session 1: Tuesday, 30th of April, 2024
 
