@@ -286,6 +286,23 @@ done
 
 ---
 
+#########Solution 4 #########
+
+From Issam Boukhris; it allows the closing of the file and can be run in the VM
+
+	sudo bash -c 'awk -F "," '\''{
+	    if ($1 ~ "gsim.no") split($1, a, ":");
+	    station = a[2];
+	    if ($1 ~ "longitude") split($1, b, ":");
+	    long = b[2];
+	    if ($1 ~ "latitude") split($1, c, ":");
+	    lat = c[2];
+	    if (NF>5 && $1 != "NA" && $2 != "NA") {
+	        print station, long, lat, $2 >> "output1/"substr($1,1,7)".txt";
+	        close("output1/"substr($1,1,7)".txt"); print echo substr($1,1,7)
+	    }
+	}'\'' US_*'
+
 
 ## Lecture 4: Thursday, 11th of April, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).

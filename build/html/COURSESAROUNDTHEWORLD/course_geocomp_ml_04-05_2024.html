@@ -570,9 +570,25 @@ awk &#39;{gsub(&quot;,&quot;, &quot;&quot;);
  }&#39; US_00090*.mon 
 </pre></div>
 </div>
-</section>
-</section>
 <hr class="docutils" />
+<p>#########Solution 4 #########</p>
+<p>From Issam Boukhris; it allows the closing of the file and can be run in the VM</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo bash -c &#39;awk -F &quot;,&quot; &#39;\&#39;&#39;{
+    if ($1 ~ &quot;gsim.no&quot;) split($1, a, &quot;:&quot;);
+    station = a[2];
+    if ($1 ~ &quot;longitude&quot;) split($1, b, &quot;:&quot;);
+    long = b[2];
+    if ($1 ~ &quot;latitude&quot;) split($1, c, &quot;:&quot;);
+    lat = c[2];
+    if (NF&gt;5 &amp;&amp; $1 != &quot;NA&quot; &amp;&amp; $2 != &quot;NA&quot;) {
+        print station, long, lat, $2 &gt;&gt; &quot;output1/&quot;substr($1,1,7)&quot;.txt&quot;;
+        close(&quot;output1/&quot;substr($1,1,7)&quot;.txt&quot;); print echo substr($1,1,7)
+    }
+}&#39;\&#39;&#39; US_*&#39;
+</pre></div>
+</div>
+</section>
+</section>
 <section id="lecture-4-thursday-11th-of-april-2024">
 <h2>Lecture 4: Thursday, 11th of April, 2024.<a class="headerlink" href="#lecture-4-thursday-11th-of-april-2024" title="Permalink to this headline"></a></h2>
 <section id="manipulate-geographical-data-with-gdal-ogr-giuseppe-amatulli">
