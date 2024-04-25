@@ -413,9 +413,9 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 
 Recorded lecture can be found [here](). 
 
-	* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
+* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
-	* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
+* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
 		* Random Forest basic concept
 		* Avoid random forest over-fitting
 		* Optimization of RF
