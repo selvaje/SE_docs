@@ -409,7 +409,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 ## Lecture 8: Thursday, 25th of April, 2024.
-### To be defined (Giuseppe Amatulli)
+### Case study presentation: Estimation of tree height (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](). 
 
