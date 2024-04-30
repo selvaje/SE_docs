@@ -429,7 +429,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: Thursday, 25th of April, 2024.
 ### Case study presentation: Estimation of tree height (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt5NUbniXLhRBLGnbuyd7X6gj0yXXVVHlcZMQ4P1cK_9HWcBlWqYmo.ZNsAf6AyZ1-nKshj). 
 
 * [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
