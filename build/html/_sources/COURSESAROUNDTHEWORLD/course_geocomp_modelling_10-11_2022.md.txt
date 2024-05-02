@@ -8,7 +8,7 @@
 * Every Tuesday: starting from October 11th, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM  - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
 * Every Thursday: ending on December 1st, at 4PM - 6:45PM - Abuja, Nigeria (8AM - 10:45AM - Seattle, WA, USA; 5PM - 7:45PM Rome, Italy)
 
-**On-site workshop: January 2022 - February 2023, 2 weeks in Abuja, Nigeria**
+**On-site workshop: 30 January 2023 - 11 February 2023, 2 weeks in Nairobi, Kenya**
 
 * Monday to Friday, from January 30th to February 10th at 9AM - 5PM.
 
@@ -406,7 +406,7 @@ Recorded lecture can be found [here](https://gatesfoundation.zoom.us/rec/share/N
 	* Training and testing dataset
 	* Cross Validation
 
-### On-site workshop: January 30th 2022 - February 10th 2023
+### On-site workshop: January 30th 2023 - February 10th 2023
 
 * Code-hackathon and student supervision (manly the first week)
 * 	8 hours/day for 2 weeks (9am-5pm)
