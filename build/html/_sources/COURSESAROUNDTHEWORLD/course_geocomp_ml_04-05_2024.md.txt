@@ -462,6 +462,7 @@ Recorded lecture can be found [here]().
 	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
 	* Suggestions about Python management
 	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) [basics](https://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html) 
+	* [Using python for point location raster value extraction](https://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
 	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics
 		- Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
 		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
