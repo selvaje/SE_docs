@@ -459,9 +459,13 @@ Recorded of the QA can be found [here](). Password has been sent by e-mail on Ma
 Recorded lecture can be found [here](). 
 
 * Geospatial python 
+	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
 	* Suggestions about Python management
-	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) basics 
-	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics  
+	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) [basics](https://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html) 
+	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics
+		- Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
+		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
+		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
 
 ## Lecture 10: 9th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
