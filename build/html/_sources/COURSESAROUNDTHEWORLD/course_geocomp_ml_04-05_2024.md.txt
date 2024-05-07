@@ -458,6 +458,10 @@ Recorded of the QA can be found [here](). Password has been sent by e-mail on Ma
 
 Recorded lecture can be found [here](). 
 
+* Geospatial python 
+	* Suggestions about Python management
+	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) basics 
+	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics  
 
 ## Lecture 10: 9th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
