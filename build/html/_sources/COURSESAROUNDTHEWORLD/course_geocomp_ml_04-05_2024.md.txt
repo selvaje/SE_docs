@@ -460,7 +460,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 
 * Geospatial python 
 	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
-	* Suggestions about Python management
+	* [Suggestions about Python management](https://spatial-ecology.net/docs/build/html/PYTHON/PythonEnvs.html)
 	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) [basics](https://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html) 
 	* [Using python for point location raster value extraction](https://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
 	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics
