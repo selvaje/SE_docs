@@ -456,7 +456,7 @@ Recorded of the QA can be found [here](). Password has been sent by e-mail on Ma
 ## Lecture 9: Tuesday, 7th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IToqgZ5RF-5P6nlR1B6sDlD0XhKFkhYsFtG9IyYz9h1KVWM28JAnA.-K8f6A51CW2mKlcR).
 
 * Geospatial python 
 	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
