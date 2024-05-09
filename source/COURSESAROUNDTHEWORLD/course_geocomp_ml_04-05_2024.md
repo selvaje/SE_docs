@@ -473,7 +473,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 
 Recorded lecture can be found [here](). 
 
-* Review pyjeo installation procedure
+* [Review pyjeo installation procedure](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
 * Basic pyjeo
 * [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
