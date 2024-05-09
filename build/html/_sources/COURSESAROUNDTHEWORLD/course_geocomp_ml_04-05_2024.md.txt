@@ -473,6 +473,9 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 
 Recorded lecture can be found [here](). 
 
+* Review pyjeo installation procedure
+* Basic pyjeo
+* [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
 ## Lecture 11: Tuesday, 14th of May, 2024.
 ### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
