@@ -114,7 +114,7 @@ Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
 
 Tuscia Unversity & Euro-Mediterranean Center on Climate Change (CMCC) Foundation - Italy
 
-![]()
+![](12_issam_boukhris.jpg)
 
 ---
 

@@ -110,6 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#Spatialite,-a-portable-relational-geodatabase">Spatialite, a portable relational geodatabase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Using-Python-to-work-onto-the-database">Using Python to work onto the database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Rasterlite,-mixing-rasters-and-databases-together">Rasterlite, mixing rasters and databases together</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#A-simple-example-with-rasterlite2">A simple example with rasterlite2</a></li>
 </ul>
 </li>
 </ul>
@@ -477,7 +478,24 @@ the R language.</p>
 <p>SQL implemnted multiple sub-languages to create, register, update and query a system of tables based on the so-called <em>relational algebra</em> as directly inspired to the mathematical <em>theory of sets</em> where any type of operation can be expressed in terms of unions, intersections, differences, includes, negations and a few other simple operators.</p>
 <p>Originally defined in pure <em>declarative</em> terms, today the current SQL standard also includes procedural, types, and control flow. The current ANSI/ISO standard is generally extended by implementations.</p>
 <p>An example of an SQL query on a table (courtesy of Wikipedia):</p>
-<p><img alt="SQL example" src="PYTHON/figures/sql.svg" /><img alt="SQL example" src="PYTHON/figures/sql.svg" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/sql.png&quot;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">800</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_OGCSQL_4_0.png" class="no-scaled-link" src="../_images/PYTHON_OGCSQL_4_0.png" style="width: 800px; height: 600px;" />
+</div>
+</div>
 <p>The <em>Open Geospatial Consortium (OGC)</em> has promoted 1994 a standard for geospatial queries, that is currently implemented by most of the relational databases.</p>
 <p>See <a class="reference external" href="https://www.ogc.org/standards/">OGC Standards</a> for complete information.</p>
 <p>A non exhaustive list of real-world databases (DBMS) with geospatial extensions includes:</p>
@@ -898,8 +916,25 @@ load shapefile error: table &#39;heights&#39; already exists
 <li><p>locking the database for access</p></li>
 <li><p>doing all-in-one bufferized operations</p></li>
 </ul>
-<p><img alt="Transaction" src="PYTHON/figures/transaction.png" /></p>
 <p>Note that default transactions are DEFERRED, so they start at first database access. At logical level, a transaction ensures that the whole set of operations performed can be considered as <em>atomic</em> (i.e. performed/discarded all together).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/transaction.png&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">800</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_OGCSQL_36_0.png" class="no-scaled-link" src="../_images/PYTHON_OGCSQL_36_0.png" style="width: 800px; height: 800px;" />
+</div>
+</div>
 <p>Let’s see some easy operations with SQLite/Spatialite drivers for OGR and the <code class="docutils literal notranslate"><span class="pre">tree_height</span></code> dataset.</p>
 <p>First of all, create a copy with an explicit suffix for CSV file which can be managed by OGR tools:</p>
 <div class="nbinput nblast docutils container">
@@ -3481,6 +3516,281 @@ optional DB specific settings:
 </pre></div></div>
 </div>
 <p>Some general information: a limited number of formats is directly supported, that is (Geo)TIFF, JPG and Grid with an optional world file to describe a geotransform. The coverage is mainly tought as a compact <em>prêt-à-porter</em> distribution with styles included. For instance, a very simple WMS server (<code class="docutils literal notranslate"><span class="pre">wmslite</span></code>) is one of the include tools for visualization from a conventional desktop GIS such as QGIS.</p>
+</section>
+<section id="A-simple-example-with-rasterlite2">
+<h2>A simple example with rasterlite2<a class="headerlink" href="#A-simple-example-with-rasterlite2" title="Permalink to this headline"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-stats<span class="w"> </span>geodata/dem/GMTED2010.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/dem/GMTED2010.tif
+       geodata/dem/GMTED2010.tif.aux.xml
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    ENSEMBLE[&#34;World Geodetic System 1984 ensemble&#34;,
+        MEMBER[&#34;World Geodetic System 1984 (Transit)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G730)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G873)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1150)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1674)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1762)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G2139)&#34;],
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]],
+        ENSEMBLEACCURACY[2.0]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    USAGE[
+        SCOPE[&#34;Horizontal component of 3D system.&#34;],
+        AREA[&#34;World.&#34;],
+        BBOX[-90,-180,90,180]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000000000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x5 Type=Int16, ColorInterp=Gray
+  Min=523.000 Max=4788.000
+  Minimum=523.000, Maximum=4788.000, Mean=1146.933, StdDev=318.701
+  NoData Value=-32768
+  Metadata:
+    STATISTICS_MAXIMUM=4788
+    STATISTICS_MEAN=1146.9329444444
+    STATISTICS_MINIMUM=523
+    STATISTICS_STDDEV=318.7007155709
+    STATISTICS_VALID_PERCENT=100
+</pre></div></div>
+</div>
+<p>Our goal is loading this simple coverage in an ad-hoc Rasterlite database</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/tmp/dem.sqlite
+<span class="o">!</span><span class="w"> </span>rl2tool<span class="w"> </span>CREATE<span class="w"> </span>-db<span class="w"> </span>/tmp/dem.sqlite<span class="w"> </span>-cov<span class="w"> </span>GMTED2010<span class="w"> </span>-smp<span class="w"> </span>INT16<span class="w"> </span>-pxl<span class="w"> </span>DATAGRID<span class="w"> </span>-cpr<span class="w"> </span>LZMA<span class="w"> </span>-srid<span class="w"> </span><span class="m">4326</span><span class="w"> </span>-res<span class="w"> </span><span class="m">0</span>.008333333340000<span class="w"> </span>-nd<span class="w"> </span>-32768
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+rl2tool: request is CREATE
+===========================================================
+              DB path: /tmp/dem.sqlite
+             Coverage: GMTED2010
+          Sample Type: INT16
+           Pixel Type: DATAGRID
+      Number of Bands: 1
+        NO-DATA pixel: -32768
+          Compression: LZMA DeltaFilter (7-zip, lossless)
+   Tile size (pixels): 512 x 512
+                 Srid: 4326
+Pixel base resolution: X=0.00833333334 Y=0.00833333334
+======= Coverage Policies =======
+Strict Resolution check: Disabled
+ Mixed Resolutions mode: Disabled
+  Section&#39;s Input Paths: Disabled
+ Section&#39;s MD5 Checksum: Enabled
+  Section&#39;s XML Summary: Enabled
+===========================================================
+
+     SQLite version: 3.37.2
+ SpatiaLite version: 5.0.1
+RasterLite2 version: 1.1.0-beta1
+
+Raster Coverage &#34;GMTED2010&#34; successfully created
+
+Operation CREATE successfully completed
+</pre></div></div>
+</div>
+<p>Now it is possible to load the GeoTIFF file:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>rl2tool<span class="w"> </span>IMPORT<span class="w"> </span>-db<span class="w"> </span>/tmp/dem.sqlite<span class="w"> </span>-cov<span class="w"> </span>GMTED2010<span class="w"> </span>-srid<span class="w"> </span><span class="m">4326</span><span class="w"> </span>-wf<span class="w"> </span>-src<span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>-pyr
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+rl2tool; request is IMPORT
+===========================================================
+              DB path: /tmp/dem.sqlite
+    Input Source path: geodata/dem/GMTED2010.tif
+             Coverage: GMTED2010
+Using the WorldFile
+          Forced SRID: 4326
+Immediately building Pyramid Levels
+===========================================================
+
+     SQLite version: 3.37.2
+ SpatiaLite version: 5.0.1
+RasterLite2 version: 1.1.0-beta1
+
+------------------
+Importing: geodata/dem/GMTED2010.tif
+    Image Size (pixels): 720 x 600
+                   SRID: 4326
+       LowerLeft Corner: X=29.00 Y=-1.00
+      UpperRight Corner: X=35.00 Y=4.00
+       Pixel resolution: X=0.00833333334 Y=0.00833333334
+&gt;&gt; Image successfully imported in: 0 mins 00 secs
+  ----------
+    Pyramid levels successfully built for Section 1
+&gt;&gt; Total time: 0 mins 00 secs
+
+Operation IMPORT successfully completed
+</pre></div></div>
+</div>
+<p>Styling needs to be specified using a SLD (OGC standard, also managed in Qgis).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># spatialite-gui /tmp/dem.splite</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>cat<span class="w"> </span>etopo1_styles/etopo.xml
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;?xml version=&#34;1.0&#34; encoding=&#34;UTF-8&#34;?&gt;
+&lt;RasterSymbolizer version=&#34;1.1.0&#34; xsi:schemaLocation=&#34;http://www.opengis.net/se http://schemas.opengis.net/se/1.1.0/Symbolizer.xsd&#34; xmlns=&#34;http://www.opengis.net/se&#34; xmlns:ogc=&#34;http://www.opengis.net/ogc&#34; xmlns:xlink=&#34;http://www.w3.org/1999/xlink&#34; xmlns:xsi=&#34;http://www.w3.org/2001/XMLSchema-instance&#34;&gt;
+        &lt;Name&gt;etopo&lt;/Name&gt;
+        &lt;Description&gt;
+                &lt;Title&gt;ETOPO1 Color Map&lt;/Title&gt;
+                &lt;Abstract&gt;derived from the original &#34;etopo2&#34; color rule (GRASS GIS)&lt;/Abstract&gt;
+        &lt;/Description&gt;
+        &lt;Opacity&gt;1.0&lt;/Opacity&gt;
+        &lt;ColorMap&gt;
+                &lt;Interpolate fallbackValue=&#34;#ffffff&#34;&gt;
+                        &lt;LookupValue&gt;Rasterdata&lt;/LookupValue&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;-11000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#000000&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;-5000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#000064&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;-1000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#3232c8&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;-1.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#9696ff&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;0.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#009600&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;270.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#5aa55a&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;300.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#5aaf5a&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;500.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#32b432&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;500.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#46aa46&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;1000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#46914b&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;1000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#469b4b&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;2000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#969c64&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;3000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#dcdcdc&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;4000.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#f5f5f5&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                        &lt;InterpolationPoint&gt;
+                                &lt;Data&gt;8850.00000000&lt;/Data&gt;
+                                &lt;Value&gt;#ffffff&lt;/Value&gt;
+                        &lt;/InterpolationPoint&gt;
+                &lt;/Interpolate&gt;
+        &lt;/ColorMap&gt;
+&lt;/RasterSymbolizer&gt;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
 </section>
 </section>
 
