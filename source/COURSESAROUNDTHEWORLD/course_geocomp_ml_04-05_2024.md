@@ -471,10 +471,13 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 ## Lecture 10: 9th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfadK7VyBfODsIvZ0Qz8xh4UHtgKSoR8HaG2frLqXEcCMKaBobqr53ce.PgIS-AuN_64nOudS). 
 
 * [Review pyjeo installation procedure](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
 * Basic pyjeo
+* Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
+		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
+		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
 * [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
 ## Lecture 11: Tuesday, 14th of May, 2024.
