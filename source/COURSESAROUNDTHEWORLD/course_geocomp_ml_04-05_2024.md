@@ -478,6 +478,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfad
 * Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
 		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
 		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
+		- [pyjeo 3](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#pyjeo-in-combination-with-sklearn-pieter-kempeneers)
 * [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
 ## Lecture 11: Tuesday, 14th of May, 2024.
