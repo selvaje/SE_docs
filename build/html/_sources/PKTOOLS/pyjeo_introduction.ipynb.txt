@@ -34,8 +34,8 @@
     "    sudo apt update\n",
     "    sudo apt upgrade -y  \n",
     "    cd ~/Downloads\n",
-    "    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_pyjeo.sh\n",
-    "    sudo install_pyjeo.sh\n",
+    "    wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_pyjeo4osgeo16.sh\n",
+    "    ./install_pyjeo4osgeo16.sh\n",
     "\n"
    ]
   },
@@ -44,6 +44,44 @@
    "metadata": {},
    "source": [
     "Import Python modules"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Trick to consider for venv within a notebook: simply use a clean sys.path taken from the shell\n",
+    "import sys\n",
+    "sys.path"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sys.path = ['', '/usr/lib/python310.zip', '/usr/lib/python3.10', '/usr/lib/python3.10/lib-dynload', '/home/user/venv/lib/python3.10/site-packages', '/home/user/.local/lib/python3.10/site-packages', '/home/user/.local/lib/python3.10/site-packages/pyjeo-1.1.2-py3.10.egg', '/home/user/.local/lib/python3.10/site-packages/rioxarray-0.15.5-py3.10.egg', '/home/user/.local/lib/python3.10/site-packages/pyproj-3.6.1-py3.10-linux-x86_64.egg', '/usr/lib/python3/dist-packages', '/usr/local/lib/python3.10/dist-packages', '/usr/lib/python3.10/dist-packages']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "sys.path"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# from now on all should work as expected..."
    ]
   },
   {
@@ -247,7 +285,18 @@
    "execution_count": null,
    "metadata": {},
    "outputs": [],
-   "source": []
+   "source": [
+    "jim_stacked = pj.geometry.stackBand(jim, gpp)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "jim_stacked.properties.nrOfBand()"
+   ]
   },
   {
    "cell_type": "markdown",
@@ -291,7 +340,7 @@
    "metadata": {},
    "outputs": [],
    "source": [
-    "jim.properties.getDimension('plane')"
+    "len(jim.properties.getDimension('plane'))"
    ]
   },
   {
@@ -420,9 +469,7 @@
   {
    "cell_type": "code",
    "execution_count": null,
-   "metadata": {
-    "scrolled": false
-   },
+   "metadata": {},
    "outputs": [],
    "source": [
     "jim_mean = pj.geometry.reducePlane(jim, 'mean')"
@@ -496,7 +543,20 @@
    "metadata": {},
    "outputs": [],
    "source": [
+    "# original code by Pieter...\n",
     "jim.geometry.cropPlane('ET')\n",
+    "print(jim.properties.nrOfPlane())\n",
+    "print(jim.properties.nrOfBand())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# A little fix...\n",
+    "jim.geometry.cropPlane(0)\n",
     "print(jim.properties.nrOfPlane())\n",
     "print(jim.properties.nrOfBand())"
    ]
@@ -629,8 +689,7 @@
    "execution_count": null,
    "metadata": {
     "id": "rOCybsZamJ83",
-    "outputId": "970b90d4-5153-4b54-8940-dea47cfc8774",
-    "scrolled": false
+    "outputId": "970b90d4-5153-4b54-8940-dea47cfc8774"
    },
    "outputs": [],
    "source": [
@@ -946,7 +1005,7 @@
    "name": "python",
    "nbconvert_exporter": "python",
    "pygments_lexer": "ipython3",
-   "version": "3.10.6"
+   "version": "3.10.12"
   }
  },
  "nbformat": 4,
