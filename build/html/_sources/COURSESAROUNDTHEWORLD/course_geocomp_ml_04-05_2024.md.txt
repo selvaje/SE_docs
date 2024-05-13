@@ -482,7 +482,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfad
 * [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
 ## Lecture 11: Tuesday, 14th of May, 2024.
-### Machine Learning Introduction, Support Vector Machine & Random Forest (Antonio Fonseca & Giuseppe Amatulli)
+### Machine Learning Introduction, Support Vector Machine (Antonio Fonseca)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
