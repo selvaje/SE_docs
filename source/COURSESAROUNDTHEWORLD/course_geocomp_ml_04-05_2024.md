@@ -488,7 +488,7 @@ In this class we will set the main fundamentals to implement machine learning in
 
 Recorded lecture can be found [here](). 
 
-* [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20240510_GeoComp_IntroML_SVM.pdf) (F.)
+* [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20240514_GeoComp_IntroML_SVM_Class1.pdf) (F.)
 	* Defining learning 
 	* Supervised vs Unsupervised learning
 	* The framework of learning algorithms
