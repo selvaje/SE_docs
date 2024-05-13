@@ -488,16 +488,20 @@ In this class we will set the main fundamentals to implement machine learning in
 
 Recorded lecture can be found [here](). 
 
-* [Intro to machine learning](http://spatial-ecology.net/docs/source/lectures/lect_20240514_GeoComp_IntroML_SVM_Class1.pdf) (F.)
-	* Defining learning 
+
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_GeoComp_IntroML_SVM_Class1.pdf) (F.)
+	
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (F.)
+
+* Intro to machine learning (F.)
+	* Defining learning
 	* Supervised vs Unsupervised learning
 	* The framework of learning algorithms
-	
-* Example of Supervised learning using scikit-learn in python.
-	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (SVM)(F.)
-		* Optimization of SVM
-		* Extension of SVM to regression (SVR)
 
+* Intro to supervised learning.
+	* Support Vector Machine (SVM)(F.)
+	* Optimization of SVM
+	* Extension of SVM to regression (SVR)
 
 ## Lecture 12: Thursday, 16th of May, 2024.
 ### Machine Learning - Perceptron (Antonio Fonseca)
