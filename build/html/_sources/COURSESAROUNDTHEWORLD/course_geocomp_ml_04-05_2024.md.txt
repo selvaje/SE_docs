@@ -604,6 +604,60 @@ Recorded lecture can be found [here]().
 ## In-person week: June 10-14, coding hackathon in Matera, Italy
 
 
+### Day 0: Sunday, 9 June 2024
+
+* Icebreaker/Social dinner: at Osteria Malatesta - Matera (https://maps.app.goo.gl/fFf18j9v6WqaP6fHA)
+	* Antonio arrival (at Bari airport )	 
+
+### Day 1: Monday, 10 June 2024
+
+* 9:00-17:00: Student coding hackathon 
+
+### Day 2: Tuesday, 11 June 2024
+
+* 9:00-17:00: Student coding hackathon
+* 20:00-22:00: Social event Birrificio 79 (https://maps.app.goo.gl/tPSZfjzRcWfxbPye7)
+ 
+### Day 3: Wednesday, 12 June 2024
+
+* 9:00-17:00: Student coding hackathon
+	* Tushar arrival (at Gioia)
+
+### Day 4: Thursday, 13 June 2024
+
+* 9:00-17:00: Final project Student presentation
+	* Milutin arrival
+
+### Day 5: Friday, 14 June 2024
+
+* 9:00-10:00: GEO-OPEN-HACK 2024 - an OEMC Initiative on open big data and tools (Milutin Milenkovic)
+* 10:00-16:00: Final project Student presentation
+* 16:00-20:00: Matera guide tour
+* 20:00-22:00: BBQ at Belvedere Murgia Timone (https://maps.app.goo.gl/Qr1cCt95P3upELJq6)
+
+### Day 6: Saturday, 15 June 2024
+
+### Day 7: Sunday, 16 June 2024
+
+Tushar departure (Bari airport at 10:45, departure at 11:45)
+
+### Day 8: Monday, 17 June 2024
+
+Meeting Milutin Antonio Giuseppe: Estimation of tree height using GEDI dataset
+
+### Day 9: Tuesday, 18 June 2024
+
+Meeting Milutin Antonio Giuseppe: Estimation of tree height using GEDI dataset
+
+### Day 10: Wednesday, 19 June 2024
+
+Milutin departure (Bari airport at 7:30, departure at 9:25)
+
+### Day 11: Thursday, 20 June 2024
+
+Antonio departure (Bari airport at 7:00, departure at 8:00)	
+
+
 <!---
 ## Lecture 17: 6th of June, 2024.
 In presence week in Matera, Italy
