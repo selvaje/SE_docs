@@ -641,6 +641,8 @@ Recorded lecture can be found [here]().
 
 Tushar departure (Bari airport at 10:45, departure at 11:45)
 
+## In-person week: June 17-21, extended study group in Matera, Italy
+
 ### Day 8: Monday, 17 June 2024
 
 Meeting Milutin Antonio Giuseppe: Estimation of tree height using GEDI dataset
@@ -656,7 +658,6 @@ Milutin departure (Bari airport at 7:30, departure at 9:25)
 ### Day 11: Thursday, 20 June 2024
 
 Antonio departure (Bari airport at 7:00, departure at 8:00)	
-
 
 <!---
 ## Lecture 17: 6th of June, 2024.
