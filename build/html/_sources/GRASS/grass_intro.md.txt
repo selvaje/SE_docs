@@ -15,7 +15,7 @@ Every GRASS project has a predefined data structure:
 
 - **GISDBASE** - GRASS data are stored in a directory referred to as a DATABASE “GISDBASE”. This directory has to be created with mkdir or a file manager, before starting to work with GRASS. Within this DATABASE, the projects are organized by project areas stored in subdirectories called LOCATIONs.
 
-- **LOCATION** - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.
+- **LOCATION (re-named PROJECT starting from grass84)** - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.
 
 - **MAPSET** - Locations can have many MAPSETs. Each MAPSET is a LOCATION's subdirectory. A new MAPSET can be added at GRASS startup.
 
@@ -25,8 +25,8 @@ There are several two ways to use and open GRASS:
 
 **Start GRASS by GUI**
 
-    grass76 -wxpython
-cp -r   /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
+    grass --gui
+
 The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.
 
 **Start GRASS by command line**

@@ -98,9 +98,13 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
 <ul class="current">
@@ -129,6 +133,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
@@ -225,18 +231,17 @@
 <p>Every GRASS project has a predefined data structure:</p>
 <ul>
 <li><p><strong>GISDBASE</strong> - GRASS data are stored in a directory referred to as a DATABASE “GISDBASE”. This directory has to be created with mkdir or a file manager, before starting to work with GRASS. Within this DATABASE, the projects are organized by project areas stored in subdirectories called LOCATIONs.</p></li>
-<li><p><strong>LOCATION</strong> - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.</p></li>
+<li><p><strong>LOCATION (re-named PROJECT starting from grass84)</strong> - A Location is defined by its coordinate system, map projection and geographical boundaries. The subdirectories and files defining a LOCATION are created automatically when GRASS is started for the first time with a new LOCATION.</p></li>
 <li><p><strong>MAPSET</strong> - Locations can have many MAPSETs. Each MAPSET is a LOCATION’s subdirectory. A new MAPSET can be added at GRASS startup.</p>
 <p>A common problem of basic users is not really using GRASS but starting a GRASS section. The main reason is due to the GRASS data structure and the way a GRASS section has to be set up before starting!</p>
 </li>
 </ul>
 <p>There are several two ways to use and open GRASS:</p>
 <p><strong>Start GRASS by GUI</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass76</span> <span class="o">-</span><span class="n">wxpython</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass</span> <span class="o">--</span><span class="n">gui</span>
 </pre></div>
 </div>
-<p>cp -r   /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
-The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.</p>
+<p>The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.</p>
 <p><strong>Start GRASS by command line</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">grass</span> <span class="o">--</span><span class="n">text</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">my_SE_data</span><span class="o">/</span><span class="n">exercise</span><span class="o">/</span><span class="n">grassdb</span><span class="o">/</span><span class="n">europe</span><span class="o">/</span><span class="n">PERMANENT</span><span class="o">/</span>
 </pre></div>

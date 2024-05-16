@@ -488,7 +488,7 @@ In this class we will set the main fundamentals to implement machine learning in
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A7luqZeL9wvq-o5FR5Ad6YTSQP7JxlOfC9sRWoF6JDpHTP5sKynt1.-M-G9tTiydpeD9QY). 
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_GeoComp_IntroML_SVM_Class1.pdf) (F.)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_IntroML_SVM_Class1.pdf) (F.)
 	
 * [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (F.)
 
@@ -506,6 +506,9 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
+
+
+
 
 * Example of Supervised learning using scikit-learn in python.
 	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (SVM)(F.)
