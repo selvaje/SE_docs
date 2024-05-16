@@ -505,10 +505,21 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A
 ## Lecture 12: Thursday, 16th of May, 2024.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrwewk51W77KKKTSs7qXwzL1AHdP_pgn49694wvtxtMD0Y_ms74jFeb.9n-br-V8qQ7ioPO5).
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240116_Perceptron_Class2.pdf)
-[Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.ipynb)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_IntroML_SVM_Class1.pdf) (F.)
+	
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (F.)
+
+* Intro to machine learning (F.)
+	* Defining learning
+	* Supervised vs Unsupervised learning
+	* The framework of learning algorithms
+
+* Intro to supervised learning.
+	* Support Vector Machine (SVM)(F.)
+	* Optimization of SVM
+	* Extension of SVM to regression (SVR)
 
 ## Lecture 13: Tuesday, 21st of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
@@ -541,6 +552,9 @@ Recorded lecture can be found [here]().
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
+
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240116_Perceptron_Class2.pdf)
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
 
 * [Perceptron and neural network](http://spatial-ecology.net/docs/source/lectures/lect_20240517_GeoComp_NeuralNets.pdf)
 
