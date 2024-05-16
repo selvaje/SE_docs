@@ -507,20 +507,8 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A
 
 Recorded lecture can be found [here]().
 
-
-
-
-* Example of Supervised learning using scikit-learn in python.
-	* [Support Vector Machine](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (SVM)(F.)
-		* Optimization of SVM
-		* Extension of SVM to regression (SVR)
-
-* [The “less optimal” hyperplane methods](http://spatial-ecology.net/docs/source/lectures/lect_20240512_GeoComp_Perceptron.pdf)
-	* Links between SVM and Logistic Regression 
-	* Review on Linear Regression 
-	* Minimizing loss functions
-	* Regularization
-
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240116_Perceptron_Class2.pdf)
+[Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.ipynb)
 
 ## Lecture 13: Tuesday, 21st of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
