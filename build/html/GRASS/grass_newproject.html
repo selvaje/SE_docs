@@ -1074,21 +1074,27 @@ Cleaning up temporary files...
 git clone https://github.com/OSGeo/grass-addons.git grass_addons
 </pre></div>
 </div>
-<p>when the download has ben done you can proceed with the installation</p>
+<p>when the download has ben done you can proceed with the installation.</p>
+<p>For this exercise we are going to use: * <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html">r.mapcalc.tiled</a> add-on. * <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.mapcalc.html">r.mapcalc</a></p>
+<p>Nontheless also consider to install and test the following add-on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.train.html">r.learn.train</a></p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.ml.html">r.learn.ml</a></p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.predict.html">r.learn.predict</a></p></li>
+</ul>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-<span class="c1"># grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec  g.extension extension=r.mapcalc.tiled  url=/home/user/grass_addons/src/raster/r.mapcalc.tiled</span>
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.mapcalc.tiled<span class="w">  </span><span class="nv">url</span><span class="o">=</span>/home/user/grass_addons/src/raster/r.mapcalc.tiled
 grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.slope.aspect<span class="w"> </span><span class="nv">elevation</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">slope</span><span class="o">=</span>slope<span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.region<span class="w"> </span><span class="nv">res</span><span class="o">=</span><span class="m">0</span>.0041666666666
 grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc.tiled<span class="w"> </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="m">5880</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="m">4200</span><span class="w">  </span><span class="nv">overlap</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
 grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc<span class="w">       </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span>--o
 grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>slope_msk
 <span class="c1"># export the &quot;grass slope_msk&quot; to a geotif</span>
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w">  </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w">      </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w">  </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w"> </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w"> </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
 </pre></div>
 </div>
 </div>
@@ -1176,6 +1182,7 @@ Execution of &lt;r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 typ
 Cleaning up temporary files...
 </pre></div></div>
 </div>
+<p>As you can see not always the paralellization is beneficial</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
@@ -1196,15 +1203,7 @@ Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
 Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </pre></div></div>
 </div>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span>
-</pre></div>
-</div>
-</div>
+<p>Not all the GRASS module have been parallelized some example of parallization can be found here: <a class="reference external" href="https://htmlpreview.github.io/?https://github.com/petrasovaa/FUTURES-CONUS-talk/blob/main/foss4g2022.html#/">https://htmlpreview.github.io/?https://github.com/petrasovaa/FUTURES-CONUS-talk/blob/main/foss4g2022.html#/</a></p>
 </section>
 </section>
 </section>

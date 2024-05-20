@@ -732,7 +732,17 @@
    "id": "01d935e8-6414-4f33-a15b-a48731fa4fe4",
    "metadata": {},
    "source": [
-    "when the download has ben done you can proceed with the installation "
+    "when the download has ben done you can proceed with the installation. \n",
+    "\n",
+    "For this exercise we are going to use:\n",
+    "* [r.mapcalc.tiled](https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html) add-on.\n",
+    "* [r.mapcalc](https://grass.osgeo.org/grass83/manuals/r.mapcalc.html)\n",
+    "\n",
+    "Nontheless also consider to install and test the following add-on:\n",
+    "\n",
+    "* [r.learn.train](https://grass.osgeo.org/grass83/manuals/addons/r.learn.train.html)\n",
+    "* [r.learn.ml](https://grass.osgeo.org/grass83/manuals/addons/r.learn.ml.html)\n",
+    "* [r.learn.predict](https://grass.osgeo.org/grass83/manuals/addons/r.learn.predict.html)\n"
    ]
   },
   {
@@ -826,14 +836,21 @@
    ],
    "source": [
     "%%bash\n",
-    "# grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec  g.extension extension=r.mapcalc.tiled  url=/home/user/grass_addons/src/raster/r.mapcalc.tiled \n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec g.extension extension=r.mapcalc.tiled  url=/home/user/grass_addons/src/raster/r.mapcalc.tiled \n",
     "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o\n",
-    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec g.region res=0.0041666666666\n",
     "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec time r.mapcalc.tiled expression=\"slope_msk = if(slope > 10, 10, 1)\" width=5880 height=4200  overlap=0 nprocs=2 --o\n",
     "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec time r.mapcalc       expression=\"slope_msk = if(slope > 10, 10, 1)\" --o\n",
     "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.info  map=slope_msk\n",
     "# export the \"grass slope_msk\" to a geotif\n",
-    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.out.gdal --o -c -m -f createopt=\"COMPRESS=DEFLATE,ZLEVEL=9\" type=Byte  format=GTiff nodata=0      input=slope_msk  output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif"
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.out.gdal --o -c -m -f createopt=\"COMPRESS=DEFLATE,ZLEVEL=9\" type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "9f2c8cd6-a11b-4bc7-ae46-705c8874197a",
+   "metadata": {},
+   "source": [
+    "As you can see not always the paralellization is beneficial"
    ]
   },
   {
@@ -858,12 +875,13 @@
    ]
   },
   {
-   "cell_type": "code",
-   "execution_count": null,
-   "id": "21b203c7-e0e9-4bb0-8a0c-e55f28226702",
+   "cell_type": "markdown",
+   "id": "671af36a-c2ab-451b-9af0-c5879031cda4",
    "metadata": {},
-   "outputs": [],
-   "source": []
+   "source": [
+    "Not all the GRASS module have been parallelized some example of parallization can be found here: \n",
+    "https://htmlpreview.github.io/?https://github.com/petrasovaa/FUTURES-CONUS-talk/blob/main/foss4g2022.html#/"
+   ]
   }
  ],
  "metadata": {
