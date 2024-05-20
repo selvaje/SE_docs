@@ -69,7 +69,13 @@
    "id": "562e2769-f22d-43b2-8947-cfd9c811101f",
    "metadata": {},
    "source": [
-    "We can see the metadata of the the dem using gdalinfo"
+    "We can see the metadata of the the DEM using gdalinfo. \n",
+    "\n",
+    "The tif metadata should have well defined values such as:\n",
+    "* projection has to be well defined as proj4, EPSG,\n",
+    "* the extent should set at degree level (e.g. 14.0') or with one digit after the degree (e.g. 14.1'),\n",
+    "* the pixel resolution should be also well defined (e.g. 0.25', 0.008333333' not 0.008331234' or 0.05214534'),\n",
+    "* in case of using more then one data source the raster layers shold have the same extent and the pixel aligned,\n"
    ]
   },
   {
@@ -145,14 +151,18 @@
    "id": "36c63c71-2749-4d1e-84ce-cabf5e39c9e0",
    "metadata": {},
    "source": [
-    "## Create a LOCATION and MAPSET stored in temporary folder\n",
+    "## Create a LOCATION and MAPSET stored in a temporary folder\n",
     "\n",
-    "Using the flag --tmp-location we can create a LOCATION on the flight that will automaticaly removed when GRASS will be closed. "
+    "Using the flag *--tmp-location* we can create a LOCATION on the flight that will automaticaly removed when GRASS will be closed. \n",
+    "\n",
+    "For this example we are goint to use:\n",
+    "* [r.slope.aspect](https://grass.osgeo.org/grass83/manuals/r.slope.aspect.html) to calculate the slope\n",
+    "* [r.out.gdal](https://grass.osgeo.org/grass83/manuals/r.out.gdal.html) to export the GRASS raster to tif. \n"
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 29,
+   "execution_count": 8,
    "id": "74bf2892-5f9c-460a-88c7-243b793d0448",
    "metadata": {
     "scrolled": true
@@ -167,10 +177,10 @@
       "SA_elevation\n",
       "\n",
       " +----------------------------------------------------------------------------+\n",
-      " | Map:      SA_elevation                   Date: Thu May 16 18:27:45 2024    |\n",
+      " | Map:      SA_elevation                   Date: Mon May 20 11:37:09 2024    |\n",
       " | Mapset:   PERMANENT                      Login of Creator: user            |\n",
       " | Location: tmploc                                                           |\n",
-      " | DataBase: /tmp/grass8-user-44040                                           |\n",
+      " | DataBase: /tmp/grass8-user-168760                                          |\n",
       " | Title:                                                                     |\n",
       " | Timestamp: none                                                            |\n",
       " |----------------------------------------------------------------------------|\n",
@@ -200,15 +210,15 @@
       " +----------------------------------------------------------------------------+\n",
       "\n",
       " +----------------------------------------------------------------------------+\n",
-      " | Map:      slope                          Date: Thu May 16 18:27:48 2024    |\n",
+      " | Map:      slope                          Date: Mon May 20 11:37:12 2024    |\n",
       " | Mapset:   PERMANENT                      Login of Creator: user            |\n",
       " | Location: tmploc                                                           |\n",
-      " | DataBase: /tmp/grass8-user-44040                                           |\n",
+      " | DataBase: /tmp/grass8-user-168760                                          |\n",
       " | Title:    slope in degrees                                                 |\n",
       " | Timestamp: none                                                            |\n",
       " |----------------------------------------------------------------------------|\n",
       " |                                                                            |\n",
-      " |   Type of Map:  raster               Number of Categories: 62              |\n",
+      " |   Type of Map:  raster               Number of Categories: 90              |\n",
       " |   Data Type:    FCELL                Semantic label: (none)                |\n",
       " |   Rows:         8400                                                       |\n",
       " |   Columns:      5880                                                       |\n",
@@ -216,7 +226,7 @@
       " |        Projection: Latitude-Longitude                                      |\n",
       " |            N:        14N    S:        56S   Res: 0:00:30                   |\n",
       " |            E:        34W    W:        83W   Res: 0:00:30                   |\n",
-      " |   Range of data:    min = 0  max = 61.86501                                |\n",
+      " |   Range of data:    min = 0  max = 90                                      |\n",
       " |                                                                            |\n",
       " |   Data Source:                                                             |\n",
       " |    raster elevation file SA_elevation                                      |\n",
@@ -231,7 +241,7 @@
       " |    min_slope = 0.000000                                                    |\n",
       " |                                                                            |\n",
       " |    r.slope.aspect --overwrite elevation=\"SA_elevation\" slope=\"slope\" fo\\   |\n",
-      " |    rmat=\"degrees\" precision=\"FCELL\" zscale=1.0 min_slope=0.0 nprocs=1 m\\   |\n",
+      " |    rmat=\"degrees\" precision=\"FCELL\" zscale=1.0 min_slope=0.0 nprocs=2 m\\   |\n",
       " |    emory=300                                                               |\n",
       " |                                                                            |\n",
       " +----------------------------------------------------------------------------+\n",
@@ -261,8 +271,9 @@
       "Start the GUI with:                      g.gui wxpython\n",
       "When ready to quit enter:                exit\n",
       "\n",
-      "   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100\n",
+      "   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100\n",
       "Slope raster map <slope> complete\n",
+      "/bin/bash: line 5: r.mapcalc.tiled: command not found\n",
       "WARNING: Precision loss: Raster map <slope> of type DCELL to be exported as\n",
       "         Int16. This can be avoided by using Float64.\n",
       "WARNING: Forcing raster export\n",
@@ -273,6 +284,20 @@
       "   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100\n",
       "r.out.gdal complete. File\n",
       "</home/user/my_SE_data/exercise/grassdb/slope.tif> created.\n",
+      "WARNING: Precision loss: Raster map <slope> of type DCELL to be exported as\n",
+      "         Byte. This can be avoided by using Float64.\n",
+      "WARNING: Forcing raster export\n",
+      "Checking GDAL data type and nodata value...\n",
+      "   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100\n",
+      "Using GDAL data type <Byte>\n",
+      "WARNING: The user given nodata value 0 is present in rasterband <slope> and\n",
+      "         would lead to data loss. Please specify a different nodata value\n",
+      "         with the nodata parameter.\n",
+      "WARNING: Forcing raster export.\n",
+      "Exporting raster data to GTiff format...\n",
+      "   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100\n",
+      "r.out.gdal complete. File\n",
+      "</home/user/my_SE_data/exercise/grassdb/slope_msk.tif> created.\n",
       "Cleaning up temporary files...\n",
       "Done.\n",
       "\n",
@@ -288,7 +313,7 @@
     "r.external -e input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif output=SA_elevation --o --q\n",
     "g.list raster -p \n",
     "r.info  map=SA_elevation\n",
-    "r.slope.aspect elevation=SA_elevation slope=slope --o\n",
+    "r.slope.aspect elevation=SA_elevation slope=slope\n",
     "r.info  map=slope\n",
     "# export the \"grass slope\" to a geotif.\n",
     "r.out.gdal --o -c -m -f createopt=\"COMPRESS=DEFLATE,ZLEVEL=9\" type=Int16 format=GTiff nodata=-9999  input=slope  output=/home/user/my_SE_data/exercise/grassdb/slope.tif\n",
@@ -296,8 +321,22 @@
    ]
   },
   {
+   "cell_type": "markdown",
+   "id": "7b9974a8-f683-4b42-a651-d46586d033cd",
+   "metadata": {},
+   "source": [
+    "GRASS rasters support three data types:\n",
+    "\n",
+    "    32bit signed integer (CELL) wich can be converted in GDAL using Byte/Int16/UInt16/UInt32/Int32\n",
+    "    single-precision floating-point (FCELL) wich can be converted in GDAL using Float32\n",
+    "    double-precision floating-point (DCELL) wich can be converted in GDAL using Float64\n",
+    "\n",
+    "More info at https://grass.osgeo.org/grass83/manuals/r.out.gdal.html"
+   ]
+  },
+  {
    "cell_type": "code",
-   "execution_count": 30,
+   "execution_count": 2,
    "id": "33584748-f1ff-4881-bbfa-887c4dd5b4dd",
    "metadata": {
     "scrolled": true
@@ -321,7 +360,7 @@
        "<AxesSubplot:>"
       ]
      },
-     "execution_count": 30,
+     "execution_count": 2,
      "metadata": {},
      "output_type": "execute_result"
     }
@@ -368,12 +407,12 @@
    "metadata": {},
    "source": [
     "## Create a LOCATION and MAPSET stored in a folder that can be accessed later on.\n",
-    "Using the flag -e we can create a LOCATION on the flight called \"south_america\" that can be access later on.  "
+    "Using the flag *-e* we can create a LOCATION on the flight called \"south_america\" that can be access later on.  "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 32,
+   "execution_count": 3,
    "id": "fb65e27f-f29c-4808-8b5b-74b935fcfb97",
    "metadata": {},
    "outputs": [
@@ -405,7 +444,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 33,
+   "execution_count": 4,
    "id": "b8b11e3d-d2a3-4ba8-bfa6-b682b51bc559",
    "metadata": {},
    "outputs": [
@@ -423,7 +462,7 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 34,
+   "execution_count": 5,
    "id": "0ebb8019-5837-4631-b026-4ff6581fbd23",
    "metadata": {
     "scrolled": true
@@ -434,15 +473,15 @@
      "output_type": "stream",
      "text": [
       "total 36\n",
-      "-rw-rw-r-- 1 user user  328 May 16 18:28 DEFAULT_WIND\n",
-      "-rw-rw-r-- 1 user user    1 May 16 18:28 MYNAME\n",
-      "-rw-rw-r-- 1 user user   65 May 16 18:28 PROJ_INFO\n",
-      "-rw-rw-r-- 1 user user   10 May 16 18:28 PROJ_SRID\n",
-      "-rw-rw-r-- 1 user user   40 May 16 18:28 PROJ_UNITS\n",
-      "-rw-rw-r-- 1 user user 1047 May 16 18:28 PROJ_WKT\n",
-      "drwxrwxr-x 2 user user 4096 May 16 18:28 sqlite\n",
-      "-rw-rw-r-- 1 user user   81 May 16 18:28 VAR\n",
-      "-rw-rw-r-- 1 user user  328 May 16 18:28 WIND\n"
+      "-rw-rw-r-- 1 user user  328 May 20 10:32 DEFAULT_WIND\n",
+      "-rw-rw-r-- 1 user user    1 May 20 10:32 MYNAME\n",
+      "-rw-rw-r-- 1 user user   65 May 20 10:32 PROJ_INFO\n",
+      "-rw-rw-r-- 1 user user   10 May 20 10:32 PROJ_SRID\n",
+      "-rw-rw-r-- 1 user user   40 May 20 10:32 PROJ_UNITS\n",
+      "-rw-rw-r-- 1 user user 1047 May 20 10:32 PROJ_WKT\n",
+      "drwxrwxr-x 2 user user 4096 May 20 10:32 sqlite\n",
+      "-rw-rw-r-- 1 user user   81 May 20 10:32 VAR\n",
+      "-rw-rw-r-- 1 user user  328 May 20 10:32 WIND\n"
      ]
     }
    ],
@@ -455,12 +494,12 @@
    "id": "d1fc642d-7d17-400c-8f08-45a8b01b38b7",
    "metadata": {},
    "source": [
-    "we can proceed in using the south_america LOCATION & the PERMANENT MAPSET suing this syntax: "
+    "we can proceed in using the south_america LOCATION & the PERMANENT MAPSET using this syntax: "
    ]
   },
   {
    "cell_type": "code",
-   "execution_count": 35,
+   "execution_count": 6,
    "id": "56585522-8c48-412f-a363-8b3681e46c1c",
    "metadata": {
     "scrolled": true
@@ -475,7 +514,7 @@
       "SA_elevation\n",
       "\n",
       " +----------------------------------------------------------------------------+\n",
-      " | Map:      SA_elevation                   Date: Thu May 16 18:29:18 2024    |\n",
+      " | Map:      SA_elevation                   Date: Mon May 20 10:33:27 2024    |\n",
       " | Mapset:   PERMANENT                      Login of Creator: user            |\n",
       " | Location: south_america                                                    |\n",
       " | DataBase: /home/user/my_SE_data/exercise/grassdb                           |\n",
@@ -660,12 +699,13 @@
   {
    "cell_type": "markdown",
    "id": "25b730e8-17ee-4a2d-b026-5834c37cd71b",
-   "metadata": {
-    "jp-MarkdownHeadingCollapsed": true
-   },
+   "metadata": {},
    "source": [
     "## GRASS add-ons\n",
-    "Grass GIS has a modular architecture that allows users to extend its functionality through add-ons or modules. These add-ons cover a wide range of functionalities and are developed and contributed by the Grass GIS community. You can see the full list of add-ons at https://grass.osgeo.org/grass83/manuals/addons/index.html "
+    "Grass GIS has a modular architecture that allows users to extend its functionality through add-ons or modules. These add-ons cover a wide range of functionalities and are developed and contributed by the Grass GIS community. You can see the full list of add-ons at https://grass.osgeo.org/grass83/manuals/addons/index.html \n",
+    "\n",
+    "For this exercise we are going to use \n",
+    "[r.mapcalc.tiled](https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html) that integrate [r.mapcalc](https://grass.osgeo.org/grass83/manuals/r.mapcalc.html) in a multicore enviroment. "
    ]
   },
   {
@@ -673,7 +713,7 @@
    "id": "9919a34b-2a21-4bd1-9140-99923daf6b0f",
    "metadata": {},
    "source": [
-    "## Installation\n",
+    "### Installation\n",
     "\n",
     "Open a bash terminal and run"
    ]
@@ -697,32 +737,133 @@
   },
   {
    "cell_type": "code",
-   "execution_count": 39,
+   "execution_count": 22,
    "id": "4c0134e1-a73e-4016-8d3f-dad376dd919b",
    "metadata": {},
    "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      " +----------------------------------------------------------------------------+\n",
+      " | Map:      slope_msk                      Date: Mon May 20 16:44:05 2024    |\n",
+      " | Mapset:   PERMANENT                      Login of Creator: user            |\n",
+      " | Location: south_america                                                    |\n",
+      " | DataBase: /home/user/my_SE_data/exercise/grassdb                           |\n",
+      " | Title:                                                                     |\n",
+      " | Timestamp: none                                                            |\n",
+      " |----------------------------------------------------------------------------|\n",
+      " |                                                                            |\n",
+      " |   Type of Map:  raster               Number of Categories: 0               |\n",
+      " |   Data Type:    CELL                 Semantic label: (none)                |\n",
+      " |   Rows:         16800                                                      |\n",
+      " |   Columns:      11760                                                      |\n",
+      " |   Total Cells:  197568000                                                  |\n",
+      " |        Projection: Latitude-Longitude                                      |\n",
+      " |            N:        14N    S:        56S   Res: 0:00:15                   |\n",
+      " |            E:        34W    W:        83W   Res: 0:00:15                   |\n",
+      " |   Range of data:    min = 1  max = 10                                      |\n",
+      " |                                                                            |\n",
+      " |   Data Description:                                                        |\n",
+      " |    generated by r.mapcalc                                                  |\n",
+      " |                                                                            |\n",
+      " |   Comments:                                                                |\n",
+      " |    if(slope > 10, 10, 1)                                                   |\n",
+      " |                                                                            |\n",
+      " +----------------------------------------------------------------------------+\n",
+      "\n"
+     ]
+    },
     {
      "name": "stderr",
      "output_type": "stream",
      "text": [
       "Starting GRASS GIS...\n",
       "Cleaning up temporary files...\n",
-      "Executing <g.extension extension=r.stream.basins url=/home/user/grass_addons/src/raster/r.stream.basins/> ...\n",
-      "WARNING: Extension <r.stream.basins> already installed. Re-installing...\n",
-      "Compiling...\n",
-      "Installing...\n",
-      "Updating extensions metadata file...\n",
-      "Updating extension modules metadata file...\n",
-      "Installation of <r.stream.basins> successfully finished\n",
-      "Execution of <g.extension extension=r.stream.basins url=/home/user/grass_addons/src/raster/r.stream.basins/> finished.\n",
+      "Executing <r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o> ...\n",
+      "   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100\n",
+      "Slope raster map <slope> complete\n",
+      "Execution of <r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o> finished.\n",
+      "Cleaning up temporary files...\n",
+      "Starting GRASS GIS...\n",
+      "Cleaning up temporary files...\n",
+      "Executing <g.region res=0.0041666666666> ...\n",
+      "Execution of <g.region res=0.0041666666666> finished.\n",
+      "Cleaning up temporary files...\n",
+      "Starting GRASS GIS...\n",
+      "Cleaning up temporary files...\n",
+      "Executing <time r.mapcalc.tiled expression=slope_msk = if(slope > 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o> ...\n",
+      "11.73user 1.22system 0:09.50elapsed 136%CPU (0avgtext+0avgdata 72268maxresident)k\n",
+      "11632inputs+16144outputs (48major+93774minor)pagefaults 0swaps\n",
+      "Execution of <time r.mapcalc.tiled expression=slope_msk = if(slope > 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o> finished.\n",
+      "Cleaning up temporary files...\n",
+      "Starting GRASS GIS...\n",
+      "Cleaning up temporary files...\n",
+      "Executing <time r.mapcalc expression=slope_msk = if(slope > 10, 10, 1) --o> ...\n",
+      "5.34user 0.24system 0:05.52elapsed 101%CPU (0avgtext+0avgdata 38376maxresident)k\n",
+      "0inputs+6792outputs (0major+2484minor)pagefaults 0swaps\n",
+      "Execution of <time r.mapcalc expression=slope_msk = if(slope > 10, 10, 1) --o> finished.\n",
+      "Cleaning up temporary files...\n",
+      "Starting GRASS GIS...\n",
+      "Cleaning up temporary files...\n",
+      "Executing <r.info map=slope_msk> ...\n",
+      "Execution of <r.info map=slope_msk> finished.\n",
+      "Cleaning up temporary files...\n",
+      "Starting GRASS GIS...\n",
+      "Cleaning up temporary files...\n",
+      "Executing <r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif> ...\n",
+      "Checking GDAL data type and nodata value...\n",
+      "   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100\n",
+      "Using GDAL data type <Byte>\n",
+      "Exporting raster data to GTiff format...\n",
+      "   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100\n",
+      "r.out.gdal complete. File\n",
+      "</home/user/my_SE_data/exercise/grassdb/slope_msk.tif> created.\n",
+      "Execution of <r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif> finished.\n",
       "Cleaning up temporary files...\n"
      ]
     }
    ],
    "source": [
     "%%bash\n",
-    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec  g.extension extension=r.stream.basins  url=/home/user/grass_addons/src/raster/r.stream.basins/ "
+    "# grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec  g.extension extension=r.mapcalc.tiled  url=/home/user/grass_addons/src/raster/r.mapcalc.tiled \n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o\n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec g.region res=0.0041666666666\n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec time r.mapcalc.tiled expression=\"slope_msk = if(slope > 10, 10, 1)\" width=5880 height=4200  overlap=0 nprocs=2 --o\n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec time r.mapcalc       expression=\"slope_msk = if(slope > 10, 10, 1)\" --o\n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.info  map=slope_msk\n",
+    "# export the \"grass slope_msk\" to a geotif\n",
+    "grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec r.out.gdal --o -c -m -f createopt=\"COMPRESS=DEFLATE,ZLEVEL=9\" type=Byte  format=GTiff nodata=0      input=slope_msk  output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif"
    ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 16,
+   "id": "9b5f5f55-b152-430c-91d7-ab73e3b802ae",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Default software rendering mode (use -h if accelerated video card installed).\n",
+      "Loading tools from /usr/bin/openev/tools/Tool_Export.py\n",
+      "Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py\n",
+      "Loading tools from /usr/bin/openev/tools/Tool_DriverList.py\n"
+     ]
+    }
+   ],
+   "source": [
+    "! /usr/bin/openev/bin/openev /home/user/my_SE_data/exercise/grassdb/slope_msk.tif"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "21b203c7-e0e9-4bb0-8a0c-e55f28226702",
+   "metadata": {},
+   "outputs": [],
+   "source": []
   }
  ],
  "metadata": {

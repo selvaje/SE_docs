@@ -113,10 +113,12 @@
 <li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Start a new GRASS project</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Analize-the-dataset">Analize the dataset</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Create-a-LOCATION-and-MAPSET-stored-in-temporary-folder">Create a LOCATION and MAPSET stored in temporary folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder">Create a LOCATION and MAPSET stored in a temporary folder</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on.">Create a LOCATION and MAPSET stored in a folder that can be accessed later on.</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#GRASS-add-ons">GRASS add-ons</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#GRASS-add-ons">GRASS add-ons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Installation">Installation</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
@@ -512,7 +514,8 @@ div.rendered_html tbody tr:hover {
 &lt;AxesSubplot:&gt;
 </pre></div></div>
 </div>
-<p>We can see the metadata of the the dem using gdalinfo</p>
+<p>We can see the metadata of the the DEM using gdalinfo.</p>
+<p>The tif metadata should have well defined values such as: * projection has to be well defined as proj4, EPSG, * the extent should set at degree level (e.g. 14.0’) or with one digit after the degree (e.g. 14.1’), * the pixel resolution should be also well defined (e.g. 0.25’, 0.008333333’ not 0.008331234’ or 0.05214534’), * in case of using more then one data source the raster layers shold have the same extent and the pixel aligned,</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -579,11 +582,12 @@ Band 1 Block=5880x1 Type=Int16, ColorInterp=Gray
 </pre></div></div>
 </div>
 </section>
-<section id="Create-a-LOCATION-and-MAPSET-stored-in-temporary-folder">
-<h2>Create a LOCATION and MAPSET stored in temporary folder<a class="headerlink" href="#Create-a-LOCATION-and-MAPSET-stored-in-temporary-folder" title="Permalink to this headline"></a></h2>
-<p>Using the flag –tmp-location we can create a LOCATION on the flight that will automaticaly removed when GRASS will be closed.</p>
+<section id="Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder">
+<h2>Create a LOCATION and MAPSET stored in a temporary folder<a class="headerlink" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder" title="Permalink to this headline"></a></h2>
+<p>Using the flag <em>–tmp-location</em> we can create a LOCATION on the flight that will automaticaly removed when GRASS will be closed.</p>
+<p>For this example we are goint to use: * <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.slope.aspect.html">r.slope.aspect</a> to calculate the slope * <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.out.gdal.html">r.out.gdal</a> to export the GRASS raster to tif.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -593,7 +597,7 @@ grass<span class="w">  </span>--text<span class="w"> </span>--tmp-location<span 
 <span class="s">r.external -e input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif output=SA_elevation --o --q</span>
 <span class="s">g.list raster -p</span>
 <span class="s">r.info  map=SA_elevation</span>
-<span class="s">r.slope.aspect elevation=SA_elevation slope=slope --o</span>
+<span class="s">r.slope.aspect elevation=SA_elevation slope=slope</span>
 <span class="s">r.info  map=slope</span>
 <span class="s"># export the &quot;grass slope&quot; to a geotif.</span>
 <span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=/home/user/my_SE_data/exercise/grassdb/slope.tif</span>
@@ -611,10 +615,10 @@ raster files available in mapset &lt;PERMANENT&gt;:
 SA_elevation
 
  +----------------------------------------------------------------------------+
- | Map:      SA_elevation                   Date: Thu May 16 18:27:45 2024    |
+ | Map:      SA_elevation                   Date: Mon May 20 11:37:09 2024    |
  | Mapset:   PERMANENT                      Login of Creator: user            |
  | Location: tmploc                                                           |
- | DataBase: /tmp/grass8-user-44040                                           |
+ | DataBase: /tmp/grass8-user-168760                                          |
  | Title:                                                                     |
  | Timestamp: none                                                            |
  |----------------------------------------------------------------------------|
@@ -644,15 +648,15 @@ SA_elevation
  +----------------------------------------------------------------------------+
 
  +----------------------------------------------------------------------------+
- | Map:      slope                          Date: Thu May 16 18:27:48 2024    |
+ | Map:      slope                          Date: Mon May 20 11:37:12 2024    |
  | Mapset:   PERMANENT                      Login of Creator: user            |
  | Location: tmploc                                                           |
- | DataBase: /tmp/grass8-user-44040                                           |
+ | DataBase: /tmp/grass8-user-168760                                          |
  | Title:    slope in degrees                                                 |
  | Timestamp: none                                                            |
  |----------------------------------------------------------------------------|
  |                                                                            |
- |   Type of Map:  raster               Number of Categories: 62              |
+ |   Type of Map:  raster               Number of Categories: 90              |
  |   Data Type:    FCELL                Semantic label: (none)                |
  |   Rows:         8400                                                       |
  |   Columns:      5880                                                       |
@@ -660,7 +664,7 @@ SA_elevation
  |        Projection: Latitude-Longitude                                      |
  |            N:        14N    S:        56S   Res: 0:00:30                   |
  |            E:        34W    W:        83W   Res: 0:00:30                   |
- |   Range of data:    min = 0  max = 61.86501                                |
+ |   Range of data:    min = 0  max = 90                                      |
  |                                                                            |
  |   Data Source:                                                             |
  |    raster elevation file SA_elevation                                      |
@@ -675,7 +679,7 @@ SA_elevation
  |    min_slope = 0.000000                                                    |
  |                                                                            |
  |    r.slope.aspect --overwrite elevation=&#34;SA_elevation&#34; slope=&#34;slope&#34; fo\   |
- |    rmat=&#34;degrees&#34; precision=&#34;FCELL&#34; zscale=1.0 min_slope=0.0 nprocs=1 m\   |
+ |    rmat=&#34;degrees&#34; precision=&#34;FCELL&#34; zscale=1.0 min_slope=0.0 nprocs=2 m\   |
  |    emory=300                                                               |
  |                                                                            |
  +----------------------------------------------------------------------------+
@@ -706,8 +710,9 @@ See citation options with:               g.version -x
 Start the GUI with:                      g.gui wxpython
 When ready to quit enter:                exit
 
-   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
 Slope raster map &lt;slope&gt; complete
+/bin/bash: line 5: r.mapcalc.tiled: command not found
 WARNING: Precision loss: Raster map &lt;slope&gt; of type DCELL to be exported as
          Int16. This can be avoided by using Float64.
 WARNING: Forcing raster export
@@ -718,6 +723,20 @@ Exporting raster data to GTiff format...
    2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
 r.out.gdal complete. File
 &lt;/home/user/my_SE_data/exercise/grassdb/slope.tif&gt; created.
+WARNING: Precision loss: Raster map &lt;slope&gt; of type DCELL to be exported as
+         Byte. This can be avoided by using Float64.
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Byte&gt;
+WARNING: The user given nodata value 0 is present in rasterband &lt;slope&gt; and
+         would lead to data loss. Please specify a different nodata value
+         with the nodata parameter.
+WARNING: Forcing raster export.
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; created.
 Cleaning up temporary files...
 Done.
 
@@ -725,8 +744,15 @@ Goodbye from GRASS GIS
 
 </pre></div></div>
 </div>
+<p>GRASS rasters support three data types:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>32bit signed integer (CELL) wich can be converted in GDAL using Byte/Int16/UInt16/UInt32/Int32
+single-precision floating-point (FCELL) wich can be converted in GDAL using Float32
+double-precision floating-point (DCELL) wich can be converted in GDAL using Float64
+</pre></div>
+</div>
+<p>More info at <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.out.gdal.html">https://grass.osgeo.org/grass83/manuals/r.out.gdal.html</a></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -741,11 +767,11 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_newproject_8_0.png" src="../_images/GRASS_grass_newproject_8_0.png" />
+<img alt="../_images/GRASS_grass_newproject_9_0.png" src="../_images/GRASS_grass_newproject_9_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -777,9 +803,9 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </section>
 <section id="Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on.">
 <h2>Create a LOCATION and MAPSET stored in a folder that can be accessed later on.<a class="headerlink" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on." title="Permalink to this headline"></a></h2>
-<p>Using the flag -e we can create a LOCATION on the flight called “south_america” that can be access later on.</p>
+<p>Using the flag <em>-e</em> we can create a LOCATION on the flight called “south_america” that can be access later on.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -803,7 +829,7 @@ Cleaning up temporary files...
 </div>
 <p>At this point the south_america LOCATION has been created with the defoult PERMANENT mapset</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -820,7 +846,7 @@ PERMANENT
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -835,20 +861,20 @@ PERMANENT
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 total 36
--rw-rw-r-- 1 user user  328 May 16 18:28 DEFAULT_WIND
--rw-rw-r-- 1 user user    1 May 16 18:28 MYNAME
--rw-rw-r-- 1 user user   65 May 16 18:28 PROJ_INFO
--rw-rw-r-- 1 user user   10 May 16 18:28 PROJ_SRID
--rw-rw-r-- 1 user user   40 May 16 18:28 PROJ_UNITS
--rw-rw-r-- 1 user user 1047 May 16 18:28 PROJ_WKT
-drwxrwxr-x 2 user user 4096 May 16 18:28 sqlite
--rw-rw-r-- 1 user user   81 May 16 18:28 VAR
--rw-rw-r-- 1 user user  328 May 16 18:28 WIND
+-rw-rw-r-- 1 user user  328 May 20 10:32 DEFAULT_WIND
+-rw-rw-r-- 1 user user    1 May 20 10:32 MYNAME
+-rw-rw-r-- 1 user user   65 May 20 10:32 PROJ_INFO
+-rw-rw-r-- 1 user user   10 May 20 10:32 PROJ_SRID
+-rw-rw-r-- 1 user user   40 May 20 10:32 PROJ_UNITS
+-rw-rw-r-- 1 user user 1047 May 20 10:32 PROJ_WKT
+drwxrwxr-x 2 user user 4096 May 20 10:32 sqlite
+-rw-rw-r-- 1 user user   81 May 20 10:32 VAR
+-rw-rw-r-- 1 user user  328 May 20 10:32 WIND
 </pre></div></div>
 </div>
-<p>we can proceed in using the south_america LOCATION &amp; the PERMANENT MAPSET suing this syntax:</p>
+<p>we can proceed in using the south_america LOCATION &amp; the PERMANENT MAPSET using this syntax:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
@@ -873,7 +899,7 @@ raster files available in mapset &lt;PERMANENT&gt;:
 SA_elevation
 
  +----------------------------------------------------------------------------+
- | Map:      SA_elevation                   Date: Thu May 16 18:29:18 2024    |
+ | Map:      SA_elevation                   Date: Mon May 20 10:33:27 2024    |
  | Mapset:   PERMANENT                      Login of Creator: user            |
  | Location: south_america                                                    |
  | DataBase: /home/user/my_SE_data/exercise/grassdb                           |
@@ -1040,9 +1066,9 @@ Cleaning up temporary files...
 <section id="GRASS-add-ons">
 <h2>GRASS add-ons<a class="headerlink" href="#GRASS-add-ons" title="Permalink to this headline"></a></h2>
 <p>Grass GIS has a modular architecture that allows users to extend its functionality through add-ons or modules. These add-ons cover a wide range of functionalities and are developed and contributed by the Grass GIS community. You can see the full list of add-ons at <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/index.html">https://grass.osgeo.org/grass83/manuals/addons/index.html</a></p>
-</section>
+<p>For this exercise we are going to use <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html">r.mapcalc.tiled</a> that integrate <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.mapcalc.html">r.mapcalc</a> in a multicore enviroment.</p>
 <section id="Installation">
-<h2>Installation<a class="headerlink" href="#Installation" title="Permalink to this headline"></a></h2>
+<h3>Installation<a class="headerlink" href="#Installation" title="Permalink to this headline"></a></h3>
 <p>Open a bash terminal and run</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/user
 git clone https://github.com/OSGeo/grass-addons.git grass_addons
@@ -1050,14 +1076,55 @@ git clone https://github.com/OSGeo/grass-addons.git grass_addons
 </div>
 <p>when the download has ben done you can proceed with the installation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre>
 <span></span>%%bash
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w">  </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.stream.basins<span class="w">  </span><span class="nv">url</span><span class="o">=</span>/home/user/grass_addons/src/raster/r.stream.basins/
+<span class="c1"># grass  --text /home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT --exec  g.extension extension=r.mapcalc.tiled  url=/home/user/grass_addons/src/raster/r.mapcalc.tiled</span>
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.slope.aspect<span class="w"> </span><span class="nv">elevation</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">slope</span><span class="o">=</span>slope<span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.region<span class="w"> </span><span class="nv">res</span><span class="o">=</span><span class="m">0</span>.0041666666666
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc.tiled<span class="w"> </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="m">5880</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="m">4200</span><span class="w">  </span><span class="nv">overlap</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc<span class="w">       </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>slope_msk
+<span class="c1"># export the &quot;grass slope_msk&quot; to a geotif</span>
+grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w">  </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w">      </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w">  </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
 </pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ +----------------------------------------------------------------------------+
+ | Map:      slope_msk                      Date: Mon May 20 16:44:05 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: south_america                                                    |
+ | DataBase: /home/user/my_SE_data/exercise/grassdb                           |
+ | Title:                                                                     |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  raster               Number of Categories: 0               |
+ |   Data Type:    CELL                 Semantic label: (none)                |
+ |   Rows:         16800                                                      |
+ |   Columns:      11760                                                      |
+ |   Total Cells:  197568000                                                  |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:15                   |
+ |            E:        34W    W:        83W   Res: 0:00:15                   |
+ |   Range of data:    min = 1  max = 10                                      |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.mapcalc                                                  |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    if(slope &gt; 10, 10, 1)                                                   |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+</pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
 <div class="prompt empty docutils container">
@@ -1066,17 +1133,79 @@ grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_dat
 <div class="highlight"><pre>
 Starting GRASS GIS...
 Cleaning up temporary files...
-Executing &lt;g.extension extension=r.stream.basins url=/home/user/grass_addons/src/raster/r.stream.basins/&gt; ...
-WARNING: Extension &lt;r.stream.basins&gt; already installed. Re-installing...
-Compiling...
-Installing...
-Updating extensions metadata file...
-Updating extension modules metadata file...
-Installation of &lt;r.stream.basins&gt; successfully finished
-Execution of &lt;g.extension extension=r.stream.basins url=/home/user/grass_addons/src/raster/r.stream.basins/&gt; finished.
+Executing &lt;r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o&gt; ...
+   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+Slope raster map &lt;slope&gt; complete
+Execution of &lt;r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;g.region res=0.0041666666666&gt; ...
+Execution of &lt;g.region res=0.0041666666666&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;time r.mapcalc.tiled expression=slope_msk = if(slope &gt; 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o&gt; ...
+11.73user 1.22system 0:09.50elapsed 136%CPU (0avgtext+0avgdata 72268maxresident)k
+11632inputs+16144outputs (48major+93774minor)pagefaults 0swaps
+Execution of &lt;time r.mapcalc.tiled expression=slope_msk = if(slope &gt; 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;time r.mapcalc expression=slope_msk = if(slope &gt; 10, 10, 1) --o&gt; ...
+5.34user 0.24system 0:05.52elapsed 101%CPU (0avgtext+0avgdata 38376maxresident)k
+0inputs+6792outputs (0major+2484minor)pagefaults 0swaps
+Execution of &lt;time r.mapcalc expression=slope_msk = if(slope &gt; 10, 10, 1) --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.info map=slope_msk&gt; ...
+Execution of &lt;r.info map=slope_msk&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; ...
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Byte&gt;
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; created.
+Execution of &lt;r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; finished.
 Cleaning up temporary files...
 </pre></div></div>
 </div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span>
+</pre></div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
