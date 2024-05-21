@@ -527,7 +527,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 Recorded lecture can be found [here]().
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
-   * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+   * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_newproject.html)
 		* GRASS GUI
 		* GRASS command structure
 		* GRASS working environment
