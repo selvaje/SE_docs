@@ -526,7 +526,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 
 Recorded lecture can be found [here]().
 
-   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectureslect_20240521_grass_intro.pdf)
+   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
    * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
 		* GRASS GUI
 		* GRASS command structure
@@ -543,7 +543,7 @@ Recorded lecture can be found [here]().
 		* Analize the dataset
 		* Create a LOCATION and MAPSET stored in a temporary folder 
 		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
-		* GRASS add-ons
+		* GRASS add-ons
 
 ## Lecture 15: Thursday, 23rd of May, 2024.
 ### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
