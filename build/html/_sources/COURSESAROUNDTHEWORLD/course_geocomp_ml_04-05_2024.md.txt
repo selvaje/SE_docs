@@ -524,7 +524,10 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 ## Lecture 13: Tuesday, 21st of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-   * [GRASS architecture](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+Recorded lecture can be found [here]().
+
+   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectureslect_20240521_grass_intro.pdf)
+   * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
 		* GRASS GUI
 		* GRASS command structure
 		* GRASS working environment
@@ -534,14 +537,18 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 ## Lecture 14: Wednesday, 22nd of May, 2024.
 ### Geocomputing with grass GRASS (2) (Giuseppe Amatulli)
 
-   * [GRASS computation]()
-		* Importing and exporting raster/vector 
-		* Buffer operation 
-		* Map calc in grass
-		* Raster statistic
+Recorded lecture can be found [here]().
+
+   * [Start a new GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+		* Analize the dataset
+		* Create a LOCATION and MAPSET stored in a temporary folder 
+		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
+		* GRASS add-ons
 
 ## Lecture 15: Thursday, 23rd of May, 2024.
 ### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+
+Recorded lecture can be found [here]().
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Compute flow accumulation 
