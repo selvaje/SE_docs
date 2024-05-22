@@ -524,7 +524,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 ## Lecture 13: Tuesday, 21st of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
    * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
@@ -533,11 +533,6 @@ Recorded lecture can be found [here]().
 		* GRASS working environment
 		* GRASS Location/Mapset
 		* GRASS scripting procedure in BASH
-
-## Lecture 14: Wednesday, 22nd of May, 2024.
-### Geocomputing with grass GRASS (2) (Giuseppe Amatulli)
-
-Recorded lecture can be found [here]().
 
    * [Start a new GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_newproject.html)
 		* Analize the dataset
