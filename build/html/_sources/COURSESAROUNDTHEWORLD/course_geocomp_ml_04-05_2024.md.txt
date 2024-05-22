@@ -527,7 +527,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
-   * [GRASS hands-on](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+   * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
 		* GRASS GUI
 		* GRASS command structure
 		* GRASS working environment
@@ -540,7 +540,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiR
 		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
 		* GRASS add-ons
 
-## Lecture 15: Thursday, 23rd of May, 2024.
+## Lecture 14: Thursday, 23rd of May, 2024.
 ### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
 
 Recorded lecture can be found [here]().
@@ -550,7 +550,7 @@ Recorded lecture can be found [here]().
 		* Extract stream network and delineate basins
 		* r.stream.* add-ons
 
-## Lecture 16: Tuesday, 28st of May, 2024.
+## Lecture 15: Tuesday, 28st of May, 2024.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -569,7 +569,7 @@ Recorded lecture can be found [here]().
 * [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2024.html)
 
 
-## Lecture 17: Thursday, 30th of May, 2024.
+## Lecture 16: Thursday, 30th of May, 2024.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -579,7 +579,7 @@ Recorded lecture can be found [here]().
   * Back Propagation
 * [Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html)
 
-## Lecture 18: Tuesday, 4th of June, 2024.
+## Lecture 17: Tuesday, 4th of June, 2024.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
@@ -601,7 +601,7 @@ Recorded lecture can be found [here]().
 	* Tutorial: data batching, classification of satellite images
 
 
-## Lecture 19:  Thursday, 6th of June, 2024.
+## Lecture 18:  Thursday, 6th of June, 2024.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here]().
