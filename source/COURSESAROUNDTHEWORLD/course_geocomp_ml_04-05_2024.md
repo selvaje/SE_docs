@@ -543,12 +543,16 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiR
 ## Lecture 14: Thursday, 23rd of May, 2024.
 ### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmnEeYSSnWM0zSW_grGyPvyVe4pQFi2hhT2LETRrM1sbOSEp2eEdl5u.aNcR_zYib1S5uO5a).
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
-		* Compute flow accumulation 
-		* Extract stream network and delineate basins
-		* r.stream.* add-ons
+		* Flow direction algorithms
+		* Prepare GRASS for hydrography extraction 
+		* Inputs dataset
+		* First run: compute MFD flow accumulation for each tile
+		* Merge the flow accumulation tiles
+		* Second run: copute stream and basin using the seamless South America Flow Accumulation
+		* Final step: combine the tiled basins and streams
 
 ## Lecture 15: Tuesday, 28st of May, 2024.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
