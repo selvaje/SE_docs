@@ -559,18 +559,13 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmn
 
 Recorded lecture can be found [here]().
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240116_Perceptron_Class2.pdf)
-* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240528_Optmizers_Perceptron_Class3.pdf)
+		* The universal approximator
+		* Intro to optimizers
+		* Intro to gradient descent and optimizers
 
-* [Perceptron and neural network](http://spatial-ecology.net/docs/source/lectures/lect_20240517_GeoComp_NeuralNets.pdf)
-
-	* The universal approximator
-	* Intro to optimizers 
-	* Intro to gradient descent and optimizers
-
-* [Perceptron introduction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
-
-* [Perceptron Tree Height prediction](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2024.html)
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2024.html)
 
 
 ## Lecture 16: Thursday, 30th of May, 2024.
