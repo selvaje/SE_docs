@@ -557,7 +557,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmn
 ## Lecture 15: Tuesday, 28st of May, 2024.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O-OakRcQ5snlo53NgUSivs5jXIjWUT0y1OiBwcY-lcJ2WCNFBUcaE.QqGEAoL8OolvN7Tt).
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240528_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
