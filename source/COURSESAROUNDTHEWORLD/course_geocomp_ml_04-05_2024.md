@@ -560,12 +560,12 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmn
 Recorded lecture can be found [here]().
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240528_Optmizers_Perceptron_Class3.pdf)
-		* The universal approximator
-		* Intro to optimizers
-		* Intro to gradient descent and optimizers
+	- The universal approximator
+	- Intro to optimizers
+	- Intro to gradient descent and optimizers
 
 * [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
-* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2024.html)
+* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2024.html)
 
 
 ## Lecture 16: Thursday, 30th of May, 2024.
