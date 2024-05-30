@@ -573,10 +573,9 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O
 
 Recorded lecture can be found [here]().
 
-* [Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240517_GeoComp_NeuralNets.pdf)
-  * Forward Propagation
-  * Back Propagation
-* [Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html)
+* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20240530_Optmizers_Perceptron&NeuralNets_Class4.pdf  )
+
+
 
 ## Lecture 17: Tuesday, 4th of June, 2024.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
