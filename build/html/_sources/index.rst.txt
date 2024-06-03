@@ -92,6 +92,12 @@ Table of Contents
    ASSIGNMENTS/index
    
 .. toctree::
+   :titlesonly:
+   :caption: HIGH PERFORMANCE COMPUTING
+
+   HPC/index
+
+.. toctree::
    :maxdepth: 1               
    :caption: CASE STUDY
 

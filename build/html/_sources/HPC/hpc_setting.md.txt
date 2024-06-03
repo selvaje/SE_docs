@@ -13,25 +13,25 @@ Status of the jobs in slurm can be seen by:
     sacct
     sinfo
 
-
 building up some specific alias and save to $HOME/.bashrc
 
-    alias myq='squeue -u $USER   -o "%.9F %.10K %.4P %.80j %3D%2C%.8T %.9M  %.9l  %.S  %R"'
-    alias err='ll -rt    /gpfs/scratch60/fas/sbsc/$USER/stderr/*'
-    alias errl='ll -rt    /gpfs/scratch60/fas/sbsc/$USER/stderr/* | tail '
-    alias errlless=' less  $(ls  -rt    /gpfs/scratch60/fas/sbsc/$USER/stderr/* | tail -1 ) '
-    alias errlmore=' more  $(ls  -rt    /gpfs/scratch60/fas/sbsc/$USER/stderr/* | tail -1 ) '
-    alias out='ll -rt    /gpfs/scratch60/fas/sbsc/$USER/stdout/*'
-    alias outl='ll -rt    /gpfs/scratch60/fas/sbsc/$USER/stdout/* | tail '
-    alias outlless=' less  $(ls  -rt    /gpfs/scratch60/fas/sbsc/$USER/stdout/* | tail -1 ) '
-    alias outlmore=' more  $(ls  -rt    /gpfs/scratch60/fas/sbsc/$USER/stdout/* | tail -1 ) '
+    alias myq='squeue -u $USER   -o "%.9F %.8K%.4P%.50j %3D%2C%.8m %.1T %.5M  %.5l %.S %R"'
+    alias err='ll -rt    /home/$USER/stderr/*'
+    alias errl='ll -rt    /home/$USER/stderr/* | tail '
+    alias errlless=' less  $(ls  -rt    /home/$USER/stderr/* | tail -1 ) '
+    alias errlmore=' more  $(ls  -rt    /home/$USER/stderr/* | tail -1 ) '
+    alias out='ll -rt    /home/$USER/stdout/*'
+    alias outl='ll -rt    /home/$USER/stdout/* | tail '
+    alias outlless=' less  $(ls  -rt    /home/$USER/stdout/* | tail -1 ) '
+    alias outlmore=' more  $(ls  -rt    /home/$USER/stdout/* | tail -1 ) '
 
 ## Prepare raster dataset
 
-A portion of a [[http://www.spatial-ecology.net/ost4sem/exercise/KenyaGIS/Landsat/LT51680612010231MLK00_B123_proj.tar.gz  | Landsat image  ]] 
+The file [[http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif | cloud]] 
 
-   wget http://www.spatial-ecology.net/ost4sem/exercise/KenyaGIS/Landsat/LT51680612010231MLK00_B123_proj.tar.gz
-   tar -xvzf LT51680612010231MLK00_B123_proj.tar.gz
+   wget http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif
+
+will be used for the following scripts.
 
 ### download the scripts
 
@@ -41,33 +41,31 @@ A portion of a [[http://www.spatial-ecology.net/ost4sem/exercise/KenyaGIS/Landsa
     wget -N -O hpc02c_filter_tif_njobs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02c_filter_tif_njobs.sh
     wget -N -O hpc02d_filter_tif_arrayjobs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02d_filter_tif_arrayjobs.sh
 
-will be divided in 4 vrt tiles each one containing 3 bands. The vrt will be used in the following scripting procedures.   
+will be divided in 4 vrt tiles each one containing 1 band. The vrt will be used in the following scripting procedures.   
 
-  
-  sbatch  /project/geocourse/Software/scripts/hpc01_split_tif.sh
+   sbatch /project/geocourse/Software/scripts/hpc01_split_tif.sh
 
 
     #!/bin/bash
-    #SBATCH -p day
+    #SBATCH -p short
     #SBATCH -J hpc01_split_tif.sh
-    #SBATCH -n 1 -c 1 -N 1
+    #SBATCH -N 1 -c 1 -n 1
     #SBATCH -t 1:00:00 
-    #SBATCH -o /gpfs/scratch60/fas/sbsc/ga254/stdout/hpc01_split_tif.sh.%J.out
-    #SBATCH -e /gpfs/scratch60/fas/sbsc/ga254/stderr/hpc01_split_tif.sh.%J.err
-    #SBATCH --mail-type=ALL
-    #SBATCH --mail-user=email
-    #SBATCH --mem-per-cpu=4G
- 
-    ####### sbatch /gpfs/loomis/home.grace/$USER/geocomputation/scripts/hpc01_split_tif.sh
+    #SBATCH -o /home/geocourse-teacher01/stdout/sc01_split_tif.sh.%J.out
+    #SBATCH -e /home/geocourse-teacher01/stderr/sc01_split_tif.sh.%J.err
+    #SBATCH --mem=500
     
-    module load GEOS/3.6.2-foss-2018a-Python-2.7.14 
+    #### sbatch /project/geocourse/Software/scripts/hpc01_split_tif.sh
     
-    DIR=/gpfs/loomis/home.grace/$USER/geocomputation/Landsat
+    module load GDAL/3.3.2-foss-2021b
+    IN=/project/geocourse/Data/glad_ard
+    OUT=/home/$USER/glad_ard
+    mkdir -p $OUT
     
-    gdalbuildvrt -overwrite -separate -te 36.5 -1.5 37 -1 $DIR/stack_UL.vrt $DIR/LT51680612010231MLK00_B1_proj.tif $DIR/LT51680612010231MLK00_B2_proj.tif $DIR/LT51680612010231MLK00_B3_proj.tif
-    gdalbuildvrt -overwrite -separate -te 36.5 -2 37 -1.5 $DIR/stack_LL.vrt $DIR/LT51680612010231MLK00_B1_proj.tif $DIR/LT51680612010231MLK00_B2_proj.tif $DIR/LT51680612010231MLK00_B3_proj.tif
-    gdalbuildvrt -overwrite -separate -te 37 -1.5 37.5 -1 $DIR/stack_UR.vrt $DIR/LT51680612010231MLK00_B1_proj.tif $DIR/LT51680612010231MLK00_B2_proj.tif $DIR/LT51680612010231MLK00_B3_proj.tif
-    gdalbuildvrt -overwrite -separate -te 37 -2 37.5 -1.5 $DIR/stack_LR.vrt $DIR/LT51680612010231MLK00_B1_proj.tif $DIR/LT51680612010231MLK00_B2_proj.tif $DIR/LT51680612010231MLK00_B3_proj.tif
+    gdal_translate -of VRT  -srcwin 0       0 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_UL.vrt
+    gdal_translate -of VRT  -srcwin 0    4200 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_UR.vrt
+    gdal_translate -of VRT  -srcwin 2940    0 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_LL.vrt
+    gdal_translate -of VRT  -srcwin 2940 4200 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_LR.vrt
 
 ### hpc02a Proces 4 tiles in one node using a cpu with the bash for loop
 
@@ -98,10 +96,10 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
     
     for file in $DIR/stack_??.vrt  ; do 
     filename=$(basename $file .vrt)
-    pkfilter -of GTiff  -dx 3 -dy 3  -f mean -co COMPRESS=DEFLATE -co ZLEVEL=9 -i $file -o  $DIR/$filename.tif 
-    done 
+    pkfilter -of GTiff  -dx 3 -dy 3  -f mean -co COMPRESS=DEFLATE -co ZLEVEL=9 -i $file -o  $DIR/$filename.tif
+    done
     
-    echo  re-create the large tif 
+    echo  re-create the large tif
     
     gdalbuildvrt -overwrite $DIR/stack.vrt   $DIR/stack_UL.tif  $DIR/stack_LL.tif    $DIR/stack_UR.tif   $DIR/stack_LR.tif  
     GDAL_CACHEMAX=3000
