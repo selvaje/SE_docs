@@ -85,19 +85,19 @@ Table of Contents
 
    GRASS/index
 
-.. toctree::
-   :titlesonly:
-   :caption: ASSIGNMENTS
-
-   ASSIGNMENTS/index
-   
-.. toctree::
+   .. toctree::
    :titlesonly:
    :caption: HIGH PERFORMANCE COMPUTING
 
    HPC/index
 
-.. toctree::
+   .. toctree::
+   :titlesonly:
+   :caption: ASSIGNMENTS
+
+   ASSIGNMENTS/index
+   
+::
    :maxdepth: 1               
    :caption: CASE STUDY
 

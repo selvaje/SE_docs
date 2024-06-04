@@ -571,7 +571,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O
 ## Lecture 16: Thursday, 30th of May, 2024.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlDdJcyyNeOjj2WOwBMO_s2P32GmLFBfXp5cT3nr_Wl9lfEh6Wk9MT5.T1na1wA6Yz8dyop-).
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20240530_Optmizers_Perceptron&NeuralNets_Class4.pdf  )
 
@@ -582,7 +582,7 @@ Recorded lecture can be found [here]().
 
 Recorded lecture can be found [here]().
 
-* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240524_GeoComp_NeuralNets_CNNs.pdf)
+* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
 	* Quick recap
 	* Extra regularization techniques
 	* Capacity, Overfitting and Underfitting
