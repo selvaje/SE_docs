@@ -580,7 +580,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlD
 ## Lecture 17: Tuesday, 4th of June, 2024.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3pHzQO8zI6f1QvNpgWXa2no-as_KU_pg2sLenWrKGf7xXvWdo3g-FO.Mnp7cWGI-IGalaNE).
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
 	* Quick recap
