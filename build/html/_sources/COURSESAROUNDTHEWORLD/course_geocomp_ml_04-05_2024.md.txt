@@ -590,6 +590,20 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 	* Family of optimizers
 	* Tutorial: more features and different optimizers
 
+## Lecture 18:  Thursday, 6th of June, 2024.
+### Machine Learning - Papers discussion (Antonio Fonseca)
+
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
+
+
+* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
+	* Quick recap
+	* Extra regularization techniques
+	* Capacity, Overfitting and Underfitting
+	* Debugging tips
+	* Family of optimizers
+	* Tutorial: more features and different optimizers
+	
 * [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_2024.html)
 	* Kernels, padding, pooling
 	* Classification tasks
@@ -597,12 +611,6 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 	* Kernels, padding, pooling
 	* Classification tasks
 	* Tutorial: data batching, classification of satellite images
-
-
-## Lecture 18:  Thursday, 6th of June, 2024.
-### Machine Learning - Papers discussion (Antonio Fonseca)
-
-Recorded lecture can be found [here]().
 
 Discussion papers:
 
