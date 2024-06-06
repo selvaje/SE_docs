@@ -604,6 +604,10 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 
 Recorded lecture can be found [here]().
 
+Discussion papers:
+
+* [Deep learning‑based landslide susceptibility mapping](http://spatial-ecology.net/docs/source/lectures/disc_20240606_landslideSusceptibility.pdf)
+* [Explainability in wind farm planning: A machine learning framework for automatic site selection of wind farms](http://spatial-ecology.net/docs/source/lectures/disc_20240606_windFarm.pdf)
 
 ## In-person week: June 10-14, coding hackathon in Matera, Italy
 
@@ -619,7 +623,8 @@ Recorded lecture can be found [here]().
 
 ### Day 2: Tuesday, 11 June 2024
 
-* 9:00-17:00: Student coding hackathon
+* 9:00-17:00:  Student coding hackathon
+* 11:00-13:00  Antonio lecture
 * 20:00-22:00: Social event Birrificio 79 (https://maps.app.goo.gl/tPSZfjzRcWfxbPye7)
  
 ### Day 3: Wednesday, 12 June 2024
@@ -630,7 +635,8 @@ Recorded lecture can be found [here]().
 ### Day 4: Thursday, 13 June 2024
 
 * 9:00-17:00: Final project Student presentation
-	* Milutin arrival
+	* Milutin arrival late in the morning in Matera.
+	* Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9
 
 ### Day 5: Friday, 14 June 2024
 
