@@ -91,7 +91,7 @@ Table of Contents
 
    HPC/index
 
-   .. toctree::
+.. toctree::
    :titlesonly:
    :caption: ASSIGNMENTS
 

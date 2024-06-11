@@ -632,8 +632,13 @@ Discussion papers:
 ### Day 2: Tuesday, 11 June 2024
 
 * 9:00-17:00:  Student coding hackathon
+
 * 11:00-13:00  Antonio lecture
-* 20:00-22:00: Social event Birrificio 79 (https://maps.app.goo.gl/tPSZfjzRcWfxbPye7)
+	* [Unsupervised Learning](http://spatial-ecology.net/docs/source/lectures/lect_20240611_NN_Unsupervised_Learning.pdf)
+
+	* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY//NN_Unsupervised_2024.html)
+
+* 20:00-22:00: Social event MOSTO (https://maps.app.goo.gl/ngCNpXh5jTn9bPMN7)
  
 ### Day 3: Wednesday, 12 June 2024
 
