@@ -636,7 +636,7 @@ Discussion papers:
 * 11:00-13:00  Antonio lecture
 	* [Unsupervised Learning](http://spatial-ecology.net/docs/source/lectures/lect_20240611_NN_Unsupervised_Learning.pdf)
 
-	* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN_Unsupervised_2024.html)
+	* [Autoencoder (AE), Variational Autoencoder (VAE)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN_Unsupervised_2024.html)
 
 * 20:00-22:00: Social event MOSTO (https://maps.app.goo.gl/ngCNpXh5jTn9bPMN7)
  
