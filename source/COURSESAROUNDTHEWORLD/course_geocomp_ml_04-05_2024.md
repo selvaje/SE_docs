@@ -638,7 +638,7 @@ Discussion papers:
 
 	* [Autoencoder (AE), Variational Autoencoder (VAE)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN_Unsupervised_2024.html)
 
-* 20:00-22:00: Social event MOSTO (https://maps.app.goo.gl/ngCNpXh5jTn9bPMN7)
+* 20:00-22:00: Social event: Birrificio 79 (https://maps.app.goo.gl/4ahWEgDjHKEkBxx6A)
  
 ### Day 3: Wednesday, 12 June 2024
 
