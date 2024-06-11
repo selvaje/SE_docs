@@ -85,7 +85,7 @@ Table of Contents
 
    GRASS/index
 
-   .. toctree::
+.. toctree::
    :titlesonly:
    :caption: HIGH PERFORMANCE COMPUTING
 
@@ -97,7 +97,7 @@ Table of Contents
 
    ASSIGNMENTS/index
    
-::
+.. toctree::
    :maxdepth: 1               
    :caption: CASE STUDY
 
