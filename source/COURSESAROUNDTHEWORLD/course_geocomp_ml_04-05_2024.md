@@ -634,6 +634,9 @@ Discussion papers:
 * 9:00-17:00:  Student coding hackathon
 
 * 11:00-13:00  Antonio lecture
+
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/B4WmyCRzS3W4KwGIb6Em1Xv7AQuIuPC4ASez8hS1AQDapV0fpAI6xtUip8ZYjVza.we4YNzUH16B_prCA)
+
 	* [Unsupervised Learning](http://spatial-ecology.net/docs/source/lectures/lect_20240611_NN_Unsupervised_Learning.pdf)
 
 	* [Autoencoder (AE), Variational Autoencoder (VAE)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN_Unsupervised_2024.html)

@@ -2,19 +2,23 @@
 
 ![](../images/cluster_computing.jpg)
 
-## resampling an image
 
-![](../images/overview_scripts.png) 
+## Prepare your working environment. 
 
-Status of the jobs in slurm can be seen by:
+create folders to save sbatch jobs standard outputs and standard errors
 
 
-    squeue --all
-    sacct
-    sinfo
+    cd
+    mkdir /home/$USER/stdout/
+    mkdir /home/$USER/stderr
 
-building up some specific alias and save to $HOME/.bashrc
+Building up some specific alias and save to $HOME/.bashrc:
 
+    emacs -nw $HOME/.bashrc  # or use vi $HOME/.bashrc
+
+and copy paste the following lines 
+
+    # create alias
     alias myq='squeue -u $USER   -o "%.9F %.8K%.4P%.50j %3D%2C%.8m %.1T %.5M  %.5l %.S %R"'
     alias err='ll -rt    /home/$USER/stderr/*'
     alias errl='ll -rt    /home/$USER/stderr/* | tail '
@@ -24,17 +28,44 @@ building up some specific alias and save to $HOME/.bashrc
     alias outl='ll -rt    /home/$USER/stdout/* | tail '
     alias outlless=' less  $(ls  -rt    /home/$USER/stdout/* | tail -1 ) '
     alias outlmore=' more  $(ls  -rt    /home/$USER/stdout/* | tail -1 ) '
+    
+    # sw setting
+    export PATH=/project/geocourse/Software/bin:$PATH
+    export EB_PYTHON=python3.9
+	export PYTHONPATH=/project/geocourse/Software/lib/python3.9/site-packages:$PYTHONPATH
+	module use /project/geocourse/Software/easybuild/modules/all     
 
-## Prepare raster dataset
+save emacs and close it. Run source to re-load the $HOME/.bashrc  
 
-The file [[http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif | cloud]] 
+    source $HOME/.bashrc
 
-   wget http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif
+Now that the working environment is ready we can submit jobs to the slurm queue. Let's first monitoring what is already running.  
+
+Status of the jobs in slurm can be seen by:
+
+    squeue --all
+    sacct
+    sinfo 
+
+## Resampling an image
+
+![](../images/overview_scripts.png) 
+
+## Download raster dataset
+
+The file [http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif | cloud]
+
+    mkdir /home/$USER/glad_ard
+    cd /home/$USER/glad_ard
+    wget http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif
 
 will be used for the following scripts.
 
-### Download the scripts
+### Download scripts
 
+
+    mkdir $HOME/scripts
+    cd $HOME/scripts
     wget -N -O hpc01_split_tif.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc01_split_tif.sh
     wget -N -O hpc02a_resampling_tif_forloop.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02a_resampling_tif_forloop.sh
     wget -N -O hpc02b_resampling_tif_xargs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02b_resampling_tif_xargs.sh
@@ -70,7 +101,7 @@ The tif file will be divided in 4 vrt tiles each one containing 1 band. Each vrt
     gdal_translate -of VRT  -srcwin 2940    0 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_LL.vrt
     gdal_translate -of VRT  -srcwin 2940 4200 2940 4200 $IN/SA_intra.tif $OUT/SA_intra_LR.vrt
 
-### hpc02b_resampling_tif_xargs.sh: process 4 tiles in one node using 1 cpu with the *bash for loop*
+### hpc02a_resampling_tif_forloop.sh: process 4 tiles in one node using 1 cpu with the *bash for loop*
 
 This is the easiest procedure to perform a geocomputation operation. Lunch a job that use a normal for loop to iterate on the 4 tiles. After the iterations (resampling) the for tiles can be re-merged by gdalbuildvrt followed by gdal_translate.
 
@@ -94,8 +125,7 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 	IN=/project/geocourse/Data/glad_ard 
 	OUT=/home/$USER/glad_ard
 	
-	mkdir -p $OUT 
-		rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
+	rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
 	
 	echo resampling the SA_intra_??.vrt files within a for loop 
 	
@@ -111,24 +141,71 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
 	rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
 
-### hpc02b Multi-process inside one node using 4 cpu using xargs
+Check by 
 
-This is one of the most efficient ways to perform a geocomputation operation. Lunch a job that use xargs to compute the iterations in a multicore (4 cpu in this case). After the iterations (pkresampling) the 4 tiles can be re-merged by gdalbuildvrt and gdal_translate. The use of xargs allows to constrains all the iterations in one node using different cpus. The advantage is that after xargs all the tiles will be ready to be merged back. A disadvantage can be that in case you are requesting many cpu (e.g. 24) you have to wait that one node will have 24 cpu free. A good compromise can be just requested 8-12 cpu and add more time to the wall time (-t) 
+	seff -j ???? 
 
-	sbatch /gpfs/loomis/home.grace/$USER/geocomputation/scripts/hpc02b_resampling_tif_xargs.sh
+### hpc02b_resampling_tif_ampersand: Multi-process inside one node using 4 cpu with the ampersand
 
-**hpc02b_resampling_tif_xargs.sh**
+	sbatch  /project/geocourse/Software/scripts/hpc02b_resampling_tif_ampersand.sh
+
+**hpc02b_resampling_tif_ampersand.sh**
+
+    #!/bin/bash
+	#SBATCH -p short
+	#SBATCH -J hpc02b_resampling_tif_ampersand.sh
+	#SBATCH -N 1 -c 1 -n 4
+	#SBATCH -t 1:00:00 
+	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02b_resampling_tif_ampersand.sh.%J.out
+	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02b_resampling_tif_ampersand.sh.%J.err
+	#SBATCH --mem-per-cpu=8000
+	
+	#### sbatch  /project/geocourse/Software/scripts/hpc02b_resampling_tif_ampersand.sh
+	
+	module load GDAL/3.3.2-foss-2021b
+	
+	IN=/project/geocourse/Data/glad_ard 
+	OUT=/home/$USER/glad_ard
+	
+	rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
+	
+	echo resampling the SA_intra_??.vrt files using the ampersand 
+	
+
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UL.vrt $OUT/$OUT/SA_intra_UL_res.tif &
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UR.vrt $OUT/$OUT/SA_intra_UR_res.tif &	
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LL.vrt $OUT/$OUT/SA_intra_LL_res.tif &
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LR.vrt $OUT/$OUT/SA_intra_LR_res.tif &
+	wait
+		
+	echo reassembling the large tif 
+	
+	gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
+	rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
+
+Check by 
+
+	sacct -j ???? --format=JobID,Start,End,Elapsed,NCPUS
+
+### hpc02d Multi-process inside one node using 4 cpu using xargs
+
+This is one of the most efficient ways to perform a geocomputation operation. Lunch a job that use xargs to compute the iterations in a multicore (4 cpu in this case). After the iterations (gdal resampling) the 4 tiles can be re-merged by gdalbuildvrt followed by gdal_translate. The use of xargs allows to constrains all the iterations in one node using different cpus. The advantage is that after xargs all the tiles will be ready to be merged back. A disadvantage can be that in case you are requesting many cpu (e.g. 24) you have to wait that one node will have 24 cpu free. A good compromise can be just requested 8-12 cpu and add more time to the wall time (-t) 
+
+	sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_xargs.sh
+
+**hpc02d_resampling_tif_xargs.sh**
    
     #!/bin/bash
 	#SBATCH -p short
-	#SBATCH -J hpc02b_resampling_tif_xargs.sh
+	#SBATCH -J hpc02d_resampling_tif_xargs.sh
 	#SBATCH -n 1 -c 4 -N 1
 	#SBATCH -t 1:00:00 
-	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02b_resampling_tif_xargs.sh.%J.out
-	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02b_resampling_tif_xargs.sh.%J.err
+	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02d_resampling_tif_xargs.sh.%J.out
+	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02d_resampling_tif_xargs.sh.%J.err
 	#SBATCH --mem-per-cpu=8000
 	
-	#### sbatch /project/geocourse/Software/scripts/hpc02b_resampling_tif_xargs.sh
+	#### sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_xargs.sh
 	
 	module load GDAL/3.3.2-foss-2021b
 	
@@ -153,26 +230,26 @@ This is one of the most efficient ways to perform a geocomputation operation. Lu
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif
 	rm -f $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif $OUT/stack.vrt
 
-### hpc02c_resampling_tif_njobs.sh: process 4 tiles with 4 independent jobs - 1 node 1 cpu
+### hpc02d_resampling_tif_njobs.sh: process 4 tiles with 4 independent jobs - 1 node 1 cpu
 
 This is a good way to run 4 independent jobs. Each job can perform one iteration. This option is good if you need to lunch 100-200 jobs. You can also think that inside each job you can nest a xargs operation. The disadvantage is that each script will finish independently, so in order merge the grid you have to wait until all the jobs are done.
   
 	for file in /home/$USER/glad_ard/SA_intra_??.vrt ; do 
-	sbatch --export=file=$file /project/geocourse/Software/scripts/hpc02c_resampling_tif_njobs.sh ; 
+	sbatch --export=file=$file /project/geocourse/Software/scripts/hpc02d_resampling_tif_njobs.sh ; 
 	done 
 
-**hpc02c_resampling_tif_njobs.sh**
+**hpc02e_resampling_tif_njobs.sh**
 
 	#!/bin/bash
 	#SBATCH -p short
-	#SBATCH -J hpc02c_resampling_tif_njobs.sh
+	#SBATCH -J hpc02d_resampling_tif_njobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
-	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02c_resampling_tif_njobs.sh.%J.out
-	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02c_resampling_tif_njobs.sh.%J.err
+	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02d_resampling_tif_njobs.sh.%J.out
+	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02d_resampling_tif_njobs.sh.%J.err
 	#SBATCH --mem-per-cpu=8000
 	
-	#### for file in /home/$USER/glad_ard/SA_intra_??.vrt ; do sbatch --export=file=$file /project/geocourse/Software/scripts/hpc02c_resampling_tif_njobs.sh ; done 
+	#### for file in /home/$USER/glad_ard/SA_intra_??.vrt ; do sbatch --export=file=$file /project/geocourse/Software/scripts/hpc02d_resampling_tif_njobs.sh ; done 
 	
 	module load GDAL/3.3.2-foss-2021b
 	
@@ -203,19 +280,19 @@ This is a good way to run 4 independent jobs-array. Each job-array can perform o
 
 	sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_arrayjobs.sh	
 
-**hpc02d_resampling_tif_arrayjobs.sh**
+**hpc02e_resampling_tif_arrayjobs.sh**
 
 	#!/bin/bash
 	#SBATCH -p short
-	#SBATCH -J hpc02d_resampling_tif_arrayjobs.sh
+	#SBATCH -J hpc02e_resampling_tif_arrayjobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
-	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02d_resampling_tif_arrayjobs.sh.%A_%a.out 
-	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02d_resampling_tif_arrayjobs.sh.%A_%a.err
+	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02e_resampling_tif_arrayjobs.sh.%A_%a.out 
+	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02e_resampling_tif_arrayjobs.sh.%A_%a.err
 	#SBATCH --array=1-4
 	#SBATCH --mem-per-cpu=8000
 	
-	#### sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_arrayjobs.sh
+	#### sbatch /project/geocourse/Software/scripts/hpc02e_resampling_tif_arrayjobs.sh
 	
 	module load GDAL/3.3.2-foss-2021b
 	
