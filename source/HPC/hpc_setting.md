@@ -81,12 +81,13 @@ The tif file will be divided in 4 vrt tiles each one containing 1 band. Each vrt
 **hpc01_split_tif.sh**
 
     #!/bin/bash
-    #SBATCH -p short
-    #SBATCH -J hpc01_split_tif.sh
+    #SBATCH -p normal
+    #SBATCH --reservation=geo_course_cpu
+	#SBATCH -J hpc01_split_tif.sh
     #SBATCH -N 1 -c 1 -n 1
     #SBATCH -t 1:00:00 
-    #SBATCH -o /home/geocourse-teacher01/stdout/sc01_split_tif.sh.%J.out
-    #SBATCH -e /home/geocourse-teacher01/stderr/sc01_split_tif.sh.%J.err
+    #SBATCH -o /home/geocourse-teacher01/stdout/hpc01_split_tif.sh.%J.out
+    #SBATCH -e /home/geocourse-teacher01/stderr/hpc01_split_tif.sh.%J.err
     #SBATCH --mem=500
     
     #### sbatch /project/geocourse/Software/scripts/hpc01_split_tif.sh
@@ -110,7 +111,8 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 **hpc02a_resampling_tif_forloop.sh**
 
 	#!/bin/bash
-	#SBATCH -p short
+	#SBATCH -p normal
+	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02a_resampling_tif_forloop.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
@@ -152,7 +154,8 @@ Check by
 **hpc02b_resampling_tif_ampersand.sh**
 
     #!/bin/bash
-	#SBATCH -p short
+	#SBATCH -p normal
+	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02b_resampling_tif_ampersand.sh
 	#SBATCH -N 1 -c 1 -n 4
 	#SBATCH -t 1:00:00 
@@ -197,7 +200,8 @@ This is one of the most efficient ways to perform a geocomputation operation. Lu
 **hpc02d_resampling_tif_xargs.sh**
    
     #!/bin/bash
-	#SBATCH -p short
+	#SBATCH -p normal
+	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02d_resampling_tif_xargs.sh
 	#SBATCH -n 1 -c 4 -N 1
 	#SBATCH -t 1:00:00 
@@ -241,7 +245,8 @@ This is a good way to run 4 independent jobs. Each job can perform one iteration
 **hpc02e_resampling_tif_njobs.sh**
 
 	#!/bin/bash
-	#SBATCH -p short
+	#SBATCH -p normal
+	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02d_resampling_tif_njobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
@@ -283,7 +288,8 @@ This is a good way to run 4 independent jobs-array. Each job-array can perform o
 **hpc02e_resampling_tif_arrayjobs.sh**
 
 	#!/bin/bash
-	#SBATCH -p short
+	#SBATCH -p normal
+	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02e_resampling_tif_arrayjobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
