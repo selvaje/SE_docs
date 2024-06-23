@@ -53,7 +53,10 @@ Status of the jobs in slurm can be seen by:
 
 ## Download raster dataset
 
-The file [http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif | cloud]
+The file [http://www.spatial-ecology.net/ost4sem/exercise/geodata/cloud/SA_intra.tif](cloud)
+
+![](../images/cloud	.png)
+
 
     mkdir /home/$USER/glad_ard
     cd /home/$USER/glad_ard

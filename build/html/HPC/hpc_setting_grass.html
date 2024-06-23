@@ -234,10 +234,17 @@
 </style>
 <section id="use-of-grass-in-hpc">
 <h1>Use of GRASS in HPC<a class="headerlink" href="#use-of-grass-in-hpc" title="Permalink to this headline"></a></h1>
-<p>In grass the level input and output (I/O) is quite high therefore is convenient to create LOCATION directly on the folders that are sit on the nodes.</p>
+<p>In grass the level of input and output (I/O) is quite high therefore is convenient to create LOCATION directly on the folders that are sit on the nodes.</p>
 <p>In this session we are going to see how to start a new grass project using a well standarized dataset: a DEM.</p>
+<p><img alt="../_images/dem.png" src="../_images/dem.png" /></p>
+<p>For this example we are goint to use: <em>r.slope.aspect</em> to calculate the slope <em>r.out.gdal</em> to export the GRASS raster to tif.</p>
 <section id="create-a-location-and-mapset-in-tmp">
 <h2>Create a LOCATION and MAPSET in /tmp<a class="headerlink" href="#create-a-location-and-mapset-in-tmp" title="Permalink to this headline"></a></h2>
+<p>Using the flag <em>–tmp-location</em> we can create a LOCATION on the flight that will automatically removed when GRASS will be closed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span>  <span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">geocourse</span><span class="o">/</span><span class="n">Software</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">hpc03a_grass_tmp</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><strong>hpc03a_grass_tmp.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
 #SBATCH -J hpc03a_grass_tmp.sh
@@ -274,9 +281,17 @@ EOF
 rm -f /tmp/SA_elevation_mn_GMTED2010_mn_msk.tif
 </pre></div>
 </div>
+<p><strong>GRASS rasters support three data types:</strong></p>
+<ul class="simple">
+<li><p>32bit signed integer (CELL) wich can be converted in GDAL using Byte/Int16/UInt16/UInt32/Int32</p></li>
+<li><p>single-precision floating-point (FCELL) wich can be converted in GDAL using Float32</p></li>
+<li><p>double-precision floating-point (DCELL) wich can be converted in GDAL using Float64</p></li>
+</ul>
 </section>
 <section id="create-a-location-and-mapset-in-dev-shm">
 <h2>Create a LOCATION and MAPSET in /dev/shm<a class="headerlink" href="#create-a-location-and-mapset-in-dev-shm" title="Permalink to this headline"></a></h2>
+<p>/dev/shm is a directory in Unix-like operating systems that stands for “shared memory.” It is part of the virtual filesystem and provides an efficient way to access data without the need to read from or write to the physical disk.
+Therefore, when planning system resources and memory allocation, it is important to include the memory consumption of /dev/shm in the total RAM requirements. This ensures that the system has sufficient memory to handle all intended operations efficiently.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span>  <span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">geocourse</span><span class="o">/</span><span class="n">Software</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">hpc03b_grass_dev</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>

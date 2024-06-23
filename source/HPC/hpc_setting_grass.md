@@ -1,13 +1,22 @@
 
 # Use of GRASS in HPC 
 
-In grass the level input and output (I/O) is quite high therefore is convenient to create LOCATION directly on the folders that are sit on the nodes. 
+In grass the level of input and output (I/O) is quite high therefore is convenient to create LOCATION directly on the folders that are sit on the nodes. 
 
 In this session we are going to see how to start a new grass project using a well standarized dataset: a DEM.
 
+![](../images/dem.png)
 
+For this example we are goint to use: *r.slope.aspect* to calculate the slope *r.out.gdal* to export the GRASS raster to tif.
 
 ## Create a LOCATION and MAPSET in /tmp
+
+Using the flag *--tmp-location* we can create a LOCATION on the flight that will automatically removed when GRASS will be closed. 
+
+
+	sbatch  /project/geocourse/Software/scripts/hpc03a_grass_tmp.sh
+
+**hpc03a_grass_tmp.sh**
 
 	#!/bin/bash
 	#SBATCH -p normal
@@ -45,14 +54,19 @@ In this session we are going to see how to start a new grass project using a wel
 	rm -f /tmp/SA_elevation_mn_GMTED2010_mn_msk.tif
 
 
+**GRASS rasters support three data types:**
+
+* 32bit signed integer (CELL) wich can be converted in GDAL using Byte/Int16/UInt16/UInt32/Int32
+* single-precision floating-point (FCELL) wich can be converted in GDAL using Float32
+* double-precision floating-point (DCELL) wich can be converted in GDAL using Float64
 
 
 ## Create a LOCATION and MAPSET in /dev/shm
 
+/dev/shm is a directory in Unix-like operating systems that stands for "shared memory." It is part of the virtual filesystem and provides an efficient way to access data without the need to read from or write to the physical disk.
+Therefore, when planning system resources and memory allocation, it is important to include the memory consumption of /dev/shm in the total RAM requirements. This ensures that the system has sufficient memory to handle all intended operations efficiently.
 
 	sbatch  /project/geocourse/Software/scripts/hpc03b_grass_dev.sh
-
-
 
 **hpc03b_grass_dev.sh**
 
