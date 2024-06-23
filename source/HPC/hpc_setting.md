@@ -112,7 +112,6 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 
 	#!/bin/bash
 	#SBATCH -p normal
-	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02a_resampling_tif_forloop.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
@@ -127,13 +126,16 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 	IN=/project/geocourse/Data/glad_ard 
 	OUT=/home/$USER/glad_ard
 	
+	mkdir -p $OUT 
 	rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
-	
+	  
 	echo resampling the SA_intra_??.vrt files within a for loop 
+	
 	
 	for file in $OUT/SA_intra_??.vrt   ; do 
 	echo processing $file
 	filename=$(basename $file .vrt)
+	GDAL_CACHEMAX=5000
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif 
 	done 
 	
@@ -141,10 +143,13 @@ This is the easiest procedure to perform a geocomputation operation. Lunch a job
 	
 	gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
-	rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
+	rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt 
+	
+
 
 Check by 
 
+	sacct -j ???? --format=JobID,Start,End,Elapsed,NCPUS
 	seff -j ???? 
 
 ### hpc02b_resampling_tif_ampersand: Multi-process inside one node using 4 cpu with the ampersand
@@ -153,39 +158,41 @@ Check by
 
 **hpc02b_resampling_tif_ampersand.sh**
 
-    #!/bin/bash
+	#!/bin/bash
 	#SBATCH -p normal
-	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02b_resampling_tif_ampersand.sh
 	#SBATCH -N 1 -c 1 -n 4
+	#SBATCH --cpus-per-task=1
 	#SBATCH -t 1:00:00 
 	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02b_resampling_tif_ampersand.sh.%J.out
 	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02b_resampling_tif_ampersand.sh.%J.err
-	#SBATCH --mem-per-cpu=8000
-	
+	#SBATCH --mem-per-cpu=2000
+		
 	#### sbatch  /project/geocourse/Software/scripts/hpc02b_resampling_tif_ampersand.sh
 	
 	module load GDAL/3.3.2-foss-2021b
-	
+		
 	IN=/project/geocourse/Data/glad_ard 
 	OUT=/home/$USER/glad_ard
-	
-	rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
-	
-	echo resampling the SA_intra_??.vrt files using the ampersand 
-	
-
-	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UL.vrt $OUT/$OUT/SA_intra_UL_res.tif &
-	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UR.vrt $OUT/$OUT/SA_intra_UR_res.tif &	
-	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LL.vrt $OUT/$OUT/SA_intra_LL_res.tif &
-	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LR.vrt $OUT/$OUT/SA_intra_LR_res.tif &
-	wait
 		
-	echo reassembling the large tif 
+	rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
+		
+	echo resampling the SA_intra_??.vrt files using the ampersand 
+		
+	export GDAL_CACHEMAX=1500
 	
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UL.vrt $OUT/SA_intra_UL_res.tif &
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UR.vrt $OUT/SA_intra_UR_res.tif &	
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LL.vrt $OUT/SA_intra_LL_res.tif &
+	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LR.vrt $OUT/SA_intra_LR_res.tif &
+	wait 
+			
+	echo reassembling the large tif 
+		
 	gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
 	rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
+	
 
 Check by 
 
@@ -198,18 +205,17 @@ This is one of the most efficient ways to perform a geocomputation operation. Lu
 	sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_xargs.sh
 
 **hpc02d_resampling_tif_xargs.sh**
-   
-    #!/bin/bash
+
+	#!/bin/bash
 	#SBATCH -p normal
-	#SBATCH --reservation=geo_course_cpu
-	#SBATCH -J hpc02d_resampling_tif_xargs.sh
+	#SBATCH -J hpc02c_resampling_tif_xargs.sh
 	#SBATCH -n 1 -c 4 -N 1
 	#SBATCH -t 1:00:00 
-	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02d_resampling_tif_xargs.sh.%J.out
-	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02d_resampling_tif_xargs.sh.%J.err
-	#SBATCH --mem-per-cpu=8000
+	#SBATCH -o /home/geocourse-teacher01/stdout/hpc02c_resampling_tif_xargs.sh.%J.out
+	#SBATCH -e /home/geocourse-teacher01/stderr/hpc02c_resampling_tif_xargs.sh.%J.err
+	#SBATCH --mem-per-cpu=2000
 	
-	#### sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_xargs.sh
+	#### sbatch /project/geocourse/Software/scripts/hpc02c_resampling_tif_xargs.sh
 	
 	module load GDAL/3.3.2-foss-2021b
 	
@@ -225,6 +231,7 @@ This is one of the most efficient ways to perform a geocomputation operation. Lu
 	file=$1
 	echo processing $file
 	filename=$(basename $file .vrt)
+	export GDAL_CACHEMAX=1500
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 	' _ 
 	
@@ -233,6 +240,7 @@ This is one of the most efficient ways to perform a geocomputation operation. Lu
 	gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif
 	rm -f $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif $OUT/stack.vrt
+
 
 ### hpc02d_resampling_tif_njobs.sh: process 4 tiles with 4 independent jobs - 1 node 1 cpu
 
@@ -246,7 +254,6 @@ This is a good way to run 4 independent jobs. Each job can perform one iteration
 
 	#!/bin/bash
 	#SBATCH -p normal
-	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02d_resampling_tif_njobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
@@ -267,6 +274,7 @@ This is a good way to run 4 independent jobs. Each job can perform one iteration
 	echo resampling the $file  files with an indipendent job 
 	
 	filename=$(basename $file .vrt)
+	export GDAL_CACHEMAX=5000
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 	
 	#### reassembling the large tif
@@ -277,7 +285,8 @@ This is a good way to run 4 independent jobs. Each job can perform one iteration
 	    gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 	    gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif
 	    rm -f $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif $OUT/stack.vrt
-	fi
+	fi 
+
 
 ### hpc02d_resampling_tif_arrayjobs.sh: proces 4 tiles with 1 job lunching 4-array-job
 
@@ -289,7 +298,6 @@ This is a good way to run 4 independent jobs-array. Each job-array can perform o
 
 	#!/bin/bash
 	#SBATCH -p normal
-	#SBATCH --reservation=geo_course_cpu
 	#SBATCH -J hpc02e_resampling_tif_arrayjobs.sh
 	#SBATCH -N 1 -c 1 -n 1
 	#SBATCH -t 1:00:00 
@@ -311,6 +319,7 @@ This is a good way to run 4 independent jobs-array. Each job-array can perform o
 	file=$(ls $OUT/SA_intra_??.vrt  | head  -n  $SLURM_ARRAY_TASK_ID | tail  -1 )
 	
 	filename=$(basename $file .vrt)
+	export GDAL_CACHEMAX=5000
 	gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 	
 	#### reassembling the large tif                                                                                                                                                           
@@ -321,6 +330,7 @@ This is a good way to run 4 independent jobs-array. Each job-array can perform o
 	    gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif
 	    rm -f $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif $OUT/stack.vrt
 	fi
+	
 	
 ### Tips
 

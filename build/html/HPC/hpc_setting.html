@@ -342,7 +342,6 @@ gdal_translate -of VRT  -srcwin 2940 4200 2940 4200 $IN/SA_intra.tif $OUT/SA_int
 <p><strong>hpc02a_resampling_tif_forloop.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
-#SBATCH --reservation=geo_course_cpu
 #SBATCH -J hpc02a_resampling_tif_forloop.sh
 #SBATCH -N 1 -c 1 -n 1
 #SBATCH -t 1:00:00 
@@ -357,13 +356,16 @@ module load GDAL/3.3.2-foss-2021b
 IN=/project/geocourse/Data/glad_ard 
 OUT=/home/$USER/glad_ard
 
+mkdir -p $OUT 
 rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
-
+  
 echo resampling the SA_intra_??.vrt files within a for loop 
+
 
 for file in $OUT/SA_intra_??.vrt   ; do 
 echo processing $file
 filename=$(basename $file .vrt)
+GDAL_CACHEMAX=5000
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif 
 done 
 
@@ -371,11 +373,12 @@ echo reassembling the large tif
 
 gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
-rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
+rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt 
 </pre></div>
 </div>
 <p>Check by</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>seff -j ???? 
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sacct -j ???? --format=JobID,Start,End,Elapsed,NCPUS
+seff -j ???? 
 </pre></div>
 </div>
 </section>
@@ -387,34 +390,35 @@ rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_r
 <p><strong>hpc02b_resampling_tif_ampersand.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
-#SBATCH --reservation=geo_course_cpu
 #SBATCH -J hpc02b_resampling_tif_ampersand.sh
 #SBATCH -N 1 -c 1 -n 4
+#SBATCH --cpus-per-task=1
 #SBATCH -t 1:00:00 
 #SBATCH -o /home/geocourse-teacher01/stdout/hpc02b_resampling_tif_ampersand.sh.%J.out
 #SBATCH -e /home/geocourse-teacher01/stderr/hpc02b_resampling_tif_ampersand.sh.%J.err
-#SBATCH --mem-per-cpu=8000
-
+#SBATCH --mem-per-cpu=2000
+	
 #### sbatch  /project/geocourse/Software/scripts/hpc02b_resampling_tif_ampersand.sh
 
 module load GDAL/3.3.2-foss-2021b
-
+	
 IN=/project/geocourse/Data/glad_ard 
 OUT=/home/$USER/glad_ard
-
-rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
-
-echo resampling the SA_intra_??.vrt files using the ampersand 
-
-
-gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UL.vrt $OUT/$OUT/SA_intra_UL_res.tif &amp;
-gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UR.vrt $OUT/$OUT/SA_intra_UR_res.tif &amp;	
-gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LL.vrt $OUT/$OUT/SA_intra_LL_res.tif &amp;
-gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LR.vrt $OUT/$OUT/SA_intra_LR_res.tif &amp;
-wait
 	
-echo reassembling the large tif 
+rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif # remove the outputs
+	
+echo resampling the SA_intra_??.vrt files using the ampersand 
+	
+export GDAL_CACHEMAX=1500
 
+gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UL.vrt $OUT/SA_intra_UL_res.tif &amp;
+gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_UR.vrt $OUT/SA_intra_UR_res.tif &amp;	
+gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LL.vrt $OUT/SA_intra_LL_res.tif &amp;
+gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9 -tr 0.002083333333333 0.002083333333333 -r bilinear $OUT/SA_intra_LR.vrt $OUT/SA_intra_LR_res.tif &amp;
+wait 
+		
+echo reassembling the large tif 
+	
 gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif 
 rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif   $OUT/stack.vrt
@@ -434,15 +438,14 @@ rm -f $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_r
 <p><strong>hpc02d_resampling_tif_xargs.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
-#SBATCH --reservation=geo_course_cpu
-#SBATCH -J hpc02d_resampling_tif_xargs.sh
+#SBATCH -J hpc02c_resampling_tif_xargs.sh
 #SBATCH -n 1 -c 4 -N 1
 #SBATCH -t 1:00:00 
-#SBATCH -o /home/geocourse-teacher01/stdout/hpc02d_resampling_tif_xargs.sh.%J.out
-#SBATCH -e /home/geocourse-teacher01/stderr/hpc02d_resampling_tif_xargs.sh.%J.err
-#SBATCH --mem-per-cpu=8000
+#SBATCH -o /home/geocourse-teacher01/stdout/hpc02c_resampling_tif_xargs.sh.%J.out
+#SBATCH -e /home/geocourse-teacher01/stderr/hpc02c_resampling_tif_xargs.sh.%J.err
+#SBATCH --mem-per-cpu=2000
 
-#### sbatch /project/geocourse/Software/scripts/hpc02d_resampling_tif_xargs.sh
+#### sbatch /project/geocourse/Software/scripts/hpc02c_resampling_tif_xargs.sh
 
 module load GDAL/3.3.2-foss-2021b
 
@@ -458,6 +461,7 @@ ls $OUT/SA_intra_??.vrt | xargs -n 1 -P 4 bash -c $&#39;
 file=$1
 echo processing $file
 filename=$(basename $file .vrt)
+export GDAL_CACHEMAX=1500
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 &#39; _ 
 
@@ -480,7 +484,6 @@ done
 <p><strong>hpc02e_resampling_tif_njobs.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
-#SBATCH --reservation=geo_course_cpu
 #SBATCH -J hpc02d_resampling_tif_njobs.sh
 #SBATCH -N 1 -c 1 -n 1
 #SBATCH -t 1:00:00 
@@ -501,6 +504,7 @@ rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt # remove the outputs
 echo resampling the $file  files with an indipendent job 
 
 filename=$(basename $file .vrt)
+export GDAL_CACHEMAX=5000
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 
 #### reassembling the large tif
@@ -511,7 +515,7 @@ if [ $filename = SA_intra_UR ]  ; then
     gdalbuildvrt -overwrite $OUT/stack.vrt   $OUT/SA_intra_LL_res.tif   $OUT/SA_intra_LR_res.tif     $OUT/SA_intra_UL_res.tif   $OUT/SA_intra_UR_res.tif
     gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  $OUT/stack.vrt $OUT/SA_intra_res.tif
     rm -f $OUT/SA_intra_LL_res.tif $OUT/SA_intra_LR_res.tif $OUT/SA_intra_UL_res.tif $OUT/SA_intra_UR_res.tif $OUT/stack.vrt
-fi
+fi 
 </pre></div>
 </div>
 </section>
@@ -524,7 +528,6 @@ fi
 <p><strong>hpc02e_resampling_tif_arrayjobs.sh</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
 #SBATCH -p normal
-#SBATCH --reservation=geo_course_cpu
 #SBATCH -J hpc02e_resampling_tif_arrayjobs.sh
 #SBATCH -N 1 -c 1 -n 1
 #SBATCH -t 1:00:00 
@@ -546,6 +549,7 @@ rm -f $OUT/SA_intra_res.tif $OUT/stack.vrt    # remove the outputs
 file=$(ls $OUT/SA_intra_??.vrt  | head  -n  $SLURM_ARRAY_TASK_ID | tail  -1 )
 
 filename=$(basename $file .vrt)
+export GDAL_CACHEMAX=5000
 gdal_translate -co COMPRESS=DEFLATE -co ZLEVEL=9  -tr 0.002083333333333 0.002083333333333  -r bilinear  $file  $OUT/${filename}_res.tif
 
 #### reassembling the large tif                                                                                                                                                           
