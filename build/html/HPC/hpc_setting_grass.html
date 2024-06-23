@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  <title>Use of GRASS in HPC &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
@@ -21,8 +21,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="R Introduction" href="R_Intro.html" />
-    <link rel="prev" title="Performing raster and vector operations in Python using pyjeo" href="../PKTOOLS/pyjeo_pktools.html" /> 
+    <link rel="next" title="&lt;no title&gt;" href="../ASSIGNMENTS/index.html" />
+    <link rel="prev" title="Geocomputation at High Performance Computing Cluster (HPC)" href="hpc_setting.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -94,7 +94,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">R</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="R_Intro.html">R Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
 <ul>
@@ -113,9 +113,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use of GRASS in HPC</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
 <ul>
@@ -197,9 +197,10 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+          <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
+      <li>Use of GRASS in HPC</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/R/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/HPC/hpc_setting_grass.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -231,20 +232,104 @@
     text-align: unset;
 }
 </style>
-<hr class="docutils" />
-<div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">R</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="R_Intro.html">R Introduction</a></li>
-</ul>
+<section id="use-of-grass-in-hpc">
+<h1>Use of GRASS in HPC<a class="headerlink" href="#use-of-grass-in-hpc" title="Permalink to this headline"></a></h1>
+<p>In grass the level input and output (I/O) is quite high therefore is convenient to create LOCATION directly on the folders that are sit on the nodes.</p>
+<p>In this session we are going to see how to start a new grass project using a well standarized dataset: a DEM.</p>
+<section id="create-a-location-and-mapset-in-tmp">
+<h2>Create a LOCATION and MAPSET in /tmp<a class="headerlink" href="#create-a-location-and-mapset-in-tmp" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH -p normal
+#SBATCH -J hpc03a_grass_tmp.sh
+#SBATCH -N 1 -c 2 -n 1
+#SBATCH -t 1:00:00 
+#SBATCH -o /home/geocourse-teacher01/stdout/hpc03a_grass_tmp.sh.%J.out
+#SBATCH -e /home/geocourse-teacher01/stderr/hpc03a_grass_tmp.sh.%J.err
+#SBATCH --mem-per-cpu=8000
+
+#### sbatch  /project/geocourse/Software/scripts/hpc03a_grass_tmp.sh
+
+module load GRASS/8.2.0-foss-2021b
+
+export IN=/project/geocourse/Data/dem 
+export OUT=/home/$USER/dem
+
+mkdir -p $OUT 
+rm -f $OUT/slope.tif 
+  
+
+cp  $IN/SA_elevation_mn_GMTED2010_mn_msk.tif  /tmp 
+
+grass  --text --tmp-location /tmp/SA_elevation_mn_GMTED2010_mn_msk.tif --exec &lt;&lt;&#39;EOF&#39;
+r.external -e input=/tmp/SA_elevation_mn_GMTED2010_mn_msk.tif  output=SA_elevation --o --q
+g.list raster -p
+r.info  map=SA_elevation
+r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 memory=7000
+r.info  map=slope
+# export the &quot;grass slope&quot; to a geotif.
+r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=$OUT/slope.tif
+EOF
+
+
+rm -f /tmp/SA_elevation_mn_GMTED2010_mn_msk.tif
+</pre></div>
 </div>
+</section>
+<section id="create-a-location-and-mapset-in-dev-shm">
+<h2>Create a LOCATION and MAPSET in /dev/shm<a class="headerlink" href="#create-a-location-and-mapset-in-dev-shm" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span>  <span class="o">/</span><span class="n">project</span><span class="o">/</span><span class="n">geocourse</span><span class="o">/</span><span class="n">Software</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">hpc03b_grass_dev</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p><strong>hpc03b_grass_dev.sh</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>#!/bin/bash
+#SBATCH -p normal
+#SBATCH -J hpc03b_grass_dev.sh
+#SBATCH -N 1 -c 1 -n 1
+#SBATCH -t 1:00:00 
+#SBATCH -o /home/geocourse-teacher01/stdout/hpc03b_grass_dev.sh.%J.out
+#SBATCH -e /home/geocourse-teacher01/stderr/hpc03b_grass_dev.sh.%J.err
+#SBATCH --mem-per-cpu=8000
+
+#### sbatch  /project/geocourse/Software/scripts/hpc03b_grass_dev.sh
+
+module load GRASS/8.2.0-foss-2021b
+
+export IN=/project/geocourse/Data/dem 
+export OUT=/home/$USER/dem
+export RAM=/dev/shm
+
+mkdir -p $OUT 
+rm -f $OUT/slope.tif 
+  
+
+cp  $IN/SA_elevation_mn_GMTED2010_mn_msk.tif  $RAM 
+
+mkdir $RAM/grassdb$$
+
+
+grass -f --text   -c $RAM/SA_elevation_mn_GMTED2010_mn_msk.tif $RAM/grassdb$$/south_america$$ --exec &lt;&lt;&#39;EOF&#39;
+r.external -e input=$RAM/SA_elevation_mn_GMTED2010_mn_msk.tif  output=SA_elevation --o --q
+g.list raster -p
+r.info  map=SA_elevation
+r.slope.aspect elevation=SA_elevation slope=slope  nprocs=2 memory=7000 
+r.info  map=slope
+# export the &quot;grass slope&quot; to a geotif.
+r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=$OUT/slope.tif
+EOF
+
+
+rm -fr   $RAM/grassdb$$/  $RAM/SA_elevation_mn_GMTED2010_mn_msk.tif 
+</pre></div>
+</div>
+</section>
+</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../PKTOOLS/pyjeo_pktools.html" class="btn btn-neutral float-left" title="Performing raster and vector operations in Python using pyjeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="R_Intro.html" class="btn btn-neutral float-right" title="R Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="hpc_setting.html" class="btn btn-neutral float-left" title="Geocomputation at High Performance Computing Cluster (HPC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../ASSIGNMENTS/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
