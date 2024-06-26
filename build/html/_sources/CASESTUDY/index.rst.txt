@@ -34,6 +34,7 @@
    NNs_pt3_SHAP.ipynb
    CNN_satelite_2022.ipynb
    CNN_satelite_2023.ipynb
+   foundation_model_IIASA2024.ipynb
    NN_Unsupervised_2024.ipynb 
    LSTMs_tutorial.ipynb
    CNN_satelite_with_GPT_code_2023.ipynb
