@@ -67,13 +67,18 @@ will be used for the following scripts.
 ### Download scripts
 
 
-    mkdir $HOME/scripts
-    cd $HOME/scripts
-    wget -N -O hpc01_split_tif.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc01_split_tif.sh
-    wget -N -O hpc02a_resampling_tif_forloop.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02a_resampling_tif_forloop.sh
-    wget -N -O hpc02b_resampling_tif_xargs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02b_resampling_tif_xargs.sh
-    wget -N -O hpc02c_resampling_tif_njobs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02c_resampling_tif_njobs.sh
-    wget -N -O hpc02d_resampling_tif_arrayjobs.sh https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02d_resampling_tif_arrayjobs.sh
+```
+mkdir $HOME/scripts
+cd $HOME/scripts
+
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc01_split_tif.sh
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02a_resampling_tif_forloop.sh
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02b_resampling_tif_ampersand.sh
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02c_resampling_tif_xargs.sh
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02d_resampling_tif_njobs.sh
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02e_resampling_tif_arrayjobs.sh
+```
+
 
 The tif file will be divided in 4 vrt tiles each one containing 1 band. Each vrt will be then used in the following scripting procedures.   
 
