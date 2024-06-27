@@ -36,16 +36,24 @@ wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/pyjeo_ext
 wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/pyjeo_extract_parcels.py
 ```
 
-* apptainer container at https://github.com/fpl/apptainer4pyjeo
+* apptainer container for pyjeo https://github.com/fpl/apptainer4pyjeo
 
 ### Wednesday: ML with HPC
 
 * [Fundation model - Prithvi 100M model](https://spatial-ecology.net/docs/build/html/CASESTUDY/foundation_model_IIASA2024.html)
 
+```
     wget https://raw.githubusercontent.com/selvaje/SE_docs/master/source/CASESTUDY/foundation_model_IIASA2024.py
+```
 
-* apptainer container at https://github.com/fpl/apptainer4conda 
+* apptainer container for fundation model at https://github.com/fpl/apptainer4conda 
 
-Thursday: openEO
+### Thursday: openEO
 
-Friday: Pangeo 
+* [openEO Community Examples](https://github.com/Open-EO/openeo-community-examples.git)
+* [Cubes and Clouds](https://github.com/EO-College/cubes-and-clouds.git)
+
+
+### Friday: Pangeo (Anne Fouilloux)
+
+[pangeo](https://pangeo-data.github.io/geo-open-hack-2024/intro.html)
