@@ -1,33 +1,38 @@
 # GEO-OPEN-HACK-2024
-## Big Geospatial Data Hackathon with Open Infrastructure and Tools - 24 - 28 Jun 2024 - IIASA - Vienna
+![](../images/GEO-OPEN-HACK-2024_frontpage.jpeg)
+## 24 - 28 Jun 2024 - IIASA - Vienna
 
  [IIASA GEO-OPEN-HACK-2024 announcement agenda](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/doc_GEO-OPEN-HACK-2024.pdf)
 
+## Day 1st Monday:
+### GEO-OPEN-HACK opening (Milutin Milenkovic)
+ - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day1a_GEO-OPEN-HACK_opening.pdf)
+ - [video]()
 
-### Monday: Geo-Processing with HPC (Giuseppe Amatulli)
+### HPC and current European developments: European data spaces, EuroHPC, and DestinE (Raymond Oonk)
+ - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day1b_HPC_and_current_EU_developments.pdf)
+ - [video](https://youtu.be/3FexK-xWI1c?si=RekV3ewxWymQ71Kt)
 
-* [Geocomputation at High Performance Computing Cluster (HPC)](https://spatial-ecology.net/docs/build/html/HPC/hpc_setting.html)
+### Geo-Processing with HPC (Giuseppe Amatulli)
+ - [Geocomputation at High Performance Computing Cluster (HPC) - material](https://spatial-ecology.net/docs/build/html/HPC/hpc_setting.html)
+ - [Geocomputation at High Performance Computing Cluster (HPC) - video](https://youtu.be/31SXOR6o2gw?si=fh51PmAh0gIccngZ)
 
-```
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc01_split_tif.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02a_resampling_tif_forloop.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02b_resampling_tif_ampersand.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02c_resampling_tif_xargs.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02d_resampling_tif_njobs.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc02e_resampling_tif_arrayjobs.sh
-```
+ - [Use of GRASS in HPC - material](https://spatial-ecology.net/docs/build/html/HPC/hpc_setting_grass.html)
+ - [Use of GRASS in HPC - video](https://youtu.be/4i1Fs29D0-A?si=jA_dUxVhmRTBq6rW)
 
-* [Use of GRASS in HPC](https://spatial-ecology.net/docs/build/html/HPC/hpc_setting_grass.html)
+## Day 2nd Tuesday:
+### Introduction to Apptiner (Francesco Lovergine)
 
-```
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc03a_grass_tmp.sh
-wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/hpc03b_grass_dev.sh
-```
+ - [Use of apptainer for pyjeo - material](https://github.com/fpl/apptainer4pyjeo) 
+ - [Use of apptainer for conda - material](https://github.com/fpl/apptainer4conda)
+ - [Use of apptainer - video](https://youtu.be/mZzhp3nIF5g?si=hozRHeEtEetaD5Lv)
 
-### Tuesday: Geo-python with HPC (Pieter Kempeneers)
+### Geo-python with HPC (Pieter Kempeneers)
 
 * [pyjeo: an open source image processing library in Python](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction2.html)
 * [Scaling-up: batch processing on the cluster with pyjeo](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_upscaling_surf.html)
+
+
 
 ```
 wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/pyjeo_calculate_ndvi.sh
