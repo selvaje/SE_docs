@@ -10,7 +10,8 @@
  - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day1a_GEO-OPEN-HACK_opening.pdf)
  - [video missing]()
 
-### HPC and current European developments: European data spaces, EuroHPC, and DestinE (Raymond Oonk, SURF (Collaborating University Computing Facilities), The Netherlands)
+### HPC and current European developments: European data spaces, EuroHPC, and DestinE 
+Raymond Oonk, SURF (Collaborating University Computing Facilities), The Netherlands
  - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day1b_HPC_and_current_EU_developments.pdf)
  - [video](https://youtu.be/3FexK-xWI1c?si=RekV3ewxWymQ71Kt)
 
