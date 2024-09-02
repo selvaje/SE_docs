@@ -67,7 +67,7 @@ Patrick Griffiths, European Space Agency, Italy
  - [video](https://youtu.be/EN_reYFFyiE?si=wAUwrDTmd4a2ZlIn) 
 
 ### ML with HPC 
-Antonio Fonseca
+Antonio Fonseca, 
 
  - [Fundation model - Prithvi 100M model - material](https://spatial-ecology.net/docs/build/html/CASESTUDY/foundation_model_IIASA2024.html)
  - [Fundation model - Prithvi 100M model - video](https://youtu.be/-6t_rwPSftQ?si=ELnkNxCGo7-bkCzE)
