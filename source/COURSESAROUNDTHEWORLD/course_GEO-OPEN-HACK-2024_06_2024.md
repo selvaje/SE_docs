@@ -112,9 +112,9 @@ Prof. Wolfgang Wagner TU Vienna & Earth Observation Data Centre GmbH, Austria
 Anne Fouilloux, SIMULA, Norway\
 Tina Odaka, CNRS-Ifremer-IRD-UBO, France
 
-[presentation missing]()
-[material](https://pangeo-data.github.io/geo-open-hack-2024/intro.html)
-[video](https://youtu.be/g6M14hJbxvk?si=aNj-AsNPtAgoJW8e)
+ - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day4c_pangeo.pdf)
+ - [material](https://pangeo-data.github.io/geo-open-hack-2024/intro.html)
+ - [video](https://youtu.be/g6M14hJbxvk?si=aNj-AsNPtAgoJW8e)
 
 ### Optimizing Global Time Series ML Predictions From Modeling to Production Deployment
 Leandro Parente, OpenGeoHub Foundation, The Netherlands
