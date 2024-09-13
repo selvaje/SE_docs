@@ -41,10 +41,8 @@ Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post
 
 ![title](Team_antonio2.jpeg)
 
-Antonio is a machine learning researcher working at the intersection between Computational Neuroscience and Deep Learning. He is currently interested in using Deep Learning to model brain dynamics and what it can tell us about cognition and behavior. 
+Antonio is a machine learning scientist working at the intersection of Computational Biology and Deep Learning. His expertise encompasses robotics (software and hardware development), signal processing, computational vision, behavioral neuroscience, protein design, and deep learning algorithms. He specializes in developing and applying machine learning frameworks to solve complex problems.
 
-Antonio's expertise includes robotics (software and hardware development), signal processing, computational vision, behavioral neuroscience and deep learning algorithms. More specifically, he is an expert in applying and developing machine learning frameworks to complex problems. 
+Currently, Antonio is developing machine learning frameworks to design de-novo proteins with enhanced drug properties using diffusion models. Previously, he worked on developing neural operators using Transformers to model dynamics in biomedical data.
 
-Antonio worked on software development for mining robots and solutions for banking companies. Most recently, he worked on applying machine learning and signal processing techniques to investigate behavior in developing animals, which has important implications for studies involving genetic disorders and how to treat them.
-
-Antonio is a Neuroscience Ph.D student at Yale University, obtained a bachelor's degree in robotics engineering and a master's in microelectronics. When he is not thinking about biological or artificial neuronal networks, Antonio enjoys rock climbing and hiking (most often doing both on the same trip).
+Antonio earned his doctorate in Neuroscience from Yale University. He also holds a bachelor’s degree in Robotics Engineering and a master’s in Microelectronics. When not focused on biological or artificial neural networks, Antonio enjoys rock climbing and hiking, often combining both activities on the same trip.
