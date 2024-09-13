@@ -9,6 +9,7 @@ Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE
     mkdir  -p   /home/user/my_SE_data/exercise
     cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
 
+## GRASS
 **Starting GRASS**
 
 Every GRASS project has a predefined data structure:
@@ -256,3 +257,6 @@ cells:      56320
 You can save a new extent and resolution as g.mapset with the save=namenew option
 
     g.region alp_car@PCEM res=5000 -p save=alp_car_5km_res
+
+## Acknowledgments
+This material has been developed as part of the NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.

@@ -113,3 +113,5 @@ Therefore, when planning system resources and memory allocation, it is important
 
 
 
+## Acknowledgments
+This material has been developed as part of the NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.
