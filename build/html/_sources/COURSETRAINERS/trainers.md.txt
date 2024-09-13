@@ -34,7 +34,7 @@ Longzhu has previously worked as research scientist position at Cambridge Univer
 
 Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post-doctoral research in toxicology and molecular design at Yale University. In his spare time, he enjoys hiking, skateboarding and traveling.
 
-## Antonio Fonseca, M.Sc., almost PhD. 
+## Antonio Fonseca, Ph.D. 
 
 [website](https://ahof1704.github.io/)
 [Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
