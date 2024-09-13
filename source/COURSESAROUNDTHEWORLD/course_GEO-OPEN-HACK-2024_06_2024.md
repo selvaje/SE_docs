@@ -58,7 +58,7 @@ Jan Verbesselt, Belgian Science Policy Office, Belgium \
 Dainius Masiliunas, Wageningen University, The Netherlands)]
 
  - [presentation](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024_pdf/Day3a_BFAST.pdf)
- - [video](https://youtu.be/6QOymB_J17E?si=NlysADhPGrmkWDAW) (the video start too late - recheck the video cutting)
+ - [video](https://youtu.be/6QOymB_J17E?si=NlysADhPGrmkWDAW)
 
 ### Streamlining operationalisation of EO based solutions for the Green Transition using interoperability best-practices
 Patrick Griffiths, European Space Agency, Italy
@@ -124,5 +124,12 @@ Leandro Parente, OpenGeoHub Foundation, The Netherlands
 
 ### OEMC App demo
 Santiago Ferrer
- - [[presentation missing]()
+ - [presentation missing]()
  - [video](https://youtu.be/PCY4ogR-BgE?si=U4YuYzwjz0bdFAU0)
+
+
+### Acknowledgments
+
+GEO-OPEN-HACK-2024 is an initiative under the Open-Earth-Monitor Cyberinfrastructure (OEMC) project aiming to lower the barrier and transfer knowledge to users dealing with big geospatial data analytics. The OEMC has received funding from the European Union's Horizon Europe research and innovation programme (grant agreement No. 101059548). 
+
+GEO-OPEN-HACK-2024 is also an initiative in the framework of NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.
