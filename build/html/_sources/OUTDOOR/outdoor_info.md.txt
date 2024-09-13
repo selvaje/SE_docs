@@ -17,7 +17,7 @@ In the same area there is the [Masseria quercetta](https://maps.app.goo.gl/5YHUc
 
 ## Pine forest
 
-If are traveling from/to Matera you can camp at Montursi (https://goo.gl/maps/GBurBGCnCRt63SR98). Yuo will find a pine forest pick nick area with tables and a fountain and plenty of space to pitch your tend. DO NOT START ANY FIRE!! In the evening nobody will be there. On walking distance there is the [Macelleria montursi]( https://goo.gl/maps/ybjP4G11YqYDSGoZ6) where you can buy local meat. They may also grill for you. At 1km there is also a Pizzeria. But check before it may be close in winter.
+If are traveling from/to Matera you can camp at [Montursi](https://goo.gl/maps/GBurBGCnCRt63SR98). Yuo will find a pine forest pick nick area with tables and a fountain and plenty of space to pitch your tend. DO NOT START ANY FIRE!! In the evening nobody will be there. On walking distance there is the [Macelleria montursi]( https://goo.gl/maps/ybjP4G11YqYDSGoZ6) where you can buy local meat. They may also grill for you. At 1km there is also a Pizzeria. But check before it may be close in winter.
 
 ## Reception network for cyclotourists in Italy 
 
@@ -27,9 +27,9 @@ Please help me to enrich the map!!
 ## What to eat
 In Puglia you can survive with Focaccia and Mozzarella :-). The focaccia you can find in all bakeries (so call forno, pasticceria, panificio) rather the Mozzarella in the cheese shops (so call caseficio). For example in Gioia go to [Panetteria - Pasticceria Vittorio](https://maps.app.goo.gl/mU9MsCQHbUZ2kde28) and get the focaccia then walk few hundred meters to [Arcano](https://maps.app.goo.gl/rEXRkF8UZ4GvKJbw9)  get mozzarella keep walking to up to [here](https://maps.app.goo.gl/t1SmSvA81FDKZrD18) seat and enjoy :-).
 
-Some local grocery/supermarket also have cooked food (e.g. lasgna), so with few euro you can get a real lunch. Also some bakeries make pizza and they are cheaper then pizzeria.
+Some local grocery/supermarket also have cooked food (e.g. lasagna), so with few euro you can get a real lunch. Also some bakeries make pizza and they are cheaper then pizzeria.
 
-For drinking water there many fountains in the towns a bit less in the rural area (just ask to farmer).
+For drinking water there many fountains in the towns a bit less in the rural area (just ask to farmers).
 
 ## How to seek for free accommodation 
 

@@ -44,6 +44,7 @@ Pieter Kempeneers, European Commission, Joint Research Centre, Italy
 
  - [pyjeo: an open source image processing library in Python - material](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction2.html)
  - [Scaling-up: batch processing on the cluster with pyjeo - material](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_upscaling_surf.html)
+ - [video](https://youtu.be/2gCgA7q_54w?si=nouHFIC1h3a_A7u9)
 
 ### Citizen science mobile app for measuring trees and forests
 Milutin Milenković International Institute for Applied Systems Analysis (IIASA)
