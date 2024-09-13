@@ -11,3 +11,4 @@
    course_geocomp_ml_04-05_2023.md
    course_geocomp_ml_04-05_2024.md
    course_GEO-OPEN-HACK-2024_06_2024.md
+   course_geocomp_11-12_2024.md
