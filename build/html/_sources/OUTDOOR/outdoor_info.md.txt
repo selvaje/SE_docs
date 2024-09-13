@@ -9,16 +9,11 @@ Few hundred  meters from the  Scout Base there is [Protezione Civile Base](https
 ## Abandoned Trulli
 Between Gioia and Putignano, at N 40.829804°, E 16.990786° there are some abandoned Trulli (rural  houses in this area) and they are open so you may find a shelter there. You can reach the abandon Trulli following an unpaved road until "Masseria Surico". They are not very clean but if it is raining a lot the trulli are perfect for a dry shelter. 
 
-## What to eat
-In Puglia you can survive with Focaccia and Mozzarella :-). The focaccia you can find in all bakeries (so call forno, pasticceria, panificio) rather the Mozzarella in the cheese shops (so call caseficio). For example in Gioia go to [Panetteria - Pasticceria Vittorio](https://maps.app.goo.gl/mU9MsCQHbUZ2kde28) and get the focaccia then walk few hundred meters to [Arcano](https://maps.app.goo.gl/rEXRkF8UZ4GvKJbw9) and get mozzarella keep walking to up to [here](https://maps.app.goo.gl/t1SmSvA81FDKZrD18) seat and enjoy.
-
-Some local grocery/supermarket also have cooked food (e.g. lasgna), so with few euro you can get a real lunch. Also some bakeries make pizza and they are cheaper then pizzeria.
-
 ## Fattoria la Florida
-From the Abandoned Trulli you can follow a single-trail + road and arrive to "Fattoria la Florida" (https://goo.gl/maps/DLtEBz9cn18zYtPL7). They have very good and fresh mozzarella di Bufala. If you arrive late in the afternoon you may ask to pitch your tend for a night.
+From the Abandoned Trulli you can follow a single-trail + road and arrive to [Fattoria la Florida](https://goo.gl/maps/DLtEBz9cn18zYtPL7). They have very good and fresh mozzarella di Bufala. If you arrive late in the afternoon you may ask to pitch your tend for a night.
 
 ## Masseria quercetta
-In the same area there is the “Masseria quercetta” (https://maps.app.goo.gl/5YHUcAjjW3Kdr6rZ9) they have a very good cheese/mozzarella(cow) production and they have a selling point. So it is a must for a stop!! More over few meters a way the have an pick nick area (https://maps.app.goo.gl/36yBTFPk5Mp9EAd48 ) where you can even pitch your tend for one night.  Just ask if there is water availability. 
+In the same area there is the [Masseria quercetta](https://maps.app.goo.gl/5YHUcAjjW3Kdr6rZ9) they have a very good cheese/mozzarella(cow) production and they have a selling point. So it is a must for a stop!! Moreover few hundred meters away the have an [pick nick area](https://maps.app.goo.gl/36yBTFPk5Mp9EAd48) where you can even pitch your tend for one night. Just ask if there is water availability. 
 
 ## Pine forest
 
@@ -28,6 +23,13 @@ If are traveling from/to Matera you can camp at Montursi (https://goo.gl/maps/GB
 
 I have create this [map](https://www.google.com/maps/d/u/0/edit?mid=1iWdtq7upqCOzxJWnYR9EBkjhPyovms4&ll=40.88335902287129%2C17.024214181393397&z=11) that list locations useful for Cycloturists. 
 Please help me to enrich the map!!
+
+## What to eat
+In Puglia you can survive with Focaccia and Mozzarella :-). The focaccia you can find in all bakeries (so call forno, pasticceria, panificio) rather the Mozzarella in the cheese shops (so call caseficio). For example in Gioia go to [Panetteria - Pasticceria Vittorio](https://maps.app.goo.gl/mU9MsCQHbUZ2kde28) and get the focaccia then walk few hundred meters to [Arcano](https://maps.app.goo.gl/rEXRkF8UZ4GvKJbw9)  get mozzarella keep walking to up to [here](https://maps.app.goo.gl/t1SmSvA81FDKZrD18) seat and enjoy :-).
+
+Some local grocery/supermarket also have cooked food (e.g. lasgna), so with few euro you can get a real lunch. Also some bakeries make pizza and they are cheaper then pizzeria.
+
+For drinking water there many fountains in the towns a bit less in the rural area (just ask to farmer).
 
 ## How to seek for free accommodation 
 
