@@ -1,14 +1,18 @@
 # GeoComp 2024 course
-## Geocomputation for environmental applications: use of GDAL and GRASS. 
+## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS.
+### Curso on-line en español con material en inglés.
+
 
 **Online teaching: November and December 2024, 4 weeks**
 
-* **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
-* **End lecturing**: 19 December, 3pm - 5:45pm UTC (UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
+* **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC 
+(UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
+* **End lecturing**: 19 December, 3pm - 5:45pm UTC 
+(UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
 
 **Course objectives**
 
-In this course, students will be introduced to an array of powerful open-source geocomputation tools under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.
+In this course, students will be introduced to an array of powerful open-source geocomputation tools (GDAL & GRASS) under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.
 
 **All the class will be recorded. The video link will be posted in the syllabus below**  
 
@@ -64,11 +68,9 @@ Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 17:10 - 17:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 17:30 - 17:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](lect_20240402_IntroML_AF.pdf).
-* 17:45 - 18:00  [Francesco Lovergine: background/interest & geo-python introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_GeoPython_FL.pdf)
+* 17:30 - 18:15  Students round table + QA of the course.
 * 18:15 - 18:30  Break
-* 18:30 - 19:15  Students round table + QA of the course. 
-* 19:15 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 18:30 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
 
 <!---
 
@@ -282,7 +284,7 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 
 --->
 
-## Catch-up session 1: Thursday, 28th of December, 2024
+## Catch-up session 1: Thursday, 28th of November, 2024
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
