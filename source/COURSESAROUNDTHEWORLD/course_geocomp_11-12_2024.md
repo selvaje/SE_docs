@@ -1,18 +1,10 @@
 # GeoComp 2024 course
 ## Geocomputation for environmental applications: use of GDAL and GRASS. 
 
-(Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
-
 **Online teaching: November and December 2024, 4 weeks**
 
-
-* **Start lecturing**: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* **Catch-up session**: Tuesday 30 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* **Catch-up session**: Thursday 2 May: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
-* **Resume lecturing**: 7 May, every **Tuesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-* **GRASS week**: 21-22-23 May, **Tuesday, Wednesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-* **End lecturing**: 6 June, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-
+* **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
+* **End lecturing**: 19 December, 3pm - 5:45pm UTC (UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
 
 **Course objectives**
 
@@ -22,7 +14,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
 ### Class roster  ###
 
-  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024_foto/course_geocomp_ml_04-05_2024_roster.html)
+  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_foto/course_geocomp_11-12_2024_roster.html)
 
 ---
 
@@ -290,7 +282,14 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 
 --->
 
-## Lecture 4: Thursday, 28th of November, 2024.
+## Catch-up session 1: Thursday, 28th of December, 2024
+
+Students will meet online with the teachers to review past material and solving additional doubts. 
+
+Recorded of the QA can be found [here](). Password has been sent by e-mail on November ??  (it will be the same pass-code for all recordings).
+
+
+## Lecture 4: Tuesday, 3rd of December, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/1f4FotdNXZI0-67aYdJ3lzpN6B1kvO1rU491FZgLRNm_RPQM-MAF6bWslDo11PFN.P9WiMAZ1vWLCk5Ig).
@@ -320,7 +319,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
 
-## Lecture 5: Tuesday, 3rd of December, 2024.  
+## Lecture 5: Thursday, 5th of December, 2024.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aAPJ0y54bXjVR0imDohP4ZuYW3qyaI83U4xYURr3HeZh2Au5-RXbUJic-mpws9Yr.zGofGyLdK0CSEJWC).
@@ -355,7 +354,13 @@ Below, some suggestions of possible operations:
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 
 
-## Lecture 6: Thursday, 5th of December, 2024.
+## Catch-up session 2: Tuesday, 10th of December, 2024
+
+Students will meet online with the teachers to review past material and solving additional doubts. 
+
+Recorded of the QA can be found [here](). Password has been sent by e-mail on November ??  (it will be the same pass-code for all recordings).
+
+## Lecture 6: Thursday, 12th of December, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
@@ -374,8 +379,8 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiR
 		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
 		* GRASS add-ons
 
-## Lecture 7: Tuesday, 10th of December, 2024.
-### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+## Lecture 7: Tuesday, 17th of December, 2024.
+### Hydrology analysis using GRASS (2) (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmnEeYSSnWM0zSW_grGyPvyVe4pQFi2hhT2LETRrM1sbOSEp2eEdl5u.aNcR_zYib1S5uO5a).
 
@@ -388,7 +393,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmn
 		* Second run: copute stream and basin using the seamless South America Flow Accumulation
 		* Final step: combine the tiled basins and streams
 
-## Lecture 8: Thursday, 12st of December, 2024.
-### Machine Learning using GRASS
+## Lecture 8: Thursday, 19st of December, 2024.
+### Machine Learning using GRASS (3) (Giuseppe Amatulli)
 
 
