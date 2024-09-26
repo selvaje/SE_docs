@@ -1,18 +1,21 @@
 # GeoComp 2024 course
 ## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS.
-### Curso on-line en español con material en inglés.
+### Curso on-line, con explicaciones en español y con material en inglés.
 
+This course is an initiative in the framework of NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.
 
 **Online teaching: November and December 2024, 4 weeks**
 
 * **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC 
-(UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
-* **End lecturing**: 19 December, 3pm - 5:45pm UTC 
-(UTC-6 10am; UTC-5 11am; UTC-4 12am; UTC+1 5pm)
+(UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
+* **End lecturing**: 19 December, 3pm - 5:45pm UTC
+(UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
+
+Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20241126T150000&p1=1440&p2=3920&p3=3919&p4=3918&p5=3903) to check the time in your country.
 
 **Course objectives**
 
-In this course, students will be introduced to an array of powerful open-source geocomputation tools (GDAL & GRASS) under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.
+On this course, students will be introduced to an array of powerful open-source geocomputation tools (GDAL & GRASS) under Linux environment. Students who have never been exposed to programming under Linux are expected to reach a stage where they feel confident in using very advanced open source data processing routines. Students with a programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our aim is to equip attendees with powerful tools and hone their ability for independent study afterwards. The acquired skills will be beneficial, not only for GIS related applications, but also for general data processing and applied statistical computing in a number of fields. We aim to provide a sound foundation for career development as a geographic data scientist.
 
 **All the class will be recorded. The video link will be posted in the syllabus below**  
 
@@ -57,11 +60,9 @@ Below we are going to list day by day the final syllabus with the relatives link
 ## Lecture 1: Tuesday, 19th of November, 2024.
 ### Getting started: knowing each other and course introduction.
 
-This session introduces the objective of the course and a round table among the students and the teachers.  
+This session introduces the objectives of the course followed by an introductory round among the students and teachers.
 
-Recorded lecture can be found [here1](https://yale.zoom.us/rec/share/sS-Tc3LG8Cb7st-Jo3q_9DiwUgr9sYrt5IlkokIyQnIMhnklLFe4vpTwO4wwVSjd.5MKvARc_8UROYh5x) and 
-[here2](https://yale.zoom.us/rec/share/wKG5J2bP-zSWxXjR8aIwYw5TkmEsNIXWU4JVMRu9rWNH0VxTx3w5Yjq5Ou47y886.xSC5fYAGtirM-0as?startTime=1712078021000)
-
+Recorded lecture can be found [here1]()
 
 
 Time below in CEST
@@ -101,7 +102,7 @@ If one or more of these features are not working properly show up in the Catch-u
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/PLYtzO4P9AohnCTyk2knX_CRdMAD_QAHFv5bPym3OkM93IFRqvRwQRTrw8ni6FIN.sDitSrwM6R2r9EyO).
+Recorded lecture can be found [here]().
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
@@ -137,7 +138,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: Tuesday, 26th of November, 2024.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/zlw3ecG9dNtVlmI-4QCSUA616Wj46W-GsxrJR43qQEP9kAfkfdkpDTwoqrU6dQ.c7dGjJDPbJKIX9bo).
+Recorded lecture can be found [here]().
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -288,13 +289,15 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
+Presentation: Random Forest Regression for Urban Heat Island Mitigation in a Heritage City: Matera" (Juana Mercedes Perlaza Rodriguez)
+
 Recorded of the QA can be found [here](). Password has been sent by e-mail on November ??  (it will be the same pass-code for all recordings).
 
 
 ## Lecture 4: Tuesday, 3rd of December, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/1f4FotdNXZI0-67aYdJ3lzpN6B1kvO1rU491FZgLRNm_RPQM-MAF6bWslDo11PFN.P9WiMAZ1vWLCk5Ig).
+Recorded lecture can be found [here]().
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -324,7 +327,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: Thursday, 5th of December, 2024.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aAPJ0y54bXjVR0imDohP4ZuYW3qyaI83U4xYURr3HeZh2Au5-RXbUJic-mpws9Yr.zGofGyLdK0CSEJWC).
+Recorded lecture can be found [here]().
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -360,12 +363,16 @@ Below, some suggestions of possible operations:
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
+The teacher will point video recording and material on the use PKTOOLS.
+* [Manipulate geographical data with PKTOOLS](https://youtu.be/UmEkNCi7udQ).
+* [Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
+
 Recorded of the QA can be found [here](). Password has been sent by e-mail on November ??  (it will be the same pass-code for all recordings).
 
 ## Lecture 6: Thursday, 12th of December, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
+Recorded lecture can be found [here]().
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
    * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
@@ -384,7 +391,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiR
 ## Lecture 7: Tuesday, 17th of December, 2024.
 ### Hydrology analysis using GRASS (2) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmnEeYSSnWM0zSW_grGyPvyVe4pQFi2hhT2LETRrM1sbOSEp2eEdl5u.aNcR_zYib1S5uO5a).
+Recorded lecture can be found [here]().
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
