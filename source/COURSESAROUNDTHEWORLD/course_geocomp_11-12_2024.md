@@ -2,9 +2,9 @@
 ## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS.
 ### Curso on-line, con explicaciones en español y con material en inglés.
 
-This course is an initiative in the framework of NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.
+**This course is an initiative in the framework of NSF-funded POSE project TI-2303651: [Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303651)**
 
-**Online teaching: November and December 2024, 4 weeks**
+**Online teaching: November and December 2024, 5 weeks**
 
 * **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC 
 (UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
