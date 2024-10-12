@@ -6,5 +6,5 @@
    
    outdoor_orientering.md
    outdoor_info.md
-
+   bike_accomodation.md
 
