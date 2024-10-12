@@ -12,13 +12,14 @@ I’m an avid cyclist based in Gioia del Colle, offering accommodation to fellow
 Just text and ask for availability!!  Peppe +39 351 5949011
 
 
-## Bike routes Matera-Gioa-Alberobello
+## GPX Bike routes Matera-Gioa-Alberobello
 
-* [Matera Gioia touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Matera_Gioia_touring.gpx)
+* [Matera Gioia touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Matera_Gioia_touring.gpx "download")
 
-* [Gioia Alberobello touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx)
-* [Gioia Alberobello gravel gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx)
+* [Gioia Alberobello touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx "download")
+* [Gioia Alberobello gravel gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx "download") 
 
+## What to do on the Matera-Gioa-Alberobello routes
 
 ### Fattoria la Florida
 [Fattoria la Florida](https://goo.gl/maps/DLtEBz9cn18zYtPL7) have very good and fresh mozzarella di Bufala. If you arrive late in the afternoon you may ask to pitch your tend for a night.
