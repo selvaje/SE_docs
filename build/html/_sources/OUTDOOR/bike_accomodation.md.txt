@@ -1,6 +1,7 @@
 # Accomodation in Gioia del Colle (BA)
 
 
+
 ![title](./bike.png)
 
 Are you bike touring? 
@@ -13,10 +14,10 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 
 # Bike routes Matera-Gioa-Alberobello
 
-* [Matera Gioia touring route](http://spatial-ecology.net/docs/source/OUTDOOR/Matera_Gioia_touring.gpx)
+* ![Matera Gioia touring route](http://spatial-ecology.net/docs/source/OUTDOOR/Matera_Gioia_touring.gpx)
 
-* [Gioia Alberobello touring route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx)
-* [Gioia Alberobello gravel route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx)
+* ![Gioia Alberobello touring route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx)
+* ![Gioia Alberobello gravel route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx)
 
 
 ## Fattoria la Florida
