@@ -25,6 +25,9 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download="newfilename">Download the pdf</a>
 
 
+<a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx">Download Receipt</a>
+
+
 ## What to do on the Matera-Gioa-Alberobello routes
 
 ### Fattoria la Florida
