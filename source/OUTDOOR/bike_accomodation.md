@@ -30,10 +30,13 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download>Download Receipt</a>
 
 
+<a href="./source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download="FileName">Download it!</a>
+
+
 ## What to do on the Matera-Gioa-Alberobello routes
 
 ### Fattoria la Florida
-[Fattoria la Florida](https://goo.gl/maps/DLtEBz9cn18zYtPL7) have very good and fresh mozzarella di Bufala. If you arrive late in the afternoon you may ask to pitch your tend for a night.
+[Fattoria la Florida](https://goo.gl/maps/DLtEBz9cn18zYtPL7) have very good and fresh mozzarella di Bufala. Mozzarella di Bufala is quite rare so do not loose this opportunity.
 
 ### Masseria quercetta
 In the same area there is the [Masseria quercetta](https://maps.app.goo.gl/5YHUcAjjW3Kdr6rZ9) they have a very good cheese/mozzarella(cow) production and they have a selling point. So it is a must for a stop!! 
