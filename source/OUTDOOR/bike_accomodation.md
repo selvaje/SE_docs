@@ -17,7 +17,7 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 * [Matera Gioia touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Matera_Gioia_touring.gpx "download")
 
 * [Gioia Alberobello touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx "download")
-* [Gioia Alberobello gravel gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx "download") 
+* [Gioia Alberobello gravel gpx route](./source/OUTDOOR/Gioia_Alberobello_gravel.gpx "download") 
 
  <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" target="_blank">Download</a>
 
@@ -26,6 +26,8 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 
 
 <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx">Download Receipt</a>
+
+<a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download>Download Receipt</a>
 
 
 ## What to do on the Matera-Gioa-Alberobello routes
