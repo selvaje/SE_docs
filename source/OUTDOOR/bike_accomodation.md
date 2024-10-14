@@ -5,7 +5,7 @@
 ![title](./bike.png)
 
 Are you bike touring? 
-Are biking towards Alberobello and you looking for an affordable and bike friendly accommodation in Gioa del Colle? Perfect!! you are reading the right post!
+Are you biking towards Alberobello and you looking for an affordable, and bike friendly accommodation in Gioa del Colle? Perfect!! you are reading the right post!
 
 I’m an avid cyclist based in Gioia del Colle, offering accommodation to fellow bike travelers. When you stay at my place, you'll feel like part of the family, sharing travel stories, drinks, and meals together. 
 
@@ -18,6 +18,12 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 
 * [Gioia Alberobello touring gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_touring.gpx "download")
 * [Gioia Alberobello gravel gpx route](http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx "download") 
+
+ <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" target="_blank">Download</a>
+
+
+<a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download="newfilename">Download the pdf</a>
+
 
 ## What to do on the Matera-Gioa-Alberobello routes
 
