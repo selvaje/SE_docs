@@ -30,7 +30,7 @@ Just text and ask for availability!!  Peppe +39 351 5949011
 <a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download>Download Receipt</a>
 
 
-<a href="./source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download="Gioia_Alberobello_gravel.gpx">Gioia_Alberobello_gravel.gpx!</a>
+<a href="http://spatial-ecology.net/docs/source/OUTDOOR/Gioia_Alberobello_gravel.gpx" download="Gioia_Alberobello_gravel.gpx">dOWNLOAD Gioia_Alberobello_gravel.gpx!</a>
 
 
 ## What to do on the Matera-Gioa-Alberobello routes
