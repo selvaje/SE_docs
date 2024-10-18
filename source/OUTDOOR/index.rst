@@ -8,6 +8,7 @@
    outdoor_info.md
    bike_accomodation.md
 
-.. raw:: html
+.. _gpx-file-download:
 
-    <a href="./source/OUTDOOR/download.php">Download GPX File</a>
+Download the GPX file:
+:download:`Click here <Matera_Gioia_touring.gpx>`

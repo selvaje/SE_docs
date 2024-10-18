@@ -5,11 +5,11 @@
 ![title](./bike.png)
 
 Are you bike touring? 
-Are you biking towards Alberobello and you looking for an affordable, and bike friendly accommodation in Gioa del Colle? Perfect!! you are reading the right post!
+Are you biking towards Matera -> Alberobello and you looking for an affordable, and bike friendly accommodation in Gioa del Colle? Perfect!! you are reading the right post!
 
-I’m an avid cyclist based in Gioia del Colle, offering accommodation to fellow bike travelers. When you stay at my place, you'll feel like part of the family, sharing travel stories, drinks, and meals together. 
+I’m an enthusiast cyclist based in Gioia del Colle, offering accommodation to fellow bike travelers. When you stay at my place, you'll feel like part of the family, sharing travel stories, drinks, and meals together. 
 
-Just text and ask for availability!!  Peppe +39 351 5949011
+Just text and ask for availability!!  Peppe +39 35 one 59490 one one
 
 
 ## GPX Bike routes Matera-Gioa-Alberobello
