@@ -11,4 +11,4 @@
 .. _gpx-file-download:
 
 Download the GPX file:
-:download:`Click here <_downloads/Matera_Gioia_touring.gpx>`
+:download:`Click here <./source/OUTDOOR/_downloads/Matera_Gioia_touring.gpx>`
