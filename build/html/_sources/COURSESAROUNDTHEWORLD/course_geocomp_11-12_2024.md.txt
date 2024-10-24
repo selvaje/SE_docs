@@ -11,7 +11,7 @@
 * **End lecturing**: 19 December, 3pm - 5:45pm UTC
 (UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
 
-Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20241126T150000&p1=1440&p2=3920&p3=3919&p4=3918&p5=3903) to check the time in your country.
+Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20241119T150000&p1=1440&p2=136&p3=215&p4=155&p5=41&p6=131&p7=190&p8=51&p9=232) to check the time in your country.
 
 **Course objectives**
 
@@ -65,13 +65,13 @@ This session introduces the objectives of the course followed by an introductory
 Recorded lecture can be found [here1]()
 
 
-Time below in CEST
+Time below in CET
 
-* 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 17:10 - 17:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 17:30 - 18:15  Students round table + QA of the course.
-* 18:15 - 18:30  Break
-* 18:30 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 16:00 - 16:10  Tushar Sethi: background/interest & course objective - communication/administration role.
+* 16:10 - 16:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
+* 16:30 - 17:15  Students round table + QA of the course.
+* 17:15 - 17:30  Break
+* 17:30 - 18:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
 
 <!---
 
