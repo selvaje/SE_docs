@@ -64,7 +64,7 @@ This session introduces the objectives of the course followed by an introductory
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/k2KvVEKHWAqEbrWY4oYli0XeCGMl_U1po8EJoQNJ-5jiFeTzGml17jkbL25j1s78.z5bAt-A8HOymvyCo)
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect01_GDALyGRASS_19102024.pdf).
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect01_GDALyGRASS_19112024.pdf).
 
 Time below in CET
 
@@ -93,7 +93,7 @@ During this session we explore and practice the basics of BASH terminal command 
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MOKF9ZtqvX5QIId1xZckEmXf9WwyKzbXzGhfEyMuaE7RtPfdzn7S_M8Hfo9SgOnZ.kb4v-RVMUBAYwXoo).
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect02_GDALyGRASS_21102024.pdf).
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect02_GDALyGRASS_21112024.pdf).
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
@@ -131,7 +131,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/cVg233iCif3NY8B9htSqFNrkGobaFMAJcY7AxHgJapwmvjZZNA6goPRCUx71KkPE.kg3tAhdkQHwHHXsK).
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect03_GDALyGRASS_26102024.pdf).
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect03_GDALyGRASS_26112024.pdf).
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -283,8 +283,9 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
 
-Recorded of the QA can be found [here]().
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/Cm9tchgPL9l-bQn6alDts3fKPz5oD_qSaK57wpJ7gMQ0n7J95Zt1aAhmo-QdeQv6.puhtzm6bZwL4Sf8y).
 
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect03_GDALyGRASS_28112024.pdf)
 
 ## Lecture 4: Tuesday, 3rd of December, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
