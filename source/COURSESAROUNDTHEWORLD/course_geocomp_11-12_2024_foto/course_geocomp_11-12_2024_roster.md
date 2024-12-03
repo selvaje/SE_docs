@@ -2,10 +2,6 @@
 ## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS
 ### 
 
-#### Student affiliation and their origin  ####
-
-![](Physical-World-Map-3360.jpg)
-
 #### Student roster ####
 
 (1)  **Paul León (Ecuador)**
@@ -19,16 +15,14 @@ Fundación Charles Darwin, Ecuador
 
 Instituto de Investigación Vitivinícola y Agroalimentaria (IVAGRO)
 
-Universidad de Cádiz
-
-España
+Universidad de Cádiz, España
 
 ![](02_gabriel_tedone.jpg))
 
 ---
 (3)	**Osiris Diaz Torres  (Mexico)**
 
-TECNOLOGICO DE MONTERREY CAMPUS GUADALAJARA, Mexico
+Istituto Tecnologico de Monterrey Campus Guadalajara, Mexico
 
 ![](03_osiris_diaz.jpg)
 
@@ -44,38 +38,38 @@ Observatory of Natural Hazards and Natural Resources-Ministry of Environment, El
 
 Technical University of Munich, Germany
 
-![]()
+![](05_ana_maria_bastidas_urrutia.jpg)
 
 ---
-(6)	**Laura Elisa Quiroz Rosas ()**
+(6)	**Laura Elisa Quiroz Rosas (México)**
 
 Universidad Nacioanal Autónoma de México
 
 ![](06_laura_quiroz.jpg)
 
 ---
-(7)	**Gustavo Herrera de Lamo ()**
+(7)	**Gustavo Herrera de Lamo (Spain)**
 
 GRAFCAN, Spain
 
 ![](07_gustavo_herrera_de_lamo.jpg)
 
 ---
-(8)	**DANIA MARLENE	CEBALLOS VAZQUEZ ()**
+(8) **Dania Marlene Ceballos Vazquez ()**
 
-INSTITUTO TECNOLÓGICO DE MONTERREY
+Istituto Tecnologico de Monterrey Campus Guadalajara, Mexico
 
 ![](08_dania_ceballos.png)
 
 ---
-()	**Maria Esther Jimenez Lopez  ()**
+(9) **Maria Esther Jimenez Lopez (Mexico)**
 
 University of Baja California Sur, Mexico
 
 ![](09_maria_esther_jimenez.jpg)
 
 ---
-(10)	**Alexander	Cotrina Sánchez  ()**
+(10)	 **Alexander	 Cotrina Sánchez  ()**
 
 University of Tuscia, Italy
 
@@ -84,14 +78,14 @@ University of Tuscia, Italy
 ---
 (11)	**Hugo	Herrador (España)**
 
-Geoinquietos, Espana
+Geoinquietos, España
 
 ![](11_hugo_herrador.jpg)
 
 ---
 (12)	**Irantzu	Alvarez (España)**
 
-University of the Basque Country (UPV/EHU)
+University of the Basque Country (UPV/EHU), España
 
 ![](12_irantzu_alvarez.jpg)
 
@@ -103,7 +97,7 @@ CentroGeo, Mexico
 ![](13_alejandra_lopez.jpg)
 
 ---
-(14)	**Virginia	Herrera Cruz ()**
+(14)	**Virginia	Herrera Cruz (España)**
 
 Airbus Defence and Space, Germany
 
@@ -114,17 +108,17 @@ Airbus Defence and Space, Germany
 
 Freelance, España
 
-![](sridhar.chandramouli.jpg)
+![](15_sridhar_chandramouli.jpg)
 
 ---
-(16)	**Pablo Moncayo Silva ()**
+(16)	**Pablo Moncayo Silva (Ecuador)**
 
 Food Agriculture Organization, Ecuador
 
 ![](16_pablo_moncayo.jpg)
 
 ---
-(17)	** Raquel Daza()**
+(17)	** Raquel Daza (España)**
 
 Proterra enginyeria, Andorra
 
