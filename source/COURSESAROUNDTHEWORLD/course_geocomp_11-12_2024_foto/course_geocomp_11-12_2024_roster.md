@@ -34,7 +34,7 @@ Observatory of Natural Hazards and Natural Resources-Ministry of Environment, El
 ![](04_mario_reyes.jpg)
 
 ---
-(5)	**Ana Maria	Bastidas Urrutia ()**
+(5)	**Ana Maria	Bastidas Urrutia (España)**
 
 Technical University of Munich, Germany
 
@@ -55,7 +55,7 @@ GRAFCAN, Spain
 ![](07_gustavo_herrera_de_lamo.jpg)
 
 ---
-(8) **Dania Marlene Ceballos Vazquez ()**
+(8) **Dania Marlene Ceballos Vazquez (Mexico)**
 
 Istituto Tecnologico de Monterrey Campus Guadalajara, Mexico
 

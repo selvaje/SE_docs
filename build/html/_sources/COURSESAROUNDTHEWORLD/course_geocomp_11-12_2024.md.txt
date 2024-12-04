@@ -285,12 +285,14 @@ Students will meet online with the teachers to review past material and solving 
 
 Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/Cm9tchgPL9l-bQn6alDts3fKPz5oD_qSaK57wpJ7gMQ0n7J95Zt1aAhmo-QdeQv6.puhtzm6bZwL4Sf8y).
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect03_GDALyGRASS_28112024.pdf)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect04_GDALyGRASS_28112024.pdf)
 
 ## Lecture 4: Tuesday, 3rd of December, 2024.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/dhsuKZ_BeCOPGqdHCdcHi3M7HXDeV15lsUj9taPrkpw0jruSVQdH0KFxySDxZaLj.t-kUlYeoy84WEDFy).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect05_GDALyGRASS_03122024.pdf)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
