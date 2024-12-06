@@ -322,10 +322,9 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: Thursday, 5th of December, 2024.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/wA4KVMJhHpwg2bUt7BpDkZc7_wNYrWUbe2rFe-6Mayw5cH_B-GcNrvND5H_q_PvJ.UXG1y01870V8RmQu).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
-
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
 	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
