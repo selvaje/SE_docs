@@ -357,6 +357,10 @@ Below, some suggestions of possible operations:
 
 ## Catch-up session 2: Tuesday, 10th of December, 2024
 
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/WH3vSIwim8geetrKHGbFtzb3KEd6q3JFDIZZLFA1lCRKuv9_wRKO3Xt-Z4seL5m-.O5Xb7ZQOBbrfEz6K).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect07_GDALyGRASS_10122024.pdf)
+
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
 Presentation: Random Forest Regression for Urban Heat Island Mitigation in a Heritage City: Matera" (Juana Mercedes Perlaza Rodriguez)
