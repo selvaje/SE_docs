@@ -374,9 +374,12 @@ Recorded of the QA can be found [here]().
 ## Lecture 6: Thursday, 12th of December, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MYayISKwfCyZ4-fn6PGLm9ROqIW8NKTrqc07mzsnTwSZabDoV1yOXg462f0lbFB1.vLPoKDfaOfn57ysn).
 
-   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect06_GDALyGRASS_05122024.pdf)
+
+
+   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20241212_grass_intro.pdf)
    * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
 		* GRASS GUI
 		* GRASS command structure
