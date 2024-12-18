@@ -376,7 +376,7 @@ Recorded of the QA can be found [here]().
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MYayISKwfCyZ4-fn6PGLm9ROqIW8NKTrqc07mzsnTwSZabDoV1yOXg462f0lbFB1.vLPoKDfaOfn57ysn).
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect06_GDALyGRASS_05122024.pdf)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect08_GDALyGRASS_08122024.pdf)
 
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20241212_grass_intro.pdf)
@@ -396,7 +396,9 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 7: Tuesday, 17th of December, 2024.
 ### Hydrology analysis using GRASS (2) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Qc2pwPCyGd37UoAhTJBu1KBO5jpeuz-9B6wadZ6VX3P0UWM_4tT1oOoEos4zVZ3P.mmQhQ3XCXmGAA8r9).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect09_GDALyGRASS_17122024.pdf)
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
