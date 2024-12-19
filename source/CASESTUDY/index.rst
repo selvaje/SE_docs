@@ -7,6 +7,8 @@
 
    SDM1_MWood_gecomp.ipynb
    SDM1_MWood_Rmodel.ipynb
+   SDM1_MWood_gecomp4GRASS.ipynb
+   SDM1_MWood_GRASSmodel.ipynb
    SDM2_Vath_Rmodel.ipynb
    manipulate_GSIM.md
    Data_type_GTiff.ipynb
