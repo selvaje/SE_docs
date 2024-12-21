@@ -7,7 +7,8 @@
    outdoor_orientering.md
    outdoor_info.md
    bike_accomodation.md
-
+   puglia_discover.md
+   
 .. _gpx-file-download:
 
 Download the GPX file:

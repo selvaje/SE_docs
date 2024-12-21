@@ -412,4 +412,9 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 8: Thursday, 19st of December, 2024.
 ### Machine Learning using GRASS (3) (Giuseppe Amatulli)
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/-cQESZhdHQ-VuWhl25KNV_wupkafpvy1qh54qiCm7mItzKTIDUNum0ct9Hrx326T.0TL4i_ZBmvsPpKh).
 
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect10_GDALyGRASS_19122024.pdf)
+
+* [SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS](https://spatial-ecology.net/docs/build/html/GRASS/SDM1_MWood_gecomp4GRASS.html)
+* [SDM1 : Montane woodcreper - Random Forest Model using GRASS](https://spatial-ecology.net/docs/build/html/GRASS/SDM1_MWood_GRASSmodel.html)
