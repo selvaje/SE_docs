@@ -412,7 +412,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 8: Thursday, 19st of December, 2024.
 ### Machine Learning using GRASS (3) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/-cQESZhdHQ-VuWhl25KNV_wupkafpvy1qh54qiCm7mItzKTIDUNum0ct9Hrx326T.0TL4i_ZBmvsPpKh).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aszF3FaM3QWk4XRL60lr7gGA-x-xww-w5Lrtrjl3cpWFEKEufNHS0hoK_Kbrki-B.Q39Ep1xNf-UOfIBW).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect10_GDALyGRASS_19122024.pdf)
 
