@@ -62,7 +62,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objectives of the course followed by an introductory round among the students and teachers.
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/k2KvVEKHWAqEbrWY4oYli0XeCGMl_U1po8EJoQNJ-5jiFeTzGml17jkbL25j1s78.z5bAt-A8HOymvyCo)
+Recorded lecture can be found [here](https://youtu.be/YKFr_Mudu4M)
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect01_GDALyGRASS_19112024.pdf).
 
@@ -91,7 +91,7 @@ If one or more of these features are not working properly show up in the Catch-u
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MOKF9ZtqvX5QIId1xZckEmXf9WwyKzbXzGhfEyMuaE7RtPfdzn7S_M8Hfo9SgOnZ.kb4v-RVMUBAYwXoo).
+Recorded lecture can be found [here](https://youtu.be/7zb_YNHBtq0).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect02_GDALyGRASS_21112024.pdf).
 
@@ -412,7 +412,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 8: Thursday, 19st of December, 2024.
 ### Machine Learning using GRASS (3) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aszF3FaM3QWk4XRL60lr7gGA-x-xww-w5Lrtrjl3cpWFEKEufNHS0hoK_Kbrki-B.Q39Ep1xNf-UOfIBW).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aszF3FaM3QWk4XRL60lr7gGA-x-xww-w5Lrtrjl3cpWFEKEufNHS0hoK_Kbrki-B.Q39Ep1xNf-UOfIBW   ).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect10_GDALyGRASS_19122024.pdf)
 
