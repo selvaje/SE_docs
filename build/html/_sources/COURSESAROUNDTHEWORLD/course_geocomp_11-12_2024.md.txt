@@ -55,7 +55,7 @@ On this course, students will be introduced to an array of powerful open-source 
 
 ### Detailed syllabus ###
 
-Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
+Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video. Full video playlist cam be found [here](https://www.youtube.com/playlist?list=PL2h1_A_4X7LDPLri1UUA1_5GlRaNfIpE4) 
 
 ## Lecture 1: Tuesday, 19th of November, 2024.
 ### Getting started: knowing each other and course introduction.
@@ -129,7 +129,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: Tuesday, 26th of November, 2024.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/cVg233iCif3NY8B9htSqFNrkGobaFMAJcY7AxHgJapwmvjZZNA6goPRCUx71KkPE.kg3tAhdkQHwHHXsK).
+Recorded lecture can be found [here](https://youtu.be/iiZdt5fNKJE).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect03_GDALyGRASS_26112024.pdf).
 
@@ -283,7 +283,7 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
 
-Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/Cm9tchgPL9l-bQn6alDts3fKPz5oD_qSaK57wpJ7gMQ0n7J95Zt1aAhmo-QdeQv6.puhtzm6bZwL4Sf8y).
+Recorded of the QA can be found [here](https://youtu.be/2x4V8atuqVA).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect04_GDALyGRASS_28112024.pdf)
 
@@ -322,7 +322,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: Thursday, 5th of December, 2024.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/wA4KVMJhHpwg2bUt7BpDkZc7_wNYrWUbe2rFe-6Mayw5cH_B-GcNrvND5H_q_PvJ.UXG1y01870V8RmQu).
+Recorded lecture can be found [here](https://youtu.be/X1VW9HrMJyU).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect06_GDALyGRASS_05122024.pdf)
 
@@ -357,7 +357,7 @@ Below, some suggestions of possible operations:
 
 ## Catch-up session 2: Tuesday, 10th of December, 2024
 
-Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/WH3vSIwim8geetrKHGbFtzb3KEd6q3JFDIZZLFA1lCRKuv9_wRKO3Xt-Z4seL5m-.O5Xb7ZQOBbrfEz6K).
+Recorded of the QA can be found [here](https://youtu.be/F-j4-ap4C6Q).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect07_GDALyGRASS_10122024.pdf)
 
@@ -374,7 +374,7 @@ Recorded of the QA can be found [here]().
 ## Lecture 6: Thursday, 12th of December, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MYayISKwfCyZ4-fn6PGLm9ROqIW8NKTrqc07mzsnTwSZabDoV1yOXg462f0lbFB1.vLPoKDfaOfn57ysn).
+Recorded lecture can be found [here](https://youtu.be/XlYLkgCm55A).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect08_GDALyGRASS_08122024.pdf)
 
@@ -396,7 +396,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 7: Tuesday, 17th of December, 2024.
 ### Hydrology analysis using GRASS (2) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Qc2pwPCyGd37UoAhTJBu1KBO5jpeuz-9B6wadZ6VX3P0UWM_4tT1oOoEos4zVZ3P.mmQhQ3XCXmGAA8r9).
+Recorded lecture can be found [here](https://youtu.be/230t0J_H9TY).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect09_GDALyGRASS_17122024.pdf)
 
@@ -412,7 +412,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 8: Thursday, 19st of December, 2024.
 ### Machine Learning using GRASS (3) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aszF3FaM3QWk4XRL60lr7gGA-x-xww-w5Lrtrjl3cpWFEKEufNHS0hoK_Kbrki-B.Q39Ep1xNf-UOfIBW   ).
+Recorded lecture can be found [here](https://youtu.be/P7bJn_Lbj4A).
 
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect10_GDALyGRASS_19122024.pdf)
 
