@@ -1,4 +1,4 @@
-# GeoComp 2024 course
+# GeoComp 2025 course
 ## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS.
 ### Curso on-line, con explicaciones en español y con material en inglés.
 

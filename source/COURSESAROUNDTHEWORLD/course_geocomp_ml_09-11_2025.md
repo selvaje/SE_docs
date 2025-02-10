@@ -1,4 +1,4 @@
-# GeoComp & ML 2024 course
+# GeoComp & ML 2025 course
 ## Geocomputation and Machine Learning for environmental applications
 
 (Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
