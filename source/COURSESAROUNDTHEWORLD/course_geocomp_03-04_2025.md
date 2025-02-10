@@ -1,5 +1,5 @@
 # GeoComp 2025 course
-## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS.
+## Geocomputation and geospatial modelling.
 ### Curso on-line, con explicaciones en español y con material en inglés.
 
 **This course is an initiative in the framework of NSF-funded POSE project TI-2303651: [Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303651)**
