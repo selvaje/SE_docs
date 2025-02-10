@@ -1,27 +1,29 @@
-# GeoComp 2025 course
-## Geocomputation and geospatial modelling.
-### Curso on-line, con explicaciones en español y con material en inglés.
+# Geo Comp/Analysis 2025 course
+## Geocomputation and geospatial analysis
 
-**This course is an initiative in the framework of NSF-funded POSE project TI-2303651: [Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics](https://www.nsf.gov/awardsearch/showAward?AWD_ID=2303651)**
+**Online teaching: April 2025, 2 weeks**
 
-**Online teaching: November and December 2024, 5 weeks**
+* **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45
+* **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:30 
+* **Lecture 2**: Thursday, 3 April at 15:00 - 17:45
+* **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45
+* **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:30 
+* **Lecture 4**: Thursday, 10 April at 15:00 - 17:45
 
-* **Start lecturing**: 19 November, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC 
-(UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
-* **End lecturing**: 19 December, 3pm - 5:45pm UTC
-(UTC-6 9am; UTC-5 10am; UTC-4 11am; UTC+1 4pm)
+**In person week: April 2025, week**
 
-Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20241119T150000&p1=1440&p2=136&p3=215&p4=155&p5=41&p6=131&p7=190&p8=51&p9=232) to check the time in your country.
-
+* **Hands-on session 1**: Tuesday-Wednesday 15,16 April at 9:00 - 17:00 (PhD candidates)
+* **Hands-on session 2**: Thursday-Friday 17,18 April at 9:00 - 17:00
+(Technical employee)
 **Course objectives**
 
-On this course, students will be introduced to an array of powerful open-source geocomputation tools (GDAL & GRASS) under Linux environment. Students who have never been exposed to programming under Linux are expected to reach a stage where they feel confident in using very advanced open source data processing routines. Students with a programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our aim is to equip attendees with powerful tools and hone their ability for independent study afterwards. The acquired skills will be beneficial, not only for GIS related applications, but also for general data processing and applied statistical computing in a number of fields. We aim to provide a sound foundation for career development as a geographic data scientist.
+On this course, students will be introduced to an array of powerful open-source geocomputation tools (GDAL & python) under Linux environment. Students who have never been exposed to programming under Linux are expected to reach a stage where they feel confident to understand and modify advanced open source data processing routines.  Our aim is to equip attendees with powerful tools and hone their ability for independent study afterwards. The acquired skills will be beneficial, not only for GIS related applications, but also for general data processing and applied statistical computing in a number of fields. We aim to provide a sound foundation for career development as a geographic data scientist.
 
 **All the class will be recorded. The video link will be posted in the syllabus below**  
 
 ### Class roster  ###
 
-  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_foto/course_geocomp_11-12_2024_roster.html)
+  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_foto/course_geocomp_geoanlysis_04_2025_roster.html)
 
 ---
 
@@ -34,20 +36,16 @@ On this course, students will be introduced to an array of powerful open-source 
         <td>n. lectures</td>
     </tr>
     <tr>
-        <td>LINUX:</td>
+        <td>LINUX bash:</td>
         <td>1</td>
     </tr>
     <tr>
-        <td>BASH/AWK:</td>
-        <td>2</td>
+        <td>LINUX gdal:  </td>
+        <td>1</td>
     </tr>
     <tr>
-        <td>GDAL:  </td>
+        <td>LINUX python:</td>
         <td>2</td>
-    </tr>
-    <tr>
-        <td>GRASS:</td>
-        <td>3</td>
     </tr>
 </table>
 
@@ -55,56 +53,34 @@ On this course, students will be introduced to an array of powerful open-source 
 
 ### Detailed syllabus ###
 
-Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video. Full video playlist cam be found [here](https://www.youtube.com/playlist?list=PL2h1_A_4X7LDPLri1UUA1_5GlRaNfIpE4) 
+Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video. Full video playlist cam be found [here]() 
 
-## Lecture 1: Tuesday, 19th of November, 2024.
+## Lecture 1: Tuesday, 1 April 2025.
 ### Getting started: knowing each other and course introduction.
 
 This session introduces the objectives of the course followed by an introductory round among the students and teachers.
 
-Recorded lecture can be found [here](https://youtu.be/YKFr_Mudu4M)
+Recorded lecture can be found [here]()
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect01_GDALyGRASS_19112024.pdf).
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025 _resume/lect01_geocomp_geoanlysis_01042025.pdf).
 
-Time below in CET
-
-* 16:00 - 16:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 16:10 - 16:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 16:30 - 17:15  Students round table + QA of the course.
-* 17:15 - 17:30  Break
-* 17:30 - 18:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
-
-## Catch-up session 0: Wednesday, 20th of November, 2024
-
-This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. Be sure that following OSGeoLive 16.0 Virtual Machine features are present: 
-
-* The OSGeoLive 16.0 Virtual Machine internet connection is working fine - open a browser and search for something. 
-* The OSGeoLive 16.0 Virtual Machine screen is wide and you can expand and switch back to your native OS without issues.
-* The shared folder has been correctly installed. Check if the /media/sf_LVM_shared is visible. 
-* The /home/user/SE_data/ has been download and that the /media/sf_LVM_shared/my_SE_data is visible and you can see the sub-folder.
-* The OSGeoLive 16.0 Virtual Machine Keyboard Layout has been set in accordance to your keyboard, and that the letter that you type correspond in what you see. 
-
-If one or more of these features are not working properly show up in the Catch-up session. 
-
-## Lecture 2: Thursday, 21st of November, 2024. 
-### Jump start into LINUX Bash programming (Giuseppe Amatulli)
+* 15:00 - 15:10  Tushar Sethi: background/interest & course objective - communication/administration role.
+* 15:10 - 15:25  Giuseppe Amatulli: background/interest & bash/gdal.
+* 15:25 - 15:40  Saverio Mancino: background/interest & geopython.
+* 16:40 - 17:00  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 17:00 - 17:15  Break
+* 17:15 - 17:45  Linux BASH
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://youtu.be/7zb_YNHBtq0).
-
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect02_GDALyGRASS_21112024.pdf).
-
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
-*
-* [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
+[Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
 	* Special characters and Quoting
 	* The most important commands - Unix/Linux Command Reference
 	* Meta-characters and regular expression, their use.
 	* Concatenate process (pipe).
 	* String manipulation
-* [Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial)
+* [Additional Material: Manipulate text files in bash](http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html) (Hands-on tutorial)
 	* Pattern matching
 	* Sorting a file
 	* Append the command result to a file
@@ -124,6 +100,35 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Perform a data download operation using wget or curl.
 * Unzip/untar files.
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
+
+## Catch-up session 1: Wednesday, 2 April 2025
+
+This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. 
+
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
+
+Be sure that following OSGeoLive 16.0 Virtual Machine features are present: 
+
+* The OSGeoLive 16.0 Virtual Machine internet connection is working fine - open a browser and search for something. 
+* The OSGeoLive 16.0 Virtual Machine screen is wide and you can expand and switch back to your native OS without issues.
+* The shared folder has been correctly installed. Check if the /media/sf_LVM_shared is visible. 
+* The /home/user/SE_data/ has been download and that the /media/sf_LVM_shared/my_SE_data is visible and you can see the sub-folder.
+* The OSGeoLive 16.0 Virtual Machine Keyboard Layout has been set in accordance to your keyboard, and that the letter that you type correspond in what you see. 
+
+If one or more of these features are not working properly show up in the Catch-up session. 
+
+
+## Lecture 2: Thursday, 2 April 2025. 
+### Jump start into LINUX Bash programming (Giuseppe Amatulli)
+
+
+Recorded lecture can be found [here](https://youtu.be/7zb_YNHBtq0).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect02_GDALyGRASS_21112024.pdf).
+
+
+
+
 
 
 ## Lecture 3: Tuesday, 26th of November, 2024.
@@ -175,108 +180,6 @@ You can perform:
 - table re-organization    
 - data filtering 
 
-<!---
----
-
-    cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
-    cp /home/user/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
-
----
-
-    ##### create output dir 
-    mkdir -p output1   output2 output3 
-
---- 
-
-#########Solution 1 #########*
-
-    rm -f output1/*.txt
-
-    # Creates a txt file with the list of all uniq dates
-
-    awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }}}'  US_00090*.mon  | sort | uniq > output1/dates.txt
-
-    # Creates a txt file with the list of all uniq station ID, longitude, latitude. 
-
-
-
-    paste -d " " <(grep gsim.no   US_00090*.mon | awk '{print $4}') \
-             <(grep longitude US_00090*.mon | awk '{print $4}') \
-             <(grep latitude  US_00090*.mon | awk '{print $4}') | sort -k 1,1 > output1/ID_x_y.txt
-
-    ## loop trough the dates.txt 
-
-    for DATE in $(cat output1/dates.txt ) ; do 
-    echo processing $DATE
-
-    grep ^$DATE US_00090*.mon  | awk '{ gsub(":"," "); gsub(","," ");if($3!="NA"){print substr($1,1,10),$3}}' | sort -k 1,1 > output1/${DATE}_ID_mean.txt 
-
-    join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  > output1/${DATE}_ID_x_y_mean.txt
-rm output1/${DATE}_ID_mean.txt 
-
-done 
-
---- 
-
-#########Solution 2 #########
-
-    rm -f output2/*.txt 
-    #loop over all US files
-    n=0
-    for i in US_00090*.mon ; do
-    #pull out information of interest
-    gsim=$(awk 'NR==11 {print $4}' $i)
-    lat=$(awk 'NR==15 {print $4}' $i)
-    long=$(awk 'NR==16 {print $4}' $i)
-
-    #make new directory with name of gsim ID to store txt files in
-    mkdir $output$gsim
-
-    #awk uses these and spits out txt files named by the date
-    n=$(expr $n + 1)
-    echo $gsim $n
-
-    awk -v gsim=$gsim -v lat=$lat -v long=$long -v output=$output \
-    ' NR>22 {gsub(","," "); if($2!="NA"){print gsim,long,lat,$2 >> "output2/"$1"_ID_x_y_mean.txt"}}' $i
-
-    rm -r $gsim
-    done
-
----
-#########Solution 3 #########
-
-    rm -f output3/*.txt
-
-    awk '{gsub(",", "");
-     gsub("\t", " ");
-     if($2=="gsim.no")   {station=$4};
-     if($2=="latitude")  {lat=$4};
-     if($2=="longitude") {lon=$4};
-     if($1 ~ /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ && $2!="NA" )
-     { print station, lat , lon , $2 > "output3/"substr($1,1,7)"_ID_x_y_mean.txt" }
-     }' US_00090*.mon 
-
----
-
-#########Solution 4 #########
-
-From Issam Boukhris; it allows the closing of the file and can be run in the VM
-
-	sudo bash -c 'awk -F "," '\''{
-	    if ($1 ~ "gsim.no") split($1, a, ":");
-	    station = a[2];
-	    if ($1 ~ "longitude") split($1, b, ":");
-	    long = b[2];
-	    if ($1 ~ "latitude") split($1, c, ":");
-	    lat = c[2];
-	    if (NF>5 && $1 != "NA" && $2 != "NA") {
-	        print station, long, lat, $2 >> "output1/"substr($1,1,7)".txt";
-	        close("output1/"substr($1,1,7)".txt"); print echo substr($1,1,7)
-	    }
-	}'\'' US_*'
-
-
---->
 
 ## Catch-up session 1: Thursday, 28th of November, 2024
 
