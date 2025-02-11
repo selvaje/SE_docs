@@ -3,14 +3,14 @@
 
 **Online teaching: April 2025, 2 weeks**
 
-* **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45
+* **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45 (15min break)
 * **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:30 
-* **Lecture 2**: Thursday, 3 April at 15:00 - 17:45
-* **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45
+* **Lecture 2**: Thursday, 3 April at 15:00 - 17:45 (15min break)
+* **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45 (15min break)
 * **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:30 
-* **Lecture 4**: Thursday, 10 April at 15:00 - 17:45
+* **Lecture 4**: Thursday, 10 April at 15:00 - 17:45 (15min break)
 
-**In person week: April 2025, week**
+**In person week: April 2025**
 
 * **Hands-on session 1**: Tuesday-Wednesday 15,16 April at 9:00 - 17:00 (PhD candidates)
 * **Hands-on session 2**: Thursday-Friday 17,18 April at 9:00 - 17:00
@@ -63,7 +63,7 @@ This session introduces the objectives of the course followed by an introductory
 
 Recorded lecture can be found [here]()
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025 _resume/lect01_geocomp_geoanlysis_01042025.pdf).
+Transcript summary lecture can found [here]().
 
 * 15:00 - 15:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 15:10 - 15:25  Giuseppe Amatulli: background/interest & bash/gdal.
@@ -94,6 +94,8 @@ During this session we explore and practice the basics of BASH terminal command 
 
 These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics.  Below, some suggestions of possible operations:
 
+* watch the following videos for additional bash command lines.
+
 * Get fast in navigating up and down in the directory using only the command line.
 * Copy/move files from a directory to another directory.
 * Search and use a command for copy file from you pc to a Linux remote server.
@@ -122,9 +124,9 @@ If one or more of these features are not working properly show up in the Catch-u
 ## Lecture 2: Thursday, 3 April 2025. 
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://youtu.be/tHElUjQVcwc?si=KRhLxqLKj830sucY).
+Recorded lecture can be found [here]().
 
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024_resume/lect05_GDALyGRASS_03122024.pdf)
+Transcript summary lecture can found [here]()
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -154,7 +156,7 @@ Additional material on the use PKTOOLS.
 
 
 
-## Lecture 1: Tuesday, 8 April 2025.
+## Lecture 3: Tuesday, 8 April 2025.
 ### Jump start into Python programming (Saverio Mancino)
 
 * Jupyter environment for Python programming,
