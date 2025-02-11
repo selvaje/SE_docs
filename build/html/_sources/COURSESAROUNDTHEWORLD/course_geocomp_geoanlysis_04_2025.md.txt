@@ -1,20 +1,26 @@
 # Geo Comp/Analysis 2025 course
 ## Geocomputation and geospatial analysis
 
-**Online teaching: April 2025, 2 weeks**
+**Online teaching: April 2025, 2 weeks (15h)**
 
-* **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45 (15min break)
-* **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:30 
-* **Lecture 2**: Thursday, 3 April at 15:00 - 17:45 (15min break)
-* **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45 (15min break)
-* **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:30 
-* **Lecture 4**: Thursday, 10 April at 15:00 - 17:45 (15min break)
 
-**In person week: April 2025**
+* **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45* CET (everyone)
+* **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:30 CET (everyone)
+* **Lecture 2**: Thursday, 3 April at 15:00 - 17:45* CET (everyone)
+* **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45* CET (everyone)
+* **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:30 CET (everyone)
+* **Lecture 4**: Thursday, 10 April at 15:00 - 17:45* CET (everyone)
 
-* **Hands-on session 1**: Tuesday-Wednesday 15,16 April at 9:00 - 17:00 (PhD candidates)
-* **Hands-on session 2**: Thursday-Friday 17,18 April at 9:00 - 17:00
-(Technical employee)
+*15min break
+
+**In person week: April 2025 (32h)**
+
+* **Hands-on session 1a**: Tuesday, 15 April at 9:00 - 17:00* CET (PhD students/candidates)
+* **Hands-on session 1b**: Wednesday,16 April at 9:00 - 17:00* CET (PhD students/candidates)
+* **Hands-on session 2a**: Thursday, 17 April at 9:00 - 17:00* CET (Technical employee)
+* **Hands-on session 2b**: Friday, 18 April at 9:00 - 17:00* CET (Technical employee)
+
+*Lunch break
 
 **Course objectives**
 
@@ -159,20 +165,21 @@ Additional material on the use PKTOOLS.
 ## Lecture 3: Tuesday, 8 April 2025.
 ### Jump start into Python programming (Saverio Mancino)
 
-* Jupyter environment for Python programming,
+* [Jupyter](https://jupyter.org/) environment for Python programming,
 * Introduction to Python coding,
-* Pandas and Numpy libraries for data management and processing, 
+* [Pandas](https://pandas.pydata.org/) and [Numpy](https://numpy.org/) libraries for data management and processing, 
 
 ## Catch-up session 2: Wednesday,  9 April 2025
+
+This online catch-up session is dedicate mainly to the students that encounter problems in using the Jupyter enviroment, but it's also open to clarify something regarding the previous lesson. 
+Students will meet online with the teacher to review past material and solve additional doubts.
+
 Recorded of the QA can be found [here]().
-
 Transcript summary lecture can found [here]()
-
-Students will meet online with the teachers to review past material and solving additional doubts. 
 
 ## Lecture 4: Thursday, 10 April 2025. 
 ### Python libraries for geospatial data analysis  (Saverio Mancino).
 
-* Matplotlib and Seaborn for scientific plots, 
-* Rasterio for raster processing and visualization,
-* Exploring Geopandas for vector processing and visualization.
+* Exploring [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) for scientific plots, 
+* Exploring [Rasterio](https://rasterio.readthedocs.io/en/stable/) for raster processing and visualization,
+* Exploring [Geopandas](https://geopandas.org/en/stable/) for vector processing and visualization.
