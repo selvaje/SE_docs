@@ -335,7 +335,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: Tuesday, 16th of April, 2024.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aAPJ0y54bXjVR0imDohP4ZuYW3qyaI83U4xYURr3HeZh2Au5-RXbUJic-mpws9Yr.zGofGyLdK0CSEJWC).
+Recorded lecture can be found [here](https://youtu.be/zXo-brJJmQM).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 

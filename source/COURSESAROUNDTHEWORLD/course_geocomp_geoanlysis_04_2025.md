@@ -1,26 +1,31 @@
 # Geo Comp/Analysis 2025 course
 ## Geocomputation and geospatial analysis
 
-**Online teaching: April 2025, 2 weeks (15h)**
+**Online teaching: April 2025, 2 weeks (12h)**
 
 
 * **Lecture 1**: Tuesday, 1 April at 15:00 - 17:45* CET (everyone)
-* **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:30 CET (everyone)
+* **Catch-up session 1**: Wednesday, 2 April at 15:00 - 16:00 CET (everyone)
 * **Lecture 2**: Thursday, 3 April at 15:00 - 17:45* CET (everyone)
 * **Lecture 3**: Tuesday, 8 April at 15:00 - 17:45* CET (everyone)
-* **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:30 CET (everyone)
+* **Catch-up session 2**: Wednesday, 9 April at 15:00 - 16:60 CET (everyone)
 * **Lecture 4**: Thursday, 10 April at 15:00 - 17:45* CET (everyone)
 
 *15min break
 
-**In person week: April 2025 (32h)**
+**In-person week: April 2025 (12h/2days)**
 
 * **Hands-on session 1a**: Tuesday, 15 April at 9:00 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 1b**: Wednesday,16 April at 9:00 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 2a**: Thursday, 17 April at 9:00 - 17:00* CET (Technical employee)
 * **Hands-on session 2b**: Friday, 18 April at 9:00 - 17:00* CET (Technical employee)
 
-*Lunch break
+**In-person week working hours**
+* 09:00 - 11:00 Hands-on
+* 11:00 - 11:30 Coffee break 
+* 11:30 - 13.00 Hands-on
+* 13:00 - 14:30 Lunch Break 
+* 14:30 - 17:00 Hands-on
 
 **Course objectives**
 
