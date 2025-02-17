@@ -13,14 +13,14 @@
 
 *15min break
 
-**In-person week: April 2025 (12h/2days)**
+**In-person week: April 2025 (12h/2-days)**
 
 * **Hands-on session 1a**: Tuesday, 15 April at 9:00 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 1b**: Wednesday,16 April at 9:00 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 2a**: Thursday, 17 April at 9:00 - 17:00* CET (Technical employee)
 * **Hands-on session 2b**: Friday, 18 April at 9:00 - 17:00* CET (Technical employee)
 
-In-person week working hours
+In-person week working hours (6 working-hours/day)
 
 * 09:00 - 11:00 Hands-on
 * 11:00 - 11:30 Coffee break 
