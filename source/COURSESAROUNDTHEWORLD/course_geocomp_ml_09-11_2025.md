@@ -1,9 +1,10 @@
 # GeoComp & ML 2025 course
 ## Geocomputation and Machine Learning for environmental applications
 
-(Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
 
 **Online teaching: September - November 2025, 9 weeks**
+
+Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20250916T110000&p1=215&p2=179&p3=137&p4=tz_bst&p5=1440) to check the time in your country.
 
 * **Lecture  1**: Tuesday,  16 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 * **Lecture  2**: Thursday, 18 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
