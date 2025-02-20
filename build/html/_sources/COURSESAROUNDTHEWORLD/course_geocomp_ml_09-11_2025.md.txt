@@ -3,20 +3,31 @@
 
 (Spatial Ecology is supporting the [RAM4Africa](https://spatial-ecology.net/ram4africa/) project)  
 
-**Online teaching: April and June 2024, 10 weeks**
+**Online teaching: September - November 2025, 9 weeks**
+
+* **Lecture  1**: Tuesday,  16 September,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  2**: Thursday, 18 September,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  3**: Tuesday,  22 September,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  4**: Thursday, 25 September,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  5**: Tuesday,  30 September,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  6**: Thursday,  2 October,    11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  7**: Tuesday,   7 October,    11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture  8**: Thursday,  9 October,    11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+
+* **Catch-up session**: Tuesday  14 October: 11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am)
+* **Catch-up session**: Thursday 16 October: 11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+
+* **Lecture  9**: Tuesday,  21 October,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture 10**: Thursday, 23 October,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
+* **Lecture 11**: Tuesday,  28 October,  11 am - 1:45 pm UTC (CET  12 pm, EDT  7 am, PDT 4 am) 
+* **Lecture 12**: Thursday, 30 October,  11 am - 1:45 pm UTC (CET  12 pm, EDT  7 am, PDT 4 am) 
+* **Lecture 13**: Tuesday,   4 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
+* **Lecture 14**: Thursday,  6 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
+* **Lecture 15**: Tuesday,  11 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
+* **Lecture 16**: Thursday, 13 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
 
 
-* **Start lecturing**: 2 April, every **Tuesday, Thursday** at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* **Catch-up session**: Tuesday 30 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)
-* **Catch-up session**: Thursday 2 May: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am) 
-* **Resume lecturing**: 7 May, every **Tuesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-* **GRASS week**: 21-22-23 May, **Tuesday, Wednesday, Thursday** at 11 am - 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-* **End lecturing**: 6 June, at 11 am – 1:45 pm UTC (CEST 1 pm, EDT 7 am, PDT 4 am)
-
-
-**In-person week: June 10-14, coding hackathon in Matera, Italy**
-
-**In-person week: June 17-21, extended study group in Matera, Italy**
+**In-person week: November 24-28, coding hackathon in Matera, Italy**
 
 
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.

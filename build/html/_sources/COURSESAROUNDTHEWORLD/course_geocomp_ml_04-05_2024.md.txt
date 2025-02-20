@@ -396,7 +396,7 @@ Before the 23rd of April, 2024, watch the "Manipulate Landsat data with GDAL and
 
 [Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
 
-Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/FweehTk43QlyuEGgWRPHmoPODVGxlA0_c9FlQxqleC7LNN00AuVn0LSF17LjdvkX.JrhAllkL3ioTcvbM).
+Recorded of the QA can be found [here](https://youtu.be/qQxqZWWZr6c).
 
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
@@ -427,7 +427,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 8: Thursday, 25th of April, 2024.
 ### Case study presentation: Estimation of tree height (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt5NUbniXLhRBLGnbuyd7X6gj0yXXVVHlcZMQ4P1cK_9HWcBlWqYmo.ZNsAf6AyZ1-nKshj). 
+Recorded lecture can be found [here](https://youtu.be/S_k5_P0pGls). 
 
 * [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
 
@@ -454,7 +454,7 @@ Recorded of the QA can be found [here](). Password has been sent by e-mail on Ma
 ## Lecture 9: Tuesday, 7th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IToqgZ5RF-5P6nlR1B6sDlD0XhKFkhYsFtG9IyYz9h1KVWM28JAnA.-K8f6A51CW2mKlcR).
+Recorded lecture can be found [here](https://youtu.be/eIlefOF9OLU).
 
 * Geospatial python 
 	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
