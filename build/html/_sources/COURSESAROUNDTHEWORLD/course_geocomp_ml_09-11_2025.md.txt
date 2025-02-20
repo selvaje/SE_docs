@@ -50,7 +50,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
 ### Class roster  ###
 
-  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024_foto/course_geocomp_ml_04-05_2024_roster.html)
+  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_foto/course_geocomp_ml_09-11_2025_roster.html)
 
 ---
 
@@ -94,7 +94,7 @@ In this course, students will be introduced to an array of powerful open-source 
 
 Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.
 
-## Lecture 1: Tuesday, 2nd of April, 2024.
+## Lecture 1: Tuesday, 16 September, 2025.
 ### Getting started: knowing each other and course introduction.
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
@@ -104,27 +104,15 @@ Recorded lecture can be found [here1](https://youtu.be/YQB3UD0rYqI)
 
 Time below in CEST
 
-* 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 17:10 - 17:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 17:30 - 17:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](lect_20240402_IntroML_AF.pdf).
-* 17:45 - 18:00  [Francesco Lovergine: background/interest & geo-python introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_GeoPython_FL.pdf)
-* 18:15 - 18:30  Break
-* 18:30 - 19:15  Students round table + QA of the course. 
-* 19:15 - 19:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
+* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
+* 13:30 - 13:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](lect_20240402_IntroML_AF.pdf).
+* 13:45 - 14:15  [Francesco Lovergine: background/interest & geo-python introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_GeoPython_FL.pdf)
+* 14:15 - 14:30  Break
+* 14:30 - 14:15  Students round table + QA of the course. 
+* 14:15 - 15:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
 
-<!---
-
-* Get to know each other: trainers and participants (30-40min Round-table )
-* [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20240404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)
-* [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/lect_20240405_policy.pdf) (Giuseppe Amatulli - 10min Lecture)
-* [Linux environment, why and what to use to handling BigData.](http://spatial-ecology.net/docs/source/lectures/lect_20240404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 20min Lecture)
-* [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20240405_SpatStat.pdf) (Giuseppe Amatulli - 20min Lecture)
-* [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/lect_20240405_IntroML.pdf) (Antonio Fonseca - 20min Lecture)
-
---->
-
-
-## Catch-up session 0: Wednesday, 3rd of April, 2024
+## Catch-up session 0: Wednesday, 17 September, 2025.
 
 This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. Be sure that following OSGeoLive 16.0 Virtual Machine features are present: 
 
@@ -136,7 +124,7 @@ This session is dedicate to the students that encounter problems for the OSGeoLi
 
 If one or more of these features are not working properly show up in the Catch-up session. 
 
-## Lecture 2: Thursday, 4th of April, 2024. 
+## Lecture 2: Thursday, 18 September, 2025. 
 ### Jump start into LINUX Bash programming (Giuseppe Amatulli)
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
@@ -174,7 +162,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
 
 
-## Lecture 3: Tuesday, 9th of April, 2024.
+## Lecture 3: Tuesday, 22 September, 2025.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://youtu.be/tmYshUgq1j8).
@@ -322,7 +310,7 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 	}'\'' US_*'
 
 
-## Lecture 4: Thursday, 11th of April, 2024.
+## Lecture 4: Thursday, 25 September, 2025.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://youtu.be/phm8PlXGzC4).
@@ -352,7 +340,7 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
 
-## Lecture 5: Tuesday, 16th of April, 2024.  
+## Lecture 5: Tuesday, 30 September, 2025.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aAPJ0y54bXjVR0imDohP4ZuYW3qyaI83U4xYURr3HeZh2Au5-RXbUJic-mpws9Yr.zGofGyLdK0CSEJWC).
@@ -386,7 +374,7 @@ Below, some suggestions of possible operations:
 	* Assess and re-align geographic extent and pixel resolution (gdal_edit.py) 
 	* Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.
 
-## Lecture 6: Thursday, 18st of April, 2024.  
+## Lecture 6: Thursday, 2 October, 2025.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](https://youtu.be/UmEkNCi7udQ).
@@ -401,7 +389,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 **Compulsory assignments:**
 
-Before the 23rd of April, 2024, watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the 23rd of April, 2024 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
+Before the ... of April, ...., watch the "Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example" lecture (all links in Lecture 7). On the ??rd of ...  we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.
 
 **Suggested assignments:**
 
@@ -410,7 +398,7 @@ Before the 23rd of April, 2024, watch the "Manipulate Landsat data with GDAL and
 * Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
 
-## Lecture 7: Tuesday, 23rd of April, 2024.
+## Lecture 7: Tuesday, 7 October, 2025.
 ### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
 
 
@@ -444,7 +432,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Fourier Transform
 		* Wavelet
 
-## Lecture 8: Thursday, 25th of April, 2024.
+## Lecture 8: Thursday, 9 October, 2025.
 ### Case study presentation: Estimation of tree height (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt5NUbniXLhRBLGnbuyd7X6gj0yXXVVHlcZMQ4P1cK_9HWcBlWqYmo.ZNsAf6AyZ1-nKshj). 
@@ -459,19 +447,19 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt
 	* Optimization of RF
 	* Prediction of RF model on raster tif
 	
-## Catch-up session 1: Tuesday, 30th of April, 2024
+## Catch-up session 1: Tuesday, 14 October, 2025.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
 Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
-## Catch-up session 2: Thursday 2nd of May, 2024.
+## Catch-up session 2: Thursday 16 October, 2025.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
 Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
-## Lecture 9: Tuesday, 7th of May, 2024.
+## Lecture 9: Tuesday, 21 October, 2025.
 ### Geospatial python (Francesco Lovergine)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IToqgZ5RF-5P6nlR1B6sDlD0XhKFkhYsFtG9IyYz9h1KVWM28JAnA.-K8f6A51CW2mKlcR).
@@ -486,7 +474,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
 		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
 
-## Lecture 10: 9th of May, 2024.
+## Lecture 10: Thursday, 23 October, 2025.
 ### Geospatial python (Francesco Lovergine)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfadK7VyBfODsIvZ0Qz8xh4UHtgKSoR8HaG2frLqXEcCMKaBobqr53ce.PgIS-AuN_64nOudS). 
@@ -499,7 +487,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfad
 		- [pyjeo 3](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#pyjeo-in-combination-with-sklearn-pieter-kempeneers)
 * [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
 
-## Lecture 11: Tuesday, 14th of May, 2024.
+## Lecture 11: Tuesday, 28 October, 2025.
 ### Machine Learning Introduction, Support Vector Machine (Antonio Fonseca)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
@@ -520,7 +508,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A
 	* Optimization of SVM
 	* Extension of SVM to regression (SVR)
 
-## Lecture 12: Thursday, 16th of May, 2024.
+## Lecture 12: Thursday, 30 October, 2025.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrwewk51W77KKKTSs7qXwzL1AHdP_pgn49694wvtxtMD0Y_ms74jFeb.9n-br-V8qQ7ioPO5).
@@ -539,40 +527,8 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 	* Optimization of SVM
 	* Extension of SVM to regression (SVR)
 
-## Lecture 13: Tuesday, 21st of May, 2024.
-### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
-
-   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
-   * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
-		* GRASS GUI
-		* GRASS command structure
-		* GRASS working environment
-		* GRASS Location/Mapset
-		* GRASS scripting procedure in BASH
-
-   * [Start a new GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_newproject.html)
-		* Analize the dataset
-		* Create a LOCATION and MAPSET stored in a temporary folder 
-		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
-		* GRASS add-ons
-
-## Lecture 14: Thursday, 23rd of May, 2024.
-### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
-
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmnEeYSSnWM0zSW_grGyPvyVe4pQFi2hhT2LETRrM1sbOSEp2eEdl5u.aNcR_zYib1S5uO5a).
-
-   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
-		* Flow direction algorithms
-		* Prepare GRASS for hydrography extraction 
-		* Inputs dataset
-		* First run: compute MFD flow accumulation for each tile
-		* Merge the flow accumulation tiles
-		* Second run: copute stream and basin using the seamless South America Flow Accumulation
-		* Final step: combine the tiled basins and streams
-
-## Lecture 15: Tuesday, 28st of May, 2024.
+## Lecture 13: Tuesday, 4 November, 2025.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O-OakRcQ5snlo53NgUSivs5jXIjWUT0y1OiBwcY-lcJ2WCNFBUcaE.QqGEAoL8OolvN7Tt).
@@ -586,7 +542,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2024.html)
 
 
-## Lecture 16: Thursday, 30th of May, 2024.
+## Lecture 14: Thursday, 6 November, 2025.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlDdJcyyNeOjj2WOwBMO_s2P32GmLFBfXp5cT3nr_Wl9lfEh6Wk9MT5.T1na1wA6Yz8dyop-).
@@ -595,7 +551,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlD
 
 * [Estimation of tree height using GEDI dataset - Neural Network 1 - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html)
 
-## Lecture 17: Tuesday, 4th of June, 2024.
+## Lecture 15: Tuesday, 11 November, 2025.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3pHzQO8zI6f1QvNpgWXa2no-as_KU_pg2sLenWrKGf7xXvWdo3g-FO.Mnp7cWGI-IGalaNE).
@@ -608,7 +564,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 	* Family of optimizers
 	* Tutorial: more features and different optimizers
 
-## Lecture 18:  Thursday, 6th of June, 2024.
+## Lecture 16:  Thursday, 11 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
@@ -635,104 +591,33 @@ Discussion papers:
 * [Deep learning‑based landslide susceptibility mapping](http://spatial-ecology.net/docs/source/lectures/disc_20240606_landslideSusceptibility.pdf)
 * [Explainability in wind farm planning: A machine learning framework for automatic site selection of wind farms](http://spatial-ecology.net/docs/source/lectures/disc_20240606_windFarm.pdf)
 
-## In-person week: June 10-14, coding hackathon in Matera, Italy
+
+--- 
+
+## In-person week: 24-28 November, 2025, coding hackathon in Matera, Italy
 
 
-### Day 0: Sunday, 9 June 2024
+### Day 0: Sunday, 23 November 2025
 
 * Icebreaker/Social dinner: at Osteria Malatesta - Matera (https://maps.app.goo.gl/fFf18j9v6WqaP6fHA)
 	* Antonio arrival (at Bari airport )	 
 
-### Day 1: Monday, 10 June 2024
+### Day 1: Monday, 24 November 2025
 
 * 9:00-17:00: Student coding hackathon 
 
-### Day 2: Tuesday, 11 June 2024
+### Day 2: Tuesday, 25 November 2025
 
 * 9:00-17:00:  Student coding hackathon
 
-* 11:00-13:00  Antonio lecture
-
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/B4WmyCRzS3W4KwGIb6Em1Xv7AQuIuPC4ASez8hS1AQDapV0fpAI6xtUip8ZYjVza.we4YNzUH16B_prCA)
-
-	* [Unsupervised Learning](http://spatial-ecology.net/docs/source/lectures/lect_20240611_NN_Unsupervised_Learning.pdf)
-
-	* [Autoencoder (AE), Variational Autoencoder (VAE)](http://spatial-ecology.net/docs/build/html/CASESTUDY/NN_Unsupervised_2024.html)
-
-* 20:00-22:00: Social event: Birrificio 79 (https://maps.app.goo.gl/4ahWEgDjHKEkBxx6A)
- 
-### Day 3: Wednesday, 12 June 2024
+### Day 3: Wednesday, 26 November 2025
 
 * 9:00-17:00: Student coding hackathon
-	* Tushar arrival (at Gioia)
 
-### Day 4: Thursday, 13 June 2024
+### Day 4: Thursday, 27 November 2025
 
 * 9:00-17:00: Final project Student presentation
-	* Milutin arrival late in the morning in Matera.
 	* Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9
 
-### Day 5: Friday, 14 June 2024
+### Day 5: Friday, 28 November 2025
 
-* 9:00-10:00: GEO-OPEN-HACK 2024 - an OEMC Initiative on open big data and tools (Milutin Milenkovic)
-* 10:00-16:00: Final project Student presentation
-* 16:00-20:00: Matera guide tour
-* 20:00-22:00: BBQ at Belvedere Murgia Timone (https://maps.app.goo.gl/Qr1cCt95P3upELJq6)
-
-### Day 6: Saturday, 15 June 2024
-
-### Day 7: Sunday, 16 June 2024
-
-Tushar departure (Bari airport at 10:45, departure at 11:45)
-
-## In-person week: June 17-21, extended study group in Matera, Italy
-
-### Day 8: Monday, 17 June 2024
-
-Meeting Milutin Antonio Giuseppe: Estimation of tree height using GEDI dataset
-
-### Day 9: Tuesday, 18 June 2024
-
-Meeting Milutin Antonio Giuseppe: Estimation of tree height using GEDI dataset
-
-### Day 10: Wednesday, 19 June 2024
-
-Milutin departure (Bari airport at 7:30, departure at 9:25)
-
-### Day 11: Thursday, 20 June 2024
-
-Antonio departure (Bari airport at 7:00, departure at 8:00)	
-
-<!---
-## Lecture 17: 6th of June, 2024.
-In presence week in Matera, Italy
-
-### Using GPT (Antonio Fonseca)
-
-Recorded lecture can be found [here]().
-
-* [Using GPT as your coding partner](http://spatial-ecology.net/docs/source/lectures/lect_20240606_GPT_for_coding.pdf)
-	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2024.html)
-
-## Lecture 18: 6th of June, 2024.
-In presence week in Matera, Italy
-
-### Pyjeo in combination with sklearn (Pieter Kempeneers)
-
-Recorded lecture can be found [here]().
-
-* Classification in python using pyjeo and sklearn
-	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/Classification_pyjeo_sklearn_2024.html)
-
-
-## Lecture 19: 6th of June, 2024.
-In presence week in Matera, Italy
-
-### Google Earth Engine (GEE) (Francesco Lovergine)
-
-Recorded lecture can be found [here]().
-
-* Use of GEE with Javascripts and python buinding.
-	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2024.html)
-
---->
