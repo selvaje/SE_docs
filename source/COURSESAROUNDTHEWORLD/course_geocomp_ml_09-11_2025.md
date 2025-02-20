@@ -20,12 +20,16 @@
 * **Lecture  9**: Tuesday,  21 October,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am) 
 * **Lecture 10**: Thursday, 23 October,  11 pm - 2:45 pm UTC (CEST  1 pm, EDT  7 am, PDT 4 am)
 --- 
-**Pay attention to the time shift**
+
+  **Pay attention to the time shift**
+  
 ---
 * **Lecture 11**: Tuesday,  28 October,  11 am - 1:45 pm UTC (CET  12 pm, EDT  7 am, PDT 4 am) 
 * **Lecture 12**: Thursday, 30 October,  11 am - 1:45 pm UTC (CET  12 pm, EDT  7 am, PDT 4 am) 
 ---
-**Pay attention to the time shift**
+
+   **Pay attention to the time shift**
+
 ---
 * **Lecture 13**: Tuesday,   4 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
 * **Lecture 14**: Thursday,  6 November, 12 pm - 2:45 pm UTC (CET   1 pm, EST  7 am, PST 4 am) 
