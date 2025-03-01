@@ -80,10 +80,6 @@ In this course, students will be introduced to an array of powerful open-source 
         <td>3</td>
     </tr>
     <tr>
-        <td>GRASS:</td>
-        <td>3</td>
-    </tr>
-    <tr>
         <td>ML:</td>
         <td>6</td>
     </tr>
