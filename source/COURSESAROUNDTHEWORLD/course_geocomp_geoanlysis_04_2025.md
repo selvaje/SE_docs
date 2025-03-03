@@ -13,14 +13,14 @@
 
 *15min break
 
-**In-person week: April 2025 (12h/2-days), coding hackathon in Lecce, Italy** 
+**In-Person Coding Hackathon: April 2025, Lecce, Italy**
 
 * **Hands-on session 1a**: Tuesday, 15 April at 8:30 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 1b**: Wednesday,16 April at 9:00 - 17:00* CET (PhD students/candidates)
 * **Hands-on session 2a**: Thursday, 17 April at 8:30 - 17:00* CET (Technical employee- PhD students/candidates*)
 * **Hands-on session 2b**: Friday, 18 April at 9:00 - 17:00* CET (Technical employee - PhD students/candidates*)
 
-* PhD students/candidates can extend their stay in Lecce for other 2 additional days. 
+* PhD students/candidates are welcome to extend their participation to the second session (April 17-18) if they wish to stay longer.
 
 In-person week working hours (6 working-hours/day)
 

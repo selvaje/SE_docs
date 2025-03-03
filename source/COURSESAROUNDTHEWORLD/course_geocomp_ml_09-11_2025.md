@@ -37,8 +37,7 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 * **Lecture 15**: Tuesday,  11 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 * **Lecture 16**: Thursday, 13 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
-**In-person week: November 24-28, coding hackathon in Matera, Italy**
-
+**In-Person Coding Hackathon week: November 24-28 2025, Matera, Italy**
 
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 
