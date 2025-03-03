@@ -34,7 +34,7 @@ Longzhu has previously worked as research scientist position at Cambridge Univer
 
 Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post-doctoral research in toxicology and molecular design at Yale University. In his spare time, he enjoys hiking, skateboarding and traveling.
 
-## Antonio Fonseca, Ph.D. 
+## Antonio Fonseca, PhD 
 
 [website](https://ahof1704.github.io/)
 [Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
@@ -46,3 +46,12 @@ Antonio is a machine learning scientist working at the intersection of Computati
 Currently, Antonio is developing machine learning frameworks to design de-novo proteins with enhanced drug properties using diffusion models. Previously, he worked on developing neural operators using Transformers to model dynamics in biomedical data.
 
 Antonio earned his doctorate in Neuroscience from Yale University. He also holds a bachelor’s degree in Robotics Engineering and a master’s in Microelectronics. When not focused on biological or artificial neural networks, Antonio enjoys rock climbing and hiking, often combining both activities on the same trip.
+
+## Saverio Mancino, MSc
+
+![title](Team_saverio.jpeg)
+
+Saverio PhD Candidate in Geology and Geotechnologies at the Department of Earth and Geoenvironmental Sciences at the University of Bari. He is a dedicated researcher specialising in landslide susceptibility modelling and early warning systems for large-scale transboundary programmes.
+
+His work combines advanced ML techniques with high-performance computing systems to tackle continental-scale geospatial problems. His expertise spans GIS technologies, remote sensing, spatial data analysis, and open-source software development with experience in the context of geological and environmental modeling and statistical analysis. His principal aim is to provide actionable insights on geohazards in a changing climate to decision makers in geo-environmental safety and urban planning.
+
