@@ -20,7 +20,7 @@
 * **Hands-on session 2a**: Thursday, 17 April at 8:30 - 17:00* CET (Technical employee- PhD students/candidates*)
 * **Hands-on session 2b**: Friday, 18 April at 9:00 - 17:00* CET (Technical employee - PhD students/candidates*)
 
-* PhD students/candidates are welcome to extend their participation to the second session (April 17-18) if they wish to stay longer.
+*PhD students/candidates are welcome to extend their participation to the second session (April 17-18) if they wish to stay longer.
 
 In-person week working hours (6 working-hours/day)
 
