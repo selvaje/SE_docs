@@ -6,20 +6,20 @@
 
 Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20250916T110000&p1=215&p2=179&p3=137&p4=tz_bst&p5=1440) to check the time in your country.
 
-* **Lecture  1**: Tuesday,  16 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  2**: Thursday, 18 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  3**: Tuesday,  22 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  4**: Thursday, 25 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  5**: Tuesday,  30 September,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  6**: Thursday,  2 October,    11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  7**: Tuesday,   7 October,    11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  8**: Thursday,  9 October,    11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  1**: Tuesday,  16 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  2**: Thursday, 18 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  3**: Tuesday,  22 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  4**: Thursday, 25 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  5**: Tuesday,  30 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  6**: Thursday,  2 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  7**: Tuesday,   7 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  8**: Thursday,  9 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 ---
-* **Catch-up session**: Tuesday  14 October: 11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
-* **Catch-up session**: Thursday 16 October: 11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Catch-up session**: Tuesday  14 October: 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
+* **Catch-up session**: Thursday 16 October: 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 ---
-* **Lecture  9**: Tuesday,  21 October,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture 10**: Thursday, 23 October,  11pm - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
+* **Lecture  9**: Tuesday,  21 October,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture 10**: Thursday, 23 October,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
 --- 
 
   **Pay attention to the time shift**

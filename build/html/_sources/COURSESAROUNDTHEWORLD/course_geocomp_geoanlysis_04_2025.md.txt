@@ -1,9 +1,11 @@
 # Geo Comp/Analysis 2025 course
 ## Geocomputation and geospatial analysis
 
-** Teachers  
-Dr. [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) 
-MSc. [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc)
+**Teachers**
+
+Dr. [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd)
+ 
+M.Sc. [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc)
 
 **Online teaching: April 2025, 2 weeks (12h)**
 
