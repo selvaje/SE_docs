@@ -45,7 +45,7 @@ On this course, students will be introduced to an array of powerful open-source 
 
 ### Class roster  ###
 
-  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_foto/course_geocomp_geoanlysis_04_2025_roster.html)
+  - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_foto/course_geocomp_geoanlysis_04_2025-roster.html)
 
 ---
 
