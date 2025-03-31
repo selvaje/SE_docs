@@ -174,7 +174,7 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 **25) Rita Paudice**
 
-University of Bari, Italy
+Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ![](rita_paudice.jpg)
 
@@ -211,6 +211,6 @@ University of Salento, Italy
 
 **30) Rocco Fracchiolla**
 
-University of Bari, Italy
+Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
