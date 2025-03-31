@@ -195,7 +195,7 @@ Transcript summary lecture can found [here]()
 ## Lecture 4: Thursday, 10 April 2025. 
 ### Python libraries for geospatial data analysis  (Saverio Mancino).
 
-[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.ipynb.html)
+[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.html)
 
 * Exploring [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) for scientific plots, 
 * Exploring [Rasterio](https://rasterio.readthedocs.io/en/stable/) for raster processing and visualization,
