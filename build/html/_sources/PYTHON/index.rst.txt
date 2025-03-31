@@ -8,8 +8,8 @@
    Python_Intro.ipynb
    Python_Intro_SM.ipynb
    Geo_Python.ipynb
-   SpatialEcology_Python_Lesson_3.ipynb
-   SpatialEcology_Python_Lesson_4.ipynb
+   Python_data_analysis_SM.ipynb
+   Python_geospatial_data_analysis_SM.ipynb
    RasterIO_Intro.ipynb
    OGCSQL.ipynb
    

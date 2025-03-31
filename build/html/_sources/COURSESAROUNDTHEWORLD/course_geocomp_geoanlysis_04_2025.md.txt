@@ -175,10 +175,10 @@ Additional material on the use PKTOOLS.
 *  [Multicore operation within gdal and pktools](http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html)
 * [Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
 
-
-
 ## Lecture 3: Tuesday, 8 April 2025.
 ### Jump start into Python programming (Saverio Mancino)
+
+[Jump start into Python programming](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_data_analysis_SM.html)
 
 * [Jupyter](https://jupyter.org/) environment for Python programming,
 * Introduction to Python coding,
@@ -194,6 +194,8 @@ Transcript summary lecture can found [here]()
 
 ## Lecture 4: Thursday, 10 April 2025. 
 ### Python libraries for geospatial data analysis  (Saverio Mancino).
+
+[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.ipynb.html)
 
 * Exploring [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) for scientific plots, 
 * Exploring [Rasterio](https://rasterio.readthedocs.io/en/stable/) for raster processing and visualization,
