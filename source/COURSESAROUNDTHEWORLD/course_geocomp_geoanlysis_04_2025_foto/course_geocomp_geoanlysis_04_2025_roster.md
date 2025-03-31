@@ -9,11 +9,11 @@
 [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geospatial analysis teacher) 
 
 
-### Student roster ####  ![](24_nikita_murin.jpg) 
+### Student roster ####
 
 ---
 
-1) **Angelo Sozio**
+**1) Angelo Sozio**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
@@ -21,13 +21,13 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-2) **Alessandro Fiore**
+**2) Alessandro Fiore**
 
 University of Salento, Italy
 
 ---
 
-3) **Fabio Blaso**
+**3) Fabio Blaso**
 
 University of Salerno, Italy
 
@@ -41,104 +41,104 @@ University of Naples - Italy
 
 ---
 
-5) **Chiara Zabeo**
+**5) Chiara Zabeo**
 
 ![](chiara_zabeo.jpg)
 
 ---
 
-6) **Davide Raho**
+**6) Davide Raho**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-7) **Enrica Nestola**
+**7) Enrica Nestola**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-8) **Fatemeh Abdi**
+**8) Fatemeh Abdi**
 
 National Institute of Oceanography and Applied Geophysics
 
 ---
 
-9) **Franco Pettenati**
+**9) Franco Pettenati**
 
 National Institute of Oceanography and Applied Geophysics
 
 ---
 
-10) **Francesco	Cozzoli**
+**10) Francesco	Cozzoli**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-11) **Francesco	De Leo**
+**11) Francesco	De Leo**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-12) **Francesco	Giangrande**
+**12) Francesco	Giangrande**
 
 University of Salento, Italy
 
 ---
 
-13) **Giulia Pignatiello**
+**13) Giulia Pignatiello**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-14) **Giuseppe Calamita**
+**14) Giuseppe Calamita**
 
 Institute of Methodologies for Environmental Analysis (IMAA) 
 National Research Council of Italy (CNR)
 
 ---
 
-15) **Giusy	Dimola**
+**15) Giusy	Dimola**
 
 Basilicata University
 
 ---
 
-16) **Grazia Bramato**
+**16) Grazia Bramato**
 
 University of Salento, Italy
 
 ---
 
-17) **Gregorio Sgrigna**
+**17) Gregorio Sgrigna**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-18) **Lorenza Spirito**
+**18) Lorenza Spirito**
 
 University of Tuscia, Italy
 
 ---
 
-19) **Lorenzo Liberatore**
+**19) Lorenzo Liberatore**
 
 Research Institute on Terrestrial Ecosystems (IRET)
 National Research Council of Italy (CNR)
 
 ---
 
-20) **Luca Di Fiore**
+**20) Luca Di Fiore**
 
 University of Salento, Italy
 
@@ -146,13 +146,13 @@ University of Salento, Italy
 
 ---
 
-21) **Ludovico Lezzi**
+**21) Ludovico Lezzi**
 
 University of Salento, Italy
 
 ---
 
-22) **Mara Remi**
+**22) Mara Remi**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
@@ -160,19 +160,19 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-23) **Marco	Elia**
+**23) Marco	Elia**
 
 University of Salento, Italy
 
 ---
 
-24) **Giuseppe Pirulli**
+**24) Giuseppe Pirulli**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-25) **Rita Paudice**
+**25) Rita Paudice**
 
 University of Bari, Italy
 
@@ -180,7 +180,7 @@ University of Bari, Italy
 
 ---
 
-26) **Sofia Rossi**
+**26) Sofia Rossi**
 
 Institute for Electromagnetic Sensing of the Environment (IREA)  
 National Research Council of Italy (CNR)
@@ -189,27 +189,27 @@ National Research Council of Italy (CNR)
 
 ---
 
-27) **Serena Panebianco**
+**27) Serena Panebianco**
 
 Institute of Methodologies for Environmental Analysis (IMAA)   
 National Research Council of Italy (CNR)
 
 ---
 
-28) **Teodoro Semeraro**
+**28) Teodoro Semeraro**
 
 Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-29) **Zeinab Arianpouya**
+**29) Zeinab Arianpouya**
 
 University of Salento, Italy
 
 ---
 
-30) **Rocco Fracchiolla**
+**30) Rocco Fracchiolla**
 
 University of Bari, Italy
 
