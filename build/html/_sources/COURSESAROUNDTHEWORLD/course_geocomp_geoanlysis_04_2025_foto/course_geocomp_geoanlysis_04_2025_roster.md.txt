@@ -9,192 +9,207 @@
 [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geospatial analysis teacher) 
 
 
-### Student roster ####
+### Student roster ####  ![](24_nikita_murin.jpg) 
 
 ---
 
-**Angelo Sozio**
+1) **Angelo Sozio**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
+![](angelo_sozia.jpg)
+
 ---
 
-**Alessandro Fiore**
+2) **Alessandro Fiore**
 
 University of Salento, Italy
 
 ---
 
-**Fabio Blaso**
+3) **Fabio Blaso**
 
 University of Salerno, Italy
 
 ---
 
-**Carmen Leone**	
+4) **Carmen Leone**	
 
-Department of Earth and Geo-Environmental Science - University of Bari - Italy
+University of Naples - Italy
 
----
-
-**Chiara Zabeo**
+![](carmen_leone.jpg)
 
 ---
 
-**Davide Raho**
+5) **Chiara Zabeo**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+![](chiara_zabeo.jpg)
+
+---
+
+6) **Davide Raho**
+
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Enrica Nestola**
+7) **Enrica Nestola**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Fatemeh Abdi**
+8) **Fatemeh Abdi**
 
 National Institute of Oceanography and Applied Geophysics
 
 ---
 
-**Franco Pettenati**
+9) **Franco Pettenati**
 
 National Institute of Oceanography and Applied Geophysics
 
 ---
 
-**Francesco	Cozzoli**
+10) **Francesco	Cozzoli**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Francesco	De Leo**
+11) **Francesco	De Leo**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Francesco	Giangrande**
+12) **Francesco	Giangrande**
 
 University of Salento, Italy
 
 ---
 
-**Giulia Pignatiello**
+13) **Giulia Pignatiello**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-**Giuseppe Calamita**
+14) **Giuseppe Calamita**
 
 Institute of Methodologies for Environmental Analysis (IMAA) 
 National Research Council of Italy (CNR)
 
 ---
 
-**Giusy	Dimola**
+15) **Giusy	Dimola**
 
 Basilicata University
 
 ---
 
-**Grazia Bramato**
+16) **Grazia Bramato**
 
 University of Salento, Italy
 
 ---
 
-**Gregorio Sgrigna**
+17) **Gregorio Sgrigna**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Lorenza Spirito**
+18) **Lorenza Spirito**
 
 University of Tuscia, Italy
 
 ---
 
-**Lorenzo Liberatore**
+19) **Lorenzo Liberatore**
 
 Research Institute on Terrestrial Ecosystems (IRET)
 National Research Council of Italy (CNR)
 
 ---
 
-**Luca Di Fiore**
+20) **Luca Di Fiore**
+
+University of Salento, Italy
+
+![](luca_difiore.jpg)
+
+---
+
+21) **Ludovico Lezzi**
 
 University of Salento, Italy
 
 ---
 
-**Ludovico Lezzi**
+22) **Mara Remi**
+
+Department of Earth and Geo-Environmental Science - University of Bari - Italy
+
+![](mara_remi.jpg)
+
+---
+
+23) **Marco	Elia**
 
 University of Salento, Italy
 
 ---
 
-**Mara Remi**
+24) **Giuseppe Pirulli**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-**Marco	Elia**
-
-University of Salento, Italy
-
----
-
-**Giuseppe Pirulli**
-
-Department of Earth and Geo-Environmental Science - University of Bari - Italy
-
----
-
-**Rita Paudice**
+25) **Rita Paudice**
 
 University of Bari, Italy
 
----
-
-**Sofia Rossi**
-
-CNR-IREA
+![](rita_paudice.jpg)
 
 ---
 
-**Serena Panebianco**
+26) **Sofia Rossi**
 
-Institute of Methodologies for Environmental Analysis (IMAA) 
+Institute for Electromagnetic Sensing of the Environment (IREA)  
+National Research Council of Italy (CNR)
+
+![](sofia_rossi.jpg)
+
+---
+
+27) **Serena Panebianco**
+
+Institute of Methodologies for Environmental Analysis (IMAA)   
 National Research Council of Italy (CNR)
 
 ---
 
-**Teodoro Semeraro**
+28) **Teodoro Semeraro**
 
-Research Institute on Terrestrial Ecosystems (IRET)
+Research Institute on Terrestrial Ecosystems (IRET)  
 National Research Council of Italy (CNR)
 
 ---
 
-**Zeinab Arianpouya**
+29) **Zeinab Arianpouya**
 
 University of Salento, Italy
 
 ---
 
-**Rocco Fracchiolla**
+30) **Rocco Fracchiolla**
 
 University of Bari, Italy
 
