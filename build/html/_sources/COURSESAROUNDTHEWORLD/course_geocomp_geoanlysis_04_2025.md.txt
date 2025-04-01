@@ -110,8 +110,8 @@ During this session we explore and practice the basics of BASH terminal command 
 	* If condition in a for loop
 	* Checking the flow statement
 	* Debugging
-
-* [Additional material: AWK Tutorial](https://spatial-ecology.net/docs/build/html/AWK/awk.html)
+* [Additional material: AWK Tutorial](https://spatial-ecology.net/docs/build/html/AWK/awk.html)  
+* [Additional material: Manipulate GSIM files](https://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html)  
 
 **Suggested assignments:**
 
