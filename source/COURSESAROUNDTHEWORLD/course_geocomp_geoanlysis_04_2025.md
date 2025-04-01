@@ -43,13 +43,13 @@ On this course, students will be introduced to an array of powerful open-source 
 
 **All the class will be recorded. The video link will be posted in the syllabus below**  
 
-### Class roster  ###
+### Class roster
 
   - [Class roster with the student names and their geographic location](http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_foto/course_geocomp_geoanlysis_04_2025_roster.html)
 
 ---
 
-### Syllabus overview ###
+### Syllabus overview
 
 
 <table>
@@ -82,9 +82,9 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objectives of the course followed by an introductory round among the students and teachers.
 
-Recorded lecture can be found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NavEs6ONgN07mSiMQZplzLf16SnqPWO6tuHnc234SPJYdvObh-d_7AkzsKc5lwKm.JAlfwW51wopr4GF1)
 
-Transcript summary lecture can found [here]().
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_resume/lect01_Geocomp_Analysis_01042025.pdf)
 
 * 15:00 - 15:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 15:10 - 15:25  Giuseppe Amatulli: background/interest & bash/gdal.
@@ -111,6 +111,8 @@ During this session we explore and practice the basics of BASH terminal command 
 	* Checking the flow statement
 	* Debugging
 
+* [Additional material: AWK Tutorial](https://spatial-ecology.net/docs/build/html/AWK/awk.html)
+
 **Suggested assignments:**
 
 These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics.  Below, some suggestions of possible operations:
@@ -124,6 +126,10 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Perform a data download operation using wget or curl.
 * Unzip/untar files.
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
+
+
+
+
 
 ## Catch-up session 1: Wednesday, 2 April 2025
 
