@@ -469,7 +469,7 @@ Recorded lecture can be found [here](https://youtu.be/eIlefOF9OLU).
 ## Lecture 10: 9th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfadK7VyBfODsIvZ0Qz8xh4UHtgKSoR8HaG2frLqXEcCMKaBobqr53ce.PgIS-AuN_64nOudS). 
+Recorded lecture can be found [here](https://youtu.be/Vgn8zjU5124). 
 
 * [Review pyjeo installation procedure](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
 * Basic pyjeo
@@ -484,7 +484,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfad
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aOAkDt95qD-A7luqZeL9wvq-o5FR5Ad6YTSQP7JxlOfC9sRWoF6JDpHTP5sKynt1.-M-G9tTiydpeD9QY). 
+Recorded lecture can be found [here](https://youtu.be/znueaH9C-5Q). 
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_IntroML_SVM_Class1.pdf) (F.)
 	

@@ -109,7 +109,7 @@ During this session we explore and practice the basics of BASH terminal command 
 	* For loop and the use of variables
 	* If condition in a for loop
 	* Checking the flow statement
-	* Debugging
+	* Debugging	
 * [Additional material: AWK Tutorial](https://spatial-ecology.net/docs/build/html/AWK/awk.html)  
 * [Additional material: Manipulate GSIM files](https://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html)  
 
@@ -128,10 +128,9 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
 
 
-
-
-
 ## Catch-up session 1: Wednesday, 2 April 2025
+
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/c5WlEsFiULQS-vn-8h1Y1FZ8zXKY0mOYy3AzZt8B4E_699wT3hEDuCJjCG84E3zS.xW63zLw1xrsidDpY)
 
 This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. 
 
