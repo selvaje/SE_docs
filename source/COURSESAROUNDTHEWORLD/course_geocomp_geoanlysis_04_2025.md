@@ -93,6 +93,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 * 17:00 - 17:15  Break
 * 17:15 - 17:45  Linux BASH
 
+* [Course introduction lecture](http://spatial-ecology.net/docs/source/lectures/lect_20250401_course_introduction.pdf)
+
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
@@ -131,6 +133,9 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Catch-up session 1: Wednesday, 2 April 2025
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/c5WlEsFiULQS-vn-8h1Y1FZ8zXKY0mOYy3AzZt8B4E_699wT3hEDuCJjCG84E3zS.xW63zLw1xrsidDpY)
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_resume/lect02_Geocomp_Analysis_02042025.pdf)
+
 
 This session is dedicate to the students that encounter problems for the OSGeoLive 16.0 Virtual Machine installation. 
 
