@@ -155,9 +155,9 @@ If one or more of these features are not working properly show up in the Catch-u
 ## Lecture 2: Thursday, 3 April 2025. 
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/play/0nxsp0guwIOvLnYnlcFHnUuxNE7hkroFZdicIXw17SZiBl_q-SEupXpiHwhH1mcjksI3ihJ15u5ih6IW.L_BxwpRr3_kVHG6L).
 
-Transcript summary lecture can found [here]()
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_resume/lect03_Geocomp_Analysis_03042025.pdf).
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
@@ -167,6 +167,7 @@ This section introduces data manipulation for geospatial data processing on the 
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
 	* The use of .VRT for splitting and merging images
+    * [Additional material on point extraction](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
 
 **Suggested assignments:**
 
