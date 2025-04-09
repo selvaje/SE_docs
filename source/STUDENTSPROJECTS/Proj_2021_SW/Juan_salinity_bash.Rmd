@@ -1,0 +1,595 @@
+---
+title: "Sea surface salinity"
+author: Juan Rocha
+output: 
+  html_notebook:
+      theme:
+          code_font:
+            google: Fira Code
+      toc: yes
+      toc_float:
+        collapsed: true
+        smooth_scroll: true
+---
+
+The purpose of this mini-project is to explore sea surface salinity data as explanatory variable in the identification of early warning signals of critical transitions in marine ecosystems. A critical transition, or regime shift, occurs when the function and structure of an ecosystem changes. It often occurs when a tipping point is reached, the strength of the feedbacks underlying the dynamics set a different set of processes in place, and as consequence the ecosystem shift from one state to another. Iconic examples in marine systems includes the collapse of fisheries, coral reefs transitions, or the appearance of dead zones in coastal areas (hypoxia).
+
+## Data
+
+The data used comes from the [European Space Agency](https://climate.esa.int/en/odp/#/project/sea-surface-salinity) and is one of the Essential Climate Variables. The sea surface salinity product comes in 7-day moving average from January 2010 to December 2019, with one netCDF file available per day (N = 3653). Additional technical info on the dataset can be found in the [CEDA catalogue](https://catalogue.ceda.ac.uk/uuid/e5666094722c4ca787e323a9585b0a92?jump=related-docs-anchor).
+
+```{r setup, include = FALSE}
+knitr::opts_knit$set(
+  progress = TRUE)
+
+knitr::opts_chunk$set(
+  echo = TRUE, tidy = TRUE,
+  engine.path = list(
+    julia = "/Applications/Julia-1.1.app/Contents/Resources/julia/bin/"))
+
+library(tidyverse)
+```
+
+
+
+```{r}
+fls <- fs::dir_ls(
+  path = "/Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity",
+  recurse = TRUE) %>%
+    str_subset( pattern = "nc$")
+
+length(fls)
+
+```
+
+The main idea of this exercise is to extract time series of sea salinity per pixel, calculate a fast Fourier transform to separate the long term variability, annual cycle, fast oscillations and linear trend. These bands of variation will be then used as predictors of resilience loss. I have previously calculated early warnings of critical transitions known as critically slowing down. They include variance, autocorrelation, skewness, kurtosis and fractal dimensions of time series of marine primary productivity (Chlorophyll A). Here I try to find out if sea surfance salinity plays a role in predicting signals of resilience loss.
+
+## Data processing: failures
+
+I failed miserably in processing all data with GDAL, not GDALs fault of course, but rather my lack of experience with the tools and working with netCDF files. Here I document some of the errors and dead ends.
+
+
+```{bash engine.opts='-l'}
+gdalinfo --version
+```
+The first problem is that the salinity data is on equal area projection (25Km^2 grid) while the rest of the analysis have been done in 0.25&deg; longitud-latitud grid. So I tried to change the projection unsuccessfully.
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+
+gdaltransform -s_srs EPSG:6933 -t_srs WGS84 ESACCI-SEASURFACESALINITY-L4-SSS-MERGED_OI_7DAY_RUNNINGMEAN_DAILY_25km-20190101-fv2.31.nc
+```
+
+Giuseppe suggested to use `gdal_edit.py`, here is the try:
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+
+time (
+for file in *.nc ; do
+  gdal_edit.py -a_srs EPSG:6933 NETCDF:"$file" 
+done
+)
+
+```
+
+And indeed if we check the file again, there is not changes:
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+gdalinfo ESACCI-SEASURFACESALINITY-L4-SSS-MERGED_OI_7DAY_RUNNINGMEAN_DAILY_25km-20190131-fv2.31.nc
+```
+
+Another option explored was creating a virtual raster. The ambition was to use the raster to calculate the Fourier transform in parallel, but again it failed because the netCDF files are not geo referenced.
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+gdalbuildvrt -a_srs EPSG:6933 index.vrt *.nc
+```
+
+Another attempt was building the virtual raster from a list of files that explicitelly point out the band of data to be used (sss). So I extracted a short list of files to test from January 2019:
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+
+ls *.nc > test_files.txt
+
+```
+
+Back in `R` I grabbed the list of files and format them to be used by `gdalbuidvrt`:
+```{r}
+dat <- read_lines(
+  "~/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01/test_files.txt")
+dat <- dat %>% 
+  map_chr(., function(x) paste("NETCDF:", "\"" ,x,"\"", ":sss", sep = ""))
+write_lines(
+  dat, 
+  file = "~/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01/test_files.txt")
+```
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+head test_files.txt
+
+```
+But again I get the same ungeoreferenced error:
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+# create a virtual dataset
+gdalbuildvrt -input_file_list test_files.txt cube.vrt
+```
+
+One can access the relevant data and meta data for the specific data layer, or a specific pixel. But without the virtual raster, one would have to read this way as many times as pixels per time steps are, making the computation very inefficient. 
+
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+gdalinfo NETCDF:"ESACCI-SEASURFACESALINITY-L4-SSS-MERGED_OI_7DAY_RUNNINGMEAN_DAILY_25km-20190101-fv2.31.nc":sss
+```
+```{bash engine.opts='-l'}
+cd /Users/juanrocha/Documents/Projects/DATA/ESA_ECV_ocean_salinity/2019/01
+gdallocationinfo -valonly NETCDF:"ESACCI-SEASURFACESALINITY-L4-SSS-MERGED_OI_7DAY_RUNNINGMEAN_DAILY_25km-20190101-fv2.31.nc":sss 350 350
+
+```
+
+The lines above show that the value for one pixel can be extracted. One option is to do nested for loops but that implies the same file needs to be load in memory once per pixel, which is a waste of time. I did some tests in `R` and `Julia` and it takes from days to weeks just to load the data (11secs per pixel, but there is over 500K pixels). I've not included those failed attempts here, below a not so elegant solution I found in `Julia`.
+
+## Data processing in `Julia`
+
+The following routine allows me to run `Julia` from `R` and share objects between the languages:
+
+```{r}
+julia <- JuliaCall::julia_setup(
+  JULIA_HOME = "/Applications/Julia-1.1.app/Contents/Resources/julia/bin/",
+  verbose = TRUE,
+  installJulia = FALSE
+  #rebuild = TRUE
+)
+```
+
+```{r}
+julia$command("a = sqrt(2);"); julia$eval("a")
+```
+
+I did however made the mistake of updating `Julia` and `R` during the course and the nice language inter operability got broken. While I solve the issue, I will include here `Julia` code that was not executed in the notebook to demonstrate how the data processing was done. Below I recover the key results and show how the a random forest model was fitted in `R`.
+
+Set up `Julia`:
+
+```{Julia eval = FALSE}
+## Packages needed:
+## using Pkg
+Pkg.activate(".")
+Pkg.add("RCall")
+Pkg.add("ColorSchemes");
+Pkg.add("Plots");
+Pkg.add("Statistics")
+Pkg.add("NetCDF")
+Pkg.add("FFTW")
+Pkg.add("DataFrames")
+Pkg.add("Polynomials")
+
+using RCall, Plots, ColorSchemes;
+using Statistics;
+using NetCDF;
+using FFTW;
+using DataFrames
+using ESDL;
+using Polynomials: fit
+```
+
+To reduce computations and align with the datasets coming from the ESDL, I will only use one file per week:
+```{julia eval = FALSE}
+@rget fls
+
+## This formally reduces the computation to weekly observations:
+fls = fls[1:7:length(fls)]
+```
+And here is how one file is read, it takes 0.14s.
+```{julia eval = FALSE}
+using NetCDF;
+@time dat = ncread(fls[1], "sss");
+```
+
+Then I extract longitudes and latitudes for later. `m` is a mask that identifies missing values from the netCDF files, they are read as `NaN` when imported in `Julia`.
+```{julia eval = FALSE}
+## Extract lon and lat
+lon = ncread(fls[1], "lon");
+lat = ncread(fls[1], "lat");
+m = map(!isnan, dat)
+```
+The following two functions help me set those `NaN` values to `missing`, which will be leveraged later to spead up computations.
+
+```{julia eval = FALSE}
+# it will be useful to set missing values for later
+function set_missing(x)
+    ## this one is for boolean, but I need one for nans.
+    if x == 0
+        x = missing
+    else
+        x
+    end
+    return(x)
+end
+
+function set_missing_nan(x)
+    ## this one is for boolean, but I need one for nans.
+    if isnan(x)
+        x = missing
+    else
+        x
+    end
+    return(x)
+end
+```
+After some testing in `R` and `Julia` I could not figure out a fast way to import each time series and do the processing. The bottleneck in both approaches was reading the time series. An alternative is reading the netCDF files all at once and hold the data in memory, then broadcast the functions given they are in a regular grid or array. First I initiallize the array with the expected dimensions of latitude, longitude and time (weekly observations instead of daily). Then I read all the subsets of data (`sss` band for surface salinity), all together occupying almost 2Gb of memory and done just under 15secs.
+
+```{julia eval = FALSE}
+# initiallize the array
+A = Array{Union{Float32,Missing}}(missing, 1388, 584, 522)
+
+# 14secs, A is 1.9Gb! varinfo()
+t = @timed for i in 1:length(fls)
+    A[:,:,i] = ncread(fls[i], "sss")
+end
+# set missing values:
+A = map(set_missing_nan, A)
+```
+
+Now with the data ready, we can turn the attention to the Fourier transform. I used the version of the function developed by the ESDL and optimized to work on Zarrr arrays. Long story short, this is a way to store high dimensional data cubes which is already optimized in disk to perform operations across some of the dimensions (e.g. space or time). The way the data is stored in disk makes simpler out of memory computation and broadcasting of functions. The Earth System DataLab was unfortunately shut down. The software still exist (all open source) but storing the full dataset is over 5Pb. Here I'm using only one variable on a lower resolution that takes only 2Gb on memory, so I can run it locally. But it implies that the functions need to be tailored to work on simpler arrays. The original Fourier tranform function is [here](https://github.com/esa-esdl/ESDL.jl/blob/master/src/TSDecomposition.jl), below my modified implementation:
+
+```{julia eval = FALSE}
+@time l = size(A)[3]
+@time outar = Matrix(undef, l, 4)
+
+## plans for the Fourier transform
+testar = zeros(Complex{Base.nonmissingtype(eltype(A[250,250,:]))}, l)
+fftplan = plan_fft!(testar)
+ifftplan = inv(fftplan)
+
+#### fourier transform: inspiration from ESDL::filterTSFFT
+## https://github.com/esa-esdl/ESDL.jl/blob/master/src/TSDecomposition.jl
+## Auxiliary functions
+function linreg(x,y)
+  b = cov(x,y)/var(x)
+  a = mean(y) - b*mean(x)
+  a,b
+end
+
+function detrendTS!(outar::AbstractMatrix,xin::AbstractVector)
+    x=collect(eachindex(xin))
+    a,b=linreg(x,xin)
+    for i in eachindex(xin)
+        outar[i,1]=a+b*x[i]
+    end
+end
+
+function tscale2ind(b::Float64,l::Int)
+    i=round(Int,l/b+1)
+    return i
+end
+mirror(i,l)=l-i+2
+## Main routine
+function filterFFT(outar, y, annfreq::Int=52, nharm::Int=3)
+    detrendTS!(outar, y)
+    fy = Complex{Base.nonmissingtype(eltype(y))}[y[i] - outar[i,1] for i=1:l]
+    fftplan * fy # changes fy inplace
+    fyout = similar(fy) # creates a new element array with same size
+    czero = zero(eltype(fy))
+
+    # remove annual cycle
+    fill!(fyout, zero(eltype(fyout)))
+
+    for jharm = 1:nharm
+           iup=tscale2ind(annfreq*1.1/jharm,l)
+
+           idown=tscale2ind(annfreq*0.9/jharm,l)
+
+           for i=iup:idown
+               fyout[i]  = fy[i]
+               i2        = mirror(i,l)
+               fyout[i2] = fy[i2]
+               fy[i]     = czero
+               fy[i2]    = czero
+           end
+       end
+
+    ifftplan * fyout
+    for i=1:l
+        outar[i,3]=real(fyout[i])
+    end
+
+    iup   = tscale2ind(annfreq*1.1,l)
+    idown = tscale2ind(annfreq*0.9,l)
+    #Now split the remaining parts
+    fill!(fyout,czero)
+    for i=2:iup-1
+        i2        = mirror(i,l)
+        fyout[i]  = fy[i]
+        fyout[i2] = fy[i2]
+        fy[i]     = czero
+        fy[i2]    = czero
+    end
+    ifftplan * fyout
+    ifftplan * fy
+
+    for i=1:l
+        outar[i,2]=real(fyout[i])
+        outar[i,4]=real(fy[i])
+    end
+
+end
+
+```
+
+With the function ready, now we can compute the Fourier transform on the salinity data. I'm interested on the moments of the different bands of variability, so I calculate means and standard deviations for the long term trend, annual cycle and fast oscillations. All that is done on the fly and results stored in a matrix that recover the longitude and latitude for each pixel-time series processed.
+
+```{julia eval = FALSE}
+idx = 1 # counter
+# precompute the computations worth doing, with few missing values
+z = mapslices(sum, ismissing.(A), dims = [3])
+
+# create a matrix to catch the results
+response = Matrix(undef,  sum(z .< 20 ), 8)
+
+t = @timed for i in 1:size(A)[1], j in 1:size(A)[2] # i = lons, j = lats
+  if z[i,j] < 20
+        outar = Matrix(undef, l, 4)
+        x = gapfillpoly2(A[i,j,:])
+
+        filterFFT(outar, x) # computes the Fourier transform
+
+        response[idx,1] = lon[i] # longitud
+        response[idx,2] = lat[j] # latitude
+        response[idx,3] = linreg(1:l, x)[2] # sss_slope
+        response[idx,4] = (mean ∘ skipmissing)(x) # sss_mean
+        response[idx,5] = (var ∘ skipmissing)(x) # sss_var
+        response[idx,6] = (std ∘ skipmissing)(outar[:,2]) # sss_std_longterm
+        response[idx,7] = (std ∘ skipmissing)(outar[:,3]) # sss_std_annual_cycle
+        response[idx,8] = (std ∘ skipmissing)(outar[:,4]) # sss_std_fast_oscillations
+        idx += 1
+  end
+end
+```
+Just to remark the improvements versus my old attempts. Doing this computation with nested loops one pixel at the time (or a few pixels at the time with naive parallelization) takes something on the order of days. It took me over 24h to process 12k pixels out of the 505K in the dataset. With the approach above, the computation was done under 5 minutes. 
+
+Last I recovered and save the results in `Julia` to bring them as a data frame in `R` and continue the statistical analyses there:
+
+```{r eval = FALSE}
+df_all <- tibble(
+    lon = unlist( $response[,1]),
+    lat = unlist( $response[,2]),
+    sss_slope = unlist( $response[,3]),
+    sss_mean = unlist( $response[,4]),
+    sss_var = unlist( $response[,5]),
+    sss_std_longterm = unlist( $response[,6]),
+    sss_std_annual_cycle = unlist( $response[,7]),
+    sss_std_fast_oscillations = unlist( $response[,8])
+)
+
+# save(
+#   df_all,
+#   file = "Results/sampled_FFT_variables/sea_surface_salinity_FFT_.RData")
+```
+
+## Random forest
+
+```{r}
+library(tidyverse)
+library(tictoc)
+library(tidymodels)
+```
+
+The procedure above (Fourier transform) was done also on Chlorophyll A and sea surface temperature at the computational facilites of ESDL (Max Plank Institute of Biogeochemestry). I have previously merged all data (not shown here) into an object called `deltas`. This dataframe has as response variable the difference between maximum and minimum for a number of statistics that are thought to be proxies of resilience loss (variance, autocorrelation, skewness, kurtosis and fractal dimension). These statistics were calculated in 1/2 rolling windows for the Chlorophyll A data as response variable. Roughly speaking, it takes ~10yrs of data of weekly observations at 0.25&deg; grid resolution, and rolls that window over the next decade of data. Delta calcultes the largest differences in these statistics, which in turn are symptoms of resilience loss. The purpose of the random forest is to explore what predicts loss of resilience and as explanatory variables I used processed sea surface temperature and salinity. 
+
+One of the key questions is distinguishing if resilience loss is driven by changes in slow parameters (e.g. slow increases in mean temperature over time) versus changes in the variability at different time scales. For that reason I use the Fourier transform of the predictor variables. The different bands of the Fourier transform are of course correlated, but the random forest is robust to that correlation and requires minimum data pre-processing without biasing the results.
+
+```{r}
+#load pre-processed data
+load("/Users/juanrocha/Documents/Projects/ESDL_earlyadopter/ESDL/Results/regression_data_chlorA.RData")
+deltas
+```
+The response variable will be if an signal of resilience loss was detected:
+
+```{r}
+deltas <- deltas %>% mutate(detected = n_ews != 0) %>%
+    mutate(across(.cols = starts_with("delta"), abs, .names = "abs_{.col}")) %>%
+    mutate(detected = as_factor(detected),
+           detected = fct_relevel(detected, "TRUE", "FALSE")) %>%
+    mutate(biome = fct_explicit_na(biome))
+```
+ 
+And we filter out pixels where there is missing values in salinity:
+```{r}
+## get rid of missing values:
+deltas <- deltas %>% 
+  ungroup() %>% 
+  filter(!is.na(sss_slope))
+```
+
+The data is split in training and testing sets:
+```{r}
+## Data split
+data_split <- initial_split(
+    deltas %>% filter(n_ews == 0 | n_ews >1), 
+    strata = detected, prop = 3/4)
+train_data <- training(data_split)
+test_data <- testing(data_split)
+```
+
+Then I set up the recipe which contains the formula of the regression and any pre-processing steps. This ensures that the same procedure is done for the training and testing sets independently, to avoid information leakage. 
+
+```{r}
+rf_rcp <- recipe(
+  detected ~ temp_std_longterm + temp_std_annual_cycle + 
+    temp_std_fast_oscillations + temp_slope + temp_mean +
+    sss_std_longterm + sss_std_annual_cycle + sss_std_fast_oscillations +  
+    sss_slope +  sss_mean + biome ,
+  data = train_data) %>%
+  step_dummy(biome) %>%
+  step_zv(all_predictors()) %>%
+  step_normalize(all_numeric()) %>%
+  #step_interact(terms = ~ prec_var:temp_var) %>%
+  themis::step_downsample(detected)
+
+rf_prep <- prep(rf_rcp)
+juiced <- juice(rf_prep)
+```
+
+followed by a model specification that declares the parameters to tune (`mtry` and `min_n`) and the package implementation used (`ranger`).
+```{r}
+## model specification
+rf_model <- rand_forest(mtry = tune(), min_n = tune(), trees = 1000) %>% 
+  set_mode("classification") %>%
+  set_engine("ranger") #importance = "impurity"
+
+## workflow:
+rf_workflow <- workflow() %>%
+  add_recipe(rf_rcp) %>%
+  add_model(rf_model) 
+```
+
+With that we can train the hyper parameters. I wont run that now because it takes some time, I've done it and saved the output. But here is a copy of the code, using 10-fold cross validation and 8 cores on my computer:
+
+```{r eval = FALSE}
+## Train hyperparameter  
+set.seed(1234)
+folds <- vfold_cv(train_data, v=10)
+
+doParallel::registerDoParallel(cores = 8)
+
+set.seed(0987)
+tic()
+rf_res <- rf_workflow %>%
+  tune_grid(resamples = folds,
+            grid = 20) 
+toc() ## 6 hours on 8 cores parallel...
+## the rf_res is 271Mb
+```
+
+```{r}
+load("/Users/juanrocha/Documents/Projects/ESDL_earlyadopter/ESDL/Results/210608_rf_chlorA.RData")
+```
+
+The first tuning was done on a random grid. It was to explore what are sensible values that deserve further investigation.
+
+```{r}
+rf_res %>% 
+  collect_metrics() %>% 
+  filter(.metric == "roc_auc") %>% 
+  select(mean, min_n, mtry) %>% 
+  pivot_longer(cols = min_n:mtry, names_to = "tune_parm", values_to = "value") %>% 
+  ggplot(aes(value, mean)) + 
+  geom_point(aes(color = tune_parm)) +
+  facet_wrap(~tune_parm, scales = "free_x") +
+  theme_light()
+```
+With this info we can set up a finer regular grid on the best values of the first exploration.
+
+```{r eval = FALSE}
+rf_grid <- grid_regular(
+  mtry(range = c(2,12)), # maybe go up to 12
+  min_n(range = c(2,20)),
+  levels = 5
+)
+
+set.seed(6789)
+tic()
+regular_res <- tune_grid(
+  rf_workflow,
+  resamples = folds,
+  grid = rf_grid
+)
+toc() # 5.2hrs
+```
+
+
+```{r}
+regular_res %>% 
+  collect_metrics() %>% 
+  filter(.metric == "roc_auc") %>% 
+  mutate(min_n = factor(min_n)) %>% 
+  ggplot(aes(mtry, mean, color = min_n)) +
+  geom_line() +
+  geom_point() +
+  theme_light()
+```
+The final model is then adjusted with the best performing values, which has a mean area under the ROC curve just above 0.82.
+
+```{r}
+best_mod <- select_best(regular_res)
+
+rf_final <- finalize_model(
+  rf_model,
+  best_mod
+)
+rf_final
+```
+
+We then can proceed to fit the final model, trained on the training set and tested against the testing one. 
+
+```{r}
+final_wf <- workflow() %>% 
+  add_recipe(rf_rcp) %>% 
+  add_model(rf_final)
+
+## train the final on training set and evaluates on test set
+final_fit <- final_wf %>% 
+  last_fit(data_split)
+
+final_fit$.metrics
+
+```
+
+This takes a couple of minutes, but the metrics recovered reveal that the model is not overfitting and doing equally well as in the training set. Let's see now visualize what are the important predictors:
+
+```{r}
+tic()
+df_plot <- rf_final %>%
+  set_engine("ranger", importance = "permutation") %>%
+  fit(detected ~ .,
+      data = juice(rf_prep)) 
+toc() #4.2m
+```
+
+```{r}
+df_plot %>% vip::vip(geom = "col", include = TRUE) +
+  labs(title = "Random forest on detection", 
+       subtitle = "ROC area under the curve 0.829") +
+  theme_light(base_size = 8)
+```
+It shows that both stochasticity across time scales and slow changes in means or slope of the linear trend are predictors of resilience loss in marine systems. Temperature seems to be more important than salinity, but mean salinity still scores high up. We can recover the confussion matrix and notice that the model does better on the false positives with respect to false negatives. A quick map of the predicted values reveals that there is not a particular geographical aspect increasing error rates -- the errors are not clustered in space.
+
+```{r}
+final_fit %>% 
+  collect_predictions() %>% 
+  mutate(correct = case_when(
+    detected == .pred_class ~ "correct", TRUE ~ "incorrect"
+  )) %>% 
+  bind_cols(test_data) %>% 
+  ggplot(aes(lon, lat, fill  = correct)) +
+  geom_tile() +
+  theme_void()
+```
+
+
+## Session info
+A copy of this notebook can be found at: [https://github.com/juanrocha/salt-and-pepper](https://github.com/juanrocha/salt-and-pepper) 
+
+```{r}
+sessionInfo()
+```
+
+
+```{bash engine.opts='-l', comment=NA}
+## for reproducibility, record the environment.
+conda env export > environment.yaml
+```
+
+
+```{bash engine.opts='-l'}
+cd
+cd ..
+cd ..
+pwd
+/anaconda3/bin/activate base
+```
