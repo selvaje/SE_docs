@@ -211,6 +211,10 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 4: Thursday, 10 April 2025. 
 ### Python libraries for geospatial data analysis  (Saverio Mancino).
 
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/TBX_ZphRKLI-zyYJG71sVchjYQ8JyEaoFgf8kDGX0krdHpEV5zQhrmDlS37uOqWV._8haHTXHW4utbXop)
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025_resume/lect05_Geocomp_Analysis_10042025.pdf)
+
 [Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.html)
 
 * Exploring [Matplotlib](https://matplotlib.org/) and [Seaborn](https://seaborn.pydata.org/) for scientific plots, 
