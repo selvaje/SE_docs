@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using GRASS for stream-network extraction and basins delineation &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  <title>Using GRASS for stream-network extraction and basins delineation in Colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/jupyter-sphinx.css" type="text/css" />
@@ -121,27 +121,21 @@
 <li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grass_newproject.html">Start a new GRASS project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation in Colab</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Install-python-libraryes-and-softwares">Install python libraryes and softwares</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Theoretical-background">Theoretical background</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Theoretical-background">Theoretical background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Flow-accumulation">Flow accumulation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Methodology">Methodology</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Download-the-input-dataset">Download the input dataset</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Download-the-input-dataset">Download the input dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Plotting-the-input-dataset">Plotting the input dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Plotting-the-elevation-and-the-computational-tiles">Plotting the elevation and the computational tiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Install-the-grass-add-on">Install the grass add-on</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#Compute-continental-seamless-flow-accumulation">Compute continental seamless flow accumulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#Merge-flow-accumulation-tiles">Merge flow accumulation tiles</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-continental-seamless-flow-accumulation">Compute continental seamless flow accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Merge-flow-accumulation-tiles">Merge flow accumulation tiles</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Compute-continental-seamless-basins-and-streams">Compute continental seamless basins and streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Merge-tiled-basins-and-streams">Merge tiled basins and streams</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="#Merge-tiled-basins-and-streams">Merge tiled basins and streams</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
 </ul>
@@ -238,7 +232,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
           <li><a href="index.html">&lt;no title&gt;</a> &raquo;</li>
-      <li>Using GRASS for stream-network extraction and basins delineation</li>
+      <li>Using GRASS for stream-network extraction and basins delineation in Colab</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/GRASS/grass_hydro_colab.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -518,8 +512,8 @@ div.rendered_html tbody tr:hover {
     text-align: unset;
 }
 </style>
-<section id="Using-GRASS-for-stream-network-extraction-and-basins-delineation">
-<h1>Using GRASS for stream-network extraction and basins delineation<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation" title="Permalink to this headline"></a></h1>
+<section id="Using-GRASS-for-stream-network-extraction-and-basins-delineation-in-Colab">
+<h1>Using GRASS for stream-network extraction and basins delineation in Colab<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation-in-Colab" title="Permalink to this headline"></a></h1>
 <p>Methodological procedure described in:</p>
 <p>Amatulli, Giuseppe, et al. <a class="reference external" href="https://essd.copernicus.org/articles/14/4525/2022/">Hydrography90m: A new high-resolution global hydrographic dataset.</a> Earth System Science Data Discussions 2022 (2022): 1-43.</p>
 <section id="Install-python-libraryes-and-softwares">
@@ -528,9 +522,9 @@ div.rendered_html tbody tr:hover {
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
-<span></span>! pip install rasterio
-! pip install geopandas
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>rasterio
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
 </pre></div>
 </div>
 </div>
@@ -577,8 +571,8 @@ Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.11/dist-pac
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
-<span></span>! lss
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="o">!</span><span class="w"> </span>lss
 
 </pre></div>
 </div>
@@ -1159,11 +1153,11 @@ WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
 </pre></div></div>
 </div>
 </section>
-</section>
 <section id="Theoretical-background">
-<h1>Theoretical background<a class="headerlink" href="#Theoretical-background" title="Permalink to this headline"></a></h1>
+<h2>Theoretical background<a class="headerlink" href="#Theoretical-background" title="Permalink to this headline"></a></h2>
 <p>The first step towards modeling hydrological features is delineating a comprehensive hydrography network. DEMs at different spatial resolutions allow for the identification of stream channels, using a variety of flow-routing algorithms. Such algorithms are based on the observation that water follows the steepest and shortest route along a relief, and accumulates in valleys, lowlands, flat areas and depressions. Several algorithms have been proposed for stream network routing. These algorithms
 proceed in several stages: determining flow directions, resolving depressions and flat areas, and finally, calculating flow accumulation.</p>
+</section>
 <section id="Flow-accumulation">
 <h2>Flow accumulation<a class="headerlink" href="#Flow-accumulation" title="Permalink to this headline"></a></h2>
 <p>Flow accumulation refers to the process of accumulating the flow of water across a terrain, often used in GIS to model drainage patterns and identify streams. Single flow direction (SFD) assumes water flows in only one direction, while multi-flow direction (MFD) allows water to flow in multiple directions, potentially more accurately representing terrain features.</p>
@@ -1171,7 +1165,7 @@ proceed in several stages: determining flow directions, resolving depressions an
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
 
 <span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;https://github.com/selvaje/SE_docs/blob/master/source/images/flowaccumulation_algorithm.png?raw=true&quot; width=&quot;1000&quot;&gt;&#39;</span><span class="p">))</span>
@@ -1190,24 +1184,23 @@ proceed in several stages: determining flow directions, resolving depressions an
 <p>Below we describe how we will extract a new high-resolution hydrography (stream-network and basins) from the 1KM DEM. In this exercise we simulate a case that we can not run the full South America continent in one tile because we reach RAM limitation. Therefore we compute the analysis in 3 tiles and then we combine the results.</p>
 <p>We are going to use 3 GRASS commands: * <a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/r.watershed.html">r.watershed</a> to derive flow accumulation * <a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/r.stream.extract.html">r.stream.extract</a> to extract-stream network * <a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/addons/r.stream.basins.html">r.stream.basins</a> to delineate basins</p>
 </section>
-</section>
 <section id="Download-the-input-dataset">
-<h1>Download the input dataset<a class="headerlink" href="#Download-the-input-dataset" title="Permalink to this headline"></a></h1>
+<h2>Download the input dataset<a class="headerlink" href="#Download-the-input-dataset" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
-<span></span># mask sea-land
-!wget -O SA_msk.tif https://raw.githubusercontent.com/selvaje/SE_data/53a02ab19e45d1a16cbc63ad5fb30da4ae67839f/exercise/geodata/dem/SA_msk_1km.tif
-# area for each pixel in km2
-!wget -O SA_area.tif https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_are_1km_msk.tif
-# elevation
-!wget -O SA_elevation.tif https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
-# depresssion
-!wget -O SA_dep.tif https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/SA_all_dep_1km.tif
-# computation tiles
-!wget -O tilesComp.gpkg https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/tilesComp.gpkg
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># mask sea-land</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_msk.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/53a02ab19e45d1a16cbc63ad5fb30da4ae67839f/exercise/geodata/dem/SA_msk_1km.tif
+<span class="c1"># area for each pixel in km2</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_area.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_are_1km_msk.tif
+<span class="c1"># elevation</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_elevation.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+<span class="c1"># depresssion</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_dep.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/SA_all_dep_1km.tif
+<span class="c1"># computation tiles</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>tilesComp.gpkg<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/tilesComp.gpkg
 </pre></div>
 </div>
 </div>
@@ -1303,7 +1296,7 @@ tilesComp.gpkg      100%[===================&gt;] 104.00K  --.-KB/s    in 0.02s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">rasterio</span>
 <span class="kn">from</span> <span class="nn">rasterio.plot</span> <span class="kn">import</span> <span class="n">show</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1337,13 +1330,14 @@ tilesComp.gpkg      100%[===================&gt;] 104.00K  --.-KB/s    in 0.02s
     }
 </style></div>
 </div>
+</section>
 <section id="Plotting-the-input-dataset">
 <h2>Plotting the input dataset<a class="headerlink" href="#Plotting-the-input-dataset" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Open raster datasets</span>
 
 <span class="n">msk</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_msk.tif&quot;</span><span class="p">)</span>
@@ -1404,7 +1398,7 @@ tilesComp.gpkg      100%[===================&gt;] 104.00K  --.-KB/s    in 0.02s
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># Open raster datasets</span>
 <span class="n">dem</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_elevation.tif&quot;</span><span class="p">)</span>
 
@@ -1478,9 +1472,8 @@ Installation of &lt;r.stream.basins&gt; successfully finished
 </pre></div></div>
 </div>
 </section>
-</section>
 <section id="Compute-continental-seamless-flow-accumulation">
-<h1>Compute continental seamless flow accumulation<a class="headerlink" href="#Compute-continental-seamless-flow-accumulation" title="Permalink to this headline"></a></h1>
+<h2>Compute continental seamless flow accumulation<a class="headerlink" href="#Compute-continental-seamless-flow-accumulation" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
@@ -1906,7 +1899,7 @@ Goodbye from GRASS GIS
 </div>
 </section>
 <section id="Merge-flow-accumulation-tiles">
-<h1>Merge flow accumulation tiles<a class="headerlink" href="#Merge-flow-accumulation-tiles" title="Permalink to this headline"></a></h1>
+<h2>Merge flow accumulation tiles<a class="headerlink" href="#Merge-flow-accumulation-tiles" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
@@ -1932,7 +1925,7 @@ Input file size is 5616, 8244
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/flow_all.tif&quot;</span><span class="p">)</span>
 <span class="c1"># Create a figure and an axes</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -1951,6 +1944,7 @@ Input file size is 5616, 8244
 <img alt="../_images/GRASS_grass_hydro_colab_22_0.png" src="../_images/GRASS_grass_hydro_colab_22_0.png" />
 </div>
 </div>
+</section>
 <section id="Compute-continental-seamless-basins-and-streams">
 <h2>Compute continental seamless basins and streams<a class="headerlink" href="#Compute-continental-seamless-basins-and-streams" title="Permalink to this headline"></a></h2>
 <p>Redelineate the basin and streams using the same procedure then before but using the continental flow accumulation.</p>
@@ -2291,9 +2285,8 @@ Goodbye from GRASS GIS
 </pre></div></div>
 </div>
 </section>
-</section>
 <section id="Merge-tiled-basins-and-streams">
-<h1>Merge tiled basins and streams<a class="headerlink" href="#Merge-tiled-basins-and-streams" title="Permalink to this headline"></a></h1>
+<h2>Merge tiled basins and streams<a class="headerlink" href="#Merge-tiled-basins-and-streams" title="Permalink to this headline"></a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
@@ -2368,7 +2361,7 @@ color table
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">basins</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/lbasin_all.tif&quot;</span><span class="p">)</span>
 <span class="c1"># Create a figure and an axes</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
@@ -2391,7 +2384,7 @@ color table
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
-<div class="input_area highlight-python notranslate"><div class="highlight"><pre>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">streams</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/stream_all.tif&quot;</span><span class="p">)</span>
 <span class="c1"># Create a figure and an axes</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
@@ -2410,6 +2403,7 @@ color table
 <img alt="../_images/GRASS_grass_hydro_colab_28_0.png" src="../_images/GRASS_grass_hydro_colab_28_0.png" />
 </div>
 </div>
+</section>
 </section>
 
 
