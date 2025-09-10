@@ -5,13 +5,12 @@ In order to execute the Spatial Ecology exercise we will need first install the 
 
 [Ubuntu 24.04 Noble Numbat](https://www.osboxes.org/ubuntu/#ubuntu-24-04-vbox) is a Linux Virtual Machine, that allows you to try a wide variety of open source geospatial software previous installation anything. It is composed entirely of free software, allowing it to be freely distributed, duplicated and passed around.
 
-You can follow the below instructions. Moreover the [Ubuntu 24.04 LTS installation YouTube video](https://youtu.be/wnRkkpaxqBU) even if use another VM image can be used to  
-guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current Ubuntu 24.04 version.
+You can follow the below instructions. Moreover the [Ubuntu 24.04 LTS installation YouTube video](https://youtu.be/wnRkkpaxqBU) even if use another VM image can be used to guide along the full procedure. Pay attention that the video is base on the Osgeolive 13 version, so some differences can be present comparing with the current Ubuntu 24.04 version.
 
 
 ## Software requirements
 
-For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk or vdi  file that contains the virtualized OS.  
+For running a Virtual Machine in your OS we need a virtualization software such as [Virtualbox](https://www.virtualbox.org/) and a vmdk or vdi  file that contains the virtualized OS.
 
 ## Hardware requirements
 ### Hard disk
@@ -20,11 +19,11 @@ Be sure to have at least 60 GIGA of free space in your hard disk before to start
 
 ### RAM
 
-Be sure that your computer have at lest 8 GIGA ram (more better). Indeed with the VM running and the zoom session open for following the lecture the 8GIGA will be barely on the limit.  
+Be sure that your computer have at lest 16 GIGA ram (more better). Indeed with the VM running and the zoom session open for following the lecture the 16 GIGA will be barely on the limit.  
 
 ## Install Virtualbox
 
-Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. 
+Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. Be sure you also install the VirtualBox 7.2.0 Extension Pack.
 
 ## Install Ubuntu 24.04 LTS Noble Numbat
 ### Download Ubuntu 24.04
@@ -48,22 +47,15 @@ Lunch Virtualbox from OS and follow the below instructions.
 ![title](Installation_vm_Ubuntu22.04_p9.png)
 ![title](Installation_vm_Ubuntu22.04_p10.png)
 ![title](Installation_vm_Ubuntu22.04_p11.png)
-![title](Installation_vm_Ubuntu22.04_p12.png)
-![title](Installation_vm_Ubuntu22.04_p13.png)
-![title](Installation_vm_Ubuntu22.04_p12.png)
-![title](Installation_vm_Ubuntu22.04_p14.png)
-![title](Installation_vm_Ubuntu22.04_p15.png)
-![title](Installation_vm_Ubuntu22.04_p16.png)
 
 
 ### Test your Ubuntu 24.04 LTS Virtual Machine
 
 If you follow all the steps correctly the Ubuntu 24.04 LTS Virtual Machine you should pop-up in the Virtual Box window showing something like this:
 
-![title](Installation_vm_Ubuntu22.04_p17.png)
-![title](Installation_vm_Ubuntu22.04_p18.png)
-![title](Installation_vm_Ubuntu22.04_p19.png)
-
+![title](Installation_vm_Ubuntu22.04_p12.png)
+![title](Installation_vm_Ubuntu22.04_p14.png)
+![title](Installation_vm_Ubuntu22.04_p15.png)
 
 If the Ubuntu 24.04 LTS start with a black screen with a "kernel panic message" means that there are still some settings that are not allowing the virtualization. 
 This [page](https://techcult.com/enable-virtualization-windows-10/) is a good tutorial for solving the issues in Windows-10 and [this one](https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11) for Windows-11. 
@@ -94,10 +86,9 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
 
     sudo apt update      # update the repositories
     sudo apt upgrade -y  # installation of the sw
-    sudo apt install linux-generic linux-headers-generic linux-image-generic # install the "The following packages have been kept back:"
     sudo apt autoremove -y
 
-## Troubleshooting screen size/resolution and shared folder of your Ubuntu 24.04 LTS Virtual Machine
+## Troubleshooting screen size/resolution and shared folder of your Ubuntu 24.04 LTS Virtual Machine (probably not needed)
 
 Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
@@ -151,7 +142,7 @@ Use *lsmod* from the command line, as it will tell you not only if it's installe
 
 vboxguest    57344  6 vboxsf   # the number can be different
 
-### Use "arandr" for setting a customized resolution
+### Use "arandr" for setting a customized resolution (probably not needed)
 
 For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing *arandr*. Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
 
@@ -189,8 +180,8 @@ If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or d
 
 If you get permission denied in accessing '/media/sf_LVM_shared' run this commands
 
-    sudo usermod -a -G vboxsf user
-    sudo chown -R user:users /media/sf_LVM_shared
+    sudo usermod -a -G vboxsf osboxes
+    sudo chown -R osboxes:osboxes /media/sf_LVM_shared
 
 **You will need to reboot to make the folder accessible.**
 
@@ -202,11 +193,18 @@ At this point the Ubuntu 24.04 LTS Virtual Machine is ready to install additiona
     wget https://raw.githubusercontent.com/selvaje/SE_data/refs/heads/master/exercise/install_additional_sw_data_4SE_courses.sh 
     sudo bash ./install_additional_sw_data_4SE_courses.sh
 
-as before the sudo password is **user**.
+as before the sudo password is **osboxes.org**.
 
 ### Test installed additional software
 
 In the bash terminal run the following lines one by one. Close the window that each time pop-up.
+
+Test [gdal](https://gdal.org/en/stable/#)
+
+    gdal_translate --version 
+
+
+You should see the gdal version GDAL 3.8.4, released 2024/02/08
 
 Test [pktools](http://pktools.nongnu.org/html/index.html)
 
@@ -240,14 +238,14 @@ The below instructions together with the [Git Setting for the Spatial Ecology co
 We are going to retrieve dataset and material for the first time using *git clone*.
 
     
-    cd /home/user                                 # enter in user home
+    cd                                 # enter in user home
     git clone https://github.com/selvaje/SE_data  # download the data 
 
 If the download succeed you should see the *SE_data* folder 
 
-    ls -l /home/user/SE_data 
+    ls -l $HOME/SE_data 
 
-Now we need copy the /home/user/SE_data to an independent directory the:  
+Now we need copy the $HOME/SE_data to an independent directory the:  
 */media/sf\_\LVM\_shared/my\_SE\_data*
 
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
@@ -260,9 +258,9 @@ The */media/sf_LVM_shared/my_SE_data* is your working directory. Do not touch th
 Every time that we need to download more data from the git repository, follow this procedure 
 
 
-    cd /home/user/SE_data
+    cd $HOME/SE_data
     git pull
-    rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
+    rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
 Now you should be ready to follow the lectures of the Spatial Ecology courses.  
@@ -270,12 +268,12 @@ Remember always to work on */media/sf\_LVM\_shared/my\_SE\_data*
 
 ---
 
-If for any reason the *git pull* commands give a synchronized error you need to remove the */home/user/SE_data* and repeat the *git clone* and *rsync* operation.
+If for any reason the *git pull* commands give a synchronized error you need to remove the *$HOME/SE_data* and repeat the *git clone* and *rsync* operation.
 
-    cd /home/user
-    rm -ry /home/user/SE_data
+    cd
+    rm -ry $HOME/SE_data
     git clone https://github.com/selvaje/SE_data
-    rsync -hvrPt --ignore-existing /home/user/SE_data/* /media/sf_LVM_shared/my_SE_data
+    rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
 
 
@@ -283,10 +281,11 @@ If for any reason the *git pull* commands give a synchronized error you need to 
 
 We are going to use jupyter lab as main scripting editor. Here how to install 
 
-
-    pip3 install -U jupyterlab
-    echo "PATH=$PATH:/home/user/.local/bin" >> /home/user/.bashrc
-    source /home/user/.bashrc 
+    sudo apt install pipx
+    pipx ensurepath
+    pipx install jupyterlab
+    echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.bashrc
+    source ~/.bashrc
 
 Test jupyter lab
 
