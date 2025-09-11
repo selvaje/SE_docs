@@ -80,6 +80,8 @@ Your keyboard layout will appear as below. Move up to select it as default keybo
 
 Open the terminal and test if the keyboard layout is correct. 
 
+![title](terminal_ubuntu.png)
+
 ### Update the OS
 
 The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
