@@ -26,11 +26,19 @@ Francesco Lovergine (sw installation and Linux troubleshooting)
 
 ---
 
-(2) **Mingyu Zhang**
+(2) **Mingyu Zhang - China**
+
+Yale University
+
+![](02_mingyu_zhang.jpg)
 
 ---
 
-(3) **Simone Beltramino**
+(3) **Simone Beltramino - Italy**
+
+Euro-Mediterranean Center on Climate Change (CMCC) - Italy 
+
+![](03_simone_beltramino.jpg)
 
 ---
 
@@ -38,13 +46,17 @@ Francesco Lovergine (sw installation and Linux troubleshooting)
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
-![](4_rocco_fracchiolla.jpg)
+![](04_rocco_fracchiolla.jpg)
 
 (5) **Muhammad Faizan Aslam**
 
 ---
 
-(6) **Max Glines**
+(6) **Max Glines - USA**
+
+Cary Institute of Ecosystem Studies - USA
+
+![](06_max_glines.jpg)
 
 ---
 
@@ -52,15 +64,21 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
-![](7_rita_paudice.jpg)
+![](07_rita_paudice.jpg)
 
 ---
 
 (8) **Autumn Mannsfeld**
 
+Euro-Mediterranean Center on Climate Change (CMCC) - Italy 
+
 ---
 
-(9) **Nafeesa Samad**
+(9) **Nafeesa Samad - Pakistan**
+
+Euro-Mediterranean Center on Climate Change (CMCC) - Italy 
+
+![](09_nafeesa_samad.jpg)
 
 ---
 
@@ -112,11 +130,19 @@ DePaul University, University of Illinois-Chicago - USA
 
 ---
 
-(20) **Hager Khalil**
+(20) **Hager Khalil - Egypt**
+
+Insect Pest Control Laboratory (IPCL) at International Atomic Energy Agency(IAEA), Austria.
+
+![](20_hager_kalil.jpg)
 
 ---
 
-(21) **Maria Silvia	Binetti**
+(21) **Maria Silvia Binetti Italy**
+
+Department of Earth and Geo-Environmental Science - University of Bari - Italy
+
+![](21_maria_silvia_binetti.jpg)
 
 ---
 
@@ -133,5 +159,22 @@ National Research Council of Italy (CNR) - Bari - Italy
 
 (24) **Fabio Blaso** 
 
+---
+
+(25) **Kelly Aho**
+
+---
+
+(26) **Olha	Kachalova**
+
+Landscape Research Institute/Masaryk University, Czech Republic
+
+![](26_olha_kachalova.jpg) 
+
+---
+
+(27) **Mara 	Remi - Italy**
+
+Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---

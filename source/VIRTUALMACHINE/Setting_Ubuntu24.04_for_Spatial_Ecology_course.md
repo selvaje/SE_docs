@@ -205,6 +205,9 @@ At this point the Ubuntu 24.04 LTS Virtual Machine is ready to install additiona
 
 as before the sudo password is **osboxes.org**.
 
+**If a prompt asks for user input, just use the arrow keys to select the default option and press Enter.**
+
+
 ### Test installed additional software
 
 In the bash terminal run the following lines one by one. Close the window that each time pop-up.
@@ -224,9 +227,9 @@ You should see the pkfilter manual instructions.
 Test [OpenEV](http://openev.sourceforge.net)
  
     source ~/.bashrc
-    openev /home/user/jupyter/notebook_gallery/Rasterio/data/world.rgb.tif
+    openev
 
-You should see the openev software popup and open the the tif file. 
+You should see the openev software popup. 
 
 <!---
 
@@ -298,7 +301,7 @@ We are going to use jupyter lab as main scripting editor. Here how to install
 
 Test jupyter lab
 
-    jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
+    jupyter-lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
 
 Get familiar with the jupyter lab GUI.
 
