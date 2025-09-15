@@ -88,13 +88,12 @@
 <li class="toctree-l3"><a class="reference internal" href="#update-the-os">Update the OS</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-24-04-lts-virtual-machine">Troubleshooting screen size/resolution and shared folder of your Ubuntu 24.04 LTS Virtual Machine</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#guest-additions-7-2-2-installation-for-your-ubuntu-24-04-lts-virtual-machine">Guest Additions 7.2.2 installation for your Ubuntu 24.04 LTS Virtual Machine</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-the-virtual-box-guest-edition-with-the-gui">Install the Virtual Box guest edition with the GUI</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-the-virtual-box-guest-edition-with-the-cl">Install the Virtual Box guest edition with the CL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#use-arandr-for-setting-a-customized-resolution-probably-not-needed">Use “arandr” for setting a customized resolution (probably not needed)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#test-your-shared-folder">Test your shared folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activate-the-shared-folder">Activate the shared folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#activate-clipboard-and-drag-drop">Activate Clipboard and Drag &amp; Drop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#populate-ubuntu-24-04-lts-with-additional-software">Populate Ubuntu 24.04 LTS with additional software</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-geo-software">Install geo-software</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-installed-additional-software">Test installed additional software</a></li>
@@ -345,71 +344,29 @@ sudo apt autoremove -y
 </div>
 </section>
 </section>
-<section id="troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-24-04-lts-virtual-machine">
-<h2>Troubleshooting screen size/resolution and shared folder of your Ubuntu 24.04 LTS Virtual Machine<a class="headerlink" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-24-04-lts-virtual-machine" title="Link to this heading"></a></h2>
-<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
-<p>If the screen is very small try to enlarge clicking “”View -&gt; Auto-resize Guest Display”, and if the enlargement is not working properly try to reboot.</p>
-<p>If you still have issues after the reboot, there are mainly two options:</p>
-<ol class="arabic simple">
-<li><p>Install the Virtual Box guest edition</p></li>
-<li><p>Use “arandr” for setting a customized resolution</p></li>
-</ol>
+<section id="guest-additions-7-2-2-installation-for-your-ubuntu-24-04-lts-virtual-machine">
+<h2>Guest Additions 7.2.2 installation for your Ubuntu 24.04 LTS Virtual Machine<a class="headerlink" href="#guest-additions-7-2-2-installation-for-your-ubuntu-24-04-lts-virtual-machine" title="Link to this heading"></a></h2>
+<p>VirtualBox Guest Additions enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
 <section id="install-the-virtual-box-guest-edition-with-the-gui">
 <h3>Install the Virtual Box guest edition with the GUI<a class="headerlink" href="#install-the-virtual-box-guest-edition-with-the-gui" title="Link to this heading"></a></h3>
-<p>Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below.</p>
+<p>First we will need remove the 7.0 version and then install the 7.2.2.</p>
 <p>From the Virtualbox menu press Device &gt; Insert Guest Addition CD image</p>
-<p>If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install “ Virtual Box guest edition with the CL” (see below).</p>
-<p>The download procedure will start and a screen will pop up:</p>
-<p>pres “cancel”.</p>
-<p><img alt="title" src="../_images/GuestAddition2.png" /></p>
-<p>Open the terminal and type:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /media/user/VBox_GAs_*
-sudo ./VBoxLinuxAdditions.run
+<p>Then open the terminal and run</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get remove --purge virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-additions-iso -y
+sudo apt autoremove -y  
+
+sudo apt update
+sudo apt install -y build-essential dkms linux-headers-$(uname -r)
+
+cd /media/osboxes/VBox_GAs_7.2.2
+sudo sh ./VBoxLinuxAdditions.run
 </pre></div>
 </div>
 <p>At this point you can reboot your machine. Now all screen setting, screen scale (View -&gt; Auto-resize Guest Display) and drag/drop should work properly.</p>
 </section>
-<section id="install-the-virtual-box-guest-edition-with-the-cl">
-<h3>Install the Virtual Box guest edition with the CL<a class="headerlink" href="#install-the-virtual-box-guest-edition-with-the-cl" title="Link to this heading"></a></h3>
-<p>If for some reason you were not able to install “Virtual Box guest edition with the GUI” you can try with the “Virtual Box guest edition with the CL”.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt-get install virtualbox-guest-additions-iso
-sudo mkdir -p /media/user/VBox_GAs 
-sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
-cd /media/user/VBox_GAs
-sudo bash ./VBoxLinuxAdditions.run
-</pre></div>
-</div>
-<p>At this point you can reboot.</p>
-<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
-<p>Use <em>lsmod</em> from the command line, as it will tell you not only if it’s installed, but properly loaded:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lsmod | grep vboxguest 
-</pre></div>
-</div>
-<p>vboxguest    57344  6 vboxsf   # the number can be different</p>
 </section>
-<section id="use-arandr-for-setting-a-customized-resolution-probably-not-needed">
-<h3>Use “arandr” for setting a customized resolution (probably not needed)<a class="headerlink" href="#use-arandr-for-setting-a-customized-resolution-probably-not-needed" title="Link to this heading"></a></h3>
-<p>For some OS the “Auto-resize Guest Display” is not working properly. Therefore is possible to select a customized resolution by installing <em>arandr</em>. Anyway follow this route only if “Virtual Box guest edition” did not solve the problem.</p>
-<p>Open the terminal and type:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install arandr
-</pre></div>
-</div>
-<p>then run arandr in the terminal</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>arandr
-</pre></div>
-</div>
-<p>and following the below figure, select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.</p>
-<p><img alt="title" src="../_images/screenresolution1.png" /></p>
-<p>You can also save the screen settings by “Layout -&gt; Save as” -&gt;  leaving a default directory (~/.screenlayout/)</p>
-<p><img alt="title" src="../_images/screenresolution2.png" /></p>
-<p>Now the script screen_vm.sh need to be run every time that you boot the machine. The easy way is to add to the ~/.bashrc. <strong>But you will need to open the terminal to allow the enlargement</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo &quot;bash ~/.screenlayout/screen_vm.sh&quot;  &gt;&gt; ~/.bashrc
-</pre></div>
-</div>
-</section>
-</section>
-<section id="test-your-shared-folder">
-<h2>Test your shared folder<a class="headerlink" href="#test-your-shared-folder" title="Link to this heading"></a></h2>
+<section id="activate-the-shared-folder">
+<h2>Activate the shared folder<a class="headerlink" href="#activate-the-shared-folder" title="Link to this heading"></a></h2>
 <p>Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>ls /media/sf_LVM_shared
 </pre></div>
@@ -422,6 +379,14 @@ sudo chown -R osboxes:osboxes /media/sf_LVM_shared
 </pre></div>
 </div>
 <p><strong>You will need to reboot to make the folder accessible.</strong></p>
+</section>
+<section id="activate-clipboard-and-drag-drop">
+<h2>Activate Clipboard and Drag &amp; Drop<a class="headerlink" href="#activate-clipboard-and-drag-drop" title="Link to this heading"></a></h2>
+<p>To activate the Clipboard and Drag &amp; Drop run this line in the terminal</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>VBoxClient --clipboard
+VBoxClient --draganddrop
+</pre></div>
+</div>
 </section>
 <section id="populate-ubuntu-24-04-lts-with-additional-software">
 <h2>Populate Ubuntu 24.04 LTS with additional software<a class="headerlink" href="#populate-ubuntu-24-04-lts-with-additional-software" title="Link to this heading"></a></h2>

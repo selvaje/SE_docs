@@ -3,16 +3,11 @@
 
 ### Course team 
 
-[Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)
-
-[Juana Mercedes Perlaza Rodriguez](https://novamanto.com/)(Course Enrollment coordinator)
-
-[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)
-
-[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)
-
-[Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython teacher)
-
+[Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)  
+[Juana Mercedes Perlaza Rodriguez](https://novamanto.com/)(Course Enrollment coordinator)  
+[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)  
+[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)  
+[Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython teacher)  
 [Francesco Lovergine](https://www.linkedin.com/in/francescopaololovergine/?originalSubdomain=it) (Linux troubleshooting and sw installation)
 
 ### Course time line
