@@ -1,6 +1,21 @@
 # GeoComp & ML 2025 course
 ## Geocomputation and Machine Learning for environmental applications
 
+### Course team 
+
+[Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)
+
+[Juana Mercedes Perlaza Rodriguez](https://novamanto.com/)(Course Enrollment coordinator)
+
+[Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)
+
+[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)
+
+[Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython teacher)
+
+[Francesco Lovergine](https://www.linkedin.com/in/francescopaololovergine/?originalSubdomain=it) (Linux troubleshooting and sw installation)
+
+### Course time line
 
 **Online teaching: September - November 2025, 9 weeks**
 
@@ -57,7 +72,6 @@ In this course, students will be introduced to an array of powerful open-source 
 
 ### Syllabus overview ###
 
-
 <table>
     <tr>
         <td>Subject</td>
@@ -77,7 +91,7 @@ In this course, students will be introduced to an array of powerful open-source 
     </tr>
     <tr>
         <td>GEO-PYTHON:</td>
-        <td>3</td>
+        <td>2</td>
     </tr>
     <tr>
         <td>ML:</td>
@@ -102,9 +116,10 @@ Recorded lecture can be found [here1](https://youtu.be/YQB3UD0rYqI)
 Time below in CEST
 
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 13:30 - 13:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](lect_20240402_IntroML_AF.pdf).
-* 13:45 - 14:15  [Francesco Lovergine: background/interest & geo-python introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_GeoPython_FL.pdf)
+* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20251609_IntroGeocomp_GA.pdf).
+* 13:30 - 13:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20250916_IntroML_AF.pdf).
+* 13:30 - 13:45  Saverio Mancino: background/interest & geopython introduction - teaching role.
+* 13:45 - 14:15  Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role
 * 14:15 - 14:30  Break
 * 14:30 - 14:15  Students round table + QA of the course. 
 * 14:15 - 15:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
@@ -457,7 +472,7 @@ Students will meet online with the teachers to review past material and solving 
 Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 ## Lecture 9: Tuesday, 21 October, 2025.
-### Geospatial python (Francesco Lovergine)
+### Geospatial python (Saverio Mancino)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IToqgZ5RF-5P6nlR1B6sDlD0XhKFkhYsFtG9IyYz9h1KVWM28JAnA.-K8f6A51CW2mKlcR).
 
@@ -472,7 +487,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IT
 		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
 
 ## Lecture 10: Thursday, 23 October, 2025.
-### Geospatial python (Francesco Lovergine)
+### Geospatial python (Saverio Mancino)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfadK7VyBfODsIvZ0Qz8xh4UHtgKSoR8HaG2frLqXEcCMKaBobqr53ce.PgIS-AuN_64nOudS). 
 
@@ -561,7 +576,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 	* Family of optimizers
 	* Tutorial: more features and different optimizers
 
-## Lecture 16:  Thursday, 11 November, 2025.
+## Lecture 16:  Thursday, 13 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
