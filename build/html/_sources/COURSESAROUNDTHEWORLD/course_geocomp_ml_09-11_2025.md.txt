@@ -105,7 +105,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here1](https://youtu.be/YQB3UD0rYqI)
+Recorded lecture can be found [here1]()
 
 
 Time below in CEST
@@ -458,41 +458,33 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found [here](). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
 ## Catch-up session 2: Thursday 16 October, 2025.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found [here](). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
 ## Lecture 9: Tuesday, 21 October, 2025.
-### Geospatial python (Saverio Mancino)
+### Python libraries for geospatial data analysis (Saverio Mancino)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/_wv8fpFP89IToqgZ5RF-5P6nlR1B6sDlD0XhKFkhYsFtG9IyYz9h1KVWM28JAnA.-K8f6A51CW2mKlcR).
+Recorded lecture can be found [here]().
 
-* Geospatial python 
-	* [Python introduction](https://spatial-ecology.net/docs/build/html/PYTHON/Python_Intro.html)
-	* [Suggestions about Python management](https://spatial-ecology.net/docs/build/html/PYTHON/PythonEnvs.html)
-	* [Rasterio](https://rasterio.readthedocs.io/en/latest/index.html#) [basics](https://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html) 
-	* [Using python for point location raster value extraction](https://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
-	* [pyjeo](https://pyjeo.readthedocs.io/en/latest/index.html) basics
-		- Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
-		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
-		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
+* Exploring Matplotlib and Seaborn for scientific plots
+* Exploring rasterio for raster processing and visualization
+* Exploring geopandas for vector processing and visualization
 
 ## Lecture 10: Thursday, 23 October, 2025.
-### Geospatial python (Saverio Mancino)
+### Machine Learning Introduction (Saverio Mancino)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/NicAq3lLGfadK7VyBfODsIvZ0Qz8xh4UHtgKSoR8HaG2frLqXEcCMKaBobqr53ce.PgIS-AuN_64nOudS). 
+Recorded lecture can be found [here](). 
 
-* [Review pyjeo installation procedure](https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html)
-* Basic pyjeo
-* Integrate pyjeo with last year video lectures. Please adapt the script if there is something that is not working. 
-		- [pyjeo 1](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-9-3nd-of-may-2023)
-		- [pyjeo 2](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#lecture-10-5th-of-may-2023)
-		- [pyjeo 3](https://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html#pyjeo-in-combination-with-sklearn-pieter-kempeneers)
-* [Generalities about OGC Geospatial extensions for SQL](https://spatial-ecology.net/docs/build/html/PYTHON/OGCSQL.html)
+* Brief introduction to Random Forest
+* Exploring training data (GEDI dataset) and predictors
+* Running a model and exploring RF parameters
+* prediction on raster
+
 
 ## Lecture 11: Tuesday, 28 October, 2025.
 ### Machine Learning Introduction, Support Vector Machine (Antonio Fonseca)

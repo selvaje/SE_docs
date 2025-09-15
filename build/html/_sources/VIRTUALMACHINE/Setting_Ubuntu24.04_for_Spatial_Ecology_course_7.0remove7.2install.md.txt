@@ -23,7 +23,7 @@ Be sure that your computer have at lest 16 GIGA ram (more better). Indeed with t
 
 ## Install Virtualbox
 
-Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. Be sure you also install the VirtualBox 7.2.0 Extension Pack.
+Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://www.virtualbox.org/wiki/Downloads) and base on your OS download the Virtualbox executable and install it. Be sure you also install the VirtualBox 7.2.2 Extension Pack.
 
 ![title](dropbox_download.png)
 
@@ -93,91 +93,31 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
     sudo apt autoremove -y
 
 
+## Guest Additions 7.2.2 installation for your Ubuntu 24.04 LTS Virtual Machine
 
-
-<!---
-
-## Troubleshooting screen size/resolution and shared folder of your Ubuntu 24.04 LTS Virtual Machine
-
-Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
-
-If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot.
- 
-If you still have issues after the reboot, there are mainly two options:  
-
-1) Install the Virtual Box guest edition
-2) Use "arandr" for setting a customized resolution
+VirtualBox Guest Additions enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
 ### Install the Virtual Box guest edition with the GUI
 
-Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below. 
+First we will need remove the 7.0 version and then install the 7.2.2.
 
 From the Virtualbox menu press Device > Insert Guest Addition CD image
 
-If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install " Virtual Box guest edition with the CL" (see below). 
+Then open the terminal and run 
 
-The download procedure will start and a screen will pop up:
+    sudo apt-get remove --purge virtualbox-guest-dkms virtualbox-guest-utils virtualbox-guest-x11 virtualbox-guest-additions-iso -y
+    sudo apt autoremove -y  
 
-pres "cancel".
+    sudo apt update
+    sudo apt install -y build-essential dkms linux-headers-$(uname -r)
 
-![title](GuestAddition2.png)
+    cd /media/osboxes/VBox_GAs_7.2.2
+    sudo sh ./VBoxLinuxAdditions.run
 
-Open the terminal and type:
-
-    cd /media/user/VBox_GAs_*
-    sudo ./VBoxLinuxAdditions.run
 
 At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
 
-
-### Install the Virtual Box guest edition with the CL 
-
-If for some reason you were not able to install "Virtual Box guest edition with the GUI" you can try with the "Virtual Box guest edition with the CL". 
-
-
-    sudo apt-get install virtualbox-guest-additions-iso
-    sudo mkdir -p /media/user/VBox_GAs 
-    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
-    cd /media/user/VBox_GAs
-    sudo bash ./VBoxLinuxAdditions.run
-
-At this point you can reboot.
-
-Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
-
-Use *lsmod* from the command line, as it will tell you not only if it's installed, but properly loaded:
-
-    lsmod | grep vboxguest 
-
-vboxguest    57344  6 vboxsf   # the number can be different
-
-### Use "arandr" for setting a customized resolution (probably not needed)
-
-For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing *arandr*. Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
-
-Open the terminal and type:
-
-    sudo apt install arandr
-
-then run arandr in the terminal 
-
-    arandr
-
-and following the below figure, select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.
-
-![title](screenresolution1.png)
-
-You can also save the screen settings by "Layout -> Save as" ->  leaving a default directory (~/.screenlayout/) 
-
-![title](screenresolution2.png)
-
-Now the script screen_vm.sh need to be run every time that you boot the machine. The easy way is to add to the ~/.bashrc. **But you will need to open the terminal to allow the enlargement**  
-
-    echo "bash ~/.screenlayout/screen_vm.sh"  >> ~/.bashrc
-
---->
-
-## Test your shared folder
+## Activate the shared folder
 
 Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run 
 
@@ -194,6 +134,15 @@ If you get permission denied in accessing '/media/sf_LVM_shared' run this comman
     sudo chown -R osboxes:osboxes /media/sf_LVM_shared
 
 **You will need to reboot to make the folder accessible.**
+
+## Activate Clipboard and Drag & Drop
+
+To activate the Clipboard and Drag & Drop run this line in the terminal
+
+    VBoxClient --clipboard
+    VBoxClient --draganddrop
+
+
 
 ## Populate Ubuntu 24.04 LTS with additional software
 ### Install geo-software
