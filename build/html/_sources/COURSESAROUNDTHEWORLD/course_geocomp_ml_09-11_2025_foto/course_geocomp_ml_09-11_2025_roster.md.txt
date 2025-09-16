@@ -22,13 +22,17 @@ Francesco Lovergine (sw installation and Linux troubleshooting)
 #### Student roster ####
 
 
-(1) **Marianne Böhm**
+(1) **Marianne Böhm - Germany**
+
+Stockholm University, Sweden
+
+![](01_marianne_böhm.jpg)
 
 ---
 
 (2) **Mingyu Zhang - China**
 
-Yale University
+Yale University - USA
 
 ![](02_mingyu_zhang.jpg)
 
@@ -96,7 +100,9 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-(11) **Andrew Gillreath-Brown**
+(11) **Andrew Gillreath-Brown - USA**
+
+Yale University - USA
 
 ---
 
@@ -109,6 +115,11 @@ University of Leeds - UK
 ---
 
 (13) **Mikulas Blatny**
+
+Landscape Research Institute/Masaryk University, Czech Republic
+
+![](13_mikulas_blatny.jpg)
+
 
 ---
 
@@ -150,6 +161,8 @@ Landscape Research Institute/Masaryk University, Czech Republic
 (19) **Magdalena Guńka**
 
 Landscape Research Institute/Masaryk University, Czech Republic
+
+![](19_magdalena_guńka.png)
 
 ---
 
