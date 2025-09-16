@@ -11,11 +11,8 @@
 Francesco Lovergine (sw installation and Linux troubleshooting)  
 
 #### Student affiliation and their origin  ####
-
 ![](Physical-World-Map_2024.jpg)
-
-
-![](zoom_class.png)
+![](zoom_class.jpg)
 
 ---
 
@@ -78,10 +75,10 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 (8) **Autumn Mannsfeld - USA**
 
+Euro-Mediterranean Center on Climate Change (CMCC) - Italy
+
 ![](08_mannsfeld_autumn.jpg)
-
-Euro-Mediterranean Center on Climate Change (CMCC) - Italy 
-
+ 
 ---
 
 (9) **Nafeesa Samad - Pakistan**
@@ -103,6 +100,8 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 (11) **Andrew Gillreath-Brown - USA**
 
 Yale University - USA
+
+![](11_gillreath-brown_andrew.jpg)
 
 ---
 
