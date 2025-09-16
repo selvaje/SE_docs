@@ -48,7 +48,11 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ![](04_rocco_fracchiolla.jpg)
 
-(5) **Muhammad Faizan Aslam**
+(5) **Muhammad Faizan Aslam (Faizan) - Pakistan**
+
+University of Sassari, Italy
+
+![](05_muhammad_faizan_aslam.jpg)
 
 ---
 
@@ -68,7 +72,9 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ---
 
-(8) **Autumn Mannsfeld**
+(8) **Autumn Mannsfeld - USA**
+
+![](08_mannsfeld_autumn.jpg)
 
 Euro-Mediterranean Center on Climate Change (CMCC) - Italy 
 
@@ -96,17 +102,30 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 (12) **Kulankana Theivendrarajah**
 
+University of Leeds - UK 
+
+![](12_kulankana_theivendrarajah.jpg)
+
 ---
 
 (13) **Mikulas Blatny**
 
 ---
 
-(14) **David Kirner**
+(14) **David Kirner - Czech**
+
+Landscape Research Institute/Masaryk University, Czech Republic
+
+![](14_david_kirner.jpg)
 
 ---
 
-(15) **Alejandro Gándara**
+(15) **Alejandro Gándara - Guatemala**
+
+
+SLU, Swedish University of Agricultural Sciences, Sweden
+
+![](15_alejandro_gandara.jpg)
 
 ---
 
@@ -124,9 +143,13 @@ DePaul University, University of Illinois-Chicago - USA
 
 (18) **Filip Kratoš**
 
+Landscape Research Institute/Masaryk University, Czech Republic
+
 ---
 
 (19) **Magdalena Guńka**
+
+Landscape Research Institute/Masaryk University, Czech Republic
 
 ---
 
@@ -153,19 +176,19 @@ National Research Council of Italy (CNR) - Bari - Italy
 
 ![](22_sofia_rossi.jpg)
 
-(23) **Francesco Ottaviani**
+(23) **Francesco Ottaviani  - Italy**
 
 ---
 
-(24) **Fabio Blaso** 
+(24) **Fabio Blaso - Italy** 
 
 ---
 
-(25) **Kelly Aho**
+(25) **Kelly Aho - USA**
 
 ---
 
-(26) **Olha	Kachalova**
+(26) **Olha	Kachalova - ucrenia**
 
 Landscape Research Institute/Masaryk University, Czech Republic
 
@@ -176,5 +199,7 @@ Landscape Research Institute/Masaryk University, Czech Republic
 (27) **Mara 	Remi - Italy**
 
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
+
+![](27_mara_remi.jpg) 
 
 ---
