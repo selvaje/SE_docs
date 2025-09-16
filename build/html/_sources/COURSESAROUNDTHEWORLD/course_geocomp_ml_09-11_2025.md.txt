@@ -105,7 +105,7 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here1]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/-vuOo40rQeA1hq8Hta_eXH8GdAF0M8aHygBXHBwdK26RxlGt-kBgFXJSiWNjTGmn.wsOiVWlMuP549AwF)
 
 
 Time below in CEST
