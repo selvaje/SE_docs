@@ -84,7 +84,7 @@ Open the terminal and test if the keyboard layout is correct.
 
 ### Update the OS
 
-The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"user"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
+The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"osboxes.org"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
 Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option. 
 
