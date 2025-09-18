@@ -136,7 +136,7 @@ If one or more of these features are not working properly show up in the Catch-u
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here](https://youtu.be/ZHlB2RPWOEU).
+Recorded lecture can be found [here]().
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
 *
@@ -172,7 +172,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: Tuesday, 22 September, 2025.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://youtu.be/tmYshUgq1j8).
+Recorded lecture can be found [here]().
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
@@ -216,6 +216,7 @@ You can perform:
 - table re-organization    
 - data filtering 
 
+<!---
 
 ---
 
@@ -228,6 +229,8 @@ You can perform:
     mkdir -p output1   output2 output3 
 
 --- 
+
+
 
 #########Solution 1 #########*
 
@@ -316,6 +319,7 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 	    }
 	}'\'' US_*'
 
+--->
 
 ## Lecture 4: Thursday, 25 September, 2025.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
