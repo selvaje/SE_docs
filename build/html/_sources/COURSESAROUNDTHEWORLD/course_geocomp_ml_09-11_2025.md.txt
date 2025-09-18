@@ -138,7 +138,7 @@ During this session we explore and practice the basics of BASH terminal command 
 
 Recorded lecture can be found [here]().
 
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html)  to the [OSGeoLIve Linux Virtual Machine](http://live.osgeo.org/en/index.html) (Hands-on tutorial)
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html) to the Ubuntu 24.04 Linux Virtual Machine (Hands-on tutorial)
 *
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
