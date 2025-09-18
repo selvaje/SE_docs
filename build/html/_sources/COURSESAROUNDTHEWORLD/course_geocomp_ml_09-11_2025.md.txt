@@ -624,3 +624,5 @@ Discussion papers:
 
 ### Day 5: Friday, 28 November 2025
 
+* 9:00-17:00: Final project Student presentation
+	* Social event TBD
