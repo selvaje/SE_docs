@@ -4,7 +4,9 @@
    :titlesonly:
    :caption: BASH
 
-   bashintro_osgeo.ipynb
-   bashinter_osgeo.ipynb
-   bashxargs_osgeo.ipynb
+   bashintro_osgeo
+   bashinter_osgeo
+   bashxargs_osgeo
+
+
 

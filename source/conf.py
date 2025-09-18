@@ -27,8 +27,7 @@ myst_enable_extensions = [
 
 templates_path = ['_templates']
 exclude_patterns = [
-    'VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md',
-    'BASH/bashinter_osgeo.ipynb'  # Exclude problematic files initially
+    'VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md'
 ]
 
 html_theme = 'sphinx_rtd_theme'

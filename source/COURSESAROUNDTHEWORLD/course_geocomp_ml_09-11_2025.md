@@ -136,10 +136,11 @@ If one or more of these features are not working properly show up in the Catch-u
 
 During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/8Qo2L3KqToEfg2fYDgWyMnfx85wa6sXESdc8wrfyzoX83X-HEhpZEtxlmfBREjQn.h_rC4_kGmShlBVc_).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect02_GML_18092025.pdf)
 
 * [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html) to the Ubuntu 24.04 Linux Virtual Machine (Hands-on tutorial)
-*
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
 	* Special characters and Quoting
