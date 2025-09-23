@@ -105,7 +105,7 @@ Yale University - USA
 
 ---
 
-(12) **Kulankana Theivendrarajah**
+(12) **Kulankana Theivendrarajah - Sri Lanka**
 
 University of Leeds - UK 
 
@@ -197,6 +197,10 @@ National Research Council of Italy (CNR) - Bari - Italy
 ---
 
 (25) **Kelly Aho - USA**
+
+Department of Biology, Boston University, USA .
+
+![](25_kelly_aho.jpg) 
 
 ---
 
