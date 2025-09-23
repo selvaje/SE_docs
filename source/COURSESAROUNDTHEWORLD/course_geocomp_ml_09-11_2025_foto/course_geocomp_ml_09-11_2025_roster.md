@@ -159,6 +159,8 @@ Constantine the Philosopher University, Slovakia
 
 Landscape Research Institute/Masaryk University, Czech Republic
 
+![](18_filip_kratos.jpg)
+
 ---
 
 (19) **Magdalena Guńka**

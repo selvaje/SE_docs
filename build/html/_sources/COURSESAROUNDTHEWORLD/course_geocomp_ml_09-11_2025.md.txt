@@ -173,7 +173,9 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 ## Lecture 3: Tuesday, 22 September, 2025.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/d1YHiGdeet_g_QKMq9yaisXBrh0bqIT2FCxGcynrVTZ73Z7z4uqSsbD6viAvN2VY.Nfm5tzUERASw8Paq).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect03_GML_23092025.pdf).
 
 This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.
 
