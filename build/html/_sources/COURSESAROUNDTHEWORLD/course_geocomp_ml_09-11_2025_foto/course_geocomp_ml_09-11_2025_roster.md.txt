@@ -147,7 +147,11 @@ DePaul University, University of Illinois-Chicago - USA
 
 ---
 
-(17) **Katarina	Belobradova**
+(17) **Katarina	Belobradova - Slovakia**
+
+Constantine the Philosopher University, Slovakia
+
+![](17_katarina_belobradova.jpg)
 
 ---
 
@@ -188,7 +192,7 @@ National Research Council of Italy (CNR) - Bari - Italy
 
 ![](22_sofia_rossi.jpg)
 
-(23) **Francesco Ottaviani  - Italy**
+(23) **Francesco Ottaviani - Italy**
 
 ---
 
@@ -217,5 +221,13 @@ Landscape Research Institute/Masaryk University, Czech Republic
 Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ![](27_mara_remi.jpg) 
+
+---
+
+(28) **Quinn	Asena - USA**
+
+Cary Institute of Ecosystem Studies - USA
+
+![28](28_quinn_asena.jpg)
 
 ---
