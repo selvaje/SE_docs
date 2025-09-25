@@ -327,7 +327,9 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 ## Lecture 4: Thursday, 25 September, 2025.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://youtu.be/phm8PlXGzC4).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/nvjavof4XiYEoZNI0Wc8tLU1dfEnufOA5ufS4k-MLPryEQZ6TsAo9nNDDc4yCoLW.D3TqBiaurBFku9k9).  
+  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect04_GML_25092025.pdf)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
