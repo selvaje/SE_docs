@@ -49,6 +49,8 @@ Department of Earth and Geo-Environmental Science - University of Bari - Italy
 
 ![](04_rocco_fracchiolla.jpg)
 
+---
+
 (5) **Muhammad Faizan Aslam (Faizan) - Pakistan**
 
 University of Sassari, Italy
@@ -198,7 +200,11 @@ National Research Council of Italy (CNR) - Bari - Italy
 
 ---
 
-(24) **Fabio Blaso - Italy** 
+(24) **Fabio Blaso - Italy**
+
+Tetide APS [https://www.tetide.org](https://www.tetide.org)
+
+![](24_fabio_blaso.jpg)
 
 ---
 
