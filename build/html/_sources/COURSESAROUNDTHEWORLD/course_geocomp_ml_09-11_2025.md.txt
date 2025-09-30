@@ -219,8 +219,6 @@ You can perform:
 - table re-organization    
 - data filtering 
 
-<!---
-
 ---
 
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
@@ -233,8 +231,6 @@ You can perform:
 
 --- 
 
-
-
 #########Solution 1 #########*
 
     rm -f output1/*.txt
@@ -244,8 +240,6 @@ You can perform:
     awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }}}'  US_00090*.mon  | sort | uniq > output1/dates.txt
 
     # Creates a txt file with the list of all uniq station ID, longitude, latitude. 
-
-
 
     paste -d " " <(grep gsim.no   US_00090*.mon | awk '{print $4}') \
              <(grep longitude US_00090*.mon | awk '{print $4}') \
@@ -309,7 +303,7 @@ done
 
 From Issam Boukhris; it allows the closing of the file and can be run in the VM
 
-	sudo bash -c 'awk -F "," '\''{
+	bash -c 'awk -F "," '\''{
 	    if ($1 ~ "gsim.no") split($1, a, ":");
 	    station = a[2];
 	    if ($1 ~ "longitude") split($1, b, ":");
@@ -322,7 +316,7 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 	    }
 	}'\'' US_*'
 
---->
+
 
 ## Lecture 4: Thursday, 25 September, 2025.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
