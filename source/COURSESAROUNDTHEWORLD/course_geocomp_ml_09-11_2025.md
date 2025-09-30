@@ -253,9 +253,9 @@ You can perform:
     grep ^$DATE US_00090*.mon  | awk '{ gsub(":"," "); gsub(","," ");if($3!="NA"){print substr($1,1,10),$3}}' | sort -k 1,1 > output1/${DATE}_ID_mean.txt 
 
     join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  > output1/${DATE}_ID_x_y_mean.txt
-rm output1/${DATE}_ID_mean.txt 
-
-done 
+    rm output1/${DATE}_ID_mean.txt 
+    
+    done 
 
 --- 
 
@@ -284,6 +284,7 @@ done
     done
 
 ---
+
 #########Solution 3 #########
 
     rm -f output3/*.txt
@@ -315,8 +316,6 @@ From Issam Boukhris; it allows the closing of the file and can be run in the VM
 	        close("output1/"substr($1,1,7)".txt"); print echo substr($1,1,7)
 	    }
 	}'\'' US_*'
-
-
 
 ## Lecture 4: Thursday, 25 September, 2025.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).

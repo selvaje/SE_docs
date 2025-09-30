@@ -577,10 +577,11 @@ echo processing $DATE
 grep ^$DATE US_00090*.mon  | awk &#39;{ gsub(&quot;:&quot;,&quot; &quot;); gsub(&quot;,&quot;,&quot; &quot;);if($3!=&quot;NA&quot;){print substr($1,1,10),$3}}&#39; | sort -k 1,1 &gt; output1/${DATE}_ID_mean.txt 
 
 join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  &gt; output1/${DATE}_ID_x_y_mean.txt
+rm output1/${DATE}_ID_mean.txt 
+
+done 
 </pre></div>
 </div>
-<p>rm output1/${DATE}_ID_mean.txt</p>
-<p>done</p>
 <hr class="docutils" />
 <p>#########Solution 2 #########</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rm -f output2/*.txt 
