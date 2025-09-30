@@ -352,7 +352,9 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 ## Lecture 5: Tuesday, 30 September, 2025.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/aAPJ0y54bXjVR0imDohP4ZuYW3qyaI83U4xYURr3HeZh2Au5-RXbUJic-mpws9Yr.zGofGyLdK0CSEJWC).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Pj5fm1TxMVIMkUXAyviA_P6xrsGF8oIvQ5EKV8SWLzf2nBYv4nyz9wYzL37J21hT.GBe7JTOZQiHlHLBG).
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect05_GML_30092025.pdf)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
