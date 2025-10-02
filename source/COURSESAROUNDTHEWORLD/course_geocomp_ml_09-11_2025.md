@@ -388,7 +388,7 @@ Below, some suggestions of possible operations:
 ## Lecture 6: Thursday, 2 October, 2025.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://youtu.be/UmEkNCi7udQ).
+Recorded lecture can be found [here]().
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
@@ -444,19 +444,23 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Wavelet
 
 ## Lecture 8: Thursday, 9 October, 2025.
-### Case study presentation: Estimation of tree height (Giuseppe Amatulli)
+### Introduction to GRASS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/6ViUxhQ72Ugt5NUbniXLhRBLGnbuyd7X6gj0yXXVVHlcZMQ4P1cK_9HWcBlWqYmo.ZNsAf6AyZ1-nKshj). 
+Recorded lecture can be found [here]().
 
-* [Estimation of tree height using GEDI dataset](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html) - [Video recording from last year](https://youtu.be/x1AEagMyIe0?t=5220)
+   * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
+   * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
+		* GRASS GUI
+		* GRASS command structure
+		* GRASS working environment
+		* GRASS Location/Mapset
+		* GRASS scripting procedure in BASH
 
-**Compulsory assignments:**
-
-* [Random Forest](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html) (RF) (A.) - [Video recording from last year](https://youtu.be/DlxlqCXhY7I?t=4780)
-	* Random Forest basic concept
-	* Avoid random forest over-fitting
-	* Optimization of RF
-	* Prediction of RF model on raster tif
+   * [Start a new GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_newproject.html)
+		* Analize the dataset
+		* Create a LOCATION and MAPSET stored in a temporary folder 
+		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
+		* GRASS add-ons
 	
 ## Catch-up session 1: Tuesday, 14 October, 2025.
 
@@ -485,10 +489,11 @@ Recorded lecture can be found [here]().
 Recorded lecture can be found [here](). 
 
 * Brief introduction to Random Forest
+	* Random Forest basic concept
+	* Avoid random forest over-fitting
 * Exploring training data (GEDI dataset) and predictors
 * Running a model and exploring RF parameters
-* prediction on raster
-
+* Prediction of RF model on raster tif (Optimization of RF)
 
 ## Lecture 11: Tuesday, 28 October, 2025.
 ### Machine Learning Introduction, Support Vector Machine (Antonio Fonseca)
