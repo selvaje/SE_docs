@@ -498,7 +498,7 @@ Version: 3.4.0
 <div class="line">It provides a MATLAB-like interface and is widely used for generating plots such as line graphs, scatter plots, bar charts, and more.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## imports</span>
@@ -511,13 +511,13 @@ Version: 3.4.0
 <span class="n">y1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x1</span><span class="p">)</span>
 <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
-<span class="c1"># x3 = np.linspace(0, 10, 100)</span>
-<span class="c1"># y3 = np.tan(x3)</span>
+<span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x3</span><span class="p">)</span>
 <span class="c1"># Create a basic line plot</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;sin(x)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x2</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;cos(x)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<span class="c1"># plt.plot(x3, y3, label=&#39;tan(x)&#39;, color=&#39;green&#39;, linewidth=2)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;tan(x)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X Axis&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y Axis&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Basic Line Plot of sin(x)&#39;</span><span class="p">)</span>
@@ -550,14 +550,207 @@ Version: 3.4.0
 <div class="line">We can try plotting time/temperature diagram.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Read data</span>
 <span class="n">file_path</span> <span class="o">=</span> <span class="s2">&quot;files/Dati_Meteo_Giornalieri_Stazione _Matera.csv&quot;</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;,&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 
-<span class="c1">## Data preparation</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>DATA</th>
+      <th>TM</th>
+      <th>UM</th>
+      <th>VVM</th>
+      <th>PRE</th>
+      <th>RSM</th>
+      <th>PATM</th>
+      <th>QA PS PM</th>
+      <th>QA PG PM</th>
+      <th>ORA</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>03/12/2021</td>
+      <td>7,420</td>
+      <td>95,300</td>
+      <td>2,750</td>
+      <td>0,250</td>
+      <td>24,6</td>
+      <td>951</td>
+      <td>0,500</td>
+      <td>0,150</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>04/12/2021</td>
+      <td>9,490</td>
+      <td>72,600</td>
+      <td>3,590</td>
+      <td>0,000</td>
+      <td>35,9</td>
+      <td>957</td>
+      <td>0,530</td>
+      <td>0,000</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>05/12/2021</td>
+      <td>11,900</td>
+      <td>79,900</td>
+      <td>3,970</td>
+      <td>0,000</td>
+      <td>38,4</td>
+      <td>952</td>
+      <td>0,040</td>
+      <td>0,010</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>06/12/2021</td>
+      <td>7,400</td>
+      <td>85,800</td>
+      <td>2,120</td>
+      <td>0,000</td>
+      <td>185,0</td>
+      <td>947</td>
+      <td>0,000</td>
+      <td>0,000</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>07/12/2021</td>
+      <td>6,480</td>
+      <td>72,900</td>
+      <td>4,980</td>
+      <td>0,000</td>
+      <td>320,0</td>
+      <td>952</td>
+      <td>0,140</td>
+      <td>0,100</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>200</th>
+      <td>05/08/2022</td>
+      <td>33,500</td>
+      <td>21,200</td>
+      <td>1,670</td>
+      <td>0,000</td>
+      <td>794,0</td>
+      <td>960</td>
+      <td>1,020</td>
+      <td>0,900</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>201</th>
+      <td>06/08/2022</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>202</th>
+      <td>07/08/2022</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>203</th>
+      <td>08/08/2022</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>ND</td>
+      <td>12:00</td>
+    </tr>
+    <tr>
+      <th>204</th>
+      <td>10/08/2022</td>
+      <td>27,100</td>
+      <td>53,500</td>
+      <td>4,400</td>
+      <td>0,000</td>
+      <td>533,0</td>
+      <td>961,0</td>
+      <td>1,370</td>
+      <td>1,500</td>
+      <td>12:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>205 rows × 10 columns</p>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><br/><span></span><span class="c1">## Data preparation</span>
 <span class="c1"># Convert date column in dd/mm/yyyy format</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATA&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATA&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">/%m/%Y&#39;</span><span class="p">)</span>
 
@@ -570,8 +763,8 @@ Version: 3.4.0
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DATA&#39;</span><span class="p">],</span><span class="c1"># x axis</span>
          <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TM&#39;</span><span class="p">],</span> <span class="c1"># y axis</span>
          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="c1"># line color</span>
-         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="c1"># point marker</span>
-         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="c1"># line style</span>
+         <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="c1"># point marker</span>
+         <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="c1"># line style</span>
          <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="c1"># line size</span>
          <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span> <span class="c1"># visibility</span>
          <span class="p">)</span>
@@ -592,7 +785,7 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_15_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_15_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_16_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_16_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -625,7 +818,7 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_17_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_17_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_18_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_18_0.png" />
 </div>
 </div>
 <p>And a scatter plot of Matera Temperature vs Humidity.</p>
@@ -657,7 +850,7 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_19_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_19_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_20_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_20_0.png" />
 </div>
 </div>
 </section>
@@ -669,14 +862,14 @@ Version: 3.4.0
 <div class="line">We can represent a similar histogram of Matera Temperature distibution but enhanced with a trend curve obtained with a Kernel Density Estimation.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TM&#39;</span><span class="p">],</span> <span class="c1">#data</span>
-             <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="c1"># bins</span>
+             <span class="n">bins</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="c1"># bins</span>
              <span class="n">kde</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="c1"># Kernel Density Estimation</span>
              <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="c1"># bar edges color</span>
              <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span> <span class="c1"># bar color</span>
@@ -692,7 +885,7 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_21_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_21_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_22_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_22_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -727,7 +920,7 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_23_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_23_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_24_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_24_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -735,7 +928,7 @@ Version: 3.4.0
 <div class="line">For this example, we use some randomly generated temperature data for five Italian cities, to create a colored Heatmap with the average monthly temperatures.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate random climate data (average monthly temperatures in different cities)</span>
@@ -776,7 +969,40 @@ Version: 3.4.0
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_25_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_25_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_26_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_26_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">&quot;penguins&quot;</span><span class="p">)</span>
+
+<span class="n">g</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">JointGrid</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;body_mass_g&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;bill_depth_mm&quot;</span><span class="p">,</span> <span class="n">space</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_joint</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">kdeplot</span><span class="p">,</span>
+             <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clip</span><span class="o">=</span><span class="p">((</span><span class="mi">2200</span><span class="p">,</span> <span class="mi">6800</span><span class="p">),</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">)),</span>
+             <span class="n">thresh</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;rocket&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">plot_marginals</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">histplot</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;#03051A&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;seaborn.axisgrid.JointGrid at 0x7005e79e4220&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_27_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_27_1.png" />
 </div>
 </div>
 </section>
@@ -823,7 +1049,7 @@ Version: 3.4.0
 <div class="line">It has limited water penetration and doesn’t reflect well from live foliage with chlorophyll.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import necessary libraries</span>
@@ -930,7 +1156,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_29_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_29_1.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_31_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_31_1.png" />
 </div>
 </div>
 <p>Green band (band 03) gives an excellent contrast between clear and turbid (muddy) water, and penetrates clear water fairly well. It helps in highlighting oil on water surfaces, and vegetation. It reflects green light stronger than any other visible color. Man-made features are still visible.</p>
@@ -989,7 +1215,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_31_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_31_1.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_33_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_33_1.png" />
 </div>
 </div>
 <p>Blue Band (band 02) is useful for soil and vegetation discrimination, forest type mapping and identifying man-made features. It is scattered by the atmosphere, it illuminates material in shadows better than longer wavelengths, and it penetrates clear water better than other colors. It is absorbed by chlorophyll, which results in darker plants.</p>
@@ -1048,7 +1274,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_33_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_33_1.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_35_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_35_1.png" />
 </div>
 </div>
 <p>In the same way we can display the RGB multiband image</p>
@@ -1107,7 +1333,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_35_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_35_1.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_37_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_37_1.png" />
 </div>
 </div>
 <div class="line-block">
@@ -1117,7 +1343,7 @@ Dimensions: 1098 x 1098
 <div class="line">For this example instead of using a pre-existing shape we created it using <a class="reference external" href="https://www.keene.edu/campus/maps/tool/">Map Polygon-Polyline tool</a>, a crude but simple, practical and fast web tool. Therefore we will see in advance the <code class="docutils literal notranslate"><span class="pre">geopandas</span></code> tool in action along with the use of <code class="docutils literal notranslate"><span class="pre">geometry_mask</span></code> from <code class="docutils literal notranslate"><span class="pre">rasterio</span></code>.</div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
@@ -1150,7 +1376,7 @@ Dimensions: 1098 x 1098
 </div>
 <p>Now we can procede to cropping operation</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
@@ -1171,7 +1397,7 @@ Dimensions: 1098 x 1098
     <span class="n">bbox_geom</span> <span class="o">=</span> <span class="p">[</span><span class="n">bbox_gdf</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">unary_union</span><span class="p">]</span> <span class="c1">#return the union of multple geometries if any</span>
 
     <span class="c1"># Apply the crop using the mask</span>
-    <span class="n">cropped_image</span><span class="p">,</span> <span class="n">cropped_transform</span> <span class="o">=</span> <span class="n">mask</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">bbox_geom</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># if you want a white backgound in the print set &#39;, nodata=255&#39;</span>
+    <span class="n">cropped_image</span><span class="p">,</span> <span class="n">cropped_transform</span> <span class="o">=</span> <span class="n">mask</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">bbox_geom</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=</span><span class="mi">255</span><span class="p">)</span> <span class="c1"># if you want a white backgound in the print set &#39;, nodata=255&#39;</span>
 
     <span class="c1"># Update the metadata for the cropped image</span>
     <span class="n">cropped_meta</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1190,7 +1416,7 @@ Dimensions: 1098 x 1098
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Cropped area&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">moveaxis</span><span class="p">(</span><span class="n">cropped_image</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s2">&quot;off&quot;</span><span class="p">)</span>
+<span class="c1">#plt.axis(&quot;off&quot;)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1199,12 +1425,12 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_39_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_39_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_41_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_41_0.png" />
 </div>
 </div>
 <p>We can also visualize it in a more scientific/fancy way!</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">FancyArrow</span>
@@ -1244,7 +1470,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_41_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_41_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_43_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_43_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -1283,7 +1509,7 @@ Dimensions: 1098 x 1098
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_43_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_43_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_45_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_45_0.png" />
 </div>
 </div>
 </section>
@@ -1383,7 +1609,7 @@ Requirement already satisfied: numpy&gt;=1.24 in /home/user/.local/lib/python3.1
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_46_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_46_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_48_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_48_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -1458,7 +1684,7 @@ Requirement already satisfied: numpy&gt;=1.24 in /home/user/.local/lib/python3.1
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_48_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_48_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_50_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_50_0.png" />
 </div>
 </div>
 </section>
@@ -1556,7 +1782,7 @@ should be created.  Please delete existing dataset and run again.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_50_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_50_1.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_52_1.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_52_1.png" />
 </div>
 </div>
 <div class="line-block">
@@ -1598,7 +1824,7 @@ should be created.  Please delete existing dataset and run again.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_52_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_52_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_54_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_54_0.png" />
 </div>
 </div>
 </section>
@@ -2032,7 +2258,7 @@ Max Y: 4675194.8825
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_58_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_58_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_60_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_60_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -2192,7 +2418,7 @@ New shapefile saved as .gpkg in: files/confini_comunali_Salento/intersected_poly
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_62_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_62_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_64_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_64_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -2318,7 +2544,7 @@ NDVI average value computed.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_66_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_66_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_68_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_68_0.png" />
 </div>
 </div>
 <p>Now, using <code class="docutils literal notranslate"><span class="pre">Geopandas</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> we can transform a list of EPSG:32634 coordinates (they can be a possible in situ sampling points) into a GeoPackage points shapefile, to be used for further geospatial processing.</p>
@@ -2775,7 +3001,7 @@ GeoPackage with NDVI values has been saved successfully.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_75_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_75_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_77_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_77_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -2877,7 +3103,7 @@ GeoPackage with NDVI values has been saved successfully.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_79_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_79_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_81_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_81_0.png" />
 </div>
 </div>
 <div class="line-block">
@@ -2935,7 +3161,7 @@ GeoPackage with NDVI values has been saved successfully.
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_81_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_81_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_83_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_83_0.png" />
 </div>
 </div>
 <p>We can use this newly created buffer area to clip the NDVI raster.</p>
@@ -3042,7 +3268,7 @@ Cropping saved in  files/section_line_NDVI.tif
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_85_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_85_0.png" />
+<img alt="../_images/PYTHON_Python_geospatial_data_analysis_SM_87_0.png" src="../_images/PYTHON_Python_geospatial_data_analysis_SM_87_0.png" />
 </div>
 </div>
 </section>

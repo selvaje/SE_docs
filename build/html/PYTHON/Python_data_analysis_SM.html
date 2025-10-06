@@ -522,15 +522,33 @@ leveraging Python’s libraries, you can streamline tasks that would otherwise b
 <section id="Data-Retrieving">
 <h2>Data Retrieving<a class="headerlink" href="#Data-Retrieving" title="Link to this heading"></a></h2>
 <p>Before proceeding with the lesson, run this code to download to the virtual machine the files that will be used in these python lessons</p>
-<div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>gdown
 </pre></div>
 </div>
 </div>
-<div class="nbinput nblast docutils container">
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Defaulting to user installation because normal site-packages is not writeable
+Requirement already satisfied: gdown in /home/user/.local/lib/python3.10/site-packages (5.2.0)
+Requirement already satisfied: filelock in /home/user/.local/lib/python3.10/site-packages (from gdown) (3.18.0)
+Requirement already satisfied: beautifulsoup4 in /usr/lib/python3/dist-packages (from gdown) (4.10.0)
+Requirement already satisfied: tqdm in /usr/lib/python3/dist-packages (from gdown) (4.57.0)
+Requirement already satisfied: requests[socks] in /home/user/.local/lib/python3.10/site-packages (from gdown) (2.32.3)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (3.3)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (2.0.6)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (1.26.5)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (2020.6.20)
+Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /home/user/.local/lib/python3.10/site-packages (from requests[socks]-&gt;gdown) (1.7.1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
@@ -538,11 +556,42 @@ leveraging Python’s libraries, you can streamline tasks that would otherwise b
 <span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files
 <span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;https://drive.google.com/uc?export=download&amp;id=1J54Xpk-qHnz7yuIYSqOgVQy6_QpYhLVv&#39;</span>
 <span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip&#39;</span>
-<span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="o">!</span>unzip<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip<span class="w"> </span>-d<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files
 <span class="o">!</span>rm<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </pre></div>
 </div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/Dati_Meteo_Giornalieri_Stazione _Matera.csv
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/extraction_points.gpkg
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/extraction_points_NDVI.gpkg
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/MTD_DS.xml
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/FORMAT_CORRECTNESS.xml
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/GENERAL_QUALITY.xml
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/GEOMETRIC_QUALITY.xml
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/RADIOMETRIC_QUALITY.xml
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/SENSOR_QUALITY.xml
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/AUX_CAMSFO
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/AUX_ECMWFT
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/
+   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_AOT_10m.jp2
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_B02_10m.jp2
+  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_B03_10m.jp2
+</pre></div></div>
 </div>
 </section>
 <section id="4---Numpy-Basics">
@@ -563,7 +612,7 @@ leveraging Python’s libraries, you can streamline tasks that would otherwise b
 <div class="line">It’s commonly nicknamed <code class="docutils literal notranslate"><span class="pre">numpy</span> <span class="pre">as</span> <span class="pre">np</span></code></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Importing necessary libraries</span>
@@ -1029,7 +1078,7 @@ OR operator
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
 <span class="n">mask</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">,</span><span class="kc">False</span><span class="p">,</span><span class="kc">True</span><span class="p">])</span>
 
-<span class="n">arr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
+<span class="n">var</span><span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">mask</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2423,6 +2472,268 @@ Average temperatures by region and season:
 <div class="highlight"><pre>
 File saved successfully.
 </pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1">#dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">58</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Temp(°C)&#39;</span><span class="p">,</span> <span class="s1">&#39;Umid(%)&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dataframe:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">63</span><span class="p">])</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">dataframe after array appending as row:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dataframe:
+     ID  Temp(°C)  Umid(%)
+0   1        23       60
+1   2        22       58
+
+dataframe after array appending as row:
+     ID  Temp(°C)  Umid(%)
+0   1        23       60
+1   2        22       58
+2   3        28       63
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="c1">#dataframe</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">60</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">58</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;Temp(°C)&#39;</span><span class="p">,</span> <span class="s1">&#39;Umid(%)&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;dataframe:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+
+<span class="c1"># array</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prec(mm)&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">dataframe after array appending as column:</span><span class="se">\n</span><span class="s2"> &quot;</span><span class="p">,</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+dataframe:
+     ID  Temp(°C)  Umid(%)
+0   1        23       60
+1   2        22       58
+
+dataframe after array appending as column:
+     ID  Temp(°C)  Umid(%)  Prec(mm)
+0   1        23       60       0.0
+1   2        22       58       0.8
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mf">0.18</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Temp(T°C)&#39;</span><span class="p">,</span><span class="s1">&#39;Umid(%)&#39;</span><span class="p">,</span><span class="s1">&#39;Prec(mm)&#39;</span><span class="p">])</span>
+
+<span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;insert new values into the table.</span><span class="se">\n\</span>
+<span class="s2">use the format:</span><span class="se">\n\</span>
+<span class="s2">[station ID number,Temperature in °C,Umidity as %,Precipitation as mm]</span><span class="se">\n\</span>
+<span class="s2">with coma (&#39;,&#39;) as values separator:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">arr</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">user_input</span><span class="o">.</span><span class="n">split</span> <span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)])</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span> <span class="o">=</span> <span class="n">arr</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+insert new values into the table.
+use the format:
+[station ID number,Temperature in °C,Umidity as %,Precipitation as mm]
+with coma (&#39;,&#39;) as values separator:
+ 3,34,56,67
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Temp(T°C)</th>
+      <th>Umid(%)</th>
+      <th>Prec(mm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>25</td>
+      <td>38</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>26</td>
+      <td>37</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>34</td>
+      <td>56</td>
+      <td>67</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">38</span><span class="p">,</span><span class="mf">0.00</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mf">0.18</span><span class="p">]</span>
+<span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Temp(T°C)&#39;</span><span class="p">,</span><span class="s1">&#39;Umid(%)&#39;</span><span class="p">,</span><span class="s1">&#39;Prec(mm)&#39;</span><span class="p">])</span>
+
+<span class="n">label1</span> <span class="o">=</span> <span class="s1">&#39;station ID number&#39;</span>
+<span class="n">label2</span> <span class="o">=</span> <span class="s1">&#39;Temperature in °C&#39;</span>
+<span class="n">label3</span> <span class="o">=</span> <span class="s1">&#39;Umidity as %&#39;</span>
+<span class="n">label4</span> <span class="o">=</span> <span class="s1">&#39;Precipitation as mm&#39;</span>
+
+<span class="n">arr</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">val</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;enter </span><span class="si">{</span><span class="n">col</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="n">arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)]</span> <span class="o">=</span> <span class="n">arr</span>
+
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+enter ID: 3
+enter Temp(T°C): 45
+enter Umid(%): 34
+enter Prec(mm): 23
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>Temp(T°C)</th>
+      <th>Umid(%)</th>
+      <th>Prec(mm)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>25</td>
+      <td>38</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>26</td>
+      <td>37</td>
+      <td>0.18</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>45</td>
+      <td>34</td>
+      <td>23</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
 </div>
 </section>
 </section>

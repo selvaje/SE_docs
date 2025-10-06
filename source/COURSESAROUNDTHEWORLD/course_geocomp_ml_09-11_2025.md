@@ -412,9 +412,7 @@ Before the ... of April, ...., watch the "Manipulate Landsat data with GDAL and 
 * Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic. 
 
 
-## Lecture 7: Tuesday, 7 October, 2025.
-### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).
-
+### Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli) - Additional material
 
 [Video Recording of the lecture](https://youtu.be/GfmCRNMtFfs?si=OZEKNGNt3VB0elcV)
 
@@ -446,7 +444,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 		* Fourier Transform
 		* Wavelet
 
-## Lecture 8: Thursday, 9 October, 2025.
+## Lecture 7: Tuesday, 7 October, 2025.
 ### Introduction to GRASS (Giuseppe Amatulli)
 
 Recorded lecture can be found [here]().
@@ -464,7 +462,22 @@ Recorded lecture can be found [here]().
 		* Create a LOCATION and MAPSET stored in a temporary folder 
 		* Create a LOCATION and MAPSET stored in a folder that can be accessed later on.
 		* GRASS add-ons
-	
+
+## Lecture 8: Thursday, 9 October, 2025.
+### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+
+Recorded lecture can be found [here]().
+
+   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
+		* Flow direction algorithms
+		* Prepare GRASS for hydrography extraction 
+		* Inputs dataset
+		* First run: compute MFD flow accumulation for each tile
+		* Merge the flow accumulation tiles
+		* Second run: copute stream and basin using the seamless South America Flow Accumulation
+		* Final step: combine the tiled basins and streams
+
+
 ## Catch-up session 1: Tuesday, 14 October, 2025.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
@@ -477,10 +490,19 @@ Students will meet online with the teachers to review past material and solving 
 
 Recorded of the QA can be found [here](). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
+
+[Jump start into Python programming](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_data_analysis_SM.html)
+
+* Introduction to Python coding,
+* [Pandas](https://pandas.pydata.org/) and [Numpy](https://numpy.org/) libraries for data management and processing,
+
+
 ## Lecture 9: Tuesday, 21 October, 2025.
 ### Python libraries for geospatial data analysis (Saverio Mancino)
 
 Recorded lecture can be found [here]().
+
+[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.html)
 
 * Exploring Matplotlib and Seaborn for scientific plots
 * Exploring rasterio for raster processing and visualization
@@ -490,6 +512,8 @@ Recorded lecture can be found [here]().
 ### Machine Learning Introduction (Saverio Mancino)
 
 Recorded lecture can be found [here](). 
+
+[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred_SM.html)
 
 * Brief introduction to Random Forest
 	* Random Forest basic concept
