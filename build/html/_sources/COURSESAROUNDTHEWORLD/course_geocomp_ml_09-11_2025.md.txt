@@ -447,7 +447,10 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 7: Tuesday, 7 October, 2025.
 ### Introduction to GRASS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/egFSfwazHbFMqcv_3TG6XQjMcvilLBCCEkb0J3L-pdC4c0ZfBkMTd7SUqPHK3K_N.J5hT5mM2sskaI6tX)
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect0_GML_0102025.pdf)
+
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
    * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
