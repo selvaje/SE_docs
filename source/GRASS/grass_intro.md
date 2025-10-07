@@ -4,10 +4,12 @@ The object of this page is to start using GRASS and to get familiar with some ge
 
 We suggest to copy-paste the following command line directly in the bash terminal. 
 
-Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE_data/ we create a working copy of the SE_data:
+Considering that GRASS can not working properly under /home/osboxes/my_SE_data/ we create a working copy of the SE_data:
 
-    mkdir  -p   /home/user/my_SE_data/exercise
-    cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
+    
+    
+    mkdir -p /home/osboxes/my_SE_data/exercise
+    cp -r /home/osboxes/SE_data/exercise/grassdb /home/osboxes/my_SE_data/exercise
 
 ## GRASS
 **Starting GRASS**
@@ -24,19 +26,20 @@ Every GRASS project has a predefined data structure:
 
 There are several two ways to use and open GRASS: 
 
-**Start GRASS by GUI**
+**Start GRASS 8.3.2**
 
-    grass --gui
+    grass
 
-The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.
+By defoult GRASS 8.3.2 will start directly with  LOCATION_NAME=world_latlong_wgs84    
+MAPSET=PERMANENT
 
-**Start GRASS by command line**
+**Start GRASS by command line in a specific location/mapset **
 
-    grass --text /home/user/my_SE_data/exercise/grassdb/europe/PERMANENT/
+    grass --text /home/osboxes/my_SE_data/exercise/grassdb/europe/PERMANENT/
 
 Once you are running GRASS through the bash shell terminal you can always start the graphical user interface with:
 
-    g.gui wxpython &
+    g.gui
 
 **GRASS command structure**
 
@@ -55,7 +58,7 @@ The g.gisenv command informs you of your current GRASS environment settings
 
 If you started GRASS correctly you should visualize the following lines on your terminal
 
-GISDBASE=/home/user/my_SE_data/exercise/grassdb
+GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe  
 GRASS_GUI=wxpython  
 GUI=text  
@@ -83,7 +86,7 @@ command.
 
 It is a good working habit within GRASS to set bash shell working directory the same as your GRASS LOCATION folder.
 
-    cd /home/user/my_SE_data/exercise/grassdb
+    cd /home/osboxes/my_SE_data/exercise/grassdb
 
 On the terminal you will no longer see
 
@@ -111,7 +114,7 @@ GRASS europe/PCEM:grassdb >
 
     g.gisenv  
 
-GISDBASE=/home/user/my_SE_data/exercise/grassdb
+GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe
 MAPSET=PCEM
 GRASS_GUI=wxpython

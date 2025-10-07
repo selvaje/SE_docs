@@ -171,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred_SM.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
@@ -380,7 +380,7 @@ grass<span class="w">  </span>--text<span class="w"> </span>--tmp-location<span 
 <span class="s">r.slope.aspect elevation=SA_elevation slope=slope</span>
 <span class="s">r.info  map=slope</span>
 <span class="s"># export the &quot;grass slope&quot; to a geotif.</span>
-<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=/home/user/my_SE_data/exercise/grassdb/slope.tif</span>
+<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=/home/osboxes/my_SE_data/exercise/grassdb/slope.tif</span>
 <span class="s">EOF</span>
 </pre></div>
 </div>
@@ -537,7 +537,7 @@ double-precision floating-point (DCELL) wich can be converted in GDAL using Floa
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
-<span class="n">slope</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/home/user/my_SE_data/exercise/grassdb/slope.tif&quot;</span><span class="p">)</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/home/osboxes/my_SE_data/exercise/grassdb/slope.tif&quot;</span><span class="p">)</span>
 <span class="n">show</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -562,7 +562,7 @@ double-precision floating-point (DCELL) wich can be converted in GDAL using Floa
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/slope.tif
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/slope.tif
 </pre></div>
 </div>
 </div>
@@ -587,9 +587,9 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-rm<span class="w"> </span>-rf<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america
+rm<span class="w"> </span>-rf<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america
 
-grass<span class="w"> </span>-c<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w">  </span>-e<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america
+grass<span class="w"> </span>-c<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w">  </span>-e<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america
 </pre></div>
 </div>
 </div>
@@ -609,7 +609,7 @@ Cleaning up temporary files...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/
 </pre></div>
 </div>
 </div>
@@ -625,7 +625,7 @@ PERMANENT
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT
 <br/></pre></div>
 </div>
 </div>
@@ -652,12 +652,12 @@ drwxrwxr-x 2 user user 4096 May 20 10:32 sqlite
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 <span class="s">r.external input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif output=SA_elevation --o --q</span>
 <span class="s">g.list raster -p</span>
 <span class="s">r.info  map=SA_elevation</span>
 <span class="s">r.slope.aspect elevation=SA_elevation aspect=aspect --o</span>
-<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=aspect  output=/home/user/my_SE_data/exercise/grassdb/aspect.tif</span>
+<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=aspect  output=/home/osboxes/my_SE_data/exercise/grassdb/aspect.tif</span>
 <span class="s">EOF</span>
 </pre></div>
 </div>
@@ -752,7 +752,7 @@ Goodbye from GRASS GIS
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/aspect.tif
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/aspect.tif
 </pre></div>
 </div>
 </div>
@@ -774,8 +774,8 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.neighbors<span class="w"> </span><span class="nv">input</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">output</span><span class="o">=</span>SA_elevation_10c_max<span class="w"> </span><span class="nv">method</span><span class="o">=</span>maximum<span class="w"> </span>--o
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>SA_elevation_10c_max
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.neighbors<span class="w"> </span><span class="nv">input</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">output</span><span class="o">=</span>SA_elevation_10c_max<span class="w"> </span><span class="nv">method</span><span class="o">=</span>maximum<span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>SA_elevation_10c_max
 </pre></div>
 </div>
 </div>
@@ -841,7 +841,7 @@ Cleaning up temporary files...
 <section id="Installation">
 <h3>Installation<a class="headerlink" href="#Installation" title="Link to this heading"></a></h3>
 <p>Open a bash terminal and run</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/user
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/osboxes
 git clone https://github.com/OSGeo/grass-addons.git grass_addons
 </pre></div>
 </div>
@@ -862,13 +862,13 @@ git clone https://github.com/OSGeo/grass-addons.git grass_addons
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.mapcalc.tiled<span class="w">  </span><span class="nv">url</span><span class="o">=</span>/home/user/grass_addons/src/raster/r.mapcalc.tiled
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.slope.aspect<span class="w"> </span><span class="nv">elevation</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">slope</span><span class="o">=</span>slope<span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc.tiled<span class="w"> </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="m">5880</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="m">4200</span><span class="w">  </span><span class="nv">overlap</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc<span class="w">       </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span>--o
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>slope_msk
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.mapcalc.tiled<span class="w">  </span><span class="nv">url</span><span class="o">=</span>/home/osboxes/grass_addons/src/raster/r.mapcalc.tiled
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.slope.aspect<span class="w"> </span><span class="nv">elevation</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">slope</span><span class="o">=</span>slope<span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc.tiled<span class="w"> </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="m">5880</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="m">4200</span><span class="w">  </span><span class="nv">overlap</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc<span class="w">       </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>slope_msk
 <span class="c1"># export the &quot;grass slope_msk&quot; to a geotif</span>
-grass<span class="w">  </span>--text<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w"> </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w"> </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w"> </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w"> </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
 </pre></div>
 </div>
 </div>
@@ -961,7 +961,7 @@ Cleaning up temporary files...
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/slope_msk.tif
 </pre></div>
 </div>
 </div>

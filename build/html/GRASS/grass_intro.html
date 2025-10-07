@@ -162,7 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred_SM.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
@@ -243,9 +243,9 @@
 <h1>GRASS Introduction<a class="headerlink" href="#grass-introduction" title="Link to this heading"></a></h1>
 <p>The object of this page is to start using GRASS and to get familiar with some general GIS operations. We are going to use a command line approach. This is to enable carrying out stand-alone processes in the future, and understand step by step each function and the options per function which are available. Let´s start using GRASS.</p>
 <p>We suggest to copy-paste the following command line directly in the bash terminal.</p>
-<p>Considering that GRASS can not working properly under /media/sf_LVM_shared/my_SE_data/ we create a working copy of the SE_data:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir  -p   /home/user/my_SE_data/exercise
-cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
+<p>Considering that GRASS can not working properly under /home/osboxes/my_SE_data/ we create a working copy of the SE_data:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p /home/osboxes/my_SE_data/exercise
+cp -r /home/osboxes/SE_data/exercise/grassdb /home/osboxes/my_SE_data/exercise
 </pre></div>
 </div>
 <section id="grass">
@@ -260,17 +260,18 @@ cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
 </li>
 </ul>
 <p>There are several two ways to use and open GRASS:</p>
-<p><strong>Start GRASS by GUI</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>grass --gui
+<p><strong>Start GRASS 8.3.2</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>grass
 </pre></div>
 </div>
-<p>The Graphical User Interface GUI will ask you to define the GISDBASE, LOCATION and MAPSET to use. If you want you can select the Location wizard to create a new location with newest projection parameters or the Create mapset button to create a new mapset inside a pre-existing location.</p>
-<p><strong>Start GRASS by command line</strong></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>grass --text /home/user/my_SE_data/exercise/grassdb/europe/PERMANENT/
+<p>By defoult GRASS 8.3.2 will start directly with  LOCATION_NAME=world_latlong_wgs84<br />
+MAPSET=PERMANENT</p>
+<p>**Start GRASS by command line in a specific location/mapset **</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>grass --text /home/osboxes/my_SE_data/exercise/grassdb/europe/PERMANENT/
 </pre></div>
 </div>
 <p>Once you are running GRASS through the bash shell terminal you can always start the graphical user interface with:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>g.gui wxpython &amp;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>g.gui
 </pre></div>
 </div>
 <p><strong>GRASS command structure</strong></p>
@@ -285,7 +286,7 @@ cp -r /home/user/SE_data/exercise/grassdb  /home/user/my_SE_data/exercise
 </pre></div>
 </div>
 <p>If you started GRASS correctly you should visualize the following lines on your terminal</p>
-<p>GISDBASE=/home/user/my_SE_data/exercise/grassdb
+<p>GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe<br />
 GRASS_GUI=wxpython<br />
 GUI=text<br />
@@ -308,7 +309,7 @@ GRASS europe/PERMANENT:exercise &gt;</p>
 </div>
 <p>command.</p>
 <p>It is a good working habit within GRASS to set bash shell working directory the same as your GRASS LOCATION folder.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/user/my_SE_data/exercise/grassdb
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/osboxes/my_SE_data/exercise/grassdb
 </pre></div>
 </div>
 <p>On the terminal you will no longer see</p>
@@ -329,7 +330,7 @@ g.gisenv
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>g.gisenv  
 </pre></div>
 </div>
-<p>GISDBASE=/home/user/my_SE_data/exercise/grassdb
+<p>GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe
 MAPSET=PCEM
 GRASS_GUI=wxpython
