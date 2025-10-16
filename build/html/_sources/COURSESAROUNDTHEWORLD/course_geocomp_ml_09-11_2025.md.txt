@@ -473,7 +473,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/bg0n7UxVZYAr
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro_osboxes.html)
 		* Flow direction algorithms
-		* Prepare GRASS for hydrography extraction 
+		* Prepare GRASS for hydrography extraction
 		* Inputs dataset
 		* First run: compute MFD flow accumulation for each tile
 		* Merge the flow accumulation tiles
@@ -485,7 +485,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/bg0n7UxVZYAr
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/P1IeV13OzUDu23_gmH1czlsSKhCiZziw1RZRZKU6heZvdV2PCZGpzq4B__j-a-dG.2lx2kQImne3jIaK5). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
 ## Catch-up session 2: Thursday 16 October, 2025.
 
