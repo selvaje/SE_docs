@@ -133,7 +133,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#2---GitHub-and-Code-Repository-Versioning-Systems">2 - GitHub and Code Repository Versioning Systems</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#GitHub-and-Code-Repository-Versioning-Systems">GitHub and Code Repository Versioning Systems</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#What-is-Version-Control?">What is Version Control?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Git-and-Its-Ecosystem">Git and Its Ecosystem</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#GitHub">GitHub</a></li>
@@ -147,7 +147,11 @@
 <li class="toctree-l3"><a class="reference internal" href="#What-You-Will-Learn">What You Will Learn</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#Data-Retrieving">Data Retrieving</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Retrieving">Data Retrieving</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#OSGEOLIVE16-proceding">OSGEOLIVE16 proceding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#UBUNTU24-proceding">UBUNTU24 proceding</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#4---Numpy-Basics">4 - Numpy Basics</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#Arrays">Arrays</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#Arrays-in-Python">Arrays in Python</a></li>
@@ -186,6 +190,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_osboxes.html">Using GRASS for stream-network extraction and basins delineation - osboxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
@@ -216,7 +221,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred_SM.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
@@ -420,8 +425,8 @@ Use files.upload() from google.colab to upload datasets.</p></li>
 </section>
 </section>
 </section>
-<section id="2---GitHub-and-Code-Repository-Versioning-Systems">
-<h2>2 - GitHub and Code Repository Versioning Systems<a class="headerlink" href="#2---GitHub-and-Code-Repository-Versioning-Systems" title="Link to this heading"></a></h2>
+<section id="GitHub-and-Code-Repository-Versioning-Systems">
+<h2>GitHub and Code Repository Versioning Systems<a class="headerlink" href="#GitHub-and-Code-Repository-Versioning-Systems" title="Link to this heading"></a></h2>
 <p>In modern software development and data science projects, version control systems are essential for maintaining code integrity, tracking changes, and enabling collaboration. This subchapter provides an overview of GitHub, along with other code repository and versioning systems commonly used in the field.</p>
 <section id="What-is-Version-Control?">
 <h3>What is Version Control?<a class="headerlink" href="#What-is-Version-Control?" title="Link to this heading"></a></h3>
@@ -434,21 +439,20 @@ Use files.upload() from google.colab to upload datasets.</p></li>
 </section>
 <section id="Git-and-Its-Ecosystem">
 <h3>Git and Its Ecosystem<a class="headerlink" href="#Git-and-Its-Ecosystem" title="Link to this heading"></a></h3>
-<ul class="simple">
-<li><p><strong>Git:</strong>
-Git is a distributed version control system that lets every developer maintain a complete local copy of the project history. Its branching and merging features facilitate experimentation and efficient collaboration.</p></li>
-<li><p><strong>Repositories:</strong>
-A repository (or repo) is the storage space for your project’s files along with their version history. Repositories can be local (on your machine) or hosted remotely.</p></li>
-</ul>
+<div class="line-block">
+<div class="line"><strong>Git:</strong> Git is a distributed version control system that lets every developer maintain a complete local copy of the project history. Its branching and merging features facilitate experimentation and efficient collaboration. <strong>Repositories:</strong></div>
+<div class="line">A repository (or repo) is the storage space for your project’s files along with their version history. Repositories can be local (on your machine) or hosted remotely.</div>
+</div>
 </section>
 <section id="GitHub">
 <h3>GitHub<a class="headerlink" href="#GitHub" title="Link to this heading"></a></h3>
 <p><img alt="GitHub" src="https://pngimg.com/uploads/github/github_PNG23.png" /></p>
+<div class="line-block">
+<div class="line"><strong>What is GitHub?</strong></div>
+<div class="line"><a class="reference external" href="https://github.com/">GitHub</a> is a web-based platform built around Git. It provides an intuitive interface for hosting, managing, and collaborating on Git repositories.</div>
+</div>
 <ul class="simple">
-<li><p><strong>What is GitHub?</strong>
-<a class="reference external" href="https://github.com/">GitHub</a> is a web-based platform built around Git. It provides an intuitive interface for hosting, managing, and collaborating on Git repositories.</p></li>
-<li><p><strong>Key Features:</strong></p>
-<ul>
+<li><p><strong>Key Features:</strong></p></li>
 <li><p><strong>Pull Requests:</strong>
 Enable developers to propose changes, review code collaboratively, and merge updates into the main project after thorough discussion.</p></li>
 <li><p><strong>Issue Tracking &amp; Project Management:</strong>
@@ -457,8 +461,6 @@ Built-in tools to manage bugs, track feature requests, and plan project workflow
 Integration with CI/CD tools automates testing and deployment, ensuring that code changes meet quality standards before they are merged.</p></li>
 <li><p><strong>Community &amp; Open Source:</strong>
 GitHub hosts millions of open-source projects, making it a vibrant community for sharing and contributing to software development.</p></li>
-</ul>
-</li>
 </ul>
 <p>There are many other popular platforms like GitLab, Bitbucket etc., wich offers similar functionalities to GitHub with a different emphasis on other features.</p>
 </section>
@@ -521,78 +523,45 @@ leveraging Python’s libraries, you can streamline tasks that would otherwise b
 </section>
 <section id="Data-Retrieving">
 <h2>Data Retrieving<a class="headerlink" href="#Data-Retrieving" title="Link to this heading"></a></h2>
-<p>Before proceeding with the lesson, run this code to download to the virtual machine the files that will be used in these python lessons</p>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<p>Before proceeding with the lesson, run this code to download to the virtual machine the files that will be used in these python lessons.</p>
+<section id="OSGEOLIVE16-proceding">
+<h3>OSGEOLIVE16 proceding<a class="headerlink" href="#OSGEOLIVE16-proceding" title="Link to this heading"></a></h3>
+<p>If you’re working on osgeolive16 you can procede with the installation of gdown, to directly download from a google drive repo:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip install gdown
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>gdown
+<p>then procede to move and extract files from the downloaded <em>files.zip</em>, after that removing the archive:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import gdown
+!mkdir -p /media/sf_LVM_shared/my_SE_data/exercise/files
+file_url = &#39;https://drive.google.com/uc?export=download&amp;id=1J54Xpk-qHnz7yuIYSqOgVQy6_QpYhLVv&#39;
+output_path = &#39;/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip&#39;
+gdown.download(file_url, output_path, quiet=True)
+!unzip /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip -d /media/sf_LVM_shared/my_SE_data/exercise/files
+!rm /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </pre></div>
 </div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Defaulting to user installation because normal site-packages is not writeable
-Requirement already satisfied: gdown in /home/user/.local/lib/python3.10/site-packages (5.2.0)
-Requirement already satisfied: filelock in /home/user/.local/lib/python3.10/site-packages (from gdown) (3.18.0)
-Requirement already satisfied: beautifulsoup4 in /usr/lib/python3/dist-packages (from gdown) (4.10.0)
-Requirement already satisfied: tqdm in /usr/lib/python3/dist-packages (from gdown) (4.57.0)
-Requirement already satisfied: requests[socks] in /home/user/.local/lib/python3.10/site-packages (from gdown) (2.32.3)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (3.3)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (2.0.6)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (1.26.5)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/lib/python3/dist-packages (from requests[socks]-&gt;gdown) (2020.6.20)
-Requirement already satisfied: PySocks!=1.5.7,&gt;=1.5.6 in /home/user/.local/lib/python3.10/site-packages (from requests[socks]-&gt;gdown) (1.7.1)
-</pre></div></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+<p>all files will be available in:</p>
+<p><em>/media/sf_LVM_shared/my_SE_data/exercise/files</em></p>
+</section>
+<section id="UBUNTU24-proceding">
+<h3>UBUNTU24 proceding<a class="headerlink" href="#UBUNTU24-proceding" title="Link to this heading"></a></h3>
+<p>If you’re working on Ubuntu 24.04 you can procede directly with:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!mkdir -p /media/sf_LVM_shared/my_SE_data/exercise/files
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">gdown</span>
-<span class="o">!</span>mkdir<span class="w"> </span>-p<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files
-<span class="n">file_url</span> <span class="o">=</span> <span class="s1">&#39;https://drive.google.com/uc?export=download&amp;id=1J54Xpk-qHnz7yuIYSqOgVQy6_QpYhLVv&#39;</span>
-<span class="n">output_path</span> <span class="o">=</span> <span class="s1">&#39;/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip&#39;</span>
-<span class="n">gdown</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">file_url</span><span class="p">,</span> <span class="n">output_path</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="o">!</span>unzip<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip<span class="w"> </span>-d<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files
-<span class="o">!</span>rm<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
+<p>then download manually your files from:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>https://drive.google.com/uc?export=download&amp;id=1J54Xpk-qHnz7yuIYSqOgVQy6_QpYhLVv
 </pre></div>
 </div>
+<p>then procede to move and extract files from the downloaded <em>files.zip</em>, after that removing the archive:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!mv /home/osboxes/Downloads/files.zip /media/sf_LVM_shared/my_SE_data/exercise/files/
+!unzip /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip -d /media/sf_LVM_shared/my_SE_data/exercise/files
+!rm /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
+</pre></div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/Dati_Meteo_Giornalieri_Stazione _Matera.csv
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/extraction_points.gpkg
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/extraction_points_NDVI.gpkg
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/MTD_DS.xml
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/FORMAT_CORRECTNESS.xml
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/GENERAL_QUALITY.xml
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/GEOMETRIC_QUALITY.xml
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/RADIOMETRIC_QUALITY.xml
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/DATASTRIP/DS_2BPS_20250309T120119_S20250309T094257/QI_DATA/SENSOR_QUALITY.xml
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/AUX_CAMSFO
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/AUX_DATA/AUX_ECMWFT
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/
-   creating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_AOT_10m.jp2
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_B02_10m.jp2
-  inflating: /media/sf_LVM_shared/my_SE_data/exercise/files/S2B_MSIL2A_20250309T094039_N0511_R036_T34TBK_20250309T120119.SAFE/GRANULE/L2A_T34TBK_A041818_20250309T094257/IMG_DATA/R10m/T34TBK_20250309T094039_B03_10m.jp2
-</pre></div></div>
-</div>
+<p>all files will be available in:</p>
+<p><em>/media/sf_LVM_shared/my_SE_data/exercise/files</em></p>
+</section>
 </section>
 <section id="4---Numpy-Basics">
 <h2>4 - Numpy Basics<a class="headerlink" href="#4---Numpy-Basics" title="Link to this heading"></a></h2>
@@ -624,7 +593,7 @@ Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </div>
 <p>If <code class="docutils literal notranslate"><span class="pre">numpy</span></code> import doesn’t work properly the following bash lines should be run</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip show numpy pandas | grep Version:</span>
@@ -632,7 +601,7 @@ Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip uninstall -y numpy</span>
@@ -640,7 +609,7 @@ Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install numpy==1.23.0</span>
@@ -674,7 +643,7 @@ Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 <div class="line">For instance thats and example of a 1D array.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
@@ -682,7 +651,7 @@ Archive:  /media/sf_LVM_shared/my_SE_data/exercise/files/file.zip
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -695,7 +664,7 @@ array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 <div class="line">For example, with the previous add operation:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
@@ -706,7 +675,7 @@ array([1, 2, 3, 4, 5, 6, 7, 8, 9])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -716,7 +685,7 @@ array([ 4,  6,  8, 10])
 </div>
 <p>We can also add arrays using the following convenient notation:</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span> <span class="o">+</span> <span class="n">arr2</span>
@@ -724,7 +693,7 @@ array([ 4,  6,  8, 10])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -738,7 +707,7 @@ array([ 4,  6,  8, 10])
 <div class="line">Let’s see what this means:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
@@ -766,7 +735,7 @@ array([ 4,  6,  8, 10])
 <div class="line">For example, to select the last 2 elements in an array we can do:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">])</span>
@@ -776,7 +745,7 @@ array([ 4,  6,  8, 10])
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -789,7 +758,7 @@ array([14, 15])
 <div class="line">For example:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># We can create a Numpy array</span>
@@ -825,7 +794,7 @@ Slice (indexes 1 to 3): [2 3 4]
 <p><img alt="NumpyArray" src="https://cdn.prod.website-files.com/660aa0984e7024f991719a87/66391b0bb93058949b6d2027_arrrays-for-numpy.png" /></p>
 <p>Now we declare a 2D array with shape (1, 9). In this case, the nested (double) square brackets <code class="docutils literal notranslate"><span class="pre">[[</span> <span class="pre">]]</span></code> indicates the array is 2-dimensional.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]])</span>
@@ -833,7 +802,7 @@ Slice (indexes 1 to 3): [2 3 4]
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -843,7 +812,7 @@ array([[1, 2, 3, 4, 5, 6, 7, 8, 9]])
 </div>
 <p>To visualise the shape (dimensions) of a numpy array we can add the suffix <code class="docutils literal notranslate"><span class="pre">.shape</span></code> to an array expression or variable containing a numpy array.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span> <span class="c1"># 1D array</span>
@@ -940,7 +909,7 @@ arr1 shape: (9,) arr2 shape: (1, 9) arr3 shape: (9, 1) arr4 shape: (3,)
 </table>
 <p>We can look up the type of an array by using the <code class="docutils literal notranslate"><span class="pre">.dtype</span></code> suffix.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
@@ -975,7 +944,7 @@ weight: 0.98 kB
 <div class="line">For example:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span> <span class="c1"># declaring a 1D bool array</span>
@@ -1011,7 +980,7 @@ array type:  bool
 <p><em>Note: Here the ``*`` and ``+`` symbols are not performing multiplication and addition as with numerical arrays.
 Numpy detects the type of the arrays involved in the operation and changes the behaviour of these operators.</em></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
@@ -1048,7 +1017,7 @@ OR operator
 <div class="line">For example, if we want to know which values in an array are equal to 1, and the values that are greater than 2 we can do:</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
@@ -1071,8 +1040,8 @@ OR operator
 <div class="line">You can use a boolean array to mask out <code class="docutils literal notranslate"><span class="pre">False</span></code> values from a numeric array.</div>
 <div class="line">The returned array only contains the numeric values which are at the same index as <code class="docutils literal notranslate"><span class="pre">True</span></code> values in the <code class="docutils literal notranslate"><span class="pre">mask</span></code> array.</div>
 </div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">])</span>
@@ -1082,22 +1051,13 @@ OR operator
 </pre></div>
 </div>
 </div>
-<div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
-</pre></div>
-</div>
-<div class="output_area docutils container">
-<div class="highlight"><pre>
-array([1, 3, 5, 7, 9])
-</pre></div></div>
-</div>
 <div class="line-block">
 <div class="line"><strong>Broadcasting</strong></div>
 <div class="line">Broadcasting allows arithmetic operations between arrays of different shapes.</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">NumPy</span></code> automatically ‘stretches’ the smaller array across the larger one so that their shapes become compatible for element-wise operations. This becomes widely useful in data pre-processing and in pixel-wise filtering procedures.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example: Broadcasting</span>
@@ -1152,7 +1112,7 @@ Broadcasting subtraction:
 </div>
 <p><img alt="DotProduct" src="https://media5.datahacker.rs/2020/04/Picture27-768x290.jpg" /></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Section 4: Scalar and Matrix Products</span>
@@ -1184,7 +1144,7 @@ Dot product: 38
 <p>While, to perform a matrix multiplications we can use the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> operator as a shorthand for <code class="docutils literal notranslate"><span class="pre">np.matmul</span></code>.</p>
 <p><img alt="MatrixMultiplication" src="https://blogger.googleusercontent.com/img/a/AVvXsEhqL_pTxng4wM4XcKzWFLoa5lT77ywOBsyFOECofI75iYcaW67hLbc_O-3LgynWoZAQqXF3TVobh5zrREYyaiVr-gEv_WIAsbJetwZjAXgemdYB_F1EFWBnkYPJhFsZjy-PyPXCL5aHEPK6-Ve1SoG6uEZ7YAOi6ejk6H7BjLwmrzKfsqq4jP717pwX=s16000" /></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Matrix multiplication using the @ operator</span>
@@ -1224,7 +1184,7 @@ Matrix product:
 <div class="line">Let’s start by creating a sample data with some missing values ( <code class="docutils literal notranslate"><span class="pre">np.nan</span></code>) and potential outliers.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create sample data</span>
@@ -1250,7 +1210,7 @@ Original Data:
 <div class="line">For missing data identification we can use <code class="docutils literal notranslate"><span class="pre">np.isnan</span></code>, crucial for understanding the extent and location of missing data before applying any cleaning techniques.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Identifying missing values (Binary NaN mask)</span>
@@ -1283,7 +1243,7 @@ Number of missing values:2
 <li><p>using <code class="docutils literal notranslate"><span class="pre">np.where</span></code> along with <code class="docutils literal notranslate"><span class="pre">np.nanmean</span></code> to replace missing values with the mean of the non-missing data.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replacing np.nan with &quot;0&quot; using np.nan_to_num</span>
@@ -1323,7 +1283,7 @@ Data after replacing missing values with the mean:
 <div class="line">For example, we define a threshold and remove data points that exceed this value.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Definition of an outlier threshold (e.g., values &gt;= 20 are considered outliers)</span>
@@ -1348,7 +1308,7 @@ Data after filtering out outliers (values &gt;= 20):
 <div class="line">For this tasks we can use <code class="docutils literal notranslate"><span class="pre">np.sort</span></code> to order the data and <code class="docutils literal notranslate"><span class="pre">np.unique</span></code> to find distinct values; along with the calculation of the basic aggregate statistics like the sum (<code class="docutils literal notranslate"><span class="pre">np.sum</span></code>) and mean (<code class="docutils literal notranslate"><span class="pre">np.mean</span></code>) of the cleaned data.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Sort the data after filling missing values</span>
@@ -1390,7 +1350,7 @@ Std: 0.81
 <div class="line">One approach consist in using <code class="docutils literal notranslate"><span class="pre">np.where</span></code> for conditional data transformations with <code class="docutils literal notranslate"><span class="pre">np.clip</span></code> to limit the values within a specified range, which is often useful for handling extreme values.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conditional processing example: data gain by multiply values &gt; than 3 by 100</span>
@@ -1409,7 +1369,7 @@ Std: 0.81
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-Data after conditional processing (values &lt; 3 multiplied by 10):
+Data after conditional processing (values &lt; 3 multiplied by 100):
 [  1.    1.5   1.8   1.9   1.9   2.    2.1   2.2   2.2   2.3   2.5   2.9
  310.  350.  420.  380.    2.7]
 Data after clipping values to the range 0-3:
@@ -1447,7 +1407,7 @@ Data after clipping values to the range 0-3:
 <div class="line">Pandas also offers a variety of tools for exploring data, such as <code class="docutils literal notranslate"><span class="pre">head()</span></code>, <code class="docutils literal notranslate"><span class="pre">tail()</span></code>, and <code class="docutils literal notranslate"><span class="pre">info()</span></code>, which help understand the dataset quickly.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a Pandas Series</span>
@@ -1472,7 +1432,7 @@ dtype: object
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Same Pandas series seen with the enhanced Pandas data visualizzation:&quot;</span><span class="p">)</span>
@@ -1489,7 +1449,7 @@ Same Pandas series seen with the enhanced Pandas data visualizzation:
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
 </pre></div>
 </div>
 <div class="output_area docutils container">
@@ -1512,7 +1472,7 @@ dtype: object
 <div class="line">In this way we can point out specific data or outliers by type or other conditions.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic exploration and analysis of the Pd series</span>
@@ -1583,7 +1543,7 @@ dtype: object
 </ul>
 <p>It offers a variety of tools for exploring data, such as <code class="docutils literal notranslate"><span class="pre">.head()</span></code>, <code class="docutils literal notranslate"><span class="pre">.tail()</span></code>,<code class="docutils literal notranslate"><span class="pre">.sort_index</span></code>, <code class="docutils literal notranslate"><span class="pre">.sort_value</span></code> and <code class="docutils literal notranslate"><span class="pre">.info()</span></code>, which help understand the dataset quickly.”</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a DataFrame and Basic Exploration</span>
@@ -1616,7 +1576,7 @@ Pandas dataframe:
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Same Pandas dataframe seen with the enhanced Pandas data visualizzation:&quot;</span><span class="p">)</span>
@@ -1633,7 +1593,7 @@ Same Pandas dataframe seen with the enhanced Pandas data visualizzation:
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -1702,7 +1662,7 @@ Same Pandas dataframe seen with the enhanced Pandas data visualizzation:
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic exploration and analysis of the Pd Dataframe</span>
@@ -1740,7 +1700,7 @@ Data columns (total 3 columns):
  1   AverageTemp (T°C)   6 non-null      float64
  2   AverageUmidity (%)  6 non-null      int64
 dtypes: float64(1), int64(1), object(1)
-memory usage: 272.0+ bytes
+memory usage: 276.0+ bytes
 None
 
 DataFrame Head:
@@ -1789,7 +1749,7 @@ DataFrame sorted by descending indexes:
 <li><p>performing basic arithmetic operations.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Adding a new column to the DataFrame</span>
@@ -1836,7 +1796,7 @@ DataFrame with renamed column:
 <li><p><code class="docutils literal notranslate"><span class="pre">.str.title()</span></code> and <code class="docutils literal notranslate"><span class="pre">.astype()</span></code> for data standardizaion.</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a DataFrame with missing values and inconsistent strings</span>
@@ -1910,7 +1870,7 @@ Cleaned and Standardized DataFrame:
 <div class="line">In this section, we’ll see the data importing from a CSV file using <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> and perform basic manipulations on it.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data retrieved from https://www.dati.gov.it/view-dataset/dataset?id=9bacb31d-1b49-4841-b87e-8a442e133aa8</span>
@@ -1957,7 +1917,7 @@ Legend:
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2145,7 +2105,7 @@ Legend:
 <div class="line">We can start exploring it with <code class="docutils literal notranslate"><span class="pre">.describe()</span></code>.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Basic Data Exploration and Summary Statistics</span>
@@ -2173,7 +2133,7 @@ freq             1   15   15   15    185   15   15       15       50    204
 <div class="line">(like in in this case, where comas were used as digital separator) and then <code class="docutils literal notranslate"><span class="pre">.replace()</span></code> for replacing that with a functional one.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;PRE column before any cleaning:</span><span class="se">\n</span><span class="si">{</span><span class="n">df_imported</span><span class="p">[</span><span class="s1">&#39;PRE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tail</span><span class="p">()</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -2249,7 +2209,7 @@ Name: TM, dtype: float64
 </div>
 <p>Then we use functions like <code class="docutils literal notranslate"><span class="pre">describe()</span></code>, <code class="docutils literal notranslate"><span class="pre">max()</span></code>, <code class="docutils literal notranslate"><span class="pre">min()</span></code>, <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">median()</span></code> to obtain summary statistics and gain insights into the data.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Summary statistics on the cleaned columns</span>
@@ -2299,7 +2259,7 @@ Median Temperature : 16.96 °C
 </div>
 <p>We can use functions like <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code> an <code class="docutils literal notranslate"><span class="pre">.groupby()</span></code> to get some deep specific statistics between different values present in the DataFrame.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Checking the number of events that exceeded 1 mm of Precipitation</span>
@@ -2327,9 +2287,10 @@ Median Temperature : 16.96 °C
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 Number of Precipitation events that exceede 1mm :
+PRE
 False    204
 True       1
-Name: PRE, dtype: int64
+Name: count, dtype: int64
 
 Total rain mm for days having T&lt;5°C:
 (T°C)   (mm)
@@ -2351,7 +2312,7 @@ Name: PRE, dtype: float64
 <div class="line">In Pandas, the <code class="docutils literal notranslate"><span class="pre">.pivot_table()</span></code> function is used to create spreadsheet-like pivot tables.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a climatic DataFrame as example</span>
@@ -2384,7 +2345,7 @@ Average temperatures by region and season:
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2422,24 +2383,24 @@ Average temperatures by region and season:
   <tbody>
     <tr>
       <th>Basilicata</th>
-      <td>16</td>
-      <td>25</td>
-      <td>5</td>
-      <td>12</td>
+      <td>16.0</td>
+      <td>25.0</td>
+      <td>5.0</td>
+      <td>12.0</td>
     </tr>
     <tr>
       <th>Molise</th>
-      <td>14</td>
-      <td>24</td>
-      <td>3</td>
-      <td>10</td>
+      <td>14.0</td>
+      <td>24.0</td>
+      <td>3.0</td>
+      <td>10.0</td>
     </tr>
     <tr>
       <th>Puglia</th>
-      <td>18</td>
-      <td>27</td>
-      <td>8</td>
-      <td>15</td>
+      <td>18.0</td>
+      <td>27.0</td>
+      <td>8.0</td>
+      <td>15.0</td>
     </tr>
   </tbody>
 </table>
@@ -2450,7 +2411,7 @@ Average temperatures by region and season:
 <div class="line">Pandas provides the <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> function, which allows you to export a <strong>DataFrame</strong> to a CSV file.</div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save DataFrame to CSV</span>
@@ -2474,7 +2435,7 @@ File saved successfully.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2514,7 +2475,7 @@ dataframe after array appending as row:
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2553,7 +2514,7 @@ dataframe after array appending as column:
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2563,6 +2524,7 @@ dataframe after array appending as column:
     <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">26</span><span class="p">,</span><span class="mi">37</span><span class="p">,</span><span class="mf">0.18</span><span class="p">]</span>
 <span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">,</span><span class="s1">&#39;Temp(T°C)&#39;</span><span class="p">,</span><span class="s1">&#39;Umid(%)&#39;</span><span class="p">,</span><span class="s1">&#39;Prec(mm)&#39;</span><span class="p">])</span>
 
+<span class="c1">##manual user input into the dataframe</span>
 <span class="n">user_input</span> <span class="o">=</span> <span class="nb">input</span> <span class="p">(</span><span class="s2">&quot;insert new values into the table.</span><span class="se">\n\</span>
 <span class="s2">use the format:</span><span class="se">\n\</span>
 <span class="s2">[station ID number,Temperature in °C,Umidity as %,Precipitation as mm]</span><span class="se">\n\</span>
@@ -2584,11 +2546,11 @@ insert new values into the table.
 use the format:
 [station ID number,Temperature in °C,Umidity as %,Precipitation as mm]
 with coma (&#39;,&#39;) as values separator:
- 3,34,56,67
+ 3, 40, 50, 0.20
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2634,16 +2596,16 @@ with coma (&#39;,&#39;) as values separator:
     <tr>
       <th>2</th>
       <td>3</td>
-      <td>34</td>
-      <td>56</td>
-      <td>67</td>
+      <td>40</td>
+      <td>50</td>
+      <td>0.20</td>
     </tr>
   </tbody>
 </table>
 </div></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -2674,14 +2636,14 @@ with coma (&#39;,&#39;) as values separator:
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-enter ID: 3
-enter Temp(T°C): 45
-enter Umid(%): 34
-enter Prec(mm): 23
+enter ID: 1
+enter Temp(T°C): 23
+enter Umid(%): 60
+enter Prec(mm): 0.00
 </pre></div></div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
 </pre></div>
 </div>
 <div class="output_area rendered_html docutils container">
@@ -2726,10 +2688,10 @@ enter Prec(mm): 23
     </tr>
     <tr>
       <th>2</th>
-      <td>3</td>
-      <td>45</td>
-      <td>34</td>
+      <td>1</td>
       <td>23</td>
+      <td>60</td>
+      <td>0.00</td>
     </tr>
   </tbody>
 </table>
