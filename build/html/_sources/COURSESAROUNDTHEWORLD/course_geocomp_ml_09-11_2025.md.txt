@@ -491,10 +491,12 @@ Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/P1IeV13OzU
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found [here](https://yale.zoom.us/rec/share/25CK_W43fmVnCzQfvz25-l51FiktvAEfWUR59EByhljE7-mdkhnueY_MvOTNolxz.OT_eC-GXbh0C3Xcy?startTime=1760612277000). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
 
 [Jump start into Python programming](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_data_analysis_SM.html)
+
+Recorded of the Python can be found [here](https://yale.zoom.us/rec/share/25CK_W43fmVnCzQfvz25-l51FiktvAEfWUR59EByhljE7-mdkhnueY_MvOTNolxz.OT_eC-GXbh0C3Xcy?startTime=1760615932000). Password has been sent by e-mail on September 11  (it will be the same pass-code for all recordings).
 
 * Introduction to Python coding,
 * [Pandas](https://pandas.pydata.org/) and [Numpy](https://numpy.org/) libraries for data management and processing,
