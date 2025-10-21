@@ -518,7 +518,8 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qCy1_wumwa9B
 
 Recorded lecture can be found [here](). 
 
-[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred_SM.html)
+[Estimation of tree height using GEDI dataset - Data explore](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
+[Estimation of tree height using GEDI dataset - Random Forest prediction](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred_SM.html)
 
 * Brief introduction to Random Forest
 	* Random Forest basic concept
