@@ -505,7 +505,7 @@ Recorded of the Python can be found [here](https://yale.zoom.us/rec/share/JZYqS0
 ## Lecture 9: Tuesday, 21 October, 2025.
 ### Python libraries for geospatial data analysis (Saverio Mancino)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qCy1_wumwa9BerlXpLb8TIkHC_BPh9-17VgHV7_XxtITSD2jGog5sU-V1Etbg8bf.cHzFBU8nvyJ2uZEN)
 
 [Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.html)
 
