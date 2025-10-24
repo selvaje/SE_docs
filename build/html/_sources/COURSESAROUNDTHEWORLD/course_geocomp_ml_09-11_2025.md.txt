@@ -516,7 +516,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qCy1_wumwa9B
 ## Lecture 10: Thursday, 23 October, 2025.
 ### Machine Learning Introduction (Saverio Mancino)
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/a7ouNEk2WEbE58ACbMSSwRCMgrK1qzMRN93SwUbgg3P_qNLVxwcZTwQI9PHSdoYj.P5a6I7e636E2IbU7). 
 
 [Estimation of tree height using GEDI dataset - Data explore](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
 
