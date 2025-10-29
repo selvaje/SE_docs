@@ -1,0 +1,4613 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use GDAL/OGR for raster/vector operations - colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../PKTOOLS/index.html" />
+    <link rel="prev" title="Use GDAL/OGR for raster/vector operations - osgeo" href="gdal_osgeo.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use GDAL/OGR for raster/vector operations - colab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Setting-working-directory-for-the-the-Google-Collaboratory">Setting working directory for the the Google Collaboratory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-GDAL-commands">Start to use GDAL commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-OGR-Commands">Start to use OGR Commands</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Use GDAL/OGR for raster/vector operations - colab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GDAL/gdal_colab.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Use-GDAL/OGR-for-raster/vector-operations---colab">
+<h1>Use GDAL/OGR for raster/vector operations - colab<a class="headerlink" href="#Use-GDAL/OGR-for-raster/vector-operations---colab" title="Link to this heading"></a></h1>
+<section id="Setting-working-directory-for-the-the-Google-Collaboratory">
+<h2>Setting working directory for the the Google Collaboratory<a class="headerlink" href="#Setting-working-directory-for-the-the-Google-Collaboratory" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://gdal.org/">GDAL</a> is a translator library for raster and vector geospatial data formats that is released under an X/MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing (source <a class="reference external" href="https://gdal.org/">https://gdal.org/</a>).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">google.colab</span><span class="w"> </span><span class="kn">import</span> <span class="n">drive</span>
+<span class="n">drive</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s1">&#39;/gdrive&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Mounted at /gdrive
+</pre></div></div>
+</div>
+<p>List the mounted gdrive. If you have folders and files in you gdrive you should be able to see them</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>/gdrive/MyDrive
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ auto
+ Big_blue
+&#39;Colab Notebooks&#39;
+&#39;Dataset for global stream network and MOSQLAND.gdoc&#39;
+&#39;Discharge Tasks.gdoc&#39;
+ Elena_intro.gdoc
+ GeoCompCourse
+ GeoCompYaleMay2020
+ grants
+&#39;ID PASSPORT&#39;
+ LandscapeGenetic
+ Lawsuit
+ Margosa
+ panniers-trailers.pdf
+ RDOC_CMS
+ review
+ SE_data
+ Sofia_intro.gdoc
+ Stream_Variables_dataset_selected.gsheet
+ Taino
+ yale
+</pre></div></div>
+</div>
+<p>Download the SE_data folder yousing git</p>
+<p>First remove the directory if already exist, then enter in the directory.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">rm</span> -rf /gdrive/MyDrive/SE_data
+<span class="o">%</span><span class="k">cd</span> /gdrive/MyDrive
+<span class="o">%</span><span class="k">ls</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/gdrive/MyDrive
+ <span class="ansi-blue-intense-fg ansi-bold">auto</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Big_blue</span>/
+<span class="ansi-blue-intense-fg ansi-bold">&#39;Colab Notebooks&#39;</span>/
+&#39;Dataset for global stream network and MOSQLAND.gdoc&#39;
+&#39;Discharge Tasks.gdoc&#39;
+ Elena_intro.gdoc
+ <span class="ansi-blue-intense-fg ansi-bold">GeoCompCourse</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">GeoCompYaleMay2020</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">grants</span>/
+<span class="ansi-blue-intense-fg ansi-bold">&#39;ID PASSPORT&#39;</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">LandscapeGenetic</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Lawsuit</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">Margosa</span>/
+ panniers-trailers.pdf
+ <span class="ansi-blue-intense-fg ansi-bold">RDOC_CMS</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">review</span>/
+ Sofia_intro.gdoc
+ Stream_Variables_dataset_selected.gsheet
+ <span class="ansi-blue-intense-fg ansi-bold">Taino</span>/
+ <span class="ansi-blue-intense-fg ansi-bold">yale</span>/
+</pre></div></div>
+</div>
+<p>Then perform the downloading</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/selvaje/SE_data.git
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Cloning into &#39;SE_data&#39;...
+remote: Enumerating objects: 195, done.
+remote: Counting objects: 100% (195/195), done.
+remote: Compressing objects: 100% (155/155), done.
+remote: Total 262 (delta 22), reused 190 (delta 20), pack-reused 67
+Receiving objects: 100% (262/262), 78.99 MiB | 17.61 MiB/s, done.
+Resolving deltas: 100% (25/25), done.
+Checking out files: 100% (162/162), done.
+</pre></div></div>
+</div>
+<p>Check if the SE_data folder is full</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>SE_data/*
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-rw------- 1 root root   58 Jan 19 23:58 SE_data/README.md
+
+SE_data/exercise:
+total 187
+-rw------- 1 root root   8591 Jan 19 23:58 00_Setting_Colab_for_for_Spatial_Ecology_course.ipynb
+-rw------- 1 root root 153327 Jan 19 23:58 01_gdal.ipynb
+-rw------- 1 root root  24271 Jan 19 23:58 02_pktools.ipynb
+drwx------ 7 root root   4096 Jan 19 23:58 geodata
+
+SE_data/pktools_local:
+total 15
+-rw------- 1 root root 11141 Jan 19 23:58 00_pktools_gdrive_install.ipynb
+drwx------ 5 root root  4096 Jan 19 23:58 usr
+</pre></div></div>
+</div>
+</section>
+<section id="Start-to-use-GDAL-commands">
+<h2>Start to use GDAL commands<a class="headerlink" href="#Start-to-use-GDAL-commands" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line"><strong>Explor the files</strong></div>
+<div class="line">Change directory and list all the files with the extension .tif</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">cd</span>  /gdrive/MyDrive/SE_data/exercise/
+<span class="o">%</span><span class="k">ls</span> geodata/*/*.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/gdrive/MyDrive/SE_data/exercise
+geodata/dem/GMTED2010.tif            geodata/LST/LST_MOYDmax_month7.tif
+geodata/LST/LST_MOYDmax_month10.tif  geodata/LST/LST_MOYDmax_month8.tif
+geodata/LST/LST_MOYDmax_month11.tif  geodata/LST/LST_MOYDmax_month9.tif
+geodata/LST/LST_MOYDmax_month12.tif  geodata/temperature/ug_bio_3.tif
+geodata/LST/LST_MOYDmax_month1.tif   geodata/vegetation/ETmean08-11_01_msk.tif
+geodata/LST/LST_MOYDmax_month2.tif   geodata/vegetation/ETmean08-11_crop.tif
+geodata/LST/LST_MOYDmax_month3.tif   geodata/vegetation/ETmean08-11.tif
+geodata/LST/LST_MOYDmax_month4.tif   geodata/vegetation/ETstdev08-11.tif
+geodata/LST/LST_MOYDmax_month5.tif   geodata/vegetation/GPPmean08-11.tif
+geodata/LST/LST_MOYDmax_month6.tif   geodata/vegetation/GPPstdev08-11.tif
+</pre></div></div>
+</div>
+<p>Retrive the characteristic of the one tif file</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+  NoData Value=-3.39999995214436425e+38
+</pre></div></div>
+</div>
+<p>Visualize the image</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>/usr/bin/openev/bin/openev<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+
+Gtk-WARNING **: Failed to load module &#34;libgail.so&#34;: libgail.so: cannot open shared object file: No such file or directory
+
+Gtk-WARNING **: Failed to load module &#34;libatk-bridge.so&#34;: libatk-bridge.so: cannot open shared object file: No such file or directory
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">Reply to the following questions:</div>
+<div class="line">What is the pixel size?</div>
+<div class="line">How do you get min and max pixel values?</div>
+</div>
+<p><strong>Understanding data type</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Ranges of GDAL data types</p></th>
+<th class="head"></th>
+<th class="head"><p>Image Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GDAL data type</p></td>
+<td><p>Minimum</p></td>
+<td><p>Maximum</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Byte</p></td>
+<td><p>0</p></td>
+<td><p>255</p></td>
+<td><p>39M</p></td>
+</tr>
+<tr class="row-even"><td><p>UInt16</p></td>
+<td><p>0</p></td>
+<td><p>65,535</p></td>
+<td><p>78M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Int16, CInt16</p></td>
+<td><p>-32,768</p></td>
+<td><p>32,767</p></td>
+<td><p>78M</p></td>
+</tr>
+<tr class="row-even"><td><p>UInt32</p></td>
+<td><p>0</p></td>
+<td><p>4,294,967,295</p></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Int32, CInt32</p></td>
+<td><p>-2,147,483,648</p></td>
+<td><p>2,147,483,647</p></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-even"><td><p>Float32, CFloat32</p></td>
+<td><p>-3.4E38</p></td>
+<td><p>3.4E38</p></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Float64, CFloat64</p></td>
+<td><p>-1.79E308</p></td>
+<td><p>1.79E308</p></td>
+<td><p>309M</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Understanding NoData Value</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.547,7.492
+  NoData Value=-3.39999995214436425e+38
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-9999<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=-339999995214436424907732413799364296704.000,7.492
+  NoData Value=-9999
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-339999995214436424907732413799364296704.000<span class="w">    </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.547,7.492
+  NoData Value=-3.39999995214436425e+38
+</pre></div></div>
+</div>
+<p><strong>Calculate minimum and maximum values for all the images</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/vegetation/*.tif<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+gdalinfo<span class="w">  </span>-mm<span class="w">  </span><span class="nv">$file</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Computed
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+    Computed Min/Max=0.000,10.000
+    Computed Min/Max=0.000,66.000
+    Computed Min/Max=0.638,6.957
+    Computed Min/Max=0.000,50.000
+    Computed Min/Max=0.547,7.492
+    Computed Min/Max=0.547,7.492
+    Computed Min/Max=0.209,3.332
+    Computed Min/Max=0.209,3.332
+    Computed Min/Max=0.000,1.476
+    Computed Min/Max=0.000,9.738
+    Computed Min/Max=0.000,4.220
+    Computed Min/Max=0.589,6.957
+    Computed Min/Max=0.260,3.151
+    Computed Min/Max=0.807,6.408
+    Computed Min/Max=0.230,2.370
+    Computed Min/Max=0.684,7.492
+    Computed Min/Max=0.271,3.332
+    Computed Min/Max=0.547,7.402
+    Computed Min/Max=0.209,3.067
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Create a Coefficient of variation</strong></div>
+<div class="line">GPPmean08-11.tif temporal mean of Gross Primary Productivity</div>
+<div class="line">GPPstdev08-11.tif temporal standard deviation of Gross Primary Productivity</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+gdal_calc.py<span class="w"> </span>--type<span class="o">=</span>Float32<span class="w"> </span>--overwrite<span class="w">  </span>-A<span class="w"> </span>geodata/vegetation/GPPstdev08-11.tif<span class="w"> </span>-B<span class="w">  </span>geodata/vegetation/GPPmean08-11.tif<span class="w"> </span><span class="se">\</span>
+--co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">   </span>--calc<span class="o">=</span><span class="s2">&quot;( A.astype(float) / ( B.astype(float) + 0.000000001 ) )&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>geodata/vegetation/GPPcv08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.. 0.. 0.. 1.. 1.. 1.. 2.. 2.. 2.. 3.. 3.. 3.. 4.. 4.. 4.. 5.. 5.. 5.. 6.. 6.. 6.. 7.. 7.. 7.. 8.. 8.. 8.. 9.. 9.. 9.. 10.. 10.. 10.. 11.. 11.. 11.. 12.. 12.. 12.. 13.. 13.. 13.. 14.. 14.. 14.. 15.. 15.. 15.. 16.. 16.. 16.. 17.. 17.. 17.. 18.. 18.. 18.. 19.. 19.. 19.. 20.. 20.. 20.. 21.. 21.. 21.. 22.. 22.. 22.. 23.. 23.. 23.. 24.. 24.. 24.. 25.. 25.. 25.. 26.. 26.. 26.. 27.. 27.. 27.. 28.. 28.. 28.. 29.. 29.. 29.. 30.. 30.. 30.. 31.. 31.. 31.. 32.. 32.. 32.. 33.. 33.. 33.. 34.. 34.. 34.. 35.. 35.. 35.. 36.. 36.. 36.. 37.. 37.. 37.. 38.. 38.. 38.. 39.. 39.. 39.. 40.. 40.. 40.. 41.. 41.. 41.. 42.. 42.. 42.. 43.. 43.. 43.. 44.. 44.. 44.. 45.. 45.. 45.. 46.. 46.. 46.. 47.. 47.. 47.. 48.. 48.. 48.. 49.. 49.. 49.. 50.. 50.. 50.. 51.. 51.. 51.. 52.. 52.. 52.. 53.. 53.. 53.. 54.. 54.. 54.. 55.. 55.. 55.. 56.. 56.. 56.. 57.. 57.. 57.. 58.. 58.. 58.. 59.. 59.. 59.. 60.. 60.. 60.. 61.. 61.. 61.. 62.. 62.. 62.. 63.. 63.. 63.. 64.. 64.. 64.. 65.. 65.. 65.. 66.. 66.. 66.. 67.. 67.. 67.. 68.. 68.. 68.. 69.. 69.. 69.. 70.. 70.. 70.. 71.. 71.. 71.. 72.. 72.. 72.. 73.. 73.. 73.. 74.. 74.. 74.. 75.. 75.. 75.. 76.. 76.. 76.. 77.. 77.. 77.. 78.. 78.. 78.. 79.. 79.. 79.. 80.. 80.. 80.. 81.. 81.. 81.. 82.. 82.. 82.. 83.. 83.. 83.. 84.. 84.. 84.. 85.. 85.. 85.. 86.. 86.. 86.. 87.. 87.. 87.. 88.. 88.. 88.. 89.. 89.. 89.. 90.. 90.. 90.. 91.. 91.. 91.. 92.. 92.. 92.. 93.. 93.. 93.. 94.. 94.. 94.. 95.. 95.. 95.. 96.. 96.. 96.. 97.. 97.. 97.. 98.. 98.. 98.. 99.. 99.. 99.. 100 - Done
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/GPPcv08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/GPPcv08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=DEFLATE
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.000,1.476
+  NoData Value=3.40282346600000016e+38
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Change pixel resolution</strong></div>
+<div class="line">Looping trough the images</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="w"> </span><span class="k">)</span>
+<span class="w">  </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-te<span class="w"> </span><span class="m">29</span><span class="w"> </span>-1<span class="w"> </span><span class="m">35</span>.0000000048<span class="w"> </span><span class="m">4</span>.000000004<span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.008333333340000<span class="w"> </span><span class="m">0</span>.008333333340000<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>geodata/LST/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month1.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month1.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month1.tif to destination geodata/LST/LST_MOYDmax_month1_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month2.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month2.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month2.tif to destination geodata/LST/LST_MOYDmax_month2_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month3.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month3.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month3.tif to destination geodata/LST/LST_MOYDmax_month3_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month4.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month4.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month4.tif to destination geodata/LST/LST_MOYDmax_month4_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month5.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month5.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month5.tif to destination geodata/LST/LST_MOYDmax_month5_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month6.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month6.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month6.tif to destination geodata/LST/LST_MOYDmax_month6_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month7.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month7.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month7.tif to destination geodata/LST/LST_MOYDmax_month7_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month8.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month8.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month8.tif to destination geodata/LST/LST_MOYDmax_month8_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month9.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month9.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month9.tif to destination geodata/LST/LST_MOYDmax_month9_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month10.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month10.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month10.tif to destination geodata/LST/LST_MOYDmax_month10_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month11.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month11.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month11.tif to destination geodata/LST/LST_MOYDmax_month11_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month12.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month12.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destination geodata/LST/LST_MOYDmax_month12_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Get value at one pixel/line image-location</strong></div>
+<div class="line">Looping trough the images</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span><span class="nv">$file</span><span class="w">  </span><span class="m">20</span><span class="w"> </span><span class="m">20</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+34.0951232910156
+36.324462890625
+34.5248413085938
+30.09130859375
+26.7726745605469
+25.4852294921875
+24.9943237304688
+25.3010864257812
+25.9540100097656
+26.5707092285156
+28.4977416992188
+30.7633972167969
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Get value at lat/long image-location</strong></div>
+<div class="line">Looping trough the images</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span>-geoloc<span class="w"> </span><span class="nv">$file</span><span class="w">  </span><span class="m">33</span><span class="w"> </span><span class="m">2</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+36.983154296875
+40.4172973632812
+38.7196350097656
+33.0290832519531
+29.9873352050781
+29.6256713867188
+29.9307861328125
+30.1702880859375
+30.9218444824219
+30.4443359375
+30.4249267578125
+32.9085998535156
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Get value at multiple lat/long image-location</strong></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Create the lat long file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">32</span>.5<span class="w"> </span><span class="m">2</span>.5<span class="w"> </span>&gt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="nb">echo</span><span class="w"> </span><span class="m">31</span>.1<span class="w"> </span><span class="m">2</span>.1<span class="w"> </span>&gt;&gt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="c1"># looping trough the images</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span>-geoloc<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&lt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+37.4022827148438
+35.0345764160156
+
+40.3694458007812
+37.824951171875
+
+38.5549926757812
+36.6663208007812
+
+32.7738952636719
+32.6803283691406
+
+29.0351257324219
+30.0338134765625
+
+29.025634765625
+29.3355102539062
+
+29.0183715820312
+29.4237365722656
+
+29.1660461425781
+29.3502197265625
+
+29.6674194335938
+29.7001647949219
+
+28.8177490234375
+29.066650390625
+
+29.2975463867188
+29.015869140625
+
+32.8586730957031
+31.3289184570312
+
+</pre></div></div>
+</div>
+<p><strong>From Image to text and from txt to image</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># from tif to 3 col txt XYZ</span>
+gdal_translate<span class="w"> </span>-of<span class="w">  </span>XYZ<span class="w">   </span>geodata/vegetation/ETmean08-11_crop.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt
+<span class="c1"># masking</span>
+awk<span class="w"> </span><span class="s1">&#39;{if ($3&gt;2 &amp;&amp; $3&lt;4) {print $1,$2,50 } else {print}}&#39;</span><span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt<span class="w"> </span>&gt;<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt
+<span class="c1"># back to tif</span>
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-ot<span class="w"> </span>Byte<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 240, 240
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 240, 240
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>The use of VRT to stack images and tiling</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># stck the tif</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/ETmean08-11.tif<span class="w"> </span>geodata/vegetation/ETstdev08-11.tif
+gdalinfo<span class="w"> </span>geodata/vegetation/stack.vrt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Driver: VRT/Virtual Raster
+Files: geodata/vegetation/stack.vrt
+       geodata/vegetation/ETmean08-11.tif
+       geodata/vegetation/ETstdev08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=128x128 Type=Float32, ColorInterp=Undefined
+  NoData Value=-3.39999995214436387e+38
+Band 2 Block=128x128 Type=Float32, ColorInterp=Undefined
+  NoData Value=-3.39999995214436387e+38
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># split in tiles</span>
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_UL.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">300</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_UR.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">360</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_LL.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_LR.tif
+
+<span class="c1"># recompose the image</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/stack_UL.tif<span class="w"> </span>geodata/vegetation/stack_UR.tif<span class="w"> </span>geodata/vegetation/stack_LL.tif<span class="w"> </span>geodata/vegetation/stack_LR.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/ETmosaic.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Create shp border tiles</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/vegetation/tiles.*
+gdaltindex<span class="w">  </span>geodata/vegetation/tiles.shp<span class="w">  </span>geodata/vegetation/stack_??.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating new index file...
+</pre></div></div>
+</div>
+<p><strong>Surface distance/buffer</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Continues distance surface</span>
+gdal_proximity.py<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-values<span class="w"> </span><span class="m">0</span><span class="w"> </span>-distunits<span class="w"> </span>PIXEL<span class="w"> </span>-ot<span class="w"> </span>UInt32<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_proximity.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Fix buffer surface</span>
+gdal_proximity.py<span class="w"> </span>-fixed-buf-val<span class="w"> </span><span class="m">4</span><span class="w"> </span>-maxdist<span class="w"> </span><span class="m">4</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">10</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-values<span class="w"> </span><span class="m">0</span><span class="w"> </span>-distunits<span class="w"> </span>PIXEL<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_buffer.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Topography variables</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># calculate  slope</span>
+gdaldem<span class="w"> </span>slope<span class="w"> </span>-s<span class="w"> </span><span class="m">111120</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/slope.tif
+
+<span class="c1"># calculate  apect</span>
+gdaldem<span class="w"> </span>aspect<span class="w"> </span>-zero_for_flat<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/aspect.tif
+
+<span class="c1"># calculate  Terrain Ruggedness Index TRI</span>
+gdaldem<span class="w"> </span>TRI<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/tri.tif
+
+<span class="c1"># calculate  Topographic Position Index TPI</span>
+gdaldem<span class="w"> </span>TPI<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/tpi.tif
+
+<span class="c1"># calculate  Roughness</span>
+gdaldem<span class="w"> </span>roughness<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/roughness.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+</section>
+<section id="Start-to-use-OGR-Commands">
+<h2>Start to use OGR Commands<a class="headerlink" href="#Start-to-use-OGR-Commands" title="Link to this heading"></a></h2>
+<p><strong>Select a polygon and create a new shape file</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w">   </span>geodata/shp/TM_WORLD_BORDERS.shp
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO: Open of `geodata/shp/TM_WORLD_BORDERS.shp&#39;
+      using driver `ESRI Shapefile&#39; successful.
+
+Layer name: TM_WORLD_BORDERS
+Metadata:
+  DBF_DATE_LAST_UPDATE=2017-08-08
+Geometry: Polygon
+Feature Count: 246
+Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
+Layer SRS WKT:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;latitude&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;longitude&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+FIPS: String (2.0)
+ISO2: String (2.0)
+ISO3: String (3.0)
+UN: Integer (3.0)
+NAME: String (50.0)
+AREA: Integer (7.0)
+POP2005: Integer64 (10.0)
+REGION: Integer (3.0)
+SUBREGION: Integer (3.0)
+LON: Real (8.3)
+LAT: Real (7.3)
+OGRFeature(TM_WORLD_BORDERS):0
+  FIPS (String) = AC
+  ISO2 (String) = AG
+  ISO3 (String) = ATG
+  UN (Integer) = 28
+  NAME (String) = Antigua and Barbuda
+  AREA (Integer) = 44
+  POP2005 (Integer64) = 83039
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.783
+  LAT (Real) = 17.078
+
+OGRFeature(TM_WORLD_BORDERS):1
+  FIPS (String) = AG
+  ISO2 (String) = DZ
+  ISO3 (String) = DZA
+  UN (Integer) = 12
+  NAME (String) = Algeria
+  AREA (Integer) = 238174
+  POP2005 (Integer64) = 32854159
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 2.632
+  LAT (Real) = 28.163
+
+OGRFeature(TM_WORLD_BORDERS):2
+  FIPS (String) = AJ
+  ISO2 (String) = AZ
+  ISO3 (String) = AZE
+  UN (Integer) = 31
+  NAME (String) = Azerbaijan
+  AREA (Integer) = 8260
+  POP2005 (Integer64) = 8352021
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 47.395
+  LAT (Real) = 40.430
+
+OGRFeature(TM_WORLD_BORDERS):3
+  FIPS (String) = AL
+  ISO2 (String) = AL
+  ISO3 (String) = ALB
+  UN (Integer) = 8
+  NAME (String) = Albania
+  AREA (Integer) = 2740
+  POP2005 (Integer64) = 3153731
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 20.068
+  LAT (Real) = 41.143
+
+OGRFeature(TM_WORLD_BORDERS):4
+  FIPS (String) = AM
+  ISO2 (String) = AM
+  ISO3 (String) = ARM
+  UN (Integer) = 51
+  NAME (String) = Armenia
+  AREA (Integer) = 2820
+  POP2005 (Integer64) = 3017661
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 44.563
+  LAT (Real) = 40.534
+
+OGRFeature(TM_WORLD_BORDERS):5
+  FIPS (String) = AO
+  ISO2 (String) = AO
+  ISO3 (String) = AGO
+  UN (Integer) = 24
+  NAME (String) = Angola
+  AREA (Integer) = 124670
+  POP2005 (Integer64) = 16095214
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 17.544
+  LAT (Real) = -12.296
+
+OGRFeature(TM_WORLD_BORDERS):6
+  FIPS (String) = AQ
+  ISO2 (String) = AS
+  ISO3 (String) = ASM
+  UN (Integer) = 16
+  NAME (String) = American Samoa
+  AREA (Integer) = 20
+  POP2005 (Integer64) = 64051
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -170.730
+  LAT (Real) = -14.318
+
+OGRFeature(TM_WORLD_BORDERS):7
+  FIPS (String) = AR
+  ISO2 (String) = AR
+  ISO3 (String) = ARG
+  UN (Integer) = 32
+  NAME (String) = Argentina
+  AREA (Integer) = 273669
+  POP2005 (Integer64) = 38747148
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -65.167
+  LAT (Real) = -35.377
+
+OGRFeature(TM_WORLD_BORDERS):8
+  FIPS (String) = AS
+  ISO2 (String) = AU
+  ISO3 (String) = AUS
+  UN (Integer) = 36
+  NAME (String) = Australia
+  AREA (Integer) = 768230
+  POP2005 (Integer64) = 20310208
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 53
+  LON (Real) = 136.189
+  LAT (Real) = -24.973
+
+OGRFeature(TM_WORLD_BORDERS):9
+  FIPS (String) = BA
+  ISO2 (String) = BH
+  ISO3 (String) = BHR
+  UN (Integer) = 48
+  NAME (String) = Bahrain
+  AREA (Integer) = 71
+  POP2005 (Integer64) = 724788
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 50.562
+  LAT (Real) = 26.019
+
+OGRFeature(TM_WORLD_BORDERS):10
+  FIPS (String) = BB
+  ISO2 (String) = BB
+  ISO3 (String) = BRB
+  UN (Integer) = 52
+  NAME (String) = Barbados
+  AREA (Integer) = 43
+  POP2005 (Integer64) = 291933
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -59.559
+  LAT (Real) = 13.153
+
+OGRFeature(TM_WORLD_BORDERS):11
+  FIPS (String) = BD
+  ISO2 (String) = BM
+  ISO3 (String) = BMU
+  UN (Integer) = 60
+  NAME (String) = Bermuda
+  AREA (Integer) = 5
+  POP2005 (Integer64) = 64174
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 21
+  LON (Real) = -64.709
+  LAT (Real) = 32.336
+
+OGRFeature(TM_WORLD_BORDERS):12
+  FIPS (String) = BF
+  ISO2 (String) = BS
+  ISO3 (String) = BHS
+  UN (Integer) = 44
+  NAME (String) = Bahamas
+  AREA (Integer) = 1001
+  POP2005 (Integer64) = 323295
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -78.014
+  LAT (Real) = 24.628
+
+OGRFeature(TM_WORLD_BORDERS):13
+  FIPS (String) = BG
+  ISO2 (String) = BD
+  ISO3 (String) = BGD
+  UN (Integer) = 50
+  NAME (String) = Bangladesh
+  AREA (Integer) = 13017
+  POP2005 (Integer64) = 15328112
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 89.941
+  LAT (Real) = 24.218
+
+OGRFeature(TM_WORLD_BORDERS):14
+  FIPS (String) = BH
+  ISO2 (String) = BZ
+  ISO3 (String) = BLZ
+  UN (Integer) = 84
+  NAME (String) = Belize
+  AREA (Integer) = 2281
+  POP2005 (Integer64) = 275546
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -88.602
+  LAT (Real) = 17.219
+
+OGRFeature(TM_WORLD_BORDERS):15
+  FIPS (String) = BK
+  ISO2 (String) = BA
+  ISO3 (String) = BIH
+  UN (Integer) = 70
+  NAME (String) = Bosnia and Herzegovina
+  AREA (Integer) = 5120
+  POP2005 (Integer64) = 3915238
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 17.786
+  LAT (Real) = 44.169
+
+OGRFeature(TM_WORLD_BORDERS):16
+  FIPS (String) = BL
+  ISO2 (String) = BO
+  ISO3 (String) = BOL
+  UN (Integer) = 68
+  NAME (String) = Bolivia
+  AREA (Integer) = 108438
+  POP2005 (Integer64) = 9182015
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -64.671
+  LAT (Real) = -16.715
+
+OGRFeature(TM_WORLD_BORDERS):17
+  FIPS (String) = BM
+  ISO2 (String) = MM
+  ISO3 (String) = MMR
+  UN (Integer) = 104
+  NAME (String) = Burma
+  AREA (Integer) = 65755
+  POP2005 (Integer64) = 47967266
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 96.041
+  LAT (Real) = 21.718
+
+OGRFeature(TM_WORLD_BORDERS):18
+  FIPS (String) = BN
+  ISO2 (String) = BJ
+  ISO3 (String) = BEN
+  UN (Integer) = 204
+  NAME (String) = Benin
+  AREA (Integer) = 11062
+  POP2005 (Integer64) = 8490301
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = 2.469
+  LAT (Real) = 10.541
+
+OGRFeature(TM_WORLD_BORDERS):19
+  FIPS (String) = BP
+  ISO2 (String) = SB
+  ISO3 (String) = SLB
+  UN (Integer) = 90
+  NAME (String) = Solomon Islands
+  AREA (Integer) = 2799
+  POP2005 (Integer64) = 472419
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 54
+  LON (Real) = 160.109
+  LAT (Real) = -9.611
+
+OGRFeature(TM_WORLD_BORDERS):20
+  FIPS (String) = BR
+  ISO2 (String) = BR
+  ISO3 (String) = BRA
+  UN (Integer) = 76
+  NAME (String) = Brazil
+  AREA (Integer) = 845942
+  POP2005 (Integer64) = 186830759
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -53.089
+  LAT (Real) = -10.772
+
+OGRFeature(TM_WORLD_BORDERS):21
+  FIPS (String) = BU
+  ISO2 (String) = BG
+  ISO3 (String) = BGR
+  UN (Integer) = 100
+  NAME (String) = Bulgaria
+  AREA (Integer) = 11063
+  POP2005 (Integer64) = 7744591
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 25.231
+  LAT (Real) = 42.761
+
+OGRFeature(TM_WORLD_BORDERS):22
+  FIPS (String) = BX
+  ISO2 (String) = BN
+  ISO3 (String) = BRN
+  UN (Integer) = 96
+  NAME (String) = Brunei Darussalam
+  AREA (Integer) = 527
+  POP2005 (Integer64) = 373831
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 114.591
+  LAT (Real) = 4.468
+
+OGRFeature(TM_WORLD_BORDERS):23
+  FIPS (String) = CA
+  ISO2 (String) = CA
+  ISO3 (String) = CAN
+  UN (Integer) = 124
+  NAME (String) = Canada
+  AREA (Integer) = 909351
+  POP2005 (Integer64) = 32270507
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 21
+  LON (Real) = -109.433
+  LAT (Real) = 59.081
+
+OGRFeature(TM_WORLD_BORDERS):24
+  FIPS (String) = CB
+  ISO2 (String) = KH
+  ISO3 (String) = KHM
+  UN (Integer) = 116
+  NAME (String) = Cambodia
+  AREA (Integer) = 17652
+  POP2005 (Integer64) = 13955507
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 104.564
+  LAT (Real) = 12.714
+
+OGRFeature(TM_WORLD_BORDERS):25
+  FIPS (String) = CE
+  ISO2 (String) = LK
+  ISO3 (String) = LKA
+  UN (Integer) = 144
+  NAME (String) = Sri Lanka
+  AREA (Integer) = 6463
+  POP2005 (Integer64) = 19120763
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 80.704
+  LAT (Real) = 7.612
+
+OGRFeature(TM_WORLD_BORDERS):26
+  FIPS (String) = CF
+  ISO2 (String) = CG
+  ISO3 (String) = COG
+  UN (Integer) = 178
+  NAME (String) = Congo
+  AREA (Integer) = 34150
+  POP2005 (Integer64) = 3609851
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 15.986
+  LAT (Real) = -0.055
+
+OGRFeature(TM_WORLD_BORDERS):27
+  FIPS (String) = CG
+  ISO2 (String) = CD
+  ISO3 (String) = COD
+  UN (Integer) = 180
+  NAME (String) = Democratic Republic of the Congo
+  AREA (Integer) = 226705
+  POP2005 (Integer64) = 58740547
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 23.654
+  LAT (Real) = -2.876
+
+OGRFeature(TM_WORLD_BORDERS):28
+  FIPS (String) = BY
+  ISO2 (String) = BI
+  ISO3 (String) = BDI
+  UN (Integer) = 108
+  NAME (String) = Burundi
+  AREA (Integer) = 2568
+  POP2005 (Integer64) = 7858791
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 29.887
+  LAT (Real) = -3.356
+
+OGRFeature(TM_WORLD_BORDERS):29
+  FIPS (String) = CH
+  ISO2 (String) = CN
+  ISO3 (String) = CHN
+  UN (Integer) = 156
+  NAME (String) = China
+  AREA (Integer) = 932743
+  POP2005 (Integer64) = 1312978855
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 106.514
+  LAT (Real) = 33.420
+
+OGRFeature(TM_WORLD_BORDERS):30
+  FIPS (String) = AF
+  ISO2 (String) = AF
+  ISO3 (String) = AFG
+  UN (Integer) = 4
+  NAME (String) = Afghanistan
+  AREA (Integer) = 65209
+  POP2005 (Integer64) = 25067407
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 65.216
+  LAT (Real) = 33.677
+
+OGRFeature(TM_WORLD_BORDERS):31
+  FIPS (String) = BT
+  ISO2 (String) = BT
+  ISO3 (String) = BTN
+  UN (Integer) = 64
+  NAME (String) = Bhutan
+  AREA (Integer) = 4700
+  POP2005 (Integer64) = 637013
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 90.429
+  LAT (Real) = 27.415
+
+OGRFeature(TM_WORLD_BORDERS):32
+  FIPS (String) = CI
+  ISO2 (String) = CL
+  ISO3 (String) = CHL
+  UN (Integer) = 152
+  NAME (String) = Chile
+  AREA (Integer) = 74880
+  POP2005 (Integer64) = 16295102
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -69.433
+  LAT (Real) = -23.389
+
+OGRFeature(TM_WORLD_BORDERS):33
+  FIPS (String) = CJ
+  ISO2 (String) = KY
+  ISO3 (String) = CYM
+  UN (Integer) = 136
+  NAME (String) = Cayman Islands
+  AREA (Integer) = 26
+  POP2005 (Integer64) = 45591
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -81.198
+  LAT (Real) = 19.314
+
+OGRFeature(TM_WORLD_BORDERS):34
+  FIPS (String) = CM
+  ISO2 (String) = CM
+  ISO3 (String) = CMR
+  UN (Integer) = 120
+  NAME (String) = Cameroon
+  AREA (Integer) = 46540
+  POP2005 (Integer64) = 17795149
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 12.277
+  LAT (Real) = 5.133
+
+OGRFeature(TM_WORLD_BORDERS):35
+  FIPS (String) = CD
+  ISO2 (String) = TD
+  ISO3 (String) = TCD
+  UN (Integer) = 148
+  NAME (String) = Chad
+  AREA (Integer) = 125920
+  POP2005 (Integer64) = 10145609
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 18.665
+  LAT (Real) = 15.361
+
+OGRFeature(TM_WORLD_BORDERS):36
+  FIPS (String) = CN
+  ISO2 (String) = KM
+  ISO3 (String) = COM
+  UN (Integer) = 174
+  NAME (String) = Comoros
+  AREA (Integer) = 223
+  POP2005 (Integer64) = 797902
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 43.337
+  LAT (Real) = -11.758
+
+OGRFeature(TM_WORLD_BORDERS):37
+  FIPS (String) = CO
+  ISO2 (String) = CO
+  ISO3 (String) = COL
+  UN (Integer) = 170
+  NAME (String) = Colombia
+  AREA (Integer) = 103870
+  POP2005 (Integer64) = 4494579
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -73.076
+  LAT (Real) = 3.900
+
+OGRFeature(TM_WORLD_BORDERS):38
+  FIPS (String) = CS
+  ISO2 (String) = CR
+  ISO3 (String) = CRI
+  UN (Integer) = 188
+  NAME (String) = Costa Rica
+  AREA (Integer) = 5106
+  POP2005 (Integer64) = 4327228
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -83.946
+  LAT (Real) = 9.971
+
+OGRFeature(TM_WORLD_BORDERS):39
+  FIPS (String) = CT
+  ISO2 (String) = CF
+  ISO3 (String) = CAF
+  UN (Integer) = 140
+  NAME (String) = Central African Republic
+  AREA (Integer) = 62298
+  POP2005 (Integer64) = 4191429
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 20.483
+  LAT (Real) = 6.571
+
+OGRFeature(TM_WORLD_BORDERS):40
+  FIPS (String) = CU
+  ISO2 (String) = CU
+  ISO3 (String) = CUB
+  UN (Integer) = 192
+  NAME (String) = Cuba
+  AREA (Integer) = 10982
+  POP2005 (Integer64) = 11259905
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -77.781
+  LAT (Real) = 21.297
+
+OGRFeature(TM_WORLD_BORDERS):41
+  FIPS (String) = CV
+  ISO2 (String) = CV
+  ISO3 (String) = CPV
+  UN (Integer) = 132
+  NAME (String) = Cape Verde
+  AREA (Integer) = 403
+  POP2005 (Integer64) = 506807
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -23.634
+  LAT (Real) = 15.071
+
+OGRFeature(TM_WORLD_BORDERS):42
+  FIPS (String) = CW
+  ISO2 (String) = CK
+  ISO3 (String) = COK
+  UN (Integer) = 184
+  NAME (String) = Cook Islands
+  AREA (Integer) = 24
+  POP2005 (Integer64) = 13984
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -159.782
+  LAT (Real) = -21.219
+
+OGRFeature(TM_WORLD_BORDERS):43
+  FIPS (String) = CY
+  ISO2 (String) = CY
+  ISO3 (String) = CYP
+  UN (Integer) = 196
+  NAME (String) = Cyprus
+  AREA (Integer) = 924
+  POP2005 (Integer64) = 836321
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 33.219
+  LAT (Real) = 35.043
+
+OGRFeature(TM_WORLD_BORDERS):44
+  FIPS (String) = DA
+  ISO2 (String) = DK
+  ISO3 (String) = DNK
+  UN (Integer) = 208
+  NAME (String) = Denmark
+  AREA (Integer) = 4243
+  POP2005 (Integer64) = 5416945
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 9.264
+  LAT (Real) = 56.058
+
+OGRFeature(TM_WORLD_BORDERS):45
+  FIPS (String) = DJ
+  ISO2 (String) = DJ
+  ISO3 (String) = DJI
+  UN (Integer) = 262
+  NAME (String) = Djibouti
+  AREA (Integer) = 2318
+  POP2005 (Integer64) = 804206
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 42.516
+  LAT (Real) = 11.900
+
+OGRFeature(TM_WORLD_BORDERS):46
+  FIPS (String) = DO
+  ISO2 (String) = DM
+  ISO3 (String) = DMA
+  UN (Integer) = 212
+  NAME (String) = Dominica
+  AREA (Integer) = 75
+  POP2005 (Integer64) = 67827
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.356
+  LAT (Real) = 15.475
+
+OGRFeature(TM_WORLD_BORDERS):47
+  FIPS (String) = DR
+  ISO2 (String) = DO
+  ISO3 (String) = DOM
+  UN (Integer) = 214
+  NAME (String) = Dominican Republic
+  AREA (Integer) = 4838
+  POP2005 (Integer64) = 9469601
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -70.729
+  LAT (Real) = 19.015
+
+OGRFeature(TM_WORLD_BORDERS):48
+  FIPS (String) = EC
+  ISO2 (String) = EC
+  ISO3 (String) = ECU
+  UN (Integer) = 218
+  NAME (String) = Ecuador
+  AREA (Integer) = 27684
+  POP2005 (Integer64) = 13060993
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -78.497
+  LAT (Real) = -1.385
+
+OGRFeature(TM_WORLD_BORDERS):49
+  FIPS (String) = EG
+  ISO2 (String) = EG
+  ISO3 (String) = EGY
+  UN (Integer) = 818
+  NAME (String) = Egypt
+  AREA (Integer) = 99545
+  POP2005 (Integer64) = 72849793
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 29.872
+  LAT (Real) = 26.494
+
+OGRFeature(TM_WORLD_BORDERS):50
+  FIPS (String) = EI
+  ISO2 (String) = IE
+  ISO3 (String) = IRL
+  UN (Integer) = 372
+  NAME (String) = Ireland
+  AREA (Integer) = 6889
+  POP2005 (Integer64) = 4143294
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -8.152
+  LAT (Real) = 53.177
+
+OGRFeature(TM_WORLD_BORDERS):51
+  FIPS (String) = EK
+  ISO2 (String) = GQ
+  ISO3 (String) = GNQ
+  UN (Integer) = 226
+  NAME (String) = Equatorial Guinea
+  AREA (Integer) = 2805
+  POP2005 (Integer64) = 484098
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 10.488
+  LAT (Real) = 1.607
+
+OGRFeature(TM_WORLD_BORDERS):52
+  FIPS (String) = EN
+  ISO2 (String) = EE
+  ISO3 (String) = EST
+  UN (Integer) = 233
+  NAME (String) = Estonia
+  AREA (Integer) = 4239
+  POP2005 (Integer64) = 1344312
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 25.793
+  LAT (Real) = 58.674
+
+OGRFeature(TM_WORLD_BORDERS):53
+  FIPS (String) = ER
+  ISO2 (String) = ER
+  ISO3 (String) = ERI
+  UN (Integer) = 232
+  NAME (String) = Eritrea
+  AREA (Integer) = 10100
+  POP2005 (Integer64) = 4526722
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 38.219
+  LAT (Real) = 16.045
+
+OGRFeature(TM_WORLD_BORDERS):54
+  FIPS (String) = ES
+  ISO2 (String) = SV
+  ISO3 (String) = SLV
+  UN (Integer) = 222
+  NAME (String) = El Salvador
+  AREA (Integer) = 2072
+  POP2005 (Integer64) = 6668356
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -88.866
+  LAT (Real) = 13.736
+
+OGRFeature(TM_WORLD_BORDERS):55
+  FIPS (String) = ET
+  ISO2 (String) = ET
+  ISO3 (String) = ETH
+  UN (Integer) = 231
+  NAME (String) = Ethiopia
+  AREA (Integer) = 100000
+  POP2005 (Integer64) = 78985857
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 39.616
+  LAT (Real) = 8.626
+
+OGRFeature(TM_WORLD_BORDERS):56
+  FIPS (String) = AU
+  ISO2 (String) = AT
+  ISO3 (String) = AUT
+  UN (Integer) = 40
+  NAME (String) = Austria
+  AREA (Integer) = 8245
+  POP2005 (Integer64) = 8291979
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 14.912
+  LAT (Real) = 47.683
+
+OGRFeature(TM_WORLD_BORDERS):57
+  FIPS (String) = EZ
+  ISO2 (String) = CZ
+  ISO3 (String) = CZE
+  UN (Integer) = 203
+  NAME (String) = Czech Republic
+  AREA (Integer) = 7727
+  POP2005 (Integer64) = 10191762
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 15.338
+  LAT (Real) = 49.743
+
+OGRFeature(TM_WORLD_BORDERS):58
+  FIPS (String) = FG
+  ISO2 (String) = GF
+  ISO3 (String) = GUF
+  UN (Integer) = 254
+  NAME (String) = French Guiana
+  AREA (Integer) = 8815
+  POP2005 (Integer64) = 192099
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -53.241
+  LAT (Real) = 3.924
+
+OGRFeature(TM_WORLD_BORDERS):59
+  FIPS (String) = FI
+  ISO2 (String) = FI
+  ISO3 (String) = FIN
+  UN (Integer) = 246
+  NAME (String) = Finland
+  AREA (Integer) = 30459
+  POP2005 (Integer64) = 5246004
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 26.272
+  LAT (Real) = 64.504
+
+OGRFeature(TM_WORLD_BORDERS):60
+  FIPS (String) = FJ
+  ISO2 (String) = FJ
+  ISO3 (String) = FJI
+  UN (Integer) = 242
+  NAME (String) = Fiji
+  AREA (Integer) = 1827
+  POP2005 (Integer64) = 828046
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 54
+  LON (Real) = 177.974
+  LAT (Real) = -17.819
+
+OGRFeature(TM_WORLD_BORDERS):61
+  FIPS (String) = FK
+  ISO2 (String) = FK
+  ISO3 (String) = FLK
+  UN (Integer) = 238
+  NAME (String) = Falkland Islands (Malvinas)
+  AREA (Integer) = 1217
+  POP2005 (Integer64) = 2975
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -58.694
+  LAT (Real) = -51.665
+
+OGRFeature(TM_WORLD_BORDERS):62
+  FIPS (String) = FM
+  ISO2 (String) = FM
+  ISO3 (String) = FSM
+  UN (Integer) = 583
+  NAME (String) = Micronesia, Federated States of
+  AREA (Integer) = 70
+  POP2005 (Integer64) = 110058
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 158.235
+  LAT (Real) = 6.883
+
+OGRFeature(TM_WORLD_BORDERS):63
+  FIPS (String) = FP
+  ISO2 (String) = PF
+  ISO3 (String) = PYF
+  UN (Integer) = 258
+  NAME (String) = French Polynesia
+  AREA (Integer) = 366
+  POP2005 (Integer64) = 255632
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -149.462
+  LAT (Real) = -17.626
+
+OGRFeature(TM_WORLD_BORDERS):64
+  FIPS (String) = FR
+  ISO2 (String) = FR
+  ISO3 (String) = FRA
+  UN (Integer) = 250
+  NAME (String) = France
+  AREA (Integer) = 55010
+  POP2005 (Integer64) = 60990544
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 2.550
+  LAT (Real) = 46.565
+
+OGRFeature(TM_WORLD_BORDERS):65
+  FIPS (String) = GA
+  ISO2 (String) = GM
+  ISO3 (String) = GMB
+  UN (Integer) = 270
+  NAME (String) = Gambia
+  AREA (Integer) = 1000
+  POP2005 (Integer64) = 1617029
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -15.386
+  LAT (Real) = 13.453
+
+OGRFeature(TM_WORLD_BORDERS):66
+  FIPS (String) = GB
+  ISO2 (String) = GA
+  ISO3 (String) = GAB
+  UN (Integer) = 266
+  NAME (String) = Gabon
+  AREA (Integer) = 25767
+  POP2005 (Integer64) = 1290693
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 11.797
+  LAT (Real) = -0.591
+
+OGRFeature(TM_WORLD_BORDERS):67
+  FIPS (String) = GG
+  ISO2 (String) = GE
+  ISO3 (String) = GEO
+  UN (Integer) = 268
+  NAME (String) = Georgia
+  AREA (Integer) = 6949
+  POP2005 (Integer64) = 4473409
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 43.518
+  LAT (Real) = 42.176
+
+OGRFeature(TM_WORLD_BORDERS):68
+  FIPS (String) = GH
+  ISO2 (String) = GH
+  ISO3 (String) = GHA
+  UN (Integer) = 288
+  NAME (String) = Ghana
+  AREA (Integer) = 22754
+  POP2005 (Integer64) = 2253501
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -1.207
+  LAT (Real) = 7.960
+
+OGRFeature(TM_WORLD_BORDERS):69
+  FIPS (String) = GJ
+  ISO2 (String) = GD
+  ISO3 (String) = GRD
+  UN (Integer) = 308
+  NAME (String) = Grenada
+  AREA (Integer) = 34
+  POP2005 (Integer64) = 105237
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.678
+  LAT (Real) = 12.118
+
+OGRFeature(TM_WORLD_BORDERS):70
+  FIPS (String) = GL
+  ISO2 (String) = GL
+  ISO3 (String) = GRL
+  UN (Integer) = 304
+  NAME (String) = Greenland
+  AREA (Integer) = 41045
+  POP2005 (Integer64) = 57475
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 21
+  LON (Real) = -41.391
+  LAT (Real) = 74.719
+
+OGRFeature(TM_WORLD_BORDERS):71
+  FIPS (String) = GM
+  ISO2 (String) = DE
+  ISO3 (String) = DEU
+  UN (Integer) = 276
+  NAME (String) = Germany
+  AREA (Integer) = 34895
+  POP2005 (Integer64) = 82652369
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 9.851
+  LAT (Real) = 51.110
+
+OGRFeature(TM_WORLD_BORDERS):72
+  FIPS (String) = GQ
+  ISO2 (String) = GU
+  ISO3 (String) = GUM
+  UN (Integer) = 316
+  NAME (String) = Guam
+  AREA (Integer) = 55
+  POP2005 (Integer64) = 16857
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 144.707
+  LAT (Real) = 13.385
+
+OGRFeature(TM_WORLD_BORDERS):73
+  FIPS (String) = GR
+  ISO2 (String) = GR
+  ISO3 (String) = GRC
+  UN (Integer) = 300
+  NAME (String) = Greece
+  AREA (Integer) = 12890
+  POP2005 (Integer64) = 11099737
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 21.766
+  LAT (Real) = 39.666
+
+OGRFeature(TM_WORLD_BORDERS):74
+  FIPS (String) = GT
+  ISO2 (String) = GT
+  ISO3 (String) = GTM
+  UN (Integer) = 320
+  NAME (String) = Guatemala
+  AREA (Integer) = 10843
+  POP2005 (Integer64) = 12709564
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -90.398
+  LAT (Real) = 15.256
+
+OGRFeature(TM_WORLD_BORDERS):75
+  FIPS (String) = GV
+  ISO2 (String) = GN
+  ISO3 (String) = GIN
+  UN (Integer) = 324
+  NAME (String) = Guinea
+  AREA (Integer) = 24572
+  POP2005 (Integer64) = 9002656
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -10.942
+  LAT (Real) = 10.439
+
+OGRFeature(TM_WORLD_BORDERS):76
+  FIPS (String) = GY
+  ISO2 (String) = GY
+  ISO3 (String) = GUY
+  UN (Integer) = 328
+  NAME (String) = Guyana
+  AREA (Integer) = 19685
+  POP2005 (Integer64) = 739472
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -58.974
+  LAT (Real) = 4.792
+
+OGRFeature(TM_WORLD_BORDERS):77
+  FIPS (String) = HA
+  ISO2 (String) = HT
+  ISO3 (String) = HTI
+  UN (Integer) = 332
+  NAME (String) = Haiti
+  AREA (Integer) = 2756
+  POP2005 (Integer64) = 9296291
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -72.278
+  LAT (Real) = 19.142
+
+OGRFeature(TM_WORLD_BORDERS):78
+  FIPS (String) = HO
+  ISO2 (String) = HN
+  ISO3 (String) = HND
+  UN (Integer) = 340
+  NAME (String) = Honduras
+  AREA (Integer) = 11189
+  POP2005 (Integer64) = 683411
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -86.863
+  LAT (Real) = 14.819
+
+OGRFeature(TM_WORLD_BORDERS):79
+  FIPS (String) = HR
+  ISO2 (String) = HR
+  ISO3 (String) = HRV
+  UN (Integer) = 191
+  NAME (String) = Croatia
+  AREA (Integer) = 5592
+  POP2005 (Integer64) = 455149
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 16.693
+  LAT (Real) = 45.723
+
+OGRFeature(TM_WORLD_BORDERS):80
+  FIPS (String) = HU
+  ISO2 (String) = HU
+  ISO3 (String) = HUN
+  UN (Integer) = 348
+  NAME (String) = Hungary
+  AREA (Integer) = 9210
+  POP2005 (Integer64) = 10086387
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 19.134
+  LAT (Real) = 47.070
+
+OGRFeature(TM_WORLD_BORDERS):81
+  FIPS (String) = IC
+  ISO2 (String) = IS
+  ISO3 (String) = ISL
+  UN (Integer) = 352
+  NAME (String) = Iceland
+  AREA (Integer) = 10025
+  POP2005 (Integer64) = 295732
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -18.480
+  LAT (Real) = 64.764
+
+OGRFeature(TM_WORLD_BORDERS):82
+  FIPS (String) = IN
+  ISO2 (String) = IN
+  ISO3 (String) = IND
+  UN (Integer) = 356
+  NAME (String) = India
+  AREA (Integer) = 297319
+  POP2005 (Integer64) = 1134403141
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 78.500
+  LAT (Real) = 21.000
+
+OGRFeature(TM_WORLD_BORDERS):83
+  FIPS (String) = IR
+  ISO2 (String) = IR
+  ISO3 (String) = IRN
+  UN (Integer) = 364
+  NAME (String) = Iran (Islamic Republic of)
+  AREA (Integer) = 163620
+  POP2005 (Integer64) = 69420607
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 54.301
+  LAT (Real) = 32.565
+
+OGRFeature(TM_WORLD_BORDERS):84
+  FIPS (String) = IS
+  ISO2 (String) = IL
+  ISO3 (String) = ISR
+  UN (Integer) = 376
+  NAME (String) = Israel
+  AREA (Integer) = 2171
+  POP2005 (Integer64) = 6692037
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 34.851
+  LAT (Real) = 31.026
+
+OGRFeature(TM_WORLD_BORDERS):85
+  FIPS (String) = IT
+  ISO2 (String) = IT
+  ISO3 (String) = ITA
+  UN (Integer) = 380
+  NAME (String) = Italy
+  AREA (Integer) = 29411
+  POP2005 (Integer64) = 5864636
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 12.800
+  LAT (Real) = 42.700
+
+OGRFeature(TM_WORLD_BORDERS):86
+  FIPS (String) = IV
+  ISO2 (String) = CI
+  ISO3 (String) = CIV
+  UN (Integer) = 384
+  NAME (String) = Cote d&#39;Ivoire
+  AREA (Integer) = 31800
+  POP2005 (Integer64) = 18584701
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -5.556
+  LAT (Real) = 7.632
+
+OGRFeature(TM_WORLD_BORDERS):87
+  FIPS (String) = IZ
+  ISO2 (String) = IQ
+  ISO3 (String) = IRQ
+  UN (Integer) = 368
+  NAME (String) = Iraq
+  AREA (Integer) = 43737
+  POP2005 (Integer64) = 27995984
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 43.772
+  LAT (Real) = 33.048
+
+OGRFeature(TM_WORLD_BORDERS):88
+  FIPS (String) = JA
+  ISO2 (String) = JP
+  ISO3 (String) = JPN
+  UN (Integer) = 392
+  NAME (String) = Japan
+  AREA (Integer) = 36450
+  POP2005 (Integer64) = 127896740
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 139.068
+  LAT (Real) = 36.491
+
+OGRFeature(TM_WORLD_BORDERS):89
+  FIPS (String) = JM
+  ISO2 (String) = JM
+  ISO3 (String) = JAM
+  UN (Integer) = 388
+  NAME (String) = Jamaica
+  AREA (Integer) = 1083
+  POP2005 (Integer64) = 2682469
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -77.320
+  LAT (Real) = 18.151
+
+OGRFeature(TM_WORLD_BORDERS):90
+  FIPS (String) = JO
+  ISO2 (String) = JO
+  ISO3 (String) = JOR
+  UN (Integer) = 400
+  NAME (String) = Jordan
+  AREA (Integer) = 8824
+  POP2005 (Integer64) = 5544066
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 36.319
+  LAT (Real) = 30.703
+
+OGRFeature(TM_WORLD_BORDERS):91
+  FIPS (String) = KE
+  ISO2 (String) = KE
+  ISO3 (String) = KEN
+  UN (Integer) = 404
+  NAME (String) = Kenya
+  AREA (Integer) = 56914
+  POP2005 (Integer64) = 35598952
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 37.858
+  LAT (Real) = 0.530
+
+OGRFeature(TM_WORLD_BORDERS):92
+  FIPS (String) = KG
+  ISO2 (String) = KG
+  ISO3 (String) = KGZ
+  UN (Integer) = 417
+  NAME (String) = Kyrgyzstan
+  AREA (Integer) = 19180
+  POP2005 (Integer64) = 5203547
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 143
+  LON (Real) = 74.555
+  LAT (Real) = 41.465
+
+OGRFeature(TM_WORLD_BORDERS):93
+  FIPS (String) = KN
+  ISO2 (String) = KP
+  ISO3 (String) = PRK
+  UN (Integer) = 408
+  NAME (String) = Korea, Democratic People&#39;s Republic of
+  AREA (Integer) = 12041
+  POP2005 (Integer64) = 23615611
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 126.451
+  LAT (Real) = 39.778
+
+OGRFeature(TM_WORLD_BORDERS):94
+  FIPS (String) = KR
+  ISO2 (String) = KI
+  ISO3 (String) = KIR
+  UN (Integer) = 296
+  NAME (String) = Kiribati
+  AREA (Integer) = 73
+  POP2005 (Integer64) = 92003
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 175.036
+  LAT (Real) = -1.508
+
+OGRFeature(TM_WORLD_BORDERS):95
+  FIPS (String) = KS
+  ISO2 (String) = KR
+  ISO3 (String) = KOR
+  UN (Integer) = 410
+  NAME (String) = Korea, Republic of
+  AREA (Integer) = 9873
+  POP2005 (Integer64) = 47869837
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 128.103
+  LAT (Real) = 36.504
+
+OGRFeature(TM_WORLD_BORDERS):96
+  FIPS (String) = KU
+  ISO2 (String) = KW
+  ISO3 (String) = KWT
+  UN (Integer) = 414
+  NAME (String) = Kuwait
+  AREA (Integer) = 1782
+  POP2005 (Integer64) = 2700
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 47.376
+  LAT (Real) = 29.476
+
+OGRFeature(TM_WORLD_BORDERS):97
+  FIPS (String) = KZ
+  ISO2 (String) = KZ
+  ISO3 (String) = KAZ
+  UN (Integer) = 398
+  NAME (String) = Kazakhstan
+  AREA (Integer) = 269970
+  POP2005 (Integer64) = 15210609
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 143
+  LON (Real) = 67.301
+  LAT (Real) = 48.160
+
+OGRFeature(TM_WORLD_BORDERS):98
+  FIPS (String) = LA
+  ISO2 (String) = LA
+  ISO3 (String) = LAO
+  UN (Integer) = 418
+  NAME (String) = Lao People&#39;s Democratic Republic
+  AREA (Integer) = 23080
+  POP2005 (Integer64) = 566391
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 102.471
+  LAT (Real) = 19.905
+
+OGRFeature(TM_WORLD_BORDERS):99
+  FIPS (String) = LE
+  ISO2 (String) = LB
+  ISO3 (String) = LBN
+  UN (Integer) = 422
+  NAME (String) = Lebanon
+  AREA (Integer) = 1023
+  POP2005 (Integer64) = 401074
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 35.888
+  LAT (Real) = 33.920
+
+OGRFeature(TM_WORLD_BORDERS):100
+  FIPS (String) = LG
+  ISO2 (String) = LV
+  ISO3 (String) = LVA
+  UN (Integer) = 428
+  NAME (String) = Latvia
+  AREA (Integer) = 6205
+  POP2005 (Integer64) = 2301793
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 25.641
+  LAT (Real) = 56.858
+
+OGRFeature(TM_WORLD_BORDERS):101
+  FIPS (String) = BO
+  ISO2 (String) = BY
+  ISO3 (String) = BLR
+  UN (Integer) = 112
+  NAME (String) = Belarus
+  AREA (Integer) = 20748
+  POP2005 (Integer64) = 9795287
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 28.047
+  LAT (Real) = 53.540
+
+OGRFeature(TM_WORLD_BORDERS):102
+  FIPS (String) = LH
+  ISO2 (String) = LT
+  ISO3 (String) = LTU
+  UN (Integer) = 440
+  NAME (String) = Lithuania
+  AREA (Integer) = 6268
+  POP2005 (Integer64) = 3425077
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 23.897
+  LAT (Real) = 55.336
+
+OGRFeature(TM_WORLD_BORDERS):103
+  FIPS (String) = LI
+  ISO2 (String) = LR
+  ISO3 (String) = LBR
+  UN (Integer) = 430
+  NAME (String) = Liberia
+  AREA (Integer) = 9632
+  POP2005 (Integer64) = 3441796
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -9.657
+  LAT (Real) = 6.682
+
+OGRFeature(TM_WORLD_BORDERS):104
+  FIPS (String) = LO
+  ISO2 (String) = SK
+  ISO3 (String) = SVK
+  UN (Integer) = 703
+  NAME (String) = Slovakia
+  AREA (Integer) = 4808
+  POP2005 (Integer64) = 5386995
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 19.491
+  LAT (Real) = 48.707
+
+OGRFeature(TM_WORLD_BORDERS):105
+  FIPS (String) = LS
+  ISO2 (String) = LI
+  ISO3 (String) = LIE
+  UN (Integer) = 438
+  NAME (String) = Liechtenstein
+  AREA (Integer) = 16
+  POP2005 (Integer64) = 34598
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 9.555
+  LAT (Real) = 47.153
+
+OGRFeature(TM_WORLD_BORDERS):106
+  FIPS (String) = LY
+  ISO2 (String) = LY
+  ISO3 (String) = LBY
+  UN (Integer) = 434
+  NAME (String) = Libyan Arab Jamahiriya
+  AREA (Integer) = 175954
+  POP2005 (Integer64) = 5918217
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 18.023
+  LAT (Real) = 27.044
+
+OGRFeature(TM_WORLD_BORDERS):107
+  FIPS (String) = MA
+  ISO2 (String) = MG
+  ISO3 (String) = MDG
+  UN (Integer) = 450
+  NAME (String) = Madagascar
+  AREA (Integer) = 58154
+  POP2005 (Integer64) = 18642586
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 46.706
+  LAT (Real) = -19.374
+
+OGRFeature(TM_WORLD_BORDERS):108
+  FIPS (String) = MB
+  ISO2 (String) = MQ
+  ISO3 (String) = MTQ
+  UN (Integer) = 474
+  NAME (String) = Martinique
+  AREA (Integer) = 106
+  POP2005 (Integer64) = 395896
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.021
+  LAT (Real) = 14.653
+
+OGRFeature(TM_WORLD_BORDERS):109
+  FIPS (String) = MG
+  ISO2 (String) = MN
+  ISO3 (String) = MNG
+  UN (Integer) = 496
+  NAME (String) = Mongolia
+  AREA (Integer) = 156650
+  POP2005 (Integer64) = 2580704
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 102.876
+  LAT (Real) = 46.056
+
+OGRFeature(TM_WORLD_BORDERS):110
+  FIPS (String) = MH
+  ISO2 (String) = MS
+  ISO3 (String) = MSR
+  UN (Integer) = 500
+  NAME (String) = Montserrat
+  AREA (Integer) = 10
+  POP2005 (Integer64) = 5628
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -62.187
+  LAT (Real) = 16.736
+
+OGRFeature(TM_WORLD_BORDERS):111
+  FIPS (String) = MK
+  ISO2 (String) = MK
+  ISO3 (String) = MKD
+  UN (Integer) = 807
+  NAME (String) = The former Yugoslav Republic of Macedonia
+  AREA (Integer) = 2543
+  POP2005 (Integer64) = 2033655
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 21.698
+  LAT (Real) = 41.600
+
+OGRFeature(TM_WORLD_BORDERS):112
+  FIPS (String) = ML
+  ISO2 (String) = ML
+  ISO3 (String) = MLI
+  UN (Integer) = 466
+  NAME (String) = Mali
+  AREA (Integer) = 122019
+  POP2005 (Integer64) = 1161109
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -3.524
+  LAT (Real) = 17.350
+
+OGRFeature(TM_WORLD_BORDERS):113
+  FIPS (String) = MO
+  ISO2 (String) = MA
+  ISO3 (String) = MAR
+  UN (Integer) = 504
+  NAME (String) = Morocco
+  AREA (Integer) = 44630
+  POP2005 (Integer64) = 30494991
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = -5.758
+  LAT (Real) = 32.706
+
+OGRFeature(TM_WORLD_BORDERS):114
+  FIPS (String) = MP
+  ISO2 (String) = MU
+  ISO3 (String) = MUS
+  UN (Integer) = 480
+  NAME (String) = Mauritius
+  AREA (Integer) = 203
+  POP2005 (Integer64) = 1241173
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 57.583
+  LAT (Real) = -20.255
+
+OGRFeature(TM_WORLD_BORDERS):115
+  FIPS (String) = MR
+  ISO2 (String) = MR
+  ISO3 (String) = MRT
+  UN (Integer) = 478
+  NAME (String) = Mauritania
+  AREA (Integer) = 102522
+  POP2005 (Integer64) = 2963105
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -10.332
+  LAT (Real) = 20.260
+
+OGRFeature(TM_WORLD_BORDERS):116
+  FIPS (String) = MT
+  ISO2 (String) = MT
+  ISO3 (String) = MLT
+  UN (Integer) = 470
+  NAME (String) = Malta
+  AREA (Integer) = 32
+  POP2005 (Integer64) = 402617
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 14.442
+  LAT (Real) = 35.890
+
+OGRFeature(TM_WORLD_BORDERS):117
+  FIPS (String) = MU
+  ISO2 (String) = OM
+  ISO3 (String) = OMN
+  UN (Integer) = 512
+  NAME (String) = Oman
+  AREA (Integer) = 30950
+  POP2005 (Integer64) = 2507042
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 57.407
+  LAT (Real) = 21.656
+
+OGRFeature(TM_WORLD_BORDERS):118
+  FIPS (String) = MV
+  ISO2 (String) = MV
+  ISO3 (String) = MDV
+  UN (Integer) = 462
+  NAME (String) = Maldives
+  AREA (Integer) = 30
+  POP2005 (Integer64) = 295297
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 72.920
+  LAT (Real) = 3.548
+
+OGRFeature(TM_WORLD_BORDERS):119
+  FIPS (String) = MX
+  ISO2 (String) = MX
+  ISO3 (String) = MEX
+  UN (Integer) = 484
+  NAME (String) = Mexico
+  AREA (Integer) = 190869
+  POP2005 (Integer64) = 104266392
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -102.535
+  LAT (Real) = 23.951
+
+OGRFeature(TM_WORLD_BORDERS):120
+  FIPS (String) = MY
+  ISO2 (String) = MY
+  ISO3 (String) = MYS
+  UN (Integer) = 458
+  NAME (String) = Malaysia
+  AREA (Integer) = 32855
+  POP2005 (Integer64) = 25652985
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 102.195
+  LAT (Real) = 4.201
+
+OGRFeature(TM_WORLD_BORDERS):121
+  FIPS (String) = MZ
+  ISO2 (String) = MZ
+  ISO3 (String) = MOZ
+  UN (Integer) = 508
+  NAME (String) = Mozambique
+  AREA (Integer) = 78409
+  POP2005 (Integer64) = 20532675
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 37.923
+  LAT (Real) = -14.422
+
+OGRFeature(TM_WORLD_BORDERS):122
+  FIPS (String) = MI
+  ISO2 (String) = MW
+  ISO3 (String) = MWI
+  UN (Integer) = 454
+  NAME (String) = Malawi
+  AREA (Integer) = 9408
+  POP2005 (Integer64) = 13226091
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 33.808
+  LAT (Real) = -13.400
+
+OGRFeature(TM_WORLD_BORDERS):123
+  FIPS (String) = NC
+  ISO2 (String) = NC
+  ISO3 (String) = NCL
+  UN (Integer) = 540
+  NAME (String) = New Caledonia
+  AREA (Integer) = 1828
+  POP2005 (Integer64) = 234185
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 54
+  LON (Real) = 165.447
+  LAT (Real) = -21.359
+
+OGRFeature(TM_WORLD_BORDERS):124
+  FIPS (String) = NE
+  ISO2 (String) = NU
+  ISO3 (String) = NIU
+  UN (Integer) = 570
+  NAME (String) = Niue
+  AREA (Integer) = 26
+  POP2005 (Integer64) = 1632
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -169.869
+  LAT (Real) = -19.052
+
+OGRFeature(TM_WORLD_BORDERS):125
+  FIPS (String) = NG
+  ISO2 (String) = NE
+  ISO3 (String) = NER
+  UN (Integer) = 562
+  NAME (String) = Niger
+  AREA (Integer) = 126670
+  POP2005 (Integer64) = 1326419
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = 9.398
+  LAT (Real) = 17.426
+
+OGRFeature(TM_WORLD_BORDERS):126
+  FIPS (String) = AA
+  ISO2 (String) = AW
+  ISO3 (String) = ABW
+  UN (Integer) = 533
+  NAME (String) = Aruba
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 102897
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -69.977
+  LAT (Real) = 12.517
+
+OGRFeature(TM_WORLD_BORDERS):127
+  FIPS (String) = AV
+  ISO2 (String) = AI
+  ISO3 (String) = AIA
+  UN (Integer) = 660
+  NAME (String) = Anguilla
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 12256
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -63.032
+  LAT (Real) = 18.237
+
+OGRFeature(TM_WORLD_BORDERS):128
+  FIPS (String) = BE
+  ISO2 (String) = BE
+  ISO3 (String) = BEL
+  UN (Integer) = 56
+  NAME (String) = Belgium
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 10398049
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 4.664
+  LAT (Real) = 50.643
+
+OGRFeature(TM_WORLD_BORDERS):129
+  FIPS (String) = HK
+  ISO2 (String) = HK
+  ISO3 (String) = HKG
+  UN (Integer) = 344
+  NAME (String) = Hong Kong
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 7057418
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 114.129
+  LAT (Real) = 22.423
+
+OGRFeature(TM_WORLD_BORDERS):130
+  FIPS (String) = CQ
+  ISO2 (String) = MP
+  ISO3 (String) = MNP
+  UN (Integer) = 580
+  NAME (String) = Northern Mariana Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 80258
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 145.623
+  LAT (Real) = 15.005
+
+OGRFeature(TM_WORLD_BORDERS):131
+  FIPS (String) = FO
+  ISO2 (String) = FO
+  ISO3 (String) = FRO
+  UN (Integer) = 234
+  NAME (String) = Faroe Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 48205
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -6.864
+  LAT (Real) = 62.050
+
+OGRFeature(TM_WORLD_BORDERS):132
+  FIPS (String) = AN
+  ISO2 (String) = AD
+  ISO3 (String) = AND
+  UN (Integer) = 20
+  NAME (String) = Andorra
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 73483
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 1.576
+  LAT (Real) = 42.549
+
+OGRFeature(TM_WORLD_BORDERS):133
+  FIPS (String) = GI
+  ISO2 (String) = GI
+  ISO3 (String) = GIB
+  UN (Integer) = 292
+  NAME (String) = Gibraltar
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 291
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = -5.345
+  LAT (Real) = 36.138
+
+OGRFeature(TM_WORLD_BORDERS):134
+  FIPS (String) = IM
+  ISO2 (String) = IM
+  ISO3 (String) = IMN
+  UN (Integer) = 833
+  NAME (String) = Isle of Man
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 78357
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -4.527
+  LAT (Real) = 54.229
+
+OGRFeature(TM_WORLD_BORDERS):135
+  FIPS (String) = LU
+  ISO2 (String) = LU
+  ISO3 (String) = LUX
+  UN (Integer) = 442
+  NAME (String) = Luxembourg
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 456613
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 6.088
+  LAT (Real) = 49.771
+
+OGRFeature(TM_WORLD_BORDERS):136
+  FIPS (String) = MC
+  ISO2 (String) = MO
+  ISO3 (String) = MAC
+  UN (Integer) = 446
+  NAME (String) = Macau
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 47309
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 30
+  LON (Real) = 113.545
+  LAT (Real) = 22.200
+
+OGRFeature(TM_WORLD_BORDERS):137
+  FIPS (String) = MN
+  ISO2 (String) = MC
+  ISO3 (String) = MCO
+  UN (Integer) = 492
+  NAME (String) = Monaco
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 325
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 7.412
+  LAT (Real) = 43.750
+
+OGRFeature(TM_WORLD_BORDERS):138
+  FIPS (String) = (null)
+  ISO2 (String) = PS
+  ISO3 (String) = PSE
+  UN (Integer) = 275
+  NAME (String) = Palestine
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 3762005
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 35.278
+  LAT (Real) = 32.037
+
+OGRFeature(TM_WORLD_BORDERS):139
+  FIPS (String) = MJ
+  ISO2 (String) = ME
+  ISO3 (String) = MNE
+  UN (Integer) = 499
+  NAME (String) = Montenegro
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 607969
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 19.254
+  LAT (Real) = 42.792
+
+OGRFeature(TM_WORLD_BORDERS):140
+  FIPS (String) = MF
+  ISO2 (String) = YT
+  ISO3 (String) = MYT
+  UN (Integer) = 175
+  NAME (String) = Mayotte
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 45.155
+  LAT (Real) = -12.777
+
+OGRFeature(TM_WORLD_BORDERS):141
+  FIPS (String) = (null)
+  ISO2 (String) = AX
+  ISO3 (String) = ALA
+  UN (Integer) = 248
+  NAME (String) = Åland Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 19.952
+  LAT (Real) = 60.198
+
+OGRFeature(TM_WORLD_BORDERS):142
+  FIPS (String) = NF
+  ISO2 (String) = NF
+  ISO3 (String) = NFK
+  UN (Integer) = 574
+  NAME (String) = Norfolk Island
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 53
+  LON (Real) = 167.953
+  LAT (Real) = -29.037
+
+OGRFeature(TM_WORLD_BORDERS):143
+  FIPS (String) = CK
+  ISO2 (String) = CC
+  ISO3 (String) = CCK
+  UN (Integer) = 166
+  NAME (String) = Cocos (Keeling) Islands
+  AREA (Integer) = 1
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 96.839
+  LAT (Real) = -12.173
+
+OGRFeature(TM_WORLD_BORDERS):144
+  FIPS (String) = AY
+  ISO2 (String) = AQ
+  ISO3 (String) = ATA
+  UN (Integer) = 10
+  NAME (String) = Antarctica
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 21.304
+  LAT (Real) = -80.446
+
+OGRFeature(TM_WORLD_BORDERS):145
+  FIPS (String) = BV
+  ISO2 (String) = BV
+  ISO3 (String) = BVT
+  UN (Integer) = 74
+  NAME (String) = Bouvet Island
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 3.412
+  LAT (Real) = -54.422
+
+OGRFeature(TM_WORLD_BORDERS):146
+  FIPS (String) = FS
+  ISO2 (String) = TF
+  ISO3 (String) = ATF
+  UN (Integer) = 260
+  NAME (String) = French Southern and Antarctic Lands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 69.117
+  LAT (Real) = -49.302
+
+OGRFeature(TM_WORLD_BORDERS):147
+  FIPS (String) = HM
+  ISO2 (String) = HM
+  ISO3 (String) = HMD
+  UN (Integer) = 334
+  NAME (String) = Heard Island and McDonald Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 73.507
+  LAT (Real) = -53.111
+
+OGRFeature(TM_WORLD_BORDERS):148
+  FIPS (String) = IO
+  ISO2 (String) = IO
+  ISO3 (String) = IOT
+  UN (Integer) = 86
+  NAME (String) = British Indian Ocean Territory
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 72.416
+  LAT (Real) = -7.335
+
+OGRFeature(TM_WORLD_BORDERS):149
+  FIPS (String) = KT
+  ISO2 (String) = CX
+  ISO3 (String) = CXR
+  UN (Integer) = 162
+  NAME (String) = Christmas Island
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 105.704
+  LAT (Real) = -10.444
+
+OGRFeature(TM_WORLD_BORDERS):150
+  FIPS (String) = (null)
+  ISO2 (String) = UM
+  ISO3 (String) = UMI
+  UN (Integer) = 581
+  NAME (String) = United States Minor Outlying Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = -160.027
+  LAT (Real) = -0.385
+
+OGRFeature(TM_WORLD_BORDERS):151
+  FIPS (String) = NH
+  ISO2 (String) = VU
+  ISO3 (String) = VUT
+  UN (Integer) = 548
+  NAME (String) = Vanuatu
+  AREA (Integer) = 1219
+  POP2005 (Integer64) = 215366
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 54
+  LON (Real) = 166.899
+  LAT (Real) = -15.376
+
+OGRFeature(TM_WORLD_BORDERS):152
+  FIPS (String) = NI
+  ISO2 (String) = NG
+  ISO3 (String) = NGA
+  UN (Integer) = 566
+  NAME (String) = Nigeria
+  AREA (Integer) = 91077
+  POP2005 (Integer64) = 141356083
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = 8.105
+  LAT (Real) = 9.594
+
+OGRFeature(TM_WORLD_BORDERS):153
+  FIPS (String) = NL
+  ISO2 (String) = NL
+  ISO3 (String) = NLD
+  UN (Integer) = 528
+  NAME (String) = Netherlands
+  AREA (Integer) = 3388
+  POP2005 (Integer64) = 1632769
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 5.389
+  LAT (Real) = 52.077
+
+OGRFeature(TM_WORLD_BORDERS):154
+  FIPS (String) = NO
+  ISO2 (String) = NO
+  ISO3 (String) = NOR
+  UN (Integer) = 578
+  NAME (String) = Norway
+  AREA (Integer) = 30625
+  POP2005 (Integer64) = 4638836
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 8.740
+  LAT (Real) = 61.152
+
+OGRFeature(TM_WORLD_BORDERS):155
+  FIPS (String) = NP
+  ISO2 (String) = NP
+  ISO3 (String) = NPL
+  UN (Integer) = 524
+  NAME (String) = Nepal
+  AREA (Integer) = 14300
+  POP2005 (Integer64) = 27093656
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 83.939
+  LAT (Real) = 28.253
+
+OGRFeature(TM_WORLD_BORDERS):156
+  FIPS (String) = NR
+  ISO2 (String) = NR
+  ISO3 (String) = NRU
+  UN (Integer) = 520
+  NAME (String) = Nauru
+  AREA (Integer) = 2
+  POP2005 (Integer64) = 10111
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 166.930
+  LAT (Real) = -0.522
+
+OGRFeature(TM_WORLD_BORDERS):157
+  FIPS (String) = NS
+  ISO2 (String) = SR
+  ISO3 (String) = SUR
+  UN (Integer) = 740
+  NAME (String) = Suriname
+  AREA (Integer) = 15600
+  POP2005 (Integer64) = 452468
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -55.912
+  LAT (Real) = 4.127
+
+OGRFeature(TM_WORLD_BORDERS):158
+  FIPS (String) = NU
+  ISO2 (String) = NI
+  ISO3 (String) = NIC
+  UN (Integer) = 558
+  NAME (String) = Nicaragua
+  AREA (Integer) = 12140
+  POP2005 (Integer64) = 5462539
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -85.034
+  LAT (Real) = 12.840
+
+OGRFeature(TM_WORLD_BORDERS):159
+  FIPS (String) = NZ
+  ISO2 (String) = NZ
+  ISO3 (String) = NZL
+  UN (Integer) = 554
+  NAME (String) = New Zealand
+  AREA (Integer) = 26799
+  POP2005 (Integer64) = 4097112
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 53
+  LON (Real) = 172.235
+  LAT (Real) = -42.634
+
+OGRFeature(TM_WORLD_BORDERS):160
+  FIPS (String) = PA
+  ISO2 (String) = PY
+  ISO3 (String) = PRY
+  UN (Integer) = 600
+  NAME (String) = Paraguay
+  AREA (Integer) = 39730
+  POP2005 (Integer64) = 5904342
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -58.391
+  LAT (Real) = -23.236
+
+OGRFeature(TM_WORLD_BORDERS):161
+  FIPS (String) = PE
+  ISO2 (String) = PE
+  ISO3 (String) = PER
+  UN (Integer) = 604
+  NAME (String) = Peru
+  AREA (Integer) = 128000
+  POP2005 (Integer64) = 27274266
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -75.552
+  LAT (Real) = -9.326
+
+OGRFeature(TM_WORLD_BORDERS):162
+  FIPS (String) = PK
+  ISO2 (String) = PK
+  ISO3 (String) = PAK
+  UN (Integer) = 586
+  NAME (String) = Pakistan
+  AREA (Integer) = 77088
+  POP2005 (Integer64) = 158080591
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 34
+  LON (Real) = 69.386
+  LAT (Real) = 29.967
+
+OGRFeature(TM_WORLD_BORDERS):163
+  FIPS (String) = PL
+  ISO2 (String) = PL
+  ISO3 (String) = POL
+  UN (Integer) = 616
+  NAME (String) = Poland
+  AREA (Integer) = 30629
+  POP2005 (Integer64) = 38195558
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 19.401
+  LAT (Real) = 52.125
+
+OGRFeature(TM_WORLD_BORDERS):164
+  FIPS (String) = PM
+  ISO2 (String) = PA
+  ISO3 (String) = PAN
+  UN (Integer) = 591
+  NAME (String) = Panama
+  AREA (Integer) = 7443
+  POP2005 (Integer64) = 3231502
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 13
+  LON (Real) = -80.920
+  LAT (Real) = 8.384
+
+OGRFeature(TM_WORLD_BORDERS):165
+  FIPS (String) = PO
+  ISO2 (String) = PT
+  ISO3 (String) = PRT
+  UN (Integer) = 620
+  NAME (String) = Portugal
+  AREA (Integer) = 9150
+  POP2005 (Integer64) = 10528226
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = -8.058
+  LAT (Real) = 40.309
+
+OGRFeature(TM_WORLD_BORDERS):166
+  FIPS (String) = PP
+  ISO2 (String) = PG
+  ISO3 (String) = PNG
+  UN (Integer) = 598
+  NAME (String) = Papua New Guinea
+  AREA (Integer) = 45286
+  POP2005 (Integer64) = 6069715
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 54
+  LON (Real) = 143.459
+  LAT (Real) = -5.949
+
+OGRFeature(TM_WORLD_BORDERS):167
+  FIPS (String) = PU
+  ISO2 (String) = GW
+  ISO3 (String) = GNB
+  UN (Integer) = 624
+  NAME (String) = Guinea-Bissau
+  AREA (Integer) = 2812
+  POP2005 (Integer64) = 1596929
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -14.651
+  LAT (Real) = 12.125
+
+OGRFeature(TM_WORLD_BORDERS):168
+  FIPS (String) = QA
+  ISO2 (String) = QA
+  ISO3 (String) = QAT
+  UN (Integer) = 634
+  NAME (String) = Qatar
+  AREA (Integer) = 1100
+  POP2005 (Integer64) = 796186
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 51.191
+  LAT (Real) = 25.316
+
+OGRFeature(TM_WORLD_BORDERS):169
+  FIPS (String) = RE
+  ISO2 (String) = RE
+  ISO3 (String) = REU
+  UN (Integer) = 638
+  NAME (String) = Reunion
+  AREA (Integer) = 250
+  POP2005 (Integer64) = 785159
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 55.538
+  LAT (Real) = -21.122
+
+OGRFeature(TM_WORLD_BORDERS):170
+  FIPS (String) = RO
+  ISO2 (String) = RO
+  ISO3 (String) = ROU
+  UN (Integer) = 642
+  NAME (String) = Romania
+  AREA (Integer) = 22987
+  POP2005 (Integer64) = 21627557
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 24.969
+  LAT (Real) = 45.844
+
+OGRFeature(TM_WORLD_BORDERS):171
+  FIPS (String) = MD
+  ISO2 (String) = MD
+  ISO3 (String) = MDA
+  UN (Integer) = 498
+  NAME (String) = Republic of Moldova
+  AREA (Integer) = 3288
+  POP2005 (Integer64) = 3876661
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 28.599
+  LAT (Real) = 47.193
+
+OGRFeature(TM_WORLD_BORDERS):172
+  FIPS (String) = RP
+  ISO2 (String) = PH
+  ISO3 (String) = PHL
+  UN (Integer) = 608
+  NAME (String) = Philippines
+  AREA (Integer) = 29817
+  POP2005 (Integer64) = 84566163
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 122.466
+  LAT (Real) = 11.118
+
+OGRFeature(TM_WORLD_BORDERS):173
+  FIPS (String) = RQ
+  ISO2 (String) = PR
+  ISO3 (String) = PRI
+  UN (Integer) = 630
+  NAME (String) = Puerto Rico
+  AREA (Integer) = 887
+  POP2005 (Integer64) = 3946779
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -66.466
+  LAT (Real) = 18.221
+
+OGRFeature(TM_WORLD_BORDERS):174
+  FIPS (String) = RS
+  ISO2 (String) = RU
+  ISO3 (String) = RUS
+  UN (Integer) = 643
+  NAME (String) = Russia
+  AREA (Integer) = 1638094
+  POP2005 (Integer64) = 143953092
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 96.689
+  LAT (Real) = 61.988
+
+OGRFeature(TM_WORLD_BORDERS):175
+  FIPS (String) = RW
+  ISO2 (String) = RW
+  ISO3 (String) = RWA
+  UN (Integer) = 646
+  NAME (String) = Rwanda
+  AREA (Integer) = 2467
+  POP2005 (Integer64) = 9233793
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 29.917
+  LAT (Real) = -1.998
+
+OGRFeature(TM_WORLD_BORDERS):176
+  FIPS (String) = SA
+  ISO2 (String) = SA
+  ISO3 (String) = SAU
+  UN (Integer) = 682
+  NAME (String) = Saudi Arabia
+  AREA (Integer) = 214969
+  POP2005 (Integer64) = 2361236
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 44.585
+  LAT (Real) = 24.023
+
+OGRFeature(TM_WORLD_BORDERS):177
+  FIPS (String) = SC
+  ISO2 (String) = KN
+  ISO3 (String) = KNA
+  UN (Integer) = 659
+  NAME (String) = Saint Kitts and Nevis
+  AREA (Integer) = 36
+  POP2005 (Integer64) = 49138
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -62.769
+  LAT (Real) = 17.340
+
+OGRFeature(TM_WORLD_BORDERS):178
+  FIPS (String) = SE
+  ISO2 (String) = SC
+  ISO3 (String) = SYC
+  UN (Integer) = 690
+  NAME (String) = Seychelles
+  AREA (Integer) = 46
+  POP2005 (Integer64) = 85532
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 55.474
+  LAT (Real) = -4.647
+
+OGRFeature(TM_WORLD_BORDERS):179
+  FIPS (String) = SF
+  ISO2 (String) = ZA
+  ISO3 (String) = ZAF
+  UN (Integer) = 710
+  NAME (String) = South Africa
+  AREA (Integer) = 121447
+  POP2005 (Integer64) = 47938663
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 18
+  LON (Real) = 23.121
+  LAT (Real) = -30.558
+
+OGRFeature(TM_WORLD_BORDERS):180
+  FIPS (String) = LT
+  ISO2 (String) = LS
+  ISO3 (String) = LSO
+  UN (Integer) = 426
+  NAME (String) = Lesotho
+  AREA (Integer) = 3035
+  POP2005 (Integer64) = 1980831
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 18
+  LON (Real) = 28.243
+  LAT (Real) = -29.581
+
+OGRFeature(TM_WORLD_BORDERS):181
+  FIPS (String) = BC
+  ISO2 (String) = BW
+  ISO3 (String) = BWA
+  UN (Integer) = 72
+  NAME (String) = Botswana
+  AREA (Integer) = 56673
+  POP2005 (Integer64) = 1835938
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 18
+  LON (Real) = 23.815
+  LAT (Real) = -22.182
+
+OGRFeature(TM_WORLD_BORDERS):182
+  FIPS (String) = SG
+  ISO2 (String) = SN
+  ISO3 (String) = SEN
+  UN (Integer) = 686
+  NAME (String) = Senegal
+  AREA (Integer) = 19253
+  POP2005 (Integer64) = 1177034
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -14.881
+  LAT (Real) = 15.013
+
+OGRFeature(TM_WORLD_BORDERS):183
+  FIPS (String) = SI
+  ISO2 (String) = SI
+  ISO3 (String) = SVN
+  UN (Integer) = 705
+  NAME (String) = Slovenia
+  AREA (Integer) = 2014
+  POP2005 (Integer64) = 1999425
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 14.827
+  LAT (Real) = 46.124
+
+OGRFeature(TM_WORLD_BORDERS):184
+  FIPS (String) = SL
+  ISO2 (String) = SL
+  ISO3 (String) = SLE
+  UN (Integer) = 694
+  NAME (String) = Sierra Leone
+  AREA (Integer) = 7162
+  POP2005 (Integer64) = 5586403
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -11.792
+  LAT (Real) = 8.560
+
+OGRFeature(TM_WORLD_BORDERS):185
+  FIPS (String) = SN
+  ISO2 (String) = SG
+  ISO3 (String) = SGP
+  UN (Integer) = 702
+  NAME (String) = Singapore
+  AREA (Integer) = 67
+  POP2005 (Integer64) = 4327468
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 103.808
+  LAT (Real) = 1.351
+
+OGRFeature(TM_WORLD_BORDERS):186
+  FIPS (String) = SO
+  ISO2 (String) = SO
+  ISO3 (String) = SOM
+  UN (Integer) = 706
+  NAME (String) = Somalia
+  AREA (Integer) = 62734
+  POP2005 (Integer64) = 8196395
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 48.316
+  LAT (Real) = 9.774
+
+OGRFeature(TM_WORLD_BORDERS):187
+  FIPS (String) = SP
+  ISO2 (String) = ES
+  ISO3 (String) = ESP
+  UN (Integer) = 724
+  NAME (String) = Spain
+  AREA (Integer) = 49904
+  POP2005 (Integer64) = 43397491
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = -3.649
+  LAT (Real) = 40.227
+
+OGRFeature(TM_WORLD_BORDERS):188
+  FIPS (String) = ST
+  ISO2 (String) = LC
+  ISO3 (String) = LCA
+  UN (Integer) = 662
+  NAME (String) = Saint Lucia
+  AREA (Integer) = 61
+  POP2005 (Integer64) = 16124
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -60.969
+  LAT (Real) = 13.898
+
+OGRFeature(TM_WORLD_BORDERS):189
+  FIPS (String) = SU
+  ISO2 (String) = SD
+  ISO3 (String) = SDN
+  UN (Integer) = 736
+  NAME (String) = Sudan
+  AREA (Integer) = 237600
+  POP2005 (Integer64) = 36899747
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 30.050
+  LAT (Real) = 13.832
+
+OGRFeature(TM_WORLD_BORDERS):190
+  FIPS (String) = SW
+  ISO2 (String) = SE
+  ISO3 (String) = SWE
+  UN (Integer) = 752
+  NAME (String) = Sweden
+  AREA (Integer) = 41033
+  POP2005 (Integer64) = 9038049
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 15.270
+  LAT (Real) = 62.011
+
+OGRFeature(TM_WORLD_BORDERS):191
+  FIPS (String) = SY
+  ISO2 (String) = SY
+  ISO3 (String) = SYR
+  UN (Integer) = 760
+  NAME (String) = Syrian Arab Republic
+  AREA (Integer) = 18378
+  POP2005 (Integer64) = 18893881
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 38.506
+  LAT (Real) = 35.013
+
+OGRFeature(TM_WORLD_BORDERS):192
+  FIPS (String) = SZ
+  ISO2 (String) = CH
+  ISO3 (String) = CHE
+  UN (Integer) = 756
+  NAME (String) = Switzerland
+  AREA (Integer) = 4000
+  POP2005 (Integer64) = 7424389
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 155
+  LON (Real) = 7.908
+  LAT (Real) = 46.861
+
+OGRFeature(TM_WORLD_BORDERS):193
+  FIPS (String) = TD
+  ISO2 (String) = TT
+  ISO3 (String) = TTO
+  UN (Integer) = 780
+  NAME (String) = Trinidad and Tobago
+  AREA (Integer) = 513
+  POP2005 (Integer64) = 1323722
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.253
+  LAT (Real) = 10.468
+
+OGRFeature(TM_WORLD_BORDERS):194
+  FIPS (String) = TH
+  ISO2 (String) = TH
+  ISO3 (String) = THA
+  UN (Integer) = 764
+  NAME (String) = Thailand
+  AREA (Integer) = 51089
+  POP2005 (Integer64) = 63002911
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 100.844
+  LAT (Real) = 15.700
+
+OGRFeature(TM_WORLD_BORDERS):195
+  FIPS (String) = TI
+  ISO2 (String) = TJ
+  ISO3 (String) = TJK
+  UN (Integer) = 762
+  NAME (String) = Tajikistan
+  AREA (Integer) = 13996
+  POP2005 (Integer64) = 6550213
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 143
+  LON (Real) = 69.420
+  LAT (Real) = 38.665
+
+OGRFeature(TM_WORLD_BORDERS):196
+  FIPS (String) = TL
+  ISO2 (String) = TK
+  ISO3 (String) = TKL
+  UN (Integer) = 772
+  NAME (String) = Tokelau
+  AREA (Integer) = 1
+  POP2005 (Integer64) = 1401
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -171.853
+  LAT (Real) = -9.193
+
+OGRFeature(TM_WORLD_BORDERS):197
+  FIPS (String) = TN
+  ISO2 (String) = TO
+  ISO3 (String) = TON
+  UN (Integer) = 776
+  NAME (String) = Tonga
+  AREA (Integer) = 72
+  POP2005 (Integer64) = 99361
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -175.185
+  LAT (Real) = -21.202
+
+OGRFeature(TM_WORLD_BORDERS):198
+  FIPS (String) = TO
+  ISO2 (String) = TG
+  ISO3 (String) = TGO
+  UN (Integer) = 768
+  NAME (String) = Togo
+  AREA (Integer) = 5439
+  POP2005 (Integer64) = 6238572
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = 1.081
+  LAT (Real) = 8.799
+
+OGRFeature(TM_WORLD_BORDERS):199
+  FIPS (String) = TP
+  ISO2 (String) = ST
+  ISO3 (String) = STP
+  UN (Integer) = 678
+  NAME (String) = Sao Tome and Principe
+  AREA (Integer) = 96
+  POP2005 (Integer64) = 152622
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 17
+  LON (Real) = 6.629
+  LAT (Real) = 0.201
+
+OGRFeature(TM_WORLD_BORDERS):200
+  FIPS (String) = TS
+  ISO2 (String) = TN
+  ISO3 (String) = TUN
+  UN (Integer) = 788
+  NAME (String) = Tunisia
+  AREA (Integer) = 15536
+  POP2005 (Integer64) = 10104685
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 9.596
+  LAT (Real) = 35.383
+
+OGRFeature(TM_WORLD_BORDERS):201
+  FIPS (String) = TU
+  ISO2 (String) = TR
+  ISO3 (String) = TUR
+  UN (Integer) = 792
+  NAME (String) = Turkey
+  AREA (Integer) = 76963
+  POP2005 (Integer64) = 72969723
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 35.179
+  LAT (Real) = 39.061
+
+OGRFeature(TM_WORLD_BORDERS):202
+  FIPS (String) = TV
+  ISO2 (String) = TV
+  ISO3 (String) = TUV
+  UN (Integer) = 798
+  NAME (String) = Tuvalu
+  AREA (Integer) = 3
+  POP2005 (Integer64) = 10441
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = 179.219
+  LAT (Real) = -8.514
+
+OGRFeature(TM_WORLD_BORDERS):203
+  FIPS (String) = TX
+  ISO2 (String) = TM
+  ISO3 (String) = TKM
+  UN (Integer) = 795
+  NAME (String) = Turkmenistan
+  AREA (Integer) = 46993
+  POP2005 (Integer64) = 4833266
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 143
+  LON (Real) = 59.384
+  LAT (Real) = 39.122
+
+OGRFeature(TM_WORLD_BORDERS):204
+  FIPS (String) = TZ
+  ISO2 (String) = TZ
+  ISO3 (String) = TZA
+  UN (Integer) = 834
+  NAME (String) = United Republic of Tanzania
+  AREA (Integer) = 88359
+  POP2005 (Integer64) = 38477873
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 34.823
+  LAT (Real) = -6.270
+
+OGRFeature(TM_WORLD_BORDERS):205
+  FIPS (String) = UG
+  ISO2 (String) = UG
+  ISO3 (String) = UGA
+  UN (Integer) = 800
+  NAME (String) = Uganda
+  AREA (Integer) = 19710
+  POP2005 (Integer64) = 28947181
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 32.386
+  LAT (Real) = 1.280
+
+OGRFeature(TM_WORLD_BORDERS):206
+  FIPS (String) = UK
+  ISO2 (String) = GB
+  ISO3 (String) = GBR
+  UN (Integer) = 826
+  NAME (String) = United Kingdom
+  AREA (Integer) = 24193
+  POP2005 (Integer64) = 60244834
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -1.600
+  LAT (Real) = 53.000
+
+OGRFeature(TM_WORLD_BORDERS):207
+  FIPS (String) = UP
+  ISO2 (String) = UA
+  ISO3 (String) = UKR
+  UN (Integer) = 804
+  NAME (String) = Ukraine
+  AREA (Integer) = 57935
+  POP2005 (Integer64) = 46917544
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 151
+  LON (Real) = 31.388
+  LAT (Real) = 49.016
+
+OGRFeature(TM_WORLD_BORDERS):208
+  FIPS (String) = US
+  ISO2 (String) = US
+  ISO3 (String) = USA
+  UN (Integer) = 840
+  NAME (String) = United States
+  AREA (Integer) = 915896
+  POP2005 (Integer64) = 299846449
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 21
+  LON (Real) = -98.606
+  LAT (Real) = 39.622
+
+OGRFeature(TM_WORLD_BORDERS):209
+  FIPS (String) = UV
+  ISO2 (String) = BF
+  ISO3 (String) = BFA
+  UN (Integer) = 854
+  NAME (String) = Burkina Faso
+  AREA (Integer) = 27360
+  POP2005 (Integer64) = 13933363
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -1.740
+  LAT (Real) = 12.278
+
+OGRFeature(TM_WORLD_BORDERS):210
+  FIPS (String) = UY
+  ISO2 (String) = UY
+  ISO3 (String) = URY
+  UN (Integer) = 858
+  NAME (String) = Uruguay
+  AREA (Integer) = 17502
+  POP2005 (Integer64) = 3325727
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -56.012
+  LAT (Real) = -32.800
+
+OGRFeature(TM_WORLD_BORDERS):211
+  FIPS (String) = UZ
+  ISO2 (String) = UZ
+  ISO3 (String) = UZB
+  UN (Integer) = 860
+  NAME (String) = Uzbekistan
+  AREA (Integer) = 42540
+  POP2005 (Integer64) = 26593123
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 143
+  LON (Real) = 63.170
+  LAT (Real) = 41.750
+
+OGRFeature(TM_WORLD_BORDERS):212
+  FIPS (String) = VC
+  ISO2 (String) = VC
+  ISO3 (String) = VCT
+  UN (Integer) = 670
+  NAME (String) = Saint Vincent and the Grenadines
+  AREA (Integer) = 39
+  POP2005 (Integer64) = 119137
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.194
+  LAT (Real) = 13.248
+
+OGRFeature(TM_WORLD_BORDERS):213
+  FIPS (String) = VE
+  ISO2 (String) = VE
+  ISO3 (String) = VEN
+  UN (Integer) = 862
+  NAME (String) = Venezuela
+  AREA (Integer) = 88205
+  POP2005 (Integer64) = 26725573
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 5
+  LON (Real) = -66.166
+  LAT (Real) = 7.125
+
+OGRFeature(TM_WORLD_BORDERS):214
+  FIPS (String) = VI
+  ISO2 (String) = VG
+  ISO3 (String) = VGB
+  UN (Integer) = 92
+  NAME (String) = British Virgin Islands
+  AREA (Integer) = 15
+  POP2005 (Integer64) = 22016
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -64.390
+  LAT (Real) = 18.483
+
+OGRFeature(TM_WORLD_BORDERS):215
+  FIPS (String) = VM
+  ISO2 (String) = VN
+  ISO3 (String) = VNM
+  UN (Integer) = 704
+  NAME (String) = Viet Nam
+  AREA (Integer) = 32549
+  POP2005 (Integer64) = 85028643
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 105.314
+  LAT (Real) = 21.491
+
+OGRFeature(TM_WORLD_BORDERS):216
+  FIPS (String) = VQ
+  ISO2 (String) = VI
+  ISO3 (String) = VIR
+  UN (Integer) = 850
+  NAME (String) = United States Virgin Islands
+  AREA (Integer) = 35
+  POP2005 (Integer64) = 111408
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -64.785
+  LAT (Real) = 17.741
+
+OGRFeature(TM_WORLD_BORDERS):217
+  FIPS (String) = WA
+  ISO2 (String) = NA
+  ISO3 (String) = NAM
+  UN (Integer) = 516
+  NAME (String) = Namibia
+  AREA (Integer) = 82329
+  POP2005 (Integer64) = 2019677
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 18
+  LON (Real) = 17.218
+  LAT (Real) = -22.133
+
+OGRFeature(TM_WORLD_BORDERS):218
+  FIPS (String) = WF
+  ISO2 (String) = WF
+  ISO3 (String) = WLF
+  UN (Integer) = 876
+  NAME (String) = Wallis and Futuna Islands
+  AREA (Integer) = 14
+  POP2005 (Integer64) = 15079
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -178.131
+  LAT (Real) = -14.289
+
+OGRFeature(TM_WORLD_BORDERS):219
+  FIPS (String) = WS
+  ISO2 (String) = WS
+  ISO3 (String) = WSM
+  UN (Integer) = 882
+  NAME (String) = Samoa
+  AREA (Integer) = 283
+  POP2005 (Integer64) = 183845
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -172.414
+  LAT (Real) = -13.652
+
+OGRFeature(TM_WORLD_BORDERS):220
+  FIPS (String) = WZ
+  ISO2 (String) = SZ
+  ISO3 (String) = SWZ
+  UN (Integer) = 748
+  NAME (String) = Swaziland
+  AREA (Integer) = 1720
+  POP2005 (Integer64) = 1124529
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 18
+  LON (Real) = 31.497
+  LAT (Real) = -26.562
+
+OGRFeature(TM_WORLD_BORDERS):221
+  FIPS (String) = YM
+  ISO2 (String) = YE
+  ISO3 (String) = YEM
+  UN (Integer) = 887
+  NAME (String) = Yemen
+  AREA (Integer) = 52797
+  POP2005 (Integer64) = 21095679
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 48.355
+  LAT (Real) = 15.807
+
+OGRFeature(TM_WORLD_BORDERS):222
+  FIPS (String) = ZA
+  ISO2 (String) = ZM
+  ISO3 (String) = ZMB
+  UN (Integer) = 894
+  NAME (String) = Zambia
+  AREA (Integer) = 74339
+  POP2005 (Integer64) = 11478317
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 26.320
+  LAT (Real) = -14.614
+
+OGRFeature(TM_WORLD_BORDERS):223
+  FIPS (String) = ZI
+  ISO2 (String) = ZW
+  ISO3 (String) = ZWE
+  UN (Integer) = 716
+  NAME (String) = Zimbabwe
+  AREA (Integer) = 38685
+  POP2005 (Integer64) = 13119679
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 14
+  LON (Real) = 29.872
+  LAT (Real) = -19.000
+
+OGRFeature(TM_WORLD_BORDERS):224
+  FIPS (String) = ID
+  ISO2 (String) = ID
+  ISO3 (String) = IDN
+  UN (Integer) = 360
+  NAME (String) = Indonesia
+  AREA (Integer) = 181157
+  POP2005 (Integer64) = 226063044
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 114.252
+  LAT (Real) = -0.976
+
+OGRFeature(TM_WORLD_BORDERS):225
+  FIPS (String) = GP
+  ISO2 (String) = GP
+  ISO3 (String) = GLP
+  UN (Integer) = 312
+  NAME (String) = Guadeloupe
+  AREA (Integer) = 169
+  POP2005 (Integer64) = 438403
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.441
+  LAT (Real) = 16.286
+
+OGRFeature(TM_WORLD_BORDERS):226
+  FIPS (String) = NT
+  ISO2 (String) = AN
+  ISO3 (String) = ANT
+  UN (Integer) = 530
+  NAME (String) = Netherlands Antilles
+  AREA (Integer) = 80
+  POP2005 (Integer64) = 186392
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -68.870
+  LAT (Real) = 12.123
+
+OGRFeature(TM_WORLD_BORDERS):227
+  FIPS (String) = AE
+  ISO2 (String) = AE
+  ISO3 (String) = ARE
+  UN (Integer) = 784
+  NAME (String) = United Arab Emirates
+  AREA (Integer) = 8360
+  POP2005 (Integer64) = 4104291
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 54.163
+  LAT (Real) = 23.549
+
+OGRFeature(TM_WORLD_BORDERS):228
+  FIPS (String) = TT
+  ISO2 (String) = TL
+  ISO3 (String) = TLS
+  UN (Integer) = 626
+  NAME (String) = Timor-Leste
+  AREA (Integer) = 1487
+  POP2005 (Integer64) = 1067285
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 35
+  LON (Real) = 125.878
+  LAT (Real) = -8.822
+
+OGRFeature(TM_WORLD_BORDERS):229
+  FIPS (String) = PC
+  ISO2 (String) = PN
+  ISO3 (String) = PCN
+  UN (Integer) = 612
+  NAME (String) = Pitcairn Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 5
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 61
+  LON (Real) = -128.316
+  LAT (Real) = -24.366
+
+OGRFeature(TM_WORLD_BORDERS):230
+  FIPS (String) = PS
+  ISO2 (String) = PW
+  ISO3 (String) = PLW
+  UN (Integer) = 585
+  NAME (String) = Palau
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 20127
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 134.570
+  LAT (Real) = 7.501
+
+OGRFeature(TM_WORLD_BORDERS):231
+  FIPS (String) = RM
+  ISO2 (String) = MH
+  ISO3 (String) = MHL
+  UN (Integer) = 584
+  NAME (String) = Marshall Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 5672
+  REGION (Integer) = 9
+  SUBREGION (Integer) = 57
+  LON (Real) = 168.963
+  LAT (Real) = 7.595
+
+OGRFeature(TM_WORLD_BORDERS):232
+  FIPS (String) = SB
+  ISO2 (String) = PM
+  ISO3 (String) = SPM
+  UN (Integer) = 666
+  NAME (String) = Saint Pierre and Miquelon
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 6346
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 21
+  LON (Real) = -56.325
+  LAT (Real) = 47.042
+
+OGRFeature(TM_WORLD_BORDERS):233
+  FIPS (String) = SH
+  ISO2 (String) = SH
+  ISO3 (String) = SHN
+  UN (Integer) = 654
+  NAME (String) = Saint Helena
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 6399
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 11
+  LON (Real) = -5.710
+  LAT (Real) = -15.953
+
+OGRFeature(TM_WORLD_BORDERS):234
+  FIPS (String) = SM
+  ISO2 (String) = SM
+  ISO3 (String) = SMR
+  UN (Integer) = 674
+  NAME (String) = San Marino
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 30214
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 12.460
+  LAT (Real) = 43.942
+
+OGRFeature(TM_WORLD_BORDERS):235
+  FIPS (String) = TK
+  ISO2 (String) = TC
+  ISO3 (String) = TCA
+  UN (Integer) = 796
+  NAME (String) = Turks and Caicos Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 24459
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -71.950
+  LAT (Real) = 21.902
+
+OGRFeature(TM_WORLD_BORDERS):236
+  FIPS (String) = WI
+  ISO2 (String) = EH
+  ISO3 (String) = ESH
+  UN (Integer) = 732
+  NAME (String) = Western Sahara
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 440428
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = -13.706
+  LAT (Real) = 24.554
+
+OGRFeature(TM_WORLD_BORDERS):237
+  FIPS (String) = RB
+  ISO2 (String) = RS
+  ISO3 (String) = SRB
+  UN (Integer) = 688
+  NAME (String) = Serbia
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 9863026
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 20.806
+  LAT (Real) = 44.032
+
+OGRFeature(TM_WORLD_BORDERS):238
+  FIPS (String) = VT
+  ISO2 (String) = VA
+  ISO3 (String) = VAT
+  UN (Integer) = 336
+  NAME (String) = Holy See (Vatican City)
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 783
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 39
+  LON (Real) = 12.451
+  LAT (Real) = 41.904
+
+OGRFeature(TM_WORLD_BORDERS):239
+  FIPS (String) = SV
+  ISO2 (String) = SJ
+  ISO3 (String) = SJM
+  UN (Integer) = 744
+  NAME (String) = Svalbard
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = 18.374
+  LAT (Real) = 78.830
+
+OGRFeature(TM_WORLD_BORDERS):240
+  FIPS (String) = RN
+  ISO2 (String) = MF
+  ISO3 (String) = MAF
+  UN (Integer) = 663
+  NAME (String) = Saint Martin
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -63.041
+  LAT (Real) = 18.094
+
+OGRFeature(TM_WORLD_BORDERS):241
+  FIPS (String) = TB
+  ISO2 (String) = BL
+  ISO3 (String) = BLM
+  UN (Integer) = 652
+  NAME (String) = Saint Barthelemy
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -63.043
+  LAT (Real) = 18.040
+
+OGRFeature(TM_WORLD_BORDERS):242
+  FIPS (String) = GK
+  ISO2 (String) = GG
+  ISO3 (String) = GGY
+  UN (Integer) = 831
+  NAME (String) = Guernsey
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -2.576
+  LAT (Real) = 49.459
+
+OGRFeature(TM_WORLD_BORDERS):243
+  FIPS (String) = JE
+  ISO2 (String) = JE
+  ISO3 (String) = JEY
+  UN (Integer) = 832
+  NAME (String) = Jersey
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 150
+  SUBREGION (Integer) = 154
+  LON (Real) = -2.129
+  LAT (Real) = 49.219
+
+OGRFeature(TM_WORLD_BORDERS):244
+  FIPS (String) = SX
+  ISO2 (String) = GS
+  ISO3 (String) = SGS
+  UN (Integer) = 239
+  NAME (String) = South Georgia South Sandwich Islands
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = -36.891
+  LAT (Real) = -54.209
+
+OGRFeature(TM_WORLD_BORDERS):245
+  FIPS (String) = TW
+  ISO2 (String) = TW
+  ISO3 (String) = TWN
+  UN (Integer) = 158
+  NAME (String) = Taiwan
+  AREA (Integer) = 0
+  POP2005 (Integer64) = 0
+  REGION (Integer) = 0
+  SUBREGION (Integer) = 0
+  LON (Real) = 120.946
+  LAT (Real) = 23.754
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># base on an attribute</span>
+rm<span class="w"> </span>-f<span class="w"> </span>shp/TM_UGANDA_BORDERS-0.3.*
+ogr2ogr<span class="w">  </span>-overwrite<span class="w">  </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w">  </span>-where<span class="w"> </span><span class="s2">&quot;NAME = &#39;Uganda&#39;&quot;</span><span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.shp<span class="w"> </span>geodata/shp/TM_WORLD_BORDERS.shp
+/usr/bin/openev/bin/openev<span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.shp
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+Gtk-WARNING **: Failed to load module &#34;libgail.so&#34;: libgail.so: cannot open shared object file: No such file or directory
+
+Gtk-WARNING **: Failed to load module &#34;libatk-bridge.so&#34;: libatk-bridge.so: cannot open shared object file: No such file or directory
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># base on dimension of the polygons</span>
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.*
+ogr2ogr<span class="w">  </span>-overwrite<span class="w">  </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT * FROM TM_WORLD_BORDERS WHERE OGR_GEOM_AREA &gt; 100 &quot;</span><span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp<span class="w"> </span>geodata/shp/TM_WORLD_BORDERS.shp
+/usr/bin/openev/bin/openev<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+Gtk-WARNING **: Failed to load module &#34;libgail.so&#34;: libgail.so: cannot open shared object file: No such file or directory
+
+Gtk-WARNING **: Failed to load module &#34;libatk-bridge.so&#34;: libatk-bridge.so: cannot open shared object file: No such file or directory
+</pre></div></div>
+</div>
+<p>Remove all the output</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/shp/polygons.sqlite<span class="w"> </span>geodata/shp/point-buf_stat.csv<span class="w"> </span>geodata/shp/point_stat.csv<span class="w"> </span>geodata/vegetation/GPPcv08-11.tif<span class="w"> </span>LST/*_crop.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt<span class="w"> </span>vegetation/ETmean08-11_crop.txt<span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/ETmosaic.tif<span class="w">  </span>geodata/vegetation/stack_??.tif<span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/tiles.*<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_proximity.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_buffer.tif<span class="w">  </span>geodata/dem/slope.tif<span class="w"> </span>geodata/dem/aspect.tif<span class="w">  </span>geodata/dem/tri.tif<span class="w"> </span>geodata/dem/tpi.tif<span class="w"> </span>geodata/dem/roughness.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_01_trh?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month1-msk.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthStdev.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month_mean_stdev.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month.vrt<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif<span class="w">  </span>geodata/temperature/reclass_ug_bio_3.tif<span class="w"> </span>geodata/temperature/reclass_ug_bio_3.txt<span class="w"> </span>geodata/shp/polygons_stat.csv<span class="w"> </span>geodata/shp/polygons_stat.*<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp.*<span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.*<span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gdal_osgeo.html" class="btn btn-neutral float-left" title="Use GDAL/OGR for raster/vector operations - osgeo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../PKTOOLS/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

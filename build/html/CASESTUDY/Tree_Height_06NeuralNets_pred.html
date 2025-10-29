@@ -1,0 +1,2238 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimation of tree height using GEDI dataset - Neural Network 1 &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Estimation of tree height using GEDI dataset - Neural Network 1 - 2024" href="Tree_Height_07FeedForward_Networks_2024.html" />
+    <link rel="prev" title="Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022" href="Tree_Height_05Perceptron_pred_clean_2022.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Neural Network 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Feedfoward-neural-network">Feedfoward neural network</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Estimation of tree height using GEDI dataset - Neural Network 1</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CASESTUDY/Tree_Height_06NeuralNets_pred.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Estimation-of-tree-height-using-GEDI-dataset---Neural-Network-1">
+<h1>Estimation of tree height using GEDI dataset - Neural Network 1<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Neural-Network-1" title="Link to this heading"></a></h1>
+<p>Python packages intallation</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install torch torchvision torchaudio
+</pre></div>
+</div>
+<p>Ref: <a class="reference external" href="https://medium.com/biaslyai/pytorch-introduction-to-neural-network-feedforward-neural-network-model-e7231cff47cb">https://medium.com/biaslyai/pytorch-introduction-to-neural-network-feedforward-neural-network-model-e7231cff47cb</a></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">stats</span>
+</pre></div>
+</div>
+</div>
+<p>Fix random seeds</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">seed</span><span class="o">=</span><span class="mi">31</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">manual_seed_all</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>We already have seen how to design a simple Perceptron to perform a regression. Also, we observed that the normalization of the data and target should match the structure of our model. However, just guaranteeing the data is in the correct range is not enough. Let’s see how it works.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #What are we trying to beat</span>
+<span class="c1"># data = pd.read_csv(&#39;./tree_height/txt/eu_x_y_height_predictors.txt&#39;,  sep=&quot; &quot;)</span>
+<span class="c1"># # data = pd.read_csv(&#39;./tree_height/txt/eu_x_y_height.txt&#39;,  sep=&quot; &quot;)</span>
+<span class="c1"># print(data.shape)</span>
+<span class="c1"># print(data.head())</span>
+
+<span class="c1"># y_true = data[&#39;h&#39;]</span>
+<span class="c1"># y_pred = data[&#39;forest_height&#39;]</span>
+
+<span class="c1"># slope, intercept, r_value, p_value, std_err = scipy.stats.linregress(y_pred, y_true)</span>
+
+<span class="c1"># fig,ax=plt.subplots(1,1,figsize=(5,5))</span>
+<span class="c1"># ax.scatter(y_pred, y_true)</span>
+<span class="c1"># ax.set_xlabel(&#39;Prediction&#39;)</span>
+<span class="c1"># ax.set_ylabel(&#39;True&#39;)</span>
+<span class="c1"># ax.set_title(&#39;slope: {:.4f}, r_value: {:.4f}&#39;.format(slope, r_value))</span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s start by loading the data we used in the previous class</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Try the the tree height with Perceptron</span>
+<span class="c1"># data = pd.read_csv(&#39;./tree_height/txt/eu_x_y_height_predictors.txt&#39;,  sep=&quot; &quot;)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;./tree_height/txt/eu_x_y_height.txt&#39;</span><span class="p">,</span>  <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(66522, 3)
+          x          y      h
+0  6.894317  49.482459   2.73
+1  7.023274  49.510552  10.75
+2  7.394650  49.590488  21.20
+3  7.396895  49.590968  20.00
+4  7.397643  49.591128  24.23
+</pre></div></div>
+</div>
+<p>Once again, let’s take a look at the distributions and range of our data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Explore the raw data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([5.287e+03, 2.447e+03, 1.626e+03, 1.406e+03, 1.308e+03, 1.327e+03,
+        1.483e+03, 1.721e+03, 1.957e+03, 2.022e+03, 2.131e+03, 2.314e+03,
+        2.726e+03, 3.055e+03, 3.551e+03, 3.900e+03, 3.956e+03, 4.169e+03,
+        4.049e+03, 3.536e+03, 3.120e+03, 2.561e+03, 1.923e+03, 1.473e+03,
+        1.069e+03, 7.340e+02, 5.460e+02, 3.720e+02, 2.410e+02, 1.860e+02,
+        1.010e+02, 7.200e+01, 7.300e+01, 4.300e+01, 1.500e+01, 6.000e+00,
+        6.000e+00, 6.000e+00, 2.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        1.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        0.000e+00, 1.000e+00]),
+ array([ 1.72  ,  3.1364,  4.5528,  5.9692,  7.3856,  8.802 , 10.2184,
+        11.6348, 13.0512, 14.4676, 15.884 , 17.3004, 18.7168, 20.1332,
+        21.5496, 22.966 , 24.3824, 25.7988, 27.2152, 28.6316, 30.048 ,
+        31.4644, 32.8808, 34.2972, 35.7136, 37.13  , 38.5464, 39.9628,
+        41.3792, 42.7956, 44.212 , 45.6284, 47.0448, 48.4612, 49.8776,
+        51.294 , 52.7104, 54.1268, 55.5432, 56.9596, 58.376 , 59.7924,
+        61.2088, 62.6252, 64.0416, 65.458 , 66.8744, 68.2908, 69.7072,
+        71.1236, 72.54  ]),
+ &lt;BarContainer object of 50 artists&gt;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_10_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_10_1.png" />
+</div>
+</div>
+<p>Now we normalize the data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Normalize the data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([5.287e+03, 2.447e+03, 1.626e+03, 1.406e+03, 1.308e+03, 1.327e+03,
+        1.483e+03, 1.721e+03, 1.957e+03, 2.022e+03, 2.131e+03, 2.314e+03,
+        2.726e+03, 3.055e+03, 3.551e+03, 3.900e+03, 3.956e+03, 4.169e+03,
+        4.049e+03, 3.536e+03, 3.120e+03, 2.561e+03, 1.923e+03, 1.473e+03,
+        1.069e+03, 7.340e+02, 5.460e+02, 3.720e+02, 2.410e+02, 1.860e+02,
+        1.010e+02, 7.200e+01, 7.300e+01, 4.300e+01, 1.500e+01, 6.000e+00,
+        6.000e+00, 6.000e+00, 2.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        1.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        0.000e+00, 1.000e+00]),
+ array([0.  , 0.02, 0.04, 0.06, 0.08, 0.1 , 0.12, 0.14, 0.16, 0.18, 0.2 ,
+        0.22, 0.24, 0.26, 0.28, 0.3 , 0.32, 0.34, 0.36, 0.38, 0.4 , 0.42,
+        0.44, 0.46, 0.48, 0.5 , 0.52, 0.54, 0.56, 0.58, 0.6 , 0.62, 0.64,
+        0.66, 0.68, 0.7 , 0.72, 0.74, 0.76, 0.78, 0.8 , 0.82, 0.84, 0.86,
+        0.88, 0.9 , 0.92, 0.94, 0.96, 0.98, 1.  ]),
+ &lt;BarContainer object of 50 artists&gt;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_12_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_12_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train.shape: </span><span class="si">{}</span><span class="s1">, X_test.shape: </span><span class="si">{}</span><span class="s1">, y_train.shape: </span><span class="si">{}</span><span class="s1">, y_test.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X_train.shape: torch.Size([46565, 2]), X_test.shape: torch.Size([19957, 2]), y_train.shape: torch.Size([46565]), y_test.shape: torch.Size([19957])
+</pre></div></div>
+</div>
+<p>Finally, let’s create and initialize our Perceptron</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the model</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Perceptron</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span><span class="n">use_activation_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span><span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span> <span class="c1"># instead of Heaviside step fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">=</span><span class="n">use_activation_fn</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="c1"># To add the non-linearity. Try training you Perceptron with and without the non-linearity</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;tanh&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;relu&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Just in case, remember to always delete previously existent models before starting a new session</span>
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting previous model&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">use_activation_fn</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Deleting previous model
+</pre></div></div>
+</div>
+<p>Let’s train and check our model’s performance</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+<span class="n">epoch</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">all_loss</span><span class="o">=</span><span class="p">[]</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="c1"># Forward pass</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="c1"># Compute Loss</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
+
+    <span class="c1"># Backward pass</span>
+    <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="n">all_loss</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">after_train</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test loss after Training&#39;</span> <span class="p">,</span> <span class="n">after_train</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+
+    <span class="c1"># Fit line</span>
+    <span class="c1"># x = np.arange(-150,150)</span>
+
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">all_loss</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+    <span class="c1"># ax[0].plot(x, intercept + slope*x, &#39;r&#39;, label=&#39;fitted line&#39;)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;slope: </span><span class="si">{:.3f}</span><span class="s1">, r_value: </span><span class="si">{:.3f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">r_value</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Test loss after Training 0.024563319981098175
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_18_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_18_1.png" />
+</div>
+</div>
+<p>Well, they all performed badly. What can we do to make this model better? One thing that immediatly jumps to our eyes is the fact that this data is very skewed. There are many ways to normalized sweked data. Check out this great post about normalization and popular power transformations <a class="reference external" href="https://www.baeldung.com/cs/normalizing-inputs-artificial-neural-network">power transformations</a>. Here I will introduce another one: the Quantile Transformation. Also, if you would like to see a great
+comparison between transformations, check out this skelarn <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/preprocessing/plot_all_scaling.html">post</a></p>
+<p>For now, let’s use the power transformation just for our target variable (ie, tree height).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantileTransformer</span>
+<span class="n">qt</span> <span class="o">=</span> <span class="n">QuantileTransformer</span><span class="p">(</span>
+    <span class="n">n_quantiles</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">output_distribution</span><span class="o">=</span><span class="s2">&quot;normal&quot;</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span>
+<span class="p">)</span>
+
+<span class="c1"># X_train, X_test = train_test_split(data, test_size=0.5)</span>
+<span class="c1"># data = qt.fit_transform(data)</span>
+<span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">qt</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Normalize the data</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">-</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span><span class="o">/</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">-</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span><span class="o">*</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
+<span class="c1"># data[:,2] = data[:,2]/np.quantile(np.abs(data[:,2]),0.99)</span>
+<span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="c1"># data = data/np.quantile(np.abs(data),0.99)</span>
+<span class="c1"># data = data/data.max()</span>
+<span class="c1"># print(data.shape)</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span><span class="mi">50</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(array([1.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        0.000e+00, 0.000e+00, 1.000e+00, 0.000e+00, 6.500e+01, 1.240e+02,
+        2.050e+02, 3.430e+02, 3.760e+02, 8.450e+02, 1.115e+03, 1.770e+03,
+        2.175e+03, 2.876e+03, 3.571e+03, 4.227e+03, 4.866e+03, 5.195e+03,
+        5.512e+03, 5.437e+03, 5.233e+03, 4.862e+03, 4.215e+03, 3.589e+03,
+        2.862e+03, 2.204e+03, 1.663e+03, 1.150e+03, 8.020e+02, 5.080e+02,
+        3.100e+02, 1.950e+02, 1.890e+02, 3.400e+01, 1.000e+00, 0.000e+00,
+        0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00, 0.000e+00,
+        0.000e+00, 1.000e+00]),
+ array([-1.  , -0.96, -0.92, -0.88, -0.84, -0.8 , -0.76, -0.72, -0.68,
+        -0.64, -0.6 , -0.56, -0.52, -0.48, -0.44, -0.4 , -0.36, -0.32,
+        -0.28, -0.24, -0.2 , -0.16, -0.12, -0.08, -0.04,  0.  ,  0.04,
+         0.08,  0.12,  0.16,  0.2 ,  0.24,  0.28,  0.32,  0.36,  0.4 ,
+         0.44,  0.48,  0.52,  0.56,  0.6 ,  0.64,  0.68,  0.72,  0.76,
+         0.8 ,  0.84,  0.88,  0.92,  0.96,  1.  ]),
+ &lt;BarContainer object of 50 artists&gt;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_22_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_22_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s use all the data as one big minibatch</span>
+
+<span class="c1">#Split the data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">data</span><span class="p">[:,:</span><span class="mi">2</span><span class="p">],</span> <span class="n">data</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train.shape: </span><span class="si">{}</span><span class="s1">, X_test.shape: </span><span class="si">{}</span><span class="s1">, y_train.shape: </span><span class="si">{}</span><span class="s1">, y_test.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train.min: </span><span class="si">{}</span><span class="s1">, X_test.shape: </span><span class="si">{}</span><span class="s1">, y_train.shape: </span><span class="si">{}</span><span class="s1">, y_test.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">X_test</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train.max: </span><span class="si">{}</span><span class="s1">, X_test.shape: </span><span class="si">{}</span><span class="s1">, y_train.shape: </span><span class="si">{}</span><span class="s1">, y_test.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">X_test</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_train</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_test</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X_train.shape: torch.Size([46565, 2]), X_test.shape: torch.Size([19957, 2]), y_train.shape: torch.Size([46565]), y_test.shape: torch.Size([19957])
+X_train.min: 0.0, X_test.shape: 0.0, y_train.shape: -0.6420077085494995, y_test.shape: -1.0
+X_train.max: 1.0, X_test.shape: 1.0, y_train.shape: 1.0, y_test.shape: 0.57742840051651
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model.train()</span>
+<span class="n">epoch</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">hid_dim_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">lr_range</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">]</span><span class="c1">#,0.05,0.001]</span>
+
+<span class="k">for</span> <span class="n">hid_dim</span> <span class="ow">in</span> <span class="n">hid_dim_range</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="n">lr_range</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">hid_dim: </span><span class="si">{}</span><span class="s1">, lr: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">lr</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting previous model&#39;</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">,</span><span class="n">use_activation_fn</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">)</span>
+        <span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span><span class="p">)</span>
+
+        <span class="n">all_loss_train</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">all_loss_val</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="c1"># Forward pass</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+            <span class="c1"># Compute Loss</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
+
+            <span class="c1"># Backward pass</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">all_loss_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                <span class="c1"># Compute Loss</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_test</span><span class="p">)</span>
+                <span class="n">all_loss_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+                <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">100</span>==0:
+                    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1">, train_loss: </span><span class="si">{:.4f}</span><span class="s1">, val_loss: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span><span class="n">all_loss_train</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">all_loss_val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">r_value</span><span class="p">))</span>
+
+        <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">all_loss_train</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">all_loss_val</span><span class="p">)</span>
+
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;slope: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">r_value</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+hid_dim: 1, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.4734, val_loss: 0.0876, r_value: 0.0641
+Epoch 100, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 200, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 300, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 400, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 500, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 600, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 700, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 800, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1000, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1100, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1200, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1300, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1400, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1500, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1600, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1700, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1800, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+hid_dim: 1, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.1593, val_loss: 0.1113, r_value: -0.0523
+Epoch 100, train_loss: 0.0393, val_loss: 0.0391, r_value: -0.0608
+Epoch 200, train_loss: 0.0373, val_loss: 0.0370, r_value: -0.0599
+Epoch 300, train_loss: 0.0369, val_loss: 0.0365, r_value: 0.0191
+Epoch 400, train_loss: 0.0369, val_loss: 0.0364, r_value: 0.0628
+Epoch 500, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0627
+Epoch 600, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0626
+Epoch 700, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0626
+Epoch 800, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1000, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1100, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1200, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1300, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1400, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1500, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1600, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1700, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1800, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+Epoch 1900, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0625
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_3.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+hid_dim: 1, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.4136, val_loss: 0.4030, r_value: -0.0181
+Epoch 100, train_loss: 0.0422, val_loss: 0.0417, r_value: -0.0280
+Epoch 200, train_loss: 0.0398, val_loss: 0.0394, r_value: -0.0288
+Epoch 300, train_loss: 0.0392, val_loss: 0.0389, r_value: -0.0289
+Epoch 400, train_loss: 0.0388, val_loss: 0.0385, r_value: -0.0289
+Epoch 500, train_loss: 0.0384, val_loss: 0.0381, r_value: -0.0289
+Epoch 600, train_loss: 0.0382, val_loss: 0.0378, r_value: -0.0287
+Epoch 700, train_loss: 0.0379, val_loss: 0.0376, r_value: -0.0283
+Epoch 800, train_loss: 0.0377, val_loss: 0.0374, r_value: -0.0278
+Epoch 900, train_loss: 0.0376, val_loss: 0.0372, r_value: -0.0271
+Epoch 1000, train_loss: 0.0374, val_loss: 0.0371, r_value: -0.0261
+Epoch 1100, train_loss: 0.0373, val_loss: 0.0370, r_value: -0.0247
+Epoch 1200, train_loss: 0.0372, val_loss: 0.0369, r_value: -0.0230
+Epoch 1300, train_loss: 0.0372, val_loss: 0.0368, r_value: -0.0208
+Epoch 1400, train_loss: 0.0371, val_loss: 0.0367, r_value: -0.0180
+Epoch 1500, train_loss: 0.0371, val_loss: 0.0367, r_value: -0.0145
+Epoch 1600, train_loss: 0.0370, val_loss: 0.0366, r_value: -0.0100
+Epoch 1700, train_loss: 0.0370, val_loss: 0.0366, r_value: -0.0044
+Epoch 1800, train_loss: 0.0370, val_loss: 0.0366, r_value: 0.0023
+Epoch 1900, train_loss: 0.0369, val_loss: 0.0365, r_value: 0.0102
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_5.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_24_5.png" />
+</div>
+</div>
+<p>Feel free to try other hyperparameters, but we already have seen that there is just so much a Perceptron can do. It’s time to scale up this problem. (BACK TO SLIDES)</p>
+<section id="Feedfoward-neural-network">
+<h2>Feedfoward neural network<a class="headerlink" href="#Feedfoward-neural-network" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/neural_network.jpeg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">600</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">400</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_27_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_27_0.jpg" style="width: 600px; height: 400px;" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try with FF</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Feedforward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Feedforward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span>  <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="c1"># self.fc3 = torch.nn.Linear(self.hidden_size, self.hidden_size)</span>
+        <span class="c1"># self.fc4 = torch.nn.Linear(self.hidden_size, self.hidden_size)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+        <span class="c1"># hidden = self.relu(self.fc3(hidden))</span>
+        <span class="c1"># hidden = self.relu(self.fc4(hidden))</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model.train()</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">hid_dim_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">512</span><span class="p">]</span>
+<span class="n">lr_range</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.75</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.001</span><span class="p">]</span>
+
+<span class="c1">#Let&#39;s create a place to save these models, so we can</span>
+<span class="n">path_to_save_models</span> <span class="o">=</span> <span class="s1">&#39;./models&#39;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">path_to_save_models</span><span class="p">):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">path_to_save_models</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">hid_dim</span> <span class="ow">in</span> <span class="n">hid_dim_range</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="n">lr_range</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">hid_dim: </span><span class="si">{}</span><span class="s1">, lr: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">lr</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting previous model&#39;</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Feedforward</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">)</span>
+        <span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span><span class="p">)</span>
+
+        <span class="n">all_loss_train</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">all_loss_val</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="c1"># Forward pass</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+            <span class="c1"># Compute Loss</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
+
+            <span class="c1"># Backward pass</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">all_loss_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                <span class="c1"># Compute Loss</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_test</span><span class="p">)</span>
+                <span class="n">all_loss_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+                <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">100</span>==0:
+                    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1">, train_loss: </span><span class="si">{:.4f}</span><span class="s1">, val_loss: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span><span class="n">all_loss_train</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">all_loss_val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">r_value</span><span class="p">))</span>
+
+        <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">all_loss_train</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">all_loss_val</span><span class="p">))</span>
+
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;slope: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">r_value</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">name_to_save</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_save_models</span><span class="p">,</span><span class="s1">&#39;model_SGD_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_lr&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_hid_dim&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving model to &#39;</span><span class="p">,</span> <span class="n">name_to_save</span><span class="p">)</span>
+        <span class="n">model_state</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;state_dict&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                    <span class="s1">&#39;optimizer&#39;</span> <span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="p">}</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_state</span><span class="p">,</span> <span class="n">name_to_save</span> <span class="o">+</span><span class="s1">&#39;.pt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+hid_dim: 128, lr: 0.75
+Deleting previous model
+Epoch 0, train_loss: 0.0378, val_loss: 0.0452, r_value: 0.0684
+Epoch 100, train_loss: 0.0361, val_loss: 0.0356, r_value: 0.1693
+Epoch 200, train_loss: 0.0363, val_loss: 0.0362, r_value: 0.2179
+Epoch 300, train_loss: 0.0362, val_loss: 0.0361, r_value: 0.2423
+Epoch 400, train_loss: 0.0360, val_loss: 0.0359, r_value: 0.2511
+Epoch 500, train_loss: 0.0358, val_loss: 0.0356, r_value: 0.2581
+Epoch 600, train_loss: 0.0356, val_loss: 0.0354, r_value: 0.2628
+Epoch 700, train_loss: 0.0355, val_loss: 0.0352, r_value: 0.2658
+Epoch 800, train_loss: 0.0354, val_loss: 0.0351, r_value: 0.2682
+Epoch 900, train_loss: 0.0353, val_loss: 0.0350, r_value: 0.2699
+Epoch 1000, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2713
+Epoch 1100, train_loss: 0.0352, val_loss: 0.0349, r_value: 0.2724
+Epoch 1200, train_loss: 0.0352, val_loss: 0.0349, r_value: 0.2733
+Epoch 1300, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2741
+Epoch 1400, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2749
+Epoch 1500, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2756
+Epoch 1600, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2762
+Epoch 1700, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2768
+Epoch 1800, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2774
+Epoch 1900, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2781
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.75_hid_dim128
+
+hid_dim: 128, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0376, val_loss: 0.0386, r_value: -0.0364
+Epoch 100, train_loss: 0.0347, val_loss: 0.0344, r_value: 0.2551
+Epoch 200, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2643
+Epoch 300, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2684
+Epoch 400, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2716
+Epoch 500, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2738
+Epoch 600, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2757
+Epoch 700, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2770
+Epoch 800, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2787
+Epoch 900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2796
+Epoch 1000, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2811
+Epoch 1100, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2823
+Epoch 1200, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2835
+Epoch 1300, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2851
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2866
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2884
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2904
+Epoch 1700, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2923
+Epoch 1800, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2945
+Epoch 1900, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2965
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_3.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.5_hid_dim128
+
+hid_dim: 128, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0382, val_loss: 0.0374, r_value: -0.0407
+Epoch 100, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2308
+Epoch 200, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2512
+Epoch 300, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2560
+Epoch 400, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2584
+Epoch 500, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2600
+Epoch 600, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2616
+Epoch 700, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2632
+Epoch 800, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2645
+Epoch 900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2658
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2670
+Epoch 1100, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2682
+Epoch 1200, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2695
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2710
+Epoch 1400, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2721
+Epoch 1500, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2733
+Epoch 1600, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2743
+Epoch 1700, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2753
+Epoch 1800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2764
+Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2774
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_5.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.1_hid_dim128
+
+hid_dim: 128, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0551, val_loss: 0.0492, r_value: -0.0104
+Epoch 100, train_loss: 0.0368, val_loss: 0.0365, r_value: 0.0628
+Epoch 200, train_loss: 0.0363, val_loss: 0.0359, r_value: 0.1447
+Epoch 300, train_loss: 0.0360, val_loss: 0.0356, r_value: 0.1963
+Epoch 400, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2252
+Epoch 500, train_loss: 0.0357, val_loss: 0.0353, r_value: 0.2407
+Epoch 600, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2476
+Epoch 700, train_loss: 0.0356, val_loss: 0.0351, r_value: 0.2516
+Epoch 800, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2549
+Epoch 900, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2579
+Epoch 1000, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2599
+Epoch 1100, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2614
+Epoch 1200, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2625
+Epoch 1300, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2635
+Epoch 1400, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2641
+Epoch 1500, train_loss: 0.0352, val_loss: 0.0347, r_value: 0.2646
+Epoch 1600, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2649
+Epoch 1700, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2653
+Epoch 1800, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2657
+Epoch 1900, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2660
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_7.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.01_hid_dim128
+
+hid_dim: 128, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0383, val_loss: 0.0365, r_value: 0.1254
+Epoch 100, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2240
+Epoch 200, train_loss: 0.0355, val_loss: 0.0350, r_value: 0.2413
+Epoch 300, train_loss: 0.0353, val_loss: 0.0348, r_value: 0.2488
+Epoch 400, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2528
+Epoch 500, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2555
+Epoch 600, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2576
+Epoch 700, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2595
+Epoch 800, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2606
+Epoch 900, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2615
+Epoch 1000, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2623
+Epoch 1100, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2630
+Epoch 1200, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2636
+Epoch 1300, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2643
+Epoch 1400, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2650
+Epoch 1500, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2657
+Epoch 1600, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2667
+Epoch 1700, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2674
+Epoch 1800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2681
+Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2687
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_9.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.05_hid_dim128
+
+hid_dim: 128, lr: 0.001
+Deleting previous model
+Epoch 0, train_loss: 0.0574, val_loss: 0.0561, r_value: 0.0304
+Epoch 100, train_loss: 0.0378, val_loss: 0.0372, r_value: 0.0590
+Epoch 200, train_loss: 0.0369, val_loss: 0.0364, r_value: 0.0693
+Epoch 300, train_loss: 0.0368, val_loss: 0.0363, r_value: 0.0761
+Epoch 400, train_loss: 0.0368, val_loss: 0.0363, r_value: 0.0823
+Epoch 500, train_loss: 0.0367, val_loss: 0.0363, r_value: 0.0880
+Epoch 600, train_loss: 0.0367, val_loss: 0.0362, r_value: 0.0933
+Epoch 700, train_loss: 0.0367, val_loss: 0.0362, r_value: 0.0982
+Epoch 800, train_loss: 0.0366, val_loss: 0.0362, r_value: 0.1029
+Epoch 900, train_loss: 0.0366, val_loss: 0.0361, r_value: 0.1074
+Epoch 1000, train_loss: 0.0366, val_loss: 0.0361, r_value: 0.1115
+Epoch 1100, train_loss: 0.0366, val_loss: 0.0361, r_value: 0.1154
+Epoch 1200, train_loss: 0.0365, val_loss: 0.0361, r_value: 0.1191
+Epoch 1300, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1226
+Epoch 1400, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1258
+Epoch 1500, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1289
+Epoch 1600, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1318
+Epoch 1700, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1345
+Epoch 1800, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.1372
+Epoch 1900, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.1397
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_11.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.001_hid_dim128
+
+hid_dim: 256, lr: 0.75
+Deleting previous model
+Epoch 0, train_loss: 0.0370, val_loss: 0.0699, r_value: 0.0443
+Epoch 100, train_loss: 0.0364, val_loss: 0.0364, r_value: 0.2351
+Epoch 200, train_loss: 0.0365, val_loss: 0.0365, r_value: 0.2423
+Epoch 300, train_loss: 0.0363, val_loss: 0.0363, r_value: 0.2487
+Epoch 400, train_loss: 0.0362, val_loss: 0.0362, r_value: 0.2525
+Epoch 500, train_loss: 0.0362, val_loss: 0.0361, r_value: 0.2552
+Epoch 600, train_loss: 0.0361, val_loss: 0.0360, r_value: 0.2571
+Epoch 700, train_loss: 0.0361, val_loss: 0.0360, r_value: 0.2587
+Epoch 800, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2599
+Epoch 900, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2609
+Epoch 1000, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2618
+Epoch 1100, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2626
+Epoch 1200, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2633
+Epoch 1300, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2641
+Epoch 1400, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2647
+Epoch 1500, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2657
+Epoch 1600, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2664
+Epoch 1700, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2671
+Epoch 1800, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2679
+Epoch 1900, train_loss: 0.0361, val_loss: 0.0359, r_value: 0.2687
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_13.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_13.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.75_hid_dim256
+
+hid_dim: 256, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0402, val_loss: 0.2662, r_value: 0.0069
+Epoch 100, train_loss: 0.0358, val_loss: 0.0352, r_value: 0.2610
+Epoch 200, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2666
+Epoch 300, train_loss: 0.0348, val_loss: 0.0343, r_value: 0.2728
+Epoch 400, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2764
+Epoch 500, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2797
+Epoch 600, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2828
+Epoch 700, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2857
+Epoch 800, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2882
+Epoch 900, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2904
+Epoch 1000, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2923
+Epoch 1100, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2940
+Epoch 1200, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2955
+Epoch 1300, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2969
+Epoch 1400, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2982
+Epoch 1500, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2995
+Epoch 1600, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.3007
+Epoch 1700, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.3020
+Epoch 1800, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.3031
+Epoch 1900, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.3041
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_15.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_15.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.5_hid_dim256
+
+hid_dim: 256, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0415, val_loss: 0.0423, r_value: -0.0507
+Epoch 100, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2581
+Epoch 200, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2617
+Epoch 300, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2638
+Epoch 400, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2652
+Epoch 500, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2679
+Epoch 600, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2698
+Epoch 700, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2717
+Epoch 800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2733
+Epoch 900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2749
+Epoch 1000, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2763
+Epoch 1100, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2777
+Epoch 1200, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2791
+Epoch 1300, train_loss: 0.0341, val_loss: 0.0338, r_value: 0.2805
+Epoch 1400, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2818
+Epoch 1500, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2831
+Epoch 1600, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2845
+Epoch 1700, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2858
+Epoch 1800, train_loss: 0.0340, val_loss: 0.0337, r_value: 0.2872
+Epoch 1900, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2886
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_17.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_17.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.1_hid_dim256
+
+hid_dim: 256, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0488, val_loss: 0.0437, r_value: -0.0226
+Epoch 100, train_loss: 0.0364, val_loss: 0.0361, r_value: 0.1871
+Epoch 200, train_loss: 0.0361, val_loss: 0.0357, r_value: 0.2343
+Epoch 300, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2364
+Epoch 400, train_loss: 0.0357, val_loss: 0.0353, r_value: 0.2359
+Epoch 500, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2366
+Epoch 600, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2384
+Epoch 700, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2408
+Epoch 800, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2434
+Epoch 900, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2461
+Epoch 1000, train_loss: 0.0352, val_loss: 0.0347, r_value: 0.2481
+Epoch 1100, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2497
+Epoch 1200, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2508
+Epoch 1300, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2516
+Epoch 1400, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2523
+Epoch 1500, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2529
+Epoch 1600, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2534
+Epoch 1700, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2539
+Epoch 1800, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2542
+Epoch 1900, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2546
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_19.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.01_hid_dim256
+
+hid_dim: 256, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0471, val_loss: 0.0369, r_value: 0.0630
+Epoch 100, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2427
+Epoch 200, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2571
+Epoch 300, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2607
+Epoch 400, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2630
+Epoch 500, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2642
+Epoch 600, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2652
+Epoch 700, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2661
+Epoch 800, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2670
+Epoch 900, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2679
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2688
+Epoch 1100, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2696
+Epoch 1200, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2703
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2711
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2719
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2726
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2733
+Epoch 1700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2740
+Epoch 1800, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2747
+Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2754
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_21.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.05_hid_dim256
+
+hid_dim: 256, lr: 0.001
+Deleting previous model
+Epoch 0, train_loss: 0.0390, val_loss: 0.0385, r_value: -0.0500
+Epoch 100, train_loss: 0.0371, val_loss: 0.0367, r_value: -0.0354
+Epoch 200, train_loss: 0.0370, val_loss: 0.0366, r_value: -0.0046
+Epoch 300, train_loss: 0.0369, val_loss: 0.0365, r_value: 0.0342
+Epoch 400, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0788
+Epoch 500, train_loss: 0.0367, val_loss: 0.0363, r_value: 0.1250
+Epoch 600, train_loss: 0.0367, val_loss: 0.0363, r_value: 0.1674
+Epoch 700, train_loss: 0.0366, val_loss: 0.0362, r_value: 0.1996
+Epoch 800, train_loss: 0.0366, val_loss: 0.0362, r_value: 0.2203
+Epoch 900, train_loss: 0.0365, val_loss: 0.0361, r_value: 0.2322
+Epoch 1000, train_loss: 0.0365, val_loss: 0.0361, r_value: 0.2390
+Epoch 1100, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.2429
+Epoch 1200, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.2454
+Epoch 1300, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.2473
+Epoch 1400, train_loss: 0.0363, val_loss: 0.0359, r_value: 0.2490
+Epoch 1500, train_loss: 0.0363, val_loss: 0.0359, r_value: 0.2502
+Epoch 1600, train_loss: 0.0363, val_loss: 0.0359, r_value: 0.2508
+Epoch 1700, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.2511
+Epoch 1800, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.2511
+Epoch 1900, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.2509
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_23.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_23.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.001_hid_dim256
+
+hid_dim: 512, lr: 0.75
+Deleting previous model
+Epoch 0, train_loss: 0.0609, val_loss: 1.0356, r_value: 0.0468
+Epoch 100, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2352
+Epoch 200, train_loss: 0.0371, val_loss: 0.0362, r_value: 0.2374
+Epoch 300, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2557
+Epoch 400, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2611
+Epoch 500, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2630
+Epoch 600, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2638
+Epoch 700, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2645
+Epoch 800, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2650
+Epoch 900, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2653
+Epoch 1000, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2656
+Epoch 1100, train_loss: 0.0368, val_loss: 0.0361, r_value: 0.2651
+Epoch 1200, train_loss: 0.0368, val_loss: 0.0361, r_value: 0.2659
+Epoch 1300, train_loss: 0.0368, val_loss: 0.0361, r_value: 0.2670
+Epoch 1400, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2676
+Epoch 1500, train_loss: 0.0369, val_loss: 0.0361, r_value: 0.2681
+Epoch 1600, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2686
+Epoch 1700, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2690
+Epoch 1800, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2693
+Epoch 1900, train_loss: 0.0369, val_loss: 0.0362, r_value: 0.2697
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_25.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_25.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.75_hid_dim512
+
+hid_dim: 512, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0367, val_loss: 0.0525, r_value: 0.1302
+Epoch 100, train_loss: 0.0349, val_loss: 0.0348, r_value: 0.2531
+Epoch 200, train_loss: 0.0348, val_loss: 0.0346, r_value: 0.2613
+Epoch 300, train_loss: 0.0347, val_loss: 0.0344, r_value: 0.2671
+Epoch 400, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2712
+Epoch 500, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2743
+Epoch 600, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2768
+Epoch 700, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2791
+Epoch 800, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2810
+Epoch 900, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2830
+Epoch 1000, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2849
+Epoch 1100, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2865
+Epoch 1200, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2881
+Epoch 1300, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2894
+Epoch 1400, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2907
+Epoch 1500, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2919
+Epoch 1600, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2930
+Epoch 1700, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2941
+Epoch 1800, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2950
+Epoch 1900, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2959
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_27.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_27.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.5_hid_dim512
+
+hid_dim: 512, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0655, val_loss: 0.2053, r_value: 0.0031
+Epoch 100, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2646
+Epoch 200, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2688
+Epoch 300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2714
+Epoch 400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2737
+Epoch 500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2758
+Epoch 600, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2778
+Epoch 700, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2798
+Epoch 800, train_loss: 0.0341, val_loss: 0.0336, r_value: 0.2817
+Epoch 900, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2836
+Epoch 1000, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2855
+Epoch 1100, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2875
+Epoch 1200, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2894
+Epoch 1300, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2913
+Epoch 1400, train_loss: 0.0338, val_loss: 0.0334, r_value: 0.2933
+Epoch 1500, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2951
+Epoch 1600, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2968
+Epoch 1700, train_loss: 0.0339, val_loss: 0.0334, r_value: 0.2985
+Epoch 1800, train_loss: 0.0338, val_loss: 0.0334, r_value: 0.3001
+Epoch 1900, train_loss: 0.0338, val_loss: 0.0334, r_value: 0.3017
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_29.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_29.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.1_hid_dim512
+
+hid_dim: 512, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0416, val_loss: 0.0374, r_value: 0.1086
+Epoch 100, train_loss: 0.0360, val_loss: 0.0356, r_value: 0.1938
+Epoch 200, train_loss: 0.0357, val_loss: 0.0353, r_value: 0.2226
+Epoch 300, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2361
+Epoch 400, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2431
+Epoch 500, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2478
+Epoch 600, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2510
+Epoch 700, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2529
+Epoch 800, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2542
+Epoch 900, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2552
+Epoch 1000, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2564
+Epoch 1100, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2571
+Epoch 1200, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2576
+Epoch 1300, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2580
+Epoch 1400, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2585
+Epoch 1500, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2589
+Epoch 1600, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2593
+Epoch 1700, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2596
+Epoch 1800, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2599
+Epoch 1900, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2602
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_31.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_31.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.01_hid_dim512
+
+hid_dim: 512, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0798, val_loss: 0.1208, r_value: 0.0015
+Epoch 100, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2671
+Epoch 200, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2704
+Epoch 300, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2713
+Epoch 400, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2724
+Epoch 500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2736
+Epoch 600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2749
+Epoch 700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2763
+Epoch 800, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2777
+Epoch 900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2788
+Epoch 1000, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2799
+Epoch 1100, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2809
+Epoch 1200, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2819
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2823
+Epoch 1400, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2838
+Epoch 1500, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2849
+Epoch 1600, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2858
+Epoch 1700, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2867
+Epoch 1800, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2878
+Epoch 1900, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2887
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_33.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_33.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.05_hid_dim512
+
+hid_dim: 512, lr: 0.001
+Deleting previous model
+Epoch 0, train_loss: 0.0546, val_loss: 0.0524, r_value: 0.0672
+Epoch 100, train_loss: 0.0370, val_loss: 0.0365, r_value: 0.0705
+Epoch 200, train_loss: 0.0368, val_loss: 0.0363, r_value: 0.0816
+Epoch 300, train_loss: 0.0367, val_loss: 0.0362, r_value: 0.0942
+Epoch 400, train_loss: 0.0366, val_loss: 0.0361, r_value: 0.1080
+Epoch 500, train_loss: 0.0365, val_loss: 0.0360, r_value: 0.1223
+Epoch 600, train_loss: 0.0364, val_loss: 0.0360, r_value: 0.1344
+Epoch 700, train_loss: 0.0364, val_loss: 0.0359, r_value: 0.1454
+Epoch 800, train_loss: 0.0363, val_loss: 0.0358, r_value: 0.1554
+Epoch 900, train_loss: 0.0363, val_loss: 0.0358, r_value: 0.1645
+Epoch 1000, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.1728
+Epoch 1100, train_loss: 0.0362, val_loss: 0.0357, r_value: 0.1804
+Epoch 1200, train_loss: 0.0361, val_loss: 0.0357, r_value: 0.1873
+Epoch 1300, train_loss: 0.0361, val_loss: 0.0356, r_value: 0.1935
+Epoch 1400, train_loss: 0.0361, val_loss: 0.0356, r_value: 0.1989
+Epoch 1500, train_loss: 0.0360, val_loss: 0.0356, r_value: 0.2038
+Epoch 1600, train_loss: 0.0360, val_loss: 0.0355, r_value: 0.2082
+Epoch 1700, train_loss: 0.0360, val_loss: 0.0355, r_value: 0.2123
+Epoch 1800, train_loss: 0.0359, val_loss: 0.0355, r_value: 0.2161
+Epoch 1900, train_loss: 0.0359, val_loss: 0.0355, r_value: 0.2196
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_35.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_29_35.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_2000_lr0.001_hid_dim512
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try deeper FF</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Feedforward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Feedforward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span>  <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc4</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc5</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc4</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc5</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># model.train()</span>
+<span class="n">epoch</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">hid_dim_range</span> <span class="o">=</span> <span class="p">[</span><span class="mi">128</span><span class="p">,</span><span class="mi">256</span><span class="p">,</span><span class="mi">512</span><span class="p">]</span>
+<span class="n">lr_range</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.05</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">hid_dim</span> <span class="ow">in</span> <span class="n">hid_dim_range</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">lr</span> <span class="ow">in</span> <span class="n">lr_range</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">hid_dim: </span><span class="si">{}</span><span class="s1">, lr: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">,</span> <span class="n">lr</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting previous model&#39;</span><span class="p">)</span>
+            <span class="k">del</span> <span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span>
+        <span class="n">model</span> <span class="o">=</span> <span class="n">Feedforward</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">hid_dim</span><span class="p">)</span>
+        <span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+        <span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="n">lr</span><span class="p">)</span>
+
+        <span class="n">all_loss_train</span><span class="o">=</span><span class="p">[]</span>
+        <span class="n">all_loss_val</span><span class="o">=</span><span class="p">[]</span>
+        <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epoch</span><span class="p">):</span>
+            <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="c1"># Forward pass</span>
+            <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+            <span class="c1"># Compute Loss</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_train</span><span class="p">)</span>
+
+            <span class="c1"># Backward pass</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">all_loss_train</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+            <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+            <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+                <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+                <span class="c1"># Compute Loss</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">y_test</span><span class="p">)</span>
+                <span class="n">all_loss_val</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
+
+                <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">100</span>==0:
+                    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y_pred</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
+                    <span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">linregress</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Epoch </span><span class="si">{}</span><span class="s1">, train_loss: </span><span class="si">{:.4f}</span><span class="s1">, val_loss: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">epoch</span><span class="p">,</span><span class="n">all_loss_train</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">all_loss_val</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span><span class="n">r_value</span><span class="p">))</span>
+
+        <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">all_loss_train</span><span class="p">))</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">all_loss_val</span><span class="p">))</span>
+
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Prediction&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;slope: </span><span class="si">{:.4f}</span><span class="s1">, r_value: </span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">slope</span><span class="p">,</span> <span class="n">r_value</span><span class="p">))</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+        <span class="n">name_to_save</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">path_to_save_models</span><span class="p">,</span><span class="s1">&#39;model_SGD_Deeper&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">epochs</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_lr&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">lr</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;_hid_dim&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">hid_dim</span><span class="p">))</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saving model to &#39;</span><span class="p">,</span> <span class="n">name_to_save</span><span class="p">)</span>
+        <span class="n">model_state</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s1">&#39;epoch&#39;</span><span class="p">:</span> <span class="n">epoch</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="s1">&#39;state_dict&#39;</span><span class="p">:</span> <span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+                    <span class="s1">&#39;optimizer&#39;</span> <span class="p">:</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">state_dict</span><span class="p">(),</span>
+            <span class="p">}</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">model_state</span><span class="p">,</span> <span class="n">name_to_save</span> <span class="o">+</span><span class="s1">&#39;.pt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+hid_dim: 128, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0444, val_loss: 0.3563, r_value: 0.0159
+Epoch 100, train_loss: 0.0359, val_loss: 0.0354, r_value: 0.2177
+Epoch 200, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2562
+Epoch 300, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2636
+Epoch 400, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2682
+Epoch 500, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2721
+Epoch 600, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2755
+Epoch 700, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2780
+Epoch 800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2803
+Epoch 900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2824
+Epoch 1000, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2842
+Epoch 1100, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2861
+Epoch 1200, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2881
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2900
+Epoch 1400, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2918
+Epoch 1500, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2935
+Epoch 1600, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2952
+Epoch 1700, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2968
+Epoch 1800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2984
+Epoch 1900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2999
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_1.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.5_hid_dim128
+
+hid_dim: 128, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0368, val_loss: 0.0364, r_value: 0.0682
+Epoch 100, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2473
+Epoch 200, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2601
+Epoch 300, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2645
+Epoch 400, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2660
+Epoch 500, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2668
+Epoch 600, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2673
+Epoch 700, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2678
+Epoch 800, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2683
+Epoch 900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2687
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2692
+Epoch 1100, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2697
+Epoch 1200, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2701
+Epoch 1300, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2707
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2712
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2718
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2724
+Epoch 1700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2730
+Epoch 1800, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2735
+Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2740
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_3.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.1_hid_dim128
+
+hid_dim: 128, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0409, val_loss: 0.0401, r_value: -0.0034
+Epoch 100, train_loss: 0.0365, val_loss: 0.0362, r_value: 0.1120
+Epoch 200, train_loss: 0.0362, val_loss: 0.0358, r_value: 0.2037
+Epoch 300, train_loss: 0.0361, val_loss: 0.0357, r_value: 0.2251
+Epoch 400, train_loss: 0.0360, val_loss: 0.0356, r_value: 0.2289
+Epoch 500, train_loss: 0.0359, val_loss: 0.0355, r_value: 0.2303
+Epoch 600, train_loss: 0.0358, val_loss: 0.0354, r_value: 0.2319
+Epoch 700, train_loss: 0.0358, val_loss: 0.0353, r_value: 0.2334
+Epoch 800, train_loss: 0.0357, val_loss: 0.0353, r_value: 0.2349
+Epoch 900, train_loss: 0.0357, val_loss: 0.0352, r_value: 0.2365
+Epoch 1000, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2380
+Epoch 1100, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2395
+Epoch 1200, train_loss: 0.0356, val_loss: 0.0351, r_value: 0.2410
+Epoch 1300, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2424
+Epoch 1400, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2437
+Epoch 1500, train_loss: 0.0355, val_loss: 0.0350, r_value: 0.2448
+Epoch 1600, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2458
+Epoch 1700, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2468
+Epoch 1800, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2477
+Epoch 1900, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2484
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_5.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.01_hid_dim128
+
+hid_dim: 128, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0433, val_loss: 0.0381, r_value: -0.0536
+Epoch 100, train_loss: 0.0359, val_loss: 0.0355, r_value: 0.2417
+Epoch 200, train_loss: 0.0355, val_loss: 0.0350, r_value: 0.2567
+Epoch 300, train_loss: 0.0352, val_loss: 0.0347, r_value: 0.2637
+Epoch 400, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2663
+Epoch 500, train_loss: 0.0348, val_loss: 0.0343, r_value: 0.2685
+Epoch 600, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2697
+Epoch 700, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2705
+Epoch 800, train_loss: 0.0345, val_loss: 0.0340, r_value: 0.2712
+Epoch 900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2718
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2723
+Epoch 1100, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2728
+Epoch 1200, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2733
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0338, r_value: 0.2738
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2743
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2748
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2753
+Epoch 1700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2757
+Epoch 1800, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2762
+Epoch 1900, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2767
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_7.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.05_hid_dim128
+
+hid_dim: 256, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0371, val_loss: 0.1010, r_value: 0.0742
+Epoch 100, train_loss: 0.0353, val_loss: 0.0350, r_value: 0.2469
+Epoch 200, train_loss: 0.0349, val_loss: 0.0349, r_value: 0.2515
+Epoch 300, train_loss: 0.0348, val_loss: 0.0346, r_value: 0.2602
+Epoch 400, train_loss: 0.0347, val_loss: 0.0344, r_value: 0.2669
+Epoch 500, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2718
+Epoch 600, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2753
+Epoch 700, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2781
+Epoch 800, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2804
+Epoch 900, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2824
+Epoch 1000, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2843
+Epoch 1100, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2862
+Epoch 1200, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2880
+Epoch 1300, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2897
+Epoch 1400, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2912
+Epoch 1500, train_loss: 0.0345, val_loss: 0.0342, r_value: 0.2926
+Epoch 1600, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2938
+Epoch 1700, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2950
+Epoch 1800, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2961
+Epoch 1900, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2971
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_9.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.5_hid_dim256
+
+hid_dim: 256, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0419, val_loss: 0.0421, r_value: -0.0261
+Epoch 100, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2541
+Epoch 200, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2604
+Epoch 300, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2628
+Epoch 400, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2660
+Epoch 500, train_loss: 0.0346, val_loss: 0.0343, r_value: 0.2680
+Epoch 600, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2702
+Epoch 700, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2720
+Epoch 800, train_loss: 0.0343, val_loss: 0.0340, r_value: 0.2738
+Epoch 900, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2753
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2768
+Epoch 1100, train_loss: 0.0342, val_loss: 0.0339, r_value: 0.2783
+Epoch 1200, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2798
+Epoch 1300, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2812
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2825
+Epoch 1500, train_loss: 0.0341, val_loss: 0.0338, r_value: 0.2838
+Epoch 1600, train_loss: 0.0341, val_loss: 0.0338, r_value: 0.2851
+Epoch 1700, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2864
+Epoch 1800, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2876
+Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2888
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_11.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.1_hid_dim256
+
+hid_dim: 256, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0464, val_loss: 0.0422, r_value: 0.0290
+Epoch 100, train_loss: 0.0365, val_loss: 0.0361, r_value: 0.1089
+Epoch 200, train_loss: 0.0361, val_loss: 0.0357, r_value: 0.1829
+Epoch 300, train_loss: 0.0359, val_loss: 0.0354, r_value: 0.2206
+Epoch 400, train_loss: 0.0357, val_loss: 0.0353, r_value: 0.2356
+Epoch 500, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2424
+Epoch 600, train_loss: 0.0355, val_loss: 0.0351, r_value: 0.2467
+Epoch 700, train_loss: 0.0354, val_loss: 0.0349, r_value: 0.2501
+Epoch 800, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2538
+Epoch 900, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2555
+Epoch 1000, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2572
+Epoch 1100, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2583
+Epoch 1200, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2593
+Epoch 1300, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2601
+Epoch 1400, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2609
+Epoch 1500, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2615
+Epoch 1600, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2620
+Epoch 1700, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2625
+Epoch 1800, train_loss: 0.0347, val_loss: 0.0344, r_value: 0.2629
+Epoch 1900, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2634
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_13.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_13.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.01_hid_dim256
+
+hid_dim: 256, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0376, val_loss: 0.0372, r_value: -0.0483
+Epoch 100, train_loss: 0.0356, val_loss: 0.0351, r_value: 0.2509
+Epoch 200, train_loss: 0.0352, val_loss: 0.0347, r_value: 0.2564
+Epoch 300, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2608
+Epoch 400, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2631
+Epoch 500, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2643
+Epoch 600, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2654
+Epoch 700, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2664
+Epoch 800, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2675
+Epoch 900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2684
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2693
+Epoch 1100, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2702
+Epoch 1200, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2712
+Epoch 1300, train_loss: 0.0343, val_loss: 0.0338, r_value: 0.2721
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2736
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2744
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2753
+Epoch 1700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2763
+Epoch 1800, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2773
+Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2781
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_15.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_15.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.05_hid_dim256
+
+hid_dim: 512, lr: 0.5
+Deleting previous model
+Epoch 0, train_loss: 0.0455, val_loss: 0.9616, r_value: 0.0177
+Epoch 100, train_loss: 0.0358, val_loss: 0.0350, r_value: 0.2580
+Epoch 200, train_loss: 0.0354, val_loss: 0.0346, r_value: 0.2687
+Epoch 300, train_loss: 0.0351, val_loss: 0.0345, r_value: 0.2715
+Epoch 400, train_loss: 0.0349, val_loss: 0.0344, r_value: 0.2737
+Epoch 500, train_loss: 0.0348, val_loss: 0.0343, r_value: 0.2757
+Epoch 600, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2773
+Epoch 700, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2791
+Epoch 800, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2808
+Epoch 900, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2826
+Epoch 1000, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2844
+Epoch 1100, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2863
+Epoch 1200, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2880
+Epoch 1300, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2896
+Epoch 1400, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2911
+Epoch 1500, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2926
+Epoch 1600, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2939
+Epoch 1700, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2950
+Epoch 1800, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2963
+Epoch 1900, train_loss: 0.0347, val_loss: 0.0342, r_value: 0.2972
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_17.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_17.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.5_hid_dim512
+
+hid_dim: 512, lr: 0.1
+Deleting previous model
+Epoch 0, train_loss: 0.0500, val_loss: 0.2197, r_value: -0.0103
+Epoch 100, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2646
+Epoch 200, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2687
+Epoch 300, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2705
+Epoch 400, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2716
+Epoch 500, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2746
+Epoch 600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2765
+Epoch 700, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2784
+Epoch 800, train_loss: 0.0342, val_loss: 0.0337, r_value: 0.2804
+Epoch 900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2823
+Epoch 1000, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2843
+Epoch 1100, train_loss: 0.0341, val_loss: 0.0336, r_value: 0.2862
+Epoch 1200, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2880
+Epoch 1300, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2898
+Epoch 1400, train_loss: 0.0340, val_loss: 0.0336, r_value: 0.2915
+Epoch 1500, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2932
+Epoch 1600, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2949
+Epoch 1700, train_loss: 0.0339, val_loss: 0.0335, r_value: 0.2966
+Epoch 1800, train_loss: 0.0339, val_loss: 0.0334, r_value: 0.2982
+Epoch 1900, train_loss: 0.0339, val_loss: 0.0334, r_value: 0.2997
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_19.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.1_hid_dim512
+
+hid_dim: 512, lr: 0.01
+Deleting previous model
+Epoch 0, train_loss: 0.0538, val_loss: 0.0410, r_value: 0.0131
+Epoch 100, train_loss: 0.0360, val_loss: 0.0356, r_value: 0.2017
+Epoch 200, train_loss: 0.0356, val_loss: 0.0352, r_value: 0.2396
+Epoch 300, train_loss: 0.0354, val_loss: 0.0350, r_value: 0.2488
+Epoch 400, train_loss: 0.0352, val_loss: 0.0348, r_value: 0.2538
+Epoch 500, train_loss: 0.0351, val_loss: 0.0347, r_value: 0.2556
+Epoch 600, train_loss: 0.0350, val_loss: 0.0346, r_value: 0.2569
+Epoch 700, train_loss: 0.0349, val_loss: 0.0345, r_value: 0.2587
+Epoch 800, train_loss: 0.0348, val_loss: 0.0344, r_value: 0.2603
+Epoch 900, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2613
+Epoch 1000, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2621
+Epoch 1100, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2629
+Epoch 1200, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2635
+Epoch 1300, train_loss: 0.0346, val_loss: 0.0342, r_value: 0.2641
+Epoch 1400, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2645
+Epoch 1500, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2650
+Epoch 1600, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2654
+Epoch 1700, train_loss: 0.0345, val_loss: 0.0341, r_value: 0.2658
+Epoch 1800, train_loss: 0.0344, val_loss: 0.0341, r_value: 0.2662
+Epoch 1900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2666
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_21.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.01_hid_dim512
+
+hid_dim: 512, lr: 0.05
+Deleting previous model
+Epoch 0, train_loss: 0.0401, val_loss: 0.0391, r_value: 0.1707
+Epoch 100, train_loss: 0.0351, val_loss: 0.0346, r_value: 0.2596
+Epoch 200, train_loss: 0.0347, val_loss: 0.0343, r_value: 0.2640
+Epoch 300, train_loss: 0.0346, val_loss: 0.0341, r_value: 0.2655
+Epoch 400, train_loss: 0.0345, val_loss: 0.0340, r_value: 0.2667
+Epoch 500, train_loss: 0.0353, val_loss: 0.0349, r_value: 0.2670
+Epoch 600, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2693
+Epoch 700, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2705
+Epoch 800, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2716
+Epoch 900, train_loss: 0.0344, val_loss: 0.0340, r_value: 0.2726
+Epoch 1000, train_loss: 0.0343, val_loss: 0.0339, r_value: 0.2737
+Epoch 1100, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2748
+Epoch 1200, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2763
+Epoch 1300, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2774
+Epoch 1400, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2784
+Epoch 1500, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2795
+Epoch 1600, train_loss: 0.0342, val_loss: 0.0338, r_value: 0.2805
+Epoch 1700, train_loss: 0.0341, val_loss: 0.0338, r_value: 0.2815
+Epoch 1800, train_loss: 0.0341, val_loss: 0.0338, r_value: 0.2824
+Epoch 1900, train_loss: 0.0341, val_loss: 0.0337, r_value: 0.2834
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_23.png" src="../_images/CASESTUDY_Tree_Height_06NeuralNets_pred_31_23.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Saving model to  ./models/model_SGD_Deeper2000_lr0.05_hid_dim512
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tree_Height_05Perceptron_pred_clean_2022.html" class="btn btn-neutral float-left" title="Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tree_Height_07FeedForward_Networks_2024.html" class="btn btn-neutral float-right" title="Estimation of tree height using GEDI dataset - Neural Network 1 - 2024" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

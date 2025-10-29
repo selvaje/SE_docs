@@ -1,0 +1,965 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoComp &amp; ML 2023 course &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="GeoComp &amp; ML 2024 course" href="course_geocomp_ml_04-05_2024.html" />
+    <link rel="prev" title="GeoComp &amp; Modelling 2022 course" href="course_geocomp_modelling_10-11_2022.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">GeoComp &amp; ML 2023 course</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#geocomputation-and-machine-learning-for-environmental-applications">Geocomputation and Machine Learning for environmental applications</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-roster">Class roster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#syllabus">Syllabus</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-1-28th-of-march-2023">Lecture 1: 28th of March, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#getting-started-knowing-each-other-and-course-introduction">Getting started: knowing each other and course introduction.</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-2-30th-of-march-2023">Lecture 2: 30th of March, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#jump-start-into-linux-bash-programming-giuseppe-amatulli">Jump start into LINUX Bash programming (Giuseppe Amatulli)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-3-4th-of-april-2023">Lecture 3: 4th of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#discovering-the-power-of-awk-programming-language-giuseppe-amatulli">Discovering the power of AWK programming language (Giuseppe Amatulli).</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-4-6th-of-april-2023">Lecture 4: 6th of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manipulate-geographical-data-with-gdal-ogr-giuseppe-amatulli">Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-5-11th-of-april-2023">Lecture 5: 11th of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-6-13st-of-april-2023">Lecture 6: 13st of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manipulate-geographical-data-with-pktools-giuseppe-amatulli">Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-7-18th-of-april-2023">Lecture 7: 18th of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#manipulate-landsat-data-with-gdal-and-pktools-for-a-gap-filling-example-giuseppe-amatulli">Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-8-20th-of-april-2023">Lecture 8: 20th of April, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geospatial-python-francesco-lovergine">Geospatial python (Francesco Lovergine)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#catch-up-session-1-25th-of-april-2023">Catch-up session 1: 25th of April, 2023</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catch-up-session-2-27th-of-april-2023">Catch-up session 2: 27th of April, 2023.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-9-3nd-of-may-2023">Lecture 9: 3nd of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#geospatial-python-pieter-kempeneers">Geospatial python (Pieter Kempeneers)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-10-5th-of-may-2023">Lecture 10: 5th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Geospatial python (Pieter Kempeneers)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-11-10th-of-may-2023">Lecture 11: 10th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-learning-introduction-support-vector-machine-random-forest-antonio-fonseca-giuseppe-amatulli">Machine Learning Introduction, Support Vector Machine &amp; Random Forest (Antonio Fonseca &amp; Giuseppe Amatulli)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-12-12th-of-may-2023">Lecture 12: 12th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-learning-perceptron-antonio-fonseca">Machine Learning - Perceptron (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-13-17th-of-may-2023">Lecture 13: 17th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Machine Learning -  Perceptron (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-14-19th-of-may-2023">Lecture 14: 19th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-learning-architecture-of-neural-networks-antonio-fonseca">Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-15-24th-of-may-2023">Lecture 15: 24th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-learning-capacity-overfitting-underfitting-convolutional-neural-networks-antonio-fonseca">Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-16-26th-of-may-2023">Lecture 16: 26th of May, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#machine-learning-papers-discussion-antonio-fonseca">Machine Learning - Papers discussion (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-17-6th-of-june-2023">Lecture 17: 6th of June, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#using-gpt-antonio-fonseca">Using GPT (Antonio Fonseca)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-18-6th-of-june-2023">Lecture 18: 6th of June, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pyjeo-in-combination-with-sklearn-pieter-kempeneers">Pyjeo in combination with sklearn (Pieter Kempeneers)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#lecture-19-6th-of-june-2023">Lecture 19: 6th of June, 2023.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#google-earth-engine-gee-francesco-lovergine">Google Earth Engine (GEE) (Francesco Lovergine)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">GeoComp &amp; ML 2023 course</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="geocomp-ml-2023-course">
+<h1>GeoComp &amp; ML 2023 course<a class="headerlink" href="#geocomp-ml-2023-course" title="Link to this heading"></a></h1>
+<section id="geocomputation-and-machine-learning-for-environmental-applications">
+<h2>Geocomputation and Machine Learning for environmental applications<a class="headerlink" href="#geocomputation-and-machine-learning-for-environmental-applications" title="Link to this heading"></a></h2>
+<p>(Spatial Ecology is supporting the <a class="reference external" href="https://spatial-ecology.net/ram4africa/">RAM4Africa</a> project)</p>
+<p><strong>Online teaching: April and May 2023, 8 weeks</strong></p>
+<ul class="simple">
+<li><p>Start lecturing: 28 March, every <strong>Tuesday and Thursday</strong> at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)</p></li>
+<li><p>Catch-up session: Tuesday 25 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)</p></li>
+<li><p>Catch-up session: Thursday 27 April: 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)</p></li>
+<li><p>Resume lecturing: 3 May, every <strong>Wednesday and Friday</strong> at 3 pm - 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)</p></li>
+<li><p>End lecturing 26: May, at 3pm – 5:45 pm UTC (CEST 5 pm, EDT 11 am, PDT 8 am)</p></li>
+</ul>
+<p>Classes youtube playlist <a class="reference external" href="https://www.youtube.com/playlist?list=PL2h1_A_4X7LBAxSuVGUTYnTpKfI6fgRnk">link</a></p>
+<p><strong>In presence: June, one week in Matera, Italy</strong></p>
+<p>The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.</p>
+<p>We proposed one week of hackathon.</p>
+<ul class="simple">
+<li><p>June 5th - 9th.</p></li>
+</ul>
+<p><strong>Course objectives</strong></p>
+<p>In this course, students will be introduced to an array of powerful open-source geocomputation tools and machine learning methodologies under Linux environment. Students who have never been exposed to programming under Linux are expected to reach the stage where they feel confident in using very advanced open source data processing routines. Students with a precedent programming background will find the course beneficial in enhancing their programming skills for better modelling and coding proficiency. Our dual teaching aim is to equip attendees with powerful tools as well as rendering their abilities of continuing independent development afterwards. The acquired skills will be beneficial, not only for GIS related application, but also for general data processing and applied statistical computing in a number of fields. These essentially lay the foundation for career development as a data scientist in the geographic domain.</p>
+<p><strong>All the class will be recorded. The video link will be posted in the syllabus below</strong></p>
+<section id="class-roster">
+<h3>Class roster<a class="headerlink" href="#class-roster" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023_foto/course_geocomp_ml_04-05_2023_roster.html">Class roster with the student names and their geographic location</a></p></li>
+</ul>
+</section>
+<section id="syllabus">
+<h3>Syllabus<a class="headerlink" href="#syllabus" title="Link to this heading"></a></h3>
+<p>Below we are going to list day by day the final syllabus with the relatives links to the materials and recorded video.</p>
+</section>
+</section>
+<section id="lecture-1-28th-of-march-2023">
+<h2>Lecture 1: 28th of March, 2023.<a class="headerlink" href="#lecture-1-28th-of-march-2023" title="Link to this heading"></a></h2>
+<section id="getting-started-knowing-each-other-and-course-introduction">
+<h3>Getting started: knowing each other and course introduction.<a class="headerlink" href="#getting-started-knowing-each-other-and-course-introduction" title="Link to this heading"></a></h3>
+<p>This session introduces the objective of the course and a round table among the students and the teachers.</p>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/4BaS-mmQhOQ?si=MIMhr-FcizX9GUG1">here</a>.</p>
+<p>Time below in CEST</p>
+<ul class="simple">
+<li><p>17:00 - 17:10  Tushar Sethi: background/interest &amp; course objective - communication/administration role.</p></li>
+<li><p>17:10 - 17:25  Antonio Fonseca: background/interest &amp; machine learning introduction - teaching role.</p></li>
+<li><p>17:25 - 17:40  Pieter Kempeneers: background/interest &amp; pyjeo introduction - teaching role.</p></li>
+<li><p>17:40 - 17:55  Giuseppe Amatulli: background/interest &amp; bash/gdal/pktools introduction - teaching role.</p></li>
+<li><p>18:55 - 18:10  Francesco Lovergine: background/interest &amp; geo-python introduction - teaching role.</p></li>
+<li><p>18:10 - 18:25  Longzhu Shen: background/interest &amp; stat/math subjects - supervision role.</p></li>
+<li><p>18:25 - 18:45  Break</p></li>
+<li><p>18:40 - 19:20  Students round table + QA of the course.</p></li>
+<li><p>19:20 - 19:45  Virtual machine installation review, QA &amp; troubleshooting.</p></li>
+</ul>
+<!---
+
+* Get to know each other: trainers and participants (30-40min Round-table )
+* [Course objectives and schedule.](http://spatial-ecology.net/docs/source/lectures/lect_20230404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 10min Lecture)
+* [Course policy, homeworks, final project, trainers/students interactions.)](http://spatial-ecology.net/docs/source/lectures/lect_20230405_policy.pdf) (Giuseppe Amatulli - 10min Lecture)
+* [Linux environment, why and what to use to handling BigData.](http://spatial-ecology.net/docs/source/lectures/lect_20230404_CourseIntro_GeoCompML.pdf) (Giuseppe Amatulli - 20min Lecture)
+* [Spatial Statistics: fundamentals and philosophical aspects.](http://spatial-ecology.net/docs/source/lectures/lect_20230405_SpatStat.pdf) (Giuseppe Amatulli - 20min Lecture)
+* [Machine learning introduction.](http://spatial-ecology.net/docs/source/lectures/lect_20230405_IntroML.pdf) (Antonio Fonseca - 20min Lecture)
+
+--->
+</section>
+</section>
+<section id="lecture-2-30th-of-march-2023">
+<h2>Lecture 2: 30th of March, 2023.<a class="headerlink" href="#lecture-2-30th-of-march-2023" title="Link to this heading"></a></h2>
+<section id="jump-start-into-linux-bash-programming-giuseppe-amatulli">
+<h3>Jump start into LINUX Bash programming (Giuseppe Amatulli)<a class="headerlink" href="#jump-start-into-linux-bash-programming-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p>During this session we explore and practice the basics of BASH terminal command line. The acquired skills will be used in all following sections.</p>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/Bi6NgkbYZBg?si=0asCXLGz1BZRvv5J">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Installation and introduction</a>  to the <a class="reference external" href="http://live.osgeo.org/en/index.html">OSGeoLIve Linux Virtual Machine</a> (Hands-on tutorial)</p></li>
+<li></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html">Unix/Linux command line</a> (Hands-on tutorial)</p>
+<ul>
+<li><p>Starting with Bash</p></li>
+<li><p>Special characters and Quoting</p></li>
+<li><p>The most important commands - Unix/Linux Command Reference</p></li>
+<li><p>Meta-characters and regular expression, their use.</p></li>
+<li><p>Concatenate process (pipe).</p></li>
+<li><p>String manipulation</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/BASH/bashinter_osgeo.html">Manipulate text files in bash</a> (Hands-on tutorial)</p>
+<ul>
+<li><p>Pattern matching</p></li>
+<li><p>Sorting a file</p></li>
+<li><p>Append the command result to a file</p></li>
+<li><p>For loop and the use of variables</p></li>
+<li><p>If condition in a for loop</p></li>
+<li><p>Checking the flow statement</p></li>
+<li><p>Debugging</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Suggested assignments:</strong></p>
+<p>These assignments do not need to be delivered nonetheless we suggest doing it in order to get familiar with the bash command line topics.  Below, some suggestions of possible operations:</p>
+<ul class="simple">
+<li><p>Get fast in navigating up and down in the directory using only the command line.</p></li>
+<li><p>Copy/move files from a directory to another directory.</p></li>
+<li><p>Search and use a command for copy file from you pc to a Linux remote server.</p></li>
+<li><p>Get fast on using keyboard shortcuts.</p></li>
+<li><p>Perform a data download operation using wget or curl.</p></li>
+<li><p>Unzip/untar files.</p></li>
+<li><p>Get familiar with apt update &amp;&amp; apt upgrade &amp;&amp; apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.</p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-3-4th-of-april-2023">
+<h2>Lecture 3: 4th of April, 2023.<a class="headerlink" href="#lecture-3-4th-of-april-2023" title="Link to this heading"></a></h2>
+<section id="discovering-the-power-of-awk-programming-language-giuseppe-amatulli">
+<h3>Discovering the power of AWK programming language (Giuseppe Amatulli).<a class="headerlink" href="#discovering-the-power-of-awk-programming-language-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/z8uuvPdXVqA?si=5PxmhtrbSL50fIOa">here</a>.</p>
+<p>This session is fundamental for data filtering and preparation, bulk data download, text files manipulation, descriptive statistics and basic mathematical operation on large files. Students will access, query, understand and clean up data, perform data filtering using bash command line. We use AWK which is an extremely versatile and powerful programming language for working on text files, performing data extraction and reporting or to squeeze data before importing them into R/python or other software types.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/AWK/awk.html">Welcome to AWK world</a>. Why to use AWK command line (Lecture).</p></li>
+<li><p>The basic commands, command syntax  (Hands on tutorial).</p>
+<ul>
+<li><p>Built in variables</p></li>
+<li><p>Import variables</p></li>
+<li><p>String functions</p></li>
+<li><p>Numerical functions</p></li>
+<li><p>Query functions</p></li>
+<li><p>Manipulate large files before importing in R</p></li>
+<li><p>A study case: Manipulate thousand of text file with BASH and AWK</p></li>
+<li><p>This session summarizes the use of BASH and AWK with a practical example of text file manipulation.</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/manipulate_GSIM.html">Explain GSIM text files</a> (Lecture).</p>
+<ul>
+<li><p>Data exploration (Hands on tutorial).</p></li>
+<li><p>Count number of observations</p></li>
+<li><p>Count how many observations per date</p></li>
+<li><p>Monthly MEAN distribution</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Compulsory assignments:</strong></p>
+<p>These assignment is compulsory and need to be delivered before 10th of April, 2023 12pm, UTC time. Please send the jupyter file or sh file (name as name_surname.ipynb or name_surname.sh ) as e-mail attachment  to g.amatulli&#64;spatial-ecology.net.</p>
+<p>Using the bash (and/or awk) language manipulate the GSIM/US*.mon files in order to create txt files, one for each month-year, that includes the station ID, latitude, longitude and the MEAN value.</p>
+<p>The final output will be n text file (form <em>FirstDateOfTheSeries</em> to LastDateOfTheSeries) with the following structure:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cat 2002-01.txt 
+</pre></div>
+</div>
+<p>Gsim.no latitude longitude MEAN<br />
+US_0001971	33.79427255 -84.4743747 0.916785714285714<br />
+US_0001977	33.65666667 -84.6736111 74.5558064516129</p>
+<p>In case you wanna manipulate your own txt (or csv) files, fell free to do it by implementing everything in bash (and/or awk).
+You can perform:</p>
+<ul class="simple">
+<li><p>data summary</p></li>
+<li><p>table re-organization</p></li>
+<li><p>data filtering</p></li>
+</ul>
+<hr class="docutils" />
+<!---
+    cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
+    cp /home/user/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
+
+---
+
+    ##### create output dir 
+    mkdir -p output1   output2 output3 
+
+--- 
+
+#########Solution 1 #########*
+
+    rm -f output1/*.txt
+
+    # Creates a txt file with the list of all uniq dates
+
+    awk -F , '{ if(NF>5) { if ($1 > 0) { print $1 }}}'  US_00090*.mon  | sort | uniq > output1/dates.txt
+
+    # Creates a txt file with the list of all uniq station ID, longitude, latitude. 
+
+
+
+    paste -d " " <(grep gsim.no   US_00090*.mon | awk '{print $4}') \
+             <(grep longitude US_00090*.mon | awk '{print $4}') \
+             <(grep latitude  US_00090*.mon | awk '{print $4}') | sort -k 1,1 > output1/ID_x_y.txt
+
+    ## loop trought the dates.txt 
+
+    for DATE in $(cat output1/dates.txt ) ; do 
+    echo processing $DATE
+
+    grep ^$DATE US_00090*.mon  | awk '{ gsub(":"," "); gsub(","," ");if($3!="NA"){print substr($1,1,10),$3}}' | sort -k 1,1 > output1/${DATE}_ID_mean.txt 
+
+    join -1 1 -2 1 output1/ID_x_y.txt output1/${DATE}_ID_mean.txt  > output1/${DATE}_ID_x_y_mean.txt
+rm output1/${DATE}_ID_mean.txt 
+
+done 
+
+--- 
+
+#########Solution 2 #########
+
+    rm -f output2/*.txt 
+    #loop over all US files
+    n=0
+    for i in US_00090*.mon ; do
+    #pull out information of interest
+    gsim=$(awk 'NR==11 {print $4}' $i)
+    lat=$(awk 'NR==15 {print $4}' $i)
+    long=$(awk 'NR==16 {print $4}' $i)
+
+    #make new directory with name of gsim ID to store txt files in
+    mkdir $output$gsim
+
+    #awk uses these and spits out txt files named by the date
+    n=$(expr $n + 1)
+    echo $gsim $n
+
+    awk -v gsim=$gsim -v lat=$lat -v long=$long -v output=$output \
+    ' NR>22 {gsub(","," "); if($2!="NA"){print gsim,long,lat,$2 >> "output2/"$1"_ID_x_y_mean.txt"}}' $i
+
+    rm -r $gsim
+    done
+
+---
+#########Solution 3 #########
+
+    rm -f output3/*.txt
+
+    awk '{gsub(",", "");
+     gsub("\t", " ");
+     if($2=="gsim.no")   {station=$4};
+     if($2=="latitude")  {lat=$4};
+     if($2=="longitude") {lon=$4};
+     if($1 ~ /[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/ && $2!="NA" )
+     { print station, lat , lon , $2 > "output3/"substr($1,1,7)"_ID_x_y_mean.txt" }
+     }' US_00090*.mon 
+
+--->
+</section>
+</section>
+<hr class="docutils" />
+<section id="lecture-4-6th-of-april-2023">
+<h2>Lecture 4: 6th of April, 2023.<a class="headerlink" href="#lecture-4-6th-of-april-2023" title="Link to this heading"></a></h2>
+<section id="manipulate-geographical-data-with-gdal-ogr-giuseppe-amatulli">
+<h3>Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).<a class="headerlink" href="#manipulate-geographical-data-with-gdal-ogr-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/pBakH2DlBU0?si=xd_wAltX5U-aB4n2">here</a>.</p>
+<p>This section introduces data manipulation for geospatial data processing on the command line using <a class="reference external" href="https://gdal.org/">GDAL &amp; OGR</a> libraries.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html">GDAL/OGR</a>  for raster and vector analysis.</p>
+<ul>
+<li><p><a class="reference external" href="https://gdal.org/drivers/raster/gtiff.html">GeoTIFF format</a></p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230414_Floating_point.pdf">Understanding data type</a> (Lecture)</p></li>
+<li><p>Understanding NoData Value</p></li>
+<li><p>Openev &amp; QGIS for raster and vector visualization</p></li>
+<li><p><a class="reference external" href="https://spatialreference.org/">Geographic Projections database</a></p></li>
+<li><p>The use of .VRT for splitting and merging images</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Suggested assignments:</strong></p>
+<p>Get familiar with <em>gdalinfo</em> &amp; <em>gdal_edit.py</em> using your data or the tif file stored in the SE_data.</p>
+<hr class="docutils" />
+<p>Watch this lecture to get more insight on the different data type</p>
+<p>Numerical System Decimal vs Binary. <a class="reference external" href="https://youtu.be/kBRW2Z5jX8M?t=5328">Recorded lecture: 1:28:45 - 1:48:00</a></p>
+<hr class="docutils" />
+<p>These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-5-11th-of-april-2023">
+<h2>Lecture 5: 11th of April, 2023.<a class="headerlink" href="#lecture-5-11th-of-april-2023" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/s-WLwHn1544?si=SXUh7SE_flR_0BiT">here</a>.</p>
+<p>This section introduces data manipulation for geospatial data processing on the command line using <a class="reference external" href="https://gdal.org/">GDAL &amp; OGR</a> libraries.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html">GDAL/OGR</a>  for raster and vector analysis.</p>
+<ul>
+<li><p><a class="reference external" href="https://gdal.org/drivers/raster/gtiff.html">GeoTIFF format</a></p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230414_Floating_point.pdf">Understanding data type</a> (Lecture)</p></li>
+<li><p>Understanding NoData Value</p></li>
+<li><p>Openev &amp; QGIS for raster and vector visualization</p></li>
+<li><p><a class="reference external" href="https://spatialreference.org/">Geographic Projections database</a></p></li>
+<li><p>The use of .VRT for splitting and merging images</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Compulsory assignments:</strong></p>
+<ul class="simple">
+<li><p>This assignment focus in attending a video recording lecture aiming to push the precessing in the multi-core environment.</p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/BASH/bashxargs_osgeo.html">Multicore operation within gdal and pktools</a></p>
+<ul>
+<li><p>Transform a simple “for loop” in multicore “for loop”</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Suggested assignments:</strong></p>
+<ul class="simple">
+<li><p>These assignments do not need to be delivered now, nonetheless do it in order to get familiar with the gdal/ogr command line topics. In two weeks, when all the geographic tools will be covered, you will need to handling a scripting procedure that prepare the geographic dataset for your final project, so better to start now :-).</p></li>
+</ul>
+<p>Below, some suggestions of possible operations:</p>
+<ul class="simple">
+<li><p>Start to prepare the geographic dataset for your final project.</p>
+<ul>
+<li><p>Using wget and/or curl download geographic dataset from an official repository</p></li>
+<li><p>Assess and re-align geographic extent and pixel resolution (gdal_edit.py)</p></li>
+<li><p>Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-6-13st-of-april-2023">
+<h2>Lecture 6: 13st of April, 2023.<a class="headerlink" href="#lecture-6-13st-of-april-2023" title="Link to this heading"></a></h2>
+<section id="manipulate-geographical-data-with-pktools-giuseppe-amatulli">
+<h3>Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)<a class="headerlink" href="#manipulate-geographical-data-with-pktools-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/ZSWsBENWtgc?si=a6fupvRyQLqGPrSs">here</a>.</p>
+<p>This section introduces data manipulation for geospatial data processing on the command line using <a class="reference external" href="http://pktools.nongnu.org/html/index.html">PKTOOLS</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/PKTOOLS/pktools_osgeo.html">for raster and vector analysis</a> .</p>
+<ul>
+<li><p>Masking operation</p></li>
+<li><p>Building a mosaic</p></li>
+<li><p>Image histogram and classification</p></li>
+<li><p>Zonal statistic</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Compulsory assignments:</strong></p>
+<p>Before the 18th of April, 2023, watch the “Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example” lecture (all links in Lecture 7). On the 18th of April, 2023 we will do a QA and a review of gdal and pkstools commands. Feel free to present your scripting procedure for receiving feedback and suggestions.</p>
+<p><strong>Suggested assignments:</strong></p>
+<ul class="simple">
+<li><p>Assess and re-align geographic extent and pixel resolution (gdal_edit.py)</p></li>
+<li><p>Using gdal command performs: cropping, merging (vrt+gdal_translate), re-projecting.</p></li>
+<li><p>Using pktools command performs: masking, filtering, histogram, re-classification, zonal statistic.</p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-7-18th-of-april-2023">
+<h2>Lecture 7: 18th of April, 2023.<a class="headerlink" href="#lecture-7-18th-of-april-2023" title="Link to this heading"></a></h2>
+<section id="manipulate-landsat-data-with-gdal-and-pktools-for-a-gap-filling-example-giuseppe-amatulli">
+<h3>Manipulate Landsat data with GDAL and PKTOOLS for a gap filling example (Giuseppe Amatulli).<a class="headerlink" href="#manipulate-landsat-data-with-gdal-and-pktools-for-a-gap-filling-example-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p><a class="reference external" href="https://youtu.be/GfmCRNMtFfs">Video Recording of the lecture</a></p>
+<p>Recorded of the QA can be found <a class="reference external" href="https://youtu.be/BSgV05oPzNQ?si=h1-D-jpbQiBm-REk">here</a>.</p>
+<p>This section introduces a real example of satellite data <a class="reference external" href="https://glad.umd.edu/ard/home">GLAD ARD</a> processing using <a class="reference external" href="http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html">GDAL/OGR</a> and <a class="reference external" href="http://pktools.nongnu.org/html/index.html">PKTOOLS</a> in a Bash environment.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a> (A.)</p>
+<ul>
+<li><p>Data download &amp; cropping</p></li>
+<li><p>Image characteristics</p></li>
+<li><p>Temporal composite</p></li>
+<li><p>Temporal interpolation</p></li>
+<li><p>Plotting the temporal interpolation for band 1</p></li>
+<li><p>Assessing the temporal interpolation</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230426_Approximation.pdf">Temporal analysis: Approximation</a>  (S.)</p>
+<ul>
+<li><p>Polynomial Interpolation</p></li>
+<li><p>Piecewise Interpolation</p>
+<ul>
+<li><p>Cubic Spline</p></li>
+<li><p>Hermite cubic spline</p></li>
+<li><p>Akima</p></li>
+<li><p>Steffen</p></li>
+</ul>
+</li>
+<li><p>Smoothing</p>
+<ul>
+<li><p>Salvitsky-Golay filtering</p></li>
+<li><p>Fourier Transform</p></li>
+<li><p>Wavelet</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-8-20th-of-april-2023">
+<h2>Lecture 8: 20th of April, 2023.<a class="headerlink" href="#lecture-8-20th-of-april-2023" title="Link to this heading"></a></h2>
+<section id="geospatial-python-francesco-lovergine">
+<h3>Geospatial python (Francesco Lovergine)<a class="headerlink" href="#geospatial-python-francesco-lovergine" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/kpoMaOAtGc4?si=0POujgKJnZ09_7Ij">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/PYTHON/RasterIO_Intro.html">Raseterio introduction</a></p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></p></li>
+</ul>
+</section>
+</section>
+<section id="catch-up-session-1-25th-of-april-2023">
+<h2>Catch-up session 1: 25th of April, 2023<a class="headerlink" href="#catch-up-session-1-25th-of-april-2023" title="Link to this heading"></a></h2>
+<p>Students will meet online with the teachers to review past material and solving additional doubts.</p>
+<p>Recorded of the QA can be found <a class="reference external" href="https://yale.zoom.us/rec/share/Y56V6IB4Dg6wlUjBl2FVrAbnkIl6TAdjlDx5hS9HJxXY_vIM5i15NDF1uxxqht1N.mx4TbSDp382wA1Ff">here</a>. Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).</p>
+</section>
+<section id="catch-up-session-2-27th-of-april-2023">
+<h2>Catch-up session 2: 27th of April, 2023.<a class="headerlink" href="#catch-up-session-2-27th-of-april-2023" title="Link to this heading"></a></h2>
+<p>Students will meet online with the teachers to review past material and solving additional doubts.</p>
+<p>Recorded of the QA can be found <a class="reference external" href="https://yale.zoom.us/rec/share/nGPLFnJNJyEu1-W6FUZ5B1DPdh_Sr7d4nr13ap1SbWQfcyRz7SlQADHcaosRQY4r.J05o-Mne34IAS1gx">here</a>. Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).</p>
+</section>
+<section id="lecture-9-3nd-of-may-2023">
+<h2>Lecture 9: 3nd of May, 2023.<a class="headerlink" href="#lecture-9-3nd-of-may-2023" title="Link to this heading"></a></h2>
+<section id="geospatial-python-pieter-kempeneers">
+<h3>Geospatial python (Pieter Kempeneers)<a class="headerlink" href="#geospatial-python-pieter-kempeneers" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/uTpUj0VhEJw?si=A7-VWS59kXvXlusZ">here</a>.</p>
+<p>The first part of the video recording (00:00 - 49:45) has been dedicate to trouble shouting the installation of pyjeo (anyway with the new install_pyjeo.sh that you find in the git-repository it should be fine).
+Rather the second part (49:45 - until the end) is the real pyjeo lectures.</p>
+<ul class="simple">
+<li><p>pyjeo</p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230503_pyjeo.pdf">Introduction to pyjeo - Lecture</a></p></li>
+<li><p><a class="reference external" href="https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_introduction.html">Introduction to pyjeo - hands on</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-10-5th-of-may-2023">
+<h2>Lecture 10: 5th of May, 2023.<a class="headerlink" href="#lecture-10-5th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="id2">
+<h3>Geospatial python (Pieter Kempeneers)<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/9oGk4Hp1v5k?si=Xf1qA8ylgdj7xx-L">here</a>.</p>
+<p>Always do the git pull to get the new scripts.</p>
+<ul class="simple">
+<li><p>pyjeo</p>
+<ul>
+<li><p><a class="reference external" href="https://spatial-ecology.net/docs/build/html/PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-11-10th-of-may-2023">
+<h2>Lecture 11: 10th of May, 2023.<a class="headerlink" href="#lecture-11-10th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="machine-learning-introduction-support-vector-machine-random-forest-antonio-fonseca-giuseppe-amatulli">
+<h3>Machine Learning Introduction, Support Vector Machine &amp; Random Forest (Antonio Fonseca &amp; Giuseppe Amatulli)<a class="headerlink" href="#machine-learning-introduction-support-vector-machine-random-forest-antonio-fonseca-giuseppe-amatulli" title="Link to this heading"></a></h3>
+<p>In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in <a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a>.</p>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/x_5QpmQtWIQ?si=RcVAp-z3O0BLf2Zm">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset</a> - <a class="reference external" href="https://youtu.be/x1AEagMyIe0?t=5220">Video recording from last year</a></p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230510_GeoComp_IntroML_SVM.pdf">Intro to machine learning</a> (F.)</p>
+<ul>
+<li><p>Defining learning</p></li>
+<li><p>Supervised vs Unsupervised learning</p></li>
+<li><p>The framework of learning algorithms</p></li>
+</ul>
+</li>
+<li><p>Example of Supervised learning using scikit-learn in python.</p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html">Support Vector Machine</a> (SVM)(F.)</p>
+<ul>
+<li><p>Optimization of SVM</p></li>
+<li><p>Extension of SVM to regression (SVR)</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred.html">Random Forest</a> (RF) (A.) - <a class="reference external" href="https://youtu.be/DlxlqCXhY7I?t=4780">Video recording from last year</a></p>
+<ul>
+<li><p>Random Forest basic concept</p></li>
+<li><p>Avoid random forest over-fitting</p></li>
+<li><p>Optimization of RF</p></li>
+<li><p>Prediction of RF model on raster tif</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-12-12th-of-may-2023">
+<h2>Lecture 12: 12th of May, 2023.<a class="headerlink" href="#lecture-12-12th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="machine-learning-perceptron-antonio-fonseca">
+<h3>Machine Learning - Perceptron (Antonio Fonseca)<a class="headerlink" href="#machine-learning-perceptron-antonio-fonseca" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/923iugllDF0?si=7BueM2JAPbYBJg0k">here</a>.</p>
+<ul class="simple">
+<li><p>Example of Supervised learning using scikit-learn in python.</p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2023.html">Support Vector Machine</a> (SVM)(F.)</p>
+<ul>
+<li><p>Optimization of SVM</p></li>
+<li><p>Extension of SVM to regression (SVR)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230512_GeoComp_Perceptron.pdf">The “less optimal” hyperplane methods</a></p>
+<ul>
+<li><p>Links between SVM and Logistic Regression</p></li>
+<li><p>Review on Linear Regression</p></li>
+<li><p>Minimizing loss functions</p></li>
+<li><p>Regularization</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-13-17th-of-may-2023">
+<h2>Lecture 13: 17th of May, 2023.<a class="headerlink" href="#lecture-13-17th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="id3">
+<h3>Machine Learning -  Perceptron (Antonio Fonseca)<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/-QlMybUCl1U?si=JpeXkFQHKGqmIeYW">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf">Perceptron and neural network</a></p>
+<ul>
+<li><p>The universal approximator</p></li>
+<li><p>Intro to optimizers</p></li>
+<li><p>Intro to gradient descent and optimizers</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Perceptron introduction</a></p></li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Perceptron Tree Height prediction</a></p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-14-19th-of-may-2023">
+<h2>Lecture 14: 19th of May, 2023.<a class="headerlink" href="#lecture-14-19th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="machine-learning-architecture-of-neural-networks-antonio-fonseca">
+<h3>Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)<a class="headerlink" href="#machine-learning-architecture-of-neural-networks-antonio-fonseca" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/l1a5d90jOWs?si=oNQ8kiuWUDwYZk9l">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230517_GeoComp_NeuralNets.pdf">Neural Networks</a></p>
+<ul>
+<li><p>Forward Propagation</p></li>
+<li><p>Back Propagation</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2023.html">Estimation of tree height using GEDI dataset - Neural Network Feed Forward - 2023</a></p></li>
+</ul>
+</section>
+</section>
+<section id="lecture-15-24th-of-may-2023">
+<h2>Lecture 15: 24th of May, 2023.<a class="headerlink" href="#lecture-15-24th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="machine-learning-capacity-overfitting-underfitting-convolutional-neural-networks-antonio-fonseca">
+<h3>Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)<a class="headerlink" href="#machine-learning-capacity-overfitting-underfitting-convolutional-neural-networks-antonio-fonseca" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/28QnxspZwFg?si=8G1clFPt6gmDYleD">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230524_GeoComp_NeuralNets_CNNs.pdf">Feedforward Neural Networks</a></p>
+<ul>
+<li><p>Quick recap</p></li>
+<li><p>Extra regularization techniques</p></li>
+<li><p>Capacity, Overfitting and Underfitting</p></li>
+<li><p>Debugging tips</p></li>
+<li><p>Family of optimizers</p></li>
+<li><p>Tutorial: more features and different optimizers</p></li>
+</ul>
+</li>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_2023.html">Convolutional Neural Networks</a></p>
+<ul>
+<li><p>Kernels, padding, pooling</p></li>
+<li><p>Classification tasks</p></li>
+<li><p>Tutorial: data batching, classification of satellite images</p></li>
+<li><p>Kernels, padding, pooling</p></li>
+<li><p>Classification tasks</p></li>
+<li><p>Tutorial: data batching, classification of satellite images</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-16-26th-of-may-2023">
+<h2>Lecture 16: 26th of May, 2023.<a class="headerlink" href="#lecture-16-26th-of-may-2023" title="Link to this heading"></a></h2>
+<section id="machine-learning-papers-discussion-antonio-fonseca">
+<h3>Machine Learning - Papers discussion (Antonio Fonseca)<a class="headerlink" href="#machine-learning-papers-discussion-antonio-fonseca" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/4Vq_PINaTE8?si=XDqUhCDQS8KUBjqc">here</a>.</p>
+</section>
+</section>
+<section id="lecture-17-6th-of-june-2023">
+<h2>Lecture 17: 6th of June, 2023.<a class="headerlink" href="#lecture-17-6th-of-june-2023" title="Link to this heading"></a></h2>
+<p>In presence week in Matera, Italy</p>
+<section id="using-gpt-antonio-fonseca">
+<h3>Using GPT (Antonio Fonseca)<a class="headerlink" href="#using-gpt-antonio-fonseca" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/nffKt6GdLXw">here</a>.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20230606_GPT_for_coding.pdf">Using GPT as your coding partner</a></p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Hands on</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-18-6th-of-june-2023">
+<h2>Lecture 18: 6th of June, 2023.<a class="headerlink" href="#lecture-18-6th-of-june-2023" title="Link to this heading"></a></h2>
+<p>In presence week in Matera, Italy</p>
+<section id="pyjeo-in-combination-with-sklearn-pieter-kempeneers">
+<h3>Pyjeo in combination with sklearn (Pieter Kempeneers)<a class="headerlink" href="#pyjeo-in-combination-with-sklearn-pieter-kempeneers" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/udQAO2JimTc">here</a>.</p>
+<ul class="simple">
+<li><p>Classification in python using pyjeo and sklearn</p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/Classification_pyjeo_sklearn_2023.html">Hands on</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="lecture-19-6th-of-june-2023">
+<h2>Lecture 19: 6th of June, 2023.<a class="headerlink" href="#lecture-19-6th-of-june-2023" title="Link to this heading"></a></h2>
+<p>In presence week in Matera, Italy</p>
+<section id="google-earth-engine-gee-francesco-lovergine">
+<h3>Google Earth Engine (GEE) (Francesco Lovergine)<a class="headerlink" href="#google-earth-engine-gee-francesco-lovergine" title="Link to this heading"></a></h3>
+<p>Recorded lecture can be found <a class="reference external" href="https://youtu.be/n4zgNY41LgM">here</a>.</p>
+<ul class="simple">
+<li><p>Use of GEE with Javascripts and python buinding.</p>
+<ul>
+<li><p><a class="reference external" href="http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2023.html">Hands on</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="course_geocomp_modelling_10-11_2022.html" class="btn btn-neutral float-left" title="GeoComp &amp; Modelling 2022 course" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="course_geocomp_ml_04-05_2024.html" class="btn btn-neutral float-right" title="GeoComp &amp; ML 2024 course" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

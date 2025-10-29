@@ -1,0 +1,3268 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimation of tree height using GEDI dataset - Random Forest prediction &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022" href="Tree_Height_04SVM_pred_2022.html" />
+    <link rel="prev" title="Estimation of tree height using GEDI dataset - Predictors extraction at point location" href="Tree_Height_02Predictors_extraction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Random Forest prediction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Random-forest">Random forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Import-raw-data,-extracted-predictors-and-show-the-data-distribution">Import raw data, extracted predictors and show the data distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-set-splitting">Data set splitting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Random-Forest-default-parameters">Random Forest default parameters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Random-Forest-tuning">Random Forest tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Base-on-data-quality-flag-select-more-reilable-tree-height.">Base on data quality flag select more reilable tree height.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Random-Forest-default-parameters-with-select-row-base-on-quality-flag">Random Forest default parameters with select row base on quality flag</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Final-assesment">Final assesment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Predict-on-the-raster-using-pyspatialml">Predict on the raster using pyspatialml</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Estimation of tree height using GEDI dataset - Random Forest prediction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CASESTUDY/Tree_Height_03RF_pred.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction">
+<h1>Estimation of tree height using GEDI dataset - Random Forest prediction<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction" title="Link to this heading"></a></h1>
+<p>In order to run this notebook, please do what follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd  /media/sf_LVM_shared/my_SE_data/exercise
+source $HOME/venv/bin/activate
+pip3 install pyspatialml
+jupyter lab Tree_Height_03RF_pred
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">Find a relationship between tree height and enviromental predictors to be able to predict out side the GEDI observation.</div>
+<div class="line">The model, in its simplest form, looks like the following:</div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>y ~ f ( a*x1 + b*x2 + c*x3 + …)  + ε,
+</pre></div>
+</div>
+<p>where y is a response variable, the x’s are predictor variables, and ε is the associated error.</p>
+<p><strong>There are many different types of models</strong></p>
+<ul class="simple">
+<li><p>Parametric models – make assumptions about the underlying distribution of the data.</p>
+<ul>
+<li><p>Maximum likelihood classification</p></li>
+<li><p>Discriminant analysis</p></li>
+<li><p>General linear models (ex. linear regression)</p></li>
+</ul>
+</li>
+<li><p>Nonparametric models – make no assumptions about the underlying data distributions.</p>
+<ul>
+<li><p>Generalized additive models</p></li>
+<li><p>Support Vector Machine</p></li>
+<li><p>Artificial neural networks</p></li>
+<li><p>Random Forest</p></li>
+</ul>
+</li>
+</ul>
+<section id="Random-forest">
+<h2>Random forest<a class="headerlink" href="#Random-forest" title="Link to this heading"></a></h2>
+<p>Random forest is a Supervised Machine Learning Algorithm that is used widely in <strong>Classification</strong> (containing categorical variables) and <strong>Regression</strong> (response continuous variables) problems. It builds decision trees on different samples and takes their majority vote for classification and average in case of regression.</p>
+<p>One of the most important features of the Random Forest Algorithm is that it can handle continuous and categorical variables predictors without any assamption on their data distribution, dimension, and even if the predictors are autocorrelated.</p>
+<div class="line-block">
+<div class="line"><strong>Bagging</strong></div>
+<div class="line">Bagging, also known as Bootstrap Aggregation is the ensemble technique used by random forest. Choosesing a random sample from the data set it is creating a tree. Each tree is generated from the samples (Bootstrap Samples) provided by the Original Data with replacement known as row sampling. This step of row sampling with replacement is called bootstrap. Each is trained independently which generates results. The final output is based on majority voting after combining the results of all models.
+This step which involves combining all the results and generating output based on majority voting is known as tree aggregation.</div>
+</div>
+<p><strong>Steps involved in random forest algorithm:</strong></p>
+<ul>
+<li><p>Step 1: In Random forest n number of random records are taken from the data set having k number of records.</p></li>
+<li><p>Step 2: Individual decision trees are constructed for each sample.</p></li>
+<li><div class="line-block">
+<div class="line">Step 3: Each decision tree will generate an output.</div>
+</div>
+</li>
+<li><p>Step 4: Final output is considered based on Majority Voting or Averaging for Classification and regression respectively.</p></li>
+</ul>
+<p>(source <a class="reference external" href="https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/">https://www.analyticsvidhya.com/blog/2021/06/understanding-random-forest/</a>)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">(</span><span class="s2">&quot;../images/Random_Forest.jpg&quot;</span> <span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mi">700</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">700</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_5_0.jpg" class="no-scaled-link" src="../_images/CASESTUDY_Tree_Height_03RF_pred_5_0.jpg" style="width: 700px; height: 700px;" />
+</div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Random Forest exercise</strong></div>
+<div class="line">In this exercise we will use Random Forest Regression algorithm with the <a class="reference external" href="https://scikit-learn.org/stable/">sklearn</a> python package to estimage the tree height. In last step, we are going to use the <a class="reference external" href="https://pyspatialml.readthedocs.io/en/latest/index.html">Pyspatialml</a> for the spatial prediction on the raster files.</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="c1"># from pyspatialml import Raster</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.ensemble</span><span class="w"> </span><span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span><span class="p">,</span><span class="n">GridSearchCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.pipeline</span><span class="w"> </span><span class="kn">import</span> <span class="n">Pipeline</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">pearsonr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mf">6.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Import-raw-data,-extracted-predictors-and-show-the-data-distribution">
+<h2>Import raw data, extracted predictors and show the data distribution<a class="headerlink" href="#Import-raw-data,-extracted-predictors-and-show-the-data-distribution" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_x_y_height_predictors_select.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="c1"># change column name</span>
+<span class="n">predictors</span> <span class="o">=</span> <span class="n">predictors</span><span class="o">.</span><span class="n">rename</span><span class="p">({</span><span class="s1">&#39;dev-magnitude&#39;</span><span class="p">:</span><span class="s1">&#39;devmagnitude&#39;</span><span class="p">}</span> <span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">predictors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>devmagnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.050001</td>
+      <td>49.727499</td>
+      <td>3139.00</td>
+      <td>1540</td>
+      <td>13</td>
+      <td>2113</td>
+      <td>5893</td>
+      <td>-10.486560</td>
+      <td>-238043120</td>
+      <td>1.158417</td>
+      <td>0.069094</td>
+      <td>353.983124</td>
+      <td>23</td>
+      <td>276.871094</td>
+      <td>46.444092</td>
+      <td>347.665405</td>
+      <td>0.042500</td>
+      <td>9</td>
+      <td>780403</td>
+      <td>19.798992</td>
+      <td>440.672211</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6.050002</td>
+      <td>49.922155</td>
+      <td>1454.75</td>
+      <td>1491</td>
+      <td>12</td>
+      <td>1993</td>
+      <td>5912</td>
+      <td>33.274361</td>
+      <td>-208915344</td>
+      <td>-1.755341</td>
+      <td>0.269112</td>
+      <td>267.511688</td>
+      <td>19</td>
+      <td>-49.526367</td>
+      <td>19.552734</td>
+      <td>-130.541748</td>
+      <td>0.182780</td>
+      <td>16</td>
+      <td>772777</td>
+      <td>20.889412</td>
+      <td>457.756195</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6.050002</td>
+      <td>48.602377</td>
+      <td>853.50</td>
+      <td>1521</td>
+      <td>17</td>
+      <td>2124</td>
+      <td>5983</td>
+      <td>0.045293</td>
+      <td>-137479792</td>
+      <td>1.908780</td>
+      <td>-0.016055</td>
+      <td>389.751160</td>
+      <td>21</td>
+      <td>93.257324</td>
+      <td>50.743652</td>
+      <td>384.522461</td>
+      <td>0.036253</td>
+      <td>14</td>
+      <td>898820</td>
+      <td>20.695877</td>
+      <td>481.879700</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6.050009</td>
+      <td>48.151979</td>
+      <td>3141.00</td>
+      <td>1526</td>
+      <td>16</td>
+      <td>2569</td>
+      <td>6130</td>
+      <td>-33.654274</td>
+      <td>-267223072</td>
+      <td>0.965787</td>
+      <td>0.067767</td>
+      <td>380.207703</td>
+      <td>27</td>
+      <td>542.401367</td>
+      <td>202.264160</td>
+      <td>386.156738</td>
+      <td>0.005139</td>
+      <td>15</td>
+      <td>831824</td>
+      <td>19.375000</td>
+      <td>479.410278</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.050010</td>
+      <td>49.588410</td>
+      <td>2065.25</td>
+      <td>1547</td>
+      <td>14</td>
+      <td>2108</td>
+      <td>5923</td>
+      <td>27.493824</td>
+      <td>-107809368</td>
+      <td>-0.162624</td>
+      <td>0.014065</td>
+      <td>308.042786</td>
+      <td>25</td>
+      <td>136.048340</td>
+      <td>146.835205</td>
+      <td>198.127441</td>
+      <td>0.028847</td>
+      <td>17</td>
+      <td>796962</td>
+      <td>18.777500</td>
+      <td>457.880066</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>6.050014</td>
+      <td>48.608456</td>
+      <td>1246.50</td>
+      <td>1515</td>
+      <td>19</td>
+      <td>2124</td>
+      <td>6010</td>
+      <td>-1.602039</td>
+      <td>17384282</td>
+      <td>1.447979</td>
+      <td>-0.018912</td>
+      <td>364.527100</td>
+      <td>18</td>
+      <td>221.339844</td>
+      <td>247.387207</td>
+      <td>480.387939</td>
+      <td>0.042747</td>
+      <td>14</td>
+      <td>897945</td>
+      <td>19.398880</td>
+      <td>474.331329</td>
+      <td>62</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>7</td>
+      <td>6.050016</td>
+      <td>48.571401</td>
+      <td>2938.75</td>
+      <td>1520</td>
+      <td>19</td>
+      <td>2169</td>
+      <td>6147</td>
+      <td>27.856503</td>
+      <td>-66516432</td>
+      <td>-1.073956</td>
+      <td>0.002280</td>
+      <td>254.679596</td>
+      <td>19</td>
+      <td>125.250488</td>
+      <td>87.865234</td>
+      <td>160.696777</td>
+      <td>0.037254</td>
+      <td>11</td>
+      <td>908426</td>
+      <td>20.170450</td>
+      <td>476.414520</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3294.75</td>
+      <td>1490</td>
+      <td>12</td>
+      <td>1995</td>
+      <td>5912</td>
+      <td>22.102139</td>
+      <td>-297770784</td>
+      <td>-1.402633</td>
+      <td>0.309765</td>
+      <td>294.927765</td>
+      <td>26</td>
+      <td>-86.729492</td>
+      <td>-145.584229</td>
+      <td>-190.062988</td>
+      <td>0.222435</td>
+      <td>15</td>
+      <td>772784</td>
+      <td>20.855963</td>
+      <td>457.195404</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>9</td>
+      <td>6.050020</td>
+      <td>48.822645</td>
+      <td>1623.50</td>
+      <td>1554</td>
+      <td>18</td>
+      <td>1973</td>
+      <td>6138</td>
+      <td>18.496584</td>
+      <td>-25336536</td>
+      <td>-0.800016</td>
+      <td>0.010370</td>
+      <td>240.493759</td>
+      <td>22</td>
+      <td>-51.470703</td>
+      <td>-245.886719</td>
+      <td>172.074707</td>
+      <td>0.004428</td>
+      <td>8</td>
+      <td>839132</td>
+      <td>21.812290</td>
+      <td>496.231110</td>
+      <td>64</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>10</td>
+      <td>6.050024</td>
+      <td>49.847522</td>
+      <td>1400.00</td>
+      <td>1521</td>
+      <td>15</td>
+      <td>2187</td>
+      <td>5886</td>
+      <td>-5.660453</td>
+      <td>-278652608</td>
+      <td>1.477951</td>
+      <td>-0.068720</td>
+      <td>376.671143</td>
+      <td>12</td>
+      <td>277.297363</td>
+      <td>273.141846</td>
+      <td>-138.895996</td>
+      <td>0.098817</td>
+      <td>13</td>
+      <td>768873</td>
+      <td>21.137711</td>
+      <td>466.976685</td>
+      <td>70</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">predictors</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1267239
+</pre></div></div>
+</div>
+<p>Plotting the data</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="nb">max</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]),</span><span class="n">bins</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_12_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_12_0.png" />
+</div>
+</div>
+<p>Select only tree with height less then 70m (highest tree in germany 67m <a class="reference external" href="https://visit.freiburg.de/en/attractions/waldtraut-germany-s-tallest-tree">https://visit.freiburg.de/en/attractions/waldtraut-germany-s-tallest-tree</a>)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_sel</span> <span class="o">=</span> <span class="n">predictors</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7000</span><span class="p">)</span>  <span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+<span class="n">predictors_sel</span><span class="o">.</span><span class="n">insert</span> <span class="p">(</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;hm&#39;</span> <span class="p">,</span>  <span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span> <span class="p">)</span> <span class="c1"># add a culumn of heigh in meter</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">)</span>
+<span class="n">predictors_sel</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>hm</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>devmagnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>211869</th>
+      <td>211870</td>
+      <td>6.763981</td>
+      <td>49.923656</td>
+      <td>2504.00</td>
+      <td>25.0400</td>
+      <td>1533</td>
+      <td>13</td>
+      <td>2114</td>
+      <td>6069</td>
+      <td>-51.807003</td>
+      <td>-204555312</td>
+      <td>1.713994</td>
+      <td>-0.030101</td>
+      <td>356.479462</td>
+      <td>23</td>
+      <td>168.107666</td>
+      <td>0.701416</td>
+      <td>-27.481689</td>
+      <td>0.001850</td>
+      <td>15</td>
+      <td>667874</td>
+      <td>19.075720</td>
+      <td>444.208923</td>
+      <td>95</td>
+    </tr>
+    <tr>
+      <th>1243664</th>
+      <td>1243665</td>
+      <td>9.833275</td>
+      <td>49.526917</td>
+      <td>649.25</td>
+      <td>6.4925</td>
+      <td>1534</td>
+      <td>15</td>
+      <td>2102</td>
+      <td>6516</td>
+      <td>0.582322</td>
+      <td>-200281328</td>
+      <td>-0.082161</td>
+      <td>0.021150</td>
+      <td>338.562622</td>
+      <td>23</td>
+      <td>663.329102</td>
+      <td>66.410156</td>
+      <td>208.560791</td>
+      <td>-0.054791</td>
+      <td>8</td>
+      <td>801897</td>
+      <td>18.012062</td>
+      <td>487.378571</td>
+      <td>89</td>
+    </tr>
+    <tr>
+      <th>862800</th>
+      <td>862801</td>
+      <td>8.747207</td>
+      <td>49.396667</td>
+      <td>4145.25</td>
+      <td>41.4525</td>
+      <td>1464</td>
+      <td>13</td>
+      <td>2770</td>
+      <td>6187</td>
+      <td>-5.705454</td>
+      <td>-193031872</td>
+      <td>2.207440</td>
+      <td>0.082736</td>
+      <td>471.601471</td>
+      <td>29</td>
+      <td>682.764160</td>
+      <td>196.173340</td>
+      <td>410.016113</td>
+      <td>-0.105913</td>
+      <td>9</td>
+      <td>687733</td>
+      <td>19.400467</td>
+      <td>449.129852</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>184466</th>
+      <td>184467</td>
+      <td>6.692364</td>
+      <td>48.311297</td>
+      <td>902.75</td>
+      <td>9.0275</td>
+      <td>1503</td>
+      <td>16</td>
+      <td>2458</td>
+      <td>6333</td>
+      <td>2.532082</td>
+      <td>-153840256</td>
+      <td>-0.687262</td>
+      <td>-0.040297</td>
+      <td>326.341187</td>
+      <td>12</td>
+      <td>-155.665771</td>
+      <td>-179.105957</td>
+      <td>-273.086426</td>
+      <td>0.005218</td>
+      <td>11</td>
+      <td>938821</td>
+      <td>19.768513</td>
+      <td>504.342621</td>
+      <td>86</td>
+    </tr>
+    <tr>
+      <th>210193</th>
+      <td>210194</td>
+      <td>6.759972</td>
+      <td>48.427197</td>
+      <td>1215.75</td>
+      <td>12.1575</td>
+      <td>1499</td>
+      <td>11</td>
+      <td>2473</td>
+      <td>6283</td>
+      <td>-34.008671</td>
+      <td>-184876336</td>
+      <td>0.869934</td>
+      <td>0.029229</td>
+      <td>331.943359</td>
+      <td>26</td>
+      <td>214.386475</td>
+      <td>39.022705</td>
+      <td>-19.717529</td>
+      <td>-0.010323</td>
+      <td>20</td>
+      <td>937918</td>
+      <td>18.850109</td>
+      <td>450.874207</td>
+      <td>45</td>
+    </tr>
+    <tr>
+      <th>485841</th>
+      <td>485842</td>
+      <td>7.421320</td>
+      <td>48.972783</td>
+      <td>2629.50</td>
+      <td>26.2950</td>
+      <td>1443</td>
+      <td>13</td>
+      <td>2366</td>
+      <td>6249</td>
+      <td>-12.187319</td>
+      <td>-237638256</td>
+      <td>0.527734</td>
+      <td>0.184359</td>
+      <td>317.114014</td>
+      <td>25</td>
+      <td>55.184082</td>
+      <td>58.465332</td>
+      <td>91.532715</td>
+      <td>-0.045335</td>
+      <td>10</td>
+      <td>828316</td>
+      <td>19.876814</td>
+      <td>445.643494</td>
+      <td>73</td>
+    </tr>
+    <tr>
+      <th>120379</th>
+      <td>120380</td>
+      <td>6.482271</td>
+      <td>49.914016</td>
+      <td>2173.00</td>
+      <td>21.7300</td>
+      <td>1538</td>
+      <td>16</td>
+      <td>1847</td>
+      <td>6105</td>
+      <td>-17.632570</td>
+      <td>-197189520</td>
+      <td>-1.088760</td>
+      <td>-0.035505</td>
+      <td>272.008911</td>
+      <td>23</td>
+      <td>-126.860352</td>
+      <td>-195.746094</td>
+      <td>75.838867</td>
+      <td>-0.008322</td>
+      <td>18</td>
+      <td>728450</td>
+      <td>19.971024</td>
+      <td>459.339722</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>388316</th>
+      <td>388317</td>
+      <td>7.193769</td>
+      <td>48.376309</td>
+      <td>527.00</td>
+      <td>5.2700</td>
+      <td>1460</td>
+      <td>11</td>
+      <td>2972</td>
+      <td>6227</td>
+      <td>24.105930</td>
+      <td>-287456672</td>
+      <td>-1.292012</td>
+      <td>0.108061</td>
+      <td>523.706970</td>
+      <td>11</td>
+      <td>309.591309</td>
+      <td>440.787842</td>
+      <td>600.310059</td>
+      <td>0.088250</td>
+      <td>17</td>
+      <td>870673</td>
+      <td>20.666460</td>
+      <td>459.003754</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>825800</th>
+      <td>825801</td>
+      <td>8.663616</td>
+      <td>49.674021</td>
+      <td>2836.25</td>
+      <td>28.3625</td>
+      <td>1533</td>
+      <td>14</td>
+      <td>2789</td>
+      <td>6461</td>
+      <td>19.265608</td>
+      <td>-253300688</td>
+      <td>-0.924922</td>
+      <td>-0.056384</td>
+      <td>208.336411</td>
+      <td>26</td>
+      <td>155.725586</td>
+      <td>211.511230</td>
+      <td>500.423096</td>
+      <td>0.082024</td>
+      <td>10</td>
+      <td>649353</td>
+      <td>20.394165</td>
+      <td>502.623260</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>1116257</th>
+      <td>1116258</td>
+      <td>9.384341</td>
+      <td>49.143288</td>
+      <td>1670.00</td>
+      <td>16.7000</td>
+      <td>1527</td>
+      <td>14</td>
+      <td>2207</td>
+      <td>6644</td>
+      <td>8.773687</td>
+      <td>-330216832</td>
+      <td>-0.236958</td>
+      <td>-0.159152</td>
+      <td>255.992538</td>
+      <td>26</td>
+      <td>154.274658</td>
+      <td>110.248535</td>
+      <td>181.868408</td>
+      <td>0.074600</td>
+      <td>5</td>
+      <td>780885</td>
+      <td>19.781750</td>
+      <td>518.130005</td>
+      <td>72</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Plotting response variables distribution</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="nb">max</span><span class="p">(</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">((</span><span class="n">predictors_sel</span><span class="p">[</span><span class="s1">&#39;hm&#39;</span><span class="p">]),</span><span class="n">bins</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_16_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_16_0.png" />
+</div>
+</div>
+<p>The Global Forest Canopy Height, 2019 map has been release in 2020 (scientific publication <a class="reference external" href="https://doi.org/10.1016/j.rse.2020.112165">https://doi.org/10.1016/j.rse.2020.112165</a>). The authors use a regression tree model that was calibrated and applied to each individual Landsat GLAD ARD tile (1 × 1◦) in a “moving window” mode. Such tree height estimation is storede in forestheight.tiff and in the table as forestheight column. A correlation plot and its pearson coefficient is show below.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">100</span><span class="p">,</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;forestheight&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;hm&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;forestheight&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fa02257ddb0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_18_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_18_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearsonr_Publication_Estimation</span> <span class="o">=</span> <span class="n">pearsonr</span><span class="p">(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">],</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;forestheight&#39;</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">pearsonr_Publication_Estimation</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.4527925129990046
+</pre></div></div>
+</div>
+<p>We will try to beats such error estimation using a more advance ML tecnques and different enviromental predictors that better express the ecological condition.</p>
+</section>
+<section id="Data-set-splitting">
+<h2>Data set splitting<a class="headerlink" href="#Data-set-splitting" title="Link to this heading"></a></h2>
+<p>Split the dataset (predictors_sel) in order to create response variable vs predictors variables (we are excluding forestheight predictors).</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>   <span class="n">X</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">4</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">feat</span> <span class="o">=</span> <span class="n">predictors_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">23</span><span class="p">]]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<p>Double ceck that we select the right columns</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#39;,
+       &#39;CHELSA_bio4&#39;, &#39;convergence&#39;, &#39;cti&#39;, &#39;devmagnitude&#39;, &#39;eastness&#39;,
+       &#39;elev&#39;, &#39;glad_ard_SVVI_max&#39;, &#39;glad_ard_SVVI_med&#39;,
+       &#39;glad_ard_SVVI_min&#39;, &#39;northness&#39;, &#39;ORCDRC_WeigAver&#39;,
+       &#39;outlet_dist_dw_basin&#39;, &#39;SBIO3_Isothermality_5_15cm&#39;,
+       &#39;SBIO4_Temperature_Seasonality_5_15cm&#39;, &#39;treecover&#39;], dtype=object)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 18)
+</pre></div></div>
+</div>
+<p>Create 4 dataset for training and testing the algorithm</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Random-Forest-default-parameters">
+<h2>Random Forest default parameters<a class="headerlink" href="#Random-Forest-default-parameters" title="Link to this heading"></a></h2>
+<p>Random Forest can be implemented using the <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">RandomForestRegressor in scikit-learn</a></p>
+<p>Training Random Forest using default parameters</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">42</span><span class="p">)</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">get_params</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;bootstrap&#39;: True,
+ &#39;ccp_alpha&#39;: 0.0,
+ &#39;criterion&#39;: &#39;mse&#39;,
+ &#39;max_depth&#39;: None,
+ &#39;max_features&#39;: &#39;auto&#39;,
+ &#39;max_leaf_nodes&#39;: None,
+ &#39;max_samples&#39;: None,
+ &#39;min_impurity_decrease&#39;: 0.0,
+ &#39;min_impurity_split&#39;: None,
+ &#39;min_samples_leaf&#39;: 1,
+ &#39;min_samples_split&#39;: 2,
+ &#39;min_weight_fraction_leaf&#39;: 0.0,
+ &#39;n_estimators&#39;: 100,
+ &#39;n_jobs&#39;: None,
+ &#39;oob_score&#39;: False,
+ &#39;random_state&#39;: 42,
+ &#39;verbose&#39;: 0,
+ &#39;warm_start&#39;: False}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfReg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">dic_pred</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">pearsonr_all</span> <span class="o">=</span> <span class="p">[</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span><span class="n">y_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">pearsonr_all</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.6043347073198263, 0.5189400044676861]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking the oob score</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">oob_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.2651550005190103
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">Additional resources how to reduce the oob error can found at</div>
+<div class="line"><a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html">https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html</a></div>
+</div>
+<section id="Random-Forest-tuning">
+<h3>Random Forest tuning<a class="headerlink" href="#Random-Forest-tuning" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>“max_features”: number of features to consider when looking for the best split.</p></li>
+<li><p>“max_samples”: number of samples to draw from X to train each base estimator.</p></li>
+<li><p>“n_estimators”: identify the number of trees that must grow. It must be large enough so that the error is stabilized. Defoult 100.</p></li>
+<li><p>“max_depth”: max number of levels in each decision tree.</p></li>
+</ul>
+<p>Using this pseudo code tune the parameters in order the improve the algoirithm performance</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pipeline = Pipeline([(&#39;rf&#39;,RandomForestRegressor())])
+
+parameters = {
+        &#39;rf__max_features&#39;:(3,4,5),
+        &#39;rf__max_samples&#39;:(0.5,0.6,0.7),
+        &#39;rf__n_estimators&#39;:(500,1000),
+        &#39;rf__max_depth&#39;:(50,100,200,300)}
+
+grid_search = GridSearchCV(pipeline,parameters,n_jobs=6,cv=5,scoring=&#39;r2&#39;,verbose=1)
+grid_search.fit(X_train,y_train)
+
+
+rfReg = RandomForestRegressor(n_estimators=5000,max_features=0.33,max_depth=500,max_samples=0.7,n_jobs=-1,random_state=24 , oob_score = True)
+rfReg.fit(X_train, y_train);
+dic_pred = {}
+dic_pred[&#39;train&#39;] = rfReg.predict(X_train)
+dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
+pearsonr_all_tune = [pearsonr(dic_pred[&#39;train&#39;],y_train)[0],pearsonr(dic_pred[&#39;test&#39;],y_test)[0]]
+pearsonr_all_tune
+
+grid_search.best_score_
+
+print (&#39;Best Training score: %0.3f&#39; % grid_search.best_score_)
+print (&#39;Optimal parameters:&#39;) best_par = grid_search.best_estimator_.get_params()
+for par_name in sorted(parameters.keys()):
+    print (&#39;\t%s: %r&#39; % (par_name, best_par[par_name]))
+</pre></div>
+</div>
+<p>Tracking the error rate trend as in <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html">https://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;training GEDI Height (all rows)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;training prediction&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fa02261eec0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_36_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_36_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;testing GEDI Height (all rows)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;testing prediction&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fa03153b3a0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_37_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_37_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">impt</span> <span class="o">=</span> <span class="p">[</span><span class="n">rfReg</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">feature_importances_</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">estimators_</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 1, 13,  0,  4,  6,  8, 16,  2,  5, 15, 12,  3, 11,  7,  9, 14, 10,
+       17])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">impt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">feat</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_40_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_40_0.png" />
+</div>
+</div>
+<p>Most important variable is treecover followed by Spectral Variability Vegetation Index, followed by outlet_dist_dw_basin that is a proxy of water accumulation. Besides eastness and northness describes microclimat condition.</p>
+</section>
+</section>
+<section id="Base-on-data-quality-flag-select-more-reilable-tree-height.">
+<h2>Base on data quality flag select more reilable tree height.<a class="headerlink" href="#Base-on-data-quality-flag-select-more-reilable-tree-height." title="Link to this heading"></a></h2>
+<p><strong>File storing tree hight (cm) obtained by 6 algorithms, with their associate quality flags.</strong> The quality flags can be used to refine and select the best tree height estimation and use it as tree height observation.</p>
+<ul class="simple">
+<li><p>a?_95: tree hight (cm) at 95 quintile, for each algorithm</p></li>
+<li><p>min_rh_95: minimum value of tree hight (cm) ammong the 6 algorithms</p></li>
+<li><p>max_rh_95: maximum value of tree hight (cm) ammong the 6 algorithms</p></li>
+<li><p>BEAM: 1-4 coverage beam = lower power (worse) ; 5-8 power beam = higher power (better)</p></li>
+<li><p>digital_elev: digital mdoel elevation</p></li>
+<li><p>elev_low: elevation of center of lowest mode</p></li>
+<li><p>qc_a?: quality_flag for six algorithms quality_flag = 1 (better); = 0 (worse)</p></li>
+<li><p>se_a?: sensitivity for six algorithms sensitivity &lt; 0.95 (worse); sensitivity &gt; 0.95 (beter )</p></li>
+<li><p>deg_fg: (degrade_flag) not-degraded 0 (better) ; degraded &gt; 0 (worse)</p></li>
+<li><p>solar_ele: solar elevation. &gt; 0 day (worse); &lt; 0 night (better)</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_6algorithms</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;tree_height/txt/eu_y_x_select_6algorithms_fullTable.txt&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot; &quot;</span><span class="p">,</span>  <span class="n">index_col</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">height_6algorithms</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>a1_95</th>
+      <th>a2_95</th>
+      <th>a3_95</th>
+      <th>a4_95</th>
+      <th>a5_95</th>
+      <th>a6_95</th>
+      <th>min_rh_95</th>
+      <th>max_rh_95</th>
+      <th>BEAM</th>
+      <th>digital_elev</th>
+      <th>elev_low</th>
+      <th>qc_a1</th>
+      <th>qc_a2</th>
+      <th>qc_a3</th>
+      <th>qc_a4</th>
+      <th>qc_a5</th>
+      <th>qc_a6</th>
+      <th>se_a1</th>
+      <th>se_a2</th>
+      <th>se_a3</th>
+      <th>se_a4</th>
+      <th>se_a5</th>
+      <th>se_a6</th>
+      <th>deg_fg</th>
+      <th>solar_ele</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>6.050001</td>
+      <td>49.727499</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3120</td>
+      <td>3139</td>
+      <td>3139</td>
+      <td>3120</td>
+      <td>3139</td>
+      <td>5</td>
+      <td>410.0</td>
+      <td>383.72153</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.962</td>
+      <td>0.984</td>
+      <td>0.968</td>
+      <td>0.962</td>
+      <td>0.989</td>
+      <td>0.979</td>
+      <td>0</td>
+      <td>17.7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>6.050002</td>
+      <td>49.922155</td>
+      <td>1022</td>
+      <td>2303</td>
+      <td>970</td>
+      <td>872</td>
+      <td>5596</td>
+      <td>1524</td>
+      <td>872</td>
+      <td>5596</td>
+      <td>5</td>
+      <td>290.0</td>
+      <td>2374.14110</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.948</td>
+      <td>0.990</td>
+      <td>0.960</td>
+      <td>0.948</td>
+      <td>0.994</td>
+      <td>0.980</td>
+      <td>0</td>
+      <td>43.7</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>6.050002</td>
+      <td>48.602377</td>
+      <td>380</td>
+      <td>1336</td>
+      <td>332</td>
+      <td>362</td>
+      <td>1336</td>
+      <td>1340</td>
+      <td>332</td>
+      <td>1340</td>
+      <td>4</td>
+      <td>440.0</td>
+      <td>435.97781</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.947</td>
+      <td>0.975</td>
+      <td>0.956</td>
+      <td>0.947</td>
+      <td>0.981</td>
+      <td>0.968</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>6.050009</td>
+      <td>48.151979</td>
+      <td>3153</td>
+      <td>3142</td>
+      <td>3142</td>
+      <td>3127</td>
+      <td>3138</td>
+      <td>3142</td>
+      <td>3127</td>
+      <td>3153</td>
+      <td>2</td>
+      <td>450.0</td>
+      <td>422.00537</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.930</td>
+      <td>0.970</td>
+      <td>0.943</td>
+      <td>0.930</td>
+      <td>0.978</td>
+      <td>0.962</td>
+      <td>0</td>
+      <td>-14.2</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>6.050010</td>
+      <td>49.588410</td>
+      <td>666</td>
+      <td>4221</td>
+      <td>651</td>
+      <td>33</td>
+      <td>5611</td>
+      <td>2723</td>
+      <td>33</td>
+      <td>5611</td>
+      <td>8</td>
+      <td>370.0</td>
+      <td>2413.74830</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0.941</td>
+      <td>0.983</td>
+      <td>0.946</td>
+      <td>0.941</td>
+      <td>0.992</td>
+      <td>0.969</td>
+      <td>0</td>
+      <td>22.1</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>6</td>
+      <td>6.050014</td>
+      <td>48.608456</td>
+      <td>787</td>
+      <td>1179</td>
+      <td>1187</td>
+      <td>761</td>
+      <td>1833</td>
+      <td>1833</td>
+      <td>761</td>
+      <td>1833</td>
+      <td>3</td>
+      <td>420.0</td>
+      <td>415.51581</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.952</td>
+      <td>0.979</td>
+      <td>0.961</td>
+      <td>0.952</td>
+      <td>0.986</td>
+      <td>0.975</td>
+      <td>0</td>
+      <td>0.2</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_6algorithms_sel</span> <span class="o">=</span> <span class="n">height_6algorithms</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;BEAM&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a1&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a2&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a3&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a4&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a5&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;qc_a6&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a1&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a2&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a3&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a4&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a5&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;se_a6&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.95</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;deg_fg&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+                                            <span class="o">&amp;</span>   <span class="p">(</span><span class="n">height_6algorithms</span><span class="p">[</span><span class="s1">&#39;solar_ele&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_6algorithms_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>a1_95</th>
+      <th>a2_95</th>
+      <th>a3_95</th>
+      <th>a4_95</th>
+      <th>a5_95</th>
+      <th>a6_95</th>
+      <th>min_rh_95</th>
+      <th>max_rh_95</th>
+      <th>BEAM</th>
+      <th>digital_elev</th>
+      <th>elev_low</th>
+      <th>qc_a1</th>
+      <th>qc_a2</th>
+      <th>qc_a3</th>
+      <th>qc_a4</th>
+      <th>qc_a5</th>
+      <th>qc_a6</th>
+      <th>se_a1</th>
+      <th>se_a2</th>
+      <th>se_a3</th>
+      <th>se_a4</th>
+      <th>se_a5</th>
+      <th>se_a6</th>
+      <th>deg_fg</th>
+      <th>solar_ele</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3303</td>
+      <td>3288</td>
+      <td>3296</td>
+      <td>3236</td>
+      <td>3857</td>
+      <td>3292</td>
+      <td>3236</td>
+      <td>3857</td>
+      <td>7</td>
+      <td>320.0</td>
+      <td>297.68533</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.971</td>
+      <td>0.988</td>
+      <td>0.976</td>
+      <td>0.971</td>
+      <td>0.992</td>
+      <td>0.984</td>
+      <td>0</td>
+      <td>-33.9</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>6.050039</td>
+      <td>47.995344</td>
+      <td>2762</td>
+      <td>2736</td>
+      <td>2740</td>
+      <td>2747</td>
+      <td>3893</td>
+      <td>2736</td>
+      <td>2736</td>
+      <td>3893</td>
+      <td>5</td>
+      <td>390.0</td>
+      <td>368.55121</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.975</td>
+      <td>0.990</td>
+      <td>0.979</td>
+      <td>0.975</td>
+      <td>0.994</td>
+      <td>0.987</td>
+      <td>0</td>
+      <td>-37.3</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>6.050046</td>
+      <td>49.865317</td>
+      <td>1398</td>
+      <td>2505</td>
+      <td>2509</td>
+      <td>1316</td>
+      <td>2848</td>
+      <td>2505</td>
+      <td>1316</td>
+      <td>2848</td>
+      <td>6</td>
+      <td>340.0</td>
+      <td>330.40564</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.990</td>
+      <td>0.979</td>
+      <td>0.973</td>
+      <td>0.994</td>
+      <td>0.986</td>
+      <td>0</td>
+      <td>-18.2</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>6.050048</td>
+      <td>49.050020</td>
+      <td>984</td>
+      <td>943</td>
+      <td>947</td>
+      <td>958</td>
+      <td>2617</td>
+      <td>947</td>
+      <td>943</td>
+      <td>2617</td>
+      <td>6</td>
+      <td>300.0</td>
+      <td>291.22598</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.978</td>
+      <td>0.991</td>
+      <td>0.982</td>
+      <td>0.978</td>
+      <td>0.995</td>
+      <td>0.988</td>
+      <td>0</td>
+      <td>-35.4</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>6.050049</td>
+      <td>48.391359</td>
+      <td>3362</td>
+      <td>3332</td>
+      <td>3336</td>
+      <td>3351</td>
+      <td>4467</td>
+      <td>3336</td>
+      <td>3332</td>
+      <td>4467</td>
+      <td>5</td>
+      <td>530.0</td>
+      <td>504.78122</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.988</td>
+      <td>0.977</td>
+      <td>0.973</td>
+      <td>0.992</td>
+      <td>0.984</td>
+      <td>0</td>
+      <td>-5.1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1267207</th>
+      <td>1267208</td>
+      <td>9.949829</td>
+      <td>49.216272</td>
+      <td>2160</td>
+      <td>2816</td>
+      <td>2816</td>
+      <td>2104</td>
+      <td>3299</td>
+      <td>2816</td>
+      <td>2104</td>
+      <td>3299</td>
+      <td>8</td>
+      <td>420.0</td>
+      <td>386.44556</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.980</td>
+      <td>0.993</td>
+      <td>0.984</td>
+      <td>0.980</td>
+      <td>0.995</td>
+      <td>0.989</td>
+      <td>0</td>
+      <td>-16.9</td>
+    </tr>
+    <tr>
+      <th>1267211</th>
+      <td>1267212</td>
+      <td>9.949856</td>
+      <td>49.881190</td>
+      <td>3190</td>
+      <td>3179</td>
+      <td>3179</td>
+      <td>3171</td>
+      <td>3822</td>
+      <td>3179</td>
+      <td>3171</td>
+      <td>3822</td>
+      <td>6</td>
+      <td>380.0</td>
+      <td>363.69348</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.968</td>
+      <td>0.986</td>
+      <td>0.974</td>
+      <td>0.968</td>
+      <td>0.990</td>
+      <td>0.982</td>
+      <td>0</td>
+      <td>-35.1</td>
+    </tr>
+    <tr>
+      <th>1267216</th>
+      <td>1267217</td>
+      <td>9.949880</td>
+      <td>49.873435</td>
+      <td>2061</td>
+      <td>2828</td>
+      <td>2046</td>
+      <td>2024</td>
+      <td>2828</td>
+      <td>2828</td>
+      <td>2024</td>
+      <td>2828</td>
+      <td>7</td>
+      <td>380.0</td>
+      <td>361.06812</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.967</td>
+      <td>0.988</td>
+      <td>0.974</td>
+      <td>0.967</td>
+      <td>0.993</td>
+      <td>0.983</td>
+      <td>0</td>
+      <td>-35.1</td>
+    </tr>
+    <tr>
+      <th>1267227</th>
+      <td>1267228</td>
+      <td>9.949958</td>
+      <td>49.127182</td>
+      <td>366</td>
+      <td>2307</td>
+      <td>1260</td>
+      <td>355</td>
+      <td>3531</td>
+      <td>2719</td>
+      <td>355</td>
+      <td>3531</td>
+      <td>6</td>
+      <td>500.0</td>
+      <td>493.52792</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.973</td>
+      <td>0.989</td>
+      <td>0.978</td>
+      <td>0.973</td>
+      <td>0.993</td>
+      <td>0.985</td>
+      <td>0</td>
+      <td>-36.0</td>
+    </tr>
+    <tr>
+      <th>1267237</th>
+      <td>1267238</td>
+      <td>9.949999</td>
+      <td>49.936763</td>
+      <td>2513</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2494</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2490</td>
+      <td>2513</td>
+      <td>5</td>
+      <td>360.0</td>
+      <td>346.54227</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0.968</td>
+      <td>0.988</td>
+      <td>0.974</td>
+      <td>0.968</td>
+      <td>0.993</td>
+      <td>0.983</td>
+      <td>0</td>
+      <td>-32.2</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 28 columns</p>
+</div></div>
+</div>
+<p>Calculate the mean height excluidng the maximum and minimum values</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_sel</span> <span class="o">=</span>  <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;ID&#39;</span> <span class="p">:</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span> <span class="p">,</span>
+                            <span class="s1">&#39;hm_sel&#39;</span><span class="p">:</span> <span class="p">(</span><span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a1_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a2_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a3_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a4_95&#39;</span><span class="p">]</span>
+                             <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a5_95&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;a6_95&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;min_rh_95&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">height_6algorithms_sel</span><span class="p">[</span><span class="s1">&#39;max_rh_95&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="mi">400</span> <span class="p">}</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">height_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>8</td>
+      <td>32.9475</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>12</td>
+      <td>27.4625</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>15</td>
+      <td>22.2925</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>16</td>
+      <td>9.5900</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>17</td>
+      <td>33.4625</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1267207</th>
+      <td>1267208</td>
+      <td>26.5200</td>
+    </tr>
+    <tr>
+      <th>1267211</th>
+      <td>1267212</td>
+      <td>31.8175</td>
+    </tr>
+    <tr>
+      <th>1267216</th>
+      <td>1267217</td>
+      <td>24.4075</td>
+    </tr>
+    <tr>
+      <th>1267227</th>
+      <td>1267228</td>
+      <td>16.6300</td>
+    </tr>
+    <tr>
+      <th>1267237</th>
+      <td>1267238</td>
+      <td>24.9100</td>
+    </tr>
+  </tbody>
+</table>
+<p>226892 rows × 2 columns</p>
+</div></div>
+</div>
+<p>Merge the new height with the predictors table, using the ID as Primary Key</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_hm_sel</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span> <span class="n">predictors</span> <span class="p">,</span>  <span class="n">height_sel</span> <span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span> <span class="p">,</span>  <span class="n">right_on</span><span class="o">=</span><span class="s1">&#39;ID&#39;</span> <span class="p">,</span>  <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>devmagnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>8</td>
+      <td>6.050019</td>
+      <td>49.921613</td>
+      <td>3294.75</td>
+      <td>1490</td>
+      <td>12</td>
+      <td>1995</td>
+      <td>5912</td>
+      <td>22.102139</td>
+      <td>-297770784</td>
+      <td>-1.402633</td>
+      <td>0.309765</td>
+      <td>294.927765</td>
+      <td>26</td>
+      <td>-86.729492</td>
+      <td>-145.584229</td>
+      <td>-190.062988</td>
+      <td>0.222435</td>
+      <td>15</td>
+      <td>772784</td>
+      <td>20.855963</td>
+      <td>457.195404</td>
+      <td>86</td>
+      <td>32.9475</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>12</td>
+      <td>6.050039</td>
+      <td>47.995344</td>
+      <td>2746.25</td>
+      <td>1523</td>
+      <td>12</td>
+      <td>2612</td>
+      <td>6181</td>
+      <td>3.549103</td>
+      <td>-71279992</td>
+      <td>0.507727</td>
+      <td>-0.021408</td>
+      <td>322.920227</td>
+      <td>26</td>
+      <td>660.006104</td>
+      <td>92.722168</td>
+      <td>190.979736</td>
+      <td>-0.034787</td>
+      <td>16</td>
+      <td>784807</td>
+      <td>20.798000</td>
+      <td>460.501221</td>
+      <td>97</td>
+      <td>27.4625</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>15</td>
+      <td>6.050046</td>
+      <td>49.865317</td>
+      <td>2229.25</td>
+      <td>1517</td>
+      <td>13</td>
+      <td>2191</td>
+      <td>5901</td>
+      <td>31.054762</td>
+      <td>-186807440</td>
+      <td>-1.375050</td>
+      <td>-0.126880</td>
+      <td>291.412537</td>
+      <td>7</td>
+      <td>1028.385498</td>
+      <td>915.806396</td>
+      <td>841.586182</td>
+      <td>0.024677</td>
+      <td>16</td>
+      <td>766444</td>
+      <td>19.941267</td>
+      <td>454.185089</td>
+      <td>54</td>
+      <td>22.2925</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>16</td>
+      <td>6.050048</td>
+      <td>49.050020</td>
+      <td>959.00</td>
+      <td>1526</td>
+      <td>14</td>
+      <td>2081</td>
+      <td>6100</td>
+      <td>9.933455</td>
+      <td>-183562672</td>
+      <td>-0.382834</td>
+      <td>0.086874</td>
+      <td>246.288010</td>
+      <td>24</td>
+      <td>-12.283691</td>
+      <td>-58.179199</td>
+      <td>174.205566</td>
+      <td>0.094175</td>
+      <td>10</td>
+      <td>805730</td>
+      <td>19.849365</td>
+      <td>470.946533</td>
+      <td>78</td>
+      <td>9.5900</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>17</td>
+      <td>6.050049</td>
+      <td>48.391359</td>
+      <td>3346.25</td>
+      <td>1489</td>
+      <td>19</td>
+      <td>2486</td>
+      <td>5966</td>
+      <td>-6.957157</td>
+      <td>-273522688</td>
+      <td>2.989759</td>
+      <td>0.214769</td>
+      <td>474.409088</td>
+      <td>24</td>
+      <td>125.583008</td>
+      <td>6.154297</td>
+      <td>128.129150</td>
+      <td>0.017164</td>
+      <td>15</td>
+      <td>950190</td>
+      <td>21.179420</td>
+      <td>491.398376</td>
+      <td>85</td>
+      <td>33.4625</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>19</td>
+      <td>6.050053</td>
+      <td>49.877876</td>
+      <td>529.00</td>
+      <td>1531</td>
+      <td>12</td>
+      <td>2184</td>
+      <td>5915</td>
+      <td>-24.278454</td>
+      <td>-377335296</td>
+      <td>0.265329</td>
+      <td>-0.248356</td>
+      <td>335.534760</td>
+      <td>25</td>
+      <td>593.601074</td>
+      <td>228.712402</td>
+      <td>315.298340</td>
+      <td>-0.127365</td>
+      <td>17</td>
+      <td>764713</td>
+      <td>19.760756</td>
+      <td>448.580811</td>
+      <td>96</td>
+      <td>5.2900</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_hm_sel</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">loc</span><span class="p">[(</span><span class="n">predictors</span><span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">7000</span><span class="p">)</span> <span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">100000</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_hm_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>ID</th>
+      <th>X</th>
+      <th>Y</th>
+      <th>h</th>
+      <th>BLDFIE_WeigAver</th>
+      <th>CECSOL_WeigAver</th>
+      <th>CHELSA_bio18</th>
+      <th>CHELSA_bio4</th>
+      <th>convergence</th>
+      <th>cti</th>
+      <th>devmagnitude</th>
+      <th>eastness</th>
+      <th>elev</th>
+      <th>forestheight</th>
+      <th>glad_ard_SVVI_max</th>
+      <th>glad_ard_SVVI_med</th>
+      <th>glad_ard_SVVI_min</th>
+      <th>northness</th>
+      <th>ORCDRC_WeigAver</th>
+      <th>outlet_dist_dw_basin</th>
+      <th>SBIO3_Isothermality_5_15cm</th>
+      <th>SBIO4_Temperature_Seasonality_5_15cm</th>
+      <th>treecover</th>
+      <th>hm_sel</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>83357</th>
+      <td>447901</td>
+      <td>7.325923</td>
+      <td>49.296261</td>
+      <td>1988.00</td>
+      <td>1504</td>
+      <td>11</td>
+      <td>1973</td>
+      <td>6329</td>
+      <td>-27.310654</td>
+      <td>-311542144</td>
+      <td>1.611667</td>
+      <td>-0.059867</td>
+      <td>315.589905</td>
+      <td>22</td>
+      <td>99.902344</td>
+      <td>182.999268</td>
+      <td>358.212158</td>
+      <td>-0.027319</td>
+      <td>13</td>
+      <td>852606</td>
+      <td>18.866175</td>
+      <td>470.286011</td>
+      <td>75</td>
+      <td>19.8800</td>
+    </tr>
+    <tr>
+      <th>213105</th>
+      <td>1196478</td>
+      <td>9.622623</td>
+      <td>49.833063</td>
+      <td>2220.25</td>
+      <td>1520</td>
+      <td>13</td>
+      <td>1875</td>
+      <td>6606</td>
+      <td>-20.839262</td>
+      <td>-279513600</td>
+      <td>-0.550544</td>
+      <td>0.038211</td>
+      <td>244.721085</td>
+      <td>15</td>
+      <td>112.770508</td>
+      <td>-38.957520</td>
+      <td>-107.884766</td>
+      <td>-0.153021</td>
+      <td>11</td>
+      <td>770768</td>
+      <td>19.954826</td>
+      <td>507.755493</td>
+      <td>54</td>
+      <td>22.2025</td>
+    </tr>
+    <tr>
+      <th>58293</th>
+      <td>313301</td>
+      <td>7.017546</td>
+      <td>49.874260</td>
+      <td>1389.75</td>
+      <td>1525</td>
+      <td>14</td>
+      <td>2127</td>
+      <td>6080</td>
+      <td>-16.012159</td>
+      <td>-287215200</td>
+      <td>1.066931</td>
+      <td>-0.218266</td>
+      <td>424.159332</td>
+      <td>22</td>
+      <td>-59.042236</td>
+      <td>-32.115967</td>
+      <td>126.038086</td>
+      <td>0.068847</td>
+      <td>13</td>
+      <td>619919</td>
+      <td>19.761299</td>
+      <td>465.827271</td>
+      <td>85</td>
+      <td>13.8975</td>
+    </tr>
+    <tr>
+      <th>54985</th>
+      <td>297876</td>
+      <td>6.981116</td>
+      <td>48.889372</td>
+      <td>1883.25</td>
+      <td>1525</td>
+      <td>13</td>
+      <td>2161</td>
+      <td>6330</td>
+      <td>8.863924</td>
+      <td>431331168</td>
+      <td>-1.713272</td>
+      <td>0.013969</td>
+      <td>221.787323</td>
+      <td>23</td>
+      <td>560.937012</td>
+      <td>101.161133</td>
+      <td>27.694336</td>
+      <td>-0.025228</td>
+      <td>7</td>
+      <td>847969</td>
+      <td>18.343138</td>
+      <td>464.072418</td>
+      <td>67</td>
+      <td>18.8325</td>
+    </tr>
+    <tr>
+      <th>18698</th>
+      <td>98303</td>
+      <td>6.397619</td>
+      <td>49.380758</td>
+      <td>2965.00</td>
+      <td>1538</td>
+      <td>11</td>
+      <td>2367</td>
+      <td>6042</td>
+      <td>23.690971</td>
+      <td>-80957808</td>
+      <td>-0.130503</td>
+      <td>-0.035726</td>
+      <td>276.400085</td>
+      <td>25</td>
+      <td>230.774902</td>
+      <td>120.549805</td>
+      <td>309.234375</td>
+      <td>0.012809</td>
+      <td>13</td>
+      <td>740733</td>
+      <td>18.482462</td>
+      <td>444.627533</td>
+      <td>78</td>
+      <td>29.6500</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>60228</th>
+      <td>322853</td>
+      <td>7.040689</td>
+      <td>49.728151</td>
+      <td>3375.00</td>
+      <td>1402</td>
+      <td>12</td>
+      <td>2362</td>
+      <td>5810</td>
+      <td>17.660843</td>
+      <td>15303386</td>
+      <td>1.776377</td>
+      <td>0.010083</td>
+      <td>517.456360</td>
+      <td>25</td>
+      <td>172.217773</td>
+      <td>256.016113</td>
+      <td>213.990967</td>
+      <td>-0.079195</td>
+      <td>25</td>
+      <td>663180</td>
+      <td>21.064062</td>
+      <td>430.348450</td>
+      <td>85</td>
+      <td>33.7500</td>
+    </tr>
+    <tr>
+      <th>42226</th>
+      <td>231457</td>
+      <td>6.810772</td>
+      <td>48.268025</td>
+      <td>2707.00</td>
+      <td>1409</td>
+      <td>15</td>
+      <td>3120</td>
+      <td>6229</td>
+      <td>0.276158</td>
+      <td>-217058432</td>
+      <td>-0.143515</td>
+      <td>-0.099901</td>
+      <td>471.342743</td>
+      <td>25</td>
+      <td>-153.505615</td>
+      <td>-142.315430</td>
+      <td>-232.547607</td>
+      <td>-0.198644</td>
+      <td>29</td>
+      <td>955008</td>
+      <td>20.322662</td>
+      <td>441.391357</td>
+      <td>85</td>
+      <td>27.0700</td>
+    </tr>
+    <tr>
+      <th>49495</th>
+      <td>271346</td>
+      <td>6.916373</td>
+      <td>49.514878</td>
+      <td>3097.25</td>
+      <td>1536</td>
+      <td>13</td>
+      <td>2213</td>
+      <td>6140</td>
+      <td>-0.606761</td>
+      <td>-299815488</td>
+      <td>0.547743</td>
+      <td>-0.104366</td>
+      <td>365.085297</td>
+      <td>24</td>
+      <td>29.947266</td>
+      <td>-2.760986</td>
+      <td>204.209473</td>
+      <td>0.163875</td>
+      <td>14</td>
+      <td>789703</td>
+      <td>20.452227</td>
+      <td>469.161865</td>
+      <td>85</td>
+      <td>30.9725</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>40</td>
+      <td>6.050120</td>
+      <td>48.058094</td>
+      <td>3012.25</td>
+      <td>1521</td>
+      <td>14</td>
+      <td>2474</td>
+      <td>6191</td>
+      <td>-15.363133</td>
+      <td>-195105152</td>
+      <td>1.290480</td>
+      <td>-0.043498</td>
+      <td>331.926483</td>
+      <td>25</td>
+      <td>750.277832</td>
+      <td>12.481934</td>
+      <td>206.658447</td>
+      <td>-0.008241</td>
+      <td>15</td>
+      <td>820336</td>
+      <td>19.240412</td>
+      <td>474.946625</td>
+      <td>85</td>
+      <td>30.1225</td>
+    </tr>
+    <tr>
+      <th>185044</th>
+      <td>1039892</td>
+      <td>9.187669</td>
+      <td>49.500969</td>
+      <td>1117.00</td>
+      <td>1472</td>
+      <td>15</td>
+      <td>2561</td>
+      <td>6294</td>
+      <td>10.249912</td>
+      <td>-141432176</td>
+      <td>1.770781</td>
+      <td>-0.046596</td>
+      <td>483.281250</td>
+      <td>27</td>
+      <td>-15.297119</td>
+      <td>-161.964844</td>
+      <td>-210.821777</td>
+      <td>-0.015172</td>
+      <td>23</td>
+      <td>761513</td>
+      <td>19.522852</td>
+      <td>437.534729</td>
+      <td>38</td>
+      <td>11.1700</td>
+    </tr>
+  </tbody>
+</table>
+<p>100000 rows × 24 columns</p>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>   <span class="n">X</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">]]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">Y</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">23</span><span class="p">:</span><span class="mi">24</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<span class="n">feat</span> <span class="o">=</span> <span class="n">predictors_hm_sel</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,[</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">16</span><span class="p">,</span><span class="mi">17</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">19</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="mi">22</span><span class="p">]]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feat</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;BLDFIE_WeigAver&#39;, &#39;CECSOL_WeigAver&#39;, &#39;CHELSA_bio18&#39;,
+       &#39;CHELSA_bio4&#39;, &#39;convergence&#39;, &#39;cti&#39;, &#39;devmagnitude&#39;, &#39;eastness&#39;,
+       &#39;elev&#39;, &#39;glad_ard_SVVI_max&#39;, &#39;glad_ard_SVVI_med&#39;,
+       &#39;glad_ard_SVVI_min&#39;, &#39;northness&#39;, &#39;ORCDRC_WeigAver&#39;,
+       &#39;outlet_dist_dw_basin&#39;, &#39;SBIO3_Isothermality_5_15cm&#39;,
+       &#39;SBIO4_Temperature_Seasonality_5_15cm&#39;, &#39;treecover&#39;], dtype=object)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Y</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(100000, 18)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">Y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ravel</span><span class="p">(</span><span class="n">Y_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Random-Forest-default-parameters-with-select-row-base-on-quality-flag">
+<h2>Random Forest default parameters with select row base on quality flag<a class="headerlink" href="#Random-Forest-default-parameters-with-select-row-base-on-quality-flag" title="Link to this heading"></a></h2>
+<p>Training Random Forest using default parameters</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rfReg</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">oob_score</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">);</span>
+<span class="n">dic_pred</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># checking the oob score</span>
+<span class="n">rfReg</span><span class="o">.</span><span class="n">oob_score_</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.37582774369799943
+</pre></div></div>
+</div>
+</section>
+<section id="Final-assesment">
+<h2>Final assesment<a class="headerlink" href="#Final-assesment" title="Link to this heading"></a></h2>
+<p><strong>Selected data</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearsonr_all_sel</span> <span class="o">=</span> <span class="p">[</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">],</span><span class="n">y_train</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span><span class="n">pearsonr</span><span class="p">(</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">],</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span>
+<span class="n">pearsonr_all_sel</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.747400101639897, 0.615726616845201]
+</pre></div></div>
+</div>
+<p><strong>All data</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearsonr_all</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[0.6043347073198263, 0.5189400044676861]
+</pre></div></div>
+</div>
+<p><strong>Publication results</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pearsonr_Publication_Estimation</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.4527925129990046
+</pre></div></div>
+</div>
+<p>Tone the RF</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pipeline = Pipeline([(&#39;rf&#39;,RandomForestRegressor())])
+
+parameters = {
+        &#39;rf__max_features&#39;:(&quot;log2&quot;,&quot;sqrt&quot;,0.33),
+        &#39;rf__max_samples&#39;:(0.5,0.6,0.7),
+        &#39;rf__n_estimators&#39;:(500,1000),
+        &#39;rf__max_depth&#39;:(50,100,200)}
+
+grid_search = GridSearchCV(pipeline,parameters,n_jobs=-1,cv=3,scoring=&#39;r2&#39;,verbose=1)
+grid_search.fit(X_train,y_train)
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>grid_search.best_score_
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>print (&#39;Best Training score: %0.3f&#39; % grid_search.best_score_)
+print (&#39;Optimal parameters:&#39;)
+best_par = grid_search.best_estimator_.get_params()
+for par_name in sorted(parameters.keys()):
+    print (&#39;\t%s: %r&#39; % (par_name, best_par[par_name]))
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>rfReg = RandomForestRegressor(n_estimators=500,max_features=&#39;sqrt&#39;,max_depth=50,max_samples=0.6,n_jobs=-1,random_state=24)
+rfReg.fit(X_train, y_train);
+dic_pred = {}
+dic_pred[&#39;train&#39;] = rfReg.predict(X_train)
+dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
+[pearsonr(dic_pred[&#39;train&#39;],y_train)[0],pearsonr(dic_pred[&#39;test&#39;],y_test)[0]]
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;train&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;trening GEDI Height (selected rows)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;trening prediction&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fa0315145e0&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_74_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_74_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">dic_pred</span><span class="p">[</span><span class="s1">&#39;test&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;testing GEDI Height (selected rows)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;testing prediction&#39;</span><span class="p">)</span>
+<span class="n">ident</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ident</span><span class="p">,</span><span class="n">ident</span><span class="p">,</span><span class="s1">&#39;r--&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&lt;matplotlib.lines.Line2D at 0x7fa0226b4d30&gt;]
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_75_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_75_1.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">impt</span> <span class="o">=</span> <span class="p">[</span><span class="n">rfReg</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">([</span><span class="n">tree</span><span class="o">.</span><span class="n">feature_importances_</span> <span class="k">for</span> <span class="n">tree</span> <span class="ow">in</span> <span class="n">rfReg</span><span class="o">.</span><span class="n">estimators_</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)]</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ind</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([ 1, 13,  0,  6, 16,  4,  8,  5,  3,  2, 15, 11, 12,  9, 14,  7, 10,
+       17])
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">impt</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">xerr</span><span class="o">=</span><span class="n">impt</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="n">ind</span><span class="p">],</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feat</span><span class="p">)),</span><span class="n">feat</span><span class="p">[</span><span class="n">ind</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_78_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_78_0.png" />
+</div>
+</div>
+<section id="Predict-on-the-raster-using-pyspatialml">
+<h3>Predict on the raster using pyspatialml<a class="headerlink" href="#Predict-on-the-raster-using-pyspatialml" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import satalite indeces</span>
+<span class="n">glad_ard_SVVI_min</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_min.tif&quot;</span>
+<span class="n">glad_ard_SVVI_med</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_med.tif&quot;</span>
+<span class="n">glad_ard_SVVI_max</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/glad_ard_SVVI_max.tif&quot;</span>
+
+<span class="c1"># import climate</span>
+<span class="n">CHELSA_bio4</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio4.tif&quot;</span>
+<span class="n">CHELSA_bio18</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CHELSA_bio18.tif&quot;</span>
+
+<span class="c1"># soil</span>
+<span class="n">BLDFIE_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/BLDFIE_WeigAver.tif&quot;</span>
+<span class="n">CECSOL_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/CECSOL_WeigAver.tif&quot;</span>
+<span class="n">ORCDRC_WeigAver</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/ORCDRC_WeigAver.tif&quot;</span>
+
+<span class="c1"># Geomorphological</span>
+<span class="n">elev</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/elev.tif&quot;</span>
+<span class="n">convergence</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/convergence.tif&quot;</span>
+<span class="n">northness</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/northness.tif&quot;</span>
+<span class="n">eastness</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/eastness.tif&quot;</span>
+<span class="n">devmagnitude</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/devmagnitude.tif&quot;</span>
+
+<span class="c1"># Hydrography</span>
+<span class="n">cti</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/cti.tif&quot;</span>
+<span class="n">outlet_dist_dw_basin</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/outlet_dist_dw_basin.tif&quot;</span>
+
+<span class="c1"># Soil climate</span>
+
+<span class="n">SBIO3_Isothermality_5_15cm</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/SBIO3_Isothermality_5_15cm.tif&quot;</span>
+<span class="n">SBIO4_Temperature_Seasonality_5_15cm</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/SBIO4_Temperature_Seasonality_5_15cm.tif&quot;</span>
+
+<span class="c1"># forest</span>
+
+<span class="n">treecover</span> <span class="o">=</span> <span class="s2">&quot;tree_height/geodata_raster/treecover.tif&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">treecover</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;tree_height/geodata_raster/treecover.tif&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors_rasters</span> <span class="o">=</span> <span class="p">[</span><span class="n">glad_ard_SVVI_min</span><span class="p">,</span> <span class="n">glad_ard_SVVI_med</span><span class="p">,</span> <span class="n">glad_ard_SVVI_max</span><span class="p">,</span>
+                      <span class="n">CHELSA_bio4</span><span class="p">,</span><span class="n">CHELSA_bio18</span><span class="p">,</span>
+                      <span class="n">BLDFIE_WeigAver</span><span class="p">,</span><span class="n">CECSOL_WeigAver</span><span class="p">,</span><span class="n">ORCDRC_WeigAver</span><span class="p">,</span>
+                      <span class="n">elev</span><span class="p">,</span><span class="n">convergence</span><span class="p">,</span><span class="n">northness</span><span class="p">,</span><span class="n">eastness</span><span class="p">,</span><span class="n">devmagnitude</span><span class="p">,</span><span class="n">cti</span><span class="p">,</span><span class="n">outlet_dist_dw_basin</span><span class="p">,</span>
+                      <span class="n">SBIO3_Isothermality_5_15cm</span><span class="p">,</span><span class="n">SBIO4_Temperature_Seasonality_5_15cm</span><span class="p">,</span><span class="n">treecover</span><span class="p">]</span>
+
+<span class="n">stack</span> <span class="o">=</span> <span class="n">Raster</span><span class="p">(</span><span class="n">predictors_rasters</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">stack</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">estimator</span><span class="o">=</span><span class="n">rfReg</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;int16&#39;</span><span class="p">,</span> <span class="n">nodata</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot regression result</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;plasma&quot;</span>
+<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_84_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_84_0.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Tree_Height_02Predictors_extraction.html" class="btn btn-neutral float-left" title="Estimation of tree height using GEDI dataset - Predictors extraction at point location" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Tree_Height_04SVM_pred_2022.html" class="btn btn-neutral float-right" title="Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

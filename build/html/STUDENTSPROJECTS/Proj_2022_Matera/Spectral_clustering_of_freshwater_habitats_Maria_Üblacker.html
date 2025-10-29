@@ -1,0 +1,804 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.5. Maria Üblacker: Spectral clustering of freshwater habitats &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest" href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html" />
+    <link rel="prev" title="2.4. Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data" href="Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_Garc%C3%ADa_M%C3%A1rquez.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Damaged_trees_classification_RF_Janusz_Godziek.html">2.1. Janusz Godziek: Damaged vs undamaged trees - Random Forest classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stream_Network_Abstraction_Alonso_Gonzalez.html">2.2. Alonso Gonzalez: Stream Network Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Images_shadow_removal_Sebastian_Walter.html">2.3. Sebastian Walter: Images shadow removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_Garc%C3%ADa_M%C3%A1rquez.html">2.4. Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.5. Maria Üblacker: Spectral clustering of freshwater habitats</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#project-description">2.5.1. Project description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setup-r-markdown-python-engine">2.5.2. Setup R Markdown Python Engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#r-and-python-packages">2.5.3. R and Python packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#study-region">2.5.4. Study region</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-code-for-filtering-data-from-text-files-by-sub-catchment-id">2.5.5. Example code for filtering data from text files by sub-catchment ID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#load-the-data">2.5.6. Load the data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#principal-component-analysis-pca">2.5.7. Principal Component analysis (PCA)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#evaluation-of-the-best-number-of-clusters">2.5.8. Evaluation of the best number of clusters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spectral-clustering">2.5.9. Spectral clustering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#predict-clusters-for-the-whole-dataset">2.5.10. Predict clusters for the whole dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exporting-sub-catchment-ids-and-k-for-reclassification">2.5.11. Exporting sub-catchment IDs and k for reclassification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-code-for-reclassifying-a-raster-file">2.5.12. Example code for reclassifying a raster file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#spatial-cluster-plots">2.5.13. Spatial cluster plots</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#conclusion">2.5.14. Conclusion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reference">2.5.15. Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html">2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Topographic_and_hydrological_influence_on_vegetation_in_an_arid_environment_Gidske_L_Andersen.html">2.7. Gidske L. Andersen: Topographic and hydrological influence on vegetation in an arid environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html">2.8. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modeling_debris_flow_source_areas_Txomin_Bornaetxea.html">2.9. Txomin Bornaetxea: Modeling debris flow source areas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html">2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.html">2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.html">2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ships_and_economic_activity_a_starter_Myriam_Marending.html">2.13. Myriam Marending: Ships and economic activity: a starter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html">2.14. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.5. </span>Maria Üblacker: Spectral clustering of freshwater habitats</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2022_Matera/Spectral_clustering_of_freshwater_habitats_Maria_Üblacker.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="maria-ublacker-spectral-clustering-of-freshwater-habitats">
+<h1><span class="section-number">2.5. </span>Maria Üblacker: Spectral clustering of freshwater habitats<a class="headerlink" href="#maria-ublacker-spectral-clustering-of-freshwater-habitats" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://youtu.be/BVjAwfhhT7g">Video recording</a></p>
+<section id="project-description">
+<h2><span class="section-number">2.5.1. </span>Project description<a class="headerlink" href="#project-description" title="Link to this heading"></a></h2>
+<p>In the framework of this project spectral clustering was performed to identify groups of environmental unique freshwater habitats for the Po river basin located in the North of Italy. Freshwater habitats were defined by stream reaches and their associated sub-catchments based on the Hydrography90m dataset. Sub-catchments were characterized by 71 variables describing the geomorphology, the climate and the land cover.</p>
+<p>For this project the following datasets were used:</p>
+<ul class="simple">
+<li><p>Hydrography90m (Amatulli et al., 2022)</p></li>
+<li><p>CHELSA Bioclim (Karger et al., 2017)</p></li>
+<li><p>ESA CCI Land cover  (ESA, 2017)</p></li>
+</ul>
+<p>Spectral clustering is a clustering method based on graph theory and needs a similarity matrix as input. Generating a similarity matrix of a large dataset can be challenging as it requires a high capacity of RAM. Therefore, a random subset was taken from the dataset. To verify that the variance of the sampled sub-catchments represents the variance of all sub-catchments within the Po river basin a Principal Component Analysis was conducted. The cluster analysis was then performed on the subset and clusters for the whole dataset were predicted using k-nearest neighbors.</p>
+</section>
+<section id="setup-r-markdown-python-engine">
+<h2><span class="section-number">2.5.2. </span>Setup R Markdown Python Engine<a class="headerlink" href="#setup-r-markdown-python-engine" title="Link to this heading"></a></h2>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span># The R package &#39;reticulate&#39; builds the interface &#39;Python&#39; modules, classes, and functions. 
+library(reticulate)
+
+# Defines the python virtual environment R should use
+use_python(&quot;.Rpy_env/bin/python&quot;)
+
+</pre></div>
+</div>
+</section>
+<section id="r-and-python-packages">
+<h2><span class="section-number">2.5.3. </span>R and Python packages<a class="headerlink" href="#r-and-python-packages" title="Link to this heading"></a></h2>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span># Load R packages
+library(tidyverse) # For data manipulation
+library(data.table) # For reading csv files
+library(rgdal)  # Provides bindings to the &#39;Geospatial&#39; Data Abstraction Library
+library(sf)  # Support for simple features
+library(raster) # Functions for raster and vector data
+library(ggplot2) # For creating plots
+library(ggnewscale) # For using multiple scales in ggplot2
+library(RSQLite) # For reading gpkg
+</pre></div>
+</div>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Load python packages
+import pandas as pd # For reading csv files
+
+import matplotlib.pyplot as plt # For creating plots
+import seaborn as sns # For creating plots
+
+import numpy as np 
+from sklearn.preprocessing import StandardScaler # For scaling the data
+from sklearn.decomposition import PCA # For running a PCA
+from sklearn.cluster import SpectralClustering # For running spectral clustering
+from sklearn.neighbors import KNeighborsClassifier # For predicting the cluster
+
+
+from yellowbrick.cluster import KElbowVisualizer # For calculating the Silhouette and the Calinski Harabasz Score
+</pre></div>
+</div>
+</section>
+<section id="study-region">
+<h2><span class="section-number">2.5.4. </span>Study region<a class="headerlink" href="#study-region" title="Link to this heading"></a></h2>
+<p>The stream network of the Po river basin has 382 157 stream reaches and the aggregated mean elevation of the sub-catchments ranges from 0 to 4458 m a.s.l.</p>
+<p><strong>Hydrography90m stream network of the Po river basin</strong></p>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span># Load data 
+
+sf_basin &lt;- st_read(dsn = &quot;data/hydrography/order_vect_59_clip.gpkg&quot;) 
+# To ensure the right protection
+# st_crs(sf_basin) &lt;- &quot;+proj=longlat +datum=WGS84&quot; 
+
+# Creating the map  
+
+stream_plot &lt;- ggplot() + 
+  geom_sf(data = sf_basin, aes(col= strahler, lwd = strahler)) + 
+  scale_size(range=c(0.05, 0.5), guide = &quot;none&quot;) +
+  scale_fill_manual(values = &quot;dodgerblue&quot;) +
+  defined_theme() +
+  theme(legend.position = &quot;none&quot;)+
+  xlab(&quot;Longitude&quot;) +
+  ylab(&quot;Latitude&quot;)
+
+stream_plot
+
+</pre></div>
+</div>
+<p><img alt="stream network" src="../../_images/stream_network.png" />
+<strong>MERIT DEM of Po river basin</strong></p>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span># Load the raster file of the digital elevation map (DEM)
+dem_file &lt;- &quot;data/elv_59_1173421.tif&quot;
+dem &lt;- raster(dem_file)
+dem_df &lt;- as.data.frame(dem, xy = TRUE) %&gt;% 
+  filter(!is.na(elv_59_1173421)) 
+
+slope &lt;- terrain(dem, opt = &quot;slope&quot;) # Calculate the slop from the DEM
+aspect &lt;- terrain(dem, opt = &quot;aspect&quot;) # Calculate the aspect from slope
+hill_shade &lt;- hillShade(slope, aspect) # Calculate the hill shade
+hillshade_df &lt;- as.data.frame(hill_shade, xy = TRUE) %&gt;% 
+  filter(!is.nan(layer)) %&gt;% 
+  filter(!is.na(layer))
+
+elev &lt;- ggplot() +
+  geom_raster(data = hillshade_df, aes(x = x, y = y, fill = layer), na.rm = TRUE) +
+  scale_fill_gradientn(colours = grey((1:100)/100), guide = &#39;none&#39;) +
+  new_scale_fill() +
+  geom_raster(data = dem_df, aes(x = x, y = y, fill = elv_59_1173421), alpha = 0.4) +
+  scale_fill_gradientn(colours = c(&#39;#366901&#39;, &#39;#8fca32&#39;, &#39;#ffffcc&#39;, &#39;#f9da80&#39;, &#39;#e8b140&#39;, &#39;#66330b&#39;, &#39;#916c47&#39;, &#39;#e3dad0&#39;, &#39;#fcfcfc&#39;)) +
+  scale_size(range=c(0.05, 0.5), guide = &quot;none&quot;) +
+  coord_equal() +
+  guides(fill = guide_colourbar(barwidth = 10)) +
+  labs(fill = &#39;Elevation (m a.s.l.)&#39;) +
+  defined_theme() +
+  xlab(&quot;Longitude&quot;) +
+  ylab(&quot;Latitude&quot;) 
+
+</pre></div>
+</div>
+<p><img alt="Elevation" src="../../_images/elevation.png" /></p>
+</section>
+<section id="example-code-for-filtering-data-from-text-files-by-sub-catchment-id">
+<h2><span class="section-number">2.5.5. </span>Example code for filtering data from text files by sub-catchment ID<a class="headerlink" href="#example-code-for-filtering-data-from-text-files-by-sub-catchment-id" title="Link to this heading"></a></h2>
+<div class="highlight-{bash notranslate"><div class="highlight"><pre><span></span># Define computational unit and basin ID
+export CUNIT=59
+export BID=1173421
+
+# Define directories
+export DIR=/data/envtbl
+export OUT=/data/out
+
+# Get sub-catchment IDs filtering by basin ID
+printf &quot;%s\n&quot; subcID $(cat $DIR/stats_${CUNIT}_BasinsIDs.txt | awk  -v var=&quot;$BID&quot;  &#39;$4==var {print $1}&#39;) &gt; $OUT/subcIDs.txt
+
+files=(&quot;DIR&quot;/*)
+
+# Go through all files within the folder and select sub-catchment IDs defined in the look-up table
+for FILE in $DIR/*
+do
+
+NAME=&quot;$(basename -- $FILE)&quot;
+awk &#39;NR==FNR{a[$0];next} $1 in a&#39; $OUT/subcIDs.txt $DIR/${NAME} &gt; $MYDIR/${NAME}
+
+done
+
+</pre></div>
+</div>
+</section>
+<section id="load-the-data">
+<h2><span class="section-number">2.5.6. </span>Load the data<a class="headerlink" href="#load-the-data" title="Link to this heading"></a></h2>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Create a random subset by picking 20 000 rows 
+env_var_sub = env_var.sample(20000)
+
+# Scale the data
+# Dataset
+sc = StandardScaler()
+sc.fit(env_var)
+env_var_std = sc.transform(env_var)
+
+# Subset
+sc_sub = StandardScaler()
+sc_sub.fit(env_var_sub)
+env_var_std_sub = sc.transform(env_var_sub)
+</pre></div>
+</div>
+</section>
+<section id="principal-component-analysis-pca">
+<h2><span class="section-number">2.5.7. </span>Principal Component analysis (PCA)<a class="headerlink" href="#principal-component-analysis-pca" title="Link to this heading"></a></h2>
+<p>PCA was used to evaluate how many principal components describe 80% of the dataset and to evaluate if the variance of the subset is similar to the variance of the whole dataset.</p>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Whole dataset
+pca = PCA(n_components=20)
+pca.fit(env_var_std)
+var_pca = pca.explained_variance_ratio_
+sum_pca = var_pca.sum()
+train_pca = pca.fit_transform(env_var_std)
+
+print(&quot;Dataset&quot;)
+print(var_pca)
+print(sum_pca)
+
+# Subset
+pca_sub = PCA(n_components=20)
+pca_sub.fit(env_var_std_sub)
+var_pca_sub = pca_sub.explained_variance_ratio_
+sum_pca_sub = var_pca.sum()
+train_pc_sub = pca_sub.fit_transform(env_var_std_sub)
+
+print(&quot;Subset&quot;)
+print(var_pca)
+print(sum_pca_sub)
+</pre></div>
+</div>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Determine explained variance using explained_variance_ration_ attribute
+exp_var_pca = pca.explained_variance_ratio_
+
+# Cumulative sum of eigenvalues; This will be used to create step plot
+# for visualizing the variance explained by each principal component.
+cum_sum_eigenvalues = np.cumsum(var_pca)
+
+# Create the visualization plot
+plt.clf()
+plt.bar(np.arange(0,len(var_pca))+1, exp_var_pca, alpha=0.5, align=&#39;center&#39;, label=&#39;Individual explained variance&#39;)
+plt.step(np.arange(0,len(cum_sum_eigenvalues))+1, cum_sum_eigenvalues, where=&#39;mid&#39;,label=&#39;Cumulative explained variance&#39;)
+plt.title(&#39;Dataset&#39;)
+plt.ylabel(&#39;Explained variance ratio&#39;)
+plt.xlabel(&#39;Principal component index&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.tight_layout()
+
+plt.show()
+</pre></div>
+</div>
+<p><img alt="Variance dataset" src="../../_images/variance_dataset.png" /></p>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Explained variance for the subset
+exp_var_pca_sub = pca_sub.explained_variance_ratio_
+cum_sum_eigenvalues_sub = np.cumsum(var_pca_sub)
+
+# Plot
+plt.clf()
+plt.bar(np.arange(0,len(var_pca_sub))+1, exp_var_pca_sub, alpha=0.5, align=&#39;center&#39;, label=&#39;Individual explained variance&#39;)
+plt.step(np.arange(0,len(cum_sum_eigenvalues_sub))+1, cum_sum_eigenvalues, where=&#39;mid&#39;,label=&#39;Cumulative explained variance&#39;)
+plt.title(&#39;Subset&#39;)
+plt.ylabel(&#39;Explained variance ratio&#39;)
+plt.xlabel(&#39;Principal component index&#39;)
+plt.legend(loc=&#39;best&#39;)
+plt.tight_layout()
+
+
+plt.show()
+</pre></div>
+</div>
+<p><img alt="Variance subset" src="../../_images/variance_subset.png" /></p>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span>n_comp = 2
+pca = PCA(n_components = n_comp, svd_solver=&#39;full&#39;)
+components = pca.fit_transform(env_var_std)
+
+labels = {str(i): f&quot;PC {i+1}&quot; for i in range(2)}
+labels[&#39;color&#39;] = &#39;Mean elevation&#39;
+
+fig = plt.figure(figsize=(30, 4))
+fig.subplots_adjust(left=0.08, right=1, bottom=0.1, top=0.9)
+
+ax = fig.add_subplot(1, 3, 1)
+plt.scatter(
+    x=components[:,0],
+    y=components[:,1], 
+    c=env_var.topo_elev_mean
+)
+plt.title(&#39;Mean Elevation&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+
+
+ax = fig.add_subplot(1, 3, 2)
+plt.scatter(
+    x=components[:,0],
+    y=components[:,1], 
+    c=env_var.stream_out_dist
+
+)
+plt.title(&#39;Distance to the outlet&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+
+
+ax = fig.add_subplot(1, 3, 3)
+plt.scatter(
+    x=components[:,0],
+    y=components[:,1], 
+    c=env_var.clim_bio6_mean
+
+)
+plt.title(&#39;Min Temperature of Coldest Month&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+plt.savefig(&quot;data/comp_dataset.png&quot;)
+plt.show()
+
+
+n_comp = 2
+pca_sub = PCA(n_components = n_comp, svd_solver=&#39;full&#39;)
+
+components_sub = pca_sub.fit_transform(env_var_std_sub)
+
+labels = {str(i): f&quot;PC {i+1}&quot; for i in range(n_comp)}
+labels[&#39;color&#39;] = &#39;Mean elevation&#39;
+
+fig = plt.figure(figsize=(30, 4))
+fig.subplots_adjust(left=0.08, right=1, bottom=0.1, top=0.9)
+
+ax = fig.add_subplot(1, 3, 1)
+plt.scatter(
+    x=components_sub[:,0],
+    y=components_sub[:,1], 
+    c=env_var_sub.topo_elev_mean
+
+)
+plt.title(&#39;Distance to the outlet&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+
+ax = fig.add_subplot(1, 3, 2)
+plt.scatter(
+    x=components_sub[:,0],
+    y=components_sub[:,1], 
+    c=env_var_sub.stream_out_dist
+
+)
+plt.title(&#39;Distance to the outlet&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+
+ax = fig.add_subplot(1, 3, 3)
+plt.scatter(
+    x=components_sub[:,0],
+    y=components_sub[:,1], 
+    c=env_var_sub.clim_bio6_mean
+
+)
+
+plt.title(&#39;Min. Temperature of Coldest Month&#39;)
+plt.xlabel(&#39;Principal component 1&#39;)
+plt.ylabel(&#39;Principal component 2&#39;)
+plt.savefig(&quot;data/comp_subset.png&quot;)
+plt.show()
+
+</pre></div>
+</div>
+<p>To compare the distribution of the whole dataset with the subset PC 1 and PC 2 were plotted. The color of each plot is indicating either the mean elevation, the distance to the outlet, or the min. temperature of the coldest month.</p>
+<p><strong>Whole dataset</strong>
+<img alt="Componants of the whole dataset" src="../../_images/comp_dataset.png" />
+<strong>Subset</strong>
+<img alt="Componants of the subset" src="../../_images/comp_subset.png" /></p>
+</section>
+<section id="evaluation-of-the-best-number-of-clusters">
+<h2><span class="section-number">2.5.8. </span>Evaluation of the best number of clusters<a class="headerlink" href="#evaluation-of-the-best-number-of-clusters" title="Link to this heading"></a></h2>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Silhouette Score for Spectral Clustering
+model = SpectralClustering(affinity=&#39;nearest_neighbors&#39;, assign_labels = &#39;discretize&#39;)
+
+# k is the range of number of clusters
+visualizer = KElbowVisualizer(model, k=(2,30),metric=&#39;silhouette&#39;, timings= True)
+visualizer.fit(env_var_std_sub)        # Fit the data to the visualizer
+visualizer.show()        # Finalize and render the figure
+
+</pre></div>
+</div>
+<p><img alt="Silhoutte" src="../../_images/Sil.png" /></p>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Calinski Harabasz Score
+# k is range of number of clusters.
+visualizer_ch = KElbowVisualizer(model, k=(2,30), metric=&#39;calinski_harabasz&#39;, timings= True)
+visualizer_ch.fit(env_var_std_sub)        # Fit data to visualizer
+visualizer_ch.show()        # Finalize and render figure
+
+</pre></div>
+</div>
+<p><img alt="Calinski Harabsz" src="../../_images/ch.png" /></p>
+</section>
+<section id="spectral-clustering">
+<h2><span class="section-number">2.5.9. </span>Spectral clustering<a class="headerlink" href="#spectral-clustering" title="Link to this heading"></a></h2>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Spectral clustering for 3 and 4 clusters
+spec_clustering = SpectralClustering(n_clusters = 3, 
+assign_labels = &#39;discretize&#39;, affinity = &#39;nearest_neighbors&#39;)
+sub_labels = spec_clustering.fit_predict(env_var_std_sub)
+</pre></div>
+</div>
+</section>
+<section id="predict-clusters-for-the-whole-dataset">
+<h2><span class="section-number">2.5.10. </span>Predict clusters for the whole dataset<a class="headerlink" href="#predict-clusters-for-the-whole-dataset" title="Link to this heading"></a></h2>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span># Use k-nearest neighbors to predict clusters for the whole dataset
+neigh = KNeighborsClassifier(n_neighbors=3)
+neigh.fit(env_var_std_sub, sub_labels)
+
+whole_data_labels = neigh.predict(env_var_std)
+</pre></div>
+</div>
+</section>
+<section id="exporting-sub-catchment-ids-and-k-for-reclassification">
+<h2><span class="section-number">2.5.11. </span>Exporting sub-catchment IDs and k for reclassification<a class="headerlink" href="#exporting-sub-catchment-ids-and-k-for-reclassification" title="Link to this heading"></a></h2>
+<div class="highlight-{python notranslate"><div class="highlight"><pre><span></span>subcID = basin.loc[:, &#39;subcID&#39;]
+clusters = pd.DataFrame(whole_data_labels, columns=[&#39;clusters&#39;])
+reclass = pd.concat([subcID, clusters], axis=1, ignore_index=True)
+print(reclass)
+reclass.to_csv(&#39;reclass.csv&#39;)
+</pre></div>
+</div>
+</section>
+<section id="example-code-for-reclassifying-a-raster-file">
+<h2><span class="section-number">2.5.12. </span>Example code for reclassifying a raster file<a class="headerlink" href="#example-code-for-reclassifying-a-raster-file" title="Link to this heading"></a></h2>
+<div class="highlight-{bash notranslate"><div class="highlight"><pre><span></span>export CUNIT=59
+export BID=1173421
+
+export BASIN=/data/basin_${CUNIT}_${BID}
+export DRAST=/data/spatial_data/CompUnit/CU_${CUNIT}
+
+# Reclassification of a rater file using GRASS GIS
+grass78  -f -text --tmp-location  -c $DRAST/elv_${CUNIT}_msk.tif  &lt;&lt;&#39;EOF&#39;
+
+r.in.gdal --o input=$DRAST/lbasin_${CUNIT}_msk.tif output=lbasin
+r.in.gdal --o input=$DRAST/basin_lbasin_${CUNIT}.tif output=subc
+
+
+# Get only the basin ID (BID)
+r.mapcalc &quot;basin_msk = if(lbasin==${BID}, lbasin, null() ) &quot;  --o
+# Set mask
+r.mask raster=basin_msk
+
+
+r.to.vect input=lbasin output=lbasin_${BID} type=area column=basinID --o
+
+r.reclass input=subc output=reclass_subc rules=$BASIN/reclass.txt --o 
+
+v.out.ogr  input=lbasin_${BID}  output=$DRAST/lbasin_${CUNIT}_${BID}.shp   format=ESRI_Shapefile  --overwrite
+
+r.out.gdal  input=reclass_subc   output=$BASIN/reclass_subc_${CUNIT}_${BID}.tif   type=Int16  nodata=-9999  --o  -c  -m createopt=&quot;compress=LZW,zlevel=9&quot;
+
+&#39; _
+
+EOF
+
+# Crop the file to the extent of the Po river basin
+pkcrop -i $BASIN/reclass_subc_${CUNIT}_${BID}.tif -o  $BASIN/reclass_subc_${CUNIT}_${BID}_cropped.tif -e $DRAST/lbasin_${CUNIT}_${BID}.shp 
+
+# Set no data value
+gdal_edit -a_nodata -9999 $BASIN/reclass_subc_${CUNIT}_${BID}_cropped.tif 
+
+</pre></div>
+</div>
+</section>
+<section id="spatial-cluster-plots">
+<h2><span class="section-number">2.5.13. </span>Spatial cluster plots<a class="headerlink" href="#spatial-cluster-plots" title="Link to this heading"></a></h2>
+<p>To visualize the spatial extend of each cluster the reclassification table was joined with the gpkg attribute table of the stream network.
+The plots show the solution with 3 and 4 clusters. Colors are indicating which stream reach belongs to which cluster.</p>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span># Load data 
+
+sf_basin &lt;- st_read(dsn = &quot;data/hydrography/order_vect_59_clip.gpkg&quot;) 
+# To ensure the right protection
+# st_crs(sf_basin) &lt;- &quot;+proj=longlat +datum=WGS84&quot; 
+
+cluster &lt;- fread(&quot;data/reclass.csv&quot;)
+
+cluster &lt;- cluster %&gt;% 
+  rename(stream = subcID) %&gt;% 
+  mutate(k = ifelse(k==0, 3, k))
+
+
+study_region &lt;- inner_join(sf_basin, cluster, by =&quot;stream&quot;) %&gt;% 
+  mutate(k = factor(k))
+
+
+# Creating the map  
+
+cluster_plot &lt;- ggplot() + 
+  geom_sf(data = study_region, aes(col = k , lwd = strahler)) + 
+  scale_size(range=c(0.05, 0.5), guide = &quot;none&quot;) +
+  scale_color_manual(values = RColorBrewer::brewer.pal(9, &quot;Set1&quot;)[c(3,2,5)]) + #,4,5
+  defined_theme() +
+  labs(col = &quot;Cluster&quot;)+
+  xlab(&quot;Longitude&quot;) +
+  ylab(&quot;Latitude&quot;) 
+
+cluster_plot
+
+</pre></div>
+</div>
+<p><img alt="cluster2" src="../../_images/cluster_plot.png" /></p>
+<div class="highlight-{r notranslate"><div class="highlight"><pre><span></span>cluster&lt;- fread(&quot;data/reclass4.csv&quot;)
+
+cluster &lt;- cluster %&gt;% 
+  rename(stream = subcID) %&gt;% 
+  mutate(k = ifelse(k==0, 4, k))
+
+
+study_region &lt;- inner_join(sf_basin, cluster, by =&quot;stream&quot;) %&gt;% 
+  mutate(k = factor(k))
+
+
+# Creating the map  
+
+cluster2_plot &lt;- ggplot() + 
+  geom_sf(data = study_region, aes(col = k , lwd = strahler)) + 
+  scale_size(range=c(0.05, 0.5), guide = &quot;none&quot;) +
+  scale_color_manual(values = RColorBrewer::brewer.pal(9, &quot;Set1&quot;)[c(3,2,5, 4)]) + #,4,5
+  defined_theme() +
+  labs(col = &quot;Cluster&quot;)+
+  xlab(&quot;Longitude&quot;) +
+  ylab(&quot;Latitude&quot;) 
+
+cluster2_plot
+
+</pre></div>
+</div>
+<p><img alt="cluster4" src="../../_images/cluster_plot2.png" /></p>
+</section>
+<section id="conclusion">
+<h2><span class="section-number">2.5.14. </span>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>The use of a subset decreases the run time of the analysis substantially and allows the use of a cluster method which needs a similarity matrix as input</p></li>
+<li><p>The identified clusters are very large. A reason could be that the subset was to small and that rare habitats were therefore not included</p></li>
+<li><p>The best number of cluster which was calculated with the Silhouette and the Calinski Harabasz Score can vary by running the analysis multiple times</p></li>
+</ul>
+</section>
+<section id="reference">
+<h2><span class="section-number">2.5.15. </span>Reference<a class="headerlink" href="#reference" title="Link to this heading"></a></h2>
+<p>Amatulli, G., Garcia Marquez, J., Sethi, T., Kiesel, J., Grigoropoulou, A., Üblacker, M., Shen, L., and Domisch, S (in review, 2022).. Hydrography90m: A new high-resolution global hydrographic dataset, Earth Syst. Sci. Data Discuss. [preprint], https://doi.org/10.5194/essd-2022-9</p>
+<p>Karger, D.N., Conrad, O., Böhner, J., Kawohl, T., Kreft, H., Soria-Auza, R.W., Zimmermann, N.E., Linder, P., Kessler, M. (2017). Climatologies at high resolution for the Earth land surface areas. Scientific Data. 4 170122. https://doi.org/10.1038/sdata.2017.122</p>
+<p>Karger D.N., Conrad, O., Böhner, J., Kawohl, T., Kreft, H., Soria-Auza, R.W., Zimmermann, N.E,, Linder, H.P., Kessler, M.. Data from: Climatologies at high resolution for the earth’s land surface areas. Dryad Digital Repository.http://dx.doi.org/doi:10.5061/dryad.kd1d4</p>
+<p>ESA. Land Cover CCI Product User Guide Version 2. Tech. Rep. (2017). Available at: maps.elie.ucl.ac.be/CCI/viewer/download/ESACCI-LC-Ph2-PUGv2_2.0.pdf</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_Garc%C3%ADa_M%C3%A1rquez.html" class="btn btn-neutral float-left" title="2.4. Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html" class="btn btn-neutral float-right" title="2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

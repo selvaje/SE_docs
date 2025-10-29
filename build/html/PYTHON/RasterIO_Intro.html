@@ -1,0 +1,2067 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RasterIO for dummies: a brief intro to a pythonic raster library &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Generalities about OGC Geospatial extensions for SQL" href="OGCSQL.html" />
+    <link rel="prev" title="Python geospatial data analysis" href="Python_geospatial_data_analysis_SM.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#1.0-Reminder">1.0 Reminder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#1.1-Rasterio-basics">1.1 Rasterio basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#1.2-An-example-of-computation:-NDVI">1.2 An example of computation: NDVI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#2.1-Description">2.1 Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.2-Downloading-data">2.2 Downloading data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.3-Running-rio-tool-and-using-the-bash-shell-and-its-tools">2.3 Running <code class="docutils literal notranslate"><span class="pre">rio</span></code> tool and using the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell and its tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.4-A-single-Python-script-construction,-step-by-step">2.4 A single Python script construction, step by step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#2.5-The-all-in-one-final-Python-script">2.5 The all-in-one final Python script</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/PYTHON/RasterIO_Intro.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="RasterIO-for-dummies:-a-brief-intro-to-a-pythonic-raster-library">
+<h1>RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library<a class="headerlink" href="#RasterIO-for-dummies:-a-brief-intro-to-a-pythonic-raster-library" title="Link to this heading"></a></h1>
+<p>In order to run this notebook, please do what follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd  /media/sf_LVM_shared/my_SE_data/exercise
+jupyter-notebook RasterIO_Intro.ipynb || jupyter lab RasterIO_Intro.ipynb
+</pre></div>
+</div>
+<hr class="docutils" />
+<p><strong>RasterIO</strong> is a library that simplifies the use of the raster swiss-knife geospatial library (<strong>GDAL</strong>) from Python (… and talking about that, <a class="reference external" href="https://soundcloud.com/danabauer/how-do-you-pronounce-gdal">how do you pronounce GDAL?</a>).</p>
+<p>Ratio: GDAL is C++ library with a public C interface for other languages bindings, therefore its Python API is quite rough from the mean Python programmer’s point of view (i.e. it is not <em>pythonic</em> enough). RasterIO is for rasters what Fiona is for vectors.</p>
+<p><em>Note:</em> <code class="docutils literal notranslate"><span class="pre">`Open</span> <span class="pre">Source</span> <span class="pre">Approaches</span> <span class="pre">in</span> <span class="pre">Spatial</span> <span class="pre">Data</span> <span class="pre">Handling</span></code> &lt;<a class="reference external" href="https://link.springer.com/book/10.1007/978-3-540-74831-1">https://link.springer.com/book/10.1007/978-3-540-74831-1</a>&gt;`__ <em>is a good comprehensive book about the history and roles of FOSS in the geospatial domain.</em></p>
+<section id="1.0-Reminder">
+<h2>1.0 Reminder<a class="headerlink" href="#1.0-Reminder" title="Link to this heading"></a></h2>
+<p>You need to access the dataset we will use in this notebook and later too. You already should have downloaded it and stored in the right folder, as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/SE_data
+git pull
+rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+cd  /media/sf_LVM_shared/my_SE_data/exercise
+
+pip3 install gdown # Google Drive access
+
+[ -f tree_height.tar.gz ] || ~/.local/bin/gdown 1Y60EuLsfmTICTX-U_FxcE1odNAf04bd-
+[ -d tree_height ] || tar xvf tree_height.tar.gz
+</pre></div>
+</div>
+<p>Also, you should already installed <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> package as follows:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip3 install rasterio
+</pre></div>
+</div>
+<p><em>Hint: you should never use ``pip3`` under ``sudo``, else you could break your system-wide Python environment in very creative and subtle ways.</em></p>
+</section>
+<section id="1.1-Rasterio-basics">
+<h2>1.1 Rasterio basics<a class="headerlink" href="#1.1-Rasterio-basics" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span> <span class="c1"># that&#39;s to use it</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;1.3.4&#39;
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;tree_height/geodata_raster/elev.tif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="c1"># r+ w w+ r</span>
+</pre></div>
+</div>
+</div>
+<p>A lots of different parameters can be specified, including all GDAL valid open() attributes. Most of the parameters make sense in write mode to create a new raster file:</p>
+<ul class="simple">
+<li><p>dtype</p></li>
+<li><p>nodata</p></li>
+<li><p>crs</p></li>
+<li><p>width, height</p></li>
+<li><p>transform</p></li>
+<li><p>count</p></li>
+<li><p>driver</p></li>
+</ul>
+<p>More information are available in the API reference documentation <a class="reference external" href="https://rasterio.readthedocs.io/en/stable/api/rasterio.html#rasterio.open">here</a>. Note that in some specific cases you will need to preceed a regular <code class="docutils literal notranslate"><span class="pre">open()</span></code> with <code class="docutils literal notranslate"><span class="pre">rasterio.Env()</span></code> to customize <code class="docutils literal notranslate"><span class="pre">GDAL</span></code> for your uses (e.g. caching, color tables, driver options, etc.).</p>
+<p>Note that the filename in general can be any valid URL and even a dataset within some container file (e.g. a variable in Netcdf or HDF5 file). Even object storage (e.g AWS S3) and zip URLs can be considered.</p>
+<p>Let’s see a series of simple methods that can be used to access metadata and pixel values</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;open DatasetReader name=&#39;tree_height/geodata_raster/elev.tif&#39; mode=&#39;r&#39;&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;tree_height/geodata_raster/elev.tif&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">mode</span> <span class="c1"># read-only?</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;r&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">closed</span> <span class="c1"># bis still open? you gess what the meaning of dataset.close()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">count</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">bounds</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+BoundingBox(left=6.0, bottom=47.9, right=10.0, top=50.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Affine(0.00025, 0.0, 6.0,
+       0.0, -0.00025, 50.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(6.0, 50.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">transform</span> <span class="o">*</span> <span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">width</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">height</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9.99975, 47.90025)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="mf">9.99975</span><span class="p">,</span> <span class="mf">47.90025</span><span class="p">)</span> <span class="c1"># use geographical coords, by long and lat and gives (row,col)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(8399, 15999)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">xy</span><span class="p">(</span><span class="mi">8399</span><span class="p">,</span> <span class="mi">15999</span><span class="p">)</span> <span class="c1"># give geometric coords long and lat, by row and col !</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9.999875, 47.900125)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">crs</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CRS.from_epsg(4326)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(8400, 16000)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;GTiff&#39;,
+ &#39;dtype&#39;: &#39;float32&#39;,
+ &#39;nodata&#39;: -9999.0,
+ &#39;width&#39;: 16000,
+ &#39;height&#39;: 8400,
+ &#39;count&#39;: 1,
+ &#39;crs&#39;: CRS.from_epsg(4326),
+ &#39;transform&#39;: Affine(0.00025, 0.0, 6.0,
+        0.0, -0.00025, 50.0)}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(&#39;float32&#39;,)
+</pre></div></div>
+</div>
+<p>Raster bands can be loaded as a whole thanks to <strong>numpy</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">indexes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1,)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># loads the first band in a numpy array</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([[  379.93466,   379.93466, -9999.     , ..., -9999.     ,
+        -9999.     , -9999.     ],
+       [-9999.     , -9999.     , -9999.     , ..., -9999.     ,
+        -9999.     , -9999.     ],
+       [-9999.     , -9999.     , -9999.     , ..., -9999.     ,
+        -9999.     , -9999.     ],
+       ...,
+       [  259.5505 ,   259.5505 ,   260.30533, ...,   737.22675,
+          736.4584 ,   736.4584 ],
+       [-9999.     , -9999.     , -9999.     , ...,   737.5121 ,
+          736.75574,   736.75574],
+       [-9999.     , -9999.     , -9999.     , ...,   738.052  ,
+          737.48334,   737.48334]], dtype=float32)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+379.93466
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># access by row,col as a matrix</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+379.93466
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">height</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(16000, 8400)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span><span class="p">[</span><span class="mi">8399</span><span class="p">,</span><span class="mi">15999</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+737.48334
+</pre></div></div>
+</div>
+<p>Rasterio includes also some utility methods to show raster data, using <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code> under the hood.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio.plot</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;Elevation&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_34_0.png" src="../_images/PYTHON_RasterIO_Intro_34_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:title={&#39;center&#39;:&#39;Elevation&#39;}&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">plotting_extent</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(6.0, 10.0, 47.9, 50.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show_hist</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_36_0.png" src="../_images/PYTHON_RasterIO_Intro_36_0.png" />
+</div>
+</div>
+<p>Note that you need to explicity filter out nodata values at read time.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">band</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+masked_array(
+  data=[[[379.9346618652344, 379.9346618652344, --, ..., --, --, --],
+         [--, --, --, ..., --, --, --],
+         [--, --, --, ..., --, --, --],
+         ...,
+         [259.5505065917969, 259.5505065917969, 260.3053283691406, ...,
+          737.2267456054688, 736.4583740234375, 736.4583740234375],
+         [--, --, --, ..., 737.5120849609375, 736.7557373046875,
+          736.7557373046875],
+         [--, --, --, ..., 738.052001953125, 737.4833374023438,
+          737.4833374023438]]],
+  mask=[[[False, False,  True, ...,  True,  True,  True],
+         [ True,  True,  True, ...,  True,  True,  True],
+         [ True,  True,  True, ...,  True,  True,  True],
+         ...,
+         [False, False, False, ..., False, False, False],
+         [ True,  True,  True, ..., False, False, False],
+         [ True,  True,  True, ..., False, False, False]]],
+  fill_value=-9999.0,
+  dtype=float32)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show_hist</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_39_0.png" src="../_images/PYTHON_RasterIO_Intro_39_0.png" />
+</div>
+</div>
+<p>Alternatively (e.g. when raster missing nodata definition, which in practice happens quite often :-)) you need to explicitly mask on your own the input data.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">band</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">band_masked</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">band</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="p">(</span><span class="n">band</span> <span class="o">==</span> <span class="o">-</span><span class="mf">9999.0</span><span class="p">))</span> <span class="c1"># mask whatever required</span>
+<span class="n">band_masked</span>
+<span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show_hist</span><span class="p">(</span><span class="n">band_masked</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_41_0.png" src="../_images/PYTHON_RasterIO_Intro_41_0.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> can package can also read directly multi-bands images.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>/tmp/glad_ard_SVVI.vrt<span class="w"> </span>tree_height/geodata_raster/glad_ard_SVVI_m*.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/glad_ard_SVVI.vrt&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="n">multi</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="n">m</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(3, 8400, 16000)
+</pre></div></div>
+</div>
+<p>Note that rasterio uses bands/rows/cols order in managing images, which is not the same of other packages!</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Clipping input data to the valid range for imshow with RGB data ([0..1] for floats or [0..255] for integers).
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_47_1.png" src="../_images/PYTHON_RasterIO_Intro_47_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">im</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">reshape_as_image</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="c1"># rasterio.plot.reshape_as_raster(m) to reverse</span>
+<span class="n">im</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(8400, 16000, 3)
+</pre></div></div>
+</div>
+</section>
+<section id="1.2-An-example-of-computation:-NDVI">
+<h2>1.2 An example of computation: NDVI<a class="headerlink" href="#1.2-An-example-of-computation:-NDVI" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalbuildvrt<span class="w"> </span>-separate<span class="w"> </span>/tmp/lsat7_2002.vrt<span class="w"> </span>/usr/local/share/data/north_carolina/rast_geotiff/lsat7_2002_*.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsat</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/lsat7_2002.vrt&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>The real computation via <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsat_bands</span> <span class="o">=</span> <span class="n">lsat</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ndvi</span> <span class="o">=</span> <span class="p">(</span><span class="n">lsat_bands</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">-</span><span class="n">lsat_bands</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">lsat_bands</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="o">+</span><span class="n">lsat_bands</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">ndvi</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(-0.9565217391304348, 0.9787234042553191)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsat_bands</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9, 475, 527)
+</pre></div></div>
+</div>
+<p>In order to write the result all metainfo must be prepared, the easiest way is by using the input ones.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsat</span><span class="o">.</span><span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;VRT&#39;, &#39;dtype&#39;: &#39;int32&#39;, &#39;nodata&#39;: -9999.0, &#39;width&#39;: 527, &#39;height&#39;: 475, &#39;count&#39;: 9, &#39;crs&#39;: CRS.from_epsg(32119), &#39;transform&#39;: Affine(28.5, 0.0, 629992.5,
+       0.0, -28.5, 228513.0), &#39;blockxsize&#39;: 128, &#39;blockysize&#39;: 128, &#39;tiled&#39;: True}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">lsat</span><span class="o">.</span><span class="n">profile</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">driver</span><span class="o">=</span><span class="s1">&#39;GTiff&#39;</span><span class="p">)</span>
+<span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;GTiff&#39;, &#39;dtype&#39;: &#39;float32&#39;, &#39;nodata&#39;: -9999.0, &#39;width&#39;: 527, &#39;height&#39;: 475, &#39;count&#39;: 1, &#39;crs&#39;: CRS.from_epsg(32119), &#39;transform&#39;: Affine(28.5, 0.0, 629992.5,
+       0.0, -28.5, 228513.0), &#39;blockxsize&#39;: 128, &#39;blockysize&#39;: 128, &#39;tiled&#39;: True}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/lsat7_2002_ndvi.tif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="n">out</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">ndvi</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">rasterio</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">ndvi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_59_0.png" src="../_images/PYTHON_RasterIO_Intro_59_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+
+<span class="n">urb</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_array</span><span class="p">(</span><span class="n">ndvi</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="p">(</span><span class="n">ndvi</span> <span class="o">&gt;=</span> <span class="mf">0.6</span><span class="p">))</span>
+<span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show_hist</span><span class="p">(</span><span class="n">urb</span><span class="p">)</span>
+<span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">urb</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_60_0.png" src="../_images/PYTHON_RasterIO_Intro_60_0.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_60_1.png" src="../_images/PYTHON_RasterIO_Intro_60_1.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndvi_stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">ndvi</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">ndvi</span><span class="p">),</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">ndvi</span><span class="o">.</span><span class="n">std</span><span class="p">()]</span>
+<span class="n">ndvi_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-0.9565217391304348,
+ 0.19000604930927864,
+ 0.21518987341772153,
+ 0.9787234042553191,
+ 0.26075763486533654]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">urb_stats</span> <span class="o">=</span> <span class="p">[</span><span class="n">urb</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">urb</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">urb</span><span class="p">),</span> <span class="n">urb</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">urb</span><span class="o">.</span><span class="n">std</span><span class="p">()]</span>
+<span class="n">urb_stats</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-0.9565217391304348,
+ 0.1865998791116573,
+ 0.21212121212121213,
+ 0.5980392156862745,
+ 0.2588748394018893]
+</pre></div></div>
+</div>
+<p>It is possibile to use a vector model for masking in rasterio, let’s see how. First of all, we are creating a <code class="docutils literal notranslate"><span class="pre">GeoJSON</span></code> vector.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+cat<span class="w"> </span>&gt;/tmp/clip.json<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">{</span>
+<span class="s">&quot;type&quot;: &quot;FeatureCollection&quot;,</span>
+<span class="s">&quot;name&quot;: &quot;clip&quot;,</span>
+<span class="s">&quot;crs&quot;: { &quot;type&quot;: &quot;name&quot;, &quot;properties&quot;: { &quot;name&quot;: &quot;urn:ogc:def:crs:EPSG::32119&quot; } },</span>
+<span class="s">&quot;features&quot;: [</span>
+<span class="s">{ &quot;type&quot;: &quot;Feature&quot;, &quot;properties&quot;: { &quot;id&quot;: null }, &quot;geometry&quot;: { &quot;type&quot;: &quot;Polygon&quot;, &quot;coordinates&quot;: [ [ [ 635564.136364065110683, 225206.211590493854601 ], [ 641960.631793407374062, 221261.067702935513807 ], [ 638781.535262656398118, 218005.366436503856676 ], [ 633610.715604206197895, 220878.044024531787727 ], [ 635564.136364065110683, 225206.211590493854601 ] ] ] } }</span>
+<span class="s">]</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ogrinfo<span class="w"> </span>-al<span class="w"> </span>/tmp/clip.json
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO: Open of `/tmp/clip.json&#39;
+      using driver `GeoJSON&#39; successful.
+
+Layer name: clip
+Geometry: Polygon
+Feature Count: 1
+Extent: (633610.715604, 218005.366437) - (641960.631793, 225206.211590)
+Layer SRS WKT:
+PROJCRS[&#34;NAD83 / North Carolina&#34;,
+    BASEGEOGCRS[&#34;NAD83&#34;,
+        DATUM[&#34;North American Datum 1983&#34;,
+            ELLIPSOID[&#34;GRS 1980&#34;,6378137,298.257222101,
+                LENGTHUNIT[&#34;metre&#34;,1]]],
+        PRIMEM[&#34;Greenwich&#34;,0,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        ID[&#34;EPSG&#34;,4269]],
+    CONVERSION[&#34;SPCS83 North Carolina zone (meters)&#34;,
+        METHOD[&#34;Lambert Conic Conformal (2SP)&#34;,
+            ID[&#34;EPSG&#34;,9802]],
+        PARAMETER[&#34;Latitude of false origin&#34;,33.75,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8821]],
+        PARAMETER[&#34;Longitude of false origin&#34;,-79,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8822]],
+        PARAMETER[&#34;Latitude of 1st standard parallel&#34;,36.1666666666667,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8823]],
+        PARAMETER[&#34;Latitude of 2nd standard parallel&#34;,34.3333333333333,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8824]],
+        PARAMETER[&#34;Easting at false origin&#34;,609601.22,
+            LENGTHUNIT[&#34;metre&#34;,1],
+            ID[&#34;EPSG&#34;,8826]],
+        PARAMETER[&#34;Northing at false origin&#34;,0,
+            LENGTHUNIT[&#34;metre&#34;,1],
+            ID[&#34;EPSG&#34;,8827]]],
+    CS[Cartesian,2],
+        AXIS[&#34;easting (X)&#34;,east,
+            ORDER[1],
+            LENGTHUNIT[&#34;metre&#34;,1]],
+        AXIS[&#34;northing (Y)&#34;,north,
+            ORDER[2],
+            LENGTHUNIT[&#34;metre&#34;,1]],
+    USAGE[
+        SCOPE[&#34;Engineering survey, topographic mapping.&#34;],
+        AREA[&#34;United States (USA) - North Carolina - counties of Alamance; Alexander; Alleghany; Anson; Ashe; Avery; Beaufort; Bertie; Bladen; Brunswick; Buncombe; Burke; Cabarrus; Caldwell; Camden; Carteret; Caswell; Catawba; Chatham; Cherokee; Chowan; Clay; Cleveland; Columbus; Craven; Cumberland; Currituck; Dare; Davidson; Davie; Duplin; Durham; Edgecombe; Forsyth; Franklin; Gaston; Gates; Graham; Granville; Greene; Guilford; Halifax; Harnett; Haywood; Henderson; Hertford; Hoke; Hyde; Iredell; Jackson; Johnston; Jones; Lee; Lenoir; Lincoln; Macon; Madison; Martin; McDowell; Mecklenburg; Mitchell; Montgomery; Moore; Nash; New Hanover; Northampton; Onslow; Orange; Pamlico; Pasquotank; Pender; Perquimans; Person; Pitt; Polk; Randolph; Richmond; Robeson; Rockingham; Rowan; Rutherford; Sampson; Scotland; Stanly; Stokes; Surry; Swain; Transylvania; Tyrrell; Union; Vance; Wake; Warren; Washington; Watauga; Wayne; Wilkes; Wilson; Yadkin; Yancey.&#34;],
+        BBOX[33.83,-84.33,36.59,-75.38]],
+    ID[&#34;EPSG&#34;,32119]]
+Data axis to CRS axis mapping: 1,2
+id: String (0.0)
+OGRFeature(clip):0
+  id (String) = (null)
+  POLYGON ((635564.136364065 225206.211590494,641960.631793407 221261.067702936,638781.535262656 218005.366436504,633610.715604206 220878.044024532,635564.136364065 225206.211590494))
+
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio.mask</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">fiona</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">fiona</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/clip.json&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">geojson</span><span class="p">:</span>
+    <span class="n">shapes</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;geometry&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">geojson</span><span class="p">]</span>
+<span class="n">shapes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[{&#39;type&#39;: &#39;Polygon&#39;,
+  &#39;coordinates&#39;: [[(635564.1363640651, 225206.21159049385),
+    (641960.6317934074, 221261.0677029355),
+    (638781.5352626564, 218005.36643650386),
+    (633610.7156042062, 220878.0440245318),
+    (635564.1363640651, 225206.21159049385)]]}]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clip_image</span><span class="p">,</span> <span class="n">clip_transform</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">mask</span><span class="o">.</span><span class="n">mask</span><span class="p">(</span><span class="n">lsat</span><span class="p">,</span> <span class="n">shapes</span><span class="p">,</span> <span class="n">crop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> <span class="c1"># why transform? ;-)</span>
+<span class="n">clip_image</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9, 253, 294)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lsat</span><span class="o">.</span><span class="n">meta</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;VRT&#39;,
+ &#39;dtype&#39;: &#39;int32&#39;,
+ &#39;nodata&#39;: -9999.0,
+ &#39;width&#39;: 527,
+ &#39;height&#39;: 475,
+ &#39;count&#39;: 9,
+ &#39;crs&#39;: CRS.from_epsg(32119),
+ &#39;transform&#39;: Affine(28.5, 0.0, 629992.5,
+        0.0, -28.5, 228513.0)}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">profile</span> <span class="o">=</span> <span class="n">lsat</span><span class="o">.</span><span class="n">meta</span>
+<span class="n">profile</span><span class="o">.</span><span class="n">update</span><span class="p">({</span><span class="s1">&#39;driver&#39;</span><span class="p">:</span> <span class="s1">&#39;GTiff&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;width&#39;</span><span class="p">:</span> <span class="n">clip_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                <span class="s1">&#39;height&#39;</span><span class="p">:</span> <span class="n">clip_image</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                <span class="s1">&#39;transform&#39;</span><span class="p">:</span> <span class="n">clip_transform</span><span class="p">,</span>
+               <span class="p">})</span>
+<span class="n">profile</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;driver&#39;: &#39;GTiff&#39;,
+ &#39;dtype&#39;: &#39;int32&#39;,
+ &#39;nodata&#39;: -9999.0,
+ &#39;width&#39;: 253,
+ &#39;height&#39;: 294,
+ &#39;count&#39;: 9,
+ &#39;crs&#39;: CRS.from_epsg(32119),
+ &#39;transform&#39;: Affine(28.5, 0.0, 633583.5,
+        0.0, -28.5, 225207.0)}
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/clipped.tif&#39;</span><span class="p">,</span> <span class="s1">&#39;w+&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">profile</span><span class="p">)</span>
+<span class="n">dst</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">clip_image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dst</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(294, 253)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rst</span> <span class="o">=</span> <span class="n">dst</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">masked</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rst</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9, 294, 253)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rasterio</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">rst</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/PYTHON_RasterIO_Intro_74_0.png" src="../_images/PYTHON_RasterIO_Intro_74_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[61]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<p>Note that all read/write operation in RasterIO are performed for the whole size of the dataset, so the package is limited (somehow …) by memory available. An alternative is using <em>windowing</em> in read/write operation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio.windows</span>
+
+<span class="n">rasterio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[62]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Window(col_off=0, row_off=10, width=100, height=100)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">win</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">windows</span><span class="o">.</span><span class="n">Window</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">src</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;/tmp/clipped.tif&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">window</span><span class="o">=</span><span class="n">win</span><span class="p">)</span>
+<span class="n">w</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(9, 100, 100)
+</pre></div></div>
+</div>
+<p>Of course if you tile the input source and output sub-windows of results, a new trasform will need to be provided for each tile, and the <code class="docutils literal notranslate"><span class="pre">window_transform()</span></code> method can be used for that.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="o">.</span><span class="n">transform</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Affine(28.5, 0.0, 633583.5,
+       0.0, -28.5, 225207.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">src</span><span class="o">.</span><span class="n">window_transform</span><span class="p">(</span><span class="n">win</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Affine(28.5, 0.0, 633583.5,
+       0.0, -28.5, 224922.0)
+</pre></div></div>
+</div>
+<p>Note that in many cases could be convenient aligning to the existing (format related) block size organization of the file, which <em>should</em> be the minimal chunck of I/O in GDAL.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">shape</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">src</span><span class="o">.</span><span class="n">block_shapes</span><span class="p">,</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 (1, 253)
+2 (1, 253)
+3 (1, 253)
+4 (1, 253)
+5 (1, 253)
+6 (1, 253)
+7 (1, 253)
+8 (1, 253)
+9 (1, 253)
+</pre></div></div>
+</div>
+<p>More information, examples and documentation about <code class="docutils literal notranslate"><span class="pre">RasterIO</span></code> are <a class="reference external" href="https://rasterio.readthedocs.io/en/stable/index.html">here</a></p>
+<p>## 1.3 The rio CLI tool</p>
+<p>RasterIO has also a command line tool (<code class="docutils literal notranslate"><span class="pre">rio</span></code>) which can be used to perform a series of operation on rasters, which complementary in respect with the GDAL tools.If you install rasterio from distribution/kit it will reside in the ordinary system paths (note: you could find a <code class="docutils literal notranslate"><span class="pre">rasterio</span></code> binary instead of <code class="docutils literal notranslate"><span class="pre">rio</span></code>). If you install from the PyPI repository via <code class="docutils literal notranslate"><span class="pre">pip</span></code> it will install under <code class="docutils literal notranslate"><span class="pre">~/.local/bin</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>rio<span class="w"> </span>--help
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Usage: rio [OPTIONS] COMMAND [ARGS]...
+
+  Rasterio command line interface.
+
+Options:
+  -v, --verbose           Increase verbosity.
+  -q, --quiet             Decrease verbosity.
+  --aws-profile TEXT      Select a profile from the AWS credentials file
+  --aws-no-sign-requests  Make requests anonymously
+  --aws-requester-pays    Requester pays data transfer costs
+  --version               Show the version and exit.
+  --gdal-version
+  --show-versions         Show dependency versions
+  --help                  Show this message and exit.
+
+Commands:
+  blocks     Write dataset blocks as GeoJSON features.
+  bounds     Write bounding boxes to stdout as GeoJSON.
+  calc       Raster data calculator.
+  clip       Clip a raster to given bounds.
+  convert    Copy and convert raster dataset.
+  edit-info  Edit dataset metadata.
+  env        Print information about the Rasterio environment.
+  gcps       Print ground control points as GeoJSON.
+  info       Print information about a data file.
+  insp       Open a data file and start an interpreter.
+  mask       Mask in raster using features.
+  merge      Merge a stack of raster datasets.
+  overview   Construct overviews in an existing dataset.
+  rasterize  Rasterize features.
+  rm         Delete a dataset.
+  sample     Sample a dataset.
+  shapes     Write shapes extracted from bands or masks.
+  stack      Stack a number of bands into a multiband dataset.
+  transform  Transform coordinates.
+  warp       Warp a raster dataset.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[68]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>rio<span class="w"> </span>bounds<span class="w"> </span>--indent<span class="w"> </span><span class="m">1</span><span class="w"> </span>tree_height/geodata_raster/elev.tif<span class="w"> </span>#<span class="w"> </span>output<span class="w"> </span>a<span class="w"> </span>GeoJSON<span class="w"> </span>polygon<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>bounding<span class="w"> </span>box
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{
+ &#34;bbox&#34;: [
+  6.0,
+  47.9,
+  10.0,
+  50.0
+ ],
+ &#34;geometry&#34;: {
+  &#34;coordinates&#34;: [
+   [
+    [
+     6.0,
+     47.9
+    ],
+    [
+     10.0,
+     47.9
+    ],
+    [
+     10.0,
+     50.0
+    ],
+    [
+     6.0,
+     50.0
+    ],
+    [
+     6.0,
+     47.9
+    ]
+   ]
+  ],
+  &#34;type&#34;: &#34;Polygon&#34;
+ },
+ &#34;properties&#34;: {
+  &#34;filename&#34;: &#34;elev.tif&#34;,
+  &#34;id&#34;: &#34;0&#34;,
+  &#34;title&#34;: &#34;tree_height/geodata_raster/elev.tif&#34;
+ },
+ &#34;type&#34;: &#34;Feature&#34;
+}
+</pre></div></div>
+</div>
+<p>A quite interesting feature is the raster calculator which uses a Lisp-like language notation, which is the s-expression notation of <em>Snuggs</em>, part of <code class="docutils literal notranslate"><span class="pre">numpy</span></code>. Largely undocumented, you need to have a look to the code <a class="reference external" href="https://github.com/mapbox/snuggs/blob/master/snuggs/__init__.py">here</a> and its README file :-(</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>rio<span class="w"> </span>calc<span class="w"> </span><span class="s2">&quot;(+ 2.0 (* 0.95 (read 1)))&quot;</span><span class="w"> </span>--overwrite<span class="w"> </span>tree_height/geodata_raster/elev.tif<span class="w"> </span>/tmp/elev.tif<span class="w"> </span>#<span class="w"> </span>Lisp<span class="w"> </span>like<span class="w"> </span>lists<span class="w"> </span>:-<span class="o">(</span>
+</pre></div>
+</div>
+</div>
+<p>Simple comuputations can be done via <code class="docutils literal notranslate"><span class="pre">rio</span></code> or written via ad hoc script at your will.</p>
+</section>
+</section>
+<section id="2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">
+<h1>2. Preparing the dataset for next ML exercises via rasterio<a class="headerlink" href="#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio" title="Link to this heading"></a></h1>
+<p>From here on, we will use rasterio to prepare data for manipulating the GEDI dataset that will be used later.</p>
+<p>The dataset is documented here: <a class="reference external" href="https://lpdaac.usgs.gov/documents/986/GEDI02_UserGuide_V2.pdf">https://lpdaac.usgs.gov/documents/986/GEDI02_UserGuide_V2.pdf</a></p>
+<p>The notebooks which will use those data are the <code class="docutils literal notranslate"><span class="pre">Tree_Height_*.ipynb</span></code></p>
+<section id="2.1-Description">
+<h2>2.1 Description<a class="headerlink" href="#2.1-Description" title="Link to this heading"></a></h2>
+<p>The <strong>Global Ecosystem Dynamics Investigation (GEDI)</strong> mission aims to characterize ecosystem structure and dynamics to enable radically improved quantification and understanding of the Earth’s carbon cycle and biodiversity. The GEDI instrument produces high resolution laser ranging observations of the 3-dimensional structure of the Earth. GEDI is attached to the <strong>International Space Station (ISS)</strong> and collects data globally between 51.6° N and 51.6° S latitudes at the highest resolution and
+densest sampling of any light detection and ranging (lidar) instrument in orbit to date. Each GEDI Version 2 granule encompasses one-fourth of an ISS orbit and includes georeferenced metadata to allow for spatial querying and subsetting.</p>
+<p>The purpose of the <strong>GEDI Level 2A Geolocated Elevation and Height Metrics product (GEDI02_A)</strong> is to provide waveform interpretation and extracted products from each GEDI01_B received waveform, including ground elevation, canopy top height, and relative height (RH) metrics. The methodology for generating the GEDI02_A product datasets is adapted from the Land, Vegetation, and Ice Sensor (LVIS) algorithm. The GEDI02_A product is provided in HDF5 format and has a spatial resolution (average
+footprint) of 25 meters.</p>
+<p>The GEDI02_A data product contains 156 layers for each of the eight beams, including ground elevation, canopy top height, relative return energy metrics (e.g., canopy vertical structure), and many other interpreted products from the return waveforms.</p>
+</section>
+<section id="2.2-Downloading-data">
+<h2>2.2 Downloading data<a class="headerlink" href="#2.2-Downloading-data" title="Link to this heading"></a></h2>
+<p>You should already performed what follows, here only for reference.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/SE_data
+git pull
+rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+cd  /media/sf_LVM_shared/my_SE_data/exercise
+
+pip3 install gdown # Google Drive access
+
+[ -f tree_height.tar.gz ] || ~/.local/bin/gdown 1Y60EuLsfmTICTX-U_FxcE1odNAf04bd-
+[ -d tree_height ] || tar xvf tree_height.tar.gz
+</pre></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>tree_height/txt/eu_x_y_*
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>tree_height/txt/eu_x_y_select.txt
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="w"> </span>#<span class="w"> </span>quite<span class="w"> </span>a<span class="w"> </span>lots<span class="w"> </span>of<span class="w"> </span>coords!
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>-3<span class="w"> </span>tree_height/txt/eu_x_y_predictors_select.txt<span class="w"> </span>#<span class="w"> </span>what<span class="w"> </span>we<span class="w"> </span>would<span class="w"> </span>get
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>tree_height/geodata_raster/*.tif
+</pre></div>
+</div>
+</div>
+<p>The goal of the next few snippets of code is creating in Python and rasterio. That can be done either by using th <code class="docutils literal notranslate"><span class="pre">rio</span></code> tool or completely by Python script.</p>
+</section>
+<section id="2.3-Running-rio-tool-and-using-the-bash-shell-and-its-tools">
+<h2>2.3 Running <code class="docutils literal notranslate"><span class="pre">rio</span></code> tool and using the <code class="docutils literal notranslate"><span class="pre">bash</span></code> shell and its tools<a class="headerlink" href="#2.3-Running-rio-tool-and-using-the-bash-shell-and-its-tools" title="Link to this heading"></a></h2>
+<p>First of all, the input for rio-sample submodule needs to be in list form, and that can be easily done via <code class="docutils literal notranslate"><span class="pre">sed</span></code> tool (or even <code class="docutils literal notranslate"><span class="pre">awk</span></code> if you prefer so):</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/ /,/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^/[/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/$/]/&#39;</span><span class="w"> </span>#<span class="w"> </span>why<span class="w"> </span>and<span class="w"> </span>how?
+</pre></div>
+</div>
+</div>
+<p>Once created a compatible input data file for <code class="docutils literal notranslate"><span class="pre">rio</span></code>, it can be used to sample every georaster.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/ /,/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^/[/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/$/]/&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>rio<span class="w"> </span>sample<span class="w"> </span>tree_height/geodata_raster/BLDFIE_WeigAver.tif
+</pre></div>
+</div>
+</div>
+<p>Now, in principle you could stack together the input predictors and apply later the sampling. That could be done via <code class="docutils literal notranslate"><span class="pre">gdalbuildvrt</span></code> or <code class="docutils literal notranslate"><span class="pre">rio-stack</span></code>, BUT they both work currently only for homogeneous <code class="docutils literal notranslate"><span class="pre">dtype</span></code>, which is not our case, unfortunately.</p>
+<p><em>Homework: extract data types and sizes from all those files and check rasters are different types with the same dimensions. Hint: you can do that via rio or gdal tools or pktools</em></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># rio stack `ls tree_height/geodata_raster/*.tif|grep -Ev &#39;latitude|longitude&#39;` -o /tmp/tree_height_preds.tif</span>
+<span class="c1"># gdalbuildvrt tree_height/geodata_raster/*.tif -o /tmp/predictors.vrt</span>
+</pre></div>
+</div>
+</div>
+<p>One quite simple way to get the final result is using <code class="docutils literal notranslate"><span class="pre">rio-sample</span></code> to sample separately each field, then using <code class="docutils literal notranslate"><span class="pre">paste</span></code> to join together each per-field file.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+<span class="c1"># this is VERY slow on 1M of records...</span>
+
+<span class="nv">FILES</span><span class="o">=</span><span class="k">$(</span>ls<span class="w"> </span>tree_height/geodata_raster/*.tif<span class="p">|</span>grep<span class="w"> </span>-Ev<span class="w"> </span><span class="s1">&#39;latitude|longitude&#39;</span><span class="k">)</span>
+<span class="nv">HEADER</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<span class="k">for</span><span class="w"> </span>n<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$FILES</span>
+<span class="k">do</span>
+<span class="w">    </span><span class="nv">field</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$n</span><span class="w"> </span>.tif<span class="k">)</span>
+<span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$field</span>
+<span class="w">    </span><span class="nv">HEADER</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HEADER</span><span class="s2"> </span><span class="nv">$field</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># create header for later</span>
+<span class="w">    </span>sed<span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/ /,/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/^/[/&#39;</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;s/$/]/&#39;</span><span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="p">|</span>rio<span class="w"> </span>sample<span class="w"> </span><span class="nv">$n</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;[]&#39;</span><span class="w"> </span>&gt;/tmp/<span class="nv">$field</span>.field
+<span class="k">done</span>
+
+seq<span class="w"> </span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="p">|</span>cut<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="w"> </span>-f1<span class="k">)</span><span class="w"> </span>&gt;/tmp/ids
+<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;ID X Y &#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FIELDS</span><span class="s2">&quot;</span><span class="w"> </span>&gt;/tmp/fields
+paste<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; &#39;</span><span class="w"> </span>/tmp/ids<span class="w"> </span>tree_height/txt/eu_x_y_select.txt<span class="w"> </span><span class="nv">$FILES</span><span class="w"> </span>&gt;&gt;/tmp/fields<span class="w"> </span><span class="c1"># this is our result !</span>
+</pre></div>
+</div>
+</div>
+<p>Of course, the same result can be achieved with direct read/write via rasterio packagein one full Python script.</p>
+</section>
+<section id="2.4-A-single-Python-script-construction,-step-by-step">
+<h2>2.4 A single Python script construction, step by step<a class="headerlink" href="#2.4-A-single-Python-script-construction,-step-by-step" title="Link to this heading"></a></h2>
+<p>Due to the size of the dataset it is mandatory increasing the memory available for the VM and possibly add on demand swap space (i.e. virtual memory on disk), for instance via:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install swapspace
+</pre></div>
+</div>
+<p>Of course, consider that eventually it could require a lot of temporary storage taken under <code class="docutils literal notranslate"><span class="pre">/var/lib/swapspace</span></code> which could be freed after use.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">csv</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os.path</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">filename</span> <span class="ow">in</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;tree_height/geodata_raster/[!l]*.tif&#39;</span><span class="p">):</span>
+    <span class="n">ds</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">files</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">ext</span><span class="p">)</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+<span class="n">name</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">header</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+<span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="n">field_name</span> <span class="o">=</span>   <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">name</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">header</span> <span class="o">+=</span> <span class="s1">&#39; &#39;</span><span class="o">+</span><span class="n">field_name</span>
+<span class="n">header</span><span class="o">.</span><span class="n">lstrip</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<p>Starting from those files now open in rasterio, it is possible to read the band and store them in a list</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">band</span> <span class="o">=</span> <span class="n">files</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">band</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bands</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">ds</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+    <span class="n">bands</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bands</span>
+</pre></div>
+</div>
+</div>
+<p>Now let’s have a trial for concatenating raster values</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tree_height/txt/eu_x_y_select.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+    <span class="n">coords</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+            <span class="n">idx</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">long</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+            <span class="n">band</span> <span class="o">=</span> <span class="n">bands</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="n">val</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="n">b</span>
+        <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span> <span class="k">break</span> <span class="c1"># just for the very first rows and check</span>
+<br/></pre></div>
+</div>
+</div>
+<p>The first 10 rows seem correct in respect with the previous file, now it is only need to dump the rows to a file, with an appropriate header.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%%timeit</span> -r 1 -n 1
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tree_height/txt/eu_x_y_predictors_select_new.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ID X Y&#39;</span> <span class="o">+</span> <span class="n">header</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;tree_height/txt/eu_x_y_select.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+        <span class="n">coords</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">,</span> <span class="n">delimiter</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+        <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">for</span> <span class="p">(</span><span class="n">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">)</span> <span class="ow">in</span> <span class="n">coords</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> </span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">long</span><span class="p">,</span> <span class="n">lat</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">ds</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+                <span class="n">idx</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">long</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="n">lat</span><span class="p">))</span>
+                <span class="n">band</span> <span class="o">=</span> <span class="n">bands</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+                <span class="n">val</span> <span class="o">=</span> <span class="n">band</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
+            <span class="n">i</span><span class="o">+=</span><span class="mi">1</span>
+            <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">100000</span><span class="p">:</span> <span class="k">break</span> <span class="c1"># that&#39;s to get a fast partial result...</span>
+</pre></div>
+</div>
+</div>
+<p>You can notice that the output is extremely slow. Efficiency can be eventually increased by changing the buffering size from the default one.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>head<span class="w"> </span>-3<span class="w"> </span>tree_height/txt/eu_x_y_predictors_select_new.txt
+</pre></div>
+</div>
+</div>
+</section>
+<section id="2.5-The-all-in-one-final-Python-script">
+<h2>2.5 The all-in-one final Python script<a class="headerlink" href="#2.5-The-all-in-one-final-Python-script" title="Link to this heading"></a></h2>
+<p>Running the script for the whole content of 1.2M of records take quite a full time, you can run it yourself or use the resulting file stored in the staging area of the VM and clone via git.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env python3
+#
+# This is the whole script written in a proper way to work even in bash.
+# You can copy&amp;paste this block in a text `whatever.py` file, then
+# chmod a+x whatever.py
+# and run it as ./whatever.py
+#
+
+import csv
+import glob
+import rasterio
+import os.path
+
+files = []
+for filename in glob.glob(&#39;tree_height/geodata_raster/[!l]*.tif&#39;):
+    ds = rasterio.open(filename, mode=&#39;r&#39;)
+    files.append(ds)
+
+(name, ext) = os.path.splitext(os.path.basename(files[0].name))
+header = &#39;&#39;
+for ds in files:
+    field_name = os.path.splitext(os.path.basename(ds.name))[0]
+    header += &#39; &#39;+field_name
+
+print(&#39;Reading raster files...&#39;)
+
+bands = []
+for ds in files:
+    bands.append(ds.read(1))
+
+print(&#39;Writing samples&#39;)
+
+with open(&#39;tree_height/txt/eu_x_y_predictors_select_new.txt&#39;, &#39;w&#39;) as out:
+    print(&#39;ID X Y&#39; + header, file=out)
+    with open(&#39;tree_height/txt/eu_x_y_select.txt&#39;) as csvfile:
+        coords = csv.reader(csvfile, delimiter=&#39; &#39;)
+        i = 1
+        for (long, lat) in coords:
+            print(&#39;{} {} {} &#39;.format(i, long, lat),end=&#39;&#39;, file=out)
+            for j, ds in enumerate(files):
+                idx = ds.index(float(long), float(lat))
+                band = bands[j]
+                val = band[idx]
+                print(&#39;{} &#39;.format(val), end=&#39;&#39;, file=out)
+            print(&quot;&quot;, file=out)
+            if not i % 10: print(&#39;Record {} ...&#39;.format(i))
+            i+=1
+    csvfile.close()
+out.close()
+
+print(&#39;Finished&#39;)
+
+exit(0)
+</pre></div>
+</div>
+<p>This script is also available as <code class="docutils literal notranslate"><span class="pre">/media/sf_LVM_shared/my_SE_data/exercise/RasterIO_final_script.py</span></code> or <code class="docutils literal notranslate"><span class="pre">/media/sf_LVM_shared/my_SE_data/exercise/Tree_Height_02Predictors_extraction_python1.py</span></code></p>
+<p>Note that this <em>not</em> an efficient implementation, but a simple one, largely based on what one could implement using other common CLI tools, including <code class="docutils literal notranslate"><span class="pre">rio</span></code>.</p>
+<p>In order to get a faster approach it is required using a <em>vectorized</em> implementation, i.e. using a set of functions that can work in fast/parallel mode to sample raster bands on the required pairs of coordinates.</p>
+<p>See an alternative implementation in the <code class="docutils literal notranslate"><span class="pre">/media/sf_LVM_shared/my_SE_data/exercise/Tree_Height_02Predictors_extraction.ipynb</span></code> notebook and its linked <code class="docutils literal notranslate"><span class="pre">/media/sf_LVM_shared/my_SE_data/exercise/Tree_Height_02Predictors_extraction_python1.py</span></code> script.</p>
+</section>
+</section>
+<section id="3.-Beyond-the-basics">
+<h1>3. Beyond the basics<a class="headerlink" href="#3.-Beyond-the-basics" title="Link to this heading"></a></h1>
+<p>Rasterio package is built on the basis of multiple sub-modules and one main sub-package (<code class="docutils literal notranslate"><span class="pre">rasterio.rio</span></code>).</p>
+<p>Some sub-modules are not of general interest, for instance:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.rpc</span></code> is used for orthorectification of images via rational polinomial</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.session</span></code> is used for working in cloud infrastructures (e.g. AWS, Azure, GCloud, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.control</span></code> is used to manage GCPs representations</p></li>
+</ul>
+<p>Other modules are of general interest, instead</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.io</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.env</span></code> to manage GDAL engine environment and drivers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.crs</span></code> to manage the image SRS</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rasterio.transform</span></code> to manage the geo-transform associated with the data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raster.warp</span></code> to mimic GDAL warping (reprojections)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raster.window</span></code> to work onto sub-windows of data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raster.vrt</span></code> to work on GDAL VRT layers</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">raster.plot</span></code> provide simple graphics operations</p></li>
+</ul>
+<p>Documentation is avaiable <a class="reference external" href="https://rasterio.readthedocs.io/en/stable/index.html">here</a>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Python_geospatial_data_analysis_SM.html" class="btn btn-neutral float-left" title="Python geospatial data analysis" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="OGCSQL.html" class="btn btn-neutral float-right" title="Generalities about OGC Geospatial extensions for SQL" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

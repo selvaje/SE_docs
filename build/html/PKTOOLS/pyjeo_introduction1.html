@@ -1,0 +1,1701 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to pyjeo &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="pyjeo: an open source image processing library in Python" href="pyjeo_introduction2.html" />
+    <link rel="prev" title="Use PKTOOLS for raster/vector operations - colab" href="pktools_colab.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to pyjeo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Jim:-a-geospatial-raster-dataset-object">Jim: a geospatial raster dataset object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise-1:-stackBand-function-vs.-method">Exercise 1: stackBand function vs. method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Labeled-dimensions">Labeled dimensions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise-2:-cropBand-using-numbered-and-labeled-index">Exercise 2: cropBand using numbered and labeled index</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Working-with-multi-plane-Jim-objects">Working with multi-plane Jim objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Calculate-composites-via-reducePlane">Calculate composites via reducePlane</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Calculate-custom-composites-via-callback-function-in-reducePlane">Calculate custom composites via callback function in reducePlane</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Bridging-to-third-party-libraries:-Numpy">Bridging to third party libraries: Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Get-items">Get items</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Set-items">Set items</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Calculate-median-filter-via-scipy">Calculate median filter via scipy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise-4:-Create-a-geospatial-Jim-object-with-CRS-from-a-Numpy-array">Exercise 4: Create a geospatial Jim object with CRS from a Numpy array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Calculating-the-median_filter-in-place-using-the-output-parameter">Calculating the median_filter in place using the output parameter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Bridging-to-third-party-libraries:-Xarray">Bridging to third party libraries: Xarray</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Calculate-median-filter-via-Xarray">Calculate median filter via Xarray</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Bridging-JimVect-to-third-party-libraries">Bridging JimVect to third party libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-extraction-and-regional-statistics">Data extraction and regional statistics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Introduction to pyjeo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/PKTOOLS/pyjeo_introduction1.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Introduction-to-pyjeo">
+<h1>Introduction to pyjeo<a class="headerlink" href="#Introduction-to-pyjeo" title="Link to this heading"></a></h1>
+<p><strong>Material provided by Dr. Pieter Kempeneers (European Commission, Joint Research Centre)</strong></p>
+<p><a class="reference external" href="https://pyjeo.readthedocs.io">pyjeo</a> is the follow up of <a class="reference external" href="http://pktools.nongnu.org/html/index.html">PKTOOLS</a>, a suite of utilities written in C++ for image processing with a focus on remote sensing applications. It is distributed under a General Public License (GPLv3) as a Python package.</p>
+<p>In a nutshell, the main differences between pyjeo and pktools from a user’s perspective are:</p>
+<ul class="simple">
+<li><p>pyjeo is a Python package should be run in a <strong>Python environment</strong>, whereas pktools applications are run from the command line (e.g., in a bash shell)</p></li>
+<li><p>pyjeo runs with images entirely <strong>in memory</strong>, whereas pktools runs most applications line per line. This makes pyjeo considerably faster, but with a larger memory footprint. However, there are some methods implemented in pyjeo to reduce the memory footprint by tiling the image</p></li>
+</ul>
+<p>Run the following script to perform the installation of pyjeo</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt update
+sudo apt upgrade -y
+cd ~/Downloads
+wget https://raw.githubusercontent.com/selvaje/SE_data/main/exercise/install_pyjeo4osgeo16.sh
+./install_pyjeo4osgeo16.sh
+</pre></div>
+</div>
+<p>Import Python modules</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Trick to consider for venv within a notebook: simply use a clean sys.path taken from the shell</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;/usr/lib/python312.zip&#39;,
+ &#39;/usr/lib/python3.12&#39;,
+ &#39;/usr/lib/python3.12/lib-dynload&#39;,
+ &#39;&#39;,
+ &#39;/home/selv/.local/share/pipx/venvs/jupyter-sphinx/lib/python3.12/site-packages&#39;,
+ &#39;/home/selv/.local/share/pipx/shared/lib/python3.12/site-packages&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python310.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python3.10&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python3.10/lib-dynload&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/venv/lib/python3.10/site-packages&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/.local/lib/python3.10/site-packages&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/.local/lib/python3.10/site-packages/pyjeo-1.1.2-py3.10.egg&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/.local/lib/python3.10/site-packages/rioxarray-0.15.5-py3.10.egg&#39;</span><span class="p">,</span> <span class="s1">&#39;/home/user/.local/lib/python3.10/site-packages/pyproj-3.6.1-py3.10-linux-x86_64.egg&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python3/dist-packages&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/local/lib/python3.10/dist-packages&#39;</span><span class="p">,</span> <span class="s1">&#39;/usr/lib/python3.10/dist-packages&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sys</span><span class="o">.</span><span class="n">path</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;&#39;,
+ &#39;/usr/lib/python310.zip&#39;,
+ &#39;/usr/lib/python3.10&#39;,
+ &#39;/usr/lib/python3.10/lib-dynload&#39;,
+ &#39;/home/user/venv/lib/python3.10/site-packages&#39;,
+ &#39;/home/user/.local/lib/python3.10/site-packages&#39;,
+ &#39;/home/user/.local/lib/python3.10/site-packages/pyjeo-1.1.2-py3.10.egg&#39;,
+ &#39;/home/user/.local/lib/python3.10/site-packages/rioxarray-0.15.5-py3.10.egg&#39;,
+ &#39;/home/user/.local/lib/python3.10/site-packages/pyproj-3.6.1-py3.10-linux-x86_64.egg&#39;,
+ &#39;/usr/lib/python3/dist-packages&#39;,
+ &#39;/usr/local/lib/python3.10/dist-packages&#39;,
+ &#39;/usr/lib/python3.10/dist-packages&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from now on all should work as expected...</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pyjeo</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pj</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[5]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pathlib</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Path
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">numpy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">np</span>
+<span class="ansi-green-fg">      3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
+<span class="ansi-green-fg">      4</span> get_ipython().run_line_magic(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">matplotlib</span><span class="ansi-yellow-fg">&#39;</span>, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">inline</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/__init__.py:157</span>
+<span class="ansi-green-fg">    155</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> fft
+<span class="ansi-green-fg">    156</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> polynomial
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">157</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> random
+<span class="ansi-green-fg">    158</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ctypeslib
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ma
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/random/__init__.py:180</span>
+<span class="ansi-green-fg">    126</span> __all__ = [
+<span class="ansi-green-fg">    127</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">beta</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">    128</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">binomial</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    176</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">zipf</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">    177</span> ]
+<span class="ansi-green-fg">    179</span> <span style="color: rgb(95,135,135)"># add these for module-freeze analysis (like PyInstaller)</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">180</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _pickle
+<span class="ansi-green-fg">    181</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _common
+<span class="ansi-green-fg">    182</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _bounded_integers
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/random/_pickle.py:1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">mtrand</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> RandomState
+<span class="ansi-green-fg">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">_philox</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Philox
+<span class="ansi-green-fg">      3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">_pcg64</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> PCG64, PCG64DXSM
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">numpy/random/mtrand.pyx:1</span>, in <span class="ansi-cyan-fg">init numpy.random.mtrand</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">bit_generator.pyx:40</span>, in <span class="ansi-cyan-fg">init numpy.random.bit_generator</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;secrets&#39;
+</pre></div></div>
+</div>
+<p>Call the inline help function for <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#geometry.warp">pj.geometry.warp</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">help</span><span class="p">(</span><span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">warp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[6]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> help(<span class="ansi-yellow-bg">pj</span>.geometry.warp)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<section id="Jim:-a-geospatial-raster-dataset-object">
+<h2>Jim: a geospatial raster dataset object<a class="headerlink" href="#Jim:-a-geospatial-raster-dataset-object" title="Link to this heading"></a></h2>
+<p>Open an image and show its properties</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">(</span><span class="s1">&#39;geodata/vegetation/ETmean08-11.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[7]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim = <span class="ansi-yellow-bg">pj</span>.Jim(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">geodata/vegetation/ETmean08-11.tif</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfCol</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[8]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.nrOfCol()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>A Jim object is a geospatial dataset within a coordinate reference system</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getProjection</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[9]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.getProjection()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>From <a class="reference external" href="https://gdal.org/tutorials/geotransforms_tut.html#introduction-to-geotransforms">gdal</a>: “A geotransform is an affine transformation from the image coordinate space (row, column), also known as (pixel, line) to the georeferenced coordinate space (projected or geographic coordinates)”</p>
+<p>Geotransform is an array with 6 items:</p>
+<p>[0] top left x</p>
+<p>[1] w-e pixel resolution</p>
+<p>[2] rotation, 0 if image is “north up”</p>
+<p>[3] top left y</p>
+<p>[4] rotation, 0 if image is “north up”</p>
+<p>[5] n-s pixel resolution</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getGeoTransform</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.getGeoTransform()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>We have a single band and single plane raster object</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfBand</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.nrOfBand()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfPlane</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[12]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.nrOfPlane()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>Open a second GeoTIFF image of the same dimension</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gpp</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">Jim</span><span class="p">(</span><span class="s1">&#39;geodata/vegetation/GPPmean08-11.tif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gpp = <span class="ansi-yellow-bg">pj</span>.Jim(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">geodata/vegetation/GPPmean08-11.tif</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Stack this image to the existing bands of jim, creating a multi-band jim object</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">stackBand</span><span class="p">(</span><span class="n">gpp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[14]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.geometry.stackBand(gpp)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfBand</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[15]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.nrOfBand()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Exercise-1:-stackBand-function-vs.-method">
+<h2>Exercise 1: stackBand function vs. method<a class="headerlink" href="#Exercise-1:-stackBand-function-vs.-method" title="Link to this heading"></a></h2>
+<p>Create a new jim object <code class="docutils literal notranslate"><span class="pre">jim_stacked</span></code> using the <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#geometry.stackBand">stackBand</a> function instead of the <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#geometry._Geometry.stackBand">stackBand</a> method. It should contain two bands, one for <code class="docutils literal notranslate"><span class="pre">ETmean08-11.tif</span></code> and one for <code class="docutils literal notranslate"><span class="pre">GPPmean08-11.tif</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim_stacked</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">stackBand</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="n">gpp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[16]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim_stacked = <span class="ansi-yellow-bg">pj</span>.geometry.stackBand(jim, gpp)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim_stacked</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfBand</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[17]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim_stacked</span>.properties.nrOfBand()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim_stacked&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Labeled-dimensions">
+<h2>Labeled dimensions<a class="headerlink" href="#Labeled-dimensions" title="Link to this heading"></a></h2>
+<p>Let’s label the dimensions</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bandnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">,</span> <span class="s1">&#39;GPP&#39;</span><span class="p">]</span>
+<span class="n">planenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;2019-08-11&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)]</span>
+<span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">setDimension</span><span class="p">({</span><span class="s1">&#39;band&#39;</span> <span class="p">:</span> <span class="n">bandnames</span><span class="p">,</span> <span class="s1">&#39;plane&#39;</span> <span class="p">:</span> <span class="n">planenames</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[18]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> bandnames = [<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">ET</span><span class="ansi-yellow-fg">&#39;</span>, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">GPP</span><span class="ansi-yellow-fg">&#39;</span>]
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> planenames = [<span class="ansi-yellow-bg">datetime</span>.strptime(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">2019-08-11</span><span class="ansi-yellow-fg">&#39;</span>,<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">%</span><span class="ansi-yellow-fg">Y-</span><span class="ansi-yellow-fg">%</span><span class="ansi-yellow-fg">m-</span><span class="ansi-bold" style="color: rgb(175,95,135)">%d</span><span class="ansi-yellow-fg">&#39;</span>)]
+<span class="ansi-green-fg">      3</span> jim.properties.setDimension({<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">band</span><span class="ansi-yellow-fg">&#39;</span> : bandnames, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">plane</span><span class="ansi-yellow-fg">&#39;</span> : planenames})
+
+<span class="ansi-red-fg">NameError</span>: name &#39;datetime&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getDimension</span><span class="p">(</span><span class="s1">&#39;band&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[19]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.getDimension(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">band</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getDimension</span><span class="p">(</span><span class="s1">&#39;plane&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[20]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">len</span>(<span class="ansi-yellow-bg">jim</span>.properties.getDimension(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">plane</span><span class="ansi-yellow-fg">&#39;</span>))
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Exercise-2:-cropBand-using-numbered-and-labeled-index">
+<h2>Exercise 2: cropBand using numbered and labeled index<a class="headerlink" href="#Exercise-2:-cropBand-using-numbered-and-labeled-index" title="Link to this heading"></a></h2>
+<p>Crop second band as a new image (index starts from 0)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim1</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropBand</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[21]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim1 = <span class="ansi-yellow-bg">pj</span>.geometry.cropBand(jim, <span class="ansi-green-fg">1</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Create a new jim object <code class="docutils literal notranslate"><span class="pre">gpp</span></code> that contains the second band using the <a href="#id1"><span class="problematic" id="id2">`cropBand &lt;&gt;`__</span></a> function and the labeled index (‘GPP’)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">gpp</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropBand</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="s1">&#39;GPP&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[22]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> gpp = <span class="ansi-yellow-bg">pj</span>.geometry.cropBand(jim, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">GPP</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Check if results are identical</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim1</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">isEqual</span><span class="p">(</span><span class="n">gpp</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[23]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim1</span>.properties.isEqual(gpp)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim1&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim1</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getDimension</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[24]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim1</span>.properties.getDimension()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim1&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Working-with-multi-plane-Jim-objects">
+<h2>Working with multi-plane Jim objects<a class="headerlink" href="#Working-with-multi-plane-Jim-objects" title="Link to this heading"></a></h2>
+<p>First convert the bands to planes using <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#geometry._Geometry.band2plane">band2plane</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">band2plane</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[25]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.geometry.band2plane()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>The labels of band are copied to plane</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getDimension</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[26]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.properties.getDimension()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Calculate-composites-via-reducePlane">
+<h2>Calculate composites via reducePlane<a class="headerlink" href="#Calculate-composites-via-reducePlane" title="Link to this heading"></a></h2>
+<p>Reduce the planes by calculating the mean of all planes</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim_mean</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[27]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim_mean = <span class="ansi-yellow-bg">pj</span>.geometry.reducePlane(jim, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">mean</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Where is the RuntimeWarning coming from?</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">getStats</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[28]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.stats.getStats()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="p">[</span><span class="n">jim</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jim</span><span class="o">.</span><span class="n">stats</span><span class="o">.</span><span class="n">getStats</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[29]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>[jim &lt; <span class="ansi-green-fg">0</span>] = <span class="ansi-green-fg">0</span>
+<span class="ansi-green-fg">      2</span> jim.stats.getStats()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim_mean</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="s1">&#39;mean&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[30]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim_mean = <span class="ansi-yellow-bg">pj</span>.geometry.reducePlane(jim, <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">mean</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<section id="Calculate-custom-composites-via-callback-function-in-reducePlane">
+<h3>Calculate custom composites via callback function in reducePlane<a class="headerlink" href="#Calculate-custom-composites-via-callback-function-in-reducePlane" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">getMax</span><span class="p">(</span><span class="n">reduced</span><span class="p">,</span> <span class="n">plane</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">pj</span><span class="o">.</span><span class="n">pixops</span><span class="o">.</span><span class="n">supremum</span><span class="p">(</span><span class="n">reduced</span><span class="p">,</span> <span class="n">plane</span><span class="p">)</span>
+<span class="n">jim_max</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">reducePlane</span><span class="p">(</span><span class="n">jim</span><span class="p">,</span> <span class="n">getMax</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[31]</span><span class="ansi-green-fg">, line 3</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">def</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-fg">getMax</span>(reduced, plane):
+<span class="ansi-green-fg">      2</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">return</span> pj.pixops.supremum(reduced, plane)
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> jim_max = <span class="ansi-yellow-bg">pj</span>.geometry.reducePlane(jim, getMax)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Crop the plane <code class="docutils literal notranslate"><span class="pre">ET</span></code> from <code class="docutils literal notranslate"><span class="pre">jim</span></code> using the method <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#geometry._Geometry.cropPlane">cropPlane</a>. Check the resulting <code class="docutils literal notranslate"><span class="pre">jim</span></code> is a single plane and single band Jim object</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># original code by Pieter...</span>
+<span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropPlane</span><span class="p">(</span><span class="s1">&#39;ET&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfPlane</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfBand</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[32]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># original code by Pieter...</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">jim</span>.geometry.cropPlane(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">ET</span><span class="ansi-yellow-fg">&#39;</span>)
+<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(jim.properties.nrOfPlane())
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(0,135,0)">print</span>(jim.properties.nrOfBand())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A little fix...</span>
+<span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">cropPlane</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfPlane</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">nrOfBand</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[33]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># A little fix...</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> <span class="ansi-yellow-bg">jim</span>.geometry.cropPlane(<span class="ansi-green-fg">0</span>)
+<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(jim.properties.nrOfPlane())
+<span class="ansi-green-fg">      4</span> <span style="color: rgb(0,135,0)">print</span>(jim.properties.nrOfBand())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">plane2band</span><span class="p">()</span>
+<span class="n">bandnames</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ET&#39;</span><span class="p">]</span>
+<span class="n">planenames</span> <span class="o">=</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="s1">&#39;2019-08-11&#39;</span><span class="p">,</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)]</span>
+<span class="n">jim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">setDimension</span><span class="p">({</span><span class="s1">&#39;band&#39;</span> <span class="p">:</span> <span class="n">bandnames</span><span class="p">,</span> <span class="s1">&#39;plane&#39;</span> <span class="p">:</span> <span class="n">planenames</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[34]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.geometry.plane2band()
+<span class="ansi-green-fg">      2</span> bandnames = [<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">ET</span><span class="ansi-yellow-fg">&#39;</span>]
+<span class="ansi-green-fg">      3</span> planenames = [datetime.strptime(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">2019-08-11</span><span class="ansi-yellow-fg">&#39;</span>,<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">%</span><span class="ansi-yellow-fg">Y-</span><span class="ansi-yellow-fg">%</span><span class="ansi-yellow-fg">m-</span><span class="ansi-bold" style="color: rgb(175,95,135)">%d</span><span class="ansi-yellow-fg">&#39;</span>)]
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Bridging-to-third-party-libraries:-Numpy">
+<h2>Bridging to third party libraries: Numpy<a class="headerlink" href="#Bridging-to-third-party-libraries:-Numpy" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[35]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.np()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>Check the type of jim.np()</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[36]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">jim</span>.np())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>Use <a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.sum.html#numpy-ndarray-sum">sum</a> function of Numpy to assert there are no pixels where <code class="docutils literal notranslate"><span class="pre">jim_max</span> <span class="pre">&lt;</span> <span class="pre">jim_mean</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">jim_max</span> <span class="o">&lt;</span> <span class="n">jim_mean</span><span class="p">)</span><span class="o">.</span><span class="n">np</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[37]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> (<span class="ansi-yellow-bg">jim_max</span> &lt; jim_mean).np().sum()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim_max&#39; is not defined
+</pre></div></div>
+</div>
+<section id="Get-items">
+<h3>Get items<a class="headerlink" href="#Get-items" title="Link to this heading"></a></h3>
+<p>With pyjeo we create the masks in memory in a “pythonic” way using <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html#get-jim-items">get items</a> without the need to write temporary files.</p>
+<p>Get sub-dataset based on pixel coordinates (first 3 rows and columns, starting from 0)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[38]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>[<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>,<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>]
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p>Last 3 rows and columns, show geographic bounding box [ulx, uly, lrx, lry]</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:,</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getBBox</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[39]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>[-<span class="ansi-green-fg">3</span>:,-<span class="ansi-green-fg">3</span>:].properties.getBBox()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">np</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[40]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>[<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>,<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>].np()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Set-items">
+<h3>Set items<a class="headerlink" href="#Set-items" title="Link to this heading"></a></h3>
+<p>In pyjeo, we can apply the mask in a “pythonic” way using <a class="reference external" href="https://jeodpp.jrc.ec.europa.eu/services/processing/pyjeohelp/3_reference.html#set-jim-items">set items</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">jim</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">np</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[41]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>[<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>,<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">3</span>] = <span class="ansi-green-fg">0</span>
+<span class="ansi-green-fg">      2</span> jim[<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">5</span>,<span class="ansi-green-fg">0</span>:<span class="ansi-green-fg">5</span>].np()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p><strong>Display image using matplotlib</strong></p>
+<p>We can show an image with matplotlib by providing a Numpy representation of the dataset</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.gray()  # show the filtered result in grayscale</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[42]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># plt.gray()  # show the filtered result in grayscale</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> fig = <span class="ansi-yellow-bg">plt</span>.figure(figsize=(<span class="ansi-green-fg">10</span>,<span class="ansi-green-fg">10</span>))
+<span class="ansi-green-fg">      3</span> ax1 = fig.add_subplot(<span class="ansi-green-fg">111</span>)
+<span class="ansi-green-fg">      4</span> ax1.imshow(jim.np())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="Calculate-median-filter-via-scipy">
+<h2>Calculate median filter via scipy<a class="headerlink" href="#Calculate-median-filter-via-scipy" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">scipy</span><span class="w"> </span><span class="kn">import</span> <span class="n">ndimage</span>
+<span class="n">npimage</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">(),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[43]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">scipy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ndimage
+<span class="ansi-green-fg">      2</span> npimage = ndimage.median_filter(jim.np(), size = <span class="ansi-green-fg">5</span>)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/scipy/__init__.py:50</span>
+<span class="ansi-green-fg">      1</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">      2</span> <span class="ansi-yellow-fg">SciPy: A scientific computing package for Python</span>
+<span class="ansi-green-fg">      3</span> <span class="ansi-yellow-fg">================================================</span>
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">     47</span>
+<span class="ansi-green-fg">     48</span> <span class="ansi-yellow-fg">&#34;&#34;&#34;</span>
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">50</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">numpy</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> show_config <span class="ansi-bold" style="color: rgb(0,135,0)">as</span> show_numpy_config
+<span class="ansi-green-fg">     51</span> <span class="ansi-bold" style="color: rgb(0,135,0)">if</span> show_numpy_config <span class="ansi-bold" style="color: rgb(175,0,255)">is</span> <span class="ansi-bold" style="color: rgb(0,135,0)">None</span>:
+<span class="ansi-green-fg">     52</span>     <span class="ansi-bold" style="color: rgb(0,135,0)">raise</span> <span class="ansi-bold" style="color: rgb(215,95,95)">ImportError</span>(
+<span class="ansi-green-fg">     53</span>         <span class="ansi-yellow-fg">&#34;</span><span class="ansi-yellow-fg">Cannot import SciPy when running from NumPy source directory.</span><span class="ansi-yellow-fg">&#34;</span>)
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/__init__.py:157</span>
+<span class="ansi-green-fg">    155</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> fft
+<span class="ansi-green-fg">    156</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> polynomial
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">157</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> random
+<span class="ansi-green-fg">    158</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ctypeslib
+<span class="ansi-green-fg">    159</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> ma
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/random/__init__.py:180</span>
+<span class="ansi-green-fg">    126</span> __all__ = [
+<span class="ansi-green-fg">    127</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">beta</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">    128</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">binomial</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">    176</span>     <span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">zipf</span><span class="ansi-yellow-fg">&#39;</span>,
+<span class="ansi-green-fg">    177</span> ]
+<span class="ansi-green-fg">    179</span> <span style="color: rgb(95,135,135)"># add these for module-freeze analysis (like PyInstaller)</span>
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">180</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _pickle
+<span class="ansi-green-fg">    181</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _common
+<span class="ansi-green-fg">    182</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> _bounded_integers
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">/usr/lib/python3/dist-packages/numpy/random/_pickle.py:1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">mtrand</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> RandomState
+<span class="ansi-green-fg">      2</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">_philox</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> Philox
+<span class="ansi-green-fg">      3</span> <span class="ansi-bold" style="color: rgb(0,135,0)">from</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">.</span><span class="ansi-blue-intense-fg ansi-bold">_pcg64</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">import</span> PCG64, PCG64DXSM
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">numpy/random/mtrand.pyx:1</span>, in <span class="ansi-cyan-fg">init numpy.random.mtrand</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">bit_generator.pyx:40</span>, in <span class="ansi-cyan-fg">init numpy.random.bit_generator</span><span class="ansi-blue-fg">()</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;secrets&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plt.gray()  # show the filtered result in grayscale</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">npimage</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[44]</span><span class="ansi-green-fg">, line 2</span>
+<span class="ansi-green-fg">      1</span> <span style="color: rgb(95,135,135)"># plt.gray()  # show the filtered result in grayscale</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> fig = <span class="ansi-yellow-bg">plt</span>.figure(figsize=(<span class="ansi-green-fg">10</span>,<span class="ansi-green-fg">10</span>))
+<span class="ansi-green-fg">      3</span> ax1 = fig.add_subplot(<span class="ansi-green-fg">111</span>)
+<span class="ansi-green-fg">      4</span> ax1.imshow(npimage)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;plt&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Exercise-4:-Create-a-geospatial-Jim-object-with-CRS-from-a-Numpy-array">
+<h2>Exercise 4: Create a geospatial Jim object with CRS from a Numpy array<a class="headerlink" href="#Exercise-4:-Create-a-geospatial-Jim-object-with-CRS-from-a-Numpy-array" title="Link to this heading"></a></h2>
+<p><strong>A numpy array is not a geospatial dataset with a spatial coordinate reference system !</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajim</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">np2jim</span><span class="p">(</span><span class="n">npimage</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ajim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getProjection</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ajim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getGeoTransform</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[45]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> ajim = <span class="ansi-yellow-bg">pj</span>.np2jim(npimage)
+<span class="ansi-green-fg">      2</span> <span style="color: rgb(0,135,0)">print</span>(ajim.properties.getProjection())
+<span class="ansi-green-fg">      3</span> <span style="color: rgb(0,135,0)">print</span>(ajim.properties.getGeoTransform())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<p>Use <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#properties._Properties.setProjection">setProjection</a> and <a class="reference external" href="https://pyjeo.readthedocs.io/en/latest/3_reference.html#properties._Properties.getProjection">getProjection</a> to set the Coordinate Reference System (CRS) of ajim</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Calculating-the-median_filter-in-place-using-the-output-parameter">
+<h2>Calculating the median_filter in place using the output parameter<a class="headerlink" href="#Calculating-the-median_filter-in-place-using-the-output-parameter" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ndimage</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">(),</span> <span class="n">output</span> <span class="o">=</span> <span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">(),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[46]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">ndimage</span>.median_filter(jim.np(), output = jim.np(), size = <span class="ansi-green-fg">5</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;ndimage&#39; is not defined
+</pre></div></div>
+</div>
+<p>As an alternative, we can set the Numpy representation of a Jim object in place</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">()[:]</span> <span class="o">=</span> <span class="n">ndimage</span><span class="o">.</span><span class="n">median_filter</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">np</span><span class="p">(),</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[47]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> jim.np()[:] = <span class="ansi-yellow-bg">ndimage</span>.median_filter(jim.np(), size = <span class="ansi-green-fg">5</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;ndimage&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+<section id="Bridging-to-third-party-libraries:-Xarray">
+<h2>Bridging to third party libraries: Xarray<a class="headerlink" href="#Bridging-to-third-party-libraries:-Xarray" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">jim</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[48]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">jim</span>.xr()
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<p><strong>An Xarray dataset is defined with a spatial coordinate reference system !</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ajim</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">xr2jim</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">xr</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[49]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> ajim = <span class="ansi-yellow-bg">pj</span>.xr2jim(jim.xr())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">ajim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getProjection</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ajim</span><span class="o">.</span><span class="n">properties</span><span class="o">.</span><span class="n">getGeoTransform</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[50]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">ajim</span>.properties.getProjection())
+<span class="ansi-green-fg">      2</span> <span style="color: rgb(0,135,0)">print</span>(ajim.properties.getGeoTransform())
+
+<span class="ansi-red-fg">NameError</span>: name &#39;ajim&#39; is not defined
+</pre></div></div>
+</div>
+<p>At the basis we find a Numpy data array</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">jim</span><span class="o">.</span><span class="n">xr</span><span class="p">()</span><span class="o">.</span><span class="n">ET</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[51]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color: rgb(0,135,0)">type</span>(<span class="ansi-yellow-bg">jim</span>.xr().ET.data)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;jim&#39; is not defined
+</pre></div></div>
+</div>
+<section id="Calculate-median-filter-via-Xarray">
+<h3>Calculate median filter via Xarray<a class="headerlink" href="#Calculate-median-filter-via-Xarray" title="Link to this heading"></a></h3>
+<p>Processing can take several minutes…</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xr_median = jim.xr().ET.rolling(x = 3, y = 3, center=True).median()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># xr_median.plot()</span>
+</pre></div>
+</div>
+</div>
+<p><strong>Notice that XArray member functions return the processed result and do not alter the input image !</strong></p>
+</section>
+</section>
+<section id="Bridging-JimVect-to-third-party-libraries">
+<h2>Bridging JimVect to third party libraries<a class="headerlink" href="#Bridging-JimVect-to-third-party-libraries" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sample</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">JimVect</span><span class="p">(</span><span class="s1">&#39;geodata/shp/polygons.sqlite&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[54]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> sample = <span class="ansi-yellow-bg">pj</span>.JimVect(<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">geodata/shp/polygons.sqlite</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">sample</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<span class="n">pdf</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[55]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-bold" style="color: rgb(0,135,0)">import</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pandas</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-bold" style="color: rgb(0,135,0)">as</span><span style="color: rgb(188,188,188)"> </span><span class="ansi-blue-intense-fg ansi-bold">pd</span>
+<span class="ansi-green-fg">      2</span> pdf = pd.DataFrame(sample.dict())
+<span class="ansi-green-fg">      3</span> pdf
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named &#39;pandas&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="Data-extraction-and-regional-statistics">
+<h2>Data extraction and regional statistics<a class="headerlink" href="#Data-extraction-and-regional-statistics" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">extracted</span> <span class="o">=</span> <span class="n">pj</span><span class="o">.</span><span class="n">geometry</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="n">jim</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="s1">&#39;mean&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="s1">&#39;/vsimem/mean.json&#39;</span><span class="p">,</span> <span class="n">oformat</span><span class="o">=</span><span class="s1">&#39;GeoJSON&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[56]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> extracted = <span class="ansi-yellow-bg">pj</span>.geometry.extract(sample, jim, rule=<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">mean</span><span class="ansi-yellow-fg">&#39;</span>, output=<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">/vsimem/mean.json</span><span class="ansi-yellow-fg">&#39;</span>, oformat=<span class="ansi-yellow-fg">&#39;</span><span class="ansi-yellow-fg">GeoJSON</span><span class="ansi-yellow-fg">&#39;</span>)
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pj&#39; is not defined
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pdf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">extracted</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
+<span class="n">pdf</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[57]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> pdf = <span class="ansi-yellow-bg">pd</span>.DataFrame(extracted.dict())
+<span class="ansi-green-fg">      2</span> pdf
+
+<span class="ansi-red-fg">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pktools_colab.html" class="btn btn-neutral float-left" title="Use PKTOOLS for raster/vector operations - colab" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyjeo_introduction2.html" class="btn btn-neutral float-right" title="pyjeo: an open source image processing library in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

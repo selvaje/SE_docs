@@ -1,0 +1,1320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.13. Myriam Marending: Ships and economic activity: a starter" href="Ships_and_economic_activity_a_starter_Myriam_Marending.html" />
+    <link rel="prev" title="2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM" href="Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Damaged_trees_classification_RF_Janusz_Godziek.html">2.1. Janusz Godziek: Damaged vs undamaged trees - Random Forest classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stream_Network_Abstraction_Alonso_Gonzalez.html">2.2. Alonso Gonzalez: Stream Network Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Images_shadow_removal_Sebastian_Walter.html">2.3. Sebastian Walter: Images shadow removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_Garc%C3%ADa_M%C3%A1rquez.html">2.4. Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spectral_clustering_of_freshwater_habitats_Maria_%C3%9Cblacker.html">2.5. Maria Üblacker: Spectral clustering of freshwater habitats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html">2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Topographic_and_hydrological_influence_on_vegetation_in_an_arid_environment_Gidske_L_Andersen.html">2.7. Gidske L. Andersen: Topographic and hydrological influence on vegetation in an arid environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html">2.8. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modeling_debris_flow_source_areas_Txomin_Bornaetxea.html">2.9. Txomin Bornaetxea: Modeling debris flow source areas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html">2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.html">2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#The-goal-of-this-work-is-to-develop-a-model-to-identify-planted-forests-and-the-tree-species-growing-there.-The-model-is-developed-using-the">2.12.1. The goal of this work is to develop a model to identify planted forests and the tree species growing there. The model is developed using the</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#(1)-known-locations-of-planted-forests-based-on-literature-and-personal-communications,">2.12.1.1. (1) known locations of planted forests based on literature and personal communications,</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#(2)-image-analysis-and-feature-extraction-of-planted-trees">2.12.1.2. (2) image analysis and feature extraction of planted trees</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#(3)-spectral-signatures-unique-to-each-species">2.12.1.3. (3) spectral signatures unique to each species</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#All-the-14-columns-are-X-variables.-The-final-column-that-has-categorical-numbers-is-the-target-or-Y-variable">2.12.1.4. All the 14 columns are X variables. The final column that has categorical numbers is the target or Y variable</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#Results:">2.12.2. Results:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Using-single-layer-perceptron-and-multi-layer-feedforward-deep-learning-models-did-not-yield-high-accuracy-in-distinguishing-different-tree-plantations-using-Sentinel-2-dataset.-There-could-be-multiple-reasons-behind-this.-Since-spectral-band-information-from-Sentinel-2-satellite-image-constitute-most-of-the-X-variables-and-because-of-the-high-spectral-similarity-between-tree-species,-the-model-couldn't-find-a-way-to-distinguish-the-species.-It-can-also-because-of-the-poor-modeling-parameters-such-as-poor-selection-of-activation-functions,-learning-rate,-epoch-numbers-etc.-which-could-have-affected-the-model-as-well.-In-the-future,-more-input-parameters-like-texture-metrics,-band-information-from-sentinel-1-etc.-can-be-added-into-the-model-for-better-variance.-Further-different-modelling-parameters-can-be-explored-to-improve-the-accuracy.">2.12.2.1. Using single-layer perceptron and multi-layer feedforward deep learning models did not yield high accuracy in distinguishing different tree plantations using Sentinel-2 dataset. There could be multiple reasons behind this. Since spectral band information from Sentinel 2 satellite image constitute most of the X variables and because of the high spectral similarity between tree species, the model couldn’t find a way to distinguish the species. It can also because of the poor modeling parameters such as poor selection of activation functions, learning rate, epoch numbers etc. which could have affected the model as well. In the future, more input parameters like texture metrics, band information from sentinel-1 etc. can be added into the model for better variance. Further different modelling parameters can be explored to improve the accuracy.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Ships_and_economic_activity_a_starter_Myriam_Marending.html">2.13. Myriam Marending: Ships and economic activity: a starter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html">2.14. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.12. </span>Hemalatha Velappan: Classification of different tree species plantations using deep learning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2022_Matera/Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Hemalatha-Velappan:-Classification-of-different-tree-species-plantations-using-deep-learning">
+<h1><span class="section-number">2.12. </span>Hemalatha Velappan: Classification of different tree species plantations using deep learning<a class="headerlink" href="#Hemalatha-Velappan:-Classification-of-different-tree-species-plantations-using-deep-learning" title="Link to this heading"></a></h1>
+<p><a class="reference external" href="https://youtu.be/1OAzeb71lwU">Video recording</a></p>
+<section id="The-goal-of-this-work-is-to-develop-a-model-to-identify-planted-forests-and-the-tree-species-growing-there.-The-model-is-developed-using-the">
+<h2><span class="section-number">2.12.1. </span>The goal of this work is to develop a model to identify planted forests and the tree species growing there. The model is developed using the<a class="headerlink" href="#The-goal-of-this-work-is-to-develop-a-model-to-identify-planted-forests-and-the-tree-species-growing-there.-The-model-is-developed-using-the" title="Link to this heading"></a></h2>
+<section id="(1)-known-locations-of-planted-forests-based-on-literature-and-personal-communications,">
+<h3><span class="section-number">2.12.1.1. </span>(1) known locations of planted forests based on literature and personal communications,<a class="headerlink" href="#(1)-known-locations-of-planted-forests-based-on-literature-and-personal-communications," title="Link to this heading"></a></h3>
+</section>
+<section id="(2)-image-analysis-and-feature-extraction-of-planted-trees">
+<h3><span class="section-number">2.12.1.2. </span>(2) image analysis and feature extraction of planted trees<a class="headerlink" href="#(2)-image-analysis-and-feature-extraction-of-planted-trees" title="Link to this heading"></a></h3>
+</section>
+<section id="(3)-spectral-signatures-unique-to-each-species">
+<h3><span class="section-number">2.12.1.3. </span>(3) spectral signatures unique to each species<a class="headerlink" href="#(3)-spectral-signatures-unique-to-each-species" title="Link to this heading"></a></h3>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">scipy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">osgeo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ogr</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.model_selection</span><span class="w"> </span><span class="kn">import</span> <span class="n">train_test_split</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Loading plantation shapefile location</span>
+
+<span class="o">%</span><span class="k">cd</span> /media/sf_LVM_shared/my_SE_data/Plantation_datasets/Peru_Plantation_Shapefile-Updated
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/media/sf_LVM_shared/my_SE_data/Plantation_datasets/Peru_Plantation_Shapefile-Updated
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>SentinelMap.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: SentinelMap.tif
+Size is 898, 770
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (-76.889769608227439,-7.186342609899349)
+Pixel Size = (0.000269494585236,-0.000269494585236)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=PIXEL
+Corner Coordinates:
+Upper Left  ( -76.8897696,  -7.1863426) ( 76d53&#39;23.17&#34;W,  7d11&#39;10.83&#34;S)
+Lower Left  ( -76.8897696,  -7.3938534) ( 76d53&#39;23.17&#34;W,  7d23&#39;37.87&#34;S)
+Upper Right ( -76.6477635,  -7.1863426) ( 76d38&#39;51.95&#34;W,  7d11&#39;10.83&#34;S)
+Lower Right ( -76.6477635,  -7.3938534) ( 76d38&#39;51.95&#34;W,  7d23&#39;37.87&#34;S)
+Center      ( -76.7687665,  -7.2900980) ( 76d46&#39; 7.56&#34;W,  7d17&#39;24.35&#34;S)
+Band 1 Block=256x256 Type=UInt16, ColorInterp=Gray
+  Description = B1
+    Computed Min/Max=1005.000,8417.000
+Band 2 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B2
+    Computed Min/Max=696.000,9929.000
+Band 3 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B3
+    Computed Min/Max=471.000,10214.000
+Band 4 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B4
+    Computed Min/Max=269.000,11283.000
+Band 5 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B5
+    Computed Min/Max=269.000,10690.000
+Band 6 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B6
+    Computed Min/Max=419.000,11095.000
+Band 7 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B7
+    Computed Min/Max=437.000,11857.000
+Band 8 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B8
+    Computed Min/Max=390.000,11342.000
+Band 9 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B8A
+    Computed Min/Max=355.000,12318.000
+Band 10 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B9
+    Computed Min/Max=56.000,2030.000
+Band 11 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B10
+    Computed Min/Max=3.000,31.000
+Band 12 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B11
+    Computed Min/Max=78.000,13317.000
+Band 13 Block=256x256 Type=UInt16, ColorInterp=Undefined
+  Description = B12
+    Computed Min/Max=24.000,16040.000
+</pre></div></div>
+</div>
+<section id="Performing-zonal-statistics-on-the-polygon-shapefile-wrt-the-sentinel-satellite-image">
+<h4><span class="section-number">2.12.1.3.1. </span>Performing zonal statistics on the polygon shapefile wrt the sentinel satellite image<a class="headerlink" href="#Performing-zonal-statistics-on-the-polygon-shapefile-wrt-the-sentinel-satellite-image" title="Link to this heading"></a></h4>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pkextractogr<span class="w"> </span>-f<span class="w"> </span>CSV<span class="w"> </span>-i<span class="w"> </span>SentinelMap.tif<span class="w"> </span>-s<span class="w"> </span>Peru_XY/Peru_with_XY.shp<span class="w"> </span>-r<span class="w"> </span>allpoints<span class="w">  </span>-r<span class="w"> </span>mean<span class="w"> </span>-r<span class="w"> </span>stdev<span class="w"> </span>-o<span class="w"> </span>extracted2.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+processing layer Peru_with_XY
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">predictors</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;extracted2.csv&quot;</span><span class="p">)</span>
+<span class="n">predictors</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>OBJECTID</th>
+      <th>FUENTE/SOU</th>
+      <th>DOCREG</th>
+      <th>FECREG</th>
+      <th>OBSERV</th>
+      <th>ZONUTM</th>
+      <th>ORIGEN</th>
+      <th>TIPCOM</th>
+      <th>NUMREG</th>
+      <th>NOMTIT/Tit</th>
+      <th>...</th>
+      <th>b4</th>
+      <th>b5</th>
+      <th>b6</th>
+      <th>b7</th>
+      <th>b8</th>
+      <th>b9</th>
+      <th>b10</th>
+      <th>b11</th>
+      <th>b12</th>
+      <th>Classification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>798</td>
+      <td>1965</td>
+      <td>2724</td>
+      <td>2588</td>
+      <td>2981</td>
+      <td>475</td>
+      <td>11</td>
+      <td>1301</td>
+      <td>493</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>796</td>
+      <td>2069</td>
+      <td>2740</td>
+      <td>2661</td>
+      <td>3053</td>
+      <td>475</td>
+      <td>11</td>
+      <td>1269</td>
+      <td>460</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>805</td>
+      <td>2114</td>
+      <td>2717</td>
+      <td>2656</td>
+      <td>3130</td>
+      <td>447</td>
+      <td>10</td>
+      <td>1309</td>
+      <td>485</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>741</td>
+      <td>1731</td>
+      <td>2253</td>
+      <td>2031</td>
+      <td>2501</td>
+      <td>447</td>
+      <td>10</td>
+      <td>1197</td>
+      <td>440</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>854</td>
+      <td>2127</td>
+      <td>2660</td>
+      <td>2651</td>
+      <td>3144</td>
+      <td>461</td>
+      <td>9</td>
+      <td>1496</td>
+      <td>580</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>756</td>
+      <td>1901</td>
+      <td>2482</td>
+      <td>2427</td>
+      <td>2841</td>
+      <td>461</td>
+      <td>9</td>
+      <td>1302</td>
+      <td>492</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>739</td>
+      <td>1792</td>
+      <td>2374</td>
+      <td>2293</td>
+      <td>2648</td>
+      <td>438</td>
+      <td>9</td>
+      <td>1283</td>
+      <td>518</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>797</td>
+      <td>2108</td>
+      <td>2745</td>
+      <td>2731</td>
+      <td>3185</td>
+      <td>488</td>
+      <td>10</td>
+      <td>1364</td>
+      <td>502</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>738</td>
+      <td>1755</td>
+      <td>2448</td>
+      <td>2214</td>
+      <td>2763</td>
+      <td>472</td>
+      <td>9</td>
+      <td>1178</td>
+      <td>439</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>99039</td>
+      <td>GORE San Martín</td>
+      <td>APP-RNPF</td>
+      <td>27:59.0</td>
+      <td>ara autorizar el aprovechamiento la U.O.G.F.  ...</td>
+      <td>18</td>
+      <td>1</td>
+      <td>1</td>
+      <td>22-SAM/REG-PLT-2019-050</td>
+      <td>CARBAJAL VIGO, SEBASTIAN</td>
+      <td>...</td>
+      <td>817</td>
+      <td>1925</td>
+      <td>2571</td>
+      <td>2396</td>
+      <td>2900</td>
+      <td>472</td>
+      <td>9</td>
+      <td>1404</td>
+      <td>533</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+<p>10 rows × 56 columns</p>
+</div></div>
+</div>
+</section>
+<section id="The-following-are-the-tree-species-and-the-corresponding-label-numbers">
+<h4><span class="section-number">2.12.1.3.2. </span>The following are the tree species and the corresponding label numbers<a class="headerlink" href="#The-following-are-the-tree-species-and-the-corresponding-label-numbers" title="Link to this heading"></a></h4>
+<section id="Acrocarpus-fraxinifolius-1">
+<h5><span class="section-number">2.12.1.3.2.1. </span>Acrocarpus fraxinifolius 1<a class="headerlink" href="#Acrocarpus-fraxinifolius-1" title="Link to this heading"></a></h5>
+</section>
+<section id="Calycophyllum-spruceanum-2">
+<h5><span class="section-number">2.12.1.3.2.2. </span>Calycophyllum spruceanum 2<a class="headerlink" href="#Calycophyllum-spruceanum-2" title="Link to this heading"></a></h5>
+</section>
+<section id="Cedrela-Mixed-3">
+<h5><span class="section-number">2.12.1.3.2.3. </span>Cedrela Mixed 3<a class="headerlink" href="#Cedrela-Mixed-3" title="Link to this heading"></a></h5>
+</section>
+<section id="Guazuma-crinita-4">
+<h5><span class="section-number">2.12.1.3.2.4. </span>Guazuma crinita 4<a class="headerlink" href="#Guazuma-crinita-4" title="Link to this heading"></a></h5>
+</section>
+<section id="Miconia-barbeyana-5">
+<h5><span class="section-number">2.12.1.3.2.5. </span>Miconia barbeyana 5<a class="headerlink" href="#Miconia-barbeyana-5" title="Link to this heading"></a></h5>
+</section>
+<section id="Ochroma-pyramidale-6">
+<h5><span class="section-number">2.12.1.3.2.6. </span>Ochroma pyramidale 6<a class="headerlink" href="#Ochroma-pyramidale-6" title="Link to this heading"></a></h5>
+</section>
+<section id="Other-Mixed-7">
+<h5><span class="section-number">2.12.1.3.2.7. </span>Other Mixed 7<a class="headerlink" href="#Other-Mixed-7" title="Link to this heading"></a></h5>
+</section>
+<section id="Swietenia-Cedrela-Mixed-8">
+<h5><span class="section-number">2.12.1.3.2.8. </span>Swietenia Cedrela Mixed 8<a class="headerlink" href="#Swietenia-Cedrela-Mixed-8" title="Link to this heading"></a></h5>
+</section>
+<section id="Swietenia-macrophylla-9">
+<h5><span class="section-number">2.12.1.3.2.9. </span>Swietenia macrophylla 9<a class="headerlink" href="#Swietenia-macrophylla-9" title="Link to this heading"></a></h5>
+</section>
+<section id="Swietenia-Mixed-10">
+<h5><span class="section-number">2.12.1.3.2.10. </span>Swietenia Mixed 10<a class="headerlink" href="#Swietenia-Mixed-10" title="Link to this heading"></a></h5>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Desired_columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">,</span> <span class="s1">&#39;b0&#39;</span><span class="p">,</span> <span class="s1">&#39;b1&#39;</span><span class="p">,</span><span class="s1">&#39;b2&#39;</span><span class="p">,</span> <span class="s1">&#39;b3&#39;</span><span class="p">,</span><span class="s1">&#39;b4&#39;</span><span class="p">,</span> <span class="s1">&#39;b5&#39;</span><span class="p">,</span> <span class="s1">&#39;b6&#39;</span><span class="p">,</span> <span class="s1">&#39;b7&#39;</span><span class="p">,</span> <span class="s1">&#39;b8&#39;</span><span class="p">,</span> <span class="s1">&#39;b9&#39;</span><span class="p">,</span> <span class="s1">&#39;b10&#39;</span><span class="p">,</span> <span class="s1">&#39;b11&#39;</span><span class="p">,</span> <span class="s1">&#39;b12&#39;</span><span class="p">,</span> <span class="s1">&#39;Classification&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Desired_columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;X&#39;, &#39;Y&#39;, &#39;b0&#39;, &#39;b1&#39;, &#39;b2&#39;, &#39;b3&#39;, &#39;b4&#39;, &#39;b5&#39;, &#39;b6&#39;, &#39;b7&#39;, &#39;b8&#39;, &#39;b9&#39;, &#39;b10&#39;, &#39;b11&#39;, &#39;b12&#39;, &#39;Classification&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Desired_Output</span> <span class="o">=</span> <span class="n">predictors</span><span class="p">[</span><span class="n">Desired_columns</span><span class="p">]</span>
+<span class="n">Desired_Output</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>X</th>
+      <th>Y</th>
+      <th>b0</th>
+      <th>b1</th>
+      <th>b2</th>
+      <th>b3</th>
+      <th>b4</th>
+      <th>b5</th>
+      <th>b6</th>
+      <th>b7</th>
+      <th>b8</th>
+      <th>b9</th>
+      <th>b10</th>
+      <th>b11</th>
+      <th>b12</th>
+      <th>Classification</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-76.75757</td>
+      <td>-7.1862</td>
+      <td>1230</td>
+      <td>932</td>
+      <td>792</td>
+      <td>507</td>
+      <td>798</td>
+      <td>1965</td>
+      <td>2724</td>
+      <td>2588</td>
+      <td>2981</td>
+      <td>475</td>
+      <td>11</td>
+      <td>1301</td>
+      <td>493</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-76.75757</td>
+      <td>-7.1862</td>
+      <td>1230</td>
+      <td>922</td>
+      <td>787</td>
+      <td>479</td>
+      <td>796</td>
+      <td>2069</td>
+      <td>2740</td>
+      <td>2661</td>
+      <td>3053</td>
+      <td>475</td>
+      <td>11</td>
+      <td>1269</td>
+      <td>460</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>-76.75757</td>
+      <td>-7.1862</td>
+      <td>1227</td>
+      <td>930</td>
+      <td>806</td>
+      <td>495</td>
+      <td>805</td>
+      <td>2114</td>
+      <td>2717</td>
+      <td>2656</td>
+      <td>3130</td>
+      <td>447</td>
+      <td>10</td>
+      <td>1309</td>
+      <td>485</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>-76.75757</td>
+      <td>-7.1862</td>
+      <td>1227</td>
+      <td>916</td>
+      <td>761</td>
+      <td>476</td>
+      <td>741</td>
+      <td>1731</td>
+      <td>2253</td>
+      <td>2031</td>
+      <td>2501</td>
+      <td>447</td>
+      <td>10</td>
+      <td>1197</td>
+      <td>440</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-76.75757</td>
+      <td>-7.1862</td>
+      <td>1232</td>
+      <td>943</td>
+      <td>823</td>
+      <td>535</td>
+      <td>854</td>
+      <td>2127</td>
+      <td>2660</td>
+      <td>2651</td>
+      <td>3144</td>
+      <td>461</td>
+      <td>9</td>
+      <td>1496</td>
+      <td>580</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">Desired_Output</span> <span class="o">=</span> <span class="n">Desired_Output</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="The-input-and-output-variables-are-split-between-training-and-testing-by-70:30">
+<h4><span class="section-number">2.12.1.3.3. </span>The input and output variables are split between training and testing by 70:30<a class="headerlink" href="#The-input-and-output-variables-are-split-between-training-and-testing-by-70:30" title="Link to this heading"></a></h4>
+</section>
+</section>
+<section id="All-the-14-columns-are-X-variables.-The-final-column-that-has-categorical-numbers-is-the-target-or-Y-variable">
+<h3><span class="section-number">2.12.1.4. </span>All the 14 columns are X variables. The final column that has categorical numbers is the target or Y variable<a class="headerlink" href="#All-the-14-columns-are-X-variables.-The-final-column-that-has-categorical-numbers-is-the-target-or-Y-variable" title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Split the data</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">Desired_Output</span><span class="p">[:,:</span><span class="mi">14</span><span class="p">],</span> <span class="n">Desired_Output</span><span class="p">[:,</span><span class="mi">15</span><span class="p">],</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">y_train</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">FloatTensor</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">LongTensor</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;X_train.shape: </span><span class="si">{}</span><span class="s1">, X_test.shape: </span><span class="si">{}</span><span class="s1">, y_train.shape: </span><span class="si">{}</span><span class="s1">, y_test.shape: </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+X_train.shape: torch.Size([6942, 14]), X_test.shape: torch.Size([2976, 14]), y_train.shape: torch.Size([6942]), y_test.shape: torch.Size([2976])
+</pre></div></div>
+</div>
+<section id="The-feedforward-module-with-3-hidden-layers-are-built-with-different-activation-functions-applied-to-the-layers">
+<h4><span class="section-number">2.12.1.4.1. </span>The feedforward module with 3 hidden layers are built with different activation functions applied to the layers<a class="headerlink" href="#The-feedforward-module-with-3-hidden-layers-are-built-with-different-activation-functions-applied-to-the-layers" title="Link to this heading"></a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a feedforward module</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Feedforward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_size</span><span class="p">,</span> <span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Feedforward</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_size</span> <span class="o">=</span> <span class="n">input_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span>  <span class="o">=</span> <span class="n">hidden_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc3</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">hidden</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fc3</span><span class="p">(</span><span class="n">hidden</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Feedforward</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">256</span><span class="p">)</span> <span class="c1">#input_size = 14 and hidden_size = 256</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">loss_function</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">27</span> <span class="c1">#27 is chosen because choosing higher numbers make python to crash and after 26 the loss is stabilized</span>
+<span class="n">aggregated_losses</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">single_loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">aggregated_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">single_loss</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">25</span> == 1:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> loss: </span><span class="si">{</span><span class="n">single_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">10.8f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">single_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> loss: </span><span class="si">{</span><span class="n">single_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">10.10f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+epoch:   1 loss: 2.96000528
+epoch:  26 loss: 2.80332470
+epoch:  27 loss: 2.8033246994
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_val</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s1">.8f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loss: 2.82178712
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[  0  52   0   0   0   0   0   0   0]
+ [  0  17   0   0   0   0   0   0   0]
+ [  0  10   0   0   0   0   0   0   0]
+ [  0 269   0   0   0   0   0   0   0]
+ [  0 869   0   0   0   0   0   0   0]
+ [  0 922   0   0   0   0   0   0   0]
+ [  0 293   0   0   0   0   0   0   0]
+ [  0   8   0   0   0   0   0   0   0]
+ [  0 536   0   0   0   0   0   0   0]]
+              precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        52
+           1       0.01      1.00      0.01        17
+           2       0.00      0.00      0.00        10
+           3       0.00      0.00      0.00       269
+           5       0.00      0.00      0.00       869
+           6       0.00      0.00      0.00       922
+           7       0.00      0.00      0.00       293
+           8       0.00      0.00      0.00         8
+           9       0.00      0.00      0.00       536
+
+    accuracy                           0.01      2976
+   macro avg       0.00      0.11      0.00      2976
+weighted avg       0.00      0.01      0.00      2976
+
+0.00571236559139785
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/usr/lib/python3/dist-packages/sklearn/metrics/_classification.py:1272: UndefinedMetricWarning: Precision and F-score are ill-defined and being set to 0.0 in labels with no predicted samples. Use `zero_division` parameter to control this behavior.
+  _warn_prf(average, modifier, msg_start, len(result))
+</pre></div></div>
+</div>
+</section>
+<section id="Creating-a-single-layer-perceptron-model">
+<h4><span class="section-number">2.12.1.4.2. </span>Creating a single-layer perceptron model<a class="headerlink" href="#Creating-a-single-layer-perceptron-model" title="Link to this heading"></a></h4>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the model</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Perceptron</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">input_size</span><span class="p">,</span> <span class="n">output_size</span><span class="p">,</span><span class="n">use_activation_fn</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Perceptron</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">input_size</span><span class="p">,</span><span class="n">output_size</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">relu</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">()</span> <span class="c1"># instead of Heaviside step fn</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Tanh</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">=</span><span class="n">use_activation_fn</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sigmoid</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="c1"># To add the non-linearity. Try training you Perceptron with and without the non-linearity</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;tanh&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">use_activation_fn</span><span class="o">==</span><span class="s1">&#39;relu&#39;</span><span class="p">:</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">Perceptron</span><span class="p">(</span><span class="n">input_size</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">output_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">use_activation_fn</span><span class="o">=</span><span class="s1">&#39;tanh&#39;</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">epochs</span> <span class="o">=</span> <span class="mi">300</span>
+<span class="n">aggregated_losses</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">epochs</span><span class="p">):</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+    <span class="n">single_loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">aggregated_losses</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">single_loss</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">25</span> == 1:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> loss: </span><span class="si">{</span><span class="n">single_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">10.8f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+    <span class="n">single_loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;epoch: </span><span class="si">{</span><span class="n">i</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> loss: </span><span class="si">{</span><span class="n">single_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span><span class="si">:</span><span class="s1">10.10f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+epoch:   1 loss: 2.86867380
+epoch:  26 loss: 2.86806893
+epoch:  51 loss: 2.86806870
+epoch:  76 loss: 2.86806870
+epoch: 101 loss: 2.86806870
+epoch: 126 loss: 2.86806870
+epoch: 151 loss: 2.86801815
+epoch: 176 loss: 2.86790514
+epoch: 201 loss: 2.86790514
+epoch: 226 loss: 2.86790514
+epoch: 251 loss: 2.86790514
+epoch: 276 loss: 2.86790514
+epoch: 300 loss: 2.8679051399
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">y_val</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+    <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">y_val</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Loss: </span><span class="si">{</span><span class="n">loss</span><span class="si">:</span><span class="s1">.8f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Loss: 2.87435365
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">accuracy_score</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span><span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_val</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[[ 52   0   0   0   0   0   0   0   0]
+ [ 17   0   0   0   0   0   0   0   0]
+ [ 10   0   0   0   0   0   0   0   0]
+ [269   0   0   0   0   0   0   0   0]
+ [869   0   0   0   0   0   0   0   0]
+ [922   0   0   0   0   0   0   0   0]
+ [293   0   0   0   0   0   0   0   0]
+ [  8   0   0   0   0   0   0   0   0]
+ [536   0   0   0   0   0   0   0   0]]
+              precision    recall  f1-score   support
+
+           0       0.02      1.00      0.03        52
+           1       0.00      0.00      0.00        17
+           2       0.00      0.00      0.00        10
+           3       0.00      0.00      0.00       269
+           5       0.00      0.00      0.00       869
+           6       0.00      0.00      0.00       922
+           7       0.00      0.00      0.00       293
+           8       0.00      0.00      0.00         8
+           9       0.00      0.00      0.00       536
+
+    accuracy                           0.02      2976
+   macro avg       0.00      0.11      0.00      2976
+weighted avg       0.00      0.02      0.00      2976
+
+0.01747311827956989
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+<section id="Results:">
+<h2><span class="section-number">2.12.2. </span>Results:<a class="headerlink" href="#Results:" title="Link to this heading"></a></h2>
+<section id="Using-single-layer-perceptron-and-multi-layer-feedforward-deep-learning-models-did-not-yield-high-accuracy-in-distinguishing-different-tree-plantations-using-Sentinel-2-dataset.-There-could-be-multiple-reasons-behind-this.-Since-spectral-band-information-from-Sentinel-2-satellite-image-constitute-most-of-the-X-variables-and-because-of-the-high-spectral-similarity-between-tree-species,-the-model-couldn't-find-a-way-to-distinguish-the-species.-It-can-also-because-of-the-poor-modeling-parameters-such-as-poor-selection-of-activation-functions,-learning-rate,-epoch-numbers-etc.-which-could-have-affected-the-model-as-well.-In-the-future,-more-input-parameters-like-texture-metrics,-band-information-from-sentinel-1-etc.-can-be-added-into-the-model-for-better-variance.-Further-different-modelling-parameters-can-be-explored-to-improve-the-accuracy.">
+<h3><span class="section-number">2.12.2.1. </span>Using single-layer perceptron and multi-layer feedforward deep learning models did not yield high accuracy in distinguishing different tree plantations using Sentinel-2 dataset. There could be multiple reasons behind this. Since spectral band information from Sentinel 2 satellite image constitute most of the X variables and because of the high spectral similarity between tree species, the model couldn’t find a way to distinguish the species. It can also because of the poor modeling parameters such as poor selection of activation functions, learning rate, epoch numbers etc. which could have affected the model as well. In the future, more input parameters like texture metrics, band information from sentinel-1 etc. can be added into the model for better variance. Further different modelling parameters can be explored to improve the accuracy.<a class="headerlink" href="#Using-single-layer-perceptron-and-multi-layer-feedforward-deep-learning-models-did-not-yield-high-accuracy-in-distinguishing-different-tree-plantations-using-Sentinel-2-dataset.-There-could-be-multiple-reasons-behind-this.-Since-spectral-band-information-from-Sentinel-2-satellite-image-constitute-most-of-the-X-variables-and-because-of-the-high-spectral-similarity-between-tree-species,-the-model-couldn't-find-a-way-to-distinguish-the-species.-It-can-also-because-of-the-poor-modeling-parameters-such-as-poor-selection-of-activation-functions,-learning-rate,-epoch-numbers-etc.-which-could-have-affected-the-model-as-well.-In-the-future,-more-input-parameters-like-texture-metrics,-band-information-from-sentinel-1-etc.-can-be-added-into-the-model-for-better-variance.-Further-different-modelling-parameters-can-be-explored-to-improve-the-accuracy." title="Link to this heading"></a></h3>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>--to<span class="w"> </span>html<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/Final_Project.ipynb
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[NbConvertApp] Converting notebook /media/sf_LVM_shared/my_SE_data/exercise/Final_Project.ipynb to html
+[NbConvertApp] Writing 642237 bytes to /media/sf_LVM_shared/my_SE_data/exercise/Final_Project.html
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.html" class="btn btn-neutral float-left" title="2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Ships_and_economic_activity_a_starter_Myriam_Marending.html" class="btn btn-neutral float-right" title="2.13. Myriam Marending: Ships and economic activity: a starter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

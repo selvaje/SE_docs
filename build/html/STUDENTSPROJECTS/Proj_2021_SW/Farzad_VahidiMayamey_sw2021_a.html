@@ -1,0 +1,2720 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.1. Calculating landcover distribution &amp; vegetation extraction &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.2. Compiling OTB from source" href="Farzad_VahidiMayamey_sw2021_b.html" />
+    <link rel="prev" title="1. 2021 SWEDEN" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.1. Calculating landcover distribution &amp; vegetation extraction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Calculating-landcover-distribution">1.1.1. Calculating landcover distribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Open-water-and-flooded-vegetation-extraction">1.1.2. Open water and flooded vegetation extraction</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Open-water-extraction">1.1.2.1. Open water extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#Flooded-vegetation-extraction-by-using-unsupervised-Kmean-classification">1.1.2.2. Flooded vegetation extraction by using unsupervised Kmean classification</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Farzad_VahidiMayamey_sw2021_b.html">1.2. Compiling OTB from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alejandro_Uribe_Geo_comp_pro_AU.html">1.3. Observed and simulated internal variability climate feedbacks comparison.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alexandra_Pongr%C3%A1cz_project_idea.html">1.4. Statistical comparison global gridded climate datasets and their influence on LPJ-GUESS model outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Carlos_G%C3%B3mez-Ortiz_GeocomputationProject.html">1.5. Emulating FLEXPART with a Multi-Layer Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Felicity_Alice_Holmes_Geocomp_project.html">1.6. Processing Elmer/Ice output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hamm_Alexandra_final_project.html">1.7. pan-Arctic classified slope and aspect maps (Geo computation only)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Jacopo_Cantoni_SeasonAnalisis.html">1.8. Seasonal Analisis of discharges in the Mälaren catchement.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Julia_Wagner_Geocomputation.html">1.9. Mapping of soil organic carbon stocks with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kap%C3%A1s_Roz%C3%A1lia_project.html">1.10. NDVI Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SaeidAminjafariProject.html">1.11. Phase Change Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tatiana_Klisho_project.html">1.12. Relationship between continental-scale patterns of fire activity and modes of climate variability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.1. </span>Calculating landcover distribution &amp; vegetation extraction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2021_SW/Farzad_VahidiMayamey_sw2021_a.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Calculating-landcover-distribution-&amp;-vegetation-extraction">
+<h1><span class="section-number">1.1. </span>Calculating landcover distribution &amp; vegetation extraction<a class="headerlink" href="#Calculating-landcover-distribution-&-vegetation-extraction" title="Link to this heading"></a></h1>
+<p><strong>Farzad Vahidi Mayamey</strong></p>
+<p><strong>Aim of the studies</strong></p>
+<ol class="arabic simple">
+<li><p>Calculating landcover distribution in our wetlands based on 10 m landcover map of Sweden</p></li>
+<li><p>Open water and flooded vegetation extraction in one of our wetlands.</p></li>
+</ol>
+<section id="Calculating-landcover-distribution">
+<h2><span class="section-number">1.1.1. </span>Calculating landcover distribution<a class="headerlink" href="#Calculating-landcover-distribution" title="Link to this heading"></a></h2>
+<p>we use two different layer:</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.swedishepa.se/State-of-the-environment/Maps-and-map-services/National-Land-Cover-Database/">National landcover map of Sweden in 10m resolution</a> ( left picture)</p></li>
+<li><p><a class="reference external" href="https://rsis.ramsar.org/ris-search/?f%5B0%5D=regionCountry_en_ss%3ASweden">vector layer of Ramsar sites in Sweden</a> ( right picture)</p></li>
+</ol>
+<p><img alt="6fbe031852904684a1281f8721079f21" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_1.png" style="width: 400px;" /> <img alt="9c8a0c65fc7746d895addf074eb2d2e4" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_2.png" style="width: 400px;" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[100]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+gdalinfo<span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>more
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: nmd2018bas_ogeneraliserad_v1_1.tif
+Size is 71273, 157992
+Coordinate System is:
+PROJCS[&#34;SWEREF99 TM&#34;,
+    GEOGCS[&#34;SWEREF99&#34;,
+        DATUM[&#34;SWEREF99&#34;,
+            SPHEROID[&#34;GRS 1980&#34;,6378137,298.257222101,
+                AUTHORITY[&#34;EPSG&#34;,&#34;7019&#34;]],
+            TOWGS84[0,0,0,0,0,0,0],
+            AUTHORITY[&#34;EPSG&#34;,&#34;6619&#34;]],
+        PRIMEM[&#34;Greenwich&#34;,0,
+            AUTHORITY[&#34;EPSG&#34;,&#34;8901&#34;]],
+        UNIT[&#34;degree&#34;,0.0174532925199433,
+            AUTHORITY[&#34;EPSG&#34;,&#34;9122&#34;]],
+        AUTHORITY[&#34;EPSG&#34;,&#34;4619&#34;]],
+    PROJECTION[&#34;Transverse_Mercator&#34;],
+    PARAMETER[&#34;latitude_of_origin&#34;,0],
+    PARAMETER[&#34;central_meridian&#34;,15],
+    PARAMETER[&#34;scale_factor&#34;,0.9996],
+    PARAMETER[&#34;false_easting&#34;,500000],
+    PARAMETER[&#34;false_northing&#34;,0],
+    UNIT[&#34;metre&#34;,1,
+        AUTHORITY[&#34;EPSG&#34;,&#34;9001&#34;]],
+    AUTHORITY[&#34;EPSG&#34;,&#34;3006&#34;]]
+Origin = (208450.000000000000000,7671060.000000000000000)
+Pixel Size = (10.000000000000000,-10.000000000000000)
+Metadata:
+  AREA_OR_POINT=Area
+  TIFFTAG_RESOLUTIONUNIT=2 (pixels/inch)
+  TIFFTAG_SOFTWARE=E
+  TIFFTAG_XRESOLUTION=1
+  TIFFTAG_YRESOLUTION=1
+Image Structure Metadata:
+  COMPRESSION=PACKBITS
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  208450.000, 7671060.000) (  7d41&#39;51.00&#34;E, 68d59&#39;38.16&#34;N)
+Lower Left  (  208450.000, 6091140.000) ( 10d27&#39;14.37&#34;E, 54d52&#39;55.53&#34;N)
+Upper Right (  921180.000, 7671060.000) ( 25d29&#39;31.13&#34;E, 68d49&#39;34.01&#34;N)
+Lower Right (  921180.000, 6091140.000) ( 21d33&#39;17.33&#34;E, 54d47&#39;23.89&#34;N)
+Center      (  564815.000, 6881100.000) ( 16d14&#39;23.34&#34;E, 62d 3&#39;23.60&#34;N)
+Band 1 Block=512x512 Type=Byte, ColorInterp=Palette
+  NoData Value=0
+  Color Table (RGB with 256 entries)
+    0: 0,0,0,0
+    1: 0,0,0,255
+    2: 194,158,215,255
+    3: 255,255,190,255
+    4: 0,0,0,255
+    5: 0,0,0,255
+    6: 0,0,0,255
+    7: 0,0,0,255
+    8: 0,0,0,255
+    9: 0,0,0,255
+   10: 0,0,0,255
+   11: 0,0,0,255
+   12: 0,0,0,255
+   13: 0,0,0,255
+   14: 0,0,0,255
+   15: 0,0,0,255
+   16: 0,0,0,255
+   17: 0,0,0,255
+   18: 0,0,0,255
+   19: 0,0,0,255
+   20: 0,0,0,255
+   21: 0,0,0,255
+   22: 0,0,0,255
+   23: 0,0,0,255
+   24: 0,0,0,255
+   25: 0,0,0,255
+   26: 0,0,0,255
+   27: 0,0,0,255
+   28: 0,0,0,255
+   29: 0,0,0,255
+   30: 0,0,0,255
+   31: 0,0,0,255
+   32: 0,0,0,255
+   33: 0,0,0,255
+   34: 0,0,0,255
+   35: 0,0,0,255
+   36: 0,0,0,255
+   37: 0,0,0,255
+   38: 0,0,0,255
+   39: 0,0,0,255
+   40: 0,0,0,255
+   41: 225,225,225,255
+   42: 255,211,127,255
+   43: 0,0,0,255
+   44: 0,0,0,255
+   45: 0,0,0,255
+   46: 0,0,0,255
+   47: 0,0,0,255
+   48: 0,0,0,255
+   49: 0,0,0,255
+   50: 0,0,0,255
+   51: 90,20,20,255
+   52: 229,70,75,255
+   53: 25,25,25,255
+   54: 0,0,0,255
+   55: 0,0,0,255
+   56: 0,0,0,255
+   57: 0,0,0,255
+   58: 0,0,0,255
+   59: 0,0,0,255
+   60: 0,0,0,255
+   61: 102,153,205,255
+   62: 138,204,250,255
+   63: 0,0,0,255
+   64: 0,0,0,255
+   65: 0,0,0,255
+   66: 0,0,0,255
+   67: 0,0,0,255
+   68: 0,0,0,255
+   69: 0,0,0,255
+   70: 0,0,0,255
+   71: 0,0,0,255
+   72: 0,0,0,255
+   73: 0,0,0,255
+   74: 0,0,0,255
+   75: 0,0,0,255
+   76: 0,0,0,255
+   77: 0,0,0,255
+   78: 0,0,0,255
+   79: 0,0,0,255
+   80: 0,0,0,255
+   81: 0,0,0,255
+   82: 0,0,0,255
+   83: 0,0,0,255
+   84: 0,0,0,255
+   85: 0,0,0,255
+   86: 0,0,0,255
+   87: 0,0,0,255
+   88: 0,0,0,255
+   89: 0,0,0,255
+   90: 0,0,0,255
+   91: 0,0,0,255
+   92: 0,0,0,255
+   93: 0,0,0,255
+   94: 0,0,0,255
+   95: 0,0,0,255
+   96: 0,0,0,255
+   97: 0,0,0,255
+   98: 0,0,0,255
+   99: 0,0,0,255
+  100: 0,0,0,255
+  101: 0,0,0,255
+  102: 0,0,0,255
+  103: 0,0,0,255
+  104: 0,0,0,255
+  105: 0,0,0,255
+  106: 0,0,0,255
+  107: 0,0,0,255
+  108: 0,0,0,255
+  109: 0,0,0,255
+  110: 0,0,0,255
+  111: 110,140,5,255
+  112: 45,95,0,255
+  113: 78,112,0,255
+  114: 56,168,0,255
+  115: 76,230,0,255
+  116: 170,255,0,255
+  117: 151,230,0,255
+  118: 205,205,102,255
+  119: 0,0,0,255
+  120: 0,0,0,255
+  121: 89,140,85,255
+  122: 48,94,80,255
+  123: 35,115,90,255
+  124: 67,136,112,255
+  125: 137,205,155,255
+  126: 165,245,120,255
+  127: 171,205,120,255
+  128: 137,137,68,255
+  129: 0,0,0,255
+  130: 194,158,215,255
+  131: 255,255,190,255
+  132: 0,0,0,255
+  133: 0,0,0,255
+  134: 0,0,0,255
+  135: 0,0,0,255
+  136: 0,0,0,255
+  137: 0,0,0,255
+  138: 0,0,0,255
+  139: 0,0,0,255
+  140: 0,0,0,255
+  141: 0,0,0,255
+  142: 0,0,0,255
+  143: 0,0,0,255
+  144: 0,0,0,255
+  145: 0,0,0,255
+  146: 0,0,0,255
+  147: 0,0,0,255
+  148: 0,0,0,255
+  149: 0,0,0,255
+  150: 0,0,0,255
+  151: 0,0,0,255
+  152: 0,0,0,255
+  153: 0,0,0,255
+  154: 0,0,0,255
+  155: 0,0,0,255
+  156: 0,0,0,255
+  157: 0,0,0,255
+  158: 0,0,0,255
+  159: 0,0,0,255
+  160: 0,0,0,255
+  161: 0,0,0,255
+  162: 0,0,0,255
+  163: 0,0,0,255
+  164: 0,0,0,255
+  165: 0,0,0,255
+  166: 0,0,0,255
+  167: 0,0,0,255
+  168: 0,0,0,255
+  169: 225,225,225,255
+  170: 255,211,127,255
+  171: 0,0,0,255
+  172: 0,0,0,255
+  173: 0,0,0,255
+  174: 0,0,0,255
+  175: 0,0,0,255
+  176: 0,0,0,255
+  177: 0,0,0,255
+  178: 0,0,0,255
+  179: 90,20,20,255
+  180: 229,70,75,255
+  181: 25,25,25,255
+  182: 0,0,0,255
+  183: 0,0,0,255
+  184: 0,0,0,255
+  185: 0,0,0,255
+  186: 0,0,0,255
+  187: 0,0,0,255
+  188: 0,0,0,255
+  189: 102,153,205,255
+  190: 138,204,250,255
+  191: 0,0,0,255
+  192: 192,192,192,255
+  193: 193,193,193,255
+  194: 194,194,194,255
+  195: 195,195,195,255
+  196: 196,196,196,255
+  197: 197,197,197,255
+  198: 198,198,198,255
+  199: 199,199,199,255
+  200: 200,200,200,255
+  201: 201,201,201,255
+  202: 202,202,202,255
+  203: 203,203,203,255
+  204: 204,204,204,255
+  205: 205,205,205,255
+  206: 206,206,206,255
+  207: 207,207,207,255
+  208: 208,208,208,255
+  209: 209,209,209,255
+  210: 210,210,210,255
+  211: 211,211,211,255
+  212: 212,212,212,255
+  213: 213,213,213,255
+  214: 214,214,214,255
+  215: 215,215,215,255
+  216: 216,216,216,255
+  217: 217,217,217,255
+  218: 218,218,218,255
+  219: 219,219,219,255
+  220: 220,220,220,255
+  221: 221,221,221,255
+  222: 222,222,222,255
+  223: 223,223,223,255
+  224: 224,224,224,255
+  225: 225,225,225,255
+  226: 226,226,226,255
+  227: 227,227,227,255
+  228: 228,228,228,255
+  229: 229,229,229,255
+  230: 230,230,230,255
+  231: 231,231,231,255
+  232: 232,232,232,255
+  233: 233,233,233,255
+  234: 234,234,234,255
+  235: 235,235,235,255
+  236: 236,236,236,255
+  237: 237,237,237,255
+  238: 238,238,238,255
+  239: 239,239,239,255
+  240: 240,240,240,255
+  241: 241,241,241,255
+  242: 242,242,242,255
+  243: 243,243,243,255
+  244: 244,244,244,255
+  245: 245,245,245,255
+  246: 246,246,246,255
+  247: 247,247,247,255
+  248: 248,248,248,255
+  249: 249,249,249,255
+  250: 250,250,250,255
+  251: 251,251,251,255
+  252: 252,252,252,255
+  253: 253,253,253,255
+  254: 254,254,254,255
+  255: 255,255,255,255
+</pre></div></div>
+</div>
+<p>As NoData Value is not assigned, we assign nodata value = 0</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[102]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif
+</pre></div>
+</div>
+</div>
+<p>we create the shapefile of each wetland by using <code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">split</span> <span class="pre">vector</span> <span class="pre">layer</span></code> tool in QGIS to clip our landcover by this layers</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[104]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>rms/*.gpkg<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.gpkg<span class="k">)</span><span class="p">;</span><span class="w"> </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-dstnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-crop_to_cutline<span class="w"> </span>-cutline<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>nmd2018bas_ogeneraliserad_v1_1.tif<span class="w"> </span>clipped/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.tif<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+rms/ramsarid_1113.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2623P x 1832L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1114.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2745P x 1850L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1115.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 4953P x 1980L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1116.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2032P x 3435L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1117.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 694P x 1137L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1118.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 997P x 633L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1119.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1370P x 1214L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1120.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 421P x 661L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1121.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 807P x 1246L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1122.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 636P x 1020L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1123.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 835P x 3896L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1124.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 497P x 421L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1125.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1724P x 1163L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1126.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1579P x 1571L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1127.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 725P x 371L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1128.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1269P x 691L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1129.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1074P x 1192L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1130.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 376P x 444L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1131.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1803P x 2087L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1132.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 265P x 323L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_1133.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 857P x 1257L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_14.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1215P x 2045L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_15.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1538P x 1692L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_16.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1224P x 2753L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_17.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 567P x 663L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_18.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2657P x 8279L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_19.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 299P x 262L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_20.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1340P x 1415L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2167.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 4054P x 4742L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2168.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 544P x 1222L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2169.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 359P x 1003L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2170.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 347P x 776L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2171.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 546P x 1439L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2172.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 364P x 521L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2173.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 3518P x 1881L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2174.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 253P x 289L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2175.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1224P x 2245L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2176.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1229P x 890L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2177.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 739P x 1017L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2178.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1124P x 1273L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2179.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 366P x 262L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2180.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1658P x 795L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_21.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 3979P x 9467L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2260.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 838P x 618L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_2265.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 236P x 441L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_22.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1237P x 1576L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_23.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1250P x 763L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_24.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 585P x 386L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_25.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 310P x 437L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_26.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1753P x 1250L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_27.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 355P x 376L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_28.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1136P x 1172L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_29.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1933P x 4352L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_30.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 3144P x 2662L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_31.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1719P x 712L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_32.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 7512P x 6180L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_33.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2602P x 2191L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_429.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1831P x 2819L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_430.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 647P x 1604L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_431.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1962P x 1036L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_432.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1120P x 1022L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_433.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 539P x 694L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_434.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1248P x 1514L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_435.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 2131P x 1433L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_436.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 937P x 1652L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_437.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 1353P x 2170L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+rms/ramsarid_438.gpkg
+Copying color table from nmd2018bas_ogeneraliserad_v1_1.tif to new file.
+Creating output file that is 687P x 666L.
+Processing nmd2018bas_ogeneraliserad_v1_1.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>Now that we have our clipped land cover we can calculate the histogram (in percentage)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[105]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>clipped/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span><span class="p">;</span><span class="w"> </span>pkstat<span class="w"> </span>-hist<span class="w"> </span>-rel<span class="w"> </span>-src_min<span class="w"> </span><span class="m">2</span><span class="w"> </span>-src_max<span class="w"> </span><span class="m">128</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>hist/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+clipped/ramsarid_1113.tif
+clipped/ramsarid_1114.tif
+clipped/ramsarid_1115.tif
+clipped/ramsarid_1116.tif
+clipped/ramsarid_1117.tif
+clipped/ramsarid_1118.tif
+clipped/ramsarid_1119.tif
+clipped/ramsarid_1120.tif
+clipped/ramsarid_1121.tif
+clipped/ramsarid_1122.tif
+clipped/ramsarid_1123.tif
+clipped/ramsarid_1124.tif
+clipped/ramsarid_1125.tif
+clipped/ramsarid_1126.tif
+clipped/ramsarid_1127.tif
+clipped/ramsarid_1128.tif
+clipped/ramsarid_1129.tif
+clipped/ramsarid_1130.tif
+clipped/ramsarid_1131.tif
+clipped/ramsarid_1132.tif
+clipped/ramsarid_1133.tif
+clipped/ramsarid_14.tif
+clipped/ramsarid_15.tif
+clipped/ramsarid_16.tif
+clipped/ramsarid_17.tif
+clipped/ramsarid_18.tif
+clipped/ramsarid_19.tif
+clipped/ramsarid_20.tif
+clipped/ramsarid_2167.tif
+clipped/ramsarid_2168.tif
+clipped/ramsarid_2169.tif
+clipped/ramsarid_2170.tif
+clipped/ramsarid_2171.tif
+clipped/ramsarid_2172.tif
+clipped/ramsarid_2173.tif
+clipped/ramsarid_2174.tif
+clipped/ramsarid_2175.tif
+clipped/ramsarid_2176.tif
+clipped/ramsarid_2177.tif
+clipped/ramsarid_2178.tif
+clipped/ramsarid_2179.tif
+clipped/ramsarid_2180.tif
+clipped/ramsarid_21.tif
+clipped/ramsarid_2260.tif
+clipped/ramsarid_2265.tif
+clipped/ramsarid_22.tif
+clipped/ramsarid_23.tif
+clipped/ramsarid_24.tif
+clipped/ramsarid_25.tif
+clipped/ramsarid_26.tif
+clipped/ramsarid_27.tif
+clipped/ramsarid_28.tif
+clipped/ramsarid_29.tif
+clipped/ramsarid_30.tif
+clipped/ramsarid_31.tif
+clipped/ramsarid_32.tif
+clipped/ramsarid_33.tif
+clipped/ramsarid_429.tif
+clipped/ramsarid_430.tif
+clipped/ramsarid_431.tif
+clipped/ramsarid_432.tif
+clipped/ramsarid_433.tif
+clipped/ramsarid_434.tif
+clipped/ramsarid_435.tif
+clipped/ramsarid_436.tif
+clipped/ramsarid_437.tif
+clipped/ramsarid_438.tif
+</pre></div></div>
+</div>
+<p>Now we have the text file of our histograms we can extract our desired classes for each of our 67 wetlands</p>
+<ul class="simple">
+<li><p>we have 25 classess in total</p></li>
+<li><p>7 of the classess are our main interest</p></li>
+</ul>
+<p><img alt="bba178792e8e4e2cb59faf2444e31060" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_3.png" style="width: 500px;" /></p>
+<p>Extract all 25 classes</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[106]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1">#printf &quot;%s %.3f\n&quot;, $1, $2</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>hist/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;{ if($1==111||$1==112||$1==113||$1==114||$1==115||$1==116||$1==117||$1==118||$1==121||$1==122||$1==123||$1==124||$1==125||$1==126||$1==127||$1==128||$1==2||$1==3||$1==41||$1==42||$1==51||$1==52||$1==53||$1==61||$1==62) print}&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>class_25/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+hist/ramsarid_1113.txt
+hist/ramsarid_1114.txt
+hist/ramsarid_1115.txt
+hist/ramsarid_1116.txt
+hist/ramsarid_1117.txt
+hist/ramsarid_1118.txt
+hist/ramsarid_1119.txt
+hist/ramsarid_1120.txt
+hist/ramsarid_1121.txt
+hist/ramsarid_1122.txt
+hist/ramsarid_1123.txt
+hist/ramsarid_1124.txt
+hist/ramsarid_1125.txt
+hist/ramsarid_1126.txt
+hist/ramsarid_1127.txt
+hist/ramsarid_1128.txt
+hist/ramsarid_1129.txt
+hist/ramsarid_1130.txt
+hist/ramsarid_1131.txt
+hist/ramsarid_1132.txt
+hist/ramsarid_1133.txt
+hist/ramsarid_14.txt
+hist/ramsarid_15.txt
+hist/ramsarid_16.txt
+hist/ramsarid_17.txt
+hist/ramsarid_18.txt
+hist/ramsarid_19.txt
+hist/ramsarid_20.txt
+hist/ramsarid_2167.txt
+hist/ramsarid_2168.txt
+hist/ramsarid_2169.txt
+hist/ramsarid_2170.txt
+hist/ramsarid_2171.txt
+hist/ramsarid_2172.txt
+hist/ramsarid_2173.txt
+hist/ramsarid_2174.txt
+hist/ramsarid_2175.txt
+hist/ramsarid_2176.txt
+hist/ramsarid_2177.txt
+hist/ramsarid_2178.txt
+hist/ramsarid_2179.txt
+hist/ramsarid_2180.txt
+hist/ramsarid_21.txt
+hist/ramsarid_2260.txt
+hist/ramsarid_2265.txt
+hist/ramsarid_22.txt
+hist/ramsarid_23.txt
+hist/ramsarid_24.txt
+hist/ramsarid_25.txt
+hist/ramsarid_26.txt
+hist/ramsarid_27.txt
+hist/ramsarid_28.txt
+hist/ramsarid_29.txt
+hist/ramsarid_30.txt
+hist/ramsarid_31.txt
+hist/ramsarid_32.txt
+hist/ramsarid_33.txt
+hist/ramsarid_429.txt
+hist/ramsarid_430.txt
+hist/ramsarid_431.txt
+hist/ramsarid_432.txt
+hist/ramsarid_433.txt
+hist/ramsarid_434.txt
+hist/ramsarid_435.txt
+hist/ramsarid_436.txt
+hist/ramsarid_437.txt
+hist/ramsarid_438.txt
+</pre></div></div>
+</div>
+<p>Extract 7 main classess of our interest</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[107]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>hist/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+<span class="w">    </span>awk<span class="w"> </span><span class="s1">&#39;$1==111 || $1==112 || $1==113 || $1==114 ||$1==115 || $1==116 ||$1==117 || $1==118 {sum1+= $2}</span>
+<span class="s1">$1==121 || $1==122 || $1==123 || $1==124 ||$1==125 || $1==126 ||$1==127 || $1==128 {sum2+= $2}</span>
+<span class="s1">$1==2 {sum3+= $2}</span>
+<span class="s1">$1==3 {sum4+= $2}</span>
+<span class="s1">$1==41 || $1==42 {sum5+= $2}</span>
+<span class="s1">$1==51 || $1==52 || $1==53 {sum6+= $2}</span>
+<span class="s1">$1==61 || $1==62 {sum7+= $2}</span>
+<span class="s1">END{print (&quot;1.1 &quot;sum1); print (&quot;1.2 &quot;sum2); print(&quot;2 &quot;sum3); print(&quot;3 &quot;sum4); print(&quot;4 &quot;sum5); print(&quot;5 &quot;sum6); print(&quot;6 &quot;sum7)}&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>class_7/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+hist/ramsarid_1113.txt
+hist/ramsarid_1114.txt
+hist/ramsarid_1115.txt
+hist/ramsarid_1116.txt
+hist/ramsarid_1117.txt
+hist/ramsarid_1118.txt
+hist/ramsarid_1119.txt
+hist/ramsarid_1120.txt
+hist/ramsarid_1121.txt
+hist/ramsarid_1122.txt
+hist/ramsarid_1123.txt
+hist/ramsarid_1124.txt
+hist/ramsarid_1125.txt
+hist/ramsarid_1126.txt
+hist/ramsarid_1127.txt
+hist/ramsarid_1128.txt
+hist/ramsarid_1129.txt
+hist/ramsarid_1130.txt
+hist/ramsarid_1131.txt
+hist/ramsarid_1132.txt
+hist/ramsarid_1133.txt
+hist/ramsarid_14.txt
+hist/ramsarid_15.txt
+hist/ramsarid_16.txt
+hist/ramsarid_17.txt
+hist/ramsarid_18.txt
+hist/ramsarid_19.txt
+hist/ramsarid_20.txt
+hist/ramsarid_2167.txt
+hist/ramsarid_2168.txt
+hist/ramsarid_2169.txt
+hist/ramsarid_2170.txt
+hist/ramsarid_2171.txt
+hist/ramsarid_2172.txt
+hist/ramsarid_2173.txt
+hist/ramsarid_2174.txt
+hist/ramsarid_2175.txt
+hist/ramsarid_2176.txt
+hist/ramsarid_2177.txt
+hist/ramsarid_2178.txt
+hist/ramsarid_2179.txt
+hist/ramsarid_2180.txt
+hist/ramsarid_21.txt
+hist/ramsarid_2260.txt
+hist/ramsarid_2265.txt
+hist/ramsarid_22.txt
+hist/ramsarid_23.txt
+hist/ramsarid_24.txt
+hist/ramsarid_25.txt
+hist/ramsarid_26.txt
+hist/ramsarid_27.txt
+hist/ramsarid_28.txt
+hist/ramsarid_29.txt
+hist/ramsarid_30.txt
+hist/ramsarid_31.txt
+hist/ramsarid_32.txt
+hist/ramsarid_33.txt
+hist/ramsarid_429.txt
+hist/ramsarid_430.txt
+hist/ramsarid_431.txt
+hist/ramsarid_432.txt
+hist/ramsarid_433.txt
+hist/ramsarid_434.txt
+hist/ramsarid_435.txt
+hist/ramsarid_436.txt
+hist/ramsarid_437.txt
+hist/ramsarid_438.txt
+</pre></div></div>
+</div>
+Now we want to add header to each of the text files<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[108]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>class_7/*.txt<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.txt<span class="k">)</span><span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;BEGIN{print &quot;Class Ratio&quot;}1&#39;</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&gt;<span class="w"> </span>head/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>.txt<span class="p">;</span><span class="w"> </span><span class="k">done</span><span class="w"> </span><span class="c1">#The 1 is to indicate to print every line of the file.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+class_7/ramsarid_1113.txt
+class_7/ramsarid_1114.txt
+class_7/ramsarid_1115.txt
+class_7/ramsarid_1116.txt
+class_7/ramsarid_1117.txt
+class_7/ramsarid_1118.txt
+class_7/ramsarid_1119.txt
+class_7/ramsarid_1120.txt
+class_7/ramsarid_1121.txt
+class_7/ramsarid_1122.txt
+class_7/ramsarid_1123.txt
+class_7/ramsarid_1124.txt
+class_7/ramsarid_1125.txt
+class_7/ramsarid_1126.txt
+class_7/ramsarid_1127.txt
+class_7/ramsarid_1128.txt
+class_7/ramsarid_1129.txt
+class_7/ramsarid_1130.txt
+class_7/ramsarid_1131.txt
+class_7/ramsarid_1132.txt
+class_7/ramsarid_1133.txt
+class_7/ramsarid_14.txt
+class_7/ramsarid_15.txt
+class_7/ramsarid_16.txt
+class_7/ramsarid_17.txt
+class_7/ramsarid_18.txt
+class_7/ramsarid_19.txt
+class_7/ramsarid_20.txt
+class_7/ramsarid_2167.txt
+class_7/ramsarid_2168.txt
+class_7/ramsarid_2169.txt
+class_7/ramsarid_2170.txt
+class_7/ramsarid_2171.txt
+class_7/ramsarid_2172.txt
+class_7/ramsarid_2173.txt
+class_7/ramsarid_2174.txt
+class_7/ramsarid_2175.txt
+class_7/ramsarid_2176.txt
+class_7/ramsarid_2177.txt
+class_7/ramsarid_2178.txt
+class_7/ramsarid_2179.txt
+class_7/ramsarid_2180.txt
+class_7/ramsarid_21.txt
+class_7/ramsarid_2260.txt
+class_7/ramsarid_2265.txt
+class_7/ramsarid_22.txt
+class_7/ramsarid_23.txt
+class_7/ramsarid_24.txt
+class_7/ramsarid_25.txt
+class_7/ramsarid_26.txt
+class_7/ramsarid_27.txt
+class_7/ramsarid_28.txt
+class_7/ramsarid_29.txt
+class_7/ramsarid_30.txt
+class_7/ramsarid_31.txt
+class_7/ramsarid_32.txt
+class_7/ramsarid_33.txt
+class_7/ramsarid_429.txt
+class_7/ramsarid_430.txt
+class_7/ramsarid_431.txt
+class_7/ramsarid_432.txt
+class_7/ramsarid_433.txt
+class_7/ramsarid_434.txt
+class_7/ramsarid_435.txt
+class_7/ramsarid_436.txt
+class_7/ramsarid_437.txt
+class_7/ramsarid_438.txt
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[76]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">matplotlib</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Collecting matplotlib
+  Downloading matplotlib-3.4.2-cp38-cp38-manylinux1_x86_64.whl (10.3 MB)
+     |████████████████████████████████| 10.3 MB 7.9 MB/s eta 0:00:01
+Collecting pillow&gt;=6.2.0
+  Downloading Pillow-8.2.0-cp38-cp38-manylinux1_x86_64.whl (3.0 MB)
+     |████████████████████████████████| 3.0 MB 17.5 MB/s eta 0:00:01
+Requirement already satisfied: numpy&gt;=1.16 in /home/user/miniconda3/lib/python3.8/site-packages (from matplotlib) (1.20.1)
+Collecting cycler&gt;=0.10
+  Downloading cycler-0.10.0-py2.py3-none-any.whl (6.5 kB)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /home/user/miniconda3/lib/python3.8/site-packages (from matplotlib) (2.8.1)
+Collecting kiwisolver&gt;=1.0.1
+  Downloading kiwisolver-1.3.1-cp38-cp38-manylinux1_x86_64.whl (1.2 MB)
+     |████████████████████████████████| 1.2 MB 54.3 MB/s eta 0:00:01
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /home/user/miniconda3/lib/python3.8/site-packages (from matplotlib) (2.4.7)
+Requirement already satisfied: six in /home/user/miniconda3/lib/python3.8/site-packages (from cycler&gt;=0.10-&gt;matplotlib) (1.15.0)
+Installing collected packages: pillow, cycler, kiwisolver, matplotlib
+Successfully installed cycler-0.10.0 kiwisolver-1.3.1 matplotlib-3.4.2 pillow-8.2.0
+Note: you may need to restart the kernel to use updated packages.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[110]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+
+<span class="n">file_location</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s1">&#39;class_7&#39;</span><span class="p">,</span> <span class="s1">&#39;*.txt&#39;</span><span class="p">)</span>
+<span class="n">filenames</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">file_location</span><span class="p">)</span>
+
+
+<span class="n">class_</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Forest not on wetland&#39;</span><span class="p">,</span> <span class="s1">&#39;Forest on wetland&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Open wetland&#39;</span><span class="p">,</span><span class="s1">&#39;Arable land&#39;</span><span class="p">,</span> <span class="s1">&#39;Other openland&#39;</span><span class="p">,</span> <span class="s1">&#39;Artificial surfaces&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Water&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filenames</span><span class="p">:</span>
+    <span class="n">ratio</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="n">outfile</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">outfile</span><span class="p">:</span>
+            <span class="n">Data</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+            <span class="n">New_Data</span><span class="o">=</span> <span class="p">[</span> <span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">Data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">()]</span>
+            <span class="n">ratio</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">New_Data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">outfile</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+    <span class="n">file_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="n">file_name</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">ratio</span> <span class="o">=</span> <span class="p">[</span><span class="nb">float</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ratio</span><span class="p">]</span>
+    <span class="c1">#print(ratio)</span>
+    <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;lime&#39;</span><span class="p">,</span> <span class="s1">&#39;mediumpurple&#39;</span><span class="p">,</span> <span class="s1">&#39;khaki&#39;</span><span class="p">,</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+    <span class="n">explode</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">]</span>
+    <span class="c1"># plotting pie chart</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">my_autopct</span><span class="p">(</span><span class="n">pct</span><span class="p">):</span>
+        <span class="k">return</span> <span class="p">(</span><span class="s1">&#39;</span><span class="si">%.2f%%</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">pct</span><span class="p">)</span> <span class="k">if</span> <span class="n">pct</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="s1">&#39;&#39;</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">pie</span><span class="p">(</span><span class="n">ratio</span><span class="p">,</span> <span class="n">colors</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span> <span class="n">startangle</span> <span class="o">=</span> <span class="mi">90</span><span class="p">,</span> <span class="n">explode</span> <span class="o">=</span> <span class="n">explode</span><span class="p">,</span>
+                     <span class="n">shadow</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">autopct</span><span class="o">=</span><span class="n">my_autopct</span> <span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="n">file_name</span><span class="p">,</span>  <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+    <span class="n">ratio_r</span> <span class="o">=</span>  <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">ratio</span><span class="p">]</span>
+    <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">{0}</span><span class="s1"> - </span><span class="si">{1}</span><span class="s1"> %&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">class_</span><span class="p">,</span><span class="n">ratio_r</span><span class="p">)]</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span> <span class="n">labels</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.15</span><span class="p">,</span> <span class="o">-</span><span class="mf">.15</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+    <span class="c1">#plt.tight_layout()</span>
+    <span class="n">file_name_ext</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">file_name</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="s2">&quot;.png&quot;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">file_name_ext</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;png&quot;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1113
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_1.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1114
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_3.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_3.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1115
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_5.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_5.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1116
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_7.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_7.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1117
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_9.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_9.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1118
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_11.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_11.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1119
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_13.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_13.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1120
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_15.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_15.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1121
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_17.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_17.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1122
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_19.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_19.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1123
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_21.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_21.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1124
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_23.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_23.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1125
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_25.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_25.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1126
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_27.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_27.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1127
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_29.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_29.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1128
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_31.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_31.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1129
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_33.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_33.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1130
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_35.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_35.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1131
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_37.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_37.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1132
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_39.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_39.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_1133
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_41.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_41.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_14
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_43.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_43.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_15
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_45.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_45.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_16
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_47.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_47.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_17
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_49.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_49.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_18
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_51.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_51.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_19
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_53.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_53.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_20
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_55.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_55.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_21
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_57.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_57.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2167
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_59.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_59.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2168
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_61.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_61.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2169
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_63.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_63.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2170
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_65.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_65.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2171
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_67.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_67.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2172
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_69.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_69.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2173
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_71.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_71.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2174
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_73.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_73.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2175
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_75.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_75.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2176
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_77.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_77.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2177
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_79.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_79.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2178
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_81.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_81.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2179
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_83.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_83.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2180
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_85.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_85.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_22
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_87.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_87.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2260
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_89.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_89.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_2265
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_91.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_91.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_23
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_93.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_93.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_24
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_95.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_95.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_25
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_97.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_97.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_26
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_99.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_99.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_27
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_101.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_101.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_28
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_103.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_103.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_29
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_105.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_105.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_30
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_107.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_107.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_31
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_109.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_109.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_32
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_111.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_111.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_33
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_113.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_113.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_429
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_115.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_115.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_430
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_117.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_117.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_431
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_119.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_119.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_432
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_121.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_121.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_433
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_123.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_123.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_434
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_125.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_125.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_435
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_127.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_127.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_436
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_129.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_129.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_437
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_131.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_131.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ramsarid_438
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_133.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Farzad_VahidiMayamey_sw2021_a_17_133.png" />
+</div>
+</div>
+</section>
+<section id="Open-water-and-flooded-vegetation-extraction">
+<h2><span class="section-number">1.1.2. </span>Open water and flooded vegetation extraction<a class="headerlink" href="#Open-water-and-flooded-vegetation-extraction" title="Link to this heading"></a></h2>
+<section id="Open-water-extraction">
+<h3><span class="section-number">1.1.2.1. </span>Open water extraction<a class="headerlink" href="#Open-water-extraction" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Layers: SAR intensity sentinel-1 image.</p></li>
+</ul>
+<p><img alt="3227980b92814cce84b01b7aa3367c28" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_4.png" style="width: 400px;" /></p>
+<p>data source: <a class="reference external" href="https://code.earthengine.google.com">Google Earth Engine</a></p>
+<p>we use thresholding method to extract open water from S1 layer</p>
+<p>First we move all layers to the crs: EPSG:4326</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[109]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>--force<span class="w"> </span>layers_reprj/*.tif
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="w"> </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span><span class="p">;</span>
+gdalwarp<span class="w"> </span>-ot<span class="w"> </span><span class="s2">&quot;Float32&quot;</span><span class="w"> </span>-t_srs<span class="w"> </span>EPSG:4326<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>layers_reprj/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_reprj.tif<span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+layers/coherence.tif
+Creating output file that is 15046P x 4166L.
+Processing layers/coherence.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/coherence.tif.
+Copying nodata values from source layers/coherence.tif to destination layers_reprj/coherence_reprj.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/S2.tif
+Creating output file that is 3119P x 1352L.
+Processing layers/S2.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/S2.tif.
+Copying nodata values from source layers/S2.tif to destination layers_reprj/S2_reprj.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/SAR_VH.tif
+Creating output file that is 3119P x 1352L.
+Processing layers/SAR_VH.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/SAR_VH.tif.
+Copying nodata values from source layers/SAR_VH.tif to destination layers_reprj/SAR_VH_reprj.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/slope.tif
+Creating output file that is 1040P x 452L.
+Processing layers/slope.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/slope.tif.
+Copying nodata values from source layers/slope.tif to destination layers_reprj/slope_reprj.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[111]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1">#applying nodata value equal to zero</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span>
+gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span><span class="nv">$file</span><span class="p">;</span><span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+layers/coherence.tif
+layers/S2.tif
+layers/SAR_VH.tif
+layers/slope.tif
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>--force<span class="w"> </span>crop/*.tif
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>layers/*.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="nv">$file</span><span class="p">;</span>
+<span class="w">  </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="k">)</span>
+<span class="w">  </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-te<span class="w"> </span><span class="m">14</span>.6714649<span class="w"> </span><span class="m">58</span>.2914991<span class="w"> </span><span class="m">14</span>.9516494<span class="w"> </span><span class="m">58</span>.4129513<span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.000269494585236<span class="w"> </span>-0.000269494585236<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>crop/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+layers/coherence.tif
+Creating output file that is 1040P x 451L.
+Processing layers/coherence.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/coherence.tif.
+Copying nodata values from source layers/coherence.tif to destination crop/coherence_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/S2.tif
+Creating output file that is 1040P x 451L.
+Processing layers/S2.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/S2.tif.
+Copying nodata values from source layers/S2.tif to destination crop/S2_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/SAR_VH.tif
+Creating output file that is 1040P x 451L.
+Processing layers/SAR_VH.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/SAR_VH.tif.
+Copying nodata values from source layers/SAR_VH.tif to destination crop/SAR_VH_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+layers/slope.tif
+Creating output file that is 1040P x 451L.
+Processing layers/slope.tif [1/1] : 0Using internal nodata values (e.g. -3.4e+38) for image layers/slope.tif.
+Copying nodata values from source layers/slope.tif to destination crop/slope_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>we maskout values greater than <strong>-23</strong></p>
+<p><img alt="ca950a8143724141925b7119e99c1c68" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_5.png" style="width: 400px;" /></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+pkgetmask<span class="w"> </span>-max<span class="w"> </span>-23<span class="w"> </span>-data<span class="w"> </span><span class="m">2</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-i<span class="w"> </span>crop/SAR_VH_crop.tif<span class="w"> </span>-o<span class="w"> </span>crop/water.tif<span class="p">;</span>
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/water.tif<span class="w">  </span>crop/wat.tif<span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Flooded-vegetation-extraction-by-using-unsupervised-Kmean-classification">
+<h3><span class="section-number">1.1.2.2. </span>Flooded vegetation extraction by using unsupervised Kmean classification<a class="headerlink" href="#Flooded-vegetation-extraction-by-using-unsupervised-Kmean-classification" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Layers: 1. Coherence layer ( left picture) 2. slope layer (generated from SRTM DEM (right picture)</p></li>
+</ul>
+<p><img alt="5f2c516556f14acd9e4fb2a1e26a8bfd" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_6.png" style="width: 400px;" /> <img alt="bdc5614cb6d6401c993c8f819eeaa3a6" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_7.png" style="width: 400px;" /></p>
+<p>orfeo kmean clustering toolbox could not handle <strong>nan</strong> values and alsso give us warning for <strong>nodatavalue=-3.39999995214436425e+38</strong> by the following code we solve this two problems</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[142]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1">#crop the coherence, SAR, and slope .tif files by our wetland shape of interest to exclude the nan values</span>
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span>-dstnodata<span class="w"> </span>-999<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/slope_crop.tif<span class="w">  </span>crop/slope_crop_ready.tif<span class="p">;</span>
+gdalwarp<span class="w"> </span>-crop_to_cutline<span class="w"> </span>-overwrite<span class="w"> </span>-srcnodata<span class="w"> </span>-3.39999995214436425e+38<span class="w"> </span>-dstnodata<span class="w"> </span>-999<span class="w"> </span>-cutline<span class="w"> </span>rms/ramsarid_23.gpkg<span class="w"> </span>crop/coherence_crop.tif<span class="w">  </span>crop/coherence_crop_ready.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating output file that is 792P x 254L.
+Processing crop/slope_crop.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 792P x 254L.
+Processing crop/coherence_crop.tif [1/1] : 0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>We want to build stack of 2 layers before doing unsupervised classification: <strong>SAR coherence</strong> and <strong>SRTM DEM</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[143]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># stck the tif</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>crop/stack.vrt<span class="w"> </span>crop/coherence_crop_ready.tif<span class="w"> </span>crop/slope_crop_ready.tif
+gdalinfo<span class="w"> </span>-mm<span class="w"> </span>crop/stack.vrt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Driver: VRT/Virtual Raster
+Files: crop/stack.vrt
+       crop/coherence_crop_ready.tif
+       crop/slope_crop_ready.tif
+Size is 792, 254
+Coordinate System is:
+GEOGCS[&#34;WGS 84&#34;,
+    DATUM[&#34;WGS_1984&#34;,
+        SPHEROID[&#34;WGS 84&#34;,6378137,298.257223563,
+            AUTHORITY[&#34;EPSG&#34;,&#34;7030&#34;]],
+        AUTHORITY[&#34;EPSG&#34;,&#34;6326&#34;]],
+    PRIMEM[&#34;Greenwich&#34;,0],
+    UNIT[&#34;degree&#34;,0.0174532925199433],
+    AUTHORITY[&#34;EPSG&#34;,&#34;4326&#34;]]
+Origin = (14.707577174421624,58.387888303573057)
+Pixel Size = (0.000269494585236,-0.000269494585236)
+Corner Coordinates:
+Upper Left  (  14.7075772,  58.3878883) ( 14d42&#39;27.28&#34;E, 58d23&#39;16.40&#34;N)
+Lower Left  (  14.7075772,  58.3194367) ( 14d42&#39;27.28&#34;E, 58d19&#39; 9.97&#34;N)
+Upper Right (  14.9210169,  58.3878883) ( 14d55&#39;15.66&#34;E, 58d23&#39;16.40&#34;N)
+Lower Right (  14.9210169,  58.3194367) ( 14d55&#39;15.66&#34;E, 58d19&#39; 9.97&#34;N)
+Center      (  14.8142970,  58.3536625) ( 14d48&#39;51.47&#34;E, 58d21&#39;13.18&#34;N)
+Band 1 Block=128x128 Type=Float32, ColorInterp=Undefined
+    Computed Min/Max=0.000,0.741
+  NoData Value=-999
+Band 2 Block=128x128 Type=Float32, ColorInterp=Undefined
+    Computed Min/Max=0.000,15.575
+  NoData Value=-999
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[150]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># unsupervised classification</span>
+~/OTB/superbuild_install/bin/otbcli_KMeansClassification<span class="w"> </span>-in<span class="w"> </span>crop/stack.vrt<span class="w"> </span>-ts<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-nc<span class="w"> </span><span class="m">15</span><span class="w"> </span>-maxit<span class="w"> </span><span class="m">1000</span><span class="w"> </span>-out<span class="w"> </span>crop/ClassificationFilterOutput.tif<span class="w"> </span>uint8
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2021-06-02 21:53:21 (INFO) KMeansClassification: Default RAM limit for OTB is 256 MB
+2021-06-02 21:53:21 (INFO) KMeansClassification: GDAL maximum cache size is 398 MB
+2021-06-02 21:53:21 (INFO) KMeansClassification: OTB will use at most 2 threads
+2021-06-02 21:53:21 (INFO) KMeansClassification: Elevation management: setting default height above ellipsoid to 0 meters
+ (0s)
+2021-06-02 21:53:21 (INFO) KMeansClassification: add field in the layer ...
+2021-06-02 21:53:21 (INFO) KMeansClassification: Polygon Class Statistics...
+2021-06-02 21:53:21 (INFO) KMeansClassification: Elevation management: setting default height above ellipsoid to 0 meters
+2021-06-02 21:53:21 (INFO): Estimated memory for full processing: 2.99329MB (avail.: 256 MB), optimal image partitioning: 1 blocks
+2021-06-02 21:53:21 (INFO): Estimation will be performed in 1 blocks of 792x254 pixels
+Analyze polygons...: 100% [**************************************************] (0s)
+2021-06-02 21:53:21 (INFO) KMeansClassification: 1000 is the maximum sample size that will be used.
+
+2021-06-02 21:53:21 (INFO) KMeansClassification: Sample selection...
+2021-06-02 21:53:21 (INFO) KMeansClassification: Elevation management: setting default height above ellipsoid to 0 meters
+2021-06-02 21:53:21 (INFO) KMeansClassification: Sampling strategy : set a constant number of samples for all classes
+2021-06-02 21:53:21 (INFO) KMeansClassification: Sampling rates :  className  requiredSamples  totalSamples  rate
+0       1000    201168  0.00497097
+
+2021-06-02 21:53:21 (INFO): Estimated memory for full processing: 2.99329MB (avail.: 256 MB), optimal image partitioning: 1 blocks
+2021-06-02 21:53:21 (INFO): Estimation will be performed in 2 blocks of 448x254 pixels
+Selecting positions with periodic sampler...: 100% [**************************************************] (0s)
+2021-06-02 21:53:22 (INFO): Estimated memory for full processing: 4.52808MB (avail.: 256 MB), optimal image partitioning: 1 blocks
+2021-06-02 21:53:22 (INFO): Estimation will be performed in 1 blocks of 792x254 pixels
+Extracting sample values...: 100% [**************************************************] (0s)
+2021-06-02 21:53:22 (INFO) KMeansClassification: Compute Images second order statistics...
+2021-06-02 21:53:22 (INFO): Estimated memory for full processing: 4.52808MB (avail.: 256 MB), optimal image partitioning: 1 blocks
+2021-06-02 21:53:22 (INFO): Estimation will be performed in 1 blocks of 792x254 pixels
+Processing Image (1/1): 100% [**************************************************] (0s)
+2021-06-02 21:53:22 (INFO) KMeansClassification: image statistics file: crop/ClassificationFilterOutput.tif_imgstats.xml
+2021-06-02 21:53:22 (INFO) KMeansClassification: Model training...
+2021-06-02 21:53:22 (INFO) KMeansClassification: Reading vector file 1/1
+2021-06-02 21:53:22 (INFO) KMeansClassification: Computing model file : crop/ClassificationFilterOutput.tif_model.txt
+Training model...: 100% [**************************************************] (0s)
+Validation...: 100% [**************************************************] (0s)
+2021-06-02 21:53:22 (INFO) KMeansClassification: Training performances:
+2021-06-02 21:53:22 (INFO) KMeansClassification: Contingency table: reference labels (rows) vs. produced labels (cols)
+ContingencyTableCalculator (0x558686a52230)
+ labels      0      1      2      3      4      5      6      7      8      9     10     11     12     13     14
+      0    437     64     21     16     43     59     58     59     70     31     41     26      9     51     15
+
+2021-06-02 21:53:22 (INFO) KMeansClassification: output model: crop/ClassificationFilterOutput.tif_model.txt
+2021-06-02 21:53:22 (INFO) KMeansClassification: Performs a classification of the input image...
+2021-06-02 21:53:22 (INFO) KMeansClassification: Loading model
+2021-06-02 21:53:22 (INFO) KMeansClassification: Model loaded
+2021-06-02 21:53:22 (INFO) KMeansClassification: Input image normalization activated.
+2021-06-02 21:53:22 (INFO) KMeansClassification: mean used: [-430.072, -429.681]
+2021-06-02 21:53:22 (INFO) KMeansClassification: standard deviation used: [494.746, 495.087]
+2021-06-02 21:53:22 (INFO) KMeansClassification: Final clean-up ...
+2021-06-02 21:53:23 (INFO): Estimated memory for full processing: 8.81551MB (avail.: 256 MB), optimal image partitioning: 1 blocks
+2021-06-02 21:53:23 (INFO): File crop/ClassificationFilterOutput.tif will be written in 1 blocks of 792x254 pixels
+Writing crop/ClassificationFilterOutput.tif...: 100% [**************************************************] (0s)
+</pre></div></div>
+</div>
+<p>In the following code we select the cluster with highest coherence <strong>(cluster n. 12)</strong></p>
+<p><img alt="ddb28895e70943bca8f9cb510292d0ba" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_8.png" style="width: 400px;" /> <img alt="3e337b5e01444eb084b284601b4ce8d0" class="no-scaled-link" src="../../_images/Farzad_VahidiMayamey_sw2021_9.png" style="width: 400px;" /></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[138]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+pkgetmask<span class="w"> </span>-max<span class="w"> </span><span class="m">12</span><span class="w"> </span>-min<span class="w"> </span><span class="m">12</span><span class="w"> </span>-data<span class="w"> </span><span class="m">1</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>-i<span class="w"> </span>crop/ClassificationFilterOutput.tif<span class="w"> </span>-o<span class="w"> </span>crop/veg.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p>Now we want to calculate number of water pixels and flooded Vegetation</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[151]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1">#convert .tif to .txt</span>
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>XYZ<span class="w"> </span>crop/wat.tif<span class="w"> </span>crop/wat.txt
+gdal_translate<span class="w"> </span>-of<span class="w"> </span>XYZ<span class="w"> </span>crop/veg.tif<span class="w"> </span>crop/veg.txt
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 792, 254
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 792, 254
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1">#calculating number of pixels</span>
+awk<span class="w"> </span><span class="s1">&#39;{print$3}&#39;</span><span class="w"> </span>crop/wat.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&gt;<span class="w"> </span>crop/final.txt<span class="p">;</span>
+awk<span class="w"> </span><span class="s1">&#39;{print$3}&#39;</span><span class="w"> </span>crop/veg.txt<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="w"> </span>&gt;&gt;<span class="w"> </span>crop/final.txt<span class="p">;</span>
+cat<span class="w"> </span>crop/final.txt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+58524
+1220
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[155]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>jupyter<span class="w"> </span>nbconvert<span class="w"> </span>my_project.ipynb<span class="w"> </span>--to<span class="w"> </span>html
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[NbConvertApp] Converting notebook my_project.ipynb to html
+[NbConvertApp] Writing 2321636 bytes to my_project.html
+</pre></div></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="1. 2021 SWEDEN" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Farzad_VahidiMayamey_sw2021_b.html" class="btn btn-neutral float-right" title="1.2. Compiling OTB from source" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

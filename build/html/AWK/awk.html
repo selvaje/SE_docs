@@ -1,0 +1,860 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AWK Tutorial &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../GDAL/index.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">AWK Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#The-AWK-syntax">The AWK syntax</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Columns-and-rows">Columns and rows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#BEGIN-and-END">BEGIN and END</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Pipe">Pipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Bash-variables-in-AWK">Bash variables in AWK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#AWK-Operations">AWK Operations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Query-a-dataset-on-the-basis-of-the-header-name">Query a dataset on the basis of the header name</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Subset-a-limited-number-of-column-headers-and-query-the-dataset-on-the-basis-of-the-header-subset-selection">Subset a limited number of column headers and query the dataset on the basis of the header subset selection</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">AWK Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/AWK/awk.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="AWK-Tutorial">
+<h1>AWK Tutorial<a class="headerlink" href="#AWK-Tutorial" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<p><a class="reference external" href="https://youtu.be/gCQ33jknzZY">Recorded lecture: 41:30 - 1:24:50</a></p>
+<hr class="docutils" />
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/AWK">AWK</a> language is a data-driven scripting language, created at Bell Labs in the 1970s. It consists of a set of actions to be taken against streams of textual data.</p>
+<section id="The-AWK-syntax">
+<h2>The AWK syntax<a class="headerlink" href="#The-AWK-syntax" title="Link to this heading"></a></h2>
+<p>The awk syntax is:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;[pattern] {action} [pattern]&#39; input.txt &gt; output.txt
+</pre></div>
+</div>
+<p>The awk line is always placed between single-quotation (’) and not back-quotation (`).</p>
+<p>The awk structure is composed of patterns and actions.</p>
+<ul class="simple">
+<li><p>The [pattern] (optional feature) can be:</p>
+<ul>
+<li><p>BEGIN {action} (actions computed before reading the input).</p></li>
+<li><p>The main action ({action}) is computed by reading the input line by line. The actions include commands and operations.</p></li>
+<li><p>END {action} (actions computed at the end of the input).</p></li>
+</ul>
+</li>
+</ul>
+<p>Therefore the full awk syntax can be represented in this way:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;BEGIN {action} {action} END {action}&#39; input.txt &gt; output.txt
+</pre></div>
+</div>
+<p>in practice you can read it as:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>awk &#39;BEGIN {action before the input.txt reading } {action during the input.txt reading} END {action after the input.txt reading}&#39; input.txt &gt; output.txt
+</pre></div>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gsim.no</p></th>
+<th class="head"><p>latitude</p></th>
+<th class="head"><p>longitude</p></th>
+<th class="head"><p>MEAN</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>US_0001971</p></td>
+<td><p>33.79427255</p></td>
+<td><p>-84.4743747</p></td>
+<td><p>0.916785714285714</p></td>
+</tr>
+<tr class="row-odd"><td><p>US_0001977</p></td>
+<td><p>33.65666667</p></td>
+<td><p>-84.6736111</p></td>
+<td><p>74.5558064516129</p></td>
+</tr>
+</tbody>
+</table>
+<p>Open the awk.ipynb to follow the explanation</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /media/sf_LVM_shared/my_SE_data/exercise
+jupyter-notebook awk.ipynb
+</pre></div>
+</div>
+</section>
+<section id="Columns-and-rows">
+<h2>Columns and rows<a class="headerlink" href="#Columns-and-rows" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+head<span class="w"> </span>txt/aver_month_nuts3_fire.asc
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;--------&quot;</span>
+
+awk<span class="w"> </span><span class="s1">&#39;{print $2,$5}&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span><span class="c1"># print the columns 1 and 2</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;--------&quot;</span>
+
+awk<span class="w">  </span><span class="s1">&#39;{ print NF }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10<span class="w">     </span><span class="c1"># print number of column # very usefull to check if all the row have the same number of columns</span>
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;--------&quot;</span>
+
+awk<span class="w">  </span><span class="s1">&#39;{ print NR }&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w">  </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-10<span class="w">     </span><span class="c1"># print number of row # very usefull to ad ID column e.g. awk  &#39;{ print NR , $0 }&#39; ${fIn}</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS YYYY MM 0 BAREA
+BG311 2005 04 2 0.282594
+BG311 2006 11 2 0.600812
+BG311 2007 01 3 65.8331
+BG311 2007 02 3 9.78246
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2005 04 3 10.6419
+BG312 2006 10 2 0.293182
+--------
+YYYY BAREA
+2005 0.282594
+2006 0.600812
+2007 65.8331
+2007 9.78246
+2007 44.4997
+2007 30.5861
+2007 5534.21
+2005 10.6419
+2006 0.293182
+--------
+5
+5
+5
+5
+5
+5
+5
+5
+5
+5
+--------
+53459
+53460
+53461
+53462
+53463
+53464
+53465
+53466
+53467
+53468
+</pre></div></div>
+</div>
+</section>
+<section id="BEGIN-and-END">
+<h2>BEGIN and END<a class="headerlink" href="#BEGIN-and-END" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;BEGIN { print &quot;sum&quot; } { sum += $5 } END {printf ( &quot;%f\n&quot;, sum)}&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+sum
+11467947.039565
+</pre></div></div>
+</div>
+</section>
+<section id="Pipe">
+<h2>Pipe<a class="headerlink" href="#Pipe" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+awk<span class="w">  </span><span class="s1">&#39;{ print $5 }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc<span class="w">  </span><span class="p">|</span><span class="w">  </span>sort<span class="w"> </span>-k<span class="w"> </span><span class="m">1</span>,1<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.0005158
+0.000521008
+0.000522439
+0.000552927
+0.000556051
+0.000558328
+0.000578183
+0.000581179
+0.000603623
+0.000604238
+</pre></div></div>
+</div>
+</section>
+<section id="Bash-variables-in-AWK">
+<h2>Bash variables in AWK<a class="headerlink" href="#Bash-variables-in-AWK" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span><span class="o">((</span><span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i&lt;<span class="o">=</span><span class="m">4</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>i++<span class="w">  </span><span class="o">))</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+awk<span class="w">  </span>-v<span class="w"> </span><span class="nv">i</span><span class="o">=</span><span class="nv">$i</span><span class="w">  </span><span class="s1">&#39;{ print $i }&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-3
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;---&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS
+BG311
+BG311
+---
+YYYY
+2005
+2006
+---
+MM
+04
+11
+---
+0
+2
+2
+---
+</pre></div></div>
+</div>
+</section>
+<section id="AWK-Operations">
+<h2>AWK Operations<a class="headerlink" href="#AWK-Operations" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;NR&gt;1{ print log($5) }&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+-1.26374
+-0.509473
+4.18712
+2.28059
+3.79548
+3.42055
+8.6187
+2.3648
+-1.22696
+4.52247
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;{ print substr($1,1,4) }&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-3
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS
+BG31
+BG31
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;{ if($3&gt;2) print }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+NUTS YYYY MM 0 BAREA
+BG311 2005 04 2 0.282594
+BG311 2006 11 2 0.600812
+BG311 2007 04 2 44.4997
+BG311 2007 06 2 30.5861
+BG311 2007 07 2 5534.21
+BG312 2005 04 3 10.6419
+BG312 2006 10 2 0.293182
+BG312 2006 11 5 92.0624
+BG312 2006 12 3 29.1471
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;NR==1 { print &quot;index &quot;$0 } NR&gt;1 { print NR-1,$0 }&#39;</span><span class="w"> </span>txt/aver_month_nuts3_fire.asc<span class="w"> </span><span class="p">|</span><span class="w"> </span>head
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+index NUTS YYYY MM 0 BAREA
+1 BG311 2005 04 2 0.282594
+2 BG311 2006 11 2 0.600812
+3 BG311 2007 01 3 65.8331
+4 BG311 2007 02 3 9.78246
+5 BG311 2007 04 2 44.4997
+6 BG311 2007 06 2 30.5861
+7 BG311 2007 07 2 5534.21
+8 BG312 2005 04 3 10.6419
+9 BG312 2006 10 2 0.293182
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ if (NR&gt;1) {if ($4&gt;max) max= $4 }} END {print max }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3211
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ if($3==7) sum=sum+$5} END {printf (&quot;%f&quot;,sum) }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2789009.889985
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ if($3==7 &amp;&amp; $2==2005  ) sum=sum+$5} END {print sum }&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+122835
+</pre></div></div>
+</div>
+<p>Query operation for file management If we want to count files in a folder tmp of size bigger than 1Mb we can concatenate 3 functions piping each output as input for the next functiont</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/tmp/<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{s=$5; if(s&gt;1000000){print$0}}&#39;</span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+5
+</pre></div></div>
+</div>
+<p>Split a large file into small files of 100 lines each</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w">  </span><span class="s1">&#39;NR%1000==1{x=&quot;blockfile&quot;++i ; }{print &gt; x}&#39;</span><span class="w">  </span>txt/aver_month_nuts3_fire.asc
+<span class="o">!</span><span class="w"> </span>mv<span class="w"> </span>blockfile*<span class="w"> </span>./txt
+</pre></div>
+</div>
+</div>
+</section>
+<section id="Query-a-dataset-on-the-basis-of-the-header-name">
+<h2>Query a dataset on the basis of the header name<a class="headerlink" href="#Query-a-dataset-on-the-basis-of-the-header-name" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="nv">fOut</span><span class="o">=</span><span class="s2">&quot;./txt/test.csv&quot;</span>
+<span class="nb">echo</span><span class="w"> </span>ID,column_1,colum_b,colum_c,TOTAL<span class="w"> </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">1</span>,3,5,6,14<span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">2</span>,5,4,6,15<span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">3</span>,8,4,6,18<span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="s2">&quot;./txt/test.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ID,column_1,colum_b,colum_c,TOTAL
+1,3,5,6,14
+2,5,4,6,15
+3,8,4,6,18
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>COLNAME<span class="w"> </span><span class="k">in</span><span class="w">  </span>colum_b<span class="w"> </span>TOTAL<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+awk<span class="w"> </span>-F,<span class="w"> </span>-v<span class="w"> </span><span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span><span class="w"> </span><span class="s1">&#39;{ if (NR==1) {for (col=1;col&lt;=NF;col++) {if ($col==COLNAME) {colprint=col}}} else  {print $1 &quot;,&quot; $colprint }}&#39;</span><span class="w"> </span>./txt/test.csv
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;---&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1,5
+2,4
+3,4
+---
+1,14
+2,15
+3,18
+---
+</pre></div></div>
+</div>
+</section>
+<section id="Subset-a-limited-number-of-column-headers-and-query-the-dataset-on-the-basis-of-the-header-subset-selection">
+<h2>Subset a limited number of column headers and query the dataset on the basis of the header subset selection<a class="headerlink" href="#Subset-a-limited-number-of-column-headers-and-query-the-dataset-on-the-basis-of-the-header-subset-selection" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="nv">fOut</span><span class="o">=</span><span class="s2">&quot;./txt/test.csv&quot;</span>
+seq<span class="w"> </span>-s<span class="w"> </span><span class="se">\,</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">100</span><span class="w">  </span>&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+seq<span class="w"> </span>-s<span class="w"> </span><span class="se">\,</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="m">2000</span><span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+seq<span class="w"> </span>-s<span class="w"> </span><span class="se">\,</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="m">20000</span><span class="w">  </span>&gt;&gt;<span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+awk<span class="w"> </span>-F,<span class="w">  </span><span class="s1">&#39; { print NF }&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-10
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;----&quot;</span>
+awk<span class="w"> </span>-F,<span class="w">  </span><span class="s1">&#39; { print NR }&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">fOut</span><span class="si">}</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+100
+100
+100
+----
+1
+2
+3
+</pre></div></div>
+</div>
+<p>We would like to select the first 5, the 25th and the 90th to the 94th colums from the total 100 colums (Fields in AWK) in our dataset. We redirect the list of the selection in a “listofcolumns.csv” file</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>awk<span class="w"> </span>-F,<span class="w"> </span><span class="s1">&#39; { for(i=1;i&lt;6; i++) if(NR==1) printf(&quot;%s&quot;,$i&quot; &quot;) ; if(NR==1)  printf(&quot;%s&quot;,$25&quot; &quot;) ; for(i=90;i&lt;95; i++) if(NR==1) printf(&quot;%s&quot;,&quot; &quot;$i  )   }&#39;</span><span class="w"> </span>./txt/test.csv<span class="w">  </span>&gt;<span class="w"> </span>./txt/list_of_columns.csv
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>cat<span class="w"> </span>./txt/list_of_columns.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1 2 3 4 5 25  90 91 92 93 94
+</pre></div></div>
+</div>
+<p>Finally we carry out a query of the original dataset on the basis of the columns previously selected.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>COLNAME<span class="w"> </span><span class="k">in</span><span class="w">  </span><span class="k">$(</span>cat<span class="w"> </span>./txt/list_of_columns.csv<span class="k">)</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="nb">echo</span><span class="w"> </span><span class="nv">$COLNAME</span>
+awk<span class="w"> </span>-F,<span class="w"> </span>-v<span class="w"> </span><span class="nv">COLNAME</span><span class="o">=</span><span class="nv">$COLNAME</span><span class="w"> </span><span class="s1">&#39; { if (NR==1)  { for (col=1;col&lt;=NF;col++) { if ($col==COLNAME) {colprint=col}}}  else  {print $1 &quot;,&quot; $colprint }} &#39;</span><span class="w"> </span>./txt/test.csv<span class="w"> </span>&gt;<span class="w"> </span>./txt/OUTPUT_subset_<span class="nv">$COLNAME</span>.csv
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+2
+3
+4
+5
+25
+90
+91
+92
+93
+94
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+head<span class="w"> </span>./txt/OUTPUT_subset_1.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2,2
+2,2
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+head<span class="w"> </span>./txt/OUTPUT_subset_2.csv
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+2,22
+2,202
+</pre></div></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../GDAL/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

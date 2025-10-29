@@ -1,0 +1,867 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>1.8. Seasonal Analisis of discharges in the Mälaren catchement. &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="1.9. Mapping of soil organic carbon stocks with Random Forest" href="Julia_Wagner_Geocomputation.html" />
+    <link rel="prev" title="1.7. pan-Arctic classified slope and aspect maps (Geo computation only)" href="Hamm_Alexandra_final_project.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Farzad_VahidiMayamey_sw2021_a.html">1.1. Calculating landcover distribution &amp; vegetation extraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Farzad_VahidiMayamey_sw2021_b.html">1.2. Compiling OTB from source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alejandro_Uribe_Geo_comp_pro_AU.html">1.3. Observed and simulated internal variability climate feedbacks comparison.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Alexandra_Pongr%C3%A1cz_project_idea.html">1.4. Statistical comparison global gridded climate datasets and their influence on LPJ-GUESS model outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Carlos_G%C3%B3mez-Ortiz_GeocomputationProject.html">1.5. Emulating FLEXPART with a Multi-Layer Perceptron</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Felicity_Alice_Holmes_Geocomp_project.html">1.6. Processing Elmer/Ice output</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Hamm_Alexandra_final_project.html">1.7. pan-Arctic classified slope and aspect maps (Geo computation only)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1.8. Seasonal Analisis of discharges in the Mälaren catchement.</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Find-ID's-for-all-the-Mälaren's-Catchement-sub-catchements.">1.8.1. Find ID’s for all the Mälaren’s Catchement sub-catchements.</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#Conclusion">1.8.1.1. Conclusion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Julia_Wagner_Geocomputation.html">1.9. Mapping of soil organic carbon stocks with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Kap%C3%A1s_Roz%C3%A1lia_project.html">1.10. NDVI Computation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SaeidAminjafariProject.html">1.11. Phase Change Analysis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Tatiana_Klisho_project.html">1.12. Relationship between continental-scale patterns of fire activity and modes of climate variability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">1.8. </span>Seasonal Analisis of discharges in the Mälaren catchement.</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2021_SW/Jacopo_Cantoni_SeasonAnalisis.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Seasonal-Analisis-of-discharges-in-the-Mälaren-catchement.">
+<h1><span class="section-number">1.8. </span>Seasonal Analisis of discharges in the Mälaren catchement.<a class="headerlink" href="#Seasonal-Analisis-of-discharges-in-the-Mälaren-catchement." title="Link to this heading"></a></h1>
+<p>Jacopo Cantoni</p>
+<p>Discharge data are a valuable resource and a key dataset. Discharge data across sweden are freely available from the Swedish Metereological and Hidrological Institute (SMHI). Such data are obteained from a series of actual measuring stations that are futher expanded with the use of the HYPE model that give a full coverage of the entire territory.</p>
+<p>The objectictive of this work is to create an automatic rutine to retrieve, in an eficent way, discharge data and transform them in an manageable data structure for futher analisis. The final step is to use the obtained dataset to identify boundaries of seasonal patterns.</p>
+<p>The structure of the SMHI dataset is based on a fine catchement division and the whole territory is devided in more than 55000 areas. For the closing point of each of these catchements is available a time series of Modelled discharges (m³/s) with the time resolution of the day starting from year 1981.</p>
+<p>Such data can be directly obtained, selecting a specific area (<a class="reference external" href="https://vattenwebb.smhi.se/modelarea/">https://vattenwebb.smhi.se/modelarea/</a>) or listing catchement IDs (<a class="reference external" href="https://vattenwebb.smhi.se/nadia/">https://vattenwebb.smhi.se/nadia/</a>). The firs method method is suitable to obtain information for only a small number of catchements while the second is better suited for our scope.</p>
+<p>The first step is then to obtain the IDs of the catchement that we are interested. Relevant shapefiles can be obtined also from SMHI: (<a class="reference external" href="https://www.smhi.se/data/hydrologi/sjoar-och-vattendrag/ladda-ner-data-fran-svenskt-vattenarkiv-1.20127">https://www.smhi.se/data/hydrologi/sjoar-och-vattendrag/ladda-ner-data-fran-svenskt-vattenarkiv-1.20127</a>)</p>
+<p>Specifically the files:</p>
+<p>Huvudavrinningsområden_SVAR_2016_3</p>
+<p>Delavrinningsområden SVAR_2016_3</p>
+<section id="Find-ID's-for-all-the-Mälaren's-Catchement-sub-catchements.">
+<h2><span class="section-number">1.8.1. </span>Find ID’s for all the Mälaren’s Catchement sub-catchements.<a class="headerlink" href="#Find-ID's-for-all-the-Mälaren's-Catchement-sub-catchements." title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>from the Huvudavrinningsområden_SVAR_2016_3 file is possible to identify the Mälaren catchement shape. Knowing that the Mälaren catchement have the HARO field = to 61000 is possible to select the correct subcatchements from Delavrinningsområden SVAR_2016_3</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 1</span>
+<span class="o">%</span><span class="k">cd</span> /home/user/SeasonAnalisis
+
+<span class="c1">#inpunt time period</span>
+<span class="n">SYear</span> <span class="o">=</span> <span class="mi">2000</span>
+<span class="n">EYear</span> <span class="o">=</span> <span class="mi">2020</span>
+
+
+<span class="c1">#from osgeo import ogr</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+
+<span class="n">catchements</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;aro_y_2016_3.shp&quot;</span><span class="p">)</span>
+<span class="c1">#print (catchements)</span>
+<span class="c1">#catchements.plot()</span>
+<span class="c1">#MalarenCatchement = catchements[(catchements.HARO == 61000) &amp; (catchements.YTKOD != 80)]</span>
+<span class="n">MalarenCatchement</span> <span class="o">=</span> <span class="n">catchements</span><span class="p">[(</span><span class="n">catchements</span><span class="o">.</span><span class="n">HARO</span> <span class="o">==</span> <span class="mi">61000</span><span class="p">)</span> <span class="p">]</span>
+<span class="c1">#MalarenCatchement = catchements[MalarenCatchement.YTKOD != 80]</span>
+<span class="c1"># MalarenCatchemnt is the base map for our region.</span>
+<span class="c1">#MalarenCatchement.plot()</span>
+
+<span class="c1"># the array CatchID conatains all the AROID that of the area in which</span>
+<span class="c1"># we are interested</span>
+
+<span class="n">CatchID</span><span class="o">=</span><span class="n">MalarenCatchement</span><span class="o">.</span><span class="n">AROID</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">CatchID</span><span class="p">))</span>
+
+
+<span class="n">L</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">CatchID</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">L</span><span class="p">)</span>
+<br/><br/><br/><br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/home/user/SeasonAnalisis
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
+2419
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<p>Catchements IDs can be used to get discharge data from the SMHI website. The website is not capable of downloading big data for a big number of stations. considering this and for script semplification each station is downloaded singularly and information are stored in a pandas.dataframe</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 2</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="c1">#creating the dataframe (df) that will host all data</span>
+
+<span class="n">TIME</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-01-01&#39;</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-12-31&#39;</span><span class="p">)</span>
+<span class="n">Ltime</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">TIME</span><span class="p">)</span>
+<span class="n">df1</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">TIME</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">CatchID</span><span class="p">)</span><span class="c1">#total Q</span>
+<span class="n">df2</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">TIME</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="n">CatchID</span><span class="p">)</span><span class="c1">#area specific Q</span>
+<br/></pre></div>
+</div>
+</div>
+<p>Run the following cell if interested in downloading tha data ex-novo alternativelly run the next one to read previously downloaded data stored in a CSV fie. This part is quite time consuming and if the data have been yet downoladed use the next box code to upload them.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">re</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">CatchID</span><span class="p">:</span>
+
+    <span class="n">s</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">session</span><span class="p">()</span>
+
+<span class="c1">#payload are the input to give to the SMHI website for the retriving data</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;idlist&#39;</span> <span class="p">:</span> <span class="n">i</span><span class="p">,</span>
+        <span class="s1">&#39;aggregation&#39;</span> <span class="p">:</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;startYear&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">),</span>
+        <span class="s1">&#39;endYear&#39;</span> <span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">),</span>
+    <span class="p">}</span>
+
+<span class="c1"># get data from the website</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s1">&#39;https://vattenwebb.smhi.se/nadia/rest/all&#39;</span><span class="p">,</span>
+                      <span class="n">data</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+    <span class="c1">#print (response.status_code)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span>
+    <span class="n">Head1</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">Head2</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="c1">#extracting and storing relevant information</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="n">Head1</span> <span class="ow">or</span> <span class="n">j</span><span class="o">==</span><span class="n">Head2</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="n">DATA</span><span class="o">=</span><span class="n">j</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+        <span class="n">Date</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">DATA</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+
+        <span class="n">Qtot</span><span class="o">=</span><span class="n">DATA</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+        <span class="n">Qtot</span><span class="o">=</span><span class="n">Qtot</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">df1</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">Date</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Qtot</span>
+
+        <span class="n">QArea</span><span class="o">=</span><span class="n">DATA</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+        <span class="n">QArea</span><span class="o">=</span><span class="n">QArea</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">,</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+        <span class="n">df2</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="n">Date</span><span class="p">,</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">QArea</span>
+        <span class="c1">#print(Date)</span>
+        <span class="c1">#print(df.at[i,Date])</span>
+
+<span class="c1">#print(df2.head())</span>
+<span class="n">df1</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Q_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;Qarea_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cell 4</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Q_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;Qarea_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">CatchID</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
+
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">CatchID</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<p>Due to difference in size of different subcatchements, the magnitude of discharges can vary greatly. To solve this issue the dataframe is pretreated using a normalization method. is also shown the disctribution of the data that is strongly skewed on the left.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 5</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">CatchID</span><span class="p">:</span>
+    <span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+    <span class="n">df2</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">df2</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">downcast</span><span class="o">=</span><span class="s1">&#39;float&#39;</span><span class="p">)</span>
+
+<span class="n">M1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="c1">#n=100</span>
+<span class="c1">#dBin=(M1-m1)/n</span>
+<span class="c1">#bins1={&#39;bins&#39;:np.arange(m1,(M1+(0.1*dBin)),dBin)}</span>
+
+<span class="n">M2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">m2</span> <span class="o">=</span> <span class="n">df2</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="c1">#n=100</span>
+<span class="c1">#dBin=(M1-m1)/n</span>
+<span class="c1">#bins1={&#39;bins&#39;:np.arange(m1,(M1+(0.1*dBin)),dBin)}</span>
+<span class="c1">#print(&#39;----------------------------------&#39;)</span>
+<span class="c1">#print(&#39;Max value of Q generated by a spefic area:&#39;+str(M2))</span>
+<span class="c1">#print(&#39;Min value of Q generated by a spefic area:&#39;+str(m2))</span>
+<span class="c1">#plt.hist(df2.values)</span>
+<span class="c1">#plt.show()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Max value of observed Q:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">M1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min value of observed Q:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">m1</span><span class="p">))</span>
+<span class="c1">#plt.hist(df1.values)</span>
+<span class="c1">#plt.show()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;----------------------------------&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;after normalization&#39;</span><span class="p">)</span>
+
+
+<span class="n">sc</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+
+
+
+
+<span class="n">df1Prova</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
+<span class="n">Tdf1</span><span class="o">=</span><span class="n">df1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">CatchID</span><span class="p">:</span>
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">df1Prova</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">Tdf1</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="n">df1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">CatchID</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
+
+
+
+
+<span class="n">M1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Max value of observed Q:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">M1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Min value of observed Q:&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">m1</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df1Prova</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+<span class="c1">#print (df1.head)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">sc</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="n">CatchID</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span><span class="n">TIME</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df2</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span>
+
+<span class="n">df1</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NormQ_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+<span class="n">df2</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;NormQarea_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+
+<span class="n">df1Prova</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;ProvaNormQ_&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">SYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">EYear</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+----------------------------------
+Max value of observed Q:1.0
+Min value of observed Q:0.0
+----------------------------------
+after normalization
+Max value of observed Q:1.0
+Min value of observed Q:0.0
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_10_1.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_10_1.png" />
+</div>
+</div>
+<p>The following code cell create a color coded map of the discharge in the selected area for each day of the interested period. This are then colected and save in a gif format for visualization.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 6</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mapclassify</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">moviepy.editor</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+
+<span class="n">Timedf1</span><span class="o">=</span><span class="n">df1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="n">Timedf2</span><span class="o">=</span><span class="n">df2</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">TIME</span><span class="p">:</span>
+    <span class="c1">#create a tif file for each day color map on Q&#39;</span>
+    <span class="n">dayCatch</span> <span class="o">=</span> <span class="n">MalarenCatchement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;AROID&#39;</span><span class="p">)</span>
+    <span class="n">dayCatch</span> <span class="o">=</span> <span class="n">dayCatch</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">Timedf1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;AROID&#39;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+    <span class="n">dayCatch</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="n">i</span><span class="p">,</span>
+                  <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+                  <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;natural_breaks&#39;</span>
+                 <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">+</span><span class="s1">&#39;.png&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">prova</span><span class="o">=</span><span class="n">dayCatch</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="n">prova</span><span class="o">=</span><span class="n">prova</span><span class="o">.</span><span class="n">isnull</span><span class="p">()</span>
+    <span class="n">b</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">prova</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">size</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+
+
+
+<span class="n">imgs</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s1">&#39;*.png&#39;</span><span class="p">)</span>
+<span class="n">clip</span><span class="o">=</span> <span class="n">ImageSequenceClip</span><span class="p">(</span><span class="n">imgs</span><span class="p">,</span> <span class="n">fps</span> <span class="o">=</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">clip</span><span class="o">.</span><span class="n">write_gif</span><span class="p">(</span><span class="s1">&#39;MoviolatotNoLake.gif&#39;</span><span class="p">)</span>
+<span class="n">clip</span><span class="o">.</span><span class="n">close</span>
+</pre></div>
+</div>
+</div>
+<p>The following cell import the data about the first clusterization perform to reduce the subcatchement dimension.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cell 7</span>
+<span class="n">GeoClass</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;GeoClass.csv&#39;</span><span class="p">)</span>
+<span class="n">GeoClass</span> <span class="o">=</span> <span class="n">GeoClass</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">GeoClass</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">GeoClass</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;GeoClass&#39;</span><span class="p">],</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">CatchID</span><span class="p">,</span>
+                       <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">GeoClass</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">GeoClass</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+               GeoClass
+AROID
+652430-143251         1
+653065-143452         1
+653173-143752         1
+653474-143283         1
+653976-143263         1
+...                 ...
+658533-552637         9
+658609-557258         9
+662890-552741         5
+662932-551197         5
+664180-542606         4
+
+[2419 rows x 1 columns]
+</pre></div></div>
+</div>
+<p>The cluster are showed on the map of the Mälaren catchement</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 8</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">mapclassify</span>
+
+<span class="n">ClusterCatch</span> <span class="o">=</span> <span class="n">MalarenCatchement</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;AROID&#39;</span><span class="p">)</span>
+<span class="n">ClusterCatch</span> <span class="o">=</span> <span class="n">ClusterCatch</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">GeoClass</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;AROID&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span> <span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">ClusterCatch</span><span class="o">.</span><span class="n">columns</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">ClusterCatch</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="s1">&#39;GeoClass&#39;</span><span class="p">,</span>
+              <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Dark2&#39;</span><span class="p">,</span>
+             <span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;Clusters15.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;ET_ID&#39;, &#39;YTKOD&#39;, &#39;NAMN&#39;, &#39;VDRID&#39;, &#39;INOBJ&#39;, &#39;UTOBJ&#39;, &#39;OMRID_NED&#39;, &#39;OMRTYP&#39;, &#39;HARO&#39;, &#39;DISTRICT&#39;, &#39;LANDSKOD&#39;, &#39;AREAL&#39;, &#39;AVM&#39;, &#39;HAVAVM&#39;, &#39;HORDNING&#39;, &#39;AAUEB&#39;, &#39;AA_ANT_ARO&#39;, &#39;MEDHOJD&#39;, &#39;VERSION&#39;, &#39;geometry&#39;, &#39;GeoClass&#39;]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;Figure size 432x288 with 0 Axes&gt;
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_16_2.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_16_2.png" />
+</div>
+</div>
+<p>Cell 9 uses the obtained cluster to resize the original dataframe, discharge from homogeneous areas are collapsed in a single value (average).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Cell 9</span>
+
+<span class="n">Tdf1</span><span class="o">=</span><span class="n">df1</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Tdf1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="c1">#print (df1.head)</span>
+<span class="n">df1GeoClass</span> <span class="o">=</span> <span class="n">Tdf1</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">GeoClass</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;AROID&#39;</span><span class="p">)</span>
+<span class="n">df1GeoClass</span> <span class="o">=</span> <span class="n">df1GeoClass</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;GeoClass&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">df1GeoClass</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;df1GeoClass.csv&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df1GeoClass</span><span class="o">.</span><span class="n">head</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+AROID
+&lt;bound method NDFrame.head of           2000-01-01  2000-01-02  2000-01-03  2000-01-04  2000-01-05  \
+GeoClass
+1           0.289802    0.290587    0.297117    0.302977    0.309661
+2           0.104935    0.103917    0.104844    0.107146    0.116531
+3           0.188470    0.196418    0.203662    0.240717    0.268206
+4           0.062980    0.060610    0.062335    0.059395    0.065730
+5           0.103323    0.098710    0.104661    0.116903    0.142725
+6           0.104400    0.106156    0.238806    0.186725    0.167980
+7           0.779957    0.776497    0.772959    0.771627    0.769829
+8           0.083394    0.085077    0.082251    0.166874    0.093452
+9           0.210893    0.207328    0.211135    0.218442    0.221667
+10          0.272583    0.267118    0.264807    0.300864    0.322964
+
+          2000-01-06  2000-01-07  2000-01-08  2000-01-09  2000-01-10  ...  \
+GeoClass                                                              ...
+1           0.315120    0.325586    0.344750    0.360273    0.365982  ...
+2           0.120837    0.138544    0.175712    0.220876    0.236622  ...
+3           0.294777    0.352815    0.465375    0.510422    0.483107  ...
+4           0.064943    0.099990    0.114731    0.171528    0.162205  ...
+5           0.151006    0.193678    0.284130    0.357757    0.341724  ...
+6           0.139077    0.135680    0.129757    0.122505    0.100264  ...
+7           0.769352    0.770562    0.777954    0.783539    0.781898  ...
+8           0.134066    0.153920    0.330980    0.217727    0.134988  ...
+9           0.228594    0.245882    0.273273    0.302698    0.310382  ...
+10          0.335716    0.377143    0.444976    0.460547    0.433944  ...
+
+          2020-12-22  2020-12-23  2020-12-24  2020-12-25  2020-12-26  \
+GeoClass
+1           0.235587    0.245190    0.246067    0.247354    0.249532
+2           0.208994    0.220661    0.218893    0.214630    0.210146
+3           0.262564    0.269207    0.247796    0.228356    0.210662
+4           0.139369    0.157713    0.140641    0.123267    0.110595
+5           0.171814    0.189979    0.175547    0.160954    0.148650
+6           0.066906    0.099577    0.078980    0.064942    0.055313
+7           0.799509    0.797248    0.795268    0.795545    0.794346
+8           0.144254    0.076247    0.068168    0.064579    0.060205
+9           0.301611    0.307876    0.302288    0.293868    0.287493
+10          0.234387    0.244009    0.224491    0.208249    0.193700
+
+          2020-12-27  2020-12-28  2020-12-29  2020-12-30  2020-12-31
+GeoClass
+1           0.252383    0.261583    0.275868    0.290820    0.302004
+2           0.212076    0.237391    0.270039    0.291850    0.302532
+3           0.220810    0.247161    0.271759    0.289250    0.301082
+4           0.106144    0.137478    0.188559    0.210342    0.190320
+5           0.156550    0.204309    0.244516    0.263061    0.267967
+6           0.050994    0.072354    0.091236    0.146465    0.179095
+7           0.793626    0.798802    0.805803    0.812665    0.815793
+8           0.097410    0.169879    0.132415    0.091815    0.092327
+9           0.290527    0.307564    0.331786    0.356734    0.373203
+10          0.202974    0.251311    0.296449    0.316843    0.323494
+
+[10 rows x 7671 columns]&gt;
+</pre></div></div>
+</div>
+<p>Data from the clusterization through SOM performed in the R environment are imported.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 10</span>
+<span class="n">DataCluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;DataCluster.csv&#39;</span><span class="p">)</span>
+<span class="n">DataCluster</span> <span class="o">=</span> <span class="n">DataCluster</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">DataCluster</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">DataCluster</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+                        <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Clusters&#39;</span><span class="p">],</span>
+                        <span class="n">index</span> <span class="o">=</span> <span class="n">TIME</span><span class="p">,</span>
+                      <span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">DataCluster</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+            Clusters
+2000-01-01         5
+2000-01-02         5
+2000-01-03         1
+2000-01-04         4
+2000-01-05         4
+...              ...
+2020-12-27         3
+2020-12-28         4
+2020-12-29         4
+2020-12-30         4
+2020-12-31         4
+
+[7671 rows x 1 columns]
+</pre></div></div>
+</div>
+<p>The clusterization is plotted divide by each year each day is plotted at a different hight in the graph base on the cluster (Note: the point high refer to the random cluster but is not about the discharge magnitude)</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Cell 11</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;seaborn&#39;</span><span class="p">)</span>
+<span class="n">SelYear</span><span class="o">=</span><span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">Stime</span> <span class="o">=</span> <span class="n">TIME</span><span class="p">[</span><span class="n">TIME</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="mi">2000</span><span class="p">]</span>
+<span class="n">SelCluster</span><span class="o">=</span><span class="n">DataCluster</span><span class="p">[</span><span class="n">DataCluster</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="mi">2000</span><span class="p">]</span>
+<span class="n">Year</span><span class="o">=</span><span class="mi">2000</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">SelYear</span><span class="o">=</span><span class="n">df1</span><span class="p">[</span><span class="n">df1</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">Year</span><span class="p">]</span>
+    <span class="n">Stime</span> <span class="o">=</span> <span class="n">TIME</span><span class="p">[</span><span class="n">TIME</span><span class="o">.</span><span class="n">year</span><span class="o">==</span><span class="n">Year</span><span class="p">]</span>
+    <span class="n">SelCluster</span><span class="o">=</span><span class="n">DataCluster</span><span class="p">[</span><span class="n">DataCluster</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">year</span> <span class="o">==</span> <span class="n">Year</span><span class="p">]</span>
+    <span class="n">Year</span> <span class="o">=</span> <span class="n">Year</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">plot_date</span><span class="p">(</span><span class="n">Stime</span><span class="p">,</span><span class="n">SelCluster</span><span class="p">)</span>
+<br/><br/><br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_22_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2021_SW_Jacopo_Cantoni_SeasonAnalisis_22_0.png" />
+</div>
+</div>
+<section id="Conclusion">
+<h3><span class="section-number">1.8.1.1. </span>Conclusion<a class="headerlink" href="#Conclusion" title="Link to this heading"></a></h3>
+<p>A more complex analysis of the results is needed. Nevertheless yet from the last kind of graph is possible to conclude that a meaningful clusterization has not been reached. This is more clear if the whole 20 year period is taken into consideration. Indeed if only one year is analyzed the last figure is of the kind expected. where we can observe some stable continuous periods with the possibility of interruption due to extreme events. Never the less if more than one year is taken into
+consideration that is not possible to observe good stability on the type of cluster in similar seasons together with strong variability on which cluster is showing a stable/event type behavior (Seasonal/extreme events). An indication that the model has not been able of well classify different discharge regimes is also the uniformity of the SOM distance matrix. Possible improvements can be done by changing the first clusterization method (used to reduce dimensionality) possibly with one that does
+not require a pre-definition of the number of clusters. Also, a possible issue is with input dataset to the SOM and as it is may still carrying stronger geographical information (relation of importance between catchments) then temporal and as a such a better pretreatment of data may also be a possible way to make emerge different discharge regimes.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Hamm_Alexandra_final_project.html" class="btn btn-neutral float-left" title="1.7. pan-Arctic classified slope and aspect maps (Geo computation only)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Julia_Wagner_Geocomputation.html" class="btn btn-neutral float-right" title="1.9. Mapping of soil organic carbon stocks with Random Forest" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

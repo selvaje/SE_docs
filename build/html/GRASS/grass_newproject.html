@@ -1,0 +1,1027 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start a new GRASS project &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using GRASS for stream-network extraction and basins delineation" href="grass_hydro.html" />
+    <link rel="prev" title="GRASS Introduction" href="grass_intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Start a new GRASS project</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Analize-the-dataset">Analize the dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder">Create a LOCATION and MAPSET stored in a temporary folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on.">Create a LOCATION and MAPSET stored in a folder that can be accessed later on.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#GRASS-add-ons">GRASS add-ons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Installation">Installation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred_SM.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Start a new GRASS project</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GRASS/grass_newproject.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Start-a-new-GRASS-project">
+<h1>Start a new GRASS project<a class="headerlink" href="#Start-a-new-GRASS-project" title="Link to this heading"></a></h1>
+<p>In this session we are going to see how to start a new grass project using a well standarized dataset: a DEM.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /media/sf_LVM_shared/my_SE_data/exercise/
+wget https://raw.githubusercontent.com/selvaje/SE_data/master/exercise/grass_newproject.ipynb
+jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_newproject.ipynb
+</pre></div>
+</div>
+<section id="Analize-the-dataset">
+<h2>Analize the dataset<a class="headerlink" href="#Analize-the-dataset" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="c1"># digital elevation model</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">dem</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_newproject_3_0.png" src="../_images/GRASS_grass_newproject_3_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<p>We can see the metadata of the the DEM using gdalinfo.</p>
+<p>The tif metadata should have well defined values such as:</p>
+<ul class="simple">
+<li><p>projection has to be well defined as proj4, EPSG,</p></li>
+<li><p>the extent should set at degree level (e.g. 14.0’) or with one digit after the degree (e.g. 14.1’),</p></li>
+<li><p>the pixel resolution should be also well defined (e.g. 0.25’, 0.008333333’ not 0.008331234’ or 0.05214534’),</p></li>
+<li><p>in case of using more then one data source the raster layers shold have the same extent and the pixel aligned,</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: /media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+Size is 5880, 8400
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    ENSEMBLE[&#34;World Geodetic System 1984 ensemble&#34;,
+        MEMBER[&#34;World Geodetic System 1984 (Transit)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G730)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G873)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1150)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1674)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G1762)&#34;],
+        MEMBER[&#34;World Geodetic System 1984 (G2139)&#34;],
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]],
+        ENSEMBLEACCURACY[2.0]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    USAGE[
+        SCOPE[&#34;Horizontal component of 3D system.&#34;],
+        AREA[&#34;World.&#34;],
+        BBOX[-90,-180,90,180]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (-83.000000000000000,14.000000000000000)
+Pixel Size = (0.008333333333333,-0.008333333333333)
+Metadata:
+  AREA_OR_POINT=Area
+  TIFFTAG_DATETIME=2021:05:12 09:34:03
+  TIFFTAG_DOCUMENTNAME=geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+  TIFFTAG_SOFTWARE=pktools 2.6.7.6 by Pieter Kempeneers
+Image Structure Metadata:
+  COMPRESSION=DEFLATE
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  ( -83.0000000,  14.0000000) ( 83d 0&#39; 0.00&#34;W, 14d 0&#39; 0.00&#34;N)
+Lower Left  ( -83.0000000, -56.0000000) ( 83d 0&#39; 0.00&#34;W, 56d 0&#39; 0.00&#34;S)
+Upper Right ( -34.0000000,  14.0000000) ( 34d 0&#39; 0.00&#34;W, 14d 0&#39; 0.00&#34;N)
+Lower Right ( -34.0000000, -56.0000000) ( 34d 0&#39; 0.00&#34;W, 56d 0&#39; 0.00&#34;S)
+Center      ( -58.5000000, -21.0000000) ( 58d30&#39; 0.00&#34;W, 21d 0&#39; 0.00&#34;S)
+Band 1 Block=5880x1 Type=Int16, ColorInterp=Gray
+  NoData Value=-9999
+</pre></div></div>
+</div>
+</section>
+<section id="Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder">
+<h2>Create a LOCATION and MAPSET stored in a temporary folder<a class="headerlink" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-temporary-folder" title="Link to this heading"></a></h2>
+<p>Using the flag <em>–tmp-location</em> we can create a LOCATION on the flight that will automaticaly removed when GRASS will be closed.</p>
+<p>For this example we are goint to use:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.slope.aspect.html">r.slope.aspect</a> to calculate the slope</p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.out.gdal.html">r.out.gdal</a> to export the GRASS raster to tif.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+grass<span class="w">  </span>--text<span class="w"> </span>--tmp-location<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w"> </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">r.external -e input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif output=SA_elevation --o --q</span>
+<span class="s">g.list raster -p</span>
+<span class="s">r.info  map=SA_elevation</span>
+<span class="s">r.slope.aspect elevation=SA_elevation slope=slope</span>
+<span class="s">r.info  map=slope</span>
+<span class="s"># export the &quot;grass slope&quot; to a geotif.</span>
+<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=slope  output=/home/osboxes/my_SE_data/exercise/grassdb/slope.tif</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+----------------------------------------------
+raster files available in mapset &lt;PERMANENT&gt;:
+SA_elevation
+
+ +----------------------------------------------------------------------------+
+ | Map:      SA_elevation                   Date: Mon May 20 11:37:09 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: tmploc                                                           |
+ | DataBase: /tmp/grass8-user-168760                                          |
+ | Title:                                                                     |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  GDAL-link            Number of Categories: 0               |
+ |   Data Type:    CELL                 Semantic label: (none)                |
+ |   Rows:         8400                                                       |
+ |   Columns:      5880                                                       |
+ |   Total Cells:  49392000                                                   |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:30                   |
+ |            E:        34W    W:        83W   Res: 0:00:30                   |
+ |   Range of data:    min = -400  max = 6736                                 |
+ |                                                                            |
+ |   Data Source:                                                             |
+ |    /media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GM |
+ |                                                                            |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.external                                                 |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    r.external --overwrite --quiet -e input=&#34;/media/sf_LVM_shared/my_SE_\   |
+ |    data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif&#34; outp\   |
+ |    ut=&#34;SA_elevation&#34;                                                       |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+ +----------------------------------------------------------------------------+
+ | Map:      slope                          Date: Mon May 20 11:37:12 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: tmploc                                                           |
+ | DataBase: /tmp/grass8-user-168760                                          |
+ | Title:    slope in degrees                                                 |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  raster               Number of Categories: 90              |
+ |   Data Type:    FCELL                Semantic label: (none)                |
+ |   Rows:         8400                                                       |
+ |   Columns:      5880                                                       |
+ |   Total Cells:  49392000                                                   |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:30                   |
+ |            E:        34W    W:        83W   Res: 0:00:30                   |
+ |   Range of data:    min = 0  max = 90                                      |
+ |                                                                            |
+ |   Data Source:                                                             |
+ |    raster elevation file SA_elevation                                      |
+ |                                                                            |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.slope.aspect                                             |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    slope map elev = SA_elevation                                           |
+ |    zfactor = 1.00 format = degrees                                         |
+ |    min_slope = 0.000000                                                    |
+ |                                                                            |
+ |    r.slope.aspect --overwrite elevation=&#34;SA_elevation&#34; slope=&#34;slope&#34; fo\   |
+ |    rmat=&#34;degrees&#34; precision=&#34;FCELL&#34; zscale=1.0 min_slope=0.0 nprocs=2 m\   |
+ |    emory=300                                                               |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Creating new GRASS GIS location &lt;tmploc&gt;...
+Cleaning up temporary files...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.2.1
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+Slope raster map &lt;slope&gt; complete
+/bin/bash: line 5: r.mapcalc.tiled: command not found
+WARNING: Precision loss: Raster map &lt;slope&gt; of type DCELL to be exported as
+         Int16. This can be avoided by using Float64.
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Int16&gt;
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/slope.tif&gt; created.
+WARNING: Precision loss: Raster map &lt;slope&gt; of type DCELL to be exported as
+         Byte. This can be avoided by using Float64.
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Byte&gt;
+WARNING: The user given nodata value 0 is present in rasterband &lt;slope&gt; and
+         would lead to data loss. Please specify a different nodata value
+         with the nodata parameter.
+WARNING: Forcing raster export.
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; created.
+Cleaning up temporary files...
+Done.
+
+Goodbye from GRASS GIS
+
+</pre></div></div>
+</div>
+<p>GRASS rasters support three data types:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>32bit signed integer (CELL) wich can be converted in GDAL using Byte/Int16/UInt16/UInt32/Int32
+single-precision floating-point (FCELL) wich can be converted in GDAL using Float32
+double-precision floating-point (DCELL) wich can be converted in GDAL using Float64
+</pre></div>
+</div>
+<p>More info at <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.out.gdal.html">https://grass.osgeo.org/grass83/manuals/r.out.gdal.html</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="n">slope</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/home/osboxes/my_SE_data/exercise/grassdb/slope.tif&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">slope</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_newproject_9_0.png" src="../_images/GRASS_grass_newproject_9_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;AxesSubplot:&gt;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/slope.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<p>The temporary folder is removed automaticaly when closing grass.</p>
+</section>
+<section id="Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on.">
+<h2>Create a LOCATION and MAPSET stored in a folder that can be accessed later on.<a class="headerlink" href="#Create-a-LOCATION-and-MAPSET-stored-in-a-folder-that-can-be-accessed-later-on." title="Link to this heading"></a></h2>
+<p>Using the flag <em>-e</em> we can create a LOCATION on the flight called “south_america” that can be access later on.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-rf<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america
+
+grass<span class="w"> </span>-c<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w">  </span>-e<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Creating new GRASS GIS location &lt;south_america&gt;...
+Cleaning up temporary files...
+Cleaning up temporary files...
+</pre></div></div>
+</div>
+<p>At this point the south_america LOCATION has been created with the defoult PERMANENT mapset</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+PERMANENT
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>ls<span class="w"> </span>-l<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+total 36
+-rw-rw-r-- 1 user user  328 May 20 10:32 DEFAULT_WIND
+-rw-rw-r-- 1 user user    1 May 20 10:32 MYNAME
+-rw-rw-r-- 1 user user   65 May 20 10:32 PROJ_INFO
+-rw-rw-r-- 1 user user   10 May 20 10:32 PROJ_SRID
+-rw-rw-r-- 1 user user   40 May 20 10:32 PROJ_UNITS
+-rw-rw-r-- 1 user user 1047 May 20 10:32 PROJ_WKT
+drwxrwxr-x 2 user user 4096 May 20 10:32 sqlite
+-rw-rw-r-- 1 user user   81 May 20 10:32 VAR
+-rw-rw-r-- 1 user user  328 May 20 10:32 WIND
+</pre></div></div>
+</div>
+<p>we can proceed in using the south_america LOCATION &amp; the PERMANENT MAPSET using this syntax:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">r.external input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif output=SA_elevation --o --q</span>
+<span class="s">g.list raster -p</span>
+<span class="s">r.info  map=SA_elevation</span>
+<span class="s">r.slope.aspect elevation=SA_elevation aspect=aspect --o</span>
+<span class="s">r.out.gdal --o -c -m -f createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=Int16 format=GTiff nodata=-9999  input=aspect  output=/home/osboxes/my_SE_data/exercise/grassdb/aspect.tif</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+----------------------------------------------
+raster files available in mapset &lt;PERMANENT&gt;:
+SA_elevation
+
+ +----------------------------------------------------------------------------+
+ | Map:      SA_elevation                   Date: Mon May 20 10:33:27 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: south_america                                                    |
+ | DataBase: /home/user/my_SE_data/exercise/grassdb                           |
+ | Title:                                                                     |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  GDAL-link            Number of Categories: 0               |
+ |   Data Type:    CELL                 Semantic label: (none)                |
+ |   Rows:         8400                                                       |
+ |   Columns:      5880                                                       |
+ |   Total Cells:  49392000                                                   |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:30                   |
+ |            E:        34W    W:        83W   Res: 0:00:30                   |
+ |   Range of data:    min = -400  max = 6736                                 |
+ |                                                                            |
+ |   Data Source:                                                             |
+ |    /media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GM |
+ |                                                                            |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.external                                                 |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    r.external --overwrite --quiet input=&#34;/media/sf_LVM_shared/my_SE_dat\   |
+ |    a/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif&#34; output=\   |
+ |    &#34;SA_elevation&#34;                                                          |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Cleaning up temporary files...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.2.1
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+Aspect raster map &lt;aspect&gt; complete
+WARNING: Precision loss: Raster map &lt;aspect&gt; of type DCELL to be exported
+         as Int16. This can be avoided by using Float64.
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Int16&gt;
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/aspect.tif&gt; created.
+Cleaning up temporary files...
+Done.
+
+Goodbye from GRASS GIS
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/aspect.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<p>or with line by line syntax</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.neighbors<span class="w"> </span><span class="nv">input</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">output</span><span class="o">=</span>SA_elevation_10c_max<span class="w"> </span><span class="nv">method</span><span class="o">=</span>maximum<span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>SA_elevation_10c_max
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ +----------------------------------------------------------------------------+
+ | Map:      SA_elevation_10c_max           Date: Thu May 16 18:31:24 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: south_america                                                    |
+ | DataBase: /home/user/my_SE_data/exercise/grassdb                           |
+ | Title:    3x3 neighborhood: maximum of SA_elevation                        |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  raster               Number of Categories: 0               |
+ |   Data Type:    CELL                 Semantic label: (none)                |
+ |   Rows:         8400                                                       |
+ |   Columns:      5880                                                       |
+ |   Total Cells:  49392000                                                   |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:30                   |
+ |            E:        34W    W:        83W   Res: 0:00:30                   |
+ |   Range of data:    min = -153  max = 6736                                 |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.neighbors                                                |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    r.neighbors --overwrite input=&#34;SA_elevation&#34; output=&#34;SA_elevation_10\   |
+ |    c_max&#34; size=3 method=&#34;maximum&#34; weighting_function=&#34;none&#34; nprocs=1 me\   |
+ |    mory=300                                                                |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.neighbors input=SA_elevation output=SA_elevation_10c_max method=maximum --o&gt; ...
+   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+Execution of &lt;r.neighbors input=SA_elevation output=SA_elevation_10c_max method=maximum --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.info map=SA_elevation_10c_max&gt; ...
+Execution of &lt;r.info map=SA_elevation_10c_max&gt; finished.
+Cleaning up temporary files...
+</pre></div></div>
+</div>
+</section>
+<section id="GRASS-add-ons">
+<h2>GRASS add-ons<a class="headerlink" href="#GRASS-add-ons" title="Link to this heading"></a></h2>
+<p>Grass GIS has a modular architecture that allows users to extend its functionality through add-ons or modules. These add-ons cover a wide range of functionalities and are developed and contributed by the Grass GIS community. You can see the full list of add-ons at <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/index.html">https://grass.osgeo.org/grass83/manuals/addons/index.html</a></p>
+<p>For this exercise we are going to use <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html">r.mapcalc.tiled</a> that integrate <a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.mapcalc.html">r.mapcalc</a> in a multicore enviroment.</p>
+<section id="Installation">
+<h3>Installation<a class="headerlink" href="#Installation" title="Link to this heading"></a></h3>
+<p>Open a bash terminal and run</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /home/osboxes
+git clone https://github.com/OSGeo/grass-addons.git grass_addons
+</pre></div>
+</div>
+<p>when the download has ben done you can proceed with the installation.</p>
+<p>For this exercise we are going to use:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.mapcalc.tiled.html">r.mapcalc.tiled</a> add-on.</p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/r.mapcalc.html">r.mapcalc</a></p></li>
+</ul>
+<p>Nontheless also consider to install and test the following add-on:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.train.html">r.learn.train</a></p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.ml.html">r.learn.ml</a></p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass83/manuals/addons/r.learn.predict.html">r.learn.predict</a></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.mapcalc.tiled<span class="w">  </span><span class="nv">url</span><span class="o">=</span>/home/osboxes/grass_addons/src/raster/r.mapcalc.tiled
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.slope.aspect<span class="w"> </span><span class="nv">elevation</span><span class="o">=</span>SA_elevation<span class="w"> </span><span class="nv">slope</span><span class="o">=</span>slope<span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc.tiled<span class="w"> </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span><span class="nv">width</span><span class="o">=</span><span class="m">5880</span><span class="w"> </span><span class="nv">height</span><span class="o">=</span><span class="m">4200</span><span class="w">  </span><span class="nv">overlap</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nprocs</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span><span class="nb">time</span><span class="w"> </span>r.mapcalc<span class="w">       </span><span class="nv">expression</span><span class="o">=</span><span class="s2">&quot;slope_msk = if(slope &gt; 10, 10, 1)&quot;</span><span class="w"> </span>--o
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.info<span class="w">  </span><span class="nv">map</span><span class="o">=</span>slope_msk
+<span class="c1"># export the &quot;grass slope_msk&quot; to a geotif</span>
+grass<span class="w">  </span>--text<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/south_america/PERMANENT<span class="w"> </span>--exec<span class="w"> </span>r.out.gdal<span class="w"> </span>--o<span class="w"> </span>-c<span class="w"> </span>-m<span class="w"> </span>-f<span class="w"> </span><span class="nv">createopt</span><span class="o">=</span><span class="s2">&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;</span><span class="w"> </span><span class="nv">type</span><span class="o">=</span>Byte<span class="w"> </span><span class="nv">format</span><span class="o">=</span>GTiff<span class="w"> </span><span class="nv">nodata</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">input</span><span class="o">=</span>slope_msk<span class="w"> </span><span class="nv">output</span><span class="o">=</span>/home/user/my_SE_data/exercise/grassdb/slope_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ +----------------------------------------------------------------------------+
+ | Map:      slope_msk                      Date: Mon May 20 16:44:05 2024    |
+ | Mapset:   PERMANENT                      Login of Creator: user            |
+ | Location: south_america                                                    |
+ | DataBase: /home/user/my_SE_data/exercise/grassdb                           |
+ | Title:                                                                     |
+ | Timestamp: none                                                            |
+ |----------------------------------------------------------------------------|
+ |                                                                            |
+ |   Type of Map:  raster               Number of Categories: 0               |
+ |   Data Type:    CELL                 Semantic label: (none)                |
+ |   Rows:         16800                                                      |
+ |   Columns:      11760                                                      |
+ |   Total Cells:  197568000                                                  |
+ |        Projection: Latitude-Longitude                                      |
+ |            N:        14N    S:        56S   Res: 0:00:15                   |
+ |            E:        34W    W:        83W   Res: 0:00:15                   |
+ |   Range of data:    min = 1  max = 10                                      |
+ |                                                                            |
+ |   Data Description:                                                        |
+ |    generated by r.mapcalc                                                  |
+ |                                                                            |
+ |   Comments:                                                                |
+ |    if(slope &gt; 10, 10, 1)                                                   |
+ |                                                                            |
+ +----------------------------------------------------------------------------+
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o&gt; ...
+   0   0   3   6   9  12  15  18  21  24  27  30  33  36  39  42  45  48  51  54  57  60  63  66  69  72  75  78  81  84  87  90  93  96  99 100
+Slope raster map &lt;slope&gt; complete
+Execution of &lt;r.slope.aspect elevation=SA_elevation slope=slope nprocs=2 --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;g.region res=0.0041666666666&gt; ...
+Execution of &lt;g.region res=0.0041666666666&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;time r.mapcalc.tiled expression=slope_msk = if(slope &gt; 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o&gt; ...
+11.73user 1.22system 0:09.50elapsed 136%CPU (0avgtext+0avgdata 72268maxresident)k
+11632inputs+16144outputs (48major+93774minor)pagefaults 0swaps
+Execution of &lt;time r.mapcalc.tiled expression=slope_msk = if(slope &gt; 10, 10, 1) width=5880 height=4200 overlap=0 nprocs=2 --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;time r.mapcalc expression=slope_msk = if(slope &gt; 10, 10, 1) --o&gt; ...
+5.34user 0.24system 0:05.52elapsed 101%CPU (0avgtext+0avgdata 38376maxresident)k
+0inputs+6792outputs (0major+2484minor)pagefaults 0swaps
+Execution of &lt;time r.mapcalc expression=slope_msk = if(slope &gt; 10, 10, 1) --o&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.info map=slope_msk&gt; ...
+Execution of &lt;r.info map=slope_msk&gt; finished.
+Cleaning up temporary files...
+Starting GRASS GIS...
+Cleaning up temporary files...
+Executing &lt;r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; ...
+Checking GDAL data type and nodata value...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+Using GDAL data type &lt;Byte&gt;
+Exporting raster data to GTiff format...
+   2   5   8  11  14  17  20  23  26  29  32  35  38  41  44  47  50  53  56  59  62  65  68  71  74  77  80  83  86  89  92  95  98 100
+r.out.gdal complete. File
+&lt;/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; created.
+Execution of &lt;r.out.gdal --o -c -m -f createopt=COMPRESS=DEFLATE,ZLEVEL=9 type=Byte format=GTiff nodata=0 input=slope_msk output=/home/user/my_SE_data/exercise/grassdb/slope_msk.tif&gt; finished.
+Cleaning up temporary files...
+</pre></div></div>
+</div>
+<p>As you can see not always the paralellization is beneficial</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>/usr/bin/openev/bin/openev<span class="w"> </span>/home/osboxes/my_SE_data/exercise/grassdb/slope_msk.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<p>Not all the GRASS module have been parallelized some example of parallization can be found here: <a class="reference external" href="https://htmlpreview.github.io/?https://github.com/petrasovaa/FUTURES-CONUS-talk/blob/main/foss4g2022.html#/">https://htmlpreview.github.io/?https://github.com/petrasovaa/FUTURES-CONUS-talk/blob/main/foss4g2022.html#/</a></p>
+</section>
+</section>
+<section id="Acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#Acknowledgments" title="Link to this heading"></a></h2>
+<p>This material has been developed as part of the NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="grass_intro.html" class="btn btn-neutral float-left" title="GRASS Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="grass_hydro.html" class="btn btn-neutral float-right" title="Using GRASS for stream-network extraction and basins delineation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

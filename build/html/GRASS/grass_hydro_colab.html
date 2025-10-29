@@ -1,0 +1,2178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using GRASS for stream-network extraction and basins delineation in Colab &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS" href="SDM1_MWood_gecomp4GRASS.html" />
+    <link rel="prev" title="Using GRASS for stream-network extraction and basins delineation" href="grass_hydro.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation in Colab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Install-python-libraryes-and-softwares">Install python libraryes and softwares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Theoretical-background">Theoretical background</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Flow-accumulation">Flow accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Methodology">Methodology</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Download-the-input-dataset">Download the input dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Plotting-the-input-dataset">Plotting the input dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Plotting-the-elevation-and-the-computational-tiles">Plotting the elevation and the computational tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Install-the-grass-add-on">Install the grass add-on</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-continental-seamless-flow-accumulation">Compute continental seamless flow accumulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Merge-flow-accumulation-tiles">Merge flow accumulation tiles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Compute-continental-seamless-basins-and-streams">Compute continental seamless basins and streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Merge-tiled-basins-and-streams">Merge tiled basins and streams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Acknowledgments">Acknowledgments</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Using GRASS for stream-network extraction and basins delineation in Colab</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GRASS/grass_hydro_colab.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Using-GRASS-for-stream-network-extraction-and-basins-delineation-in-Colab">
+<h1>Using GRASS for stream-network extraction and basins delineation in Colab<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation-in-Colab" title="Link to this heading"></a></h1>
+<p>Methodological procedure described in:</p>
+<p>Amatulli, Giuseppe, et al. <a class="reference external" href="https://essd.copernicus.org/articles/14/4525/2022/">Hydrography90m: A new high-resolution global hydrographic dataset.</a> Earth System Science Data Discussions 2022 (2022): 1-43.</p>
+<section id="Install-python-libraryes-and-softwares">
+<h2>Install python libraryes and softwares<a class="headerlink" href="#Install-python-libraryes-and-softwares" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>rasterio
+<span class="o">!</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>geopandas
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Collecting rasterio
+  Downloading rasterio-1.4.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (9.1 kB)
+Collecting affine (from rasterio)
+  Downloading affine-2.4.0-py3-none-any.whl.metadata (4.0 kB)
+Requirement already satisfied: attrs in /usr/local/lib/python3.11/dist-packages (from rasterio) (25.3.0)
+Requirement already satisfied: certifi in /usr/local/lib/python3.11/dist-packages (from rasterio) (2025.4.26)
+Requirement already satisfied: click&gt;=4.0 in /usr/local/lib/python3.11/dist-packages (from rasterio) (8.2.1)
+Collecting cligj&gt;=0.5 (from rasterio)
+  Downloading cligj-0.7.2-py3-none-any.whl.metadata (5.0 kB)
+Requirement already satisfied: numpy&gt;=1.24 in /usr/local/lib/python3.11/dist-packages (from rasterio) (2.0.2)
+Collecting click-plugins (from rasterio)
+  Downloading click_plugins-1.1.1-py2.py3-none-any.whl.metadata (6.4 kB)
+Requirement already satisfied: pyparsing in /usr/local/lib/python3.11/dist-packages (from rasterio) (3.2.3)
+Downloading rasterio-1.4.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (22.2 MB)
+   <span class="ansi-black-intense-fg">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span> <span class="ansi-green-fg">22.2/22.2 MB</span> <span class="ansi-red-fg">37.6 MB/s</span> eta <span class="ansi-cyan-fg">0:00:00</span>
+Downloading cligj-0.7.2-py3-none-any.whl (7.1 kB)
+Downloading affine-2.4.0-py3-none-any.whl (15 kB)
+Downloading click_plugins-1.1.1-py2.py3-none-any.whl (7.5 kB)
+Installing collected packages: cligj, click-plugins, affine, rasterio
+Successfully installed affine-2.4.0 click-plugins-1.1.1 cligj-0.7.2 rasterio-1.4.3
+Requirement already satisfied: geopandas in /usr/local/lib/python3.11/dist-packages (1.0.1)
+Requirement already satisfied: numpy&gt;=1.22 in /usr/local/lib/python3.11/dist-packages (from geopandas) (2.0.2)
+Requirement already satisfied: pyogrio&gt;=0.7.2 in /usr/local/lib/python3.11/dist-packages (from geopandas) (0.11.0)
+Requirement already satisfied: packaging in /usr/local/lib/python3.11/dist-packages (from geopandas) (24.2)
+Requirement already satisfied: pandas&gt;=1.4.0 in /usr/local/lib/python3.11/dist-packages (from geopandas) (2.2.2)
+Requirement already satisfied: pyproj&gt;=3.3.0 in /usr/local/lib/python3.11/dist-packages (from geopandas) (3.7.1)
+Requirement already satisfied: shapely&gt;=2.0.0 in /usr/local/lib/python3.11/dist-packages (from geopandas) (2.1.1)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /usr/local/lib/python3.11/dist-packages (from pandas&gt;=1.4.0-&gt;geopandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /usr/local/lib/python3.11/dist-packages (from pandas&gt;=1.4.0-&gt;geopandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /usr/local/lib/python3.11/dist-packages (from pandas&gt;=1.4.0-&gt;geopandas) (2025.2)
+Requirement already satisfied: certifi in /usr/local/lib/python3.11/dist-packages (from pyogrio&gt;=0.7.2-&gt;geopandas) (2025.4.26)
+Requirement already satisfied: six&gt;=1.5 in /usr/local/lib/python3.11/dist-packages (from python-dateutil&gt;=2.8.2-&gt;pandas&gt;=1.4.0-&gt;geopandas) (1.17.0)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>lss
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+    .geemap-dark {
+        --jp-widgets-color: white;
+        --jp-widgets-label-color: white;
+        --jp-ui-font-color1: white;
+        --jp-layout-color2: #454545;
+        background-color: #383838;
+    }
+
+    .geemap-dark .jupyter-button {
+        --jp-layout-color3: #383838;
+    }
+
+    .geemap-colab {
+        background-color: var(--colab-primary-surface-color, white);
+    }
+
+    .geemap-colab .jupyter-button {
+        --jp-layout-color3: var(--colab-primary-surface-color, white);
+    }
+</style></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/bin/bash: line 1: lss: command not found
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+apt<span class="w"> </span>install<span class="w"> </span>gdal-bin<span class="w"> </span>python3-gdal<span class="w"> </span>grass<span class="w"> </span>grass-dev<span class="w"> </span>pktools
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  fonts-dejavu-core fonts-droid-fallback fonts-lyx fonts-noto-mono
+  fonts-urw-base35 ghostscript grass-core grass-doc grass-gui libalgorithms1
+  libfann2 libfftw3-double3 libfileclasses1 libglu1-mesa libgs9 libgs9-common
+  libgsl27 libgslcblas0 libidn12 libijs-0.35 libimageclasses1 libimagequant0
+  libjbig2dec0 liblbfgsb0 libnotify4 libpdal-plugin-e57 libpdal-plugin-faux
+  libpdal-plugin-hdf libpdal-plugin-icebridge libpdal-plugin-pgpointcloud
+  libpdal-plugins libpdal16 libraqm0 libwxbase3.2-1 libwxgtk-gl3.2-1
+  libwxgtk3.2-1 libxsimd-dev libxtst6 libxxf86dga1 poppler-data proj-bin
+  python-matplotlib-data python3-appdirs python3-attr python3-beniget
+  python3-brotli python3-bs4 python3-chardet python3-cycler python3-dateutil
+  python3-decorator python3-fonttools python3-fs python3-gast python3-html5lib
+  python3-kiwisolver python3-lxml python3-lz4 python3-matplotlib
+  python3-mpmath python3-numpy python3-olefile python3-packaging python3-pil
+  python3-pil.imagetk python3-ply python3-pythran python3-scipy
+  python3-soupsieve python3-sympy python3-tz python3-ufolib2
+  python3-unicodedata2 python3-webencodings python3-wxgtk4.0 unicode-data
+  x11-utils xbitmaps xterm
+Suggested packages:
+  fonts-noto fonts-freefont-otf | fonts-freefont-ttf fonts-texgyre
+  libgdal-grass ghostscript-x e00compr avce00 gnuplot gpsbabel gpstrans netpbm
+  python3-rpy2 python3-termcolor subversion grass-dev-doc libfann-dev
+  libfann-doc libfftw3-bin libfftw3-dev gsl-ref-psdoc | gsl-doc-pdf
+  | gsl-doc-info | gsl-ref-html gnome-shell | notification-daemon libxsimd-doc
+  poppler-utils fonts-japanese-mincho | fonts-ipafont-mincho
+  fonts-japanese-gothic | fonts-ipafont-gothic fonts-arphic-ukai
+  fonts-arphic-uming fonts-nanum python-attr-doc python-cycler-doc
+  python3-genshi python-lxml-doc dvipng fonts-staypuft gir1.2-gtk-3.0 inkscape
+  ipython3 librsvg2-common python-matplotlib-doc python3-cairocffi
+  python3-gi-cairo python3-gobject python3-pyqt5 python3-sip python3-tornado
+  texlive-extra-utils texlive-latex-extra python-mpmath-doc python3-gmpy2
+  python-numpy-doc python3-pytest python-pil-doc python-ply-doc
+  python-scipy-doc texlive-fonts-extra python-sympy-doc wx3.2-doc mesa-utils
+  xfonts-cyrillic
+The following NEW packages will be installed:
+  fonts-dejavu-core fonts-droid-fallback fonts-lyx fonts-noto-mono
+  fonts-urw-base35 gdal-bin ghostscript grass grass-core grass-dev grass-doc
+  grass-gui libalgorithms1 libfann2 libfftw3-double3 libfileclasses1
+  libglu1-mesa libgs9 libgs9-common libgsl27 libgslcblas0 libidn12 libijs-0.35
+  libimageclasses1 libimagequant0 libjbig2dec0 liblbfgsb0 libnotify4
+  libpdal-plugin-e57 libpdal-plugin-faux libpdal-plugin-hdf
+  libpdal-plugin-icebridge libpdal-plugin-pgpointcloud libpdal-plugins
+  libpdal16 libraqm0 libwxbase3.2-1 libwxgtk-gl3.2-1 libwxgtk3.2-1
+  libxsimd-dev libxtst6 libxxf86dga1 pktools poppler-data proj-bin
+  python-matplotlib-data python3-appdirs python3-attr python3-beniget
+  python3-brotli python3-bs4 python3-chardet python3-cycler python3-dateutil
+  python3-decorator python3-fonttools python3-fs python3-gast python3-gdal
+  python3-html5lib python3-kiwisolver python3-lxml python3-lz4
+  python3-matplotlib python3-mpmath python3-numpy python3-olefile
+  python3-packaging python3-pil python3-pil.imagetk python3-ply
+  python3-pythran python3-scipy python3-soupsieve python3-sympy python3-tz
+  python3-ufolib2 python3-unicodedata2 python3-webencodings python3-wxgtk4.0
+  unicode-data x11-utils xbitmaps xterm
+0 upgraded, 84 newly installed, 0 to remove and 35 not upgraded.
+Need to get 131 MB of archives.
+After this operation, 449 MB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 fonts-droid-fallback all 1:6.0.1r16-1.1build1 [1,805 kB]
+Get:2 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 python3-gdal amd64 3.8.4+dfsg-1~jammy0 [1,095 kB]
+Get:3 http://archive.ubuntu.com/ubuntu jammy/main amd64 poppler-data all 0.4.11-1 [2,171 kB]
+Get:4 http://archive.ubuntu.com/ubuntu jammy/main amd64 fonts-dejavu-core all 2.37-2build1 [1,041 kB]
+Get:5 http://archive.ubuntu.com/ubuntu jammy/universe amd64 fonts-lyx all 2.3.6-1 [159 kB]
+Get:6 http://archive.ubuntu.com/ubuntu jammy/main amd64 fonts-noto-mono all 20201225-1build1 [397 kB]
+Get:7 http://archive.ubuntu.com/ubuntu jammy/main amd64 fonts-urw-base35 all 20200910-1 [6,367 kB]
+Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-numpy amd64 1:1.21.5-1ubuntu22.04.1 [3,467 kB]
+Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgs9-common all 9.55.0~dfsg1-0ubuntu5.11 [753 kB]
+Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libidn12 amd64 1.38-4ubuntu1 [60.0 kB]
+Get:11 http://archive.ubuntu.com/ubuntu jammy/main amd64 libijs-0.35 amd64 0.35-15build2 [16.5 kB]
+Get:12 http://archive.ubuntu.com/ubuntu jammy/main amd64 libjbig2dec0 amd64 0.19-3build2 [64.7 kB]
+Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgs9 amd64 9.55.0~dfsg1-0ubuntu5.11 [5,031 kB]
+Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ghostscript amd64 9.55.0~dfsg1-0ubuntu5.11 [49.4 kB]
+Get:15 http://archive.ubuntu.com/ubuntu jammy/main amd64 libfftw3-double3 amd64 3.3.8-2ubuntu8 [770 kB]
+Get:16 http://archive.ubuntu.com/ubuntu jammy/main amd64 libglu1-mesa amd64 9.0.2-1 [145 kB]
+Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 python3-pil.imagetk amd64 9.0.1-1ubuntu0.3 [9,616 B]
+Get:18 http://archive.ubuntu.com/ubuntu jammy/main amd64 libimagequant0 amd64 2.17.0-1 [34.6 kB]
+Get:19 http://archive.ubuntu.com/ubuntu jammy/main amd64 libraqm0 amd64 0.7.0-4ubuntu1 [11.7 kB]
+Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-pil amd64 9.0.1-1ubuntu0.3 [419 kB]
+Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnotify4 amd64 0.7.9-3ubuntu5.22.04.1 [20.3 kB]
+Get:22 http://archive.ubuntu.com/ubuntu jammy/main amd64 libxtst6 amd64 2:1.2.3-1build4 [13.4 kB]
+Get:23 http://archive.ubuntu.com/ubuntu jammy/main amd64 xbitmaps all 1.1.1-2.1ubuntu1 [23.4 kB]
+Get:24 http://archive.ubuntu.com/ubuntu jammy/universe amd64 xterm amd64 372-1ubuntu1 [857 kB]
+Get:25 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libgslcblas0 amd64 2.7.1+dfsg-3 [94.4 kB]
+Get:26 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libgsl27 amd64 2.7.1+dfsg-3 [1,000 kB]
+Get:27 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libfann2 amd64 2.2.0+ds-6 [63.5 kB]
+Get:28 http://archive.ubuntu.com/ubuntu jammy/universe amd64 liblbfgsb0 amd64 3.0+dfsg.3-10 [29.9 kB]
+Get:29 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libxsimd-dev amd64 7.6.0-2 [108 kB]
+Get:30 http://archive.ubuntu.com/ubuntu jammy/main amd64 libxxf86dga1 amd64 2:1.1.5-0ubuntu3 [12.6 kB]
+Get:31 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python-matplotlib-data all 3.5.1-2build1 [2,942 kB]
+Get:32 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-appdirs all 1.4.4-2 [11.4 kB]
+Get:33 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-attr all 21.2.0-1 [44.0 kB]
+Get:34 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-gast all 0.5.2-2 [9,394 B]
+Get:35 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-beniget all 0.4.1-2 [9,904 B]
+Get:36 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-brotli amd64 1.0.9-2build6 [319 kB]
+Get:37 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-soupsieve all 2.3.1-1 [33.0 kB]
+Get:38 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-bs4 all 4.10.0-2 [79.1 kB]
+Get:39 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-chardet all 4.0.0-1 [98.0 kB]
+Get:40 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-cycler all 0.11.0-1 [8,156 B]
+Get:41 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-dateutil all 2.8.1-6 [78.4 kB]
+Get:42 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-decorator all 4.4.2-0ubuntu1 [10.3 kB]
+Get:43 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-ply all 3.11-5 [47.5 kB]
+Get:44 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-pythran amd64 0.10.0+ds2-1 [423 kB]
+Get:45 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-scipy amd64 1.8.0-1exp2ubuntu1 [14.7 MB]
+Get:46 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-ufolib2 all 0.13.1+dfsg1-1 [32.2 kB]
+Get:47 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-mpmath all 1.2.1-2 [419 kB]
+Get:48 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-sympy all 1.9-1 [4,312 kB]
+Get:49 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-tz all 2022.1-1ubuntu0.22.04.1 [30.7 kB]
+Get:50 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-fs all 2.4.12-1 [84.9 kB]
+Get:51 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-lxml amd64 4.8.0-1build1 [1,150 kB]
+Get:52 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-lz4 amd64 3.1.3+dfsg-1build3 [33.3 kB]
+Get:53 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-unicodedata2 amd64 14.0.0+ds-8 [376 kB]
+Get:54 http://archive.ubuntu.com/ubuntu jammy/universe amd64 unicode-data all 14.0.0-1.1 [8,206 kB]
+Get:55 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-fonttools amd64 4.29.1-2build1 [810 kB]
+Get:56 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-webencodings all 0.5.1-4 [11.8 kB]
+Get:57 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-html5lib all 1.1-3 [87.0 kB]
+Get:58 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-kiwisolver amd64 1.3.2-1build1 [48.0 kB]
+Get:59 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-packaging all 21.3-1 [30.7 kB]
+Get:60 http://archive.ubuntu.com/ubuntu jammy/universe amd64 python3-matplotlib amd64 3.5.1-2build1 [5,937 kB]
+Get:61 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-olefile all 0.46-3 [33.8 kB]
+Get:62 http://archive.ubuntu.com/ubuntu jammy/main amd64 x11-utils amd64 7.7+5build2 [206 kB]
+Get:63 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 gdal-bin amd64 3.8.4+dfsg-1~jammy0 [605 kB]
+Get:64 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 grass-doc all 8.4.1-1~jammy2 [37.6 MB]
+Get:65 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal16 amd64 2.6.2+ds-1~jammy0 [1,930 kB]
+Get:66 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 grass-core amd64 8.4.1-1~jammy2 [6,710 kB]
+Get:67 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libwxbase3.2-1 amd64 3.2.4+dfsg-2ubuntu1~jammy0 [917 kB]
+Get:68 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libwxgtk3.2-1 amd64 3.2.4+dfsg-2ubuntu1~jammy0 [4,655 kB]
+Get:69 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libwxgtk-gl3.2-1 amd64 3.2.4+dfsg-2ubuntu1~jammy0 [55.3 kB]
+Get:70 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 python3-wxgtk4.0 amd64 4.2.1+dfsg-3~jammy0 [7,954 kB]
+Get:71 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 grass-gui amd64 8.4.1-1~jammy2 [1,484 kB]
+Get:72 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 grass all 8.4.1-1~jammy2 [26.2 kB]
+Get:73 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 grass-dev amd64 8.4.1-1~jammy2 [222 kB]
+Get:74 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libimageclasses1 amd64 2.6.7.6+ds-4~jammy1 [59.7 kB]
+Get:75 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libalgorithms1 amd64 2.6.7.6+ds-4~jammy1 [132 kB]
+Get:76 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libfileclasses1 amd64 2.6.7.6+ds-4~jammy1 [16.6 kB]
+Get:77 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugin-e57 amd64 2.6.2+ds-1~jammy0 [371 kB]
+Get:78 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugin-faux amd64 2.6.2+ds-1~jammy0 [35.5 kB]
+Get:79 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugin-hdf amd64 2.6.2+ds-1~jammy0 [101 kB]
+Get:80 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugin-icebridge amd64 2.6.2+ds-1~jammy0 [51.3 kB]
+Get:81 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugin-pgpointcloud amd64 2.6.2+ds-1~jammy0 [81.5 kB]
+Get:82 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 libpdal-plugins amd64 2.6.2+ds-1~jammy0 [18.6 kB]
+Get:83 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 pktools amd64 2.6.7.6+ds-4~jammy1 [966 kB]
+Get:84 https://ppa.launchpadcontent.net/ubuntugis/ppa/ubuntu jammy/main amd64 proj-bin amd64 9.3.1-1~jammy0 [205 kB]
+Fetched 131 MB in 2min 7s (1,028 kB/s)
+Selecting previously unselected package fonts-droid-fallback.
+(Reading database ... 126111 files and directories currently installed.)
+Preparing to unpack .../00-fonts-droid-fallback_1%3a6.0.1r16-1.1build1_all.deb ...
+Unpacking fonts-droid-fallback (1:6.0.1r16-1.1build1) ...
+Selecting previously unselected package poppler-data.
+Preparing to unpack .../01-poppler-data_0.4.11-1_all.deb ...
+Unpacking poppler-data (0.4.11-1) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../02-fonts-dejavu-core_2.37-2build1_all.deb ...
+Unpacking fonts-dejavu-core (2.37-2build1) ...
+Selecting previously unselected package fonts-lyx.
+Preparing to unpack .../03-fonts-lyx_2.3.6-1_all.deb ...
+Unpacking fonts-lyx (2.3.6-1) ...
+Selecting previously unselected package fonts-noto-mono.
+Preparing to unpack .../04-fonts-noto-mono_20201225-1build1_all.deb ...
+Unpacking fonts-noto-mono (20201225-1build1) ...
+Selecting previously unselected package fonts-urw-base35.
+Preparing to unpack .../05-fonts-urw-base35_20200910-1_all.deb ...
+Unpacking fonts-urw-base35 (20200910-1) ...
+Selecting previously unselected package python3-numpy.
+Preparing to unpack .../06-python3-numpy_1%3a1.21.5-1ubuntu22.04.1_amd64.deb ...
+Unpacking python3-numpy (1:1.21.5-1ubuntu22.04.1) ...
+Selecting previously unselected package python3-gdal.
+Preparing to unpack .../07-python3-gdal_3.8.4+dfsg-1~jammy0_amd64.deb ...
+Unpacking python3-gdal (3.8.4+dfsg-1~jammy0) ...
+Selecting previously unselected package gdal-bin.
+Preparing to unpack .../08-gdal-bin_3.8.4+dfsg-1~jammy0_amd64.deb ...
+Unpacking gdal-bin (3.8.4+dfsg-1~jammy0) ...
+Selecting previously unselected package libgs9-common.
+Preparing to unpack .../09-libgs9-common_9.55.0~dfsg1-0ubuntu5.11_all.deb ...
+Unpacking libgs9-common (9.55.0~dfsg1-0ubuntu5.11) ...
+Selecting previously unselected package libidn12:amd64.
+Preparing to unpack .../10-libidn12_1.38-4ubuntu1_amd64.deb ...
+Unpacking libidn12:amd64 (1.38-4ubuntu1) ...
+Selecting previously unselected package libijs-0.35:amd64.
+Preparing to unpack .../11-libijs-0.35_0.35-15build2_amd64.deb ...
+Unpacking libijs-0.35:amd64 (0.35-15build2) ...
+Selecting previously unselected package libjbig2dec0:amd64.
+Preparing to unpack .../12-libjbig2dec0_0.19-3build2_amd64.deb ...
+Unpacking libjbig2dec0:amd64 (0.19-3build2) ...
+Selecting previously unselected package libgs9:amd64.
+Preparing to unpack .../13-libgs9_9.55.0~dfsg1-0ubuntu5.11_amd64.deb ...
+Unpacking libgs9:amd64 (9.55.0~dfsg1-0ubuntu5.11) ...
+Selecting previously unselected package ghostscript.
+Preparing to unpack .../14-ghostscript_9.55.0~dfsg1-0ubuntu5.11_amd64.deb ...
+Unpacking ghostscript (9.55.0~dfsg1-0ubuntu5.11) ...
+Selecting previously unselected package grass-doc.
+Preparing to unpack .../15-grass-doc_8.4.1-1~jammy2_all.deb ...
+Unpacking grass-doc (8.4.1-1~jammy2) ...
+Selecting previously unselected package libfftw3-double3:amd64.
+Preparing to unpack .../16-libfftw3-double3_3.3.8-2ubuntu8_amd64.deb ...
+Unpacking libfftw3-double3:amd64 (3.3.8-2ubuntu8) ...
+Selecting previously unselected package libglu1-mesa:amd64.
+Preparing to unpack .../17-libglu1-mesa_9.0.2-1_amd64.deb ...
+Unpacking libglu1-mesa:amd64 (9.0.2-1) ...
+Selecting previously unselected package libpdal16.
+Preparing to unpack .../18-libpdal16_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal16 (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package grass-core.
+Preparing to unpack .../19-grass-core_8.4.1-1~jammy2_amd64.deb ...
+Unpacking grass-core (8.4.1-1~jammy2) ...
+Selecting previously unselected package python3-pil.imagetk:amd64.
+Preparing to unpack .../20-python3-pil.imagetk_9.0.1-1ubuntu0.3_amd64.deb ...
+Unpacking python3-pil.imagetk:amd64 (9.0.1-1ubuntu0.3) ...
+Selecting previously unselected package libimagequant0:amd64.
+Preparing to unpack .../21-libimagequant0_2.17.0-1_amd64.deb ...
+Unpacking libimagequant0:amd64 (2.17.0-1) ...
+Selecting previously unselected package libraqm0:amd64.
+Preparing to unpack .../22-libraqm0_0.7.0-4ubuntu1_amd64.deb ...
+Unpacking libraqm0:amd64 (0.7.0-4ubuntu1) ...
+Selecting previously unselected package python3-pil:amd64.
+Preparing to unpack .../23-python3-pil_9.0.1-1ubuntu0.3_amd64.deb ...
+Unpacking python3-pil:amd64 (9.0.1-1ubuntu0.3) ...
+Selecting previously unselected package libwxbase3.2-1:amd64.
+Preparing to unpack .../24-libwxbase3.2-1_3.2.4+dfsg-2ubuntu1~jammy0_amd64.deb ...
+Unpacking libwxbase3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Selecting previously unselected package libnotify4:amd64.
+Preparing to unpack .../25-libnotify4_0.7.9-3ubuntu5.22.04.1_amd64.deb ...
+Unpacking libnotify4:amd64 (0.7.9-3ubuntu5.22.04.1) ...
+Selecting previously unselected package libxtst6:amd64.
+Preparing to unpack .../26-libxtst6_2%3a1.2.3-1build4_amd64.deb ...
+Unpacking libxtst6:amd64 (2:1.2.3-1build4) ...
+Selecting previously unselected package libwxgtk3.2-1:amd64.
+Preparing to unpack .../27-libwxgtk3.2-1_3.2.4+dfsg-2ubuntu1~jammy0_amd64.deb ...
+Unpacking libwxgtk3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Selecting previously unselected package libwxgtk-gl3.2-1:amd64.
+Preparing to unpack .../28-libwxgtk-gl3.2-1_3.2.4+dfsg-2ubuntu1~jammy0_amd64.deb ...
+Unpacking libwxgtk-gl3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Selecting previously unselected package python3-wxgtk4.0.
+Preparing to unpack .../29-python3-wxgtk4.0_4.2.1+dfsg-3~jammy0_amd64.deb ...
+Unpacking python3-wxgtk4.0 (4.2.1+dfsg-3~jammy0) ...
+Selecting previously unselected package xbitmaps.
+Preparing to unpack .../30-xbitmaps_1.1.1-2.1ubuntu1_all.deb ...
+Unpacking xbitmaps (1.1.1-2.1ubuntu1) ...
+Selecting previously unselected package xterm.
+Preparing to unpack .../31-xterm_372-1ubuntu1_amd64.deb ...
+Unpacking xterm (372-1ubuntu1) ...
+Selecting previously unselected package grass-gui.
+Preparing to unpack .../32-grass-gui_8.4.1-1~jammy2_amd64.deb ...
+Unpacking grass-gui (8.4.1-1~jammy2) ...
+Selecting previously unselected package grass.
+Preparing to unpack .../33-grass_8.4.1-1~jammy2_all.deb ...
+Unpacking grass (8.4.1-1~jammy2) ...
+Selecting previously unselected package grass-dev.
+Preparing to unpack .../34-grass-dev_8.4.1-1~jammy2_amd64.deb ...
+Unpacking grass-dev (8.4.1-1~jammy2) ...
+Selecting previously unselected package libgslcblas0:amd64.
+Preparing to unpack .../35-libgslcblas0_2.7.1+dfsg-3_amd64.deb ...
+Unpacking libgslcblas0:amd64 (2.7.1+dfsg-3) ...
+Selecting previously unselected package libgsl27:amd64.
+Preparing to unpack .../36-libgsl27_2.7.1+dfsg-3_amd64.deb ...
+Unpacking libgsl27:amd64 (2.7.1+dfsg-3) ...
+Selecting previously unselected package libimageclasses1.
+Preparing to unpack .../37-libimageclasses1_2.6.7.6+ds-4~jammy1_amd64.deb ...
+Unpacking libimageclasses1 (2.6.7.6+ds-4~jammy1) ...
+Selecting previously unselected package libalgorithms1.
+Preparing to unpack .../38-libalgorithms1_2.6.7.6+ds-4~jammy1_amd64.deb ...
+Unpacking libalgorithms1 (2.6.7.6+ds-4~jammy1) ...
+Selecting previously unselected package libfann2:amd64.
+Preparing to unpack .../39-libfann2_2.2.0+ds-6_amd64.deb ...
+Unpacking libfann2:amd64 (2.2.0+ds-6) ...
+Selecting previously unselected package libfileclasses1.
+Preparing to unpack .../40-libfileclasses1_2.6.7.6+ds-4~jammy1_amd64.deb ...
+Unpacking libfileclasses1 (2.6.7.6+ds-4~jammy1) ...
+Selecting previously unselected package liblbfgsb0:amd64.
+Preparing to unpack .../41-liblbfgsb0_3.0+dfsg.3-10_amd64.deb ...
+Unpacking liblbfgsb0:amd64 (3.0+dfsg.3-10) ...
+Selecting previously unselected package libpdal-plugin-e57.
+Preparing to unpack .../42-libpdal-plugin-e57_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugin-e57 (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libpdal-plugin-faux.
+Preparing to unpack .../43-libpdal-plugin-faux_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugin-faux (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libpdal-plugin-hdf.
+Preparing to unpack .../44-libpdal-plugin-hdf_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugin-hdf (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libpdal-plugin-icebridge.
+Preparing to unpack .../45-libpdal-plugin-icebridge_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugin-icebridge (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libpdal-plugin-pgpointcloud.
+Preparing to unpack .../46-libpdal-plugin-pgpointcloud_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugin-pgpointcloud (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libpdal-plugins.
+Preparing to unpack .../47-libpdal-plugins_2.6.2+ds-1~jammy0_amd64.deb ...
+Unpacking libpdal-plugins (2.6.2+ds-1~jammy0) ...
+Selecting previously unselected package libxsimd-dev:amd64.
+Preparing to unpack .../48-libxsimd-dev_7.6.0-2_amd64.deb ...
+Unpacking libxsimd-dev:amd64 (7.6.0-2) ...
+Selecting previously unselected package libxxf86dga1:amd64.
+Preparing to unpack .../49-libxxf86dga1_2%3a1.1.5-0ubuntu3_amd64.deb ...
+Unpacking libxxf86dga1:amd64 (2:1.1.5-0ubuntu3) ...
+Selecting previously unselected package pktools.
+Preparing to unpack .../50-pktools_2.6.7.6+ds-4~jammy1_amd64.deb ...
+Unpacking pktools (2.6.7.6+ds-4~jammy1) ...
+Selecting previously unselected package proj-bin.
+Preparing to unpack .../51-proj-bin_9.3.1-1~jammy0_amd64.deb ...
+Unpacking proj-bin (9.3.1-1~jammy0) ...
+Selecting previously unselected package python-matplotlib-data.
+Preparing to unpack .../52-python-matplotlib-data_3.5.1-2build1_all.deb ...
+Unpacking python-matplotlib-data (3.5.1-2build1) ...
+Selecting previously unselected package python3-appdirs.
+Preparing to unpack .../53-python3-appdirs_1.4.4-2_all.deb ...
+Unpacking python3-appdirs (1.4.4-2) ...
+Selecting previously unselected package python3-attr.
+Preparing to unpack .../54-python3-attr_21.2.0-1_all.deb ...
+Unpacking python3-attr (21.2.0-1) ...
+Selecting previously unselected package python3-gast.
+Preparing to unpack .../55-python3-gast_0.5.2-2_all.deb ...
+Unpacking python3-gast (0.5.2-2) ...
+Selecting previously unselected package python3-beniget.
+Preparing to unpack .../56-python3-beniget_0.4.1-2_all.deb ...
+Unpacking python3-beniget (0.4.1-2) ...
+Selecting previously unselected package python3-brotli.
+Preparing to unpack .../57-python3-brotli_1.0.9-2build6_amd64.deb ...
+Unpacking python3-brotli (1.0.9-2build6) ...
+Selecting previously unselected package python3-soupsieve.
+Preparing to unpack .../58-python3-soupsieve_2.3.1-1_all.deb ...
+Unpacking python3-soupsieve (2.3.1-1) ...
+Selecting previously unselected package python3-bs4.
+Preparing to unpack .../59-python3-bs4_4.10.0-2_all.deb ...
+Unpacking python3-bs4 (4.10.0-2) ...
+Selecting previously unselected package python3-chardet.
+Preparing to unpack .../60-python3-chardet_4.0.0-1_all.deb ...
+Unpacking python3-chardet (4.0.0-1) ...
+Selecting previously unselected package python3-cycler.
+Preparing to unpack .../61-python3-cycler_0.11.0-1_all.deb ...
+Unpacking python3-cycler (0.11.0-1) ...
+Selecting previously unselected package python3-dateutil.
+Preparing to unpack .../62-python3-dateutil_2.8.1-6_all.deb ...
+Unpacking python3-dateutil (2.8.1-6) ...
+Selecting previously unselected package python3-decorator.
+Preparing to unpack .../63-python3-decorator_4.4.2-0ubuntu1_all.deb ...
+Unpacking python3-decorator (4.4.2-0ubuntu1) ...
+Selecting previously unselected package python3-ply.
+Preparing to unpack .../64-python3-ply_3.11-5_all.deb ...
+Unpacking python3-ply (3.11-5) ...
+Selecting previously unselected package python3-pythran.
+Preparing to unpack .../65-python3-pythran_0.10.0+ds2-1_amd64.deb ...
+Unpacking python3-pythran (0.10.0+ds2-1) ...
+Selecting previously unselected package python3-scipy.
+Preparing to unpack .../66-python3-scipy_1.8.0-1exp2ubuntu1_amd64.deb ...
+Unpacking python3-scipy (1.8.0-1exp2ubuntu1) ...
+Selecting previously unselected package python3-ufolib2.
+Preparing to unpack .../67-python3-ufolib2_0.13.1+dfsg1-1_all.deb ...
+Unpacking python3-ufolib2 (0.13.1+dfsg1-1) ...
+Selecting previously unselected package python3-mpmath.
+Preparing to unpack .../68-python3-mpmath_1.2.1-2_all.deb ...
+Unpacking python3-mpmath (1.2.1-2) ...
+Selecting previously unselected package python3-sympy.
+Preparing to unpack .../69-python3-sympy_1.9-1_all.deb ...
+Unpacking python3-sympy (1.9-1) ...
+Selecting previously unselected package python3-tz.
+Preparing to unpack .../70-python3-tz_2022.1-1ubuntu0.22.04.1_all.deb ...
+Unpacking python3-tz (2022.1-1ubuntu0.22.04.1) ...
+Selecting previously unselected package python3-fs.
+Preparing to unpack .../71-python3-fs_2.4.12-1_all.deb ...
+Unpacking python3-fs (2.4.12-1) ...
+Selecting previously unselected package python3-lxml:amd64.
+Preparing to unpack .../72-python3-lxml_4.8.0-1build1_amd64.deb ...
+Unpacking python3-lxml:amd64 (4.8.0-1build1) ...
+Selecting previously unselected package python3-lz4.
+Preparing to unpack .../73-python3-lz4_3.1.3+dfsg-1build3_amd64.deb ...
+Unpacking python3-lz4 (3.1.3+dfsg-1build3) ...
+Selecting previously unselected package python3-unicodedata2.
+Preparing to unpack .../74-python3-unicodedata2_14.0.0+ds-8_amd64.deb ...
+Unpacking python3-unicodedata2 (14.0.0+ds-8) ...
+Selecting previously unselected package unicode-data.
+Preparing to unpack .../75-unicode-data_14.0.0-1.1_all.deb ...
+Unpacking unicode-data (14.0.0-1.1) ...
+Selecting previously unselected package python3-fonttools.
+Preparing to unpack .../76-python3-fonttools_4.29.1-2build1_amd64.deb ...
+Unpacking python3-fonttools (4.29.1-2build1) ...
+Selecting previously unselected package python3-webencodings.
+Preparing to unpack .../77-python3-webencodings_0.5.1-4_all.deb ...
+Unpacking python3-webencodings (0.5.1-4) ...
+Selecting previously unselected package python3-html5lib.
+Preparing to unpack .../78-python3-html5lib_1.1-3_all.deb ...
+Unpacking python3-html5lib (1.1-3) ...
+Selecting previously unselected package python3-kiwisolver.
+Preparing to unpack .../79-python3-kiwisolver_1.3.2-1build1_amd64.deb ...
+Unpacking python3-kiwisolver (1.3.2-1build1) ...
+Selecting previously unselected package python3-packaging.
+Preparing to unpack .../80-python3-packaging_21.3-1_all.deb ...
+Unpacking python3-packaging (21.3-1) ...
+Selecting previously unselected package python3-matplotlib.
+Preparing to unpack .../81-python3-matplotlib_3.5.1-2build1_amd64.deb ...
+Unpacking python3-matplotlib (3.5.1-2build1) ...
+Selecting previously unselected package python3-olefile.
+Preparing to unpack .../82-python3-olefile_0.46-3_all.deb ...
+Unpacking python3-olefile (0.46-3) ...
+Selecting previously unselected package x11-utils.
+Preparing to unpack .../83-x11-utils_7.7+5build2_amd64.deb ...
+Unpacking x11-utils (7.7+5build2) ...
+Setting up python3-attr (21.2.0-1) ...
+Setting up libpdal16 (2.6.2+ds-1~jammy0) ...
+Setting up libpdal-plugin-faux (2.6.2+ds-1~jammy0) ...
+Setting up fonts-noto-mono (20201225-1build1) ...
+Setting up libgslcblas0:amd64 (2.7.1+dfsg-3) ...
+Setting up python3-lz4 (3.1.3+dfsg-1build3) ...
+Setting up python3-unicodedata2 (14.0.0+ds-8) ...
+Setting up libxtst6:amd64 (2:1.2.3-1build4) ...
+Setting up fonts-lyx (2.3.6-1) ...
+Setting up libijs-0.35:amd64 (0.35-15build2) ...
+Setting up python3-olefile (0.46-3) ...
+Setting up python3-ply (3.11-5) ...
+Setting up python3-gast (0.5.2-2) ...
+Setting up libxxf86dga1:amd64 (2:1.1.5-0ubuntu3) ...
+Setting up libgsl27:amd64 (2.7.1+dfsg-3) ...
+Setting up proj-bin (9.3.1-1~jammy0) ...
+Setting up fonts-urw-base35 (20200910-1) ...
+Setting up libwxbase3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Setting up python3-webencodings (0.5.1-4) ...
+Setting up python3-tz (2022.1-1ubuntu0.22.04.1) ...
+Setting up poppler-data (0.4.11-1) ...
+Setting up libfileclasses1 (2.6.7.6+ds-4~jammy1) ...
+Setting up unicode-data (14.0.0-1.1) ...
+Setting up python3-beniget (0.4.1-2) ...
+Setting up libxsimd-dev:amd64 (7.6.0-2) ...
+Setting up python3-decorator (4.4.2-0ubuntu1) ...
+Setting up python3-packaging (21.3-1) ...
+Setting up python3-chardet (4.0.0-1) ...
+Setting up libjbig2dec0:amd64 (0.19-3build2) ...
+Setting up libnotify4:amd64 (0.7.9-3ubuntu5.22.04.1) ...
+Setting up python3-brotli (1.0.9-2build6) ...
+Setting up libraqm0:amd64 (0.7.0-4ubuntu1) ...
+Setting up python3-cycler (0.11.0-1) ...
+Setting up libimagequant0:amd64 (2.17.0-1) ...
+Setting up python3-kiwisolver (1.3.2-1build1) ...
+Setting up grass-doc (8.4.1-1~jammy2) ...
+Setting up libpdal-plugin-e57 (2.6.2+ds-1~jammy0) ...
+Setting up libidn12:amd64 (1.38-4ubuntu1) ...
+Setting up fonts-dejavu-core (2.37-2build1) ...
+Setting up python3-html5lib (1.1-3) ...
+Setting up python3-numpy (1:1.21.5-1ubuntu22.04.1) ...
+Setting up libfftw3-double3:amd64 (3.3.8-2ubuntu8) ...
+Setting up libpdal-plugin-pgpointcloud (2.6.2+ds-1~jammy0) ...
+Setting up libpdal-plugin-icebridge (2.6.2+ds-1~jammy0) ...
+Setting up python3-pythran (0.10.0+ds2-1) ...
+Setting up python3-lxml:amd64 (4.8.0-1build1) ...
+Setting up x11-utils (7.7+5build2) ...
+Setting up python3-dateutil (2.8.1-6) ...
+Setting up libglu1-mesa:amd64 (9.0.2-1) ...
+Setting up fonts-droid-fallback (1:6.0.1r16-1.1build1) ...
+Setting up python3-mpmath (1.2.1-2) ...
+Setting up libfann2:amd64 (2.2.0+ds-6) ...
+Setting up python-matplotlib-data (3.5.1-2build1) ...
+Setting up python3-appdirs (1.4.4-2) ...
+Setting up python3-soupsieve (2.3.1-1) ...
+Setting up python3-gdal (3.8.4+dfsg-1~jammy0) ...
+Setting up libpdal-plugin-hdf (2.6.2+ds-1~jammy0) ...
+Setting up xbitmaps (1.1.1-2.1ubuntu1) ...
+Setting up liblbfgsb0:amd64 (3.0+dfsg.3-10) ...
+Setting up libgs9-common (9.55.0~dfsg1-0ubuntu5.11) ...
+Setting up python3-sympy (1.9-1) ...
+Setting up libwxgtk3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Setting up python3-scipy (1.8.0-1exp2ubuntu1) ...
+Setting up libgs9:amd64 (9.55.0~dfsg1-0ubuntu5.11) ...
+Setting up libwxgtk-gl3.2-1:amd64 (3.2.4+dfsg-2ubuntu1~jammy0) ...
+Setting up grass-core (8.4.1-1~jammy2) ...
+Setting up libpdal-plugins (2.6.2+ds-1~jammy0) ...
+Setting up libimageclasses1 (2.6.7.6+ds-4~jammy1) ...
+Setting up ghostscript (9.55.0~dfsg1-0ubuntu5.11) ...
+Setting up python3-bs4 (4.10.0-2) ...
+Setting up python3-fs (2.4.12-1) ...
+Setting up python3-pil:amd64 (9.0.1-1ubuntu0.3) ...
+Setting up gdal-bin (3.8.4+dfsg-1~jammy0) ...
+Setting up python3-pil.imagetk:amd64 (9.0.1-1ubuntu0.3) ...
+Setting up xterm (372-1ubuntu1) ...
+update-alternatives: using /usr/bin/xterm to provide /usr/bin/x-terminal-emulator (x-terminal-emulator) in auto mode
+update-alternatives: using /usr/bin/lxterm to provide /usr/bin/x-terminal-emulator (x-terminal-emulator) in auto mode
+Setting up libalgorithms1 (2.6.7.6+ds-4~jammy1) ...
+Setting up grass-dev (8.4.1-1~jammy2) ...
+Setting up python3-wxgtk4.0 (4.2.1+dfsg-3~jammy0) ...
+Setting up grass-gui (8.4.1-1~jammy2) ...
+Setting up pktools (2.6.7.6+ds-4~jammy1) ...
+Setting up grass (8.4.1-1~jammy2) ...
+Setting up python3-fonttools (4.29.1-2build1) ...
+Setting up python3-ufolib2 (0.13.1+dfsg1-1) ...
+Setting up python3-matplotlib (3.5.1-2build1) ...
+Processing triggers for hicolor-icon-theme (0.17-2) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+/sbin/ldconfig.real: /usr/local/lib/libtbb.so.12 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_0.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_opencl.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_adapter_level_zero.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libumf.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtcm.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc_proxy.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbmalloc.so.2 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libur_loader.so.0 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtcm_debug.so.1 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind_2_5.so.3 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libhwloc.so.15 is not a symbolic link
+
+/sbin/ldconfig.real: /usr/local/lib/libtbbbind.so.3 is not a symbolic link
+
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for mailcap (3.70+nmu1ubuntu1) ...
+Processing triggers for fontconfig (2.13.1-4.2ubuntu5) ...
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+</pre></div></div>
+</div>
+</section>
+<section id="Theoretical-background">
+<h2>Theoretical background<a class="headerlink" href="#Theoretical-background" title="Link to this heading"></a></h2>
+<p>The first step towards modeling hydrological features is delineating a comprehensive hydrography network. DEMs at different spatial resolutions allow for the identification of stream channels, using a variety of flow-routing algorithms. Such algorithms are based on the observation that water follows the steepest and shortest route along a relief, and accumulates in valleys, lowlands, flat areas and depressions. Several algorithms have been proposed for stream network routing. These algorithms
+proceed in several stages: determining flow directions, resolving depressions and flat areas, and finally, calculating flow accumulation.</p>
+</section>
+<section id="Flow-accumulation">
+<h2>Flow accumulation<a class="headerlink" href="#Flow-accumulation" title="Link to this heading"></a></h2>
+<p>Flow accumulation refers to the process of accumulating the flow of water across a terrain, often used in GIS to model drainage patterns and identify streams. Single flow direction (SFD) assumes water flows in only one direction, while multi-flow direction (MFD) allows water to flow in multiple directions, potentially more accurately representing terrain features.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">IPython.display</span><span class="w"> </span><span class="kn">import</span> <span class="n">display</span><span class="p">,</span> <span class="n">HTML</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">HTML</span><span class="p">(</span><span class="s1">&#39;&lt;img src=&quot;https://github.com/selvaje/SE_docs/blob/master/source/images/flowaccumulation_algorithm.png?raw=true&quot; width=&quot;1000&quot;&gt;&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<img src="https://github.com/selvaje/SE_docs/blob/master/source/images/flowaccumulation_algorithm.png?raw=true" width="1000"></div>
+</div>
+</section>
+<section id="Methodology">
+<h2>Methodology<a class="headerlink" href="#Methodology" title="Link to this heading"></a></h2>
+<p>Below we describe how we will extract a new high-resolution hydrography (stream-network and basins) from the 1KM DEM. In this exercise we simulate a case that we can not run the full South America continent in one tile because we reach RAM limitation. Therefore we compute the analysis in 3 tiles and then we combine the results.</p>
+<p>We are going to use 3 GRASS commands:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/r.watershed.html">r.watershed</a> to derive flow accumulation</p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/r.stream.extract.html">r.stream.extract</a> to extract-stream network</p></li>
+<li><p><a class="reference external" href="https://grass.osgeo.org/grass-stable/manuals/addons/r.stream.basins.html">r.stream.basins</a> to delineate basins</p></li>
+</ul>
+</section>
+<section id="Download-the-input-dataset">
+<h2>Download the input dataset<a class="headerlink" href="#Download-the-input-dataset" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># mask sea-land</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_msk.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/53a02ab19e45d1a16cbc63ad5fb30da4ae67839f/exercise/geodata/dem/SA_msk_1km.tif
+<span class="c1"># area for each pixel in km2</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_area.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_are_1km_msk.tif
+<span class="c1"># elevation</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_elevation.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+<span class="c1"># depresssion</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>SA_dep.tif<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/SA_all_dep_1km.tif
+<span class="c1"># computation tiles</span>
+<span class="o">!</span>wget<span class="w"> </span>-O<span class="w"> </span>tilesComp.gpkg<span class="w"> </span>https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/tilesComp.gpkg
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+    .geemap-dark {
+        --jp-widgets-color: white;
+        --jp-widgets-label-color: white;
+        --jp-ui-font-color1: white;
+        --jp-layout-color2: #454545;
+        background-color: #383838;
+    }
+
+    .geemap-dark .jupyter-button {
+        --jp-layout-color3: #383838;
+    }
+
+    .geemap-colab {
+        background-color: var(--colab-primary-surface-color, white);
+    }
+
+    .geemap-colab .jupyter-button {
+        --jp-layout-color3: var(--colab-primary-surface-color, white);
+    }
+</style></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--2025-06-13 09:21:50--  https://raw.githubusercontent.com/selvaje/SE_data/53a02ab19e45d1a16cbc63ad5fb30da4ae67839f/exercise/geodata/dem/SA_msk_1km.tif
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 389386 (380K) [image/tiff]
+Saving to: ‘SA_msk.tif’
+
+SA_msk.tif          100%[===================&gt;] 380.26K  --.-KB/s    in 0.03s
+
+2025-06-13 09:21:50 (12.4 MB/s) - ‘SA_msk.tif’ saved [389386/389386]
+
+--2025-06-13 09:21:50--  https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_are_1km_msk.tif
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 693593 (677K) [image/tiff]
+Saving to: ‘SA_area.tif’
+
+SA_area.tif         100%[===================&gt;] 677.34K  --.-KB/s    in 0.04s
+
+2025-06-13 09:21:50 (17.6 MB/s) - ‘SA_area.tif’ saved [693593/693593]
+
+--2025-06-13 09:21:50--  https://raw.githubusercontent.com/selvaje/SE_data/b21ed1b52e67f2633cb9a685c8cae9422ec42948/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 30715408 (29M) [application/octet-stream]
+Saving to: ‘SA_elevation.tif’
+
+SA_elevation.tif    100%[===================&gt;]  29.29M  --.-KB/s    in 0.1s
+
+2025-06-13 09:21:51 (223 MB/s) - ‘SA_elevation.tif’ saved [30715408/30715408]
+
+--2025-06-13 09:21:51--  https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/SA_all_dep_1km.tif
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 286077 (279K) [image/tiff]
+Saving to: ‘SA_dep.tif’
+
+SA_dep.tif          100%[===================&gt;] 279.37K  --.-KB/s    in 0.02s
+
+2025-06-13 09:21:52 (11.7 MB/s) - ‘SA_dep.tif’ saved [286077/286077]
+
+--2025-06-13 09:21:52--  https://raw.githubusercontent.com/selvaje/SE_data/66617b33f3704a532d9fc0f39953235ce43cd5b1/exercise/geodata/dem/tilesComp.gpkg
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 106496 (104K) [application/octet-stream]
+Saving to: ‘tilesComp.gpkg’
+
+tilesComp.gpkg      100%[===================&gt;] 104.00K  --.-KB/s    in 0.02s
+
+2025-06-13 09:21:52 (6.52 MB/s) - ‘tilesComp.gpkg’ saved [106496/106496]
+
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">geopandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">gpd</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+    .geemap-dark {
+        --jp-widgets-color: white;
+        --jp-widgets-label-color: white;
+        --jp-ui-font-color1: white;
+        --jp-layout-color2: #454545;
+        background-color: #383838;
+    }
+
+    .geemap-dark .jupyter-button {
+        --jp-layout-color3: #383838;
+    }
+
+    .geemap-colab {
+        background-color: var(--colab-primary-surface-color, white);
+    }
+
+    .geemap-colab .jupyter-button {
+        --jp-layout-color3: var(--colab-primary-surface-color, white);
+    }
+</style></div>
+</div>
+</section>
+<section id="Plotting-the-input-dataset">
+<h2>Plotting the input dataset<a class="headerlink" href="#Plotting-the-input-dataset" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open raster datasets</span>
+
+<span class="n">msk</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_msk.tif&quot;</span><span class="p">)</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_elevation.tif&quot;</span><span class="p">)</span>
+<span class="n">area</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_area.tif&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a figure and subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">ax3</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>  <span class="c1"># 1 row, 3 columns</span>
+
+<span class="c1"># Plot each raster on a subplot</span>
+<span class="n">show</span><span class="p">(</span><span class="n">msk</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Mask&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax2</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Elevation&quot;</span><span class="p">)</span>
+<span class="n">show</span><span class="p">(</span><span class="n">area</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax3</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s2">&quot;Area&quot;</span><span class="p">)</span>
+
+<span class="c1"># Adjust layout and display</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+    .geemap-dark {
+        --jp-widgets-color: white;
+        --jp-widgets-label-color: white;
+        --jp-ui-font-color1: white;
+        --jp-layout-color2: #454545;
+        background-color: #383838;
+    }
+
+    .geemap-dark .jupyter-button {
+        --jp-layout-color3: #383838;
+    }
+
+    .geemap-colab {
+        background-color: var(--colab-primary-surface-color, white);
+    }
+
+    .geemap-colab .jupyter-button {
+        --jp-layout-color3: var(--colab-primary-surface-color, white);
+    }
+</style></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_colab_12_1.png" src="../_images/GRASS_grass_hydro_colab_12_1.png" />
+</div>
+</div>
+</section>
+<section id="Plotting-the-elevation-and-the-computational-tiles">
+<h2>Plotting the elevation and the computational tiles<a class="headerlink" href="#Plotting-the-elevation-and-the-computational-tiles" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Open raster datasets</span>
+<span class="n">dem</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/SA_elevation.tif&quot;</span><span class="p">)</span>
+
+<span class="c1"># Open the vector dataset</span>
+<span class="n">tiles</span> <span class="o">=</span> <span class="n">gpd</span><span class="o">.</span><span class="n">read_file</span><span class="p">(</span><span class="s2">&quot;/content/tilesComp.gpkg&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a figure and an axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Plot the DEM raster</span>
+<span class="n">show</span><span class="p">(</span><span class="n">dem</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;terrain&#39;</span><span class="p">)</span> <span class="c1"># Use a terrain colormap</span>
+
+<span class="c1"># Plot the vector data on top of the DEM</span>
+<span class="n">tiles</span><span class="o">.</span><span class="n">boundary</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Plot the boundaries in red</span>
+<span class="n">tiles</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span> <span class="c1"># Transparent fill with red outline</span>
+
+
+<span class="c1"># Add a title and labels</span>
+<span class="c1"># ax.set_title(&quot;DEM with Irregular Tiling System Overlay&quot;)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_colab_15_0.png" src="../_images/GRASS_grass_hydro_colab_15_0.png" />
+</div>
+</div>
+</section>
+<section id="Install-the-grass-add-on">
+<h2>Install the grass add-on<a class="headerlink" href="#Install-the-grass-add-on" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+grass<span class="w"> </span>--exec<span class="w"> </span>g.extension<span class="w"> </span><span class="nv">extension</span><span class="o">=</span>r.stream.basins
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Your branch is up to date with &#39;origin/grass8&#39;.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Fetching &lt;r.stream.basins&gt; from &lt;https://github.com/OSGeo/grass-addons/&gt;
+(be patient)...
+Already on &#39;grass8&#39;
+Compiling...
+Installing...
+Updating extensions metadata file...
+Updating extension modules metadata file...
+Installation of &lt;r.stream.basins&gt; successfully finished
+</pre></div></div>
+</div>
+</section>
+<section id="Compute-continental-seamless-flow-accumulation">
+<h2>Compute continental seamless flow accumulation<a class="headerlink" href="#Compute-continental-seamless-flow-accumulation" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+<span class="nb">cd</span><span class="w"> </span>/content/
+
+<span class="c1"># use -c create loctation/project to using the SA_elevation.tif file as reference</span>
+rm<span class="w"> </span>-fr<span class="w"> </span>/content/hydrographySA_1
+grass<span class="w"> </span>--text<span class="w"> </span>-c<span class="w">  </span>/content/SA_elevation.tif<span class="w"> </span>/content/hydrographySA_1<span class="w">  </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">g.gisenv set=&quot;GRASS_VERBOSE=-1&quot;,&quot;DEBUG=0&quot;</span>
+
+<span class="s">## import the layers</span>
+<span class="s">r.external input=/content/SA_elevation.tif             output=elv --o --q # dem</span>
+<span class="s">r.external input=/content/SA_dep.tif                   output=dep --o --q # depression</span>
+<span class="s">r.external input=/content/SA_area.tif                  output=are --o --q # area-pixel</span>
+<span class="s">r.external input=/content/SA_msk.tif                   output=msk --o --q # land-ocean mask</span>
+
+<span class="s">g.region  -m</span>
+
+<span class="s">for tile in 1 2 3  ; do     # loop for each tile</span>
+<span class="s">r.mask raster=msk --o --q   # usefull to mask the flow accumulation</span>
+
+<span class="s"># extract tile extent from the  tilesComp.gpkg</span>
+<span class="s">wL=$(ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $2 }&#39;)</span>
+<span class="s">nL=$(ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $3 }&#39;)</span>
+<span class="s">eL=$(ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $4 }&#39;)</span>
+<span class="s">sL=$(ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $7 }&#39;)</span>
+
+<span class="s">g.region w=$wL  n=$nL  s=$sL  e=$eL  res=0:00:30   --o</span>
+<span class="s">g.region -m</span>
+
+<span class="s">### maximum ram 66571M  for 2^31 -1   (2 147 483 647 cell)  / 1 000 000  * 31 M</span>
+<span class="s">####  -m  Enable disk swap memory option: Operation is slow</span>
+<span class="s">####  -b Beautify flat areas</span>
+<span class="s">####   threshold=8  8 km2</span>
+
+<span class="s">echo &quot;############# compute the flow accumulation using MFD for tile $tile ##############&quot;</span>
+<span class="s">r.watershed  -b  elevation=elv  depression=dep  accumulation=flow drainage=dir_rw flow=are   memory=4000 --o --q</span>
+
+<span class="s">echo &quot;############# extract stream ##################&quot;</span>
+<span class="s">r.stream.extract elevation=elv accumulation=flow depression=dep threshold=8 direction=dir_rs stream_raster=stream  memory=2000 --o --q</span>
+
+<span class="s">echo &quot;############# delineate basin  ##################&quot;</span>
+<span class="s">r.stream.basins -l  stream_rast=stream direction=dir_rs   basins=lbasin  memory=2000 --o  --q</span>
+<span class="s">r.colors -r stream --q ; r.colors -r lbasin --q ; r.colors -r flow --q</span>
+
+<span class="s">r.out.gdal --o -c -m  createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=UInt32 format=GTiff nodata=0 input=lbasin output=/content/lbasinTmp1_$tile.tif</span>
+
+<span class="s">echo &quot;###### create a small zone flow binary for later use ###########&quot;</span>
+<span class="s">r.mapcalc &quot; small_zone_flow =   if( !isnull(flow) &amp;&amp; isnull(lbasin) , 1 , null()) &quot; --o  --q</span>
+
+<span class="s">echo &quot;##### create a smaller box ########&quot;</span>
+<span class="s">CropW=$( ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep &quot; CropW&quot; | awk &#39;{print $4 }&#39;)</span>
+<span class="s">CropE=$( ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep &quot; CropE&quot; | awk &#39;{print $4 }&#39;)</span>
+<span class="s">CropS=$( ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep &quot; CropS&quot; | awk &#39;{print $4 }&#39;)</span>
+<span class="s">CropN=$( ogrinfo -al -where  &quot;id  = &#39;$tile&#39;&quot; /content/tilesComp.gpkg | grep &quot; CropN&quot; | awk &#39;{print $4 }&#39;)</span>
+
+<span class="s">nS=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; -v CropN=$CropN  &#39;{ printf (&quot;%.14f\n&quot; , $2 - CropN ) }&#39; )</span>
+<span class="s">sS=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; -v CropS=$CropS  &#39;{ printf (&quot;%.14f\n&quot; , $2 + CropS ) }&#39; )</span>
+<span class="s">eS=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; -v CropE=$CropE  &#39;{ printf (&quot;%.14f\n&quot; , $2 - CropE ) }&#39; )</span>
+<span class="s">wS=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; -v CropW=$CropW  &#39;{ printf (&quot;%.14f\n&quot; , $2 + CropW ) }&#39; )</span>
+
+<span class="s"># set a smaller region to avoid border effect</span>
+<span class="s">g.region w=$wS  n=$nS  s=$sS  e=$eS  res=0:00:30  save=smallext --o  --q # smaller region</span>
+<span class="s">g.region region=smallext --o --q</span>
+<span class="s">g.region  -m</span>
+
+<span class="s"># at this point we want remove all no-entire basins. To do this we create 4 stripes of 1 pixel allong the tile borders.</span>
+
+<span class="s">echo &quot;######## left stripe ########&quot;</span>
+<span class="s">eST=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; &#39;{ print $2 }&#39;)</span>
+<span class="s">wST=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 - ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region n=$nS s=$sS     e=$eST w=$wST  res=0:00:30 --o</span>
+<span class="s">r.mapcalc &quot; lbasin_wstripe = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext --o --q</span>
+
+<span class="s">echo &quot;######## right stripe  ########&quot;</span>
+<span class="s">wST=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">eST=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 + ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region n=$nS s=$sS  e=$eST w=$wST  res=0:00:30 --o</span>
+<span class="s">r.mapcalc &quot; lbasin_estripe    = lbasin &quot; --o --q</span>
+
+<span class="s">g.region region=smallext --o --q</span>
+<span class="s">echo &quot;######## top stripe   ########&quot;</span>
+<span class="s">nST=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">sST=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 - ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region e=$eS w=$wS n=$nST s=$sST res=0:00:30  --o</span>
+<span class="s">r.mapcalc &quot; lbasin_nstripe    = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext --o --q</span>
+
+<span class="s">echo &quot;######## bottom stripe ########&quot;</span>
+<span class="s">sST=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">nST=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 + ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region   e=$eS  w=$wS  n=$nST  s=$sST  res=0:00:30 --o</span>
+<span class="s">r.mapcalc &quot; lbasin_sstripe    = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext   --o --q</span>
+
+<span class="s"># the 1 pixel strip is used to have the ID of the truncated basin.</span>
+
+<span class="s">echo &quot;######## remove incompleate basins  ########&quot;</span>
+<span class="s">    cat &lt;(r.report -n -h units=c map=lbasin_estripe | awk  &#39;{ gsub (&quot;\\|&quot;,&quot; &quot; ) ; { print $1 } } &#39; | awk &#39;$1 ~ /^[0-9]+$/ { print $1 } &#39;) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_wstripe | awk  &#39;{ gsub (&quot;\\|&quot;,&quot; &quot; ) ; { print $1 } } &#39; | awk &#39;$1 ~ /^[0-9]+$/ { print $1 } &#39;) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_sstripe | awk  &#39;{ gsub (&quot;\\|&quot;,&quot; &quot; ) ; { print $1 } } &#39; | awk &#39;$1 ~ /^[0-9]+$/ { print $1 } &#39;) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_nstripe | awk  &#39;{ gsub (&quot;\\|&quot;,&quot; &quot; ) ; { print $1 } } &#39; | awk &#39;$1 ~ /^[0-9]+$/ { print $1 } &#39;) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin         | awk  &#39;{ gsub (&quot;\\|&quot;,&quot; &quot; ) ; { print $1 } } &#39; | awk &#39;$1 ~ /^[0-9]+$/ { print $1 } &#39;) \</span>
+<span class="s">      | sort  | uniq -c | awk &#39;{ if($1==1) {print $2&quot;=&quot;$2 } else { print $2&quot;=NULL&quot;}  }&#39; &gt;  /content/lbasin_${tile}_reclass.txt</span>
+
+<span class="s"># use the r.reclass command to reclass ID basin to NULL</span>
+
+<span class="s">r.reclass input=lbasin  output=lbasin_rec   rules=/content/lbasin_${tile}_reclass.txt   --o --q</span>
+<span class="s">rm -f /content/lbasin_${tile}_reclass.txt</span>
+
+<span class="s">r.mapcalc  &quot; lbasin_clean = lbasin_rec&quot; --o --q</span>
+<span class="s">g.remove -f  type=raster name=lbasin_rec,lbasin_estripe,lbasin_wstripe,lbasin_nstripe,lbasin_sstripe --q</span>
+
+<span class="s">echo &quot;############  export basin only for visual inspection  ############&quot;</span>
+
+<span class="s">r.mask raster=lbasin_clean --o --q</span>
+<span class="s">r.out.gdal --o -c -m createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=UInt32 format=GTiff nodata=0 input=lbasin_clean  output=/content/lbasinTmp2_$tile.tif</span>
+
+<span class="s">echo &quot;############ output the flow accumulation  ############&quot;</span>
+<span class="s">r.mask raster=msk --o --q</span>
+
+<span class="s">r.mapcalc  &quot; lbasin_flow_clean  = if ( !isnull(lbasin_clean ) || !isnull(small_zone_flow) , 1 , null()  ) &quot; --o --q</span>
+<span class="s">r.grow  input=lbasin_flow_clean  output=lbasin_flow_clean_grow  radius=4  --o --q</span>
+<span class="s">r.mask  raster=lbasin_flow_clean_grow   --o --q</span>
+
+<span class="s">r.out.gdal --o -f -c -m createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;  nodata=-9999999  type=Float32 format=GTiff input=flow output=/content/flow_${tile}.tif</span>
+
+<span class="s">gdal_edit.py -a_ullr  $wS $nS $eS $sS  /content/flow_${tile}.tif</span>
+<span class="s">gdal_edit.py -tr 0.00833333333333333333333333333333333 -0.00833333333333333333333333333333333  /content/flow_${tile}.tif</span>
+
+<span class="s">done</span>
+
+<span class="s">EOF</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area rendered_html docutils container">
+<style>
+    .geemap-dark {
+        --jp-widgets-color: white;
+        --jp-widgets-label-color: white;
+        --jp-ui-font-color1: white;
+        --jp-layout-color2: #454545;
+        background-color: #383838;
+    }
+
+    .geemap-dark .jupyter-button {
+        --jp-layout-color3: #383838;
+    }
+
+    .geemap-colab {
+        background-color: var(--colab-primary-surface-color, white);
+    }
+
+    .geemap-colab .jupyter-button {
+        --jp-layout-color3: var(--colab-primary-surface-color, white);
+    }
+</style></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+projection=3
+zone=0
+n=14
+s=-56
+w=-83
+e=-34
+nsres=923.44150551
+ewres=703.7149865
+rows=8400
+cols=5880
+cells=49392000
+projection=3
+zone=0
+n=-12
+s=-56
+w=-76.4
+e=-43
+nsres=924.52244935
+ewres=710.89449752
+rows=5280
+cols=4008
+cells=21162240
+############# compute the flow accumulation using MFD for tile 1 ##############
+############# extract stream ##################
+############# delineate basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=-14
+s=-56
+w=-75.8
+e=-45
+nsres=924.64630106
+ewres=707.62000721
+rows=5040
+cols=3696
+cells=18627840
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin only for visual inspection  ############
+############ output the flow accumulation  ############
+projection=3
+zone=0
+n=1
+s=-38
+w=-73.9
+e=-34.6
+nsres=922.66504302
+ewres=826.93226998
+rows=4680
+cols=4716
+cells=22070880
+############# compute the flow accumulation using MFD for tile 2 ##############
+############# extract stream ##################
+############# delineate basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=-1.8
+s=-35.2
+w=-71.1
+e=-34.6
+nsres=922.59157279
+ewres=840.84791606
+rows=4008
+cols=4380
+cells=17555040
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin only for visual inspection  ############
+############ output the flow accumulation  ############
+projection=3
+zone=0
+n=12.7
+s=-24.5
+w=-81.7
+e=-41.7
+nsres=921.8619211
+ewres=872.86703289
+rows=4464
+cols=4800
+cells=21427200
+############# compute the flow accumulation using MFD for tile 3 ##############
+############# extract stream ##################
+############# delineate basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=12.7
+s=-21.7
+w=-81.4
+e=-44.5
+nsres=921.77907927
+ewres=882.26518613
+rows=4128
+cols=4428
+cells=18278784
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin only for visual inspection  ############
+############ output the flow accumulation  ############
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Creating new GRASS GIS project &lt;hydrographySA_1&gt;...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.4.1
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp1_1.tif&gt; created.
+   0%   3%   0%   0%   3%   6%   0%   6%   0%   3%   9%   9%   3%   3%  12%   6%  12%   6%   6%  15%   9%  15%   9%   9%  18%  12%  18%  21%  12%  15%  12%  21%  24%  15%  18%  15%  27%  24%  21%  18%  30%  27%  18%  24%  21%  27%  30%  30%  33%  21%  33%  24%  36%  33%  36%  27%  24%  39%  36%  30%  39%  42%  27%  33%  45%  39%  42%  36%  30%  42%  48%  45%  39%  33%  51%  45%  42%  48%  36%  48%  45%  54%  51%  39%  51%  57%  48%  54%  54%  42%  60%  51%  57%  57%  63%  45%  54%  60%  60%  66%  48%  63%  57%  69%  63%  51%  66%  60%  66%  72%  69%  54%  63%  69%  75%  72%  66%  57%  72%  78%  69%  75%  75%  60%  81%  72%  78%  78%  84%  63%  75%  81%  81%  87%  66%  78%  84%  84%  90%  81%  69%  87%  87%  93%  84%  90%  90%  72%  96%  87%  93%  93%  75%  99%  90% 100%
+  96%  96%  93%  78%  99% 100%  96%
+  99%  81% 100%
+  99% 100%
+  84%  87%  90%  93%  96%  99% 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp2_1.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+WARNING: MASK already exists and will be overwritten
+WARNING: Precision loss: Float32 can not preserve the DCELL precision of
+         raster &lt;flow&gt;. This can be avoided by using Float64
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;Float32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/flow_1.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp1_2.tif&gt; created.
+   0%   3%   6%   0%   0%   0%   9%   0%  12%   3%   3%  15%  18%   3%   3%   6%  21%   6%   6%   6%   9%  24%   9%   9%   9%  27%  12%  12%  12%  12%  15%  30%  15%  15%  18%  15%  18%  33%  18%  21%  21%  36%  18%  21%  24%  21%  24%  24%  39%  24%  27%  27%  27%  27%  42%  30%  30%  30%  30%  33%  45%  33%  33%  36%  39%  33%  48%  42%  36%  36%  45%  51%  36%  39%  48%  39%  54%  42%  39%  51%  42%  57%  42%  60%  45%  54%  63%  45%  66%  48%  45%  48%  57%  69%  51%  48%  60%  51%  72%  54%  51%  54%  63%  75%  54%  57%  57%  66%  60%  57%  78%  60%  63%  69%  60%  81%  63%  66%  72%  63%  66%  84%  69%  75%  66%  69%  87%  72%  78%  72%  90%  75%  69%  81%  93%  78%  75%  72%  84%  81%  96%  78%  87%  75%  84%  90%  99%  87%  81% 100%
+  78%  84%  93%  90%  81%  87%  93%  96%  84%  90%  99%  96% 100%
+  93%  87%  96%  99% 100%  99%
+ 100%
+  90%  93%  96%  99% 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp2_2.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+WARNING: MASK already exists and will be overwritten
+WARNING: Precision loss: Float32 can not preserve the DCELL precision of
+         raster &lt;flow&gt;. This can be avoided by using Float64
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;Float32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/flow_2.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp1_3.tif&gt; created.
+   0%   3%   6%   0%   0%   0%   3%   6%   0%   9%   3%   3%  12%   9%   6%   3%   6%  15%  12%   6%  18%   9%  15%   9%   9%  21%  12%  18%  24%  12%  21%  12%  15%  27%  24%  15%  15%  18%  27%  30%  30%  21%  18%  18%  33%  33%  24%  21%  21%  36%  36%  27%  24%  24%  30%  39%  39%  33%  36%  39%  27%  27%  42%  42%  42%  45%  30%  30%  45%  48%  45%  51%  48%  33%  33%  54%  48%  51%  36%  36%  57%  51%  54%  39%  60%  54%  39%  57%  63%  42%  57%  42%  60%  66%  45%  60%  45%  69%  63%  48%  51%  63%  54%  48%  72%  66%  57%  66%  60%  69%  51%  75%  69%  72%  54%  63%  72%  78%  66%  75%  57%  75%  69%  81%  78%  78%  60%  84%  87%  72%  81%  63%  81%  90%  75%  84%  66%  84%  87%  93%  90%  93%  78%  69%  96%  96%  87%  81%  99%  99% 100%
+  72% 100%
+  90%  75%  84%  78%  93%  81%  87%  96%  84%  90%  99% 100%
+  87%  93%  90%  96%  93%  99% 100%
+  96%  99% 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasinTmp2_3.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+WARNING: MASK already exists and will be overwritten
+WARNING: Precision loss: Float32 can not preserve the DCELL precision of
+         raster &lt;flow&gt;. This can be avoided by using Float64
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;Float32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/flow_3.tif&gt; created.
+Done.
+
+Goodbye from GRASS GIS
+
+</pre></div></div>
+</div>
+</section>
+<section id="Merge-flow-accumulation-tiles">
+<h2>Merge flow accumulation tiles<a class="headerlink" href="#Merge-flow-accumulation-tiles" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+gdalbuildvrt<span class="w">  </span>-srcnodata<span class="w"> </span>-9999999<span class="w"> </span>-vrtnodata<span class="w"> </span>-9999999<span class="w"> </span>/content/flow_all.vrt<span class="w"> </span>/content/flow_?.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>/content/flow_all.vrt<span class="w"> </span>/content/flow_all.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 5616, 8244
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">flow</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/flow_all.tif&quot;</span><span class="p">)</span>
+<span class="c1"># Create a figure and an axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span><span class="n">flow</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span> <span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gist_earth&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mi">2000</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">20000</span> <span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;bicubic&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_colab_22_0.png" src="../_images/GRASS_grass_hydro_colab_22_0.png" />
+</div>
+</div>
+</section>
+<section id="Compute-continental-seamless-basins-and-streams">
+<h2>Compute continental seamless basins and streams<a class="headerlink" href="#Compute-continental-seamless-basins-and-streams" title="Link to this heading"></a></h2>
+<p>Redelineate the basin and streams using the same procedure then before but using the continental flow accumulation.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-fr<span class="w"> </span>/content/hydrographySA_2
+grass<span class="w"> </span>--text<span class="w"> </span>-c<span class="w">  </span>/content/flow_all.tif<span class="w"> </span>/content/hydrographySA_2<span class="w">  </span>--exec<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+
+<span class="s">## import the layers</span>
+<span class="s">r.external input=/content/flow_all.tif                     output=flow --o --q # flow accumulation</span>
+<span class="s">r.external input=/content/SA_elevation.tif output=elv  --o --q # dem</span>
+<span class="s">r.external input=/content/SA_dep.tif                   output=dep  --o --q # depression</span>
+<span class="s">r.external input=/content/SA_msk.tif                   output=msk  --o --q # land-ocean mask</span>
+
+<span class="s">g.region  -m</span>
+
+<span class="s">for tile in 1 2 3  ; do  # loop for each tile</span>
+<span class="s">r.mask raster=msk --o # usefull to mask the flow accumulation</span>
+
+<span class="s">wL=$(ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $2 }&#39;)</span>
+<span class="s">nL=$(ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $3 }&#39;)</span>
+<span class="s">eL=$(ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $4 }&#39;)</span>
+<span class="s">sL=$(ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep POLYGON | awk &#39;{ gsub(/[(()),]/,&quot; &quot;,$0 ); print $7 }&#39;)</span>
+
+<span class="s">g.region w=$wL  n=$nL  s=$sL  e=$eL  res=0:00:30   --o</span>
+<span class="s">g.region -m</span>
+
+<span class="s">### maximum ram 66571M  for 2^63 -1   (2 147 483 647 cell)  / 1 000 000  * 31 M</span>
+<span class="s">####  -m  Enable disk swap memory option: Operation is slow</span>
+<span class="s">####  -b Beautify flat areas</span>
+<span class="s">####   threshold=1  = ~1 km2 = 0.9  m2</span>
+
+<span class="s">echo &quot;############# extract stream ##################&quot;</span>
+<span class="s">r.stream.extract elevation=elv accumulation=flow depression=dep threshold=8 direction=dir_rs stream_raster=stream  memory=4000 --o --q</span>
+
+<span class="s">echo &quot;############# delineate basin and sub-basin  ##################&quot;</span>
+<span class="s">r.stream.basins -l  stream_rast=stream direction=dir_rs   basins=lbasin  memory=2000 --o --q</span>
+<span class="s">r.colors -r stream --q; r.colors -r lbasin --q ; r.colors -r flow --q</span>
+
+<span class="s">echo &quot;###### create a small zone flow binary for later use ###########&quot;</span>
+<span class="s">r.mapcalc &quot; small_zone_flow =   if( !isnull(flow) &amp;&amp; isnull(lbasin) , 1 , null()) &quot; --o --q</span>
+
+<span class="s">echo &quot;##### create a smaller box ########&quot;</span>
+<span class="s">CropW=$( ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep &quot; CropW&quot; | awk &#39;{print $4}&#39; )</span>
+<span class="s">CropE=$( ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep &quot; CropE&quot; | awk &#39;{print $4}&#39; )</span>
+<span class="s">CropS=$( ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep &quot; CropS&quot; | awk &#39;{print $4}&#39; )</span>
+<span class="s">CropN=$( ogrinfo -al -where  &quot; id  = &#39;$tile&#39; &quot; /content/tilesComp.gpkg | grep &quot; CropN&quot; | awk &#39;{print $4}&#39; )</span>
+
+<span class="s">nS=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; -v CropN=$CropN  &#39;{ printf (&quot;%.14f\n&quot; , $2 - CropN ) }&#39; )</span>
+<span class="s">sS=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; -v CropS=$CropS  &#39;{ printf (&quot;%.14f\n&quot; , $2 + CropS ) }&#39; )</span>
+<span class="s">eS=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; -v CropE=$CropE  &#39;{ printf (&quot;%.14f\n&quot; , $2 - CropE ) }&#39; )</span>
+<span class="s">wS=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; -v CropW=$CropW  &#39;{ printf (&quot;%.14f\n&quot; , $2 + CropW ) }&#39; )</span>
+
+<span class="s">g.region w=$wS  n=$nS  s=$sS  e=$eS  res=0:00:30  save=smallext --o --q # smaller region</span>
+<span class="s">g.region region=smallext --o --q</span>
+<span class="s">g.region  -m --q</span>
+
+<span class="s">echo &quot;######## left stripe ########&quot;</span>
+<span class="s">eST=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; &#39;{ print $2 }&#39;)</span>
+<span class="s">wST=$(g.region -m  | grep ^e= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 - ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region n=$nS s=$sS     e=$eST w=$wST  res=0:00:30 --o --q</span>
+<span class="s">r.mapcalc &quot; lbasin_wstripe = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext --o --q</span>
+
+<span class="s">echo &quot;######## right stripe  ########&quot;</span>
+<span class="s">wST=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">eST=$(g.region -m  | grep ^w= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 + ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region n=$nS s=$sS  e=$eST w=$wST  res=0:00:30 --o --q</span>
+<span class="s">r.mapcalc &quot; lbasin_estripe    = lbasin &quot; --o --q</span>
+
+<span class="s">g.region region=smallext --o --q</span>
+<span class="s">echo &quot;######## top stripe   ########&quot;</span>
+<span class="s">nST=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">sST=$(g.region -m  | grep ^n= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 - ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region e=$eS w=$wS n=$nST s=$sST res=0:00:30  --o --q</span>
+<span class="s">r.mapcalc &quot; lbasin_nstripe    = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext --o --q</span>
+
+<span class="s">echo &quot;######## bottom stripe ########&quot;</span>
+<span class="s">sST=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; &#39;{ print $2   }&#39; )</span>
+<span class="s">nST=$(g.region -m  | grep ^s= | awk -F &quot;=&quot; &#39;{ printf (&quot;%.14f\n&quot; , $2 + ( 1 *  0.00833333333333 )) }&#39; )</span>
+
+<span class="s">g.region   e=$eS  w=$wS  n=$nST  s=$sST  res=0:00:30 --o --q</span>
+<span class="s">r.mapcalc &quot; lbasin_sstripe    = lbasin &quot; --o --q</span>
+<span class="s">g.region region=smallext   --o --q</span>
+
+<span class="s">echo &quot;######## remove incompleate basins  ########&quot;</span>
+<span class="s">    cat &lt;(r.report -n -h units=c map=lbasin_estripe | awk  &#39;{gsub (&quot;\\|&quot;,&quot; &quot;); { print $1 }}&#39; | awk  &#39;$1 ~ /^[0-9]+$/ {print $1} &#39;   ) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_wstripe | awk  &#39;{gsub (&quot;\\|&quot;,&quot; &quot;); { print $1 }}&#39; | awk  &#39;$1 ~ /^[0-9]+$/ {print $1} &#39;   ) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_sstripe | awk  &#39;{gsub (&quot;\\|&quot;,&quot; &quot;); { print $1 }}&#39; | awk  &#39;$1 ~ /^[0-9]+$/ {print $1} &#39;   ) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin_nstripe | awk  &#39;{gsub (&quot;\\|&quot;,&quot; &quot;); { print $1 }}&#39; | awk  &#39;$1 ~ /^[0-9]+$/ {print $1} &#39;   ) \</span>
+<span class="s">        &lt;(r.report -n -h units=c map=lbasin         | awk  &#39;{gsub (&quot;\\|&quot;,&quot; &quot;); { print $1 }}&#39; | awk  &#39;$1 ~ /^[0-9]+$/ {print $1} &#39; ) \</span>
+<span class="s">      | sort  | uniq -c | awk &#39;{ if($1==1) {print $2&quot;=&quot;$2 } else { print $2&quot;=NULL&quot;}  }&#39; &gt;  /content/lbasin_${tile}_reclass.txt</span>
+
+<span class="s">r.reclass input=lbasin  output=lbasin_rec   rules=/content/lbasin_${tile}_reclass.txt   --o --q</span>
+<span class="s">rm -f /content/lbasin_${tile}_reclass.txt</span>
+
+<span class="s">r.mapcalc  &quot; lbasin_clean = lbasin_rec&quot; --o --q</span>
+<span class="s">g.remove -f  type=raster name=lbasin_rec,lbasin_estripe,lbasin_wstripe,lbasin_nstripe,lbasin_sstripe  --q</span>
+
+<span class="s">echo &quot;############  export basin sub-basin and stream  ############&quot;</span>
+
+<span class="s">r.mask raster=lbasin_clean --o --q</span>
+<span class="s">r.out.gdal --o -c -m  createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=UInt32 format=GTiff nodata=0 input=lbasin  output=/content/lbasin_$tile.tif</span>
+<span class="s">r.out.gdal --o -c -m  createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=UInt32 format=GTiff nodata=0 input=stream  output=/content/stream_$tile.tif</span>
+
+<span class="s">done</span>
+
+<span class="s">EOF</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+projection=3
+zone=0
+n=12.7
+s=-56
+w=-81.4
+e=-34.6
+nsres=923.4698013
+ewres=706.8356204
+rows=8244
+cols=5616
+cells=46298304
+projection=3
+zone=0
+n=-12
+s=-56
+w=-76.4
+e=-43
+nsres=924.52244935
+ewres=710.89449752
+rows=5280
+cols=4008
+cells=21162240
+############# extract stream ##################
+############# delineate basin and sub-basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=-14
+s=-56
+w=-75.8
+e=-45
+nsres=924.64630106
+ewres=707.62000721
+rows=5040
+cols=3696
+cells=18627840
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin sub-basin and stream  ############
+projection=3
+zone=0
+n=1
+s=-38
+w=-73.9
+e=-34.6
+nsres=922.66504302
+ewres=826.93226998
+rows=4680
+cols=4716
+cells=22070880
+############# extract stream ##################
+############# delineate basin and sub-basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=-1.8
+s=-35.2
+w=-71.1
+e=-34.6
+nsres=922.59157279
+ewres=840.84791606
+rows=4008
+cols=4380
+cells=17555040
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin sub-basin and stream  ############
+projection=3
+zone=0
+n=12.7
+s=-24.5
+w=-81.7
+e=-41.7
+nsres=921.8619211
+ewres=872.86703289
+rows=4464
+cols=4800
+cells=21427200
+############# extract stream ##################
+############# delineate basin and sub-basin  ##################
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=12.7
+s=-21.7
+w=-81.4
+e=-44.5
+nsres=921.77907927
+ewres=882.26518613
+rows=4128
+cols=4428
+cells=18278784
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+############  export basin sub-basin and stream  ############
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+Creating new GRASS GIS project &lt;hydrographySA_2&gt;...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.4.1
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+All subsequent raster operations will be limited to the MASK area. Removing
+or renaming raster map named &#39;MASK&#39; will restore raster operations to
+normal.
+WARNING: Color table of raster map &lt;stream&gt; not found
+   0%   0%   0%   0%   0%   3%   3%   3%   3%   3%   6%   6%   6%   6%   6%   9%   9%   9%   9%   9%  12%  12%  12%  12%  12%  15%  15%  15%  15%  18%  15%  18%  18%  18%  21%  18%  21%  21%  21%  24%  21%  24%  24%  24%  27%  24%  27%  27%  27%  30%  27%  30%  30%  33%  33%  30%  33%  30%  36%  36%  39%  36%  33%  33%  42%  39%  36%  36%  39%  45%  42%  39%  39%  42%  48%  45%  42%  42%  45%  51%  48%  45%  48%  48%  45%  54%  51%  51%  51%  57%  48%  54%  60%  54%  54%  51%  57%  63%  57%  57%  60%  66%  54%  63%  60%  66%  60%  69%  69%  57%  63%  63%  66%  72%  66%  72%  60%  69%  75%  75%  63%  69%  72%  78%  78%  66%  69%  72%  81%  75%  72%  81%  78%  75%  84%  75%  84%  87%  90%  81%  78%  78%  87%  93%  84%  81%  81%  96%  90%  87%  84%  99%  84% 100%
+  93%  87%  87%  90%  90%  96%  93%  90%  93%  99%  96% 100%
+  93%  96%  96%  99%  99%  99% 100%
+ 100%
+ 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasin_1.tif&gt; created.
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/stream_1.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+All subsequent raster operations will be limited to the MASK area. Removing
+or renaming raster map named &#39;MASK&#39; will restore raster operations to
+normal.
+WARNING: Color table of raster map &lt;stream&gt; not found
+WARNING: Color table of raster map &lt;flow&gt; not found
+   0%   0%   0%   0%   3%   3%   3%   3%   0%   6%   6%   6%   6%   3%   9%   9%   6%   9%   9%  12%   9%  12%  12%  12%  15%  15%  12%  15%  18%  15%  18%  15%  18%  21%  18%  21%  24%  18%  21%  24%  21%  21%  27%  27%  24%  24%  30%  24%  30%  27%  27%  33%  27%  33%  30%  30%  36%  36%  30%  39%  33%  33%  42%  33%  39%  36%  36%  45%  36%  42%  39%  39%  48%  39%  42%  45%  42%  51%  42%  45%  48%  45%  45%  48%  54%  51%  48%  48%  51%  57%  54%  57%  51%  51%  54%  60%  60%  54%  63%  57%  54%  57%  63%  57%  60%  60%  66%  66%  63%  60%  63%  69%  69%  66%  63%  72%  72%  66%  69%  66%  72%  69%  75%  75%  75%  69%  78%  72%  72%  78%  78%  81%  75%  75%  81%  84%  81%  78%  78%  84%  84%  81%  87%  81%  90%  84%  87%  87%  93%  87%  84%  90%  90%  96%  90%  87%  93%  93%  99%  93% 100%
+  90%  96%  96%  96%  93%  99%  99% 100%
+  99% 100%
+ 100%
+  96%  99% 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasin_2.tif&gt; created.
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/stream_2.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+All subsequent raster operations will be limited to the MASK area. Removing
+or renaming raster map named &#39;MASK&#39; will restore raster operations to
+normal.
+WARNING: Color table of raster map &lt;stream&gt; not found
+WARNING: Color table of raster map &lt;flow&gt; not found
+   0%   3%   6%   9%  12%   0%   0%   0%   0%   3%   3%   3%   3%  15%   6%   9%   6%   6%  18%   6%  12%   9%  15%  21%   9%   9%  18%  12%  21%  12%  24%  12%  24%  15%  27%  15%  15%  27%  30%  18%  30%  18%  18%  33%  36%  21%  33%  21%  21%  39%  24%  36%  24%  42%  27%  27%  24%  39%  30%  45%  30%  42%  27%  33%  33%  48%  30%  36%  36%  45%  33%  51%  39%  39%  54%  48%  57%  36%  42%  42%  60%  51%  45%  54%  39%  45%  63%  57%  48%  48%  42%  66%  60%  51%  51%  45%  69%  63%  54%  54%  48%  72%  57%  66%  57%  51%  75%  60%  60%  69%  54%  78%  63%  63%  72%  57%  81%  66%  66%  75%  60%  69%  84%  69%  78%  63%  72%  72%  87%  81%  66%  75%  75%  90%  84%  69%  78%  78%  93%  87%  72%  81%  81%  90%  96%  75%  84%  84%  93%  87%  78%  99% 100%
+  96%  87%  90%  81%  99% 100%
+  90%  93%  84%  93%  96%  87%  96%  90%  99% 100%
+  99%  93% 100%
+  96%  99% 100%
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/lbasin_3.tif&gt; created.
+Checking GDAL data type and nodata value...
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+   2%   5%   8%  11%  14%  17%  20%  23%  26%  29%  32%  35%  38%  41%  44%  47%  50%  53%  56%  59%  62%  65%  68%  71%  74%  77%  80%  83%  86%  89%  92%  95%  98% 100%
+r.out.gdal complete. File &lt;/content/stream_3.tif&gt; created.
+Done.
+
+Goodbye from GRASS GIS
+
+</pre></div></div>
+</div>
+</section>
+<section id="Merge-tiled-basins-and-streams">
+<h2>Merge tiled basins and streams<a class="headerlink" href="#Merge-tiled-basins-and-streams" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+
+<span class="k">for</span><span class="w"> </span>var<span class="w"> </span><span class="k">in</span><span class="w"> </span>lbasin<span class="w"> </span>stream<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+
+gdalbuildvrt<span class="w">  </span>-srcnodata<span class="w"> </span><span class="m">0</span><span class="w">  </span>-vrtnodata<span class="w"> </span><span class="m">0</span><span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.vrt<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_?.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.vrt<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.tif
+
+pkstat<span class="w"> </span>--hist<span class="w"> </span>-i<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot; 0&quot;</span><span class="w">  </span>&gt;<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist
+
+<span class="nv">wc</span><span class="o">=</span><span class="k">$(</span>wc<span class="w"> </span>-l<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 -1 }&#39;</span><span class="w"> </span><span class="k">)</span>
+
+<span class="c1"># create color table</span>
+paste<span class="w"> </span>-d<span class="w"> </span><span class="s2">&quot; &quot;</span><span class="w"> </span>&lt;<span class="o">(</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist<span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>shuf<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>-255<span class="w"> </span>-n<span class="w"> </span><span class="nv">$wc</span><span class="w"> </span>-r<span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="p">;</span><span class="w"> </span>shuf<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>-255<span class="w"> </span>-n<span class="w"> </span><span class="nv">$wc</span><span class="w"> </span>-r<span class="o">)</span><span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="p">;</span><span class="w"> </span>shuf<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span>-255<span class="w"> </span>-n<span class="w"> </span><span class="nv">$wc</span><span class="w"> </span>-r<span class="o">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ if (NR==1) {print $0 , 0 } else { print $0 , 255 }}&#39;</span><span class="w"> </span>&gt;<span class="w">  </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all_ct.hist
+
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;color table&quot;</span>
+head<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all_ct.hist
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="c1"># apply color table to the stream and basins</span>
+gdaldem<span class="w"> </span>color-relief<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">TILED</span><span class="o">=</span>YES<span class="w">  </span>-co<span class="w"> </span><span class="nv">COPY_SRC_OVERVIEWS</span><span class="o">=</span>YES<span class="w"> </span>-alpha<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.tif<span class="w"> </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all_ct.hist<span class="w">   </span>/content/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all_ct.tif
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 5616, 8244
+0...10...20...30...40...50...60...70...80...90...100 - done.
+
+color table
+0 0 0 0 0
+3271 170 118 174 255
+4747 138 55 237 255
+5069 246 183 166 255
+8023 191 71 18 255
+12022 6 254 211 255
+12641 45 3 68 255
+20626 204 44 255 255
+32935 152 220 232 255
+33148 31 117 38 255
+
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 5616, 8244
+0...10...20...30...40...50...60...70...80...90...100 - done.
+
+color table
+0 0 0 0 0
+1 96 24 211 255
+2 86 16 213 255
+3 143 127 55 255
+4 47 212 147 255
+5 205 143 208 255
+6 163 134 115 255
+7 24 14 205 255
+8 15 240 128 255
+9 199 154 203 255
+
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">basins</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/lbasin_all.tif&quot;</span><span class="p">)</span>
+<span class="c1"># Create a figure and an axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span><span class="n">basins</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;prism&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_colab_27_0.png" src="../_images/GRASS_grass_hydro_colab_27_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">streams</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/content/stream_all.tif&quot;</span><span class="p">)</span>
+<span class="c1"># Create a figure and an axes</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">show</span><span class="p">(</span><span class="n">streams</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;prism&#39;</span><span class="p">,</span> <span class="n">interpolation</span><span class="o">=</span><span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_colab_28_0.png" src="../_images/GRASS_grass_hydro_colab_28_0.png" />
+</div>
+</div>
+</section>
+<section id="Acknowledgments">
+<h2>Acknowledgments<a class="headerlink" href="#Acknowledgments" title="Link to this heading"></a></h2>
+<p>This material has been developed as part of the NSF-funded POSE project TI-2303651: Growing GRASS OSE for Worldwide Access to Multidisciplinary Geospatial Analytics.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="grass_hydro.html" class="btn btn-neutral float-left" title="Using GRASS for stream-network extraction and basins delineation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SDM1_MWood_gecomp4GRASS.html" class="btn btn-neutral float-right" title="SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

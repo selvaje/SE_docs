@@ -1,0 +1,1536 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Use GDAL/OGR for raster/vector operations - osgeo &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Use GDAL/OGR for raster/vector operations - colab" href="gdal_colab.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Use GDAL/OGR for raster/vector operations - osgeo</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-GDAL-commands">Start to use GDAL commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Start-to-use-OGR-Commands">Start to use OGR Commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Use GDAL/OGR for raster/vector operations - osgeo</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/GDAL/gdal_osgeo.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Use-GDAL/OGR-for-raster/vector-operations---osgeo">
+<h1>Use GDAL/OGR for raster/vector operations - osgeo<a class="headerlink" href="#Use-GDAL/OGR-for-raster/vector-operations---osgeo" title="Link to this heading"></a></h1>
+<hr class="docutils" />
+<div class="line-block">
+<div class="line"><a class="reference external" href="https://youtu.be/phm8PlXGzC4?si=hJcEcoR2Z60EnP6a">Recorded lecture-1 from 2024</a></div>
+<div class="line"><a class="reference external" href="https://youtu.be/zXo-brJJmQM?si=Meu5QeEVgXU-hzPc&amp;t=873">Recorded lecture-2 from 2024</a></div>
+</div>
+<p><a class="reference external" href="https://youtu.be/kBRW2Z5jX8M">Additional Recorded lecture: 1:28:45 - 2:19:43</a></p>
+<hr class="docutils" />
+<p><strong>Setting working directory for the OSGeoLive</strong></p>
+<p><a class="reference external" href="https://gdal.org/">GDAL</a> is a translator library for raster and vector geospatial data formats that is released under an X/MIT style Open Source License by the Open Source Geospatial Foundation. As a library, it presents a single raster abstract data model and single vector abstract data model to the calling application for all supported formats. It also comes with a variety of useful command line utilities for data translation and processing (source <a class="reference external" href="https://gdal.org/">https://gdal.org/</a>).</p>
+<p>Open the bash terminal, migrate in the directory, and open the jupter-notebook.ipynb</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd /media/sf_LVM_shared/my_SE_data/exercise
+jupyter-lab gdal_osgeo.ipynb
+</pre></div>
+</div>
+<p>We are going to use the jupyter-notebook as an editor for running gdal commands. The beauty of using gdal in the bash environment is that we can combine it with other bash utilities such awk, sed, and other.</p>
+<section id="Start-to-use-GDAL-commands">
+<h2>Start to use GDAL commands<a class="headerlink" href="#Start-to-use-GDAL-commands" title="Link to this heading"></a></h2>
+<p><strong>Explor the files</strong></p>
+<p>Change directory and list all the files with the extension .tif</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>ls<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/*/*.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/cloud/SA_intra.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/cloud/SA_meanannual.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/GMTED2010.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_all_dep_1km.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_are_1km_msk.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/875_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/876_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/877_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/878_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/879_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/880_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/881_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/882_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/883_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/884_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/885_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/886_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/887_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/888_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/889_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/890_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/891_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/892_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/893_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/894_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/895_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/896_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/897_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/898_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/899_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/900_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/901_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/902_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/903_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/904_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/905_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/906_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/907_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/908_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/909_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/910_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/911_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/912_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/913_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/914_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/915_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/916_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/917_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/918_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/919_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/920_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/921_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/922_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/923_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/924_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/925_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/926_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/927_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/928_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/929_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/930_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/931_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/932_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/933_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/934_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/935_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/936_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/937_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/938_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/939_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/940_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/941_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/942_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/glad_ard/943_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/071W_41N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/071W_42N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/072W_40N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/072W_41N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/072W_42N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/073W_40N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/073W_41N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/landsat_ct/073W_42N_med_B1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month10.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month11.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month12.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month1.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month2.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month3.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month4.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month5.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month6.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month7.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month8.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/LST/LST_MOYDmax_month9.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/mask/msk_1km.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/SDM/eBirdSampling_filtered_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/SDM/eBirdSampling_filtered.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/temperature/ug_bio_3.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/ETmean08-11_01_msk.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/ETmean08-11_crop.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/ETmean08-11.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/ETstdev08-11.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/GPPmean08-11.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/GPPstdev08-11.tif
+/media/sf_LVM_shared/my_SE_data/exercise/geodata/vegetation/SA_tree_mn_percentage_GFC2013.tif
+</pre></div></div>
+</div>
+<p>Retrive the characteristic of the one tif file</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>geodata/cloud/SA_intra.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/cloud/SA_intra.tif
+Size is 5880, 8400
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (-83.000000000000000,14.000000000000000)
+Pixel Size = (0.008333333333333,-0.008333333333333)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=DEFLATE
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  ( -83.0000000,  14.0000000) ( 83d 0&#39; 0.00&#34;W, 14d 0&#39; 0.00&#34;N)
+Lower Left  ( -83.0000000, -56.0000000) ( 83d 0&#39; 0.00&#34;W, 56d 0&#39; 0.00&#34;S)
+Upper Right ( -34.0000000,  14.0000000) ( 34d 0&#39; 0.00&#34;W, 14d 0&#39; 0.00&#34;N)
+Lower Right ( -34.0000000, -56.0000000) ( 34d 0&#39; 0.00&#34;W, 56d 0&#39; 0.00&#34;S)
+Center      ( -58.5000000, -21.0000000) ( 58d30&#39; 0.00&#34;W, 21d 0&#39; 0.00&#34;S)
+Band 1 Block=5880x1 Type=UInt16, ColorInterp=Gray
+  NoData Value=65535
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>/home/user/jupyter/notebook_gallery/Rasterio/data/RGB.byte.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: /home/user/jupyter/notebook_gallery/Rasterio/data/RGB.byte.tif
+Size is 791, 718
+Coordinate System is:
+PROJCRS[&#34;UTM Zone 18, Northern Hemisphere&#34;,
+    BASEGEOGCRS[&#34;Unknown datum based upon the WGS 84 ellipsoid&#34;,
+        DATUM[&#34;Not_specified_based_on_WGS_84_spheroid&#34;,
+            ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+                LENGTHUNIT[&#34;metre&#34;,1],
+                ID[&#34;EPSG&#34;,7030]]],
+        PRIMEM[&#34;Greenwich&#34;,0,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433,
+                ID[&#34;EPSG&#34;,9122]]]],
+    CONVERSION[&#34;Transverse Mercator&#34;,
+        METHOD[&#34;Transverse Mercator&#34;,
+            ID[&#34;EPSG&#34;,9807]],
+        PARAMETER[&#34;Latitude of natural origin&#34;,0,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8801]],
+        PARAMETER[&#34;Longitude of natural origin&#34;,-75,
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433],
+            ID[&#34;EPSG&#34;,8802]],
+        PARAMETER[&#34;Scale factor at natural origin&#34;,0.9996,
+            SCALEUNIT[&#34;unity&#34;,1],
+            ID[&#34;EPSG&#34;,8805]],
+        PARAMETER[&#34;False easting&#34;,500000,
+            LENGTHUNIT[&#34;metre&#34;,1],
+            ID[&#34;EPSG&#34;,8806]],
+        PARAMETER[&#34;False northing&#34;,0,
+            LENGTHUNIT[&#34;metre&#34;,1],
+            ID[&#34;EPSG&#34;,8807]]],
+    CS[Cartesian,2],
+        AXIS[&#34;easting&#34;,east,
+            ORDER[1],
+            LENGTHUNIT[&#34;metre&#34;,1,
+                ID[&#34;EPSG&#34;,9001]]],
+        AXIS[&#34;northing&#34;,north,
+            ORDER[2],
+            LENGTHUNIT[&#34;metre&#34;,1,
+                ID[&#34;EPSG&#34;,9001]]]]
+Data axis to CRS axis mapping: 1,2
+Origin = (101985.000000000000000,2826915.000000000000000)
+Pixel Size = (300.037926675094809,-300.041782729804993)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  INTERLEAVE=PIXEL
+Corner Coordinates:
+Upper Left  (  101985.000, 2826915.000) ( 78d57&#39;31.14&#34;W, 25d30&#39;21.91&#34;N)
+Lower Left  (  101985.000, 2611485.000) ( 78d53&#39;53.28&#34;W, 23d33&#39;53.97&#34;N)
+Upper Right (  339315.000, 2826915.000) ( 76d35&#39;57.98&#34;W, 25d33&#39; 3.15&#34;N)
+Lower Right (  339315.000, 2611485.000) ( 76d34&#39;29.73&#34;W, 23d36&#39;21.41&#34;N)
+Center      (  220650.000, 2719200.000) ( 77d45&#39;28.46&#34;W, 24d33&#39;41.70&#34;N)
+Band 1 Block=791x3 Type=Byte, ColorInterp=Red
+  Min=0.000 Max=255.000
+  Minimum=0.000, Maximum=255.000, Mean=29.948, StdDev=52.341
+  NoData Value=0
+  Metadata:
+    STATISTICS_MAXIMUM=255
+    STATISTICS_MEAN=29.947726688477
+    STATISTICS_MINIMUM=0
+    STATISTICS_STDDEV=52.340921626611
+Band 2 Block=791x3 Type=Byte, ColorInterp=Green
+  Min=0.000 Max=255.000
+  Minimum=0.000, Maximum=255.000, Mean=44.516, StdDev=56.934
+  NoData Value=0
+  Metadata:
+    STATISTICS_MAXIMUM=255
+    STATISTICS_MEAN=44.516147889382
+    STATISTICS_MINIMUM=0
+    STATISTICS_STDDEV=56.934318291876
+Band 3 Block=791x3 Type=Byte, ColorInterp=Blue
+  Min=0.000 Max=255.000
+  Minimum=0.000, Maximum=255.000, Mean=48.113, StdDev=60.113
+  NoData Value=0
+  Metadata:
+    STATISTICS_MAXIMUM=255
+    STATISTICS_MEAN=48.113056354743
+    STATISTICS_MINIMUM=0
+    STATISTICS_STDDEV=60.112778509941
+</pre></div></div>
+</div>
+<p>Visualize the image</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w">  </span>/usr/bin/openev/bin/openev<span class="w"> </span>geodata/vegetation/*.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line">Reply to the following questions:</div>
+<div class="line">What is the pixel size?</div>
+<div class="line">How do you get min and max pixel values?</div>
+</div>
+<p><strong>Understanding data type</strong></p>
+<p><a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/20220414_Floating_point.pdf">Numerical System Decimal vs Binary</a>. <a class="reference external" href="https://youtu.be/kBRW2Z5jX8M">Recorded lecture: 1:28:45 - 1:48:00</a></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p>Ranges of GDAL data types</p></th>
+<th class="head"></th>
+<th class="head"><p>base^bit</p></th>
+<th class="head"><p>Precision</p></th>
+<th class="head"><p>Image Size</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GDAL data type</p></td>
+<td><p>Minimum</p></td>
+<td><p>Maximum</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Byte</p></td>
+<td><p>0</p></td>
+<td><p>255</p></td>
+<td><p>2^8</p></td>
+<td></td>
+<td><p>39M</p></td>
+</tr>
+<tr class="row-even"><td><p>UInt16</p></td>
+<td><p>0</p></td>
+<td><p>65,535</p></td>
+<td><p>2^16</p></td>
+<td></td>
+<td><p>78M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Int16, CInt16</p></td>
+<td><p>-32,768</p></td>
+<td><p>32,767</p></td>
+<td><p>2^16</p></td>
+<td></td>
+<td><p>78M</p></td>
+</tr>
+<tr class="row-even"><td><p>UInt32</p></td>
+<td><p>0</p></td>
+<td><p>4,294,967,295</p></td>
+<td><p>2^32</p></td>
+<td></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Int32, CInt32</p></td>
+<td><p>-2,147,483,648</p></td>
+<td><p>2,147,483,647</p></td>
+<td><p>2^32</p></td>
+<td></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-even"><td><p>UInt64</p></td>
+<td><p>-9.22E18</p></td>
+<td><p>+9.22E18</p></td>
+<td><p>2^64</p></td>
+<td></td>
+<td><p>200M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Int64</p></td>
+<td><p>0</p></td>
+<td><p>+1.84E19</p></td>
+<td></td>
+<td></td>
+<td><p>200M</p></td>
+</tr>
+<tr class="row-even"><td><p>Float32, CFloat32</p></td>
+<td><p>-3.4E38</p></td>
+<td><p>3.4E38</p></td>
+<td><p>2^38</p></td>
+<td><p>Integer -16777216 16777216 (2^24)</p></td>
+<td><p>155M</p></td>
+</tr>
+<tr class="row-odd"><td><p>Float64, CFloat64</p></td>
+<td><p>-1.79E308</p></td>
+<td><p>1.79E308</p></td>
+<td><p>2^308</p></td>
+<td></td>
+<td><p>309M</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Understanding NoData Value</strong> <a class="reference external" href="https://youtu.be/kBRW2Z5jX8M">Recorded lecture: 1:47:55 - 2:06:00</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.547,7.492
+  NoData Value=-3.39999995214436425e+38
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-9999<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=-339999995214436424907732413799364296704.000,7.492
+  NoData Value=-9999
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdal_edit.py<span class="w"> </span>-a_nodata<span class="w"> </span>-339999995214436424907732413799364296704.000<span class="w">    </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/ETmean08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/ETmean08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=LZW
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.547,7.492
+  NoData Value=-3.39999995214436425e+38
+</pre></div></div>
+</div>
+<p><a class="reference external" href="https://youtu.be/kBRW2Z5jX8M">Recorded lecture: 2:06:00 - 2:19:43</a> + <a class="reference external" href="https://youtu.be/Yy5UaCOvuYo">Recorded lecture: 42:18 - 1:46:40</a></p>
+<p><strong>Calculate minimum and maximum values for all the images</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/vegetation/*.tif<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+gdalinfo<span class="w">  </span>-mm<span class="w">  </span><span class="nv">$file</span><span class="w">  </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>Computed
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+    Computed Min/Max=-10.000,5.000
+    Computed Min/Max=0.638,6.957
+    Computed Min/Max=0.547,7.492
+    Computed Min/Max=0.209,3.332
+    Computed Min/Max=0.000,9.738
+    Computed Min/Max=0.000,4.220
+    Computed Min/Max=0.000,10000.000
+</pre></div></div>
+</div>
+<p><strong>Create a Coefficient of variation</strong></p>
+<div class="line-block">
+<div class="line">GPPmean08-11.tif temporal mean of Gross Primary Productivity</div>
+<div class="line">GPPstdev08-11.tif temporal standard deviation of Gross Primary Productivity</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+gdal_calc.py<span class="w"> </span>--type<span class="o">=</span>Float32<span class="w"> </span>--overwrite<span class="w">  </span>-A<span class="w"> </span>geodata/vegetation/GPPstdev08-11.tif<span class="w"> </span>-B<span class="w">  </span>geodata/vegetation/GPPmean08-11.tif<span class="w"> </span><span class="se">\</span>
+--co<span class="o">=</span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>--co<span class="o">=</span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">   </span>--calc<span class="o">=</span><span class="s2">&quot;( A.astype(float) / ( B.astype(float) + 0.000000001 ) )&quot;</span><span class="w"> </span>--outfile<span class="o">=</span>geodata/vegetation/GPPcv08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.. 0.. 0.. 1.. 1.. 1.. 2.. 2.. 2.. 3.. 3.. 3.. 4.. 4.. 4.. 5.. 5.. 5.. 6.. 6.. 6.. 7.. 7.. 7.. 8.. 8.. 8.. 9.. 9.. 9.. 10.. 10.. 10.. 11.. 11.. 11.. 12.. 12.. 12.. 13.. 13.. 13.. 14.. 14.. 14.. 15.. 15.. 15.. 16.. 16.. 16.. 17.. 17.. 17.. 18.. 18.. 18.. 19.. 19.. 19.. 20.. 20.. 20.. 21.. 21.. 21.. 22.. 22.. 22.. 23.. 23.. 23.. 24.. 24.. 24.. 25.. 25.. 25.. 26.. 26.. 26.. 27.. 27.. 27.. 28.. 28.. 28.. 29.. 29.. 29.. 30.. 30.. 30.. 31.. 31.. 31.. 32.. 32.. 32.. 33.. 33.. 33.. 34.. 34.. 34.. 35.. 35.. 35.. 36.. 36.. 36.. 37.. 37.. 37.. 38.. 38.. 38.. 39.. 39.. 39.. 40.. 40.. 40.. 41.. 41.. 41.. 42.. 42.. 42.. 43.. 43.. 43.. 44.. 44.. 44.. 45.. 45.. 45.. 46.. 46.. 46.. 47.. 47.. 47.. 48.. 48.. 48.. 49.. 49.. 49.. 50.. 50.. 50.. 51.. 51.. 51.. 52.. 52.. 52.. 53.. 53.. 53.. 54.. 54.. 54.. 55.. 55.. 55.. 56.. 56.. 56.. 57.. 57.. 57.. 58.. 58.. 58.. 59.. 59.. 59.. 60.. 60.. 60.. 61.. 61.. 61.. 62.. 62.. 62.. 63.. 63.. 63.. 64.. 64.. 64.. 65.. 65.. 65.. 66.. 66.. 66.. 67.. 67.. 67.. 68.. 68.. 68.. 69.. 69.. 69.. 70.. 70.. 70.. 71.. 71.. 71.. 72.. 72.. 72.. 73.. 73.. 73.. 74.. 74.. 74.. 75.. 75.. 75.. 76.. 76.. 76.. 77.. 77.. 77.. 78.. 78.. 78.. 79.. 79.. 79.. 80.. 80.. 80.. 81.. 81.. 81.. 82.. 82.. 82.. 83.. 83.. 83.. 84.. 84.. 84.. 85.. 85.. 85.. 86.. 86.. 86.. 87.. 87.. 87.. 88.. 88.. 88.. 89.. 89.. 89.. 90.. 90.. 90.. 91.. 91.. 91.. 92.. 92.. 92.. 93.. 93.. 93.. 94.. 94.. 94.. 95.. 95.. 95.. 96.. 96.. 96.. 97.. 97.. 97.. 98.. 98.. 98.. 99.. 99.. 99.. 100 - Done
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdalinfo<span class="w"> </span>-mm<span class="w"> </span>geodata/vegetation/GPPcv08-11.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Driver: GTiff/GeoTIFF
+Files: geodata/vegetation/GPPcv08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Metadata:
+  AREA_OR_POINT=Area
+Image Structure Metadata:
+  COMPRESSION=DEFLATE
+  INTERLEAVE=BAND
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=720x2 Type=Float32, ColorInterp=Gray
+    Computed Min/Max=0.000,1.476
+  NoData Value=3.40282346600000016e+38
+</pre></div></div>
+</div>
+<p><strong>Change pixel resolution</strong></p>
+<p>Looping trough the images</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">filename</span><span class="o">=</span><span class="k">$(</span>basename<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>.tif<span class="w"> </span><span class="k">)</span>
+<span class="w">  </span>gdalwarp<span class="w"> </span>-overwrite<span class="w"> </span>-te<span class="w"> </span><span class="m">29</span><span class="w"> </span>-1<span class="w"> </span><span class="m">35</span>.0000000048<span class="w"> </span><span class="m">4</span>.000000004<span class="w"> </span>-tr<span class="w"> </span><span class="m">0</span>.008333333340000<span class="w"> </span><span class="m">0</span>.008333333340000<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span><span class="nv">$file</span><span class="w"> </span>geodata/LST/<span class="si">${</span><span class="nv">filename</span><span class="si">}</span>_crop.tif
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month1.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month1.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month1.tif to destination geodata/LST/LST_MOYDmax_month1_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month2.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month2.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month2.tif to destination geodata/LST/LST_MOYDmax_month2_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month3.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month3.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month3.tif to destination geodata/LST/LST_MOYDmax_month3_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month4.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month4.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month4.tif to destination geodata/LST/LST_MOYDmax_month4_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month5.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month5.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month5.tif to destination geodata/LST/LST_MOYDmax_month5_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month6.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month6.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month6.tif to destination geodata/LST/LST_MOYDmax_month6_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month7.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month7.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month7.tif to destination geodata/LST/LST_MOYDmax_month7_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month8.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month8.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month8.tif to destination geodata/LST/LST_MOYDmax_month8_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month9.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month9.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month9.tif to destination geodata/LST/LST_MOYDmax_month9_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month10.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month10.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month10.tif to destination geodata/LST/LST_MOYDmax_month10_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month11.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month11.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month11.tif to destination geodata/LST/LST_MOYDmax_month11_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+Creating output file that is 720P x 600L.
+Processing geodata/LST/LST_MOYDmax_month12.tif [1/1] : 0Using internal nodata values (e.g. -9999) for image geodata/LST/LST_MOYDmax_month12.tif.
+Copying nodata values from source geodata/LST/LST_MOYDmax_month12.tif to destination geodata/LST/LST_MOYDmax_month12_crop.tif.
+...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Get value at one pixel/line image-location</strong></p>
+<p>Looping trough the images</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w">  </span><span class="nv">$file</span><span class="w">  </span><span class="m">1079</span><span class="w"> </span><span class="m">0</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 50.8218383789062
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 52.4714660644531
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 50.2210998535156
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 45.1343078613281
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 43.8952941894531
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 45.8667602539062
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 47.9639892578125
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 49.0910339355469
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 49.9898986816406
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 47.5579528808594
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 45.6031494140625
+Report:
+  Location: (1079P,0L)
+  Band 1:
+    Value: 47.5201110839844
+</pre></div></div>
+</div>
+<p><strong>Get value at lat/long image-location</strong></p>
+<p>Looping trough the images</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span>-geoloc<span class="w"> </span><span class="nv">$file</span><span class="w">  </span><span class="m">33</span>.3<span class="w"> </span><span class="m">2</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+37.4764404296875
+40.2584228515625
+38.2513122558594
+33.0213928222656
+30.0732116699219
+29.0838928222656
+28.9105224609375
+29.6008605957031
+31.0305480957031
+30.5758056640625
+30.636962890625
+33.5576171875
+</pre></div></div>
+</div>
+<div class="line-block">
+<div class="line"><strong>Get value at multiple lat/long image-location</strong></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Create the lat long file</span>
+<span class="nb">echo</span><span class="w"> </span><span class="m">32</span>.5<span class="w"> </span><span class="m">2</span>.5<span class="w"> </span>&gt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="nb">echo</span><span class="w"> </span><span class="m">31</span>.1<span class="w"> </span><span class="m">2</span>.1<span class="w"> </span>&gt;&gt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="c1"># looping trough the images</span>
+<span class="k">for</span><span class="w"> </span>file<span class="w"> </span><span class="k">in</span><span class="w"> </span>geodata/LST/LST_MOYDmax_month?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month??.tif<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">   </span>gdallocationinfo<span class="w"> </span>-valonly<span class="w"> </span>-geoloc<span class="w"> </span><span class="nv">$file</span><span class="w"> </span>&lt;<span class="w"> </span>geodata/LST/x_y.txt
+<span class="w">   </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="k">done</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+37.4022827148438
+35.0345764160156
+
+40.3694458007812
+37.824951171875
+
+38.5549926757812
+36.6663208007812
+
+32.7738952636719
+32.6803283691406
+
+29.0351257324219
+30.0338134765625
+
+29.025634765625
+29.3355102539062
+
+29.0183715820312
+29.4237365722656
+
+29.1660461425781
+29.3502197265625
+
+29.6674194335938
+29.7001647949219
+
+28.8177490234375
+29.066650390625
+
+29.2975463867188
+29.015869140625
+
+32.8586730957031
+31.3289184570312
+
+</pre></div></div>
+</div>
+<p><strong>From Image to text and from txt to image</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># from tif to 3 col txt XYZ</span>
+gdal_translate<span class="w"> </span>-of<span class="w">  </span>XYZ<span class="w">   </span>geodata/vegetation/ETmean08-11.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt
+<span class="c1"># masking</span>
+awk<span class="w"> </span><span class="s1">&#39;{if ($3&gt;2 &amp;&amp; $3&lt;4) {print $1,$2,50 } else {print}}&#39;</span><span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt<span class="w"> </span>&gt;<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt
+<span class="c1"># back to tif</span>
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w">  </span>-ot<span class="w"> </span>Byte<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>The use of VRT to stack images and tiling</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># stck the tif</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>-separate<span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/ETmean08-11.tif<span class="w"> </span>geodata/vegetation/ETstdev08-11.tif
+gdalinfo<span class="w"> </span>geodata/vegetation/stack.vrt
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Driver: VRT/Virtual Raster
+Files: geodata/vegetation/stack.vrt
+       geodata/vegetation/ETmean08-11.tif
+       geodata/vegetation/ETstdev08-11.tif
+Size is 720, 600
+Coordinate System is:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;geodetic latitude (Lat)&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;geodetic longitude (Lon)&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+Origin = (29.000000000000000,4.000000004000000)
+Pixel Size = (0.008333333340000,-0.008333333340000)
+Corner Coordinates:
+Upper Left  (  29.0000000,   4.0000000) ( 29d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Left  (  29.0000000,  -1.0000000) ( 29d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Upper Right (  35.0000000,   4.0000000) ( 35d 0&#39; 0.00&#34;E,  4d 0&#39; 0.00&#34;N)
+Lower Right (  35.0000000,  -1.0000000) ( 35d 0&#39; 0.00&#34;E,  1d 0&#39; 0.00&#34;S)
+Center      (  32.0000000,   1.5000000) ( 32d 0&#39; 0.00&#34;E,  1d30&#39; 0.00&#34;N)
+Band 1 Block=128x128 Type=Float32, ColorInterp=Undefined
+  NoData Value=-3.39999995214436387e+38
+Band 2 Block=128x128 Type=Float32, ColorInterp=Undefined
+  NoData Value=-3.39999995214436387e+38
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># split in tiles</span>
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">0</span><span class="w">     </span><span class="m">0</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_UL.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">0</span><span class="w">   </span><span class="m">300</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_UR.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">360</span><span class="w">   </span><span class="m">0</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_LL.tif
+gdal_translate<span class="w"> </span>-srcwin<span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span><span class="m">360</span><span class="w"> </span><span class="m">300</span><span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/stack_LR.tif
+
+<span class="c1"># recompose the image</span>
+gdalbuildvrt<span class="w"> </span>-overwrite<span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/stack_UL.tif<span class="w"> </span>geodata/vegetation/stack_UR.tif<span class="w"> </span>geodata/vegetation/stack_LL.tif<span class="w"> </span>geodata/vegetation/stack_LR.tif
+gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/ETmosaic.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+Input file size is 720, 600
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Create shp border tiles</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/vegetation/tiles.*
+gdaltindex<span class="w">  </span>geodata/vegetation/tiles.shp<span class="w">  </span>geodata/vegetation/stack_??.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Creating new index file...
+</pre></div></div>
+</div>
+<p><strong>Surface distance/buffer</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Continues distance surface</span>
+gdal_proximity.py<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-values<span class="w"> </span><span class="m">0</span><span class="w"> </span>-distunits<span class="w"> </span>PIXEL<span class="w"> </span>-ot<span class="w"> </span>UInt32<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_proximity.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># Fix buffer surface</span>
+gdal_proximity.py<span class="w"> </span>-fixed-buf-val<span class="w"> </span><span class="m">4</span><span class="w"> </span>-maxdist<span class="w"> </span><span class="m">4</span><span class="w"> </span>-nodata<span class="w"> </span><span class="m">10</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>-values<span class="w"> </span><span class="m">0</span><span class="w"> </span>-distunits<span class="w"> </span>PIXEL<span class="w"> </span>-ot<span class="w"> </span>Byte<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_buffer.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+<p><strong>Topography variables</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># calculate  slope</span>
+gdaldem<span class="w"> </span>slope<span class="w"> </span>-s<span class="w"> </span><span class="m">111120</span><span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/slope.tif
+
+<span class="c1"># calculate  apect</span>
+gdaldem<span class="w"> </span>aspect<span class="w"> </span>-zero_for_flat<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/aspect.tif
+
+<span class="c1"># calculate  Terrain Ruggedness Index TRI</span>
+gdaldem<span class="w"> </span>TRI<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/tri.tif
+
+<span class="c1"># calculate  Topographic Position Index TPI</span>
+gdaldem<span class="w"> </span>TPI<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/tpi.tif
+
+<span class="c1"># calculate  Roughness</span>
+gdaldem<span class="w"> </span>roughness<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>geodata/dem/GMTED2010.tif<span class="w"> </span>geodata/dem/roughness.tif
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done.
+</pre></div></div>
+</div>
+</section>
+<section id="Start-to-use-OGR-Commands">
+<h2>Start to use OGR Commands<a class="headerlink" href="#Start-to-use-OGR-Commands" title="Link to this heading"></a></h2>
+<p><strong>Select a polygon and create a new shape file</strong></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+ogrinfo<span class="w"> </span>-al<span class="w"> </span>-geom<span class="o">=</span>NO<span class="w">   </span>geodata/shp/TM_WORLD_BORDERS.shp<span class="w">  </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+INFO: Open of `geodata/shp/TM_WORLD_BORDERS.shp&#39;
+      using driver `ESRI Shapefile&#39; successful.
+
+Layer name: TM_WORLD_BORDERS
+Metadata:
+  DBF_DATE_LAST_UPDATE=2021-02-09
+Geometry: Polygon
+Feature Count: 246
+Extent: (-180.000000, -90.000000) - (180.000000, 83.623596)
+Layer SRS WKT:
+GEOGCRS[&#34;WGS 84&#34;,
+    DATUM[&#34;World Geodetic System 1984&#34;,
+        ELLIPSOID[&#34;WGS 84&#34;,6378137,298.257223563,
+            LENGTHUNIT[&#34;metre&#34;,1]]],
+    PRIMEM[&#34;Greenwich&#34;,0,
+        ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    CS[ellipsoidal,2],
+        AXIS[&#34;latitude&#34;,north,
+            ORDER[1],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+        AXIS[&#34;longitude&#34;,east,
+            ORDER[2],
+            ANGLEUNIT[&#34;degree&#34;,0.0174532925199433]],
+    ID[&#34;EPSG&#34;,4326]]
+Data axis to CRS axis mapping: 2,1
+FIPS: String (2.0)
+ISO2: String (2.0)
+ISO3: String (3.0)
+UN: Integer (3.0)
+NAME: String (50.0)
+AREA: Integer (7.0)
+POP2005: Integer64 (10.0)
+REGION: Integer (3.0)
+SUBREGION: Integer (3.0)
+LON: Real (8.3)
+LAT: Real (7.3)
+OGRFeature(TM_WORLD_BORDERS):0
+  FIPS (String) = AC
+  ISO2 (String) = AG
+  ISO3 (String) = ATG
+  UN (Integer) = 28
+  NAME (String) = Antigua and Barbuda
+  AREA (Integer) = 44
+  POP2005 (Integer64) = 83039
+  REGION (Integer) = 19
+  SUBREGION (Integer) = 29
+  LON (Real) = -61.783
+  LAT (Real) = 17.078
+
+OGRFeature(TM_WORLD_BORDERS):1
+  FIPS (String) = AG
+  ISO2 (String) = DZ
+  ISO3 (String) = DZA
+  UN (Integer) = 12
+  NAME (String) = Algeria
+  AREA (Integer) = 238174
+  POP2005 (Integer64) = 32854159
+  REGION (Integer) = 2
+  SUBREGION (Integer) = 15
+  LON (Real) = 2.632
+  LAT (Real) = 28.163
+
+OGRFeature(TM_WORLD_BORDERS):2
+  FIPS (String) = AJ
+  ISO2 (String) = AZ
+  ISO3 (String) = AZE
+  UN (Integer) = 31
+  NAME (String) = Azerbaijan
+  AREA (Integer) = 8260
+  POP2005 (Integer64) = 8352021
+  REGION (Integer) = 142
+  SUBREGION (Integer) = 145
+  LON (Real) = 47.395
+  LAT (Real) = 40.430
+
+OGRFeature(TM_WORLD_BORDERS):3
+  FIPS (String) = AL
+  ISO2 (String) = AL
+  ISO3 (String) = ALB
+  UN (Integer) = 8
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># base on an attribute</span>
+rm<span class="w"> </span>-f<span class="w"> </span>shp/TM_UGANDA_BORDERS-0.3.*
+ogr2ogr<span class="w">  </span>-overwrite<span class="w">  </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w">  </span>-where<span class="w"> </span><span class="s2">&quot;NAME = &#39;Uganda&#39;&quot;</span><span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.shp<span class="w"> </span>geodata/shp/TM_WORLD_BORDERS.shp
+/usr/bin/openev/bin/openev<span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.shp
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+<span class="c1"># base on dimension of the polygons</span>
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.*
+ogr2ogr<span class="w">  </span>-overwrite<span class="w">  </span>-f<span class="w"> </span><span class="s2">&quot;ESRI Shapefile&quot;</span><span class="w"> </span>-sql<span class="w"> </span><span class="s2">&quot;SELECT * FROM TM_WORLD_BORDERS WHERE OGR_GEOM_AREA &gt; 100 &quot;</span><span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp<span class="w"> </span>geodata/shp/TM_WORLD_BORDERS.shp
+/usr/bin/openev/bin/openev<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Default software rendering mode (use -h if accelerated video card installed).
+Loading tools from /usr/bin/openev/tools/Tool_Export.py
+Loading tools from /usr/bin/openev/tools/Tool_ShapesGrid.py
+Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
+</pre></div></div>
+</div>
+<p>Remove all the output</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
+rm<span class="w"> </span>-f<span class="w"> </span>geodata/shp/polygons.sqlite<span class="w"> </span>geodata/shp/point-buf_stat.csv<span class="w"> </span>geodata/shp/point_stat.csv<span class="w"> </span>geodata/vegetation/GPPcv08-11.tif<span class="w"> </span>LST/*_crop.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_trh.txt<span class="w"> </span>vegetation/ETmean08-11_crop.txt<span class="w"> </span>geodata/vegetation/ETmosaic.vrt<span class="w"> </span>geodata/vegetation/ETmosaic.tif<span class="w">  </span>geodata/vegetation/stack_??.tif<span class="w"> </span>geodata/vegetation/stack.vrt<span class="w"> </span>geodata/vegetation/tiles.*<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_proximity.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_crop_buffer.tif<span class="w">  </span>geodata/dem/slope.tif<span class="w"> </span>geodata/dem/aspect.tif<span class="w">  </span>geodata/dem/tri.tif<span class="w"> </span>geodata/dem/tpi.tif<span class="w"> </span>geodata/dem/roughness.tif<span class="w"> </span>geodata/vegetation/ETmean08-11_01_trh?.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month1-msk.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthStdev.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month_mean_stdev.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_month.vrt<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean_aggreate10mean.tif<span class="w"> </span>geodata/LST/LST_MOYDmax_monthMean_circular11mean.tif<span class="w">  </span>geodata/temperature/reclass_ug_bio_3.tif<span class="w"> </span>geodata/temperature/reclass_ug_bio_3.txt<span class="w"> </span>geodata/shp/polygons_stat.csv<span class="w"> </span>geodata/shp/polygons_stat.*<span class="w"> </span>geodata/shp/TM_LARGE_BORDERS.shp.*<span class="w"> </span>geodata/shp/TM_UGANDA_BORDERS-0.3.*<span class="w"> </span>geodata/vegetation/ETmean08-11_crop.txt
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="&lt;no title&gt;" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gdal_colab.html" class="btn btn-neutral float-right" title="Use GDAL/OGR for raster/vector operations - colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

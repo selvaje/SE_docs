@@ -1,0 +1,2150 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning" href="Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.html" />
+    <link rel="prev" title="2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html#matera">2. 2022 MATERA</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Damaged_trees_classification_RF_Janusz_Godziek.html">2.1. Janusz Godziek: Damaged vs undamaged trees - Random Forest classification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Stream_Network_Abstraction_Alonso_Gonzalez.html">2.2. Alonso Gonzalez: Stream Network Abstraction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Images_shadow_removal_Sebastian_Walter.html">2.3. Sebastian Walter: Images shadow removal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelling_freshwater_biodiversity_setting_the_scene_from_geo-data_to_text-data_Jaime_Garc%C3%ADa_M%C3%A1rquez.html">2.4. Jaime García: Modelling freshwater biodiversity: setting the scene, from geo-data to text-data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Spectral_clustering_of_freshwater_habitats_Maria_%C3%9Cblacker.html">2.5. Maria Üblacker: Spectral clustering of freshwater habitats</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Species_Distribution_Model_with_Random_Forest_Afroditi_Grigoropoulou.html">2.6. Afroditi Grigoropoulou: Species Distribution Model with Random Forest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Topographic_and_hydrological_influence_on_vegetation_in_an_arid_environment_Gidske_L_Andersen.html">2.7. Gidske L. Andersen: Topographic and hydrological influence on vegetation in an arid environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Distributionof_Fresh_water_Biodiversity_AcrossCuba_Yusdiel_Torres.html">2.8. Yusdiel Torres-Cambas: Distribution of freshwater biodiversity across Cuba</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modeling_debris_flow_source_areas_Txomin_Bornaetxea.html">2.9. Txomin Bornaetxea: Modeling debris flow source areas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html">2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2.11. Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.html">2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Ships_and_economic_activity_a_starter_Myriam_Marending.html">2.13. Myriam Marending: Ships and economic activity: a starter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Using_a_LSTM_network_and_SHAP_to_determine_the_impact_of_drought_Florian_Ells%C3%A4%C3%9Fer.html">2.14. Florian Ellsäßer: Using a LSTM network and SHAP to determine the impact of drought and season on winter wheat</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html"><span class="section-number">1. </span>2021 SWEDEN</a></li>
+      <li class="breadcrumb-item active"><span class="section-number">2.11. </span>Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/STUDENTSPROJECTS/Proj_2022_Matera/Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Hyeyoung-Sim:-Clustering-Electric-Vehicle-Charging-Pattern-with-DTW-and-EV-Charging-energy-demand-Prediction-with-LSTM">
+<h1><span class="section-number">2.11. </span>Hyeyoung Sim: Clustering Electric Vehicle Charging Pattern with DTW and EV Charging energy demand Prediction with LSTM<a class="headerlink" href="#Hyeyoung-Sim:-Clustering-Electric-Vehicle-Charging-Pattern-with-DTW-and-EV-Charging-energy-demand-Prediction-with-LSTM" title="Link to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><a class="reference external" href="http://spatial-ecology.net/docs/source/STUDENTSPROJECTS/Proj_2022_Matera/Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim.pdf">Presentation</a></div>
+<div class="line"><a class="reference external" href="https://youtu.be/-PGvRM6hVtM">Video recording</a></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[246]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install dtw-python</span>
+<span class="c1"># !pip install numpy</span>
+<span class="c1"># !pip install pandas</span>
+<span class="c1"># !pip install time</span>
+<span class="c1"># !pip install datetime</span>
+<span class="c1"># !pip install openpyxl</span>
+<span class="c1"># !pip install tensorflow</span>
+<span class="c1"># !pip install seaborn</span>
+<span class="c1"># !pip install sklearn</span>
+<span class="c1"># !pip install keras</span>
+<span class="c1"># !pip install shap</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">dtw</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">seaborn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">sns</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">r2_score</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.metrics</span><span class="w"> </span><span class="kn">import</span> <span class="n">mean_absolute_error</span> <span class="p">,</span> <span class="n">mean_squared_error</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinMaxScaler</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.preprocessing</span><span class="w"> </span><span class="kn">import</span> <span class="n">LabelEncoder</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">EarlyStopping</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_model</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">keras.callbacks</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelCheckpoint</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.layers</span><span class="w"> </span><span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">BatchNormalization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tensorflow.keras.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sequential</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Importing the dtw module. When using in academic works please cite:
+  T. Giorgino. Computing and Visualizing Dynamic Time Warping Alignments in R: The dtw Package.
+  J. Stat. Soft., doi:10.18637/jss.v031.i07.
+
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-06-17 03:50:12.753342: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcudart.so.11.0&#39;; dlerror: libcudart.so.11.0: cannot open shared object file: No such file or directory
+2022-06-17 03:50:12.753381: I tensorflow/stream_executor/cuda/cudart_stub.cc:29] Ignore above cudart dlerror if you do not have a GPU set up on your machine.
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+/media/sf_LVM_shared/tmpp
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(os.path.realpath(&#39;21_keco.xlsx&#39;))</span>
+<span class="c1"># base_dir = &#39;/media/sf_LVM_shared/tmpp&#39;</span>
+<span class="c1"># excel_file = &#39;21_keco.xlsx&#39;</span>
+<span class="c1"># excel_dir = os.path.join(base_dir, excel_file)</span>
+
+<span class="c1"># a = pd.read_excel(excel_dir, sheet_name = &#39;21_1&#39;)</span>
+<span class="c1"># a2 = pd.read_excel(excel_dir, sheet_name = &#39;21_2&#39;)</span>
+<span class="c1"># a3 = pd.read_excel(excel_dir, sheet_name = &#39;21_3&#39;)</span>
+<span class="c1"># a4 = pd.read_excel(excel_dir, sheet_name = &#39;21_4&#39;)</span>
+<span class="c1"># a5 = pd.read_excel(excel_dir, sheet_name = &#39;21_5&#39;)</span>
+<span class="c1"># a6 = pd.read_excel(excel_dir, sheet_name = &#39;21_6&#39;)</span>
+<span class="c1"># a7 = pd.read_excel(excel_dir, sheet_name = &#39;21_7&#39;)</span>
+<span class="c1"># a8 = pd.read_excel(excel_dir, sheet_name = &#39;21_8&#39;)</span>
+<span class="c1"># a9 = pd.read_excel(excel_dir, sheet_name = &#39;21_9&#39;)</span>
+<span class="c1"># a10 = pd.read_excel(excel_dir, sheet_name = &#39;21_10&#39;)</span>
+<span class="c1"># a11 = pd.read_excel(excel_dir, sheet_name = &#39;21_11&#39;)</span>
+<span class="c1"># a12 = pd.read_excel(excel_dir, sheet_name = &#39;21_12&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a1</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_LVM_shared/tmpp/18_keco.txt&#39;</span> <span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_LVM_shared/tmpp/19_keco.txt&#39;</span> <span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_LVM_shared/tmpp/20_keco.txt&#39;</span> <span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="n">a4</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_LVM_shared/tmpp/21_keco.txt&#39;</span> <span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span><span class="p">)</span>
+<span class="n">a5</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_table</span><span class="p">(</span><span class="s1">&#39;/media/sf_LVM_shared/tmpp/22_keco.txt&#39;</span> <span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">a1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a2</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a3</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a4</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a5</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;dc&#39;, &#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;diffhour&#39;, &#39;starttm&#39;, &#39;endtm&#39;], dtype=&#39;object&#39;)
+Index([&#39;dc&#39;, &#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;diffhour&#39;, &#39;starttm&#39;, &#39;endtm&#39;], dtype=&#39;object&#39;)
+Index([&#39;dc&#39;, &#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;diffhour&#39;, &#39;starttm&#39;, &#39;endtm&#39;], dtype=&#39;object&#39;)
+Index([&#39;type&#39;, &#39;dc&#39;, &#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;diffhour&#39;, &#39;diffmin&#39;,
+       &#39;starttm&#39;, &#39;endtm&#39;],
+      dtype=&#39;object&#39;)
+Index([&#39;type&#39;, &#39;dc&#39;, &#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;diffhour&#39;, &#39;diffmin&#39;,
+       &#39;starttm&#39;, &#39;endtm&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a1</span> <span class="o">=</span> <span class="n">a1</span><span class="p">[[</span><span class="s1">&#39;CNM&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">]]</span>
+<span class="n">a2</span> <span class="o">=</span> <span class="n">a2</span><span class="p">[[</span><span class="s1">&#39;CNM&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">]]</span>
+<span class="n">a3</span> <span class="o">=</span> <span class="n">a3</span><span class="p">[[</span><span class="s1">&#39;CNM&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">]]</span>
+<span class="n">a4</span> <span class="o">=</span> <span class="n">a4</span><span class="p">[[</span><span class="s1">&#39;CNM&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">]]</span>
+<span class="n">a5</span> <span class="o">=</span> <span class="n">a5</span><span class="p">[[</span><span class="s1">&#39;CNM&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">a1</span><span class="p">,</span><span class="n">a2</span><span class="p">,</span><span class="n">a3</span><span class="p">,</span><span class="n">a4</span><span class="p">,</span><span class="n">a5</span><span class="p">])</span>
+<span class="n">c</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(855137, 6)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+CNM         object
+add         object
+Max.vol      int64
+acvol      float64
+starttm      int64
+endtm        int64
+dtype: object
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;starttm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;endtm&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">])</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;Asia/Seoul&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1        2018-01-01 00:17:16+09:00
+2        2018-01-01 00:35:24+09:00
+3        2018-01-01 00:59:13+09:00
+4        2018-01-01 01:06:31+09:00
+5        2018-01-01 01:24:24+09:00
+                    ...
+125453   2022-03-30 16:22:47+09:00
+125454   2022-03-30 16:32:43+09:00
+125455   2022-03-30 16:38:09+09:00
+125456   2022-03-30 16:30:22+09:00
+125457   2022-03-30 16:27:55+09:00
+Name: start, Length: 855137, dtype: datetime64[ns, Asia/Seoul]
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;endsec&#39;</span><span class="p">]</span> <span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">14</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;endsec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;endsec&#39;</span><span class="p">],</span> <span class="n">errors</span> <span class="o">=</span> <span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">endsec</span> <span class="o">&lt;=</span><span class="mi">59</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;endmin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span> <span class="c1">#min &lt;=59</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;endmin&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;endmin&#39;</span><span class="p">],</span> <span class="n">errors</span> <span class="o">=</span> <span class="s1">&#39;coerce&#39;</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">endmin</span> <span class="o">&lt;=</span><span class="mi">59</span><span class="p">]</span>
+
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">tz_localize</span><span class="p">(</span><span class="s1">&#39;Asia/Seoul&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1        2018-01-01 00:54:56+09:00
+2        2018-01-01 01:09:26+09:00
+3        2018-01-01 01:22:13+09:00
+4        2018-01-01 01:36:11+09:00
+5        2018-01-01 01:35:49+09:00
+                    ...
+125453   2022-03-30 16:42:32+09:00
+125454   2022-03-30 17:13:06+09:00
+125455   2022-03-30 17:13:47+09:00
+125456   2022-03-30 17:10:22+09:00
+125457   2022-03-30 17:07:55+09:00
+Name: end, Length: 851558, dtype: datetime64[ns, Asia/Seoul]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;date_time&#39;</span><span class="p">]</span><span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">start</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s1">&#39;H&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+/home/user/SE_data/juplab_env/lib/python3.8/site-packages/pandas/core/arrays/datetimes.py:1162: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+  warnings.warn(
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;SIG&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">slice</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(c.isnull().sum())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Max.vol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;Max.vol&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+200
+50
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;end&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">])</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">seconds</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;diff&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1   0 days 00:37:40
+2   0 days 00:34:02
+3   0 days 00:23:00
+4   0 days 00:29:40
+5   0 days 00:11:25
+Name: diff, dtype: timedelta64[ns]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1    2260
+2    2042
+3    1380
+4    1780
+5     685
+Name: difhour, dtype: int64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">3600</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1    0.627778
+2    0.567222
+3    0.383333
+4    0.494444
+5    0.190278
+Name: difhour, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;log_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">date</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;log_hour&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span>
+<span class="c1"># # print(c[&#39;start&#39;].strftime(&quot;%c&quot;))</span>
+<span class="c1"># print(c[&#39;log_date&#39;])</span>
+<span class="c1"># print(c[&#39;log_hour&#39;])</span>
+<span class="c1"># # c[&#39;date_time&#39;] =</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;volh&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;acvol&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span>
+<span class="n">c</span><span class="p">[</span><span class="s1">&#39;outlier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;volh&#39;</span><span class="p">]</span><span class="o">&lt;=</span> <span class="n">c</span><span class="p">[</span><span class="s1">&#39;Max.vol&#39;</span><span class="p">],</span> <span class="s1">&#39;ok&#39;</span><span class="p">,</span> <span class="s1">&#39;no&#39;</span><span class="p">)</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">c</span><span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="s1">&#39;outlier&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ok&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+851558
+850664
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># min hour/ max hour</span>
+<span class="n">c2</span> <span class="o">=</span> <span class="n">c2</span><span class="p">[(</span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.083333</span><span class="p">)</span><span class="o">&amp;</span><span class="p">(</span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">24</span><span class="p">)</span> <span class="p">]</span>  <span class="c1">#5/60 = 0.08333</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">c2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;difhour&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+827489
+23.988333333333333
+0.08333333333333333
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">c2</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">c2</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;start&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="p">[</span><span class="s1">&#39;dateint&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">10000</span> <span class="o">+</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span> <span class="o">+</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;day&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;log_hour&#39;</span><span class="p">]</span><span class="o">/</span><span class="mi">24</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c2</span><span class="o">.</span><span class="n">dateint</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1    2.018010e+07
+2    2.018010e+07
+3    2.018010e+07
+4    2.018010e+07
+5    2.018010e+07
+Name: dateint, dtype: float64
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c2</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;CNM&#39;, &#39;add&#39;, &#39;Max.vol&#39;, &#39;acvol&#39;, &#39;starttm&#39;, &#39;endtm&#39;, &#39;start&#39;, &#39;end&#39;,
+       &#39;endsec&#39;, &#39;endmin&#39;, &#39;date_time&#39;, &#39;SIG&#39;, &#39;diff&#39;, &#39;difhour&#39;, &#39;log_date&#39;,
+       &#39;log_hour&#39;, &#39;volh&#39;, &#39;outlier&#39;, &#39;year&#39;, &#39;month&#39;, &#39;day&#39;, &#39;dateint&#39;],
+      dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">=</span> <span class="n">c2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;add&#39;</span><span class="p">,</span><span class="s1">&#39;Max.vol&#39;</span><span class="p">,</span> <span class="s1">&#39;acvol&#39;</span><span class="p">,</span> <span class="s1">&#39;starttm&#39;</span><span class="p">,</span> <span class="s1">&#39;endtm&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">,</span> <span class="s1">&#39;diff&#39;</span><span class="p">,</span> <span class="s1">&#39;outlier&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;SIG&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>               <span class="c1">#FINAL DATA</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+25
+            CNM                     start  endsec  endmin         date_time  \
+1  볏골공원 지하공영주차장 2018-01-01 00:17:16+09:00    56.0      54  2018-01-01 00:00
+2           노보텔 2018-01-01 00:35:24+09:00    26.0       9  2018-01-01 00:00
+3      종묘 공영주차장 2018-01-01 00:59:13+09:00    13.0      22  2018-01-01 00:00
+4  현대블루핸즈 대치북부점 2018-01-01 01:06:31+09:00    11.0      36  2018-01-01 01:00
+5           노보텔 2018-01-01 01:24:24+09:00    49.0      35  2018-01-01 01:00
+
+   SIG   difhour    log_date  log_hour       volh  year  month  day  \
+1  강서구  0.627778  2018-01-01         0  37.529204  2018      1    1
+2  강남구  0.567222  2018-01-01         0  26.515181  2018      1    1
+3  종로구  0.383333  2018-01-01         0  36.652174  2018      1    1
+4  강남구  0.494444  2018-01-01         1  41.420225  2018      1    1
+5  강남구  0.190278  2018-01-01         1  36.367883  2018      1    1
+
+        dateint
+1  2.018010e+07
+2  2.018010e+07
+3  2.018010e+07
+4  2.018010e+07
+5  2.018010e+07
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># df = c2.groupby([&quot;SIG&quot;, &quot;log_date&quot;, &quot;log_hour&quot;])[&#39;volh&#39;].mean().reset_index()</span>
+<span class="n">df_datetime</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;SIG&quot;</span><span class="p">,</span> <span class="s2">&quot;date_time&quot;</span><span class="p">])[</span><span class="s1">&#39;volh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_datetime</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SIG</th>
+      <th>date_time</th>
+      <th>volh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>강남구</td>
+      <td>2018-01-01 00:00</td>
+      <td>26.515181</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>강남구</td>
+      <td>2018-01-01 01:00</td>
+      <td>32.737450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>강남구</td>
+      <td>2018-01-01 02:00</td>
+      <td>28.364020</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>강남구</td>
+      <td>2018-01-01 05:00</td>
+      <td>30.652220</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>강남구</td>
+      <td>2018-01-01 06:00</td>
+      <td>32.791086</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##only for gn</span>
+<span class="n">df_datetime_gn</span> <span class="o">=</span> <span class="n">df_datetime</span><span class="p">[(</span><span class="n">df_datetime</span><span class="p">[</span><span class="s1">&#39;SIG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;강남구&#39;</span><span class="p">)]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">df_datetime_gn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+25718
+</pre></div></div>
+</div>
+<p>###Daily EV charging</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">SIG</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+array([&#39;강서구&#39;, &#39;강남구&#39;, &#39;종로구&#39;, &#39;광진구&#39;, &#39;서초구&#39;, &#39;영등포&#39;, &#39;구로구&#39;, &#39;강동구&#39;, &#39;마포구&#39;,
+       &#39;관악구&#39;, &#39;송파구&#39;, &#39;은평구&#39;, &#39;성북구&#39;, &#39;용산구&#39;, &#39;동대문&#39;, &#39;노원구&#39;, &#39;서대문&#39;, &#39;성동구&#39;,
+       &#39;중구 &#39;, &#39;중랑구&#39;, &#39;양천구&#39;, &#39;동작구&#39;, &#39;강북구&#39;, &#39;금천구&#39;, &#39;도봉구&#39;], dtype=object)
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_logdate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;SIG&quot;</span><span class="p">,</span> <span class="s2">&quot;log_date&quot;</span><span class="p">])[</span><span class="s1">&#39;volh&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">df_logdate</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1">##only for gn</span>
+<span class="n">df_logdate_gn</span> <span class="o">=</span> <span class="n">df_logdate</span><span class="p">[(</span><span class="n">df_logdate</span><span class="p">[</span><span class="s1">&#39;SIG&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;강남구&#39;</span><span class="p">)]</span>
+<span class="n">dataframe</span><span class="o">=</span> <span class="n">df_logdate_gn</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;SIG&#39;</span><span class="p">,</span> <span class="s1">&#39;log_date&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataframe</span><span class="o">.</span><span class="n">values</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">&#39;float32&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># #plotting the data</span>
+<span class="c1"># plt.figure(figsize=(16,8))</span>
+<span class="c1"># plt.title(&#39;Close Price History&#39;)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dataframe</span><span class="p">[</span><span class="s1">&#39;volh&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;EV Charging&#39;</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_34_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_34_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># normalize the dataset</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1551, 1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># split into train and test sets</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;len(dataset): &#39;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">train_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.67</span><span class="p">)</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span> <span class="o">-</span> <span class="n">train_size</span>
+<span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="n">train_size</span><span class="p">,:],</span> <span class="n">dataset</span><span class="p">[</span><span class="n">train_size</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">),:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">train</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+len(dataset):  1551
+1039 512
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert an array of values into a dataset matrix</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_dataset</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">look_back</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">dataX</span><span class="p">,</span> <span class="n">dataY</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">-</span><span class="n">look_back</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">:(</span><span class="n">i</span><span class="o">+</span><span class="n">look_back</span><span class="p">),</span> <span class="mi">0</span><span class="p">]</span>
+        <span class="n">dataX</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+        <span class="n">dataY</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">look_back</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataX</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">dataY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Let&#39;s train the LSTM using SGD as optimizer</span>
+<span class="c1"># reshape into X=t and Y=t+1</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+
+<span class="c1"># reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;testX.shape: &#39;</span><span class="p">,</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: &#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: &#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+
+<span class="c1"># create and fit the LSTM network</span>
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)))</span> <span class="c1"># hidden layer with 4 LSTM blocks or neurons, with time_step=1 and features=1.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span> <span class="c1"># output layer that makes a single value prediction</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1037, 1, 1)
+trainY.shape:  (1037,)
+testX.shape:  (510, 1, 1)
+trainX[:5]:  [0.40584978 0.32951364 0.42946067 0.386174   0.4079348 ]
+trainY[:5]:  [0.32951364 0.42946067 0.386174   0.4079348  0.40748814]
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+2022-06-17 03:53:21.742617: W tensorflow/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library &#39;libcuda.so.1&#39;; dlerror: libcuda.so.1: cannot open shared object file: No such file or directory
+2022-06-17 03:53:21.742648: W tensorflow/stream_executor/cuda/cuda_driver.cc:269] failed call to cuInit: UNKNOWN ERROR (303)
+2022-06-17 03:53:21.742677: I tensorflow/stream_executor/cuda/cuda_diagnostics.cc:156] kernel driver does not appear to be running on this host (osgeolive): /proc/driver/nvidia/version does not exist
+2022-06-17 03:53:21.748407: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 227.62951803207397 seconds ---
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># summarize history for loss</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;model loss&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;loss&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;epoch&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;train&#39;</span><span class="p">,</span><span class="s1">&#39;val&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># make predictions</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">):</span>
+    <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">)</span>
+    <span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">)</span>
+    <span class="c1"># invert predictions</span>
+    <span class="n">trainPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span>
+    <span class="n">trainY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">trainY</span><span class="p">])</span>
+    <span class="n">testPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">testPredict</span><span class="p">)</span>
+    <span class="n">testY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">testY</span><span class="p">])</span>
+    <span class="c1"># calculate root mean squared error</span>
+    <span class="n">trainScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">trainScore</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="n">testScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">testScore</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+
+    <span class="k">return</span> <span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span>
+
+<span class="c1"># shift train predictions for plotting</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">):</span>
+    <span class="n">trainPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="n">trainPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">trainPredictPlot</span><span class="p">[</span><span class="n">look_back</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="n">look_back</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">trainPredict</span>
+    <span class="c1"># shift test predictions for plotting</span>
+    <span class="n">testPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+    <span class="n">testPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">testPredictPlot</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">look_back</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">testPredict</span>
+    <span class="c1"># plot baseline and predictions</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trainPredictPlot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">testPredictPlot</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_40_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_40_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+33/33 [==============================] - 1s 3ms/step
+16/16 [==============================] - 0s 2ms/step
+Train Score: 3.57 RMSE
+Train R^2:  0.43751046016410977
+Test Score: 4.77 RMSE
+Test R^2:  0.43999636627656
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[45]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_42_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_42_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[46]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Let&#39;s redo it using ADAM 7;51</span>
+<span class="c1"># reshape into X=t and Y=t+1</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="c1"># our data is in the form: [samples, features]</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+
+<span class="c1"># The LSTM network expects the input data (X) to be provided with a specific array structure in the form of: [samples, time steps, features].</span>
+<span class="c1"># Reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: &#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">,:,:]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: &#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># create and fit the LSTM network</span>
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">))</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1037, 1, 1)
+trainY.shape:  (1037,)
+trainX[:5]:  [0.40584978 0.32951364 0.42946067 0.386174   0.4079348 ]
+trainY[:5]:  [0.32951364 0.42946067 0.386174   0.4079348  0.40748814]
+Deleting &#34;model&#34;
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 264.29672741889954 seconds ---
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[47]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_44_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_44_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[48]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+33/33 [==============================] - 1s 4ms/step
+16/16 [==============================] - 0s 3ms/step
+Train Score: 3.43 RMSE
+Train R^2:  0.4824621484663243
+Test Score: 6.54 RMSE
+Test R^2:  -0.05321232523693742
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[49]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_46_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_46_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[50]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## LSTM for Regression Using the Window Method</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[51]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span> <span class="c1"># reshape into X=t and Y=t+3</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1035, 3)
+trainY.shape:  (1035,)
+trainX[:5]:
+ [[0.40584978 0.32951364 0.42946067]
+ [0.32951364 0.42946067 0.386174  ]
+ [0.42946067 0.386174   0.4079348 ]
+ [0.386174   0.4079348  0.40748814]
+ [0.4079348  0.40748814 0.30990687]]
+trainY[:5]:
+ [0.386174   0.4079348  0.40748814 0.30990687 0.47879067]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[52]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># create and fit the LSTM network</span>
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1035, 1, 3)
+trainY.shape:  (1035,)
+trainX[:5]:
+ [[[0.40584978 0.32951364 0.42946067]]
+
+ [[0.32951364 0.42946067 0.386174  ]]
+
+ [[0.42946067 0.386174   0.4079348 ]]
+
+ [[0.386174   0.4079348  0.40748814]]
+
+ [[0.4079348  0.40748814 0.30990687]]]
+trainY[:5]:
+ [0.386174   0.4079348  0.40748814 0.30990687 0.47879067]
+Deleting &#34;model&#34;
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 247.12511897087097 seconds ---
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_50_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_50_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[54]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+33/33 [==============================] - 1s 2ms/step
+16/16 [==============================] - 0s 3ms/step
+Train Score: 3.13 RMSE
+Train R^2:  0.5677213355887494
+Test Score: 4.50 RMSE
+Test R^2:  0.476461149770418
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[55]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_52_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_52_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[56]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## LSTM for Regression with Time Steps</span>
+<span class="c1"># reshape into X=t and Y=t+1</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="c1"># reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c1"># create and fit the LSTM network</span>
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">look_back</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span> <span class="c1"># with time_step=3 and 1 feature.</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">))</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1035, 3, 1)
+trainY.shape:  (1035,)
+trainX[:5]:
+ [[[0.40584978]
+  [0.32951364]
+  [0.42946067]]
+
+ [[0.32951364]
+  [0.42946067]
+  [0.386174  ]]
+
+ [[0.42946067]
+  [0.386174  ]
+  [0.4079348 ]]
+
+ [[0.386174  ]
+  [0.4079348 ]
+  [0.40748814]]
+
+ [[0.4079348 ]
+  [0.40748814]
+  [0.30990687]]]
+trainY[:5]:
+ [0.386174   0.4079348  0.40748814 0.30990687 0.47879067]
+Deleting &#34;model&#34;
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 351.80383682250977 seconds ---
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[57]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_54_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_54_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[58]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainPredict</span><span class="p">,</span> <span class="n">testPredict</span> <span class="o">=</span> <span class="n">make_preds</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span><span class="n">trainY</span><span class="p">,</span><span class="n">testX</span><span class="p">,</span><span class="n">testY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+33/33 [==============================] - 1s 5ms/step
+16/16 [==============================] - 0s 4ms/step
+Train Score: 3.22 RMSE
+Train R^2:  0.5431476837424603
+Test Score: 4.61 RMSE
+Test R^2:  0.45001772422963693
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[59]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_preds</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">,</span><span class="n">testPredict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_56_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_56_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[60]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## LSTM with Memory Between Batches</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[69]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # reshape into X=t and Y=t+1</span>
+<span class="c1"># look_back = 3</span>
+<span class="c1"># trainX, trainY = create_dataset(train, look_back)</span>
+<span class="c1"># testX, testY = create_dataset(test, look_back)</span>
+<span class="c1"># # reshape input to be [samples, time steps, features]</span>
+<span class="c1"># trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1], 1))</span>
+<span class="c1"># testX = np.reshape(testX, (testX.shape[0], testX.shape[1], 1))</span>
+<span class="c1"># # create and fit the LSTM network</span>
+<span class="c1"># batch_size = 1</span>
+
+<span class="c1"># if &#39;model&#39; in globals():</span>
+<span class="c1">#     print(&#39;Deleting &quot;model&quot;&#39;)</span>
+<span class="c1">#     del model</span>
+<span class="c1"># model = Sequential()</span>
+<span class="c1"># model.add(LSTM(4, batch_input_shape=(batch_size, look_back, 1), stateful=True))</span>
+<span class="c1"># model.add(Dense(1))</span>
+
+<span class="c1"># start_time = time.time()</span>
+<span class="c1"># model.compile(loss=&#39;mean_squared_error&#39;, optimizer=&#39;adam&#39;)</span>
+<span class="c1"># for i in range(100):</span>
+<span class="c1">#     history = model.fit(trainX, trainY, epochs=50 , batch_size=batch_size, verbose=0, shuffle=False, validation_data=(testX, testY))</span>
+<span class="c1">#     model.reset_states()</span>
+<span class="c1"># print(&#39;keys: &#39;,history.history.keys())</span>
+<span class="c1"># print(&quot;--- Elapsed time: %s seconds ---&quot; % (time.time() - start_time))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[63]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
+<span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1"># invert predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span>
+<span class="n">trainY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">trainY</span><span class="p">])</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">testPredict</span><span class="p">)</span>
+<span class="n">testY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">testY</span><span class="p">])</span>
+<span class="c1"># calculate root mean squared error</span>
+<span class="n">trainScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">trainScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">testScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">testScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1035/1035 [==============================] - 3s 2ms/step
+508/508 [==============================] - 1s 2ms/step
+Train Score: 3.14 RMSE
+Train R^2:  0.5653176934509332
+Test Score: 7.81 RMSE
+Test R^2:  -0.575034240837196
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[64]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Adding Early Stopping</span>
+<span class="c1"># Using Early stopping</span>
+<span class="c1"># reshape into X=t and Y=t+1</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+
+<span class="c1"># reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: &#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: &#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;./models/best_model_LSTM.h5&#39;</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">look_back</span><span class="p">),</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">look_back</span><span class="p">),</span> <span class="n">stateful</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">),</span><span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">es</span><span class="p">,</span> <span class="n">mc</span><span class="p">])</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+
+<span class="c1"># load the saved model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;./models/best_model_LSTM.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1035, 1, 3)
+trainY.shape:  (1035,)
+trainX[:5]:  [0.40584978 0.32951364 0.42946067 0.32951364 0.42946067 0.386174
+ 0.42946067 0.386174   0.4079348  0.386174   0.4079348  0.40748814
+ 0.4079348  0.40748814 0.30990687]
+trainY[:5]:  [0.386174   0.4079348  0.40748814 0.30990687 0.47879067]
+Deleting &#34;model&#34;
+Epoch 1/50
+1025/1035 [============================&gt;.] - ETA: 0s - loss: 0.0151
+Epoch 1: val_loss improved from inf to 0.01571, saving model to ./models/best_model_LSTM.h5
+1035/1035 [==============================] - 16s 10ms/step - loss: 0.0151 - val_loss: 0.0157
+Epoch 2/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0095
+Epoch 2: val_loss improved from 0.01571 to 0.00752, saving model to ./models/best_model_LSTM.h5
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0094 - val_loss: 0.0075
+Epoch 3/50
+1027/1035 [============================&gt;.] - ETA: 0s - loss: 0.0069
+Epoch 3: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0069 - val_loss: 0.0128
+Epoch 4/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0066
+Epoch 4: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0065 - val_loss: 0.0078
+Epoch 5/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0064
+Epoch 5: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 10ms/step - loss: 0.0064 - val_loss: 0.0090
+Epoch 6/50
+1035/1035 [==============================] - ETA: 0s - loss: 0.0065
+Epoch 6: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 10ms/step - loss: 0.0065 - val_loss: 0.0110
+Epoch 7/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0065
+Epoch 7: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0064 - val_loss: 0.0132
+Epoch 8/50
+1030/1035 [============================&gt;.] - ETA: 0s - loss: 0.0064
+Epoch 8: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0064 - val_loss: 0.0123
+Epoch 9/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0064
+Epoch 9: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 9ms/step - loss: 0.0064 - val_loss: 0.0125
+Epoch 10/50
+1031/1035 [============================&gt;.] - ETA: 0s - loss: 0.0064
+Epoch 10: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0064 - val_loss: 0.0183
+Epoch 11/50
+1027/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 11: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0063 - val_loss: 0.0151
+Epoch 12/50
+1033/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 12: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 7ms/step - loss: 0.0063 - val_loss: 0.0142
+Epoch 13/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 13: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 8ms/step - loss: 0.0063 - val_loss: 0.0179
+Epoch 14/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 14: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 11ms/step - loss: 0.0063 - val_loss: 0.0169
+Epoch 15/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 15: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0063 - val_loss: 0.0164
+Epoch 16/50
+1024/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 16: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0063 - val_loss: 0.0206
+Epoch 17/50
+1033/1035 [============================&gt;.] - ETA: 0s - loss: 0.0064
+Epoch 17: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0064 - val_loss: 0.0161
+Epoch 18/50
+1025/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 18: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 7ms/step - loss: 0.0062 - val_loss: 0.0206
+Epoch 19/50
+1031/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 19: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 10ms/step - loss: 0.0063 - val_loss: 0.0183
+Epoch 20/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 20: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0063 - val_loss: 0.0196
+Epoch 21/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 21: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0063 - val_loss: 0.0182
+Epoch 22/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 22: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 10ms/step - loss: 0.0062 - val_loss: 0.0175
+Epoch 23/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 23: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0063 - val_loss: 0.0136
+Epoch 24/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 24: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 9ms/step - loss: 0.0063 - val_loss: 0.0187
+Epoch 25/50
+1034/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 25: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 8ms/step - loss: 0.0062 - val_loss: 0.0211
+Epoch 26/50
+1030/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 26: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0063 - val_loss: 0.0166
+Epoch 27/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 27: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0062 - val_loss: 0.0255
+Epoch 28/50
+1025/1035 [============================&gt;.] - ETA: 0s - loss: 0.0061
+Epoch 28: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 9ms/step - loss: 0.0061 - val_loss: 0.0154
+Epoch 29/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 29: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 11ms/step - loss: 0.0063 - val_loss: 0.0157
+Epoch 30/50
+1026/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 30: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0244
+Epoch 31/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 31: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0157
+Epoch 32/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 32: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0063 - val_loss: 0.0178
+Epoch 33/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 33: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0169
+Epoch 34/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 34: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0063 - val_loss: 0.0251
+Epoch 35/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 35: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0208
+Epoch 36/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 36: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0062 - val_loss: 0.0138
+Epoch 37/50
+1023/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 37: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 11s 11ms/step - loss: 0.0062 - val_loss: 0.0207
+Epoch 38/50
+1028/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 38: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0062 - val_loss: 0.0216
+Epoch 39/50
+1025/1035 [============================&gt;.] - ETA: 0s - loss: 0.0061
+Epoch 39: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0233
+Epoch 40/50
+1033/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 40: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 8s 8ms/step - loss: 0.0062 - val_loss: 0.0210
+Epoch 41/50
+1035/1035 [==============================] - ETA: 0s - loss: 0.0061
+Epoch 41: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 8ms/step - loss: 0.0061 - val_loss: 0.0204
+Epoch 42/50
+1024/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 42: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0062 - val_loss: 0.0178
+Epoch 43/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 43: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0063 - val_loss: 0.0203
+Epoch 44/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 44: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 6s 6ms/step - loss: 0.0063 - val_loss: 0.0227
+Epoch 45/50
+1030/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 45: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 6s 6ms/step - loss: 0.0062 - val_loss: 0.0207
+Epoch 46/50
+1033/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 46: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0062 - val_loss: 0.0220
+Epoch 47/50
+1029/1035 [============================&gt;.] - ETA: 0s - loss: 0.0063
+Epoch 47: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 12s 11ms/step - loss: 0.0063 - val_loss: 0.0248
+Epoch 48/50
+1027/1035 [============================&gt;.] - ETA: 0s - loss: 0.0061
+Epoch 48: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 10s 10ms/step - loss: 0.0062 - val_loss: 0.0188
+Epoch 49/50
+1030/1035 [============================&gt;.] - ETA: 0s - loss: 0.0061
+Epoch 49: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 7s 7ms/step - loss: 0.0062 - val_loss: 0.0197
+Epoch 50/50
+1032/1035 [============================&gt;.] - ETA: 0s - loss: 0.0062
+Epoch 50: val_loss did not improve from 0.00752
+1035/1035 [==============================] - 9s 9ms/step - loss: 0.0062 - val_loss: 0.0167
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 451.014142036438 seconds ---
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[65]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_61_0.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_61_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[66]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># make predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
+<span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1"># invert predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span>
+<span class="n">trainY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">trainY</span><span class="p">])</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">testPredict</span><span class="p">)</span>
+<span class="n">testY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">testY</span><span class="p">])</span>
+<span class="c1"># calculate root mean squared error</span>
+<span class="n">trainScore</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">trainScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">testScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">testScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># shift train predictions for plotting</span>
+<span class="n">trainPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">trainPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">trainPredictPlot</span><span class="p">[</span><span class="n">look_back</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="n">look_back</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">trainPredict</span>
+<span class="c1"># shift test predictions for plotting</span>
+<span class="n">testPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">testPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">testPredictPlot</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">look_back</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">testPredict</span>
+<span class="c1"># plot baseline and predictions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trainPredictPlot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">testPredictPlot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1035/1035 [==============================] - 4s 3ms/step
+508/508 [==============================] - 2s 3ms/step
+Train Score: 3.16 RMSE
+Train R^2:  0.5615679306120167
+Test Score: 3.40 RMSE
+Test R^2:  0.7020410118749283
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_62_1.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_62_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[67]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Try more nodes in the LSTM</span>
+<span class="c1"># Using Early stopping</span>
+
+<span class="c1"># reshape into X=t and Y=t+1</span>
+<span class="n">look_back</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+<span class="n">testX</span><span class="p">,</span> <span class="n">testY</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">look_back</span><span class="p">)</span>
+
+<span class="c1"># reshape input to be [samples, time steps, features]</span>
+<span class="n">trainX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="p">(</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">testX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="p">(</span><span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">1</span><span class="p">,</span> <span class="n">testX</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX.shape: &#39;</span><span class="p">,</span><span class="n">trainX</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY.shape: &#39;</span><span class="p">,</span><span class="n">trainY</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainX[:5]: &#39;</span><span class="p">,</span> <span class="n">trainX</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;trainY[:5]: &#39;</span><span class="p">,</span> <span class="n">trainY</span><span class="p">[:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="n">es</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">ModelCheckpoint</span><span class="p">(</span><span class="s1">&#39;./models/best_model_LSTM.h5&#39;</span><span class="p">,</span> <span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;min&#39;</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">save_best_only</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="s1">&#39;model&#39;</span> <span class="ow">in</span> <span class="nb">globals</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Deleting &quot;model&quot;&#39;</span><span class="p">)</span>
+    <span class="k">del</span> <span class="n">model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="n">look_back</span><span class="p">),</span> <span class="n">return_sequences</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">LSTM</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="n">batch_input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span><span class="n">look_back</span><span class="p">)))</span>
+<span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="c1"># Compile the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mean_squared_error&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">history</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">testY</span><span class="p">),</span><span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">es</span><span class="p">,</span> <span class="n">mc</span><span class="p">])</span>
+<span class="c1"># list all data in history</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;keys: &#39;</span><span class="p">,</span><span class="n">history</span><span class="o">.</span><span class="n">history</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Elapsed time: </span><span class="si">%s</span><span class="s2"> seconds ---&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span><span class="p">))</span>
+
+<span class="c1"># load the saved model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s1">&#39;./models/best_model_LSTM.h5&#39;</span><span class="p">)</span>
+
+<span class="n">plot_hist</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+
+<span class="c1"># make predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span> <span class="c1">#Now we need to specify the batch_size</span>
+<span class="n">model</span><span class="o">.</span><span class="n">reset_states</span><span class="p">()</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="c1"># invert predictions</span>
+<span class="n">trainPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span>
+<span class="n">trainY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">trainY</span><span class="p">])</span>
+<span class="n">testPredict</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">testPredict</span><span class="p">)</span>
+<span class="n">testY</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">([</span><span class="n">testY</span><span class="p">])</span>
+<span class="c1"># calculate root mean squared error</span>
+<span class="n">trainScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">trainScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Train R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">trainY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trainPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">testScore</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test Score: </span><span class="si">%.2f</span><span class="s1"> RMSE&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">testScore</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Test R^2: &#39;</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">testY</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">testPredict</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># shift train predictions for plotting</span>
+<span class="n">trainPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">trainPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">trainPredictPlot</span><span class="p">[</span><span class="n">look_back</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="n">look_back</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">trainPredict</span>
+<span class="c1"># shift test predictions for plotting</span>
+<span class="n">testPredictPlot</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty_like</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span>
+<span class="n">testPredictPlot</span><span class="p">[:,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">testPredictPlot</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">trainPredict</span><span class="p">)</span><span class="o">+</span><span class="p">(</span><span class="n">look_back</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">:</span><span class="nb">len</span><span class="p">(</span><span class="n">dataset</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">=</span> <span class="n">testPredict</span>
+<span class="c1"># plot baseline and predictions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">scaler</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trainPredictPlot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">testPredictPlot</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+trainX.shape:  (1035, 1, 3)
+trainY.shape:  (1035,)
+trainX[:5]:  [0.40584978 0.32951364 0.42946067 0.32951364 0.42946067 0.386174
+ 0.42946067 0.386174   0.4079348  0.386174   0.4079348  0.40748814
+ 0.4079348  0.40748814 0.30990687]
+trainY[:5]:  [0.386174   0.4079348  0.40748814 0.30990687 0.47879067]
+Deleting &#34;model&#34;
+keys:  dict_keys([&#39;loss&#39;, &#39;val_loss&#39;])
+--- Elapsed time: 319.7887361049652 seconds ---
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_63_1.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_63_1.png" />
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1035/1035 [==============================] - 4s 3ms/step
+508/508 [==============================] - 2s 5ms/step
+Train Score: 3.35 RMSE
+Train R^2:  0.5055799253426811
+Test Score: 3.30 RMSE
+Test R^2:  0.7181920183273924
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_63_3.png" src="../../_images/STUDENTSPROJECTS_Proj_2022_Matera_Clustering_Electric_Vehicle_Charging_Pattern_with_DTW_and_EV_Charging_energy_demand_Prediction_with_LSTM_Hyeyoung_Sim_63_3.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Prediction_of_AGB_using_RFR_SVR_FFNN_Ritwika_Mukhopadhyay.html" class="btn btn-neutral float-left" title="2.10. Ritwika Mukhopadhyay: Comparative Analysis of the prediction of AGB using Random Forest Regression, Support Vector Machine for Regression &amp; FeedForward Neural Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Classification_of_different_tree_species_plantations_using_deep_learning_Hemalatha_Velappan.html" class="btn btn-neutral float-right" title="2.12. Hemalatha Velappan: Classification of different tree species plantations using deep learning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

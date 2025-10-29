@@ -1,0 +1,1328 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction to Python &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python &amp; GeoComputation" href="Geo_Python.html" />
+    <link rel="prev" title="Python environments or how to survive to your journey in the geodata space" href="PythonEnvs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 24.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Why-Python?">Why Python?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#You-can-use-Python-to...">You can use Python to…</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Python-Environment">Python Environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Home">Home</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Science-Applications">Science Applications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Integrated-Environment">Integrated Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#IDE">IDE</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Different-ways-to-run-Python">Different ways to run Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Basic-Data-Types:-integer,-floating-point,-string,-boolean">Basic Data Types: <em>integer, floating point, string, boolean</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Types:-lists">Data Types: <em>lists</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Types:-tuples">Data Types: <em>tuples</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Types:-strings">Data Types: <em>strings</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Data-Types:-dictionaries">Data Types: <em>dictionaries</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Basic-Printing">Basic Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Control-Flow-Statements:-if">Control Flow Statements: <em>if</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Control-Flow-Statements:-while">Control Flow Statements: <em>while</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Control-Flow-Statements:-for">Control Flow Statements: <em>for</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Using-for-loops-and-dicts">Using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">dicts</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Control-Flow-Statements:-altering-loops">Control Flow Statements: altering loops</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Read-from-standard-input">Read from standard input</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Summary-of-basic-elements-of-Python">Summary of basic elements of Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Example-1:-File-Reformatter">Example 1: File Reformatter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Step-1:-open-the-input-file">Step 1: open the input file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Step-2:-read-the-first-header-line,-and-print-it-out">Step 2: read the first header line, and print it out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Step-3:-for-each-remaining-line-in-the-file,-read-the-line">Step 3: for each remaining line in the file, read the line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Step-4:-find-the-value-in-the-5th-column,-and-remove-last-3-letters">Step 4: find the value in the 5th column, and remove last 3 letters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Exercise-1:-Fibonacci-Series">Exercise 1: Fibonacci Series</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Sources-:-this-material-was-adopted-from-the-following-sources">Sources : this material was adopted from the following sources</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_03RF_pred.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2022.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2023.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_04SVM_pred_2024.html#Exercise:-explore-the-other-parameters-offered-by-the-SVM-library-and-try-to-make-the-model-better.-Some-suggestions:">Exercise: explore the other parameters offered by the SVM library and try to make the model better. Some suggestions:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_2022.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2023.html">Estimation of tree height using GEDI dataset - Perceptron 1 - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_intro_2024.html">Estimation of tree height using GEDI dataset - Perceptron - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_pred_2023.html">Estimation of tree height using GEDI dataset - Perceptron tree prediction - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06Perceptron_complete_2024.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.html">Estimation of tree height using GEDI dataset - Clean Data - Perceptron 2 - 2022</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2022.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2022.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CASESTUDY/GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
+      <li class="breadcrumb-item active">Introduction to Python</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/PYTHON/Python_Intro.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Introduction-to-Python">
+<h1>Introduction to Python<a class="headerlink" href="#Introduction-to-Python" title="Link to this heading"></a></h1>
+<p>Longzhu Shen Spatial Ecology Jun 2019</p>
+<p><a class="reference external" href="https://youtu.be/j-bmWPJzKMQ">Video tutorial</a></p>
+<p>Code availability at</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>wget https://github.com/selvaje/spatial-ecology-codes/blob/master/docs/source/PYTHON/01_Python_Intro.ipynb
+</pre></div>
+</div>
+<section id="Why-Python?">
+<h2>Why Python?<a class="headerlink" href="#Why-Python?" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Free, portable, easy to learn</p></li>
+<li><p>Wildly popular, huge and growing community</p></li>
+<li><p>Intuitive, natural syntax</p></li>
+<li><p>Ideal for rapid prototyping but also for large applications</p></li>
+<li><p>Very efficient to write, reasonably efficient to run as is</p></li>
+<li><p>Can be very efficient (numpy, cython, …)</p></li>
+<li><p>Huge number of packages (modules)</p></li>
+</ul>
+</section>
+<section id="You-can-use-Python-to...">
+<h2>You can use Python to…<a class="headerlink" href="#You-can-use-Python-to..." title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Convert or filter files</p></li>
+<li><p>Automate repetitive tasks</p></li>
+<li><p>Compute statistics</p></li>
+<li><p>Build processing pipelines</p></li>
+<li><p>Build simple web applications</p></li>
+<li><p>Perform large numerical computations</p></li>
+<li><p>Python can be run interactively or as a program</p></li>
+</ul>
+</section>
+<section id="Python-Environment">
+<h2>Python Environment<a class="headerlink" href="#Python-Environment" title="Link to this heading"></a></h2>
+<section id="Home">
+<h3>Home<a class="headerlink" href="#Home" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.python.org/">https://www.python.org/</a></p></li>
+</ul>
+</section>
+<section id="Science-Applications">
+<h3>Science Applications<a class="headerlink" href="#Science-Applications" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="http://www.numpy.org/">http://www.numpy.org/</a></p></li>
+<li><p><a class="reference external" href="https://www.scipy.org/">https://www.scipy.org/</a></p></li>
+</ul>
+</section>
+<section id="Integrated-Environment">
+<h3>Integrated Environment<a class="headerlink" href="#Integrated-Environment" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.anaconda.com/">https://www.anaconda.com/</a></p></li>
+</ul>
+</section>
+<section id="IDE">
+<h3>IDE<a class="headerlink" href="#IDE" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jupyter.org/">https://jupyter.org/</a></p></li>
+</ul>
+</section>
+</section>
+<section id="Different-ways-to-run-Python">
+<h2>Different ways to run Python<a class="headerlink" href="#Different-ways-to-run-Python" title="Link to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Create a file using editor, then:</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span> <span class="pre">myscript.py</span></code></p>
+</li>
+<li><p>Run interpreter interactively</p>
+<p><code class="docutils literal notranslate"><span class="pre">$</span> <span class="pre">python</span></code></p>
+</li>
+</ol>
+</section>
+<section id="Basic-Data-Types:-integer,-floating-point,-string,-boolean">
+<h2>Basic Data Types: <em>integer, floating point, string, boolean</em><a class="headerlink" href="#Basic-Data-Types:-integer,-floating-point,-string,-boolean" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>variables do not need to be declared or typed</p></li>
+<li><p>integers and floating points can be used together</p></li>
+<li><p>the same variable can hold different types</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">radius</span><span class="o">=</span><span class="mi">3</span>
+<span class="n">pi</span><span class="o">=</span><span class="mf">3.14</span>
+<span class="n">diam</span><span class="o">=</span><span class="n">radius</span><span class="o">*</span><span class="mi">2</span>
+<span class="n">area</span><span class="o">=</span><span class="n">pi</span><span class="o">*</span><span class="p">(</span><span class="n">radius</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">title</span><span class="o">=</span><span class="s2">&quot;fun with strings&quot;</span>
+<span class="n">pi</span><span class="o">=</span><span class="s1">&#39;cherry&#39;</span>
+<span class="n">delicious</span><span class="o">=</span><span class="kc">True</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">radius</span><span class="p">,</span><span class="n">diam</span><span class="p">,</span><span class="n">area</span><span class="p">,</span><span class="n">title</span><span class="p">,</span><span class="n">pi</span><span class="p">,</span><span class="n">delicious</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3 6 28.26 fun with strings cherry True
+</pre></div></div>
+</div>
+<ul class="simple">
+<li><p>data type conversion</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num</span> <span class="o">=</span> <span class="p">[</span><span class="mi">234</span><span class="p">,</span><span class="mi">2435</span><span class="p">,</span><span class="mi">243264</span><span class="p">]</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span>
+<span class="n">num</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">23453</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[234, 2435, 243264]
+[234, 2435, 243264, 23453]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;[234, 2435, 243264, 23453]&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">strn</span> <span class="o">=</span> <span class="s1">&#39;234&#39;</span>
+<span class="nb">int</span><span class="p">(</span><span class="n">strn</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+234
+</pre></div></div>
+</div>
+</section>
+<section id="Data-Types:-lists">
+<h2>Data Types: <em>lists</em><a class="headerlink" href="#Data-Types:-lists" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Lists are like arrays in other languages but with higher flexibility</p></li>
+<li><p>heterogeneous data types</p></li>
+<li><p>nest lists</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[6, 7]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">[:]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#comment</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="mf">3.14</span>
+<span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3.14, 4, 5, 6, 7, 8, 9, 10]
+</pre></div></div>
+</div>
+<p>Add to a list</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">999</span><span class="p">)</span>
+<span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, 3.14, 4, 5, 6, 7, 8, 9, 10, 999]
+</pre></div></div>
+</div>
+<p>Modify a list</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">9</span><span class="p">]</span>
+<span class="n">l</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="mi">11</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">13</span><span class="p">]</span>
+<span class="n">l</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, [11, 12, 13], 4, 5, 6, 7, 8, 9]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;four to six&#39;</span><span class="p">]</span>
+<span class="n">l</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1, 2, [11, 12, 13], &#39;four to six&#39;, 7, 8, 9]
+</pre></div></div>
+</div>
+<p>joining lists</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_string_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">]</span>
+<span class="n">my_string_list</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;apple&#39;, &#39;orange&#39;, &#39;grape&#39;]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">additions_to_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;pineapple&#39;</span><span class="p">,</span> <span class="s1">&#39;mango&#39;</span><span class="p">]</span>
+<span class="n">my_string_list</span> <span class="o">+</span> <span class="n">additions_to_list</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[&#39;apple&#39;, &#39;orange&#39;, &#39;grape&#39;, &#39;pineapple&#39;, &#39;mango&#39;]
+</pre></div></div>
+</div>
+</section>
+<section id="Data-Types:-tuples">
+<h2>Data Types: <em>tuples</em><a class="headerlink" href="#Data-Types:-tuples" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Tuples are <strong>‘immutable’</strong> lists, meaning that once they are created they <strong>cannot</strong> be changed</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">t</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(1, 2, 3, 4, 5, 6, 7, 8, 10)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">6</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+(5, 6)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">t</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="o">=</span><span class="mi">99</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">TypeError</span>                                 Traceback (most recent call last)
+<span class="ansi-green-fg">&lt;ipython-input-17-62c2311f04ba&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
+<span class="ansi-green-fg">----&gt; 1</span><span class="ansi-red-fg"> </span>t<span class="ansi-blue-fg">[</span><span class="ansi-cyan-fg">5</span><span class="ansi-blue-fg">]</span><span class="ansi-blue-fg">=</span><span class="ansi-cyan-fg">99</span>
+
+<span class="ansi-red-fg">TypeError</span>: &#39;tuple&#39; object does not support item assignment
+</pre></div></div>
+</div>
+</section>
+<section id="Data-Types:-strings">
+<h2>Data Types: <em>strings</em><a class="headerlink" href="#Data-Types:-strings" title="Link to this heading"></a></h2>
+<p>Strings are fully featured types in python.</p>
+<ul class="simple">
+<li><p>strings are defined with ‘ or “</p></li>
+<li><p>strings cannot be modified</p></li>
+<li><p>strings can be concatenated and sliced much like lists</p></li>
+<li><p>strings are objects with lots of useful methods</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;Some0String&quot;</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;Some0String&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="o">=</span><span class="s2">&quot;int</span><span class="se">\&quot;</span><span class="s2">s&quot;</span>
+<span class="n">s</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;int&#34;s&#39;
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;0&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="Data-Types:-dictionaries">
+<h2>Data Types: <em>dictionaries</em><a class="headerlink" href="#Data-Types:-dictionaries" title="Link to this heading"></a></h2>
+<p>Dicts are what python calls “hash tables”</p>
+<ul class="simple">
+<li><p>dicts associate keys with values, which can be of (almost) any type</p></li>
+<li><p>dicts have length, but are not ordered</p></li>
+<li><p>looking up values in dicts is very fast, even if the dict is BIG.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coins</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;penny&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;nickle&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;dime&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;quarter&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">}</span>
+<span class="n">coins</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+{&#39;penny&#39;: 1, &#39;nickle&#39;: 5, &#39;dime&#39;: 10, &#39;quarter&#39;: 25}
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">coins</span><span class="p">[</span><span class="s1">&#39;dime&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+10
+</pre></div></div>
+</div>
+</section>
+<section id="Basic-Printing">
+<h2>Basic Printing<a class="headerlink" href="#Basic-Printing" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Simple&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Simple
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">math</span>
+<span class="n">x</span><span class="o">=</span><span class="mi">16</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sqrt of </span><span class="si">%i</span><span class="s2"> is </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The sqrt of </span><span class="si">{}</span><span class="s2"> is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;the sqrt of </span><span class="si">%(x)i</span><span class="s2"> is </span><span class="si">%(xx)f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span><span class="n">x</span><span class="p">,</span> <span class="s2">&quot;xx&quot;</span><span class="p">:</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="p">)})</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+The sqrt of 16 is 4.000000
+The sqrt of 16 is 4.0
+the sqrt of 16 is 4.000000
+</pre></div></div>
+</div>
+</section>
+<section id="Control-Flow-Statements:-if">
+<h2>Control Flow Statements: <em>if</em><a class="headerlink" href="#Control-Flow-Statements:-if" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>if statements allow you to do a test, and do something based on the result</p></li>
+<li><p><em>else</em> is optional</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">v</span><span class="o">=</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">v</span> <span class="o">&lt;</span> <span class="mi">50</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;small&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;another line&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;big&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="s2">&quot;after else&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+small 3
+another line
+after else
+</pre></div></div>
+</div>
+</section>
+<section id="Control-Flow-Statements:-while">
+<h2>Control Flow Statements: <em>while</em><a class="headerlink" href="#Control-Flow-Statements:-while" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>While statements execute one or more statements repeatedly until the test is false</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">random</span>
+<span class="n">count</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">while</span> <span class="n">count</span><span class="o">&lt;</span><span class="mi">100</span><span class="p">:</span>
+    <span class="n">count</span><span class="o">=</span><span class="n">count</span><span class="o">+</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">count</span>
+
+<span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+<span class="ansi-cyan-fg">  File </span><span class="ansi-green-fg">&#34;&lt;ipython-input-25-73852ac4f990&gt;&#34;</span><span class="ansi-cyan-fg">, line </span><span class="ansi-green-fg">6</span>
+<span class="ansi-red-fg">    return count</span>
+    ^
+<span class="ansi-red-fg">SyntaxError</span><span class="ansi-red-fg">:</span> &#39;return&#39; outside function
+
+</pre></div></div>
+</div>
+</section>
+<section id="Control-Flow-Statements:-for">
+<h2>Control Flow Statements: <em>for</em><a class="headerlink" href="#Control-Flow-Statements:-for" title="Link to this heading"></a></h2>
+<p>For statements take some sort of iterable object and loop once for every value.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+apple
+orange
+banana
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">7</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+4
+5
+6
+</pre></div></div>
+</div>
+</section>
+<section id="Using-for-loops-and-dicts">
+<h2>Using <code class="docutils literal notranslate"><span class="pre">for</span></code> loops and <code class="docutils literal notranslate"><span class="pre">dicts</span></code><a class="headerlink" href="#Using-for-loops-and-dicts" title="Link to this heading"></a></h2>
+<p>If you loop over a dict, you’ll get just keys. Use items() for keys and values.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">denom</span> <span class="ow">in</span> <span class="n">coins</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">denom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+penny
+nickle
+dime
+quarter
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">coins</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">value</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+5
+10
+25
+</pre></div></div>
+</div>
+</section>
+<section id="Control-Flow-Statements:-altering-loops">
+<h2>Control Flow Statements: altering loops<a class="headerlink" href="#Control-Flow-Statements:-altering-loops" title="Link to this heading"></a></h2>
+<p>While and For loops can skip steps (continue) or terminate early (break).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">%</span><span class="k">2</span> != 0: continue
+    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+2
+4
+6
+8
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span> <span class="k">break</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0
+1
+2
+3
+4
+5
+</pre></div></div>
+</div>
+</section>
+<section id="Read-from-standard-input">
+<h2>Read from standard input<a class="headerlink" href="#Read-from-standard-input" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inputstr</span> <span class="o">=</span> <span class="nb">input</span><span class="p">();</span>
+<span class="n">inputstr</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+test
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;test&#39;
+</pre></div></div>
+</div>
+</section>
+<section id="Functions">
+<h2>Functions<a class="headerlink" href="#Functions" title="Link to this heading"></a></h2>
+<p>Functions allow you to write code once and use it many times.</p>
+<p>Functions also hide details so code is more understandable.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">area</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">h</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">w</span><span class="o">*</span><span class="n">h</span>
+
+<span class="n">area</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[44]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+60
+</pre></div></div>
+</div>
+</section>
+<section id="Summary-of-basic-elements-of-Python">
+<h2>Summary of basic elements of Python<a class="headerlink" href="#Summary-of-basic-elements-of-Python" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>4 basic types: int, float, boolean, string</p></li>
+<li><p>3 complex types: list, dict, tuple</p></li>
+<li><p>4 control constructs: if, while, for, def</p></li>
+</ul>
+</section>
+<section id="Example-1:-File-Reformatter">
+<h2>Example 1: File Reformatter<a class="headerlink" href="#Example-1:-File-Reformatter" title="Link to this heading"></a></h2>
+<p>Task: given a file of hundreds or thousands of lines:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FCID,Lane,Sample_ID,SampleRef,index,Description,Control,Recipe,...
+160212,1,A1,human,TAAGGCGA-TAGATCGC,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A2,human,CGTACTAG-CTCTCTAT,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A3,human,AGGCAGAA-TATCCTCT,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A4,human,TCCTGAGC-AGAGTAGA,None,N,Eland-rna,Mei,Jon_mix10
+...
+</pre></div>
+</div>
+<p>Remove the last 3 letters from the 5th column:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>FCID,Lane,Sample_ID,SampleRef,index,Description,Control,Recipe,...
+160212,1,A1,human,TAAGGCGA-TAGAT,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A2,human,CGTACTAG-CTCTC,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A3,human,AGGCAGAA-TATCC,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A4,human,TCCTGAGC-AGAGT,None,N,Eland-rna,Mei,Jon_mix10
+...
+</pre></div>
+</div>
+<p>In this example, we’ll show:</p>
+<ul class="simple">
+<li><p>reading lines of a file</p></li>
+<li><p>parsing and modifying the lines</p></li>
+<li><p>writing them back out</p></li>
+<li><p>creating a script to do the above and running it</p></li>
+<li><p>passing the script the file to modify</p></li>
+</ul>
+</section>
+<section id="Step-1:-open-the-input-file">
+<h2>Step 1: open the input file<a class="headerlink" href="#Step-1:-open-the-input-file" title="Link to this heading"></a></h2>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">fp</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;badfile.txt&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fp</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;_io.TextIOWrapper name=&#39;badfile.txt&#39; mode=&#39;r&#39; encoding=&#39;UTF-8&#39;&gt;
+</pre></div></div>
+</div>
+<p>Open takes a filename, and returns a ``file pointer’’.</p>
+<p>We’ll use that to read from the file.</p>
+</section>
+<section id="Step-2:-read-the-first-header-line,-and-print-it-out">
+<h2>Step 2: read the first header line, and print it out<a class="headerlink" href="#Step-2:-read-the-first-header-line,-and-print-it-out" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">fp</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;badfile.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="n">fp</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+FCID,Lane,Sample_ID,SampleRef,index,Description,Control,Recipe,Operator,Project
+</pre></div></div>
+</div>
+<p>We’ll call readline() on the file pointer to get a single line from the file. (the header line).</p>
+<p>Strip() removes the return at the end of the line.</p>
+<p>Then we print it.</p>
+</section>
+<section id="Step-3:-for-each-remaining-line-in-the-file,-read-the-line">
+<h2>Step 3: for each remaining line in the file, read the line<a class="headerlink" href="#Step-3:-for-each-remaining-line-in-the-file,-read-the-line" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">fp</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;badfile.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+FCID,Lane,Sample_ID,SampleRef,index,Description,Control,Recipe,Operator,Project
+160212,1,A1,human,TAAGGCGA-TAGATCGC,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A2,human,CGTACTAG-CTCTCTAT,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A3,human,AGGCAGAA-TATCCTCT,None,N,Eland-rna,Mei,Jon_mix10
+160212,1,A4,human,TCCTGAGC-AGAGTAGA,None,N,Eland-rna,Mei,Jon_mix10
+</pre></div></div>
+</div>
+<p>A file pointer is an example of an iterator.</p>
+<p>Instead of explicitly calling readline() for each line, we can just loop on the file pointer, getting one line each time.</p>
+<p>Since we already read the header, we won’t get that line.</p>
+</section>
+<section id="Step-4:-find-the-value-in-the-5th-column,-and-remove-last-3-letters">
+<h2>Step 4: find the value in the 5th column, and remove last 3 letters<a class="headerlink" href="#Step-4:-find-the-value-in-the-5th-column,-and-remove-last-3-letters" title="Link to this heading"></a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="n">fp</span><span class="o">=</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;badfile.txt&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">fp</span><span class="p">:</span>
+    <span class="n">flds</span><span class="o">=</span><span class="n">l</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="n">flds</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="n">flds</span><span class="p">[</span><span class="mi">4</span><span class="p">][:</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span>
+    <span class="c1">#print(flds)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flds</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+FCID,Lane,Sample_ID,SampleRef,index,Description,Control,Recipe,Operator,Project
+160212, 1, A1, human, TAAGGCGA-TAGAT, None, N, Eland-rna, Mei, Jon_mix10
+160212, 1, A2, human, CGTACTAG-CTCTC, None, N, Eland-rna, Mei, Jon_mix10
+160212, 1, A3, human, AGGCAGAA-TATCC, None, N, Eland-rna, Mei, Jon_mix10
+160212, 1, A4, human, TCCTGAGC-AGAGT, None, N, Eland-rna, Mei, Jon_mix10
+</pre></div></div>
+</div>
+<p>Like before, we strip the return from the line.</p>
+<p>We split it into individual elements where we find commas.</p>
+<p>The 5th field is referenced by flds[4], since python starts indexing with 0. [:-3] takes all characters of the string until the last 3.</p>
+</section>
+<section id="Exercise-1:-Fibonacci-Series">
+<h2>Exercise 1: Fibonacci Series<a class="headerlink" href="#Exercise-1:-Fibonacci-Series" title="Link to this heading"></a></h2>
+<p>In mathematics, the Fibonacci numbers are the numbers in the following integer sequence, called the Fibonacci sequence, and characterized by the fact that every number after the first two is the sum of the two preceding ones</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Fibonacci_number">https://en.wikipedia.org/wiki/Fibonacci_number</a></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is the well-known Fibonacci series</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="k">while</span> <span class="n">b</span><span class="o">&lt;</span><span class="mi">2000</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="p">(</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+1
+2
+3
+5
+8
+13
+21
+34
+55
+89
+144
+233
+377
+610
+987
+1597
+</pre></div></div>
+</div>
+<p>Task: write a function to generate a Fibonacci series for a given boundary (any number) and save the output into a list</p>
+## Exercise 2: Unique pair
+
+Input file
+1 2
+1 2
+3 4
+4 5
+3 4
+
+Output file
+1 2 3
+3 4 2
+4 5 1
+
+1. Read the file /home/user/ost4sem/exercise/python_intro/pairs.dat
+2. Loop through the rows
+3. Split the string
+4. Count unique pairs
+5. Print unique pairs and their count</section>
+<section id="Sources-:-this-material-was-adopted-from-the-following-sources">
+<h2>Sources : this material was adopted from the following sources<a class="headerlink" href="#Sources-:-this-material-was-adopted-from-the-following-sources" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/ycrc/Python-Bootcamp">https://github.com/ycrc/Python-Bootcamp</a></p></li>
+<li><p><a class="reference external" href="https://github.com/fpl/geotutorial_basic">https://github.com/fpl/geotutorial_basic</a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="PythonEnvs.html" class="btn btn-neutral float-left" title="Python environments or how to survive to your journey in the geodata space" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Geo_Python.html" class="btn btn-neutral float-right" title="Python &amp; GeoComputation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
