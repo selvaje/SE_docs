@@ -536,7 +536,9 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/a7ouNEk2WEbE
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/X9pgLxeHOM-STk7cA5qJodriWCXGXS2_9ovjNcqSbBgi6q8ibYdAa6Dap32m8KeD.suHiPVXODtG40okv). 
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025_resume/lect11_GML_30102025.pdf)
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251029_IntroML_SVM_Class1.pdf) (F.)
 	
