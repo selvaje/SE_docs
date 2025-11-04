@@ -28,8 +28,10 @@
    # Tree_Height_05Perceptron_pred_2022.ipynb
    Tree_Height_05Perceptron_intro_2023.ipynb
    Tree_Height_05Perceptron_intro_2024.ipynb
+   Tree_Height_05Perceptron_intro_2025.ipynb
    Tree_Height_06Perceptron_pred_2023.ipynb 
    Tree_Height_06Perceptron_complete_2024.ipynb
+   Tree_Height_06Perceptron_complete_2025.ipynb
    # Tree_Height_05Perceptron_pred_clean_2022.ipynb
    Tree_Height_06NeuralNets_pred.ipynb
    Tree_Height_07FeedForward_Networks_2023.ipynb
