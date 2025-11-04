@@ -557,7 +557,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 12: Tuesday, 4 November, 2025.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/TriHbLmgQTq5xcZmgrN5Q5w73ew5qehDvZWxQhxfKHinsLS7kLqwBRCzpjk1FRRI.v2g4_O7b4n5U6twt).
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
 	- The universal approximator
@@ -567,20 +567,18 @@ Recorded lecture can be found [here]().
 * [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2025.html)
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2025.html)
 
-
 ## Lecture 13: Thursday, 6 November, 2025.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O-OakRcQ5snlo53NgUSivs5jXIjWUT0y1OiBwcY-lcJ2WCNFBUcaE.QqGEAoL8OolvN7Tt).
+Recorded lecture can be found [here]().
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240528_Optmizers_Perceptron_Class3.pdf)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
 	- The universal approximator
 	- Intro to optimizers
 	- Intro to gradient descent and optimizers
 
-* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2024.html)
-* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2024.html)
-
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2025.html)
+* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2025.html)
 
 ## Lecture 14: Tuesday, 11 November, 2025.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
