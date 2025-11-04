@@ -557,21 +557,15 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 12: Tuesday, 4 November, 2025.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrwewk51W77KKKTSs7qXwzL1AHdP_pgn49694wvtxtMD0Y_ms74jFeb.9n-br-V8qQ7ioPO5).
+Recorded lecture can be found [here]().
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_IntroML_SVM_Class1.pdf) (F.)
-	
-* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2024.html) (F.)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
+	- The universal approximator
+	- Intro to optimizers
+	- Intro to gradient descent and optimizers
 
-* Intro to machine learning (F.)
-	* Defining learning
-	* Supervised vs Unsupervised learning
-	* The framework of learning algorithms
-
-* Intro to supervised learning.
-	* Support Vector Machine (SVM)(F.)
-	* Optimization of SVM
-	* Extension of SVM to regression (SVR)
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2025.html)
+* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2025.html)
 
 
 ## Lecture 13: Thursday, 6 November, 2025.
