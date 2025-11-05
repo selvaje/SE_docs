@@ -557,7 +557,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 12: Tuesday, 4 November, 2025.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/TriHbLmgQTq5xcZmgrN5Q5w73ew5qehDvZWxQhxfKHinsLS7kLqwBRCzpjk1FRRI.v2g4_O7b4n5U6twt).
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/F6uzoibHbJXlXTi_bPiKny1GocmBxdNuBNPYlsSfsR3cI_McHNM5d11MME7TrPgl.gemTWhCdRfOWfhVB)
+
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
 	- The universal approximator
