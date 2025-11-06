@@ -36,17 +36,17 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
   **Pay attention to the time shift**
 
 ---
-* **Lecture 11**: Tuesday,  28 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
-* **Lecture 12**: Thursday, 30 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
+
+* **Lecture 11**: Thursday, 30 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
 ---
 
    **Pay attention to the time shift**
 
 ---
-* **Lecture 13**: Tuesday,   4 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 14**: Thursday,  6 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 15**: Tuesday,  11 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 16**: Thursday, 13 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 12**: Tuesday,   4 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 13**: Thursday,  6 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 14**: Tuesday,  11 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 15**: Thursday, 13 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
 **In-Person Coding Hackathon week: November 24-28 2025, Matera, Italy**
 
@@ -572,7 +572,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/D4weX1mPbffB
 ## Lecture 13: Thursday, 6 November, 2025.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/yDn1t3DA32UduMVB6NkDu1zavZ9YMGNwa_xW5oJRTLjdjeLPFSOLn4ng19H-fJAQ.qxbVXiWBqMWMJMN6).
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251106_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
