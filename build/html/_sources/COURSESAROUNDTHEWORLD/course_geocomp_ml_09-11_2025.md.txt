@@ -574,7 +574,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/D4weX1mPbffB
 
 Recorded lecture can be found [here]().
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251106_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
 	- Intro to optimizers
 	- Intro to gradient descent and optimizers
