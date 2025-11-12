@@ -45,8 +45,8 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 ---
 * **Lecture 12**: Tuesday,   4 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 * **Lecture 13**: Thursday,  6 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 14**: Tuesday,  11 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 15**: Thursday, 13 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 14**: Wednesday,  12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 15**: Fiday, 14 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
 **In-Person Coding Hackathon week: November 24-28 2025, Matera, Italy**
 
@@ -582,19 +582,19 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/yDn1t3DA32Ud
 * [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2025.html)
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2025.html)
 
-## Lecture 14: Tuesday, 11 November, 2025.
+## Lecture 14: Wednesday, 12 November, 2025.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlDdJcyyNeOjj2WOwBMO_s2P32GmLFBfXp5cT3nr_Wl9lfEh6Wk9MT5.T1na1wA6Yz8dyop-).
+Recorded lecture can be found [here]().
 
-* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20240530_Optmizers_Perceptron&NeuralNets_Class4.pdf  )
+* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20251112_Optmizers_PerceptronNeuralNets_Class4.pdf)
 
-* [Estimation of tree height using GEDI dataset - Neural Network 1 - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2024.html)
+* [Estimation of tree height using GEDI dataset - Neural Network 1 - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2025.html)
 
-## Lecture 15: Thursday, 13 November, 2025.
+## Lecture 15: Friday, 14 November, 2025.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3pHzQO8zI6f1QvNpgWXa2no-as_KU_pg2sLenWrKGf7xXvWdo3g-FO.Mnp7cWGI-IGalaNE).
+Recorded lecture can be found [here]().
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
 	* Quick recap
@@ -636,11 +636,9 @@ Discussion papers:
 
 ## In-person week: 24-28 November, 2025, coding hackathon in Matera, Italy
 
-
 ### Day 0: Sunday, 23 November 2025
 
-* Icebreaker/Social dinner: at Osteria Malatesta - Matera (https://maps.app.goo.gl/fFf18j9v6WqaP6fHA)
-	* Antonio arrival (at Bari airport )	 
+* Icebreaker/Social dinner: at Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9
 
 ### Day 1: Monday, 24 November 2025
 
@@ -648,7 +646,9 @@ Discussion papers:
 
 ### Day 2: Tuesday, 25 November 2025
 
-* 9:00-17:00:  Student coding hackathon
+* 9:00-17:00: Student coding hackathon
+
+  * Osteria Malatesta - Matera (https://maps.app.goo.gl/fFf18j9v6WqaP6fHA)
 
 ### Day 3: Wednesday, 26 November 2025
 
@@ -657,9 +657,11 @@ Discussion papers:
 ### Day 4: Thursday, 27 November 2025
 
 * 9:00-17:00: Final project Student presentation
-	* Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9
+
+    * Social Event: at Monkey Drink House with "Iritornati" local international comunity. 
 
 ### Day 5: Friday, 28 November 2025
 
 * 9:00-17:00: Final project Student presentation
-	* Social event TBD
+	
+	* Social dinner at Rock Hostel. 
