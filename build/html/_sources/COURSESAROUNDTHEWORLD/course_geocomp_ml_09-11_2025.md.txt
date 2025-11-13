@@ -585,11 +585,11 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/yDn1t3DA32Ud
 ## Lecture 14: Wednesday, 12 November, 2025.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XNgUTfJ37mp1LMz64JmwRckm6XPOztfPWyvcZAqEUlQl8gQ0dNiQs11yxoZvmXN3.VC9lkWRAiqymorA3).
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20251112_Optmizers_PerceptronNeuralNets_Class4.pdf)
 
-* [Estimation of tree height using GEDI dataset - Neural Network 1 - 2024](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2025.html)
+* [Estimation of tree height using GEDI dataset - Feed forward networks - 2025](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2025.html)
 
 ## Lecture 15: Friday, 14 November, 2025.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
