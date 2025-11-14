@@ -618,7 +618,9 @@ Recorded lecture can be found [here]().
 		- Saliency Analysis
 		- Tutorial: data batching, classification of satellite images, WandB
 
-* [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2025.html)
+* [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2025.html); Recorded lecture can be found [here](https://youtu.be/28QnxspZwFg?si=fjsuxMoHs59R4889&t=5305)
+
+
 
 ## Lecture 16:  Thusday, 18 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
