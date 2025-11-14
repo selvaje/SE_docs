@@ -559,8 +559,6 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/D4weX1mPbffB2aDFGudn0qS0VJDqyeoiXDf9JzDbCu38WbB6Y-coePEB9V661Lsf.zRQM8K4yStamN2gE)
 
-
-
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20251104_Optmizers_Perceptron_Class2.pdf)
 	- The universal approximator
 	- Intro to optimizers
@@ -588,6 +586,16 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/yDn1t3DA32Ud
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XNgUTfJ37mp1LMz64JmwRckm6XPOztfPWyvcZAqEUlQl8gQ0dNiQs11yxoZvmXN3.VC9lkWRAiqymorA3).
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20251112_Optmizers_PerceptronNeuralNets_Class4.pdf)
+	* Perceptron
+		- Intro to optimization
+		- Perceptron
+		- Optimizers
+		- Hands-on tutorial
+	* Feedforward Neural Networks
+		- The limitations of Perceptrons
+		- Multi-layer Perceptron
+		- Training: the forward and back-propagation
+		- Debugging tips
 
 * [Estimation of tree height using GEDI dataset - Feed forward networks - 2025](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2025.html)
 
@@ -596,13 +604,21 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XNgUTfJ37mp1
 
 Recorded lecture can be found [here]().
 
-* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
-	* Quick recap
-	* Extra regularization techniques
-	* Capacity, Overfitting and Underfitting
-	* Debugging tips
-	* Family of optimizers
-	* Tutorial: more features and different optimizers
+* [Neural Nets & Convolutional Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20251114_Optmizers_NeuralNets_pt2_Class5_2025.pdf)
+	* Feedforward Neural Networks
+		- The limitations of Perceptrons
+		- Multi-layer Perceptron
+		- Training: the forward and back-propagation
+		- Debugging tips
+		- Tutorial: Neural Nets for the tree height dataset
+	* Convolutional Neural Networks
+		- Spatial locality structure
+		- Kernels, padding, pooling
+		- Classification tasks
+		- Saliency Analysis
+		- Tutorial: data batching, classification of satellite images, WandB
+
+* [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2025.html)
 
 ## Lecture 16:  Thusday, 18 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
