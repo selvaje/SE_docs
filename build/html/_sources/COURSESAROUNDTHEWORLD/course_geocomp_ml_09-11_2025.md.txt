@@ -602,7 +602,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XNgUTfJ37mp1
 ## Lecture 15: Friday, 14 November, 2025.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/BtveS6L0OUU0WCBv8iSAoEzCnD8eWGfxNjlMzdX92qnv1iEI2neYkXW5nQV2p2dD.I6XqxYev3IuuPZgZ).
 
 * [Neural Nets & Convolutional Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20251114_Optmizers_NeuralNets_pt2_Class5_2025.pdf)
 	* Feedforward Neural Networks
