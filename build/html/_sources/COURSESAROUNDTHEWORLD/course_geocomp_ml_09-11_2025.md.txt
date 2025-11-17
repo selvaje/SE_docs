@@ -656,7 +656,8 @@ Discussion papers:
 
 ### Day 0: Sunday, 23 November 2025
 
-* Icebreaker/Social dinner: at Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9
+* Icebreaker/Social drinks/dinner: at Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9 ; starting from 19:00. Participation in this social event is self-funded.
+
 
 ### Day 1: Monday, 24 November 2025
 
@@ -666,7 +667,8 @@ Discussion papers:
 
 * 9:00-17:00: Student coding hackathon
 
-  * Osteria Malatesta - Matera (https://maps.app.goo.gl/fFf18j9v6WqaP6fHA)
+  * Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
+
 
 ### Day 3: Wednesday, 26 November 2025
 
@@ -676,10 +678,11 @@ Discussion papers:
 
 * 9:00-17:00: Final project Student presentation
 
-    * Social Event: at Monkey Drink House with "Iritornati" local international comunity. 
+    * Social drinks/dinner: at Birfoot Birrificio Artigianale [Via G. Marconi, 75100 Matera MT, Italy](https://maps.app.goo.gl/ufj1mLXwLnjEwRTB9) with "Iritornati" local international comunity. Starting at 19:00. Participation in this social event is self-funded.
+
 
 ### Day 5: Friday, 28 November 2025
 
 * 9:00-17:00: Final project Student presentation
 	
-	* Social dinner at Rock Hostel. 
+	* Social dinner at Rock Hostel. At 19.00 The event is covered by Spatial Ecology.
