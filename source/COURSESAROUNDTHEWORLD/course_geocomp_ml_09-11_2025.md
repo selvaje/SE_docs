@@ -622,7 +622,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/BtveS6L0OUU0
 
 
 
-## Lecture 16:  Thusday, 18 November, 2025.
+## Lecture 16:  Friday, 21 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
@@ -656,8 +656,7 @@ Discussion papers:
 
 ### Day 0: Sunday, 23 November 2025
 
-* Icebreaker/Social drinks/dinner: at Birfoot Birrificio Artigianale, Via G. Marconi, 75100 Matera MT, https://maps.app.goo.gl/nBKRLVvbUedcSzZV9 ; starting from 19:00. Participation in this social event is self-funded.
-
+* Icebreaker/Social drinks/dinner: at Birrificio 79, [Via delle Beccherie, 54, 75100 Matera MT, Italy](https://maps.app.goo.gl/NDdto8X8QSJ5MLySA); starting from 19:00. Participation in this social event is self-funded.
 
 ### Day 1: Monday, 24 November 2025
 
