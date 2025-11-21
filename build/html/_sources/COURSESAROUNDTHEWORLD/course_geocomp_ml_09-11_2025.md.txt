@@ -625,32 +625,11 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/BtveS6L0OUU0
 ## Lecture 16:  Friday, 21 November, 2025.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
-
-
-* [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
-	* Quick recap
-	* Extra regularization techniques
-	* Capacity, Overfitting and Underfitting
-	* Debugging tips
-	* Family of optimizers
-	* Tutorial: more features and different optimizers
-	
-* [Convolutional Neural Networks](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_2024.html)
-	* Kernels, padding, pooling
-	* Classification tasks
-	* Tutorial: data batching, classification of satellite images
-	* Kernels, padding, pooling
-	* Classification tasks
-	* Tutorial: data batching, classification of satellite images
+Recorded lecture can be found [here]().
 
 Discussion papers:
-
-* [Deep learning‑based landslide susceptibility mapping](http://spatial-ecology.net/docs/source/lectures/disc_20240606_landslideSusceptibility.pdf)
-* [Explainability in wind farm planning: A machine learning framework for automatic site selection of wind farms](http://spatial-ecology.net/docs/source/lectures/disc_20240606_windFarm.pdf)
-
-
---- 
+* A novel hybrid model for species distribution prediction using neural networks and Grey Wolf Optimizer algorithm
+* Prediction of sap flow with historical environmental factors based on deep learning technology
 
 ## In-person week: 24-28 November, 2025, coding hackathon in Matera, Italy
 
