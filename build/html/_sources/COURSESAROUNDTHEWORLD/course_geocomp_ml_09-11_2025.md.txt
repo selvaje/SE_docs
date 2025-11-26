@@ -645,6 +645,8 @@ Discussion papers:
 
 * 9:00-17:00: Student coding hackathon
 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/m9A0opEpK1ka2okn1O196Tn5Xuo1QDrDO2dl-hvPtIeTSPil6oE9ucFmU9HfXQe7.y2s_5RJ8-9R6hj3D)
+
 * [Managing Third-Party Libraries:A Survival Guide for Data Scientists - Francesco Lovergine](http://spatial-ecology.net/docs/source/lectures/lect_20252511_dependency_management_in_data_science.pdf)
 
   * Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
