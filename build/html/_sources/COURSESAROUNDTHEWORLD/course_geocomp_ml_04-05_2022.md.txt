@@ -1,7 +1,5 @@
 # GeoComp & ML 2022 course
 ## Geocomputation and Machine Learning for environmental applications
-### 
-
 
 **Online teaching: April and May 2022, 8 weeks**
 

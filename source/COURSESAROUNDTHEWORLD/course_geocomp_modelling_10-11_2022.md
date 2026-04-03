@@ -1,7 +1,5 @@
 # GeoComp & Modelling 2022 course
 ## Geocomputation and Modelling for Vector-borne Disease
-###
-
 
 **Online teaching or QA session of an attended recorded lecture: October - December 2022, 8 weeks**
 
@@ -17,17 +15,18 @@
 * All participants equipped with necessary skills to run and modify Blackfly habitat suitability model
 	* Foundational skills include:
 * Learning open source tools for GIS and RS applications.
-	* Acquiring command line utilities for spatial/temporal data under Linux OS.
-	* Acquiring command line utilities and ML theoretical foundation for environmental application.
-	* Developing data processing skills.
-	* Independent learning, critical thinking, problem solving.
+  * Acquiring command line utilities for spatial/temporal data under Linux OS.
+  * Acquiring command line utilities and ML theoretical foundation for environmental application.
+  * Developing data processing skills.
+  * Independent learning, critical thinking, problem solving.
 * Blackfly suitability model-specific skills include:
-	* In-depth comprehension of random forest modelling techniques
+  * In-depth comprehension of random forest modelling techniques
 * Upon completion of the course, you should be able to:
-	* Apply the process of science, by conducting, analysing, and interpreting findings related to GIS & RS project in the 	* framework of ML applications
-	* Use quantitative reasoning for statistical/spatial analysis
-	* Convey your understanding of environmental phenomenons
-	* Continue the development and maintenance of the Blackfly habitat suitability model
+  * Apply the process of science, by conducting, analysing, and interpreting findings related to GIS & RS project in the
+  * framework of ML applications
+  * Use quantitative reasoning for statistical/spatial analysis
+  * Convey your understanding of environmental phenomenons
+  * Continue the development and maintenance of the Blackfly habitat suitability model
 
 
 
