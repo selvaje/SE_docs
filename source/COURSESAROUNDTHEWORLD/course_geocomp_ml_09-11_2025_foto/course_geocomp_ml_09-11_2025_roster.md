@@ -296,4 +296,3 @@ Cary Institute of Ecosystem Studies - USA
 ---
 ![48](20251128_140848.jpg)
 
----
