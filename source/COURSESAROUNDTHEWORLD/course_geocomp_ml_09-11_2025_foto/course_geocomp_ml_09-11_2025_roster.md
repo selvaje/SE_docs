@@ -1,3 +1,4 @@
+:orphan:
 # Spatial Ecology's 2025 course
 ## Geocomputation and Machine Learning for environmental applications
 ###

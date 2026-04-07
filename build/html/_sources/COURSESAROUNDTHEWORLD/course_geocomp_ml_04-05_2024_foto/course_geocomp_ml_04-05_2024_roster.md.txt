@@ -1,3 +1,4 @@
+:orphan:
 # Spatial Ecology's 2023 course
 ## Geocomputation and Machine Learning for environmental applications
 ### 

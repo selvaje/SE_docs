@@ -1,9 +1,8 @@
+:orphan:
 # Spatial Ecology's 2025 course
 ## Geocomputation and geospatial analysis
- 
 
 ### Spatial Ecology course trainers ####
-
 
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)   
 [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geospatial analysis teacher) 

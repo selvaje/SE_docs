@@ -26,8 +26,10 @@ cd /home/selv/SE_docs/SE_docs
 make html
 
 # cp sphinx html  output to spatial-ecology.net — include ALL files/dirs including _static
-rm -r /home/selv/SE_docs/spatial-ecology.net/docs/build/html
-cp -r  /home/selv/SE_docs/SE_docs/build/html   /home/selv/SE_docs/spatial-ecology.net/docs/build/html  
+rm -r /home/selv/SE_docs/spatial-ecology.net/docs/*
+mkdir /home/selv/SE_docs/spatial-ecology.net/docs/build
+cp -r  /home/selv/SE_docs/SE_docs/build/html   /home/selv/SE_docs/spatial-ecology.net/docs/build/html
+cp -r  /home/selv/SE_docs/SE_docs/source   /home/selv/SE_docs/spatial-ecology.net/docs/
 
 # Push SE_docs
 cd /home/selv/SE_docs/SE_docs
