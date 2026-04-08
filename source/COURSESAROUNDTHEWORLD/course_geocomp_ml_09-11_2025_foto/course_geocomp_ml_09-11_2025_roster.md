@@ -1,4 +1,7 @@
-:orphan:
+---
+orphan: true
+---
+
 # Spatial Ecology's 2025 course
 ## Geocomputation and Machine Learning for environmental applications
 ###
@@ -10,8 +13,7 @@
 [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython)  
 Francesco Lovergine (sw installation and Linux troubleshooting)  
 
-#### Student affiliation and their origin  ####
-![](Physical-World-Map_2024.jpg)
+#### Student online class  ####
 ![](zoom_class.jpg)
 
 ---

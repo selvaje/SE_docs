@@ -1,4 +1,6 @@
-:orphan:
+---
+orphan: true
+---
 # Spatial Ecology's 2022 course
 ## Geocomputation and Machine Learning for environmental applications
 ### 

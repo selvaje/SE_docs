@@ -1,4 +1,7 @@
-:orphan:
+---
+orphan: true
+---
+
 # Spatial Ecology's 2022 course
 ## Geocomputación para aplicaciones ambientales: uso de GDAL y GRASS
 ### 

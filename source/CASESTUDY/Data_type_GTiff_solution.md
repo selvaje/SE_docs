@@ -1,1 +1,5 @@
+---
+orphan: true
+---
+
 gdal_calc.py --type=Float64 -A geodata_small/rast_ID.tif --calc="( A.astype(float) * 2222 )"    --outfile=geodata_small/rast_ID_mult.tif --overwrite 

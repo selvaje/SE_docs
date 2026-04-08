@@ -1,4 +1,6 @@
-:orphan:
+---
+orphan: true
+---
 # Spatial Ecology's 2025 course
 ## Geocomputation and geospatial analysis
 

@@ -1,3 +1,6 @@
+---
+orphan: true
+---
 # Prepare Ubuntu 24.04 for Spatial Ecology courses
 
 
