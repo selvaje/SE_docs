@@ -189,5 +189,3 @@ México
 DevGlobal, USA
 
 ![](26_Matt_Hallas.jpeg)
-
----

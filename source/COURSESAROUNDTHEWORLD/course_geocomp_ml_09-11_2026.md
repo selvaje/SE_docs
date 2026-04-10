@@ -1,10 +1,9 @@
-# GeoComp & ML 2025 course
+# GeoComp & ML 2026 course
 ## Geocomputation and Machine Learning for environmental applications
 
 ### Course team 
 
 [Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)  
-[Juana Mercedes Perlaza Rodriguez](https://novamanto.com/)(Course Enrollment coordinator)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)  
 [Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)  
 [Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython teacher)  
@@ -12,14 +11,14 @@
 
 ### Course time line
 
-**Online teaching: September - November 2025, 9 weeks**
+**Online teaching: September - November 2026, 9 weeks**
 
 Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20250916T110000&p1=215&p2=179&p3=137&p4=tz_bst&p5=1440) to check the time in your country.
 
 * **Lecture  1**: Tuesday,  15 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Catch-up session**: Wednesday, 17 September: 11am - 2:45pm UTC (CEST 1pm, EDT 7am, PDT 4am)
+* **Catch-up session**: Wednesday, 16 September: 11am - 2:45pm UTC (CEST 1pm, EDT 7am, PDT 4am)
 * **Lecture  2**: Thursday, 17 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  3**: Tuesday,  21 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  3**: Tuesday,  22 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 * **Lecture  4**: Thursday, 24 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 * **Lecture  5**: Tuesday,  29 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 * **Lecture  6**: Thursday,  1 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
@@ -36,7 +35,7 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
   **Pay attention to the time shift**
 
 ---
-
+* **Lecture 11**: Tuesday, 27 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
 * **Lecture 11**: Thursday, 29 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
 ---
 
@@ -45,13 +44,14 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 ---
 * **Lecture 12**: Tuesday,   3 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 * **Lecture 13**: Thursday,  5 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 14**: Wednesday,  11 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 15**: Fiday, 13 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 14**: Wednesday,  10 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 15**: Fiday, 12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
-**In-Person Coding Hackathon week: November 23 - November 27 2025, Matera, Italy**
-**In-Person Coding Hackathon week: November 30 - Dicember 4 2026, Matera, Italy**
-**In-Person Coding Hackathon week: December 7 - Dicember 11 2026, Matera, Italy**
-
+** In-Person Coding Hackathon week: To be decided ammong one of this week: **  
+November 23 - November 27 2026, Matera, Italy  
+November 30 - Dicember 4 2026, Matera, Italy  
+Dicember 7 - Dicember 11 2026, Matera, Italy  
+  
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 
 **Course objectives**
@@ -625,8 +625,6 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/BtveS6L0OUU0
 
 ## Lecture 16:  Friday, 21 November, 2026.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
-
-Recorded lecture can be found [here]().
 
 Discussion papers:
 * A novel hybrid model for species distribution prediction using neural networks and Grey Wolf Optimizer algorithm

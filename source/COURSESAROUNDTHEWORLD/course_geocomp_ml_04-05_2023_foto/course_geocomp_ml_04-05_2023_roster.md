@@ -1,7 +1,6 @@
 ---
 orphan: true
 ---
-
 # Spatial Ecology's 2023 course
 ## Geocomputation and Machine Learning for environmental applications
 ### 
@@ -284,5 +283,3 @@ Advancing Systems Analysis (ASA) Program,
 Novel Data Ecosystems for Sustainability (NoDES) Research Group  
 
 ![](38_Martin_Hofer.jpg)
-
----

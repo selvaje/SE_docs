@@ -86,7 +86,7 @@ Time below in CEST
 
 * 17:00 - 17:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 17:10 - 17:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroGeocomp_GA.pdf).
-* 17:30 - 17:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](lect_20240402_IntroML_AF.pdf).
+* 17:30 - 17:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_IntroML_AF.pdf).
 * 17:45 - 18:00  [Francesco Lovergine: background/interest & geo-python introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20240402_GeoPython_FL.pdf)
 * 18:15 - 18:30  Break
 * 18:30 - 19:15  Students round table + QA of the course. 
@@ -443,13 +443,13 @@ Recorded lecture can be found [here](https://youtu.be/S_k5_P0pGls).
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found here. Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 ## Catch-up session 2: Thursday 2nd of May, 2024.
 
 Students will meet online with the teachers to review past material and solving additional doubts. 
 
-Recorded of the QA can be found [here](). Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
+Recorded of the QA can be found here. Password has been sent by e-mail on March 28  (it will be the same pass-code for all recordings).
 
 ## Lecture 9: Tuesday, 7th of May, 2024.
 ### Geospatial python (Francesco Lovergine)
