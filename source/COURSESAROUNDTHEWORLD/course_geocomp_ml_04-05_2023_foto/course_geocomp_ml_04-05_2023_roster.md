@@ -17,7 +17,7 @@ Pieter Kempeneers (pyjeo teacher)
 
 #### Student affiliation and their origin  ####
 
-![](Physical-World-Map.jpg)
+![](Physical-World-Map_2023.jpg)
 
 ---
 

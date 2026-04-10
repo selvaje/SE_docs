@@ -7,7 +7,7 @@ orphan: true
 
 #### Student affiliation and their origin  ####
 
-![](Physical-World-Map-3360.jpg)
+![](Physical-World-Map_2022.jpg)
 
 #### Student roster ####
 

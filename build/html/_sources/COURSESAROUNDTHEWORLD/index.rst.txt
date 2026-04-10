@@ -12,5 +12,5 @@
    course_geocomp_11-12_2024.md
    course_geocomp_geoanlysis_04_2025.md
    course_geocomp_ml_09-11_2025.md
-
+   course_geocomp_ml_09-11_2026.md
    

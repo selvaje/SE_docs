@@ -503,7 +503,7 @@ Recorded lecture can be found [here](https://youtu.be/znueaH9C-5Q).
 ## Lecture 12: Thursday, 16th of May, 2024.
 ### Machine Learning - Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrwewk51W77KKKTSs7qXwzL1AHdP_pgn49694wvtxtMD0Y_ms74jFeb.9n-br-V8qQ7ioPO5).
+Recorded lecture can be found [here](https://youtu.be/1EBc4DD-2eM).
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240514_IntroML_SVM_Class1.pdf) (F.)
 	
@@ -522,7 +522,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/XxJiIeQxIGrw
 ## Lecture 13: Tuesday, 21st of May, 2024.
 ### Introduction to GRASS (1) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiRga_JNS60numEJYj30pvz590zbgj7_r3nf71DIVlrS-oUB_0qyVS7.pLmnQs2CBfv3_yns).
+Recorded lecture can be found [here](https://youtu.be/Ab6-x53Ctnw).
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
    * [Working on an existing GRASS project](https://spatial-ecology.net/docs/build/html/GRASS/grass_intro.html)
@@ -539,9 +539,9 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mzU-HkCdrhiR
 		* GRASS add-ons
 
 ## Lecture 14: Thursday, 23rd of May, 2024.
-### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+### Hydrology analysis using GRASS (2) (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmnEeYSSnWM0zSW_grGyPvyVe4pQFi2hhT2LETRrM1sbOSEp2eEdl5u.aNcR_zYib1S5uO5a).
+Recorded lecture can be found [here](https://youtu.be/wl-Gw66roas).
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
@@ -555,7 +555,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/5xp8rpDodfmn
 ## Lecture 15: Tuesday, 28st of May, 2024.
 ### Machine Learning -  Perceptron (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O-OakRcQ5snlo53NgUSivs5jXIjWUT0y1OiBwcY-lcJ2WCNFBUcaE.QqGEAoL8OolvN7Tt).
+Recorded lecture can be found [here](https://youtu.be/nurr3KGywEY).
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20240528_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
@@ -569,7 +569,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/FaT2x7mLDE2O
 ## Lecture 16: Thursday, 30th of May, 2024.
 ### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlDdJcyyNeOjj2WOwBMO_s2P32GmLFBfXp5cT3nr_Wl9lfEh6Wk9MT5.T1na1wA6Yz8dyop-).
+Recorded lecture can be found [here](https://youtu.be/a0U-h6iZWhc).
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20240530_Optmizers_Perceptron&NeuralNets_Class4.pdf  )
 
@@ -578,7 +578,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/mjN_tkorQOlD
 ## Lecture 17: Tuesday, 4th of June, 2024.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3pHzQO8zI6f1QvNpgWXa2no-as_KU_pg2sLenWrKGf7xXvWdo3g-FO.Mnp7cWGI-IGalaNE).
+Recorded lecture can be found [here](https://youtu.be/VQ9UJtxbwZ0?si=2cYKhXVNqD0hlGST).
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
 	* Quick recap
@@ -591,8 +591,7 @@ Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qDTB-DqEEi3p
 ## Lecture 18:  Thursday, 6th of June, 2024.
 ### Machine Learning - Papers discussion (Antonio Fonseca)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GhPAgq8ErZNsDwlN0qbz6TYub5GHf7uUKKtXVvBiONPoZm4wTBOVQG2hCKkTQ3oF.qAws8kAUhuzwa0MD).
-
+Recorded lecture from the previous year can be found [here](https://youtu.be/28QnxspZwFg?si=8G1clFPt6gmDYleD).
 
 * [Feedforward Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20240604_NeuralNets_CNNs.pdf)
 	* Quick recap
@@ -632,8 +631,6 @@ Discussion papers:
 * 9:00-17:00:  Student coding hackathon
 
 * 11:00-13:00  Antonio lecture
-
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/B4WmyCRzS3W4KwGIb6Em1Xv7AQuIuPC4ASez8hS1AQDapV0fpAI6xtUip8ZYjVza.we4YNzUH16B_prCA)
 
 	* [Unsupervised Learning](http://spatial-ecology.net/docs/source/lectures/lect_20240611_NN_Unsupervised_Learning.pdf)
 
@@ -689,8 +686,6 @@ In presence week in Matera, Italy
 
 ### Using GPT (Antonio Fonseca)
 
-Recorded lecture can be found [here]().
-
 * [Using GPT as your coding partner](http://spatial-ecology.net/docs/source/lectures/lect_20240606_GPT_for_coding.pdf)
 	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_with_GPT_code_2024.html)
 
@@ -710,9 +705,6 @@ In presence week in Matera, Italy
 
 ### Google Earth Engine (GEE) (Francesco Lovergine)
 
-Recorded lecture can be found [here]().
 
 * Use of GEE with Javascripts and python buinding.
 	* [Hands on](http://spatial-ecology.net/docs/build/html/CASESTUDY/GEEviaPython_2024.html)
-
---->
