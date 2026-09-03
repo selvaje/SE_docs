@@ -26,7 +26,7 @@ Computer scienties and machine learning expert, Spatial Ecology;
 
 [Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
 
-![title](Team_raffaele.jpeg)
+![title](Team_raffaele.jpeg|300)
 
 Raffaele is a computer scientist and machine learning researcher specializing in Deep Learning, Computer Vision, and Knowledge Graph Representation Learning. Within data science and computational modeling courses, he focuses on devloping modern machine learning architectures, multimodal workflows, and high-performance neural network pipelines.
 
