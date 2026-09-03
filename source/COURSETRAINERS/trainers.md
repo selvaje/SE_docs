@@ -20,10 +20,13 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 
 
 ## Raffaele Scaringi, PhD
-Computer scienties and machine learning expert, , Spatial Ecology;
+Computer scienties and machine learning expert, Spatial Ecology;
 
 [Website](https://faiail.github.io/)
+
 [Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
+
+![title](Team_raffaele.jpeg)
 
 Raffaele is a computer scientist and machine learning researcher specializing in Deep Learning, Computer Vision, and Knowledge Graph Representation Learning. Within data science and computational modeling courses, he focuses on devloping modern machine learning architectures, multimodal workflows, and high-performance neural network pipelines.
 
