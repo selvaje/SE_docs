@@ -5,8 +5,7 @@
 
 [Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)  
-[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)  
-[Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython teacher)  
+[Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)   
 [Francesco Lovergine](https://www.linkedin.com/in/francescopaololovergine/?originalSubdomain=it) (Linux troubleshooting and sw installation)
 
 ### Course time line
@@ -47,10 +46,8 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 * **Lecture 15**: Tuesday,  10 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 * **Lecture 16**: Thursday, 12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
-** In-Person Coding Hackathon week: To be decided ammong one of this week: **  
+** In-Person Coding Hackathon week: **  
 November 23 - November 27 2026, Matera, Italy  
-November 30 - Dicember 4 2026, Matera, Italy  
-Dicember 7 - Dicember 11 2026, Matera, Italy  
   
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
 

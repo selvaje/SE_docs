@@ -18,9 +18,23 @@ Giuseppe holds a research scientist position at Yale University in the US, and h
 
 Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Information Science from Wageningen University, and MSc in Forestry from Bari University. His time away from coding is spent leading adventure trips in remote locations, which involve canyoning, caving, rafting and hiking.
 
+
+## Raffaele Scaringi, PhD
+Computer scienties and machine learning expert, , Spatial Ecology;
+
+[Website](https://faiail.github.io/)
+[Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
+
+Raffaele is a computer scientist and machine learning researcher specializing in Deep Learning, Computer Vision, and Knowledge Graph Representation Learning. Within data science and computational modeling courses, he focuses on devloping modern machine learning architectures, multimodal workflows, and high-performance neural network pipelines.
+
+His core expertise spans multimodal learning, Vision Transformers (ViTs), Graph Neural Networks (GNNs), and Explainable AI (XAI). Raffaele develops methods that bridge structured knowledge representations with deep neural networks—integrating image embeddings, graph structures, and tabular metadata to extract meaningful latent representations and improve model interpretability.
+
+Raffaele is a postdoctoral researcher at the Computational Intelligence Laboratory (CILab), Department of Computer Science, University of Bari Aldo Moro (Italy). He completed his entire academic training at the University of Bari, where he earned a Bachelor’s degree in Computer Science, a Master’s degree in Data Science, and his PhD in February 2026.
+
+
 ## Longzhu Shen, PhD 
 
-Scientific Advisor, Spatial Ecology; l.shen at spatial-ecology.net
+Scientific Advisor, Spatial Ecology; shen at spatial-ecology.net
 
 [Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
 
