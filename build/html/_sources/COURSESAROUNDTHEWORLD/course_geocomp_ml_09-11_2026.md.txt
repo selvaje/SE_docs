@@ -31,20 +31,20 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 * **Lecture 10**: Thursday, 22 October, 11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
 --- 
 
-  **Pay attention to the time shift**
+  **Pay attention to the time shift (Europe shifts to Winter Time, North America stays on Daylight Saving)**
 
 ---
-* **Lecture 11**: Tuesday, 27 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
-* **Lecture 12**: Thursday, 29 October,  11am - 1:45pm UTC (CET  12pm, EDT  7am, PDT 4am) 
+* **Lecture 11**: Tuesday, 27 October,  12pm - 2:45pm UTC (CET  1pm, EDT  8am, PDT 5am)
+* **Lecture 12**: Thursday, 29 October,  12pm - 2:45pm UTC (CET  1pm, EDT  8am, PDT 5am) 
 ---
 
-   **Pay attention to the time shift**
+   **Pay attention to the time shift (North America shifts to Standard/Winter Time)**
 
 ---
-* **Lecture 13**: Tuesday,   3 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 14**: Thursday,  5 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 15**: Tuesday,  10 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 16**: Thursday, 12 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 13**: Tuesday,   3 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 14**: Thursday,  5 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 15**: Tuesday,  10 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 16**: Thursday, 12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
 ** In-Person Coding Hackathon week: **  
 November 23 - November 27 2026, Matera, Italy  
@@ -111,11 +111,10 @@ Time below in CEST
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261609_IntroGeocomp_GA.pdf).
 * 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_IntroML_AF.pdf).
-* 13:30 - 13:45  [Saverio Mancino: background/interest & geopython introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_GeoPython_SM.pdf).
 * 13:45 - 14:15  Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role
 * 14:15 - 14:30  Break
-* 14:30 - 14:15  Students round table + QA of the course. 
-* 14:15 - 15:45  OSGeoLive 16.0 Virtual Machine installation review, QA & troubleshooting.
+* 14:30 - 14:45  Students round table + QA of the course. 
+* 14:45 - 15:45  Ubuntu 26.04 LTS Virtual Machine installation review, QA & troubleshooting.
 
 ## Catch-up session 0: Wednesday, 16 September, 2026.
 
@@ -138,7 +137,7 @@ Recorded lecture can be found [here]().
 
 Transcript summary lecture can found [here]()
 
-* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_Ubuntu24.04_for_Spatial_Ecology_course.html) to the Ubuntu 24.04 Linux Virtual Machine (Hands-on tutorial)
+* [Installation and introduction](http://spatial-ecology.net/docs/build/html/VIRTUALMACHINE/Setting_Ubuntu26.04_for_Spatial_Ecology_course.html) to the Ubuntu 26.04 Linux Virtual Machine (Hands-on tutorial)
 * [Unix/Linux command line](http://spatial-ecology.net/docs/build/html/BASH/bashintro_osgeo.html) (Hands-on tutorial)
 	* Starting with Bash
 	* Special characters and Quoting
@@ -168,7 +167,7 @@ These assignments do not need to be delivered nonetheless we suggest doing it in
 * Get familiar with apt update && apt upgrade && apt install to maintain your OSGeoLIve Linux Virtual Machine and install new  software.
 
 
-## Lecture 3: Tuesday, 21 September, 2026.
+## Lecture 3: Tuesday, 22 September, 2026.
 ### Discovering the power of AWK programming language (Giuseppe Amatulli).
 
 Recorded lecture can be found [here]().
@@ -443,7 +442,7 @@ Recorded lecture can be found [here]().
 * Running a model and exploring RF parameters
 * Prediction of RF model on raster tif (Optimization of RF)
 
-## Lecture 11: Thursday, 29 October, 2026.
+## Lecture 11: Tuesday, 27 October, 2026.
 ### Machine Learning Introduction, Support Vector Machine (Raffaele Scaringi)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
@@ -466,7 +465,7 @@ Transcript summary lecture can found [here]()
 	* Optimization of SVM
 	* Extension of SVM to regression (SVR)
 
-## Lecture 12: Tuesday, 3 November, 2026.
+## Lecture 12: Thursday, 29 October, 2026.
 ### Machine Learning - Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here]()
@@ -479,7 +478,7 @@ Recorded lecture can be found [here]()
 * [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2026.html)
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
 
-## Lecture 13: Thursday, 5 November, 2026.
+## Lecture 13: Tuesday, 3 November, 2026.
 ### Machine Learning -  Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
@@ -492,7 +491,7 @@ Recorded lecture can be found [here]().
 * [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2026.html)
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
 
-## Lecture 14: Tuesday, 10 November, 2026.
+## Lecture 14: Thursday, 5 November, 2026.
 ### Machine Learning - Architecture of Neural Networks  (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
@@ -511,7 +510,7 @@ Recorded lecture can be found [here]().
 
 * [Estimation of tree height using GEDI dataset - Feed forward networks - 2026](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2026.html)
 
-## Lecture 15: Thursday, 12 November, 2026.
+## Lecture 15: Tuesday, 10 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
@@ -533,25 +532,24 @@ Recorded lecture can be found [here]().
 * [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2026.html); Recorded lecture can be found [here](https://youtu.be/28QnxspZwFg?si=fjsuxMoHs59R4889&t=5305)
 
 
-
-## Lecture 16:  Friday, 21 November, 2026.
+## Lecture 16:  Thursday, 12 November, 2026.
 ### Machine Learning - Papers discussion (Raffaele Scaringi)
 
 Discussion papers:
 * A novel hybrid model for species distribution prediction using neural networks and Grey Wolf Optimizer algorithm
 * Prediction of sap flow with historical environmental factors based on deep learning technology
 
-## In-person week: 24-28 November, 2026, coding hackathon in Matera, Italy
+## In-person week: 23-27 November, 2026, coding hackathon in Matera, Italy
 
-### Day 0: Sunday, 23 November 2026
+### Day 0: Sunday, 22 November 2026
 
 * Icebreaker/Social drinks/dinner: at Birrificio 79, [Via delle Beccherie, 54, 75100 Matera MT, Italy](https://maps.app.goo.gl/NDdto8X8QSJ5MLySA); starting from 19:00. Participation in this social event is self-funded.
 
-### Day 1: Monday, 24 November 2026
+### Day 1: Monday, 23 November 2026
 
 * 9:00-17:00: Student coding hackathon 
 
-### Day 2: Tuesday, 25 November 2026
+### Day 2: Tuesday, 24 November 2026
 
 * 9:00-17:00: Student coding hackathon
 
@@ -562,18 +560,18 @@ Recorded lecture can be found [here]()
   * Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
 
 
-### Day 3: Wednesday, 26 November 2026
+### Day 3: Wednesday, 25 November 2026
 
 * 9:00-17:00: Student coding hackathon
 
-### Day 4: Thursday, 27 November 2026
+### Day 4: Thursday, 26 November 2026
 
 * 9:00-17:00: Final project Student presentation
 
     * Social drinks/dinner: at Birfoot Birrificio Artigianale [Via G. Marconi, 75100 Matera MT, Italy](https://maps.app.goo.gl/ufj1mLXwLnjEwRTB9) with "Iritornati" local international comunity. Starting at 19:00. Participation in this social event is self-funded.
 
 
-### Day 5: Friday, 28 November 2026
+### Day 5: Friday, 27 November 2026
 
 * 9:00-17:00: Final project Student presentation
 	
