@@ -14,21 +14,21 @@
 
 Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.html?iso=20250916T110000&p1=215&p2=179&p3=137&p4=tz_bst&p5=1440) to check the time in your country.
 
-* **Lecture  1**: Tuesday,  15 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Catch-up session**: Wednesday, 16 September: 11am - 2:45pm UTC (CEST 1pm, EDT 7am, PDT 4am)
-* **Lecture  2**: Thursday, 17 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  3**: Tuesday,  22 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  4**: Thursday, 24 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  5**: Tuesday,  29 September,  11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  6**: Thursday,  1 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  7**: Tuesday,   6 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture  8**: Thursday,  8 October,    11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  1**: Tuesday,  15 September,  11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Catch-up session**: Wednesday, 16 September: 11am - 1:45pm UTC (CEST 1pm, EDT 7am, PDT 4am)
+* **Lecture  2**: Thursday, 17 September,  11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  3**: Tuesday,  22 September,  11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  4**: Thursday, 24 September,  11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  5**: Tuesday,  29 September,  11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  6**: Thursday,  1 October,    11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  7**: Tuesday,   6 October,    11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture  8**: Thursday,  8 October,    11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 ---
-* **Catch-up session**: Tuesday, 13 October: 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
-* **Catch-up session**: Thursday, 15 October: 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Catch-up session**: Tuesday, 13 October: 11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
+* **Catch-up session**: Thursday, 15 October: 11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
 ---
-* **Lecture  9**: Tuesday, 20 October, 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
-* **Lecture 10**: Thursday, 22 October, 11am - 2:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
+* **Lecture  9**: Tuesday, 20 October, 11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am) 
+* **Lecture 10**: Thursday, 22 October, 11am - 1:45pm UTC (CEST  1pm, EDT  7am, PDT 4am)
 --- 
 
   **Pay attention to the time shift**
@@ -41,10 +41,10 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
    **Pay attention to the time shift**
 
 ---
-* **Lecture 13**: Tuesday,   3 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 14**: Thursday,  5 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 15**: Tuesday,  10 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
-* **Lecture 16**: Thursday, 12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 13**: Tuesday,   3 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 14**: Thursday,  5 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 15**: Tuesday,  10 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
+* **Lecture 16**: Thursday, 12 November, 12pm - 1:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
 ** In-Person Coding Hackathon week: **  
 November 23 - November 27 2026, Matera, Italy  
@@ -110,7 +110,7 @@ Time below in CEST
 
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261609_IntroGeocomp_GA.pdf).
-* 13:30 - 13:45  [Antonio Fonseca: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_IntroML_AF.pdf).
+* 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_IntroML_AF.pdf).
 * 13:30 - 13:45  [Saverio Mancino: background/interest & geopython introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_GeoPython_SM.pdf).
 * 13:45 - 14:15  Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role
 * 14:15 - 14:30  Break
@@ -444,7 +444,7 @@ Recorded lecture can be found [here]().
 * Prediction of RF model on raster tif (Optimization of RF)
 
 ## Lecture 11: Thursday, 29 October, 2026.
-### Machine Learning Introduction, Support Vector Machine (Antonio Fonseca)
+### Machine Learning Introduction, Support Vector Machine (Raffaele Scaringi)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
@@ -467,7 +467,7 @@ Transcript summary lecture can found [here]()
 	* Extension of SVM to regression (SVR)
 
 ## Lecture 12: Tuesday, 3 November, 2026.
-### Machine Learning - Perceptron (Antonio Fonseca)
+### Machine Learning - Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here]()
 
@@ -480,7 +480,7 @@ Recorded lecture can be found [here]()
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
 
 ## Lecture 13: Thursday, 5 November, 2026.
-### Machine Learning -  Perceptron (Antonio Fonseca)
+### Machine Learning -  Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
 
@@ -493,7 +493,7 @@ Recorded lecture can be found [here]().
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
 
 ## Lecture 14: Tuesday, 10 November, 2026.
-### Machine Learning - Architecture of Neural Networks  (Antonio Fonseca)
+### Machine Learning - Architecture of Neural Networks  (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
 
@@ -512,7 +512,7 @@ Recorded lecture can be found [here]().
 * [Estimation of tree height using GEDI dataset - Feed forward networks - 2026](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2026.html)
 
 ## Lecture 15: Thursday, 12 November, 2026.
-### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Antonio Fonseca)
+### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
 
@@ -535,7 +535,7 @@ Recorded lecture can be found [here]().
 
 
 ## Lecture 16:  Friday, 21 November, 2026.
-### Machine Learning - Papers discussion (Antonio Fonseca)
+### Machine Learning - Papers discussion (Raffaele Scaringi)
 
 Discussion papers:
 * A novel hybrid model for species distribution prediction using neural networks and Grey Wolf Optimizer algorithm
