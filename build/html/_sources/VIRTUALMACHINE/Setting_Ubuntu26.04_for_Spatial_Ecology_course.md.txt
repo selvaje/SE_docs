@@ -54,9 +54,7 @@ Lunch Virtualbox from OS and follow the below instructions.
 
 If you follow all the steps correctly the Ubuntu 26.04 LTS Virtual Machine  should pop-up in the Virtual Box window showing something like this:
 
-![title](Installation_vm_Ubuntu22.04_p12.png)
-![title](Installation_vm_Ubuntu22.04_p14.png)
-![title](Installation_vm_Ubuntu22.04_p15.png)
+![title](Installation_vm_Ubuntu22.04_p0.png)
 
 If the Ubuntu 26.04 LTS start with a black screen with a "kernel panic message" means that there are still some settings that are not allowing the virtualization. 
 This [page](https://techcult.com/enable-virtualization-windows-10/) is a good tutorial for solving the issues in Windows-10 and [this one](https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11) for Windows-11. 
@@ -65,17 +63,17 @@ This [page](https://techcult.com/enable-virtualization-windows-10/) is a good tu
 
 If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore click on the spiral on the left bottom corner and write "keyboard" in the search box, and select in settings Keyboard.
 
-![title](keyboard_setting1_ubuntu24.04_1.png)
+![title](keyboard_setting1_ubuntu26.04_1.png)
 
 Then select "Add Input Source" > "Add" and select your keyboard layout in accordance to your country and language.
 
-![title](keyboard_setting1_ubuntu24.04_2.png)
+![title](keyboard_setting1_ubuntu26.04_2.png)
 
 Your keyboard layout will appear as below. Move up to select it as default keyboard layout.
 
-![title](keyboard_setting1_ubuntu24.04_3.png)
-![title](keyboard_setting1_ubuntu24.04_4.png)
-![title](keyboard_setting1_ubuntu24.04_5.png)
+![title](keyboard_setting1_ubuntu26.04_3.png)
+![title](keyboard_setting1_ubuntu26.04_4.png)
+![title](keyboard_setting1_ubuntu26.04_5.png)
 
 Open the terminal and test if the keyboard layout is correct. 
 
@@ -83,7 +81,7 @@ Open the terminal and test if the keyboard layout is correct.
 
 ### Update the OS
 
-The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"osboxes.org"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
+The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"ubuntu"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
 Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option. 
 
@@ -93,10 +91,27 @@ Update the OS. This operation can last few minutes. Be patient. If during the in
 
 
 
+## Test your shared folder
 
-<!---
+Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run 
+
+    ls /media/sf_LVM_shared
+   
+If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the Ubuntu 26.04 LTS. 
+
+If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation or the Virtual Box Guest Additions installation, thus try to redo it.
+
+
+If you get permission denied in accessing '/media/sf_LVM_shared' run this commands
+
+    sudo usermod -a -G vboxsf ubuntu
+    sudo chown -R ubuntu:ubuntu /media/sf_LVM_shared
+
+**You will need to reboot to make the folder accessible.**
 
 ## Troubleshooting screen size/resolution and shared folder of your Ubuntu 26.04 LTS Virtual Machine
+
+**Apply these concepts only if your Guest Additions do not solves screen size/resolution and shared folder **
 
 Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
@@ -104,41 +119,26 @@ If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest 
  
 If you still have issues after the reboot, there are mainly two options:  
 
-1) Install the Virtual Box guest edition
+1) Install the Virtual Box guest edition with CL
 2) Use "arandr" for setting a customized resolution
 
-### Install the Virtual Box guest edition with the GUI
+### Install the Virtual Box guest edition with the CL
 
 Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below. 
 
-From the Virtualbox menu press Device > Insert Guest Addition CD image
-
-If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install " Virtual Box guest edition with the CL" (see below). 
-
-The download procedure will start and a screen will pop up:
-
-pres "cancel".
-
-![title](GuestAddition2.png)
-
-Open the terminal and type:
-
-    cd /media/user/VBox_GAs_*
-    sudo ./VBoxLinuxAdditions.run
-
-At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
-
-
-### Install the Virtual Box guest edition with the CL 
-
-If for some reason you were not able to install "Virtual Box guest edition with the GUI" you can try with the "Virtual Box guest edition with the CL". 
-
-
-    sudo apt-get install virtualbox-guest-additions-iso
-    sudo mkdir -p /media/user/VBox_GAs 
-    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
+     # 1. Install prerequisites required to build the kernel module
+    sudo apt update && sudo apt install -y build-essential dkms linux-headers-$(uname -r)
+    
+    # 2. Mount the CD drive (VirtualBox places the ISO here when you click "Insert Guest Additions CD Image")
+    sudo mkdir -p /media/user/VBox_GAs
+    sudo mount /dev/cdrom /media/user/VBox_GAs
+    
+    # 3. Execute the installer
     cd /media/user/VBox_GAs
-    sudo bash ./VBoxLinuxAdditions.run
+    sudo ./VBoxLinuxAdditions.run
+    
+    # 4. Reboot your system to apply changes
+    sudo reboot
 
 At this point you can reboot.
 
@@ -174,25 +174,7 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
 
     echo "bash ~/.screenlayout/screen_vm.sh"  >> ~/.bashrc
 
---->
 
-## Test your shared folder
-
-Another test that you should do, is to see if the shared folder is correctly done. Open a bash terminal and run 
-
-    ls /media/sf_LVM_shared
-   
-If are able to list the folder then means that the sharing folder operation is properly done. Moreover try to insert a file from your host OS in the LVM_shared folder and see if visible in the Ubuntu 26.04 LTS. 
-
-If you get an error "ls: cannot access '/media/sf_LVM_shared': No such file or directory" means that you did not correctly done the sharing folder operation or the Virtual Box Guest Additions installation, thus try to redo it.
-
-
-If you get permission denied in accessing '/media/sf_LVM_shared' run this commands
-
-    sudo usermod -a -G vboxsf ubuntu
-    sudo chown -R ubuntu:ubuntu /media/sf_LVM_shared
-
-**You will need to reboot to make the folder accessible.**
 
 ## Populate Ubuntu 26.04 LTS with additional software
 ### Install geo-software

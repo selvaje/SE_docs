@@ -90,6 +90,11 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#test-your-shared-folder">Test your shared folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-26-04-lts-virtual-machine">Troubleshooting screen size/resolution and shared folder of your Ubuntu 26.04 LTS Virtual Machine</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#install-the-virtual-box-guest-edition-with-the-cl">Install the Virtual Box guest edition with the CL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#use-arandr-for-setting-a-customized-resolution-probably-not-needed">Use “arandr” for setting a customized resolution (probably not needed)</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#populate-ubuntu-26-04-lts-with-additional-software">Populate Ubuntu 26.04 LTS with additional software</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#install-geo-software">Install geo-software</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#test-installed-additional-software">Test installed additional software</a></li>
@@ -310,115 +315,32 @@
 <section id="test-your-ubuntu-26-04-lts-virtual-machine">
 <h3>Test your Ubuntu 26.04 LTS Virtual Machine<a class="headerlink" href="#test-your-ubuntu-26-04-lts-virtual-machine" title="Link to this heading"></a></h3>
 <p>If you follow all the steps correctly the Ubuntu 26.04 LTS Virtual Machine  should pop-up in the Virtual Box window showing something like this:</p>
-<p><img alt="title" src="VIRTUALMACHINE/Installation_vm_Ubuntu22.04_p12.png" />
-<img alt="title" src="VIRTUALMACHINE/Installation_vm_Ubuntu22.04_p14.png" />
-<img alt="title" src="VIRTUALMACHINE/Installation_vm_Ubuntu22.04_p15.png" /></p>
+<p><img alt="title" src="VIRTUALMACHINE/Installation_vm_Ubuntu22.04_p0.png" /></p>
 <p>If the Ubuntu 26.04 LTS start with a black screen with a “kernel panic message” means that there are still some settings that are not allowing the virtualization.
 This <a class="reference external" href="https://techcult.com/enable-virtualization-windows-10/">page</a> is a good tutorial for solving the issues in Windows-10 and <a class="reference external" href="https://www.windowscentral.com/software-apps/windows-11/how-to-enable-virtualization-on-windows-11">this one</a> for Windows-11.</p>
 </section>
 <section id="setting-you-keyboard-layout">
 <h3>Setting you keyboard layout<a class="headerlink" href="#setting-you-keyboard-layout" title="Link to this heading"></a></h3>
 <p>If are not use the US keyboard you have to add your keyboard layout to the bottom menubar. Therefore click on the spiral on the left bottom corner and write “keyboard” in the search box, and select in settings Keyboard.</p>
-<p><img alt="title" src="../_images/keyboard_setting1_ubuntu24.04_1.png" /></p>
+<p><img alt="title" src="../_images/keyboard_setting1_ubuntu26.04_1.png" /></p>
 <p>Then select “Add Input Source” &gt; “Add” and select your keyboard layout in accordance to your country and language.</p>
-<p><img alt="title" src="../_images/keyboard_setting1_ubuntu24.04_2.png" /></p>
+<p><img alt="title" src="../_images/keyboard_setting1_ubuntu26.04_2.png" /></p>
 <p>Your keyboard layout will appear as below. Move up to select it as default keyboard layout.</p>
-<p><img alt="title" src="../_images/keyboard_setting1_ubuntu24.04_3.png" />
-<img alt="title" src="../_images/keyboard_setting1_ubuntu24.04_4.png" />
-<img alt="title" src="../_images/keyboard_setting1_ubuntu24.04_5.png" /></p>
+<p><img alt="title" src="../_images/keyboard_setting1_ubuntu26.04_3.png" />
+<img alt="title" src="../_images/keyboard_setting1_ubuntu26.04_4.png" />
+<img alt="title" src="../_images/keyboard_setting1_ubuntu26.04_5.png" /></p>
 <p>Open the terminal and test if the keyboard layout is correct.</p>
 <p><img alt="title" src="../_images/terminal_ubuntu.png" /></p>
 </section>
 <section id="update-the-os">
 <h3>Update the OS<a class="headerlink" href="#update-the-os" title="Link to this heading"></a></h3>
-<p>The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is <strong>“osboxes.org”</strong>. For security what you type is not shown, anyway it is recorded. After typed the password press enter.</p>
+<p>The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is <strong>“ubuntu”</strong>. For security what you type is not shown, anyway it is recorded. After typed the password press enter.</p>
 <p>Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt update      # update the repositories
 sudo apt upgrade -y  # installation of the sw
 sudo apt autoremove -y
 </pre></div>
 </div>
-<!---
-
-## Troubleshooting screen size/resolution and shared folder of your Ubuntu 26.04 LTS Virtual Machine
-
-Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
-
-If the screen is very small try to enlarge clicking ""View -> Auto-resize Guest Display", and if the enlargement is not working properly try to reboot.
- 
-If you still have issues after the reboot, there are mainly two options:  
-
-1) Install the Virtual Box guest edition
-2) Use "arandr" for setting a customized resolution
-
-### Install the Virtual Box guest edition with the GUI
-
-Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below. 
-
-From the Virtualbox menu press Device > Insert Guest Addition CD image
-
-If during the installation some screen pop-up asking some question just accept the default option. Rather if nothing is appending try to install " Virtual Box guest edition with the CL" (see below). 
-
-The download procedure will start and a screen will pop up:
-
-pres "cancel".
-
-![title](GuestAddition2.png)
-
-Open the terminal and type:
-
-    cd /media/user/VBox_GAs_*
-    sudo ./VBoxLinuxAdditions.run
-
-At this point you can reboot your machine. Now all screen setting, screen scale (View -> Auto-resize Guest Display) and drag/drop should work properly.
-
-
-### Install the Virtual Box guest edition with the CL 
-
-If for some reason you were not able to install "Virtual Box guest edition with the GUI" you can try with the "Virtual Box guest edition with the CL". 
-
-
-    sudo apt-get install virtualbox-guest-additions-iso
-    sudo mkdir -p /media/user/VBox_GAs 
-    sudo mount -o loop /usr/share/virtualbox/VBoxGuestAdditions.iso /media/user/VBox_GAs
-    cd /media/user/VBox_GAs
-    sudo bash ./VBoxLinuxAdditions.run
-
-At this point you can reboot.
-
-Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
-
-Use *lsmod* from the command line, as it will tell you not only if it's installed, but properly loaded:
-
-    lsmod | grep vboxguest 
-
-vboxguest    57344  6 vboxsf   # the number can be different
-
-### Use "arandr" for setting a customized resolution (probably not needed)
-
-For some OS the "Auto-resize Guest Display" is not working properly. Therefore is possible to select a customized resolution by installing *arandr*. Anyway follow this route only if "Virtual Box guest edition" did not solve the problem. 
-
-Open the terminal and type:
-
-    sudo apt install arandr
-
-then run arandr in the terminal 
-
-    arandr
-
-and following the below figure, select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.
-
-![title](screenresolution1.png)
-
-You can also save the screen settings by "Layout -> Save as" ->  leaving a default directory (~/.screenlayout/) 
-
-![title](screenresolution2.png)
-
-Now the script screen_vm.sh need to be run every time that you boot the machine. The easy way is to add to the ~/.bashrc. **But you will need to open the terminal to allow the enlargement**  
-
-    echo "bash ~/.screenlayout/screen_vm.sh"  >> ~/.bashrc
-
---->
 </section>
 </section>
 <section id="test-your-shared-folder">
@@ -435,6 +357,63 @@ sudo chown -R ubuntu:ubuntu /media/sf_LVM_shared
 </pre></div>
 </div>
 <p><strong>You will need to reboot to make the folder accessible.</strong></p>
+</section>
+<section id="troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-26-04-lts-virtual-machine">
+<h2>Troubleshooting screen size/resolution and shared folder of your Ubuntu 26.04 LTS Virtual Machine<a class="headerlink" href="#troubleshooting-screen-size-resolution-and-shared-folder-of-your-ubuntu-26-04-lts-virtual-machine" title="Link to this heading"></a></h2>
+<p>**Apply these concepts only if your Guest Additions do not solves screen size/resolution and shared folder **</p>
+<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
+<p>If the screen is very small try to enlarge clicking “”View -&gt; Auto-resize Guest Display”, and if the enlargement is not working properly try to reboot.</p>
+<p>If you still have issues after the reboot, there are mainly two options:</p>
+<ol class="arabic simple">
+<li><p>Install the Virtual Box guest edition with CL</p></li>
+<li><p>Use “arandr” for setting a customized resolution</p></li>
+</ol>
+<section id="install-the-virtual-box-guest-edition-with-the-cl">
+<h3>Install the Virtual Box guest edition with the CL<a class="headerlink" href="#install-the-virtual-box-guest-edition-with-the-cl" title="Link to this heading"></a></h3>
+<p>Sometime the Virtual Box guest edition is not installed correctly so you have to follow the procedure described below.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span> # 1. Install prerequisites required to build the kernel module
+sudo apt update &amp;&amp; sudo apt install -y build-essential dkms linux-headers-$(uname -r)
+
+# 2. Mount the CD drive (VirtualBox places the ISO here when you click &quot;Insert Guest Additions CD Image&quot;)
+sudo mkdir -p /media/user/VBox_GAs
+sudo mount /dev/cdrom /media/user/VBox_GAs
+
+# 3. Execute the installer
+cd /media/user/VBox_GAs
+sudo ./VBoxLinuxAdditions.run
+
+# 4. Reboot your system to apply changes
+sudo reboot
+</pre></div>
+</div>
+<p>At this point you can reboot.</p>
+<p>Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. <strong>Thus, it is very important that you install it correctly.</strong></p>
+<p>Use <em>lsmod</em> from the command line, as it will tell you not only if it’s installed, but properly loaded:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>lsmod | grep vboxguest 
+</pre></div>
+</div>
+<p>vboxguest    57344  6 vboxsf   # the number can be different</p>
+</section>
+<section id="use-arandr-for-setting-a-customized-resolution-probably-not-needed">
+<h3>Use “arandr” for setting a customized resolution (probably not needed)<a class="headerlink" href="#use-arandr-for-setting-a-customized-resolution-probably-not-needed" title="Link to this heading"></a></h3>
+<p>For some OS the “Auto-resize Guest Display” is not working properly. Therefore is possible to select a customized resolution by installing <em>arandr</em>. Anyway follow this route only if “Virtual Box guest edition” did not solve the problem.</p>
+<p>Open the terminal and type:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install arandr
+</pre></div>
+</div>
+<p>then run arandr in the terminal</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>arandr
+</pre></div>
+</div>
+<p>and following the below figure, select the best resolution that suitable for your screen. Select in such a way that you have the full screen cover without sliding lateral bars or white areas.</p>
+<p><img alt="title" src="../_images/screenresolution1.png" /></p>
+<p>You can also save the screen settings by “Layout -&gt; Save as” -&gt;  leaving a default directory (~/.screenlayout/)</p>
+<p><img alt="title" src="../_images/screenresolution2.png" /></p>
+<p>Now the script screen_vm.sh need to be run every time that you boot the machine. The easy way is to add to the ~/.bashrc. <strong>But you will need to open the terminal to allow the enlargement</strong></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>echo &quot;bash ~/.screenlayout/screen_vm.sh&quot;  &gt;&gt; ~/.bashrc
+</pre></div>
+</div>
+</section>
 </section>
 <section id="populate-ubuntu-26-04-lts-with-additional-software">
 <h2>Populate Ubuntu 26.04 LTS with additional software<a class="headerlink" href="#populate-ubuntu-26-04-lts-with-additional-software" title="Link to this heading"></a></h2>
