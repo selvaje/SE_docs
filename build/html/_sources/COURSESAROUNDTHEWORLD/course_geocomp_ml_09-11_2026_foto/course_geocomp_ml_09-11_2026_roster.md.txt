@@ -45,7 +45,7 @@ University of California, Santa Barbara
 
 ---
 
-(4) **Abdul Hannan Abdul**
+(4) **Abdul Hannan**
  
 Università degli Studi della Basilicata, Italy
 
