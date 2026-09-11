@@ -9,8 +9,8 @@ orphan: true
 
 [Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)  
-[Antonio Fonseca](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#antonio-fonseca-m-sc-almost-phd) (machine learning teacher)
-[Saverio Mancino](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#saverio-mancino-msc) (geopython)  
+[Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)  
+[Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)  
 Francesco Lovergine (sw installation and Linux troubleshooting)  
 
 #### Student online class  ####

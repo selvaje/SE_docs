@@ -179,12 +179,17 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
 ## Populate Ubuntu 26.04 LTS with additional software
 ### Install geo-software
 At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
+    
+    
+    apt -y gdal-bin python3-gdal libgdal-plugin-grass pktools python3-rasterio \
+    grass grass-core grass-gui grass-doc \
+    qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
+    python3-geopandas python3-shapely python3-fiona python3-folium python3-xarray \
+  python3-rasterio python3-gdal python3-pyproj python3-cartopy python3-matplotlib python3-scipy python3-scikit-image \
+  emacs
+            
 
-    cd /tmp/
-    wget https://raw.githubusercontent.com/selvaje/SE_data/refs/heads/master/exercise/install_additional_sw_data_4SE_courses.sh 
-    sudo bash ./install_additional_sw_data_4SE_courses.sh
-
-as before the sudo password is **osboxes.org**.
+as before the sudo password is **ubuntu**.
 
 **If a prompt asks for user input, just use the arrow keys to select the default option and press Enter.**
 
@@ -204,16 +209,15 @@ Test [pktools](http://pktools.nongnu.org/html/index.html)
     pkfilter --help
  
 You should see the pkfilter manual instructions.
- 
+
+<!---
+   
 Test [OpenEV](http://openev.sourceforge.net)
  
     source ~/.bashrc
     openev
 
 You should see the openev software popup. 
-
-<!---
-
 
 Test  [R studio](https://rstudio.com)
 
