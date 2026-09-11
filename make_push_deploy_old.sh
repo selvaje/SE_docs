@@ -21,31 +21,25 @@
 # │  • https://spatial-ecology.net/docs/build/html/index.html       │
 # └─────────────────────────────────────────────────────────────────┘
 
-#!/bin/bash
-set -euo pipefail
-
-SE_DOCS=/home/selv/SE_docs/SE_docs
-SITE=/home/selv/SE_docs/spatial-ecology.net
-
-# Build Sphinx (fails loudly now if there's a build error)
-cd "$SE_DOCS"
+# Build Sphinx
+cd /home/selv/SE_docs/SE_docs
 make html
 
-# Sync build output — rsync --delete keeps target in exact sync,
-# safer than rm+cp (preserves dotfiles, atomic-ish, no window with nothing there)
-rsync -a --delete "$SE_DOCS/build/html/" "$SITE/docs/build/html/"
-rsync -a --delete "$SE_DOCS/source/"     "$SITE/docs/source/"
+# cp sphinx html  output to spatial-ecology.net — include ALL files/dirs including _static
+rm -r /home/selv/SE_docs/spatial-ecology.net/docs/*
+mkdir /home/selv/SE_docs/spatial-ecology.net/docs/build
+cp -r  /home/selv/SE_docs/SE_docs/build/html   /home/selv/SE_docs/spatial-ecology.net/docs/build/html
+cp -r  /home/selv/SE_docs/SE_docs/source   /home/selv/SE_docs/spatial-ecology.net/docs/
 
 # Push SE_docs
-cd "$SE_DOCS"
+cd /home/selv/SE_docs/SE_docs
 git add --all
-git diff --cached --quiet || git commit -m "update sphinx docs"
+git commit -m "update sphinx docs"
 git push
 
 # Push spatial-ecology.net
-cd "$SITE"
-git add --all
-git diff --cached --quiet || git commit -m "sync sphinx docs from SE_docs"
+cd /home/selv/SE_docs/spatial-ecology.net
+git add --all 
+git commit -m "sync sphinx docs from SE_docs"
 git push
 
-echo "Deploy script finished — check git log above for actual commits (empty diffs are skipped, not errors)."
