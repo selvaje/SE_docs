@@ -375,7 +375,7 @@ sudo chown -R ubuntu:ubuntu /media/sf_LVM_shared
 sudo apt update &amp;&amp; sudo apt install -y build-essential dkms linux-headers-$(uname -r)
 
 # 2. Mount the CD drive (VirtualBox places the ISO here when you click &quot;Insert Guest Additions CD Image&quot;)
-sudo mkdir -p /media/user/VBox_GAs
+sudo mkdir -p /media/$USER/VBox_GAs
 sudo mount /dev/cdrom /media/user/VBox_GAs
 
 # 3. Execute the installer
@@ -439,7 +439,7 @@ emacs
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gdal_translate --version 
 </pre></div>
 </div>
-<p>You should see the gdal version GDAL 3.8.4, released 2024/02/08</p>
+<p>You should see the gdal version  GDAL 3.12.2 “Chicoutimi”, released 2026/02/03</p>
 <p>Test <a class="reference external" href="http://pktools.nongnu.org/html/index.html">pktools</a></p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pkfilter --help
 </pre></div>
@@ -495,7 +495,7 @@ Remember always to work on <em>/media/sf_LVM_shared/my_SE_data</em></p>
 <hr class="docutils" />
 <p>If for any reason the <em>git pull</em> commands give a synchronized error you need to remove the <em>$HOME/SE_data</em> and repeat the <em>git clone</em> and <em>rsync</em> operation.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd
-rm -ry $HOME/SE_data
+rm -rf $HOME/SE_data
 git clone https://github.com/selvaje/SE_data
 rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
 cd /media/sf_LVM_shared/my_SE_data

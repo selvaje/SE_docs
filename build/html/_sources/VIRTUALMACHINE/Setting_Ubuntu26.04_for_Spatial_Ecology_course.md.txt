@@ -130,7 +130,7 @@ Sometime the Virtual Box guest edition is not installed correctly so you have to
     sudo apt update && sudo apt install -y build-essential dkms linux-headers-$(uname -r)
     
     # 2. Mount the CD drive (VirtualBox places the ISO here when you click "Insert Guest Additions CD Image")
-    sudo mkdir -p /media/user/VBox_GAs
+    sudo mkdir -p /media/$USER/VBox_GAs
     sudo mount /dev/cdrom /media/user/VBox_GAs
     
     # 3. Execute the installer
@@ -201,7 +201,7 @@ Test [gdal](https://gdal.org/en/stable/#)
 
     gdal_translate --version 
 
-You should see the gdal version GDAL 3.8.4, released 2024/02/08
+You should see the gdal version  GDAL 3.12.2 "Chicoutimi", released 2026/02/03
 
 Test [pktools](http://pktools.nongnu.org/html/index.html)
 
@@ -267,7 +267,7 @@ Remember always to work on */media/sf\_LVM\_shared/my\_SE\_data*
 If for any reason the *git pull* commands give a synchronized error you need to remove the *$HOME/SE_data* and repeat the *git clone* and *rsync* operation.
 
     cd
-    rm -ry $HOME/SE_data
+    rm -rf $HOME/SE_data
     git clone https://github.com/selvaje/SE_data
     rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
