@@ -179,8 +179,7 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
 ## Populate Ubuntu 26.04 LTS with additional software
 ### Install geo-software
 At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
-    
-    
+
     sudo apt install -y gdal-bin libgdal-plugin-grass pktools python3-rasterio \
     grass grass-core grass-gui grass-doc \
     qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
