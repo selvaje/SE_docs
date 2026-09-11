@@ -181,12 +181,13 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
 At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
     
     
-    apt -y gdal-bin python3-gdal libgdal-plugin-grass pktools python3-rasterio \
+    sudo apt -y gdal-bin python3-gdal libgdal-plugin-grass pktools python3-rasterio \
     grass grass-core grass-gui grass-doc \
     qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
     python3-geopandas python3-shapely python3-fiona python3-folium python3-xarray \
-    python3-rasterio python3-gdal python3-pyproj python3-cartopy python3-matplotlib python3-scipy python3-scikit-image \
-  emacs    
+    python3-rasterio python3-gdal python3-pyproj python3-cartopy \
+    python3-matplotlib python3-scipy python3-scikit-image \
+    emacs    
 
 as before the sudo password is **ubuntu**.
 
@@ -242,7 +243,7 @@ If the download succeed you should see the *SE_data* folder
     ls -l $HOME/SE_data 
 
 Now we need copy the $HOME/SE_data to an independent directory the:  
-*/media/sf\_\LVM\_shared/my\_SE\_data*
+*/media/sf\_LVM\_shared/my\_SE\_data*
 
     rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
     cd /media/sf_LVM_shared/my_SE_data
