@@ -30,7 +30,7 @@ Open you browser and go to [https://www.virtualbox.org/wiki/Downloads](https://w
 ## Install Ubuntu 26.04 LTS Resolute Raccoon
 ### Download Ubuntu 26.04
 
-Open you browser and go to [https://www.osboxes.org](https://www.osboxes.org/ubuntu/#ubuntu-24-04-vbox) and proceed to  download the Ubuntu 26.04 Resolute Raccoon for VirtualBox. This action will download the 64bit.7z file. The 64bit.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the 64bit.7z. A this point you are ready to load the Ubuntu 26.04 (64bit).vdi inside Virtualbox.
+Open you browser and go to [Linux VM Images](https://www.linuxvmimages.com/images/ubuntu-2604/) and proceed to download the Ubuntu 26.04 Resolute Raccoon for VirtualBox. This action will download the 64bit.7z file. The 64bit.7z is a quite large file therefore according to your Internet connection it can take several hours. When the download is finished unzipped using [7zip](https://www.7-zip.org). Mac users can use [The Unarchiver](https://apps.apple.com/in/app/the-unarchiver/id425424353?mt=12) for unzip the 64bit.7z. A this point you are ready to load the Ubuntu 26.04 (64bit).vdi inside Virtualbox.
 
 
 ### Install Ubuntu 26.04 inside Virtualbox
@@ -181,11 +181,11 @@ Now the script screen_vm.sh need to be run every time that you boot the machine.
 At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additional software and data for running Spatial Ecology courses. In the bash terminal run the following lines 
     
     
-    sudo apt -y gdal-bin python3-gdal libgdal-plugin-grass pktools python3-rasterio \
+    sudo apt -y gdal-bin libgdal-plugin-grass pktools python3-rasterio \
     grass grass-core grass-gui grass-doc \
     qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
     python3-geopandas python3-shapely python3-fiona python3-folium python3-xarray \
-    python3-rasterio python3-gdal python3-pyproj python3-cartopy \
+    python3-gdal python3-pyproj python3-cartopy \
     python3-matplotlib python3-scipy python3-scikit-image \
     emacs    
 
