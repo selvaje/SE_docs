@@ -81,7 +81,7 @@ Open the terminal and test if the keyboard layout is correct.
 
 ### Update the OS
 
-The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **"ubuntu"**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
+The first operation after the installation is to run un update of the OS. Therefore, open the bash terminal and run line by line the following codes. The sudo password is **ubuntu**. For security what you type is not shown, anyway it is recorded. After typed the password press enter.
 
 Update the OS. This operation can last few minutes. Be patient. If during the installation, some screen pop-up asking some question just accept the default option. 
 
@@ -111,7 +111,7 @@ If you get permission denied in accessing '/media/sf_LVM_shared' run this comman
 
 ## Troubleshooting screen size/resolution and shared folder of your Ubuntu 26.04 LTS Virtual Machine
 
-**Apply these concepts only if your Guest Additions do not solves screen size/resolution and shared folder **
+**Apply these concepts only if your Guest Additions do not solves screen size/resolution and shared folder**
 
 Guest Additions in VirtualBox enable better performance and functionality in virtual machines, including shared clipboard/drag and drop, shared folders, improved graphics support, and seamless app windows. **Thus, it is very important that you install it correctly.** 
 
@@ -185,9 +185,8 @@ At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additiona
     grass grass-core grass-gui grass-doc \
     qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
     python3-geopandas python3-shapely python3-fiona python3-folium python3-xarray \
-  python3-rasterio python3-gdal python3-pyproj python3-cartopy python3-matplotlib python3-scipy python3-scikit-image \
-  emacs
-            
+    python3-rasterio python3-gdal python3-pyproj python3-cartopy python3-matplotlib python3-scipy python3-scikit-image \
+  emacs    
 
 as before the sudo password is **ubuntu**.
 
@@ -278,15 +277,15 @@ If for any reason the *git pull* commands give a synchronized error you need to 
 
 We are going to use jupyter lab as main scripting editor. Here how to install 
 
-    sudo apt install pipx
+    sudo apt update
+    sudo apt install -y pipx
     pipx ensurepath
+    source ~/.bashrc        # picks up the PATH change ensurepath just made
     pipx install jupyterlab
-    echo 'export PATH=$PATH:$HOME/.local/bin' >> ~/.bashrc
-    source ~/.bashrc
 
 Test jupyter lab
 
-    jupyter-lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
+    jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
 
 Get familiar with the jupyter lab GUI.
 
