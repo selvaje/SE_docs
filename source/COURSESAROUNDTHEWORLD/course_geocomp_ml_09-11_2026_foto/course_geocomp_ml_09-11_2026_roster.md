@@ -10,7 +10,7 @@ orphan: true
 [Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)  
 [Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)  
-[Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)  
+
 Francesco Lovergine (sw installation and Linux troubleshooting)  
 
 #### Student online class  ####
