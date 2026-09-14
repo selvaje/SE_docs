@@ -81,9 +81,9 @@ Basque Country University, Spain
 
 ---
 
-(8) **Leanda	Vedder**	
+(8) **Leanda	Vedder - Austria**	
 
-Utrecht University
+University of Utrecht - the Netherlands
 
 ![](08_leanda_vedder.jpg)
 
@@ -144,9 +144,9 @@ Constantine the Philosopher University, Slovakia
 
 ---
 
-(16) **SHIVA	RAHMANI**	
+(16) **Shiva Rahmani - Iran**	
 
-CNR, Italy
+Methodologies for Environmental Analysis (IMAA), National Research Council of Italy (CNR) - Italy
 
 ![](16_shiva_rahmani.jpg)
 
