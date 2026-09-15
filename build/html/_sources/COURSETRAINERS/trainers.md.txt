@@ -25,8 +25,11 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 
 Computer scienties and machine learning expert, Spatial Ecology;
 
-[Website](https://faiail.github.io/)
-
+```{image} Team_giuseppe2.jpeg
+:align: right
+:width: 150px
+```
+[Website](https://faiail.github.io/)  
 [Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
 
 <img src="Team_raffaele.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
@@ -41,19 +44,25 @@ Raffaele is a postdoctoral researcher at the Computational Intelligence Laborato
 
 ## Francesco Lovergine
 
-[Website](https://lovergine.com/)
+Computer scienties and debian linux developer expert, Spatial Ecology;
 
+```{image} Team_francesco.jpeg
+:align: right
+:width: 150px
+```
+[Website](https://lovergine.com/)  
 [Publications](https://scholar.google.com/citations?user=e9AMYmQAAAAJ&hl=en)
-
-<img src="Team_francesco.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
 
 Francesco Paolo Lovergine is a researcher at the Institute for Electromagnetic Sensing of the Environment (IREA) of the Italian National Research Council (CNR) in Bari.  His research focuses on geoinformatics, Geographic Information Systems (GIS), artificial intelligence, remote sensing, and spatial analysis. His work involves applying machine learning, signal processing, and computer vision techniques to Earth observation data. Key application areas include multi-hazard environmental monitoring, soil moisture retrieval, agricultural monitoring, and land degradation analysis.  In addition to his academic work, Lovergine is a long-standing active contributor to the Free and Open Source Software (FOSS/FLOSS) community. A Debian Developer since 2001, he has maintained and contributed to various open-source geospatial tools, libraries, and system administration software—advocating for the integration of open-source paradigms and open standards in scientific research and spatial data processing.
 
 ## Saverio Mancino, MSc
 
-[Publications](https://scholar.google.com/citations?user=_ynV9MwAAAAJ&hl=it)
+```{image} Team_saverio.jpeg
+:align: right
+:width: 150px
+```
 
-<img src="Team_saverio.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+[Publications](https://scholar.google.com/citations?user=_ynV9MwAAAAJ&hl=it)
 
 Saverio PhD Candidate in Geology and Geotechnologies at the Department of Earth and Geoenvironmental Sciences at the University of Bari. He is a dedicated researcher specialising in landslide susceptibility modelling and early warning systems for large-scale transboundary programmes.
 
@@ -63,9 +72,12 @@ His work combines advanced ML techniques with high-performance computing systems
 
 Scientific Advisor, Spatial Ecology; shen at spatial-ecology.net
 
-[Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
+```{image} Team_longzhu2.jpeg
+:align: right
+:width: 150px
+```
 
-<img src="Team_longzhu2.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+[Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
 
 Longzhu is a mathematical modeller with a specialisation in quantum mechanics and statistical learning algorithms. At Spatial Ecology, he is leading the development of water chemistry analytics by integrating water quality assessment into a global hydrological model using machine learning techniques.
 
@@ -79,10 +91,12 @@ Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post
 
 Scientific Advisor, Spatial Ecology;
 
-[website](https://ahof1704.github.io/)
+```{image} Team_antonio2.jpeg
+:align: right
+:width: 150px
+```
+[website](https://ahof1704.github.io/)  
 [Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
-
-<img src="Team_antonio2.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
 
 Antonio is a machine learning scientist working at the intersection of Computational Biology and Deep Learning. His expertise encompasses robotics (software and hardware development), signal processing, computational vision, behavioral neuroscience, protein design, and deep learning algorithms. He specializes in developing and applying machine learning frameworks to solve complex problems.
 
