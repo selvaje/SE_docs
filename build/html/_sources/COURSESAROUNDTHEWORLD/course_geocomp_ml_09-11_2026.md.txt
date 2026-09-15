@@ -46,7 +46,7 @@ Use the [Time Zone Converter](https://www.timeanddate.com/worldclock/converter.h
 * **Lecture 15**: Tuesday,  10 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 * **Lecture 16**: Thursday, 12 November, 12pm - 2:45pm UTC (CET   1pm, EST  7am, PST 4am) 
 
-** In-Person Coding Hackathon week: **  
+**In-Person Coding Hackathon week:**  
 November 23 - November 27 2026, Matera, Italy  
   
 The in-person Matera session can be considered a sort of hackathon where participants will work on their code from 9am to 5pm and on the last days will present their final project and code. This week aims to achieve group collaboration and troubleshooting under the direct supervision of the trainers. During this session, there will also be brief talks from the trainers and from invited speakers.
@@ -109,7 +109,7 @@ Recorded lecture can be found [here]()
 Time below in CEST
 
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261609_IntroGeocomp_GA.pdf).
+* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_GA.pdf).
 * 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260916_IntroML_AF.pdf).
 * 13:45 - 14:15  Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role
 * 14:15 - 14:30  Break
