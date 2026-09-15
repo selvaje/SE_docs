@@ -37,6 +37,17 @@ His core expertise spans multimodal learning, Vision Transformers (ViTs), Graph 
 
 Raffaele is a postdoctoral researcher at the Computational Intelligence Laboratory (CILab), Department of Computer Science, University of Bari Aldo Moro (Italy). He completed his entire academic training at the University of Bari, where he earned a Bachelor’s degree in Computer Science, a Master’s degree in Data Science, and his PhD in February 2026.
 
+
+## Francesco Lovergine
+
+[Website](https://lovergine.com/)
+
+[Publications](https://scholar.google.com/citations?user=e9AMYmQAAAAJ&hl=en)
+
+<img src="Team_francesco.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+
+Francesco Paolo Lovergine is a researcher at the Institute for Electromagnetic Sensing of the Environment (IREA) of the Italian National Research Council (CNR) in Bari.  His research focuses on geoinformatics, Geographic Information Systems (GIS), artificial intelligence, remote sensing, and spatial analysis. His work involves applying machine learning, signal processing, and computer vision techniques to Earth observation data. Key application areas include multi-hazard environmental monitoring, soil moisture retrieval, agricultural monitoring, and land degradation analysis.  In addition to his academic work, Lovergine is a long-standing active contributor to the Free and Open Source Software (FOSS/FLOSS) community. A Debian Developer since 2001, he has maintained and contributed to various open-source geospatial tools, libraries, and system administration software—advocating for the integration of open-source paradigms and open standards in scientific research and spatial data processing.
+
 ## Saverio Mancino, MSc
 
 [Publications](https://scholar.google.com/citations?user=_ynV9MwAAAAJ&hl=it)
