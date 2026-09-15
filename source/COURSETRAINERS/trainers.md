@@ -22,7 +22,7 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 ## Raffaele Scaringi, PhD
 
 Computer scienties and machine learning expert, Spatial Ecology;
-```{image} Team_giuseppe2.jpeg
+```{image} Team_scaringi.jpeg
 :align: right
 :width: 150px
 ```
@@ -37,7 +37,7 @@ His core expertise spans multimodal learning, Vision Transformers (ViTs), Graph 
 Raffaele is a postdoctoral researcher at the Computational Intelligence Laboratory (CILab), Department of Computer Science, University of Bari Aldo Moro (Italy). He completed his entire academic training at the University of Bari, where he earned a Bachelor’s degree in Computer Science, a Master’s degree in Data Science, and his PhD in February 2026.
 
 
-## Francesco Lovergine
+## Francesco Lovergine, PhD
 
 Computer scienties and debian linux developer expert, Spatial Ecology;
 ```{image} Team_francesco.jpeg

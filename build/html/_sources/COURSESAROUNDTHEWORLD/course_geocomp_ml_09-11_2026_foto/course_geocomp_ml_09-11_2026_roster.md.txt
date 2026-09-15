@@ -10,8 +10,8 @@ orphan: true
 [Tushar Sethi](https://spatial-ecology.net/team/) (administrator - course organizer)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (geocomputation teacher - course organizer)  
 [Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)  
-
-Francesco Lovergine (sw installation and Linux troubleshooting)  
+[Francesco Lovergine](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#francesco-lovergine-phd)
+(sw installation and Linux troubleshooting)  
 
 #### Student online class  ####
 ![](zoom_class.jpg)
@@ -56,11 +56,10 @@ Università degli Studi della Basilicata, Italy
 
 (5) **Sebastián	Echeverría**	
 
-Division on Impacts on Agriculture, Forests and Ecosystem Services
-
+Division on Impacts on Agriculture, Forests and Ecosystem Services  
 Euro-Mediterranean Centre on Climate Change 
 
-![](05_sebastián_echeverría.jpg)
+![](05_sebastian_echeverria.jpg)
 
 ---
 
