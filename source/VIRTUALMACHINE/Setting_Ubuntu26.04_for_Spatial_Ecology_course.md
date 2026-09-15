@@ -185,7 +185,7 @@ At this point the Ubuntu 26.04 LTS Virtual Machine is ready to install additiona
     qgis qgis-plugin-grass qgis-plugin-grass-common python3-qgis \
     python3-geopandas python3-shapely python3-fiona python3-folium python3-xarray \
     python3-gdal python3-pyproj python3-cartopy \
-    python3-matplotlib python3-scipy python3-scikit-image \
+    python3-matplotlib python3-scipy \
     emacs    
 
 as before the sudo password is **ubuntu**.

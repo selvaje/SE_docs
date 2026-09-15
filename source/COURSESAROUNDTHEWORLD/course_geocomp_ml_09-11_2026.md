@@ -6,7 +6,7 @@
 [Tushar Sethi](https://spatial-ecology.net/team/) (Spatial Ecology managing director)  
 [Giuseppe Amatulli](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#giuseppe-amatulli-phd) (Spatial Ecology Director - geocomputation   teacher - course organizer)  
 [Raffaele Scaringi](https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#raffaele-scaringi-phd) (machine learning teacher)   
-[Francesco Lovergine](https://www.linkedin.com/in/francescopaololovergine/?originalSubdomain=it) (Linux troubleshooting and sw installation)
+[Francesco Lovergine]((https://spatial-ecology.net/docs/build/html/COURSETRAINERS/trainers.html#francesco-lovergine-phd) (machine learning teacher)   ) (Linux troubleshooting and sw installation)
 
 ### Course time line
 
