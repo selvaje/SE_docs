@@ -59,7 +59,7 @@ Università degli Studi della Basilicata, Italy
 Division on Impacts on Agriculture, Forests and Ecosystem Services  
 Euro-Mediterranean Centre on Climate Change 
 
-![](05_sebastian_echeverria2.jpg)
+![](05_sebastian_echeverria3.jpg)
 
 ---
 

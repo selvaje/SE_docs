@@ -103,8 +103,8 @@ Below we are going to list day by day the final syllabus with the relatives link
 
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
-Recorded lecture can be found [here]()
-
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/qznAldrMdaZj6B5vAIbL6pZeqPPjgTw6UnQb3ZRuIocTMQnFNyST87x0ZoZWxUV0.aPrjUP4i45MdtFAg)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect01_GML_15092026.pdf)
 
 Time below in CEST
 
