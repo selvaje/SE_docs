@@ -22,7 +22,7 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 ## Raffaele Scaringi, PhD
 
 Computer scienties and machine learning expert, Spatial Ecology;
-```{image} Team_scaringi.jpeg
+```{image} Team_raffaele.jpeg
 :align: right
 :width: 150px
 ```
