@@ -8,8 +8,6 @@ Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
 [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
 
-![](Team_giuseppe2.jpeg){align=right width=150px}
-
 ```{image} Team_giuseppe2.jpeg
 :align: right
 :width: 150px
