@@ -110,7 +110,7 @@ Time below in CEST
 
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
 * 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_GA.pdf).
-* 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_RS.pdf)
+* 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroML_RS.pdf)
 * 13:45 - 14:15  [Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_FL.pdf)
 * 14:15 - 14:30  Break
 * 14:30 - 14:45  Students round table + QA of the course. 
