@@ -3,12 +3,10 @@
 ## Giuseppe Amatulli, PhD
 
 Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
-
 ```{image} Team_giuseppe2.jpeg
 :align: right
 :width: 150px
 ```
-
 [Publications](https://scholar.google.com/citations?hl=en&user=LSxTtpMAAAAJ&view_op=list_works&sortby=pubdate)  
 [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
 
