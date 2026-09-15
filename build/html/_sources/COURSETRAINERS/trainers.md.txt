@@ -8,7 +8,8 @@ Geo-data Scientist, Spatial Ecology; g.amatulli at spatial-ecology.net
 
 [Video Interview](https://youtu.be/1jcZAY-ZJmk) 
 
-![title](Team_giuseppe2.jpeg)
+<img src="Team_giuseppe2.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+
 
 Giuseppe is the lead scientist at Spatial-Ecology for data analysis and product development. He is an accredited GIS data expert with deep expertise in spatial modelling and coding with open source software for environmental applications. His current focus is on hydrological modelling at a global scale, in addition to researching species distribution under climate change scenarios.
 
@@ -20,13 +21,15 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 
 
 ## Raffaele Scaringi, PhD
+
 Computer scienties and machine learning expert, Spatial Ecology;
 
 [Website](https://faiail.github.io/)
 
 [Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
 
-![title](Team_raffaele.jpeg)
+<img src="Team_raffaele.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+
 
 Raffaele is a computer scientist and machine learning researcher specializing in Deep Learning, Computer Vision, and Knowledge Graph Representation Learning. Within data science and computational modeling courses, he focuses on devloping modern machine learning architectures, multimodal workflows, and high-performance neural network pipelines.
 
@@ -34,6 +37,15 @@ His core expertise spans multimodal learning, Vision Transformers (ViTs), Graph 
 
 Raffaele is a postdoctoral researcher at the Computational Intelligence Laboratory (CILab), Department of Computer Science, University of Bari Aldo Moro (Italy). He completed his entire academic training at the University of Bari, where he earned a Bachelor’s degree in Computer Science, a Master’s degree in Data Science, and his PhD in February 2026.
 
+## Saverio Mancino, MSc
+
+[Publications](https://scholar.google.com/citations?user=_ynV9MwAAAAJ&hl=it)
+
+<img src="Team_saverio.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
+
+Saverio PhD Candidate in Geology and Geotechnologies at the Department of Earth and Geoenvironmental Sciences at the University of Bari. He is a dedicated researcher specialising in landslide susceptibility modelling and early warning systems for large-scale transboundary programmes.
+
+His work combines advanced ML techniques with high-performance computing systems to tackle continental-scale geospatial problems. His expertise spans GIS technologies, remote sensing, spatial data analysis, and open-source software development with experience in the context of geological and environmental modeling and statistical analysis. His principal aim is to provide actionable insights on geohazards in a changing climate to decision makers in geo-environmental safety and urban planning.
 
 ## Longzhu Shen, PhD 
 
@@ -41,7 +53,7 @@ Scientific Advisor, Spatial Ecology; shen at spatial-ecology.net
 
 [Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
 
-![title](Team_longzhu2.jpeg)
+<img src="Team_longzhu2.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
 
 Longzhu is a mathematical modeller with a specialisation in quantum mechanics and statistical learning algorithms. At Spatial Ecology, he is leading the development of water chemistry analytics by integrating water quality assessment into a global hydrological model using machine learning techniques.
 
@@ -53,10 +65,12 @@ Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post
 
 ## Antonio Fonseca, PhD 
 
+Scientific Advisor, Spatial Ecology;
+
 [website](https://ahof1704.github.io/)
 [Publications](https://scholar.google.com/citations?user=G2irlNcAAAAJ&hl=en)
 
-![title](Team_antonio2.jpeg)
+<img src="Team_antonio2.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
 
 Antonio is a machine learning scientist working at the intersection of Computational Biology and Deep Learning. His expertise encompasses robotics (software and hardware development), signal processing, computational vision, behavioral neuroscience, protein design, and deep learning algorithms. He specializes in developing and applying machine learning frameworks to solve complex problems.
 
@@ -64,11 +78,4 @@ Currently, Antonio is developing machine learning frameworks to design de-novo p
 
 Antonio earned his doctorate in Neuroscience from Yale University. He also holds a bachelor’s degree in Robotics Engineering and a master’s in Microelectronics. When not focused on biological or artificial neural networks, Antonio enjoys rock climbing and hiking, often combining both activities on the same trip.
 
-## Saverio Mancino, MSc
-
-![title](Team_saverio.jpeg)
-
-Saverio PhD Candidate in Geology and Geotechnologies at the Department of Earth and Geoenvironmental Sciences at the University of Bari. He is a dedicated researcher specialising in landslide susceptibility modelling and early warning systems for large-scale transboundary programmes.
-
-His work combines advanced ML techniques with high-performance computing systems to tackle continental-scale geospatial problems. His expertise spans GIS technologies, remote sensing, spatial data analysis, and open-source software development with experience in the context of geological and environmental modeling and statistical analysis. His principal aim is to provide actionable insights on geohazards in a changing climate to decision makers in geo-environmental safety and urban planning.
 
