@@ -22,15 +22,12 @@ Giuseppe has a PhD from the University of Basilicata in Italy, an MSc in Geo-Inf
 ## Raffaele Scaringi, PhD
 
 Computer scienties and machine learning expert, Spatial Ecology;
-
 ```{image} Team_giuseppe2.jpeg
 :align: right
 :width: 150px
 ```
 [Website](https://faiail.github.io/)  
 [Publications](https://scholar.google.com/citations?user=4lwfOooAAAAJ&hl=en)
-
-<img src="Team_raffaele.jpeg" alt="Giuseppe Amatulli" style="float: right; margin-left: 20px; margin-bottom: 10px; width: 150px; border-radius: 5px;">
 
 
 Raffaele is a computer scientist and machine learning researcher specializing in Deep Learning, Computer Vision, and Knowledge Graph Representation Learning. Within data science and computational modeling courses, he focuses on devloping modern machine learning architectures, multimodal workflows, and high-performance neural network pipelines.
@@ -43,7 +40,6 @@ Raffaele is a postdoctoral researcher at the Computational Intelligence Laborato
 ## Francesco Lovergine
 
 Computer scienties and debian linux developer expert, Spatial Ecology;
-
 ```{image} Team_francesco.jpeg
 :align: right
 :width: 150px
@@ -55,11 +51,11 @@ Francesco Paolo Lovergine is a researcher at the Institute for Electromagnetic S
 
 ## Saverio Mancino, MSc
 
+Geologist and spatial modeler expert, Spatial Ecology;
 ```{image} Team_saverio.jpeg
 :align: right
 :width: 150px
 ```
-
 [Publications](https://scholar.google.com/citations?user=_ynV9MwAAAAJ&hl=it)
 
 Saverio PhD Candidate in Geology and Geotechnologies at the Department of Earth and Geoenvironmental Sciences at the University of Bari. He is a dedicated researcher specialising in landslide susceptibility modelling and early warning systems for large-scale transboundary programmes.
@@ -69,12 +65,10 @@ His work combines advanced ML techniques with high-performance computing systems
 ## Longzhu Shen, PhD 
 
 Scientific Advisor, Spatial Ecology; shen at spatial-ecology.net
-
 ```{image} Team_longzhu2.jpeg
 :align: right
 :width: 150px
 ```
-
 [Publications](https://scholar.google.com/citations?hl=en&user=sAyCqOYAAAAJ&view_op=list_works&sortby=pubdate)
 
 Longzhu is a mathematical modeller with a specialisation in quantum mechanics and statistical learning algorithms. At Spatial Ecology, he is leading the development of water chemistry analytics by integrating water quality assessment into a global hydrological model using machine learning techniques.
@@ -88,7 +82,6 @@ Longzhu has a PhD in Chemistry from Carnegie Mellon University, and did his post
 ## Antonio Fonseca, PhD 
 
 Scientific Advisor, Spatial Ecology;
-
 ```{image} Team_antonio2.jpeg
 :align: right
 :width: 150px
