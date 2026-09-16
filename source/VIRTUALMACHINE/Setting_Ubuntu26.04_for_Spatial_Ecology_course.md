@@ -285,7 +285,7 @@ We are going to use jupyter lab as main scripting editor. Here how to install
 
 Test jupyter lab
 
-    jupyter lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
+    jupyter-lab /media/sf_LVM_shared/my_SE_data/exercise/grass_hydro.ipynb
 
 Get familiar with the jupyter lab GUI.
 
@@ -293,7 +293,7 @@ Get familiar with the jupyter lab GUI.
 
 ## Settings for running jupyterlab
 
-The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via "source ~/juplab__env/bin/activate" everytime that you wanna use jupyterlab 
+The below instructions are needed to create a python virtual environment (in this case juplab_env) that need to be activate via "source ~/juplab_env/bin/activate" everytime that you wanna use jupyterlab 
 
     sudo apt install python3.8-venv
     python3 -m venv juplab_env
