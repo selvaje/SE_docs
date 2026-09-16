@@ -281,7 +281,8 @@ We are going to use jupyter lab as main scripting editor. Here how to install
     sudo apt install -y pipx
     pipx ensurepath
     source ~/.bashrc        # picks up the PATH change ensurepath just made
-    pipx install jupyterlab
+    pipx install jupyterlab   
+    pipx runpip jupyterlab install --upgrade jupyter-server  
 
 Test jupyter lab
 
