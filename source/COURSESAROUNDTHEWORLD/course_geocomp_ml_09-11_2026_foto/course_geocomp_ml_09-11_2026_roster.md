@@ -73,7 +73,7 @@ Swedish University of Agricultural Sciences, Department of Forest Ecology and Ma
 
 (7) **Andrea Giuseppe Vitali - Italy**	
 
-Rome Tor Vergata University, Italy 
+Rome Tor Vergata University, Italy  
 Basque Country University, Spain
 
 ![](07_andrea_giuseppe_vitali.jpg)
@@ -82,7 +82,7 @@ Basque Country University, Spain
 
 (8) **Leanda	Vedder - Austria**	
 
-University of Utrecht - the Netherlands
+University of Utrecht, the Netherlands
 
 ![](08_leanda_vedder.jpg)
 
@@ -90,7 +90,7 @@ University of Utrecht - the Netherlands
 
 (9) **Hsing-Hsuan Chen - China** 	
 
-Utrecht University
+University of Utrecht, the Netherlands
 
 ![](09_hsing-hsuan_chen.jpg)
 
@@ -99,7 +99,7 @@ Utrecht University
 (10) **Giusy	Santoro - Italy**
 
 Dipartimento di Scienze della Terra e Geoambientali
-Università degli Studi di Bari (Italy)
+Università degli Studi di Bari, Italy
 
 ![](10_giusy_santoro.jpg)
 

@@ -131,10 +131,10 @@ Sometime the Virtual Box guest edition is not installed correctly so you have to
     
     # 2. Mount the CD drive (VirtualBox places the ISO here when you click "Insert Guest Additions CD Image")
     sudo mkdir -p /media/$USER/VBox_GAs
-    sudo mount /dev/cdrom /media/user/VBox_GAs
+    sudo mount /dev/cdrom /media/$USER/VBox_GAs
     
     # 3. Execute the installer
-    cd /media/user/VBox_GAs
+    cd /media/$USER/VBox_GAs
     sudo ./VBoxLinuxAdditions.run
     
     # 4. Reboot your system to apply changes
