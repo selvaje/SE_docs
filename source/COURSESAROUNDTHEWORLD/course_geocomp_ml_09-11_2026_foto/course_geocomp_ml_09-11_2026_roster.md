@@ -21,7 +21,7 @@ orphan: true
 #### Student roster ####
 
 
-(1) **Areeba	Tariq - ????**	
+(1) **Areeba	Tariq - Pakistan**	
 
 University of Basilicata, Potenza, Italy 
 
@@ -46,7 +46,7 @@ Yale Center for Natural Carbon Capture, USA
 
 ---
 
-(4) **Abdul Hannan**
+(4) **Abdul Hannan - Pakistan**
  
 Università degli Studi della Basilicata, Italy
 
@@ -54,7 +54,7 @@ Università degli Studi della Basilicata, Italy
 
 ---
 
-(5) **Sebastián	Echeverría**	
+(5) **Sebastián	Echeverría - Chile**	
 
 Division on Impacts on Agriculture, Forests and Ecosystem Services  
 Euro-Mediterranean Centre on Climate Change 
@@ -63,7 +63,7 @@ Euro-Mediterranean Centre on Climate Change
 
 ---
 
-(6) **Johannes Turesson**
+(6) **Johannes Turesson - Sweden**
 
 Swedish University of Agricultural Sciences, Department of Forest Ecology and Management, Sweden. 
 
@@ -88,7 +88,7 @@ University of Utrecht - the Netherlands
 
 ---
 
-(9) **Hsing-Hsuan Chen** 	
+(9) **Hsing-Hsuan Chen - China** 	
 
 Utrecht University
 
@@ -113,7 +113,7 @@ PhD student at Memorial university, Canada
 
 ---
 
-(12) **Eva	Sevillano Marco** 
+(12) **Eva Sevillano Marco - Spain** 
 
 University of Luxembourg - LCSES
 
@@ -121,14 +121,14 @@ University of Luxembourg - LCSES
 
 ---
 
-(13) **My Strömgren**	
+(13) **My Strömgren - Sweden**	
 
 Swedish University of Agricultural Sciences, Sweden
 
 ![](13_my_strömgren.jpg)
 
 ---
-(14) **Francesco	Ottaviani**	
+(14) **Francesco	Ottaviani - Italy**	
 
 Università degli Studi di Urbino
 
@@ -151,7 +151,7 @@ Methodologies for Environmental Analysis (IMAA), National Research Council of It
 
 ---
 
-(17) **Annabell	Macphee** 
+(17) **Annabell	Macphee - Germany** 
 
 Independent contractor, Germany
 
