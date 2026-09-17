@@ -132,7 +132,7 @@ Swedish University of Agricultural Sciences, Sweden
 
 Università degli Studi di Urbino
 
-![](14_francesco_0ttaviani.jpg)
+![](14_francesco_ottaviani.jpg)
 
 ---
 (15) **Katarina	Belobradova** 
