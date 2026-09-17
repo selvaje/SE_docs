@@ -59,7 +59,7 @@ Università degli Studi della Basilicata, Italy
 Division on Impacts on Agriculture, Forests and Ecosystem Services  
 Euro-Mediterranean Centre on Climate Change 
 
-![](05_sebastian_echeverria3.jpg)
+![](05_sebastian_echeverria2.jpg)
 
 ---
 
@@ -154,6 +154,8 @@ Methodologies for Environmental Analysis (IMAA), National Research Council of It
 (17) **Annabell	Macphee - Germany** 
 
 Independent contractor, Germany
+
+Senckenberg Biodiversity and Climate Research Centre, Frankfurt, Germany
 
 ![](17_annabell_macphee.jpg)
 
