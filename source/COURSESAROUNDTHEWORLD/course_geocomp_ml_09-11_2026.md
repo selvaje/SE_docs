@@ -214,6 +214,7 @@ You can perform:
 - table re-organization    
 - data filtering 
 
+<!---
 ---
 
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
@@ -224,7 +225,7 @@ You can perform:
     ##### create output dir 
     mkdir -p output1   output2 output3 
 
---- 
+--->
 
 ## Lecture 4: Thursday, 24 September, 2026.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
