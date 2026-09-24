@@ -230,9 +230,8 @@ You can perform:
 ## Lecture 4: Thursday, 24 September, 2026.
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().  
-  
-Transcript summary lecture can found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/7VNOUccasamaZEDkjUTQh5D3bPu5O8krJ2DoHmC0Oc0aqo7SRWEHUOdbTTM9_wWa.z2zTGPnTwK4zagCN).  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect04_GML_24092026.pdf)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
