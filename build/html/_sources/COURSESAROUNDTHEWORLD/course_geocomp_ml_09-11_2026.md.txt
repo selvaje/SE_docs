@@ -123,7 +123,7 @@ This session is dedicate to the students that encounter problems for the OSGeoLi
 * The OSGeoLive 16.0 Virtual Machine internet connection is working fine - open a browser and search for something. 
 * The OSGeoLive 16.0 Virtual Machine screen is wide and you can expand and switch back to your native OS without issues.
 * The shared folder has been correctly installed. Check if the /media/sf_LVM_shared is visible. 
-* The /home/user/SE_data/ has been download and that the /media/sf_LVM_shared/my_SE_data is visible and you can see the sub-folder.
+* The $USER/SE_data/ has been download and that the /media/sf_LVM_shared/my_SE_data is visible and you can see the sub-folder.
 * The OSGeoLive 16.0 Virtual Machine Keyboard Layout has been set in accordance to your keyboard, and that the letter that you type correspond in what you see. 
 
 If one or more of these features are not working properly show up in the Catch-up session. 
@@ -218,7 +218,7 @@ You can perform:
 ---
 
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
-    cp /home/user/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
+    cp $USER/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
 
 ---
 
