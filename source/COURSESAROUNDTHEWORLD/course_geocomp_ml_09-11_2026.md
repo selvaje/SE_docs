@@ -256,6 +256,36 @@ Watch this lecture to get more insight on the different data type
 
 These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.
 
+---
+
+
+Assignment:  
+use this code   
+
+    # Create the lat long file
+    echo 32.5 2.5 > geodata/LST/x_y.txt
+    echo 31.1 2.1 >> geodata/LST/x_y.txt
+    # looping trough the images
+    for file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif; do
+      gdallocationinfo -valonly -geoloc $file < geodata/LST/x_y.txt
+      echo ""
+    done
+
+and modify it in such a way you get a table like this
+
+32.5 2.5 37.4022827148438 40.3694458007812 38.5549926757812 32.7738952636719  ..... ......  
+31.1 2.1  35.0345764160156 37.824951171875  36.6663208007812  32.6803283691406 ..... ......  
+
+
+    cd $HOME/SE_data
+    git pull
+    rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
+    cd /media/sf_LVM_shared/my_SE_data
+    gedit  /home/$USER/SE_data/exercise/assignment_gdallocationinfo.sh &
+
+---
+
+
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
 
 ## Lecture 5: Tuesday, 29 September, 2026.  

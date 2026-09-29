@@ -584,6 +584,30 @@ Transcript summary lecture can found <a class="reference external" href="http://
 <a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20220414_Floating_point.pdf">Numerical System Decimal vs Binary</a>. <a class="reference external" href="https://youtu.be/kBRW2Z5jX8M?t=5328">Recorded lecture: 1:28:45 - 1:48:00</a></p>
 <hr class="docutils" />
 <p>These assignments do not need to be delivered, nonetheless we suggest doing it in order to get familiar with gdal_calc.py and with the issues of selecting the correct datatype and gdal_calc formula.</p>
+<hr class="docutils" />
+<p>Assignment:<br />
+use this code</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># Create the lat long file
+echo 32.5 2.5 &gt; geodata/LST/x_y.txt
+echo 31.1 2.1 &gt;&gt; geodata/LST/x_y.txt
+# looping trough the images
+for file in geodata/LST/LST_MOYDmax_month?.tif geodata/LST/LST_MOYDmax_month??.tif; do
+  gdallocationinfo -valonly -geoloc $file &lt; geodata/LST/x_y.txt
+  echo &quot;&quot;
+done
+</pre></div>
+</div>
+<p>and modify it in such a way you get a table like this</p>
+<p>32.5 2.5 37.4022827148438 40.3694458007812 38.5549926757812 32.7738952636719  ….. ……<br />
+31.1 2.1  35.0345764160156 37.824951171875  36.6663208007812  32.6803283691406 ….. ……</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd $HOME/SE_data
+git pull
+rsync -hvrPt --ignore-existing $HOME/SE_data/* /media/sf_LVM_shared/my_SE_data
+cd /media/sf_LVM_shared/my_SE_data
+gedit  /home/$USER/SE_data/exercise/assignment_gdallocationinfo.sh &amp;
+</pre></div>
+</div>
+<hr class="docutils" />
 <ul class="simple">
 <li><p><a class="reference external" href="http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html">Data type in GTiff</a></p></li>
 </ul>
