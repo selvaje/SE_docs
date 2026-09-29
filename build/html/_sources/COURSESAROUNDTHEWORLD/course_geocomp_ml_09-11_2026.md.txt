@@ -258,7 +258,6 @@ These assignments do not need to be delivered, nonetheless we suggest doing it i
 
 ---
 
-
 Assignment:  
 use this code   
 
@@ -273,8 +272,8 @@ use this code
 
 and modify it in such a way you get a table like this
 
-32.5 2.5 37.4022827148438 40.3694458007812 38.5549926757812 32.7738952636719  ..... ......  
-31.1 2.1  35.0345764160156 37.824951171875  36.6663208007812  32.6803283691406 ..... ......  
+32.5 2.5 37.4022827148438 40.3694458007812 38.5549926757812 ... ...  
+31.1 2.1  35.0345764160156 37.824951171875  36.6663208007812 ... ...  
 
 
     cd $HOME/SE_data
@@ -284,7 +283,6 @@ and modify it in such a way you get a table like this
     gedit  /home/$USER/SE_data/exercise/assignment_gdallocationinfo.sh &
 
 ---
-
 
 * [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
 
