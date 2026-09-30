@@ -289,9 +289,8 @@ and modify it in such a way you get a table like this
 ## Lecture 5: Tuesday, 29 September, 2026.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
 
-Recorded lecture can be found [here]().
-
-Transcript summary lecture can found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/0dqv5MVGgnpLB0sVCVYNP2kLqSDtKqyL9nd1VGb1AMFmcbZvpUwq1EliceNPTqwR.whHjGeoyExggizsZ).  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect05_GML_29092026.pdf)
 
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
