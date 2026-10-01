@@ -324,10 +324,8 @@ Below, some suggestions of possible operations:
 ## Lecture 6: Thursday, 1 October, 2026.  
 ### Manipulate geographical data with PKTOOLS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]()
-
-
-Transcript summary lecture can found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/1uHlZ7iusOLEm7DZ7RTuemNk43z5o9JncjQiuxDrgjObkxZndLOAiqQ1SDX3KnH7.yBu7F-pPyolYy0_2)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect06_GML_01102026.pdf)  
 
 This section introduces data manipulation for geospatial data processing on the command line using [PKTOOLS](http://pktools.nongnu.org/html/index.html).
 
