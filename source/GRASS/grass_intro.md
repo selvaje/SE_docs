@@ -8,8 +8,8 @@ Considering that GRASS can not working properly under /home/osboxes/my_SE_data/ 
 
     
     
-    mkdir -p /home/osboxes/my_SE_data/exercise
-    cp -r /home/osboxes/SE_data/exercise/grassdb /home/osboxes/my_SE_data/exercise
+    mkdir -p /$HOME/my_SE_data/exercise
+    cp -r /$HOME/SE_data/exercise/grassdb /$HOME/my_SE_data/exercise
 
 ## GRASS
 **Starting GRASS**
@@ -26,16 +26,16 @@ Every GRASS project has a predefined data structure:
 
 There are several two ways to use and open GRASS: 
 
-**Start GRASS 8.3.2**
+**Start GRASS 8.4.2**
 
     grass
 
-By defoult GRASS 8.3.2 will start directly with  LOCATION_NAME=world_latlong_wgs84    
+By defoult GRASS 8.4.2 will start directly with  LOCATION_NAME=world_latlong_wgs84    
 MAPSET=PERMANENT
 
 **Start GRASS by command line in a specific location/mapset **
 
-    grass --text /home/osboxes/my_SE_data/exercise/grassdb/europe/PERMANENT/
+    grass --text /$HOME/my_SE_data/exercise/grassdb/europe/PERMANENT/
 
 Once you are running GRASS through the bash shell terminal you can always start the graphical user interface with:
 
@@ -58,7 +58,7 @@ The g.gisenv command informs you of your current GRASS environment settings
 
 If you started GRASS correctly you should visualize the following lines on your terminal
 
-GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
+GISDBASE=/$HOME/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe  
 GRASS_GUI=wxpython  
 GUI=text  
@@ -86,7 +86,7 @@ command.
 
 It is a good working habit within GRASS to set bash shell working directory the same as your GRASS LOCATION folder.
 
-    cd /home/osboxes/my_SE_data/exercise/grassdb
+    cd /$HOME/my_SE_data/exercise/grassdb
 
 On the terminal you will no longer see
 
@@ -114,7 +114,7 @@ GRASS europe/PCEM:grassdb >
 
     g.gisenv  
 
-GISDBASE=/home/osboxes/my_SE_data/exercise/grassdb
+GISDBASE=/$HOME/my_SE_data/exercise/grassdb
 LOCATION_NAME=europe
 MAPSET=PCEM
 GRASS_GUI=wxpython
@@ -166,7 +166,7 @@ You can modify your default g. region with a -s flag within the PERMANENT direct
 Now we will define a new study area for the Scandinavia region.
 
     g.region -p
-    g.region n=6015390 e=5676400 s=3303955 w=3876180 res=1000 save=scandinavia --overwrite
+    g.region n=6015390 e=5676400 s=3303955 w=3876180 res=1000 
     g.region -p
 
 You will visualize the current and newest region settings saved as scandinavia.  
