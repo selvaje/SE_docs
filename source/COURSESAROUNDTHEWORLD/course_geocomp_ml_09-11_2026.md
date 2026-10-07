@@ -352,6 +352,7 @@ Before the ... of April, ...., watch the "Manipulate Landsat data with GDAL and 
 
 Recorded of the QA can be found [here]().
 
+
 This section introduces a real example of satellite data [GLAD ARD](https://glad.umd.edu/ard/home) processing using [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html) and [PKTOOLS](http://pktools.nongnu.org/html/index.html) in a Bash environment.
 
 * [Spectral Temporal Information for Missing Data Reconstruction (STIMDR) of Landsat Reflectance Time Series](https://www.mdpi.com/2072-4292/14/1/172)
@@ -381,9 +382,8 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 7: Tuesday, 6 October, 2026.
 ### Introduction to GRASS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]()
-
-Transcript summary lecture can found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Tsf4rYYNM53DbsFbp0Yde-iOSkYF3-CFMvACmlTKn1OuD0WqXrIoeuGOcaDJPhtn.rL807WyMJJ3fj8mU)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect07_GML_06102026.pdf)
 
 
    * [GRASS introduction](http://spatial-ecology.net/docs/source/lectures/lect_20240521_grass_intro.pdf)
