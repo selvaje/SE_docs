@@ -382,7 +382,7 @@ This section introduces a real example of satellite data [GLAD ARD](https://glad
 ## Lecture 7: Tuesday, 6 October, 2026.
 ### Introduction to GRASS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Tsf4rYYNM53DbsFbp0Yde-iOSkYF3-CFMvACmlTKn1OuD0WqXrIoeuGOcaDJPhtn.rL807WyMJJ3fj8mU)
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Tsf4rYYNM53DbsFbp0Yde-iOSkYF3-CFMvACmlTKn1OuD0WqXrIoeuGOcaDJPhtn.rL807WyMJJ3fj8mU)  
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect07_GML_06102026.pdf)
 
 
@@ -405,7 +405,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 Recorded lecture can be found [here]().
 
-   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro_osboxes.html)
+   * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
 		* Prepare GRASS for hydrography extraction
 		* Inputs dataset
