@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using GRASS for stream-network extraction and basins delineation &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+  <title>Using GRASS for stream-network extraction and basins delineation - osboxes &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
@@ -29,7 +29,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using GRASS for stream-network extraction and basins delineation - osboxes" href="grass_hydro_osboxes.html" />
+    <link rel="next" title="Using GRASS for stream-network extraction and basins delineation in Colab" href="grass_hydro_colab.html" />
     <link rel="prev" title="Start a new GRASS project" href="grass_newproject.html" /> 
 </head>
 
@@ -134,13 +134,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="grass_intro.html">GRASS Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grass_newproject.html">Start a new GRASS project</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using GRASS for stream-network extraction and basins delineation - osboxes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Theoretical-background">Theoretical background</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Methodology">Methodology</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Acknowledgments">Acknowledgments</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="grass_hydro_osboxes.html">Using GRASS for stream-network extraction and basins delineation - osboxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
@@ -236,7 +235,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
-      <li class="breadcrumb-item active">Using GRASS for stream-network extraction and basins delineation</li>
+      <li class="breadcrumb-item active">Using GRASS for stream-network extraction and basins delineation - osboxes</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/GRASS/grass_hydro.ipynb.txt" rel="nofollow"> View page source</a>
       </li>
@@ -246,14 +245,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="Using-GRASS-for-stream-network-extraction-and-basins-delineation">
-<h1>Using GRASS for stream-network extraction and basins delineation<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation" title="Link to this heading"></a></h1>
+  <section id="Using-GRASS-for-stream-network-extraction-and-basins-delineation---osboxes">
+<h1>Using GRASS for stream-network extraction and basins delineation - osboxes<a class="headerlink" href="#Using-GRASS-for-stream-network-extraction-and-basins-delineation---osboxes" title="Link to this heading"></a></h1>
 <p>Methodological procedure described in:</p>
 <p><a class="reference external" href="https://essd.copernicus.org/articles/14/4525/2022/essd-14-4525-2022.html">Amatulli, Giuseppe, et al. “Hydrography90m: A new high-resolution global hydrographic dataset.” Earth System Science Data Discussions 2022 (2022): 1-43.</a></p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p /home/user/my_SE_data/exercise
-cd /home/user/my_SE_data/exercise
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p /$HOME/my_SE_data/exercise
+cd /$HOME/my_SE_data/exercise
 wget https://raw.githubusercontent.com/selvaje/SE_docs/master/source/GRASS/grass_hydro.ipynb
-jupyter lab /home/user/my_SE_data/exercise/grass_hydro.ipynb
+jupyter-lab /$HOME/my_SE_data/exercise/grass_hydro.ipynb
 </pre></div>
 </div>
 <section id="Theoretical-background">
@@ -281,33 +280,25 @@ proceed in several stages: determining flow directions, resolving depressions an
 </ul>
 <p>Lectures: <a class="reference external" href="http://spatial-ecology.net/docs/source/lectures/lect_20210518_flow_metrics.pdf">Flow Metrics</a></p>
 <p><strong>Prepare GRASS for hydrography extraction</strong></p>
-<p>Considering that GRASS can not working properly under <em>/media/sf_LVM_shared/my_SE_data/</em> therefore we create a working copy of the <em>SE_data</em> under <em>/home/user/my_SE_data/</em></p>
-<p>Follow the code lines in the box below and in case g.extension is not working, download all git add-on repository and then install the extension:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/OSGeo/grass-addons.git grass_addons
-</pre></div>
-</div>
-<p>then inside GRASS install the extension</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>g.extension extension=r.stream.basins  url=/home/user/grass_addons/src/raster/r.stream.basins/
-</pre></div>
-</div>
-<p>If you get “svn error”, install first the subversion</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install subversion
+<p>Considering that GRASS can not working properly under <em>/media/sf_LVM_shared/my_SE_data/</em> therefore we create a working copy of the <em>SE_data</em> under <em>/home/osboxes/my_SE_data/</em></p>
+<p>Follow the code lines in the box below and use the g.extension to install the add-on extension:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>g.extension extension=r.stream.basins
 </pre></div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
-mkdir<span class="w"> </span>-p<span class="w"> </span>/home/user/my_SE_data/exercise
-cp<span class="w"> </span>-r<span class="w"> </span>/home/user/SE_data/exercise/grassdb<span class="w"> </span>/home/user/my_SE_data/exercise
-<span class="nb">cd</span><span class="w"> </span>/home/user/my_SE_data/exercise
+mkdir<span class="w"> </span>-p<span class="w"> </span>/<span class="nv">$HOME</span>/my_SE_data/exercise
+cp<span class="w"> </span>-r<span class="w"> </span>/<span class="nv">$HOME</span>/SE_data/exercise/grassdb<span class="w"> </span>/<span class="nv">$HOME</span>/my_SE_data/exercise
+<span class="nb">cd</span><span class="w"> </span>/<span class="nv">$HOME</span>/my_SE_data/exercise
 
 <span class="c1"># install the GRASS add-on r.stream.basins</span>
 
 grass<span class="w"> </span>--text<span class="w"> </span>grassdb/europe/PERMANENT/<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
-<span class="s">g.extension extension=r.stream.basins url=/home/user/grass_addons/src/raster/r.stream.basins</span>
+<span class="s">g.extension extension=r.stream.basins</span>
 <span class="s">EOF</span>
 </pre></div>
 </div>
@@ -318,7 +309,6 @@ grass<span class="w"> </span>--text<span class="w"> </span>grassdb/europe/PERMAN
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 Starting GRASS GIS...
-Cleaning up temporary files...
 
           __________  ___   __________    _______________
          / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
@@ -326,7 +316,7 @@ Cleaning up temporary files...
        / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
        \____/_/ |_/_/  |_/____/____/   \____/___//____/
 
-Welcome to GRASS GIS 8.2.1
+Welcome to GRASS GIS 8.4.2
 GRASS GIS homepage:                      https://grass.osgeo.org
 This version running through:            Bash Shell (/bin/bash)
 Help is available with the command:      g.manual -i
@@ -335,17 +325,8 @@ See citation options with:               g.version -x
 Start the GUI with:                      g.gui wxpython
 When ready to quit enter:                exit
 
-WARNING: Extension &lt;r.stream.basins&gt; already installed. Re-installing...
-Compiling...
-Installing...
-Updating extensions metadata file...
-Updating extension modules metadata file...
-Installation of &lt;r.stream.basins&gt; successfully finished
-Cleaning up temporary files...
-Done.
-
-Goodbye from GRASS GIS
-
+Fetching &lt;r.stream.basins&gt; from &lt;https://github.com/OSGeo/grass-addons/&gt;
+(be patient)...
 </pre></div></div>
 </div>
 <p><strong>Inputs dataset</strong></p>
@@ -358,32 +339,61 @@ Goodbye from GRASS GIS
 <li><p>A shapefile reporting the 3 tiles</p></li>
 </ul>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
 </pre></div>
 </div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">rasterio.plot</span><span class="w"> </span><span class="kn">import</span> <span class="n">show</span>
-<span class="c1"># digital elevation model</span>
-<span class="n">msk</span> <span class="o">=</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/media/sf_LVM_shared/my_SE_data/exercise/geodata/mask/msk_1km.tif&quot;</span><span class="p">)</span>
-<span class="n">show</span><span class="p">(</span><span class="n">msk</span><span class="p">)</span>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span><span class="w"> </span>gdal_translate<span class="w"> </span>-r<span class="w"> </span>near<span class="w"> </span>-tr<span class="w">  </span><span class="m">0</span>.08333333333333<span class="w"> </span>-0.08333333333333<span class="w">   </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/mask/msk_1km.tif<span class="w"> </span>/tmp/msk_1km.tif
 </pre></div>
-</div>
-</div>
-<div class="nboutput docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_9_0.png" src="../_images/GRASS_grass_hydro_9_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
-</pre></div>
+<div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;AxesSubplot:&gt;
+Input file size is 43200, 17400
+0...10...20...30...40...50...60...70...80...90...100 - done.
 </pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">rasterio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="c1"># 1. Open the file</span>
+<span class="k">with</span> <span class="n">rasterio</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;/tmp/msk_1km.tif&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">src</span><span class="p">:</span>
+    <span class="c1"># Read the data without masking the zeros</span>
+    <span class="c1"># using overview_level to keep RAM tiny</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">src</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">masked</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Grab the geographical coordinates for the axes</span>
+    <span class="n">extent</span> <span class="o">=</span> <span class="p">[</span><span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">left</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">right</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">bottom</span><span class="p">,</span> <span class="n">src</span><span class="o">.</span><span class="n">bounds</span><span class="o">.</span><span class="n">top</span><span class="p">]</span>
+
+<span class="c1"># 2. Plot it with boosted contrast</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Option A: Force the color limits to tightly span 0 to 1</span>
+<span class="c1"># This makes 0 = pure black and 1 = pure white</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">extent</span><span class="o">=</span><span class="n">extent</span><span class="p">)</span>
+
+<span class="c1"># Option B: Alternatively, use a vibrant colormap if you prefer color over grayscale:</span>
+<span class="c1"># plt.imshow(data, cmap=&#39;viridis&#39;, vmin=0, vmax=1, extent=extent)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Longitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Latitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;World Mask (High Contrast View)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/GRASS_grass_hydro_10_0.png" src="../_images/GRASS_grass_hydro_10_0.png" />
+</div>
 </div>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -399,7 +409,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_10_0.png" src="../_images/GRASS_grass_hydro_10_0.png" />
+<img alt="../_images/GRASS_grass_hydro_11_0.png" src="../_images/GRASS_grass_hydro_11_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -408,7 +418,7 @@ Goodbye from GRASS GIS
 </div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
-&lt;AxesSubplot:&gt;
+&lt;Axes: &gt;
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -425,7 +435,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_11_0.png" src="../_images/GRASS_grass_hydro_11_0.png" />
+<img alt="../_images/GRASS_grass_hydro_12_0.png" src="../_images/GRASS_grass_hydro_12_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -480,7 +490,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_13_2.png" src="../_images/GRASS_grass_hydro_13_2.png" />
+<img alt="../_images/GRASS_grass_hydro_14_2.png" src="../_images/GRASS_grass_hydro_14_2.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -564,7 +574,7 @@ Goodbye from GRASS GIS
 <p><strong>First run: compute MFD flow accumulation for each tile</strong></p>
 <p>The final aim of this script session is to produce a seamless flowaccomulation for the full South America.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
@@ -573,7 +583,7 @@ Goodbye from GRASS GIS
 
 <span class="c1"># use the --tmp-location option to store a temporal location in the /tmp folder</span>
 
-grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w">  </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+grass<span class="w"> </span>--text<span class="w"> </span>--tmp-project<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/SA_elevation_mn_GMTED2010_mn_msk.tif<span class="w">  </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">g.gisenv set=&quot;GRASS_VERBOSE=-1&quot;,&quot;DEBUG=0&quot;</span>
 
@@ -695,7 +705,7 @@ grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span c
 <span class="s">r.grow  input=lbasin_flow_clean  output=lbasin_flow_clean_grow  radius=4  --o --q</span>
 <span class="s">r.mask  raster=lbasin_flow_clean_grow   --o --q</span>
 
-<span class="s">r.out.gdal --o -f -c -m createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;  nodata=-9999999  type=Float32 format=GTiff input=flow /media/sf_LVM_shared/my_SE_data/exercise/output=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_${tile}.tif</span>
+<span class="s">r.out.gdal --o -f -c -m createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot;  nodata=-9999999  type=Float32 format=GTiff input=flow output=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_${tile}.tif</span>
 
 <span class="s">gdal_edit.py -a_ullr  $wS $nS $eS $sS  /media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_${tile}.tif</span>
 <span class="s">gdal_edit.py -tr 0.00833333333333333333333333333333333 -0.00833333333333333333333333333333333  /media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_${tile}.tif</span>
@@ -705,6 +715,38 @@ grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span c
 <span class="s">EOF</span>
 <br/></pre></div>
 </div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Option --tmp-location is deprecated, use --tmp-project instead
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.4.2
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+</pre></div></div>
 </div>
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
@@ -736,6 +778,30 @@ cells=21162240
 ############# compute the flow accumulation using MFD for tile 1 ##############
 ############# extract stream ##################
 ############# delineate basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp1_1.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ###### create a small zone flow binary for later use ###########
 ##### create a smaller box ########
 projection=3
@@ -754,8 +820,79 @@ cells=18627840
 ######## top stripe   ########
 ######## bottom stripe ########
 ######## remove incompleate basins  ########
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+
+
+
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############  export basin only for visual inspection  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp2_1.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############ output the flow accumulation  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: MASK already exists and will be overwritten
+WARNING: MASK already exists and will be overwritten
+WARNING: Precision loss: Float32 can not preserve the DCELL precision of
+         raster &lt;flow&gt;. This can be avoided by using Float64
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;Float32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_1.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 projection=3
 zone=0
 n=1
@@ -770,6 +907,30 @@ cells=22070880
 ############# compute the flow accumulation using MFD for tile 2 ##############
 ############# extract stream ##################
 ############# delineate basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp1_2.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ###### create a small zone flow binary for later use ###########
 ##### create a smaller box ########
 projection=3
@@ -788,8 +949,79 @@ cells=17555040
 ######## top stripe   ########
 ######## bottom stripe ########
 ######## remove incompleate basins  ########
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+
+
+
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############  export basin only for visual inspection  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp2_2.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############ output the flow accumulation  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: MASK already exists and will be overwritten
+WARNING: MASK already exists and will be overwritten
+WARNING: Precision loss: Float32 can not preserve the DCELL precision of
+         raster &lt;flow&gt;. This can be avoided by using Float64
+WARNING: Forcing raster export
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;Float32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_2.tif&gt; created.
+WARNING: MASK already exists and will be overwritten
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 projection=3
 zone=0
 n=12.7
@@ -804,6 +1036,30 @@ cells=21427200
 ############# compute the flow accumulation using MFD for tile 3 ##############
 ############# extract stream ##################
 ############# delineate basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp1_3.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ###### create a small zone flow binary for later use ###########
 ##### create a smaller box ########
 projection=3
@@ -822,7 +1078,50 @@ cells=18278784
 ######## top stripe   ########
 ######## bottom stripe ########
 ######## remove incompleate basins  ########
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+
+
+
+
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############  export basin only for visual inspection  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: MASK already exists and will be overwritten
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasinTmp2_3.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ############ output the flow accumulation  ############
 </pre></div></div>
 </div>
@@ -831,46 +1130,6 @@ cells=18278784
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting GRASS GIS...
-Creating new GRASS GIS location &lt;tmploc&gt;...
-Cleaning up temporary files...
-
-          __________  ___   __________    _______________
-         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
-        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
-       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
-       \____/_/ |_/_/  |_/____/____/   \____/___//____/
-
-Welcome to GRASS GIS 8.2.1
-GRASS GIS homepage:                      https://grass.osgeo.org
-This version running through:            Bash Shell (/bin/bash)
-Help is available with the command:      g.manual -i
-See the licence terms with:              g.version -c
-See citation options with:               g.version -x
-Start the GUI with:                      g.gui wxpython
-When ready to quit enter:                exit
-
-WARNING: Color table of raster map &lt;stream&gt; not found
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp1_1.tif&gt; created.
-
-
-
-
-
-WARNING: MASK already exists and will be overwritten
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp2_1.tif&gt; created.
 WARNING: MASK already exists and will be overwritten
 WARNING: MASK already exists and will be overwritten
 WARNING: Precision loss: Float32 can not preserve the DCELL precision of
@@ -882,76 +1141,8 @@ Using GDAL data type &lt;Float32&gt;
 Exporting raster data to GTiff format...
 WARNING: Too many values, color table cut to 65535 entries
 
-r.out.gdal complete. File &lt;geodata/dem/flow_1.tif&gt; created.
-WARNING: MASK already exists and will be overwritten
-WARNING: Color table of raster map &lt;stream&gt; not found
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp1_2.tif&gt; created.
-
-
-
-
-
-WARNING: MASK already exists and will be overwritten
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp2_2.tif&gt; created.
-WARNING: MASK already exists and will be overwritten
-WARNING: MASK already exists and will be overwritten
-WARNING: Precision loss: Float32 can not preserve the DCELL precision of
-         raster &lt;flow&gt;. This can be avoided by using Float64
-WARNING: Forcing raster export
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;Float32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/flow_2.tif&gt; created.
-WARNING: MASK already exists and will be overwritten
-WARNING: Color table of raster map &lt;stream&gt; not found
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp1_3.tif&gt; created.
-
-
-
-
-
-WARNING: MASK already exists and will be overwritten
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;UInt32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/lbasinTmp2_3.tif&gt; created.
-WARNING: MASK already exists and will be overwritten
-WARNING: MASK already exists and will be overwritten
-WARNING: Precision loss: Float32 can not preserve the DCELL precision of
-         raster &lt;flow&gt;. This can be avoided by using Float64
-WARNING: Forcing raster export
-Checking GDAL data type and nodata value...
-
-Using GDAL data type &lt;Float32&gt;
-Exporting raster data to GTiff format...
-WARNING: Too many values, color table cut to 65535 entries
-
-r.out.gdal complete. File &lt;geodata/dem/flow_3.tif&gt; created.
-Cleaning up temporary files...
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_3.tif&gt; created.
 Done.
 
 Goodbye from GRASS GIS
@@ -973,7 +1164,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_18_0.png" src="../_images/GRASS_grass_hydro_18_0.png" />
+<img alt="../_images/GRASS_grass_hydro_19_0.png" src="../_images/GRASS_grass_hydro_19_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1000,7 +1191,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_20_0.png" src="../_images/GRASS_grass_hydro_20_0.png" />
+<img alt="../_images/GRASS_grass_hydro_21_0.png" src="../_images/GRASS_grass_hydro_21_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1028,7 +1219,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_21_0.png" src="../_images/GRASS_grass_hydro_21_0.png" />
+<img alt="../_images/GRASS_grass_hydro_22_0.png" src="../_images/GRASS_grass_hydro_22_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1045,7 +1236,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_22_0.png" src="../_images/GRASS_grass_hydro_22_0.png" />
+<img alt="../_images/GRASS_grass_hydro_23_0.png" src="../_images/GRASS_grass_hydro_23_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1072,7 +1263,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_23_0.png" src="../_images/GRASS_grass_hydro_23_0.png" />
+<img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1089,7 +1280,7 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_24_0.png" src="../_images/GRASS_grass_hydro_24_0.png" />
+<img alt="../_images/GRASS_grass_hydro_25_0.png" src="../_images/GRASS_grass_hydro_25_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1116,12 +1307,12 @@ Goodbye from GRASS GIS
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_25_0.png" src="../_images/GRASS_grass_hydro_25_0.png" />
+<img alt="../_images/GRASS_grass_hydro_26_0.png" src="../_images/GRASS_grass_hydro_26_0.png" />
 </div>
 </div>
 <p><strong>Merge the flow accumulation tiles</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
@@ -1137,7 +1328,7 @@ gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv
 <div class="highlight"><pre>
 0...10...20...30...40...50...60...70...80...90...100 - done.
 Input file size is 5616, 8244
-0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done in 00:00:05.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1155,18 +1346,18 @@ Input file size is 5616, 8244
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_28_0.png" src="../_images/GRASS_grass_hydro_28_0.png" />
+<img alt="../_images/GRASS_grass_hydro_29_0.png" src="../_images/GRASS_grass_hydro_29_0.png" />
 </div>
 </div>
 <p><strong>Second run: copute stream and basin using the seamless South America Flow Accumulation</strong></p>
 <p>We repeat the same computation as before, but we use the seamless South America Flow Accumulation as the base. The final output will include basins and the stream network for each tile.</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
 
-grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_all.tif<span class="w">   </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+grass<span class="w"> </span>--text<span class="w"> </span>--tmp-project<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_all.tif<span class="w">   </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
 
 <span class="s">## import the layers</span>
 <span class="s">r.external input=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/flow_all.tif                         output=flow --o --q # flow accumulation</span>
@@ -1198,7 +1389,7 @@ grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span c
 <span class="s">echo &quot;############# delineate basin and sub-basin  ##################&quot;</span>
 <span class="s">r.stream.basins -l  stream_rast=stream direction=dir_rs   basins=lbasin  memory=2000 --o --q</span>
 <span class="s">r.colors -r stream --q; r.colors -r lbasin --q ; r.colors -r flow --q</span>
-
+<span class="s">r.out.gdal --o -c -m  createopt=&quot;COMPRESS=DEFLATE,ZLEVEL=9&quot; type=UInt32 format=GTiff nodata=0 input=lbasin  output=/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasin_raw_$tile.tif</span>
 <span class="s">echo &quot;###### create a small zone flow binary for later use ###########&quot;</span>
 <span class="s">r.mapcalc &quot; small_zone_flow =   if( !isnull(flow) &amp;&amp; isnull(lbasin) , 1 , null()) &quot; --o --q</span>
 
@@ -1278,6 +1469,30 @@ grass<span class="w"> </span>--text<span class="w"> </span>--tmp-location<span c
 <div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+Starting GRASS GIS...
+
+          __________  ___   __________    _______________
+         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
+        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
+       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
+       \____/_/ |_/_/  |_/____/____/   \____/___//____/
+
+Welcome to GRASS GIS 8.4.2
+GRASS GIS homepage:                      https://grass.osgeo.org
+This version running through:            Bash Shell (/bin/bash)
+Help is available with the command:      g.manual -i
+See the licence terms with:              g.version -c
+See citation options with:               g.version -x
+Start the GUI with:                      g.gui wxpython
+When ready to quit enter:                exit
+
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
 <div class="output_area docutils container">
 <div class="highlight"><pre>
 projection=3
@@ -1291,6 +1506,23 @@ ewres=706.8356204
 rows=8244
 cols=5616
 cells=46298304
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+All subsequent raster operations will be limited to the MASK area. Removing
+or renaming raster map named &#39;MASK&#39; will restore raster operations to
+normal.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 projection=3
 zone=0
 n=-12
@@ -1304,6 +1536,30 @@ cols=4008
 cells=21162240
 ############# extract stream ##################
 ############# delineate basin and sub-basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+WARNING: Color table of raster map &lt;stream&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasin_raw_1.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
 ###### create a small zone flow binary for later use ###########
 ##### create a smaller box ########
 projection=3
@@ -1322,106 +1578,33 @@ cells=18627840
 ######## top stripe   ########
 ######## bottom stripe ########
 ######## remove incompleate basins  ########
-############  export basin sub-basin and stream  ############
-projection=3
-zone=0
-n=1
-s=-38
-w=-73.9
-e=-34.6
-nsres=922.66504302
-ewres=826.93226998
-rows=4680
-cols=4716
-cells=22070880
-############# extract stream ##################
-############# delineate basin and sub-basin  ##################
-###### create a small zone flow binary for later use ###########
-##### create a smaller box ########
-projection=3
-zone=0
-n=-1.8
-s=-35.2
-w=-71.1
-e=-34.6
-nsres=922.59157279
-ewres=840.84791606
-rows=4008
-cols=4380
-cells=17555040
-######## left stripe ########
-######## right stripe  ########
-######## top stripe   ########
-######## bottom stripe ########
-######## remove incompleate basins  ########
-############  export basin sub-basin and stream  ############
-projection=3
-zone=0
-n=12.7
-s=-24.5
-w=-81.7
-e=-41.7
-nsres=921.8619211
-ewres=872.86703289
-rows=4464
-cols=4800
-cells=21427200
-############# extract stream ##################
-############# delineate basin and sub-basin  ##################
-###### create a small zone flow binary for later use ###########
-##### create a smaller box ########
-projection=3
-zone=0
-n=12.7
-s=-21.7
-w=-81.4
-e=-44.5
-nsres=921.77907927
-ewres=882.26518613
-rows=4128
-cols=4428
-cells=18278784
-######## left stripe ########
-######## right stripe  ########
-######## top stripe   ########
-######## bottom stripe ########
-######## remove incompleate basins  ########
-############  export basin sub-basin and stream  ############
 </pre></div></div>
 </div>
-<div class="nboutput nblast docutils container">
+<div class="nboutput docutils container">
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-Starting GRASS GIS...
-Creating new GRASS GIS location &lt;tmploc&gt;...
-Cleaning up temporary files...
-
-          __________  ___   __________    _______________
-         / ____/ __ \/   | / ___/ ___/   / ____/  _/ ___/
-        / / __/ /_/ / /| | \__ \\_  \   / / __ / / \__ \
-       / /_/ / _, _/ ___ |___/ /__/ /  / /_/ // / ___/ /
-       \____/_/ |_/_/  |_/____/____/   \____/___//____/
-
-Welcome to GRASS GIS 8.2.1
-GRASS GIS homepage:                      https://grass.osgeo.org
-This version running through:            Bash Shell (/bin/bash)
-Help is available with the command:      g.manual -i
-See the licence terms with:              g.version -c
-See citation options with:               g.version -x
-Start the GUI with:                      g.gui wxpython
-When ready to quit enter:                exit
-
-All subsequent raster operations will be limited to the MASK area. Removing
-or renaming raster map named &#39;MASK&#39; will restore raster operations to
-normal.
-WARNING: Color table of raster map &lt;stream&gt; not found
 
 
 
 
 
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+############  export basin sub-basin and stream  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
 
@@ -1445,13 +1628,96 @@ WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
 or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+projection=3
+zone=0
+n=1
+s=-38
+w=-73.9
+e=-34.6
+nsres=922.66504302
+ewres=826.93226998
+rows=4680
+cols=4716
+cells=22070880
+############# extract stream ##################
+############# delineate basin and sub-basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 WARNING: Color table of raster map &lt;stream&gt; not found
 WARNING: Color table of raster map &lt;flow&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasin_raw_2.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=-1.8
+s=-35.2
+w=-71.1
+e=-34.6
+nsres=922.59157279
+ewres=840.84791606
+rows=4008
+cols=4380
+cells=17555040
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 
 
 
 
 
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+############  export basin sub-basin and stream  ############
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
 
@@ -1475,13 +1741,96 @@ WARNING: MASK already exists and will be overwritten
 All subsequent raster operations will be limited to the MASK area. Removing
 or renaming raster map named &#39;MASK&#39; will restore raster operations to
 normal.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+projection=3
+zone=0
+n=12.7
+s=-24.5
+w=-81.7
+e=-41.7
+nsres=921.8619211
+ewres=872.86703289
+rows=4464
+cols=4800
+cells=21427200
+############# extract stream ##################
+############# delineate basin and sub-basin  ##################
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 WARNING: Color table of raster map &lt;stream&gt; not found
 WARNING: Color table of raster map &lt;flow&gt; not found
+Checking GDAL data type and nodata value...
+
+Using GDAL data type &lt;UInt32&gt;
+Exporting raster data to GTiff format...
+WARNING: Too many values, color table cut to 65535 entries
+
+r.out.gdal complete. File
+&lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/lbasin_raw_3.tif&gt;
+created.
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+###### create a small zone flow binary for later use ###########
+##### create a smaller box ########
+projection=3
+zone=0
+n=12.7
+s=-21.7
+w=-81.4
+e=-44.5
+nsres=921.77907927
+ewres=882.26518613
+rows=4128
+cols=4428
+cells=18278784
+######## left stripe ########
+######## right stripe  ########
+######## top stripe   ########
+######## bottom stripe ########
+######## remove incompleate basins  ########
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 
 
 
 
 
+</pre></div></div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+############  export basin sub-basin and stream  ############
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
 WARNING: MASK already exists and will be overwritten
 Checking GDAL data type and nodata value...
 
@@ -1501,7 +1850,6 @@ WARNING: Too many values, color table cut to 65535 entries
 r.out.gdal complete. File
 &lt;/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/stream_3.tif&gt;
 created.
-Cleaning up temporary files...
 Done.
 
 Goodbye from GRASS GIS
@@ -1510,7 +1858,7 @@ Goodbye from GRASS GIS
 </div>
 <p><strong>Final step: combine the tiled basins and streams</strong></p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
 </pre></div>
 </div>
 <div class="input_area highlight-bash notranslate"><div class="highlight"><pre><span></span>%%bash
@@ -1521,6 +1869,9 @@ gdalbuildvrt<span class="w">  </span>-srcnodata<span class="w"> </span><span cla
 gdal_translate<span class="w"> </span>-co<span class="w"> </span><span class="nv">COMPRESS</span><span class="o">=</span>DEFLATE<span class="w"> </span>-co<span class="w"> </span><span class="nv">ZLEVEL</span><span class="o">=</span><span class="m">9</span><span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.vrt<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.tif
 
 pkstat<span class="w"> </span>--hist<span class="w"> </span>-i<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.tif<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot; 0&quot;</span><span class="w">  </span>&gt;<span class="w">  </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;histogram&quot;</span>
+head<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist
 
 <span class="nv">wc</span><span class="o">=</span><span class="k">$(</span><span class="w">  </span>wc<span class="w"> </span>-l<span class="w"> </span>/media/sf_LVM_shared/my_SE_data/exercise/geodata/dem/<span class="si">${</span><span class="nv">var</span><span class="si">}</span>_all.hist<span class="w">  </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{ print $1 -1 }&#39;</span><span class="w"> </span><span class="k">)</span>
 
@@ -1544,38 +1895,62 @@ gdaldem<span class="w"> </span>color-relief<span class="w"> </span>-co<span clas
 <div class="highlight"><pre>
 0...10...20...30...40...50...60...70...80...90...100 - done.
 Input file size is 5616, 8244
-0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done in 00:00:05.
+
+histogram
+0 24125807
+3271 315
+4747 497
+5069 469
+8023 523
+12022 73807
+12641 461
+20626 255098
+32935 324
+33148 118
 
 color table
 0 0 0 0 0
-3271 41 27 119 255
-4747 189 99 19 255
-5069 163 62 44 255
-8023 96 73 8 255
-12022 222 70 229 255
-12641 96 76 169 255
-20626 153 163 32 255
-32935 126 229 199 255
-33148 106 201 62 255
+3271 236 24 91 255
+4747 199 255 115 255
+5069 134 214 63 255
+8023 181 110 254 255
+12022 164 19 82 255
+12641 55 177 136 255
+20626 120 152 215 255
+32935 41 70 235 255
+33148 106 248 247 255
 
-0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done in 00:00:13.
 0...10...20...30...40...50...60...70...80...90...100 - done.
 Input file size is 5616, 8244
-0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done in 00:00:19.
+
+histogram
+0 42694616
+1 19
+2 14
+3 5
+4 15
+5 9
+6 11
+7 5
+8 4
+9 7
 
 color table
 0 0 0 0 0
-1 254 238 233 255
-2 50 225 169 255
-3 41 251 170 255
-4 86 208 248 255
-5 167 182 86 255
-6 166 178 68 255
-7 85 3 145 255
-8 219 168 71 255
-9 216 111 188 255
+1 225 133 25 255
+2 152 103 145 255
+3 160 19 26 255
+4 221 102 12 255
+5 113 228 143 255
+6 242 13 166 255
+7 103 250 234 255
+8 102 77 233 255
+9 232 49 236 255
 
-0...10...20...30...40...50...60...70...80...90...100 - done.
+0...10...20...30...40...50...60...70...80...90...100 - done in 00:00:33.
 </pre></div></div>
 </div>
 <div class="nbinput docutils container">
@@ -1593,7 +1968,7 @@ color table
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_33_0.png" src="../_images/GRASS_grass_hydro_33_0.png" />
+<img alt="../_images/GRASS_grass_hydro_34_0.png" src="../_images/GRASS_grass_hydro_34_0.png" />
 </div>
 </div>
 <div class="nboutput nblast docutils container">
@@ -1620,7 +1995,7 @@ color table
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/GRASS_grass_hydro_34_0.png" src="../_images/GRASS_grass_hydro_34_0.png" />
+<img alt="../_images/GRASS_grass_hydro_35_0.png" src="../_images/GRASS_grass_hydro_35_0.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1662,7 +2037,7 @@ Loading tools from /usr/bin/openev/tools/Tool_DriverList.py
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="grass_newproject.html" class="btn btn-neutral float-left" title="Start a new GRASS project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="grass_hydro_osboxes.html" class="btn btn-neutral float-right" title="Using GRASS for stream-network extraction and basins delineation - osboxes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="grass_hydro_colab.html" class="btn btn-neutral float-right" title="Using GRASS for stream-network extraction and basins delineation in Colab" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
