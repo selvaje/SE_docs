@@ -401,9 +401,10 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 		* GRASS add-ons
 
 ## Lecture 8: Thursday, 8 October, 2026.
-### Hydrology analysis using GRASS (3) (Giuseppe Amatulli)
+### Hydrology analysis using GRASS (Giuseppe Amatulli)
 
-Recorded lecture can be found [here]().
+Recorded lecture is missing this time anyway you can see the one from last year  [here](https://youtu.be/wl-Gw66roas)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect08_GML_08102026.pdf)
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
@@ -435,26 +436,21 @@ Recorded of the Python can be found [here](). Password has been sent by e-mail o
 * Introduction to Python coding,
 * [Pandas](https://pandas.pydata.org/) and [Numpy](https://numpy.org/) libraries for data management and processing,
 
-
 ## Lecture 9: Tuesday, 20 October, 2026.
-### Python libraries for geospatial data analysis (Saverio Mancino)
-
-Recorded lecture can be found [here]()
-
-[Python libraries for geospatial data analysis](http://www.spatial-ecology.net/docs/build/html/PYTHON/Python_geospatial_data_analysis_SM.html)
-
-* Exploring Matplotlib and Seaborn for scientific plots
-* Exploring rasterio for raster processing and visualization
-* Exploring geopandas for vector processing and visualization
-
-## Lecture 10: Thursday, 22 October, 2026.
-### Machine Learning Introduction (Saverio Mancino)
+### Tree height dataset presentation and ML modeling introduction (Giuseppe Amatulli)
 
 Recorded lecture can be found [here](). 
 
 [Estimation of tree height using GEDI dataset - Data explore](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
 
 * Introduction to the tree height dataset
+
+[Estimation of tree height using GEDI dataset - Predictors extraction at point location](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html)
+
+* [RasterIO within bash](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html#Running-rio-tool-and-using-the-bash-shell-and-its-tools)  
+* [gdallocationinfo within bash](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html#Running-rio-tool-and-using-the-bash-shell-and-its-tools)  
+* [RasterIO within python](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html#Running-rio-tool-and-using-the-bash-shell-and-its-tools)  
+* [RasterIO & numpy within python](https://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_02Predictors_extraction.html#Running-rio-tool-and-using-the-bash-shell-and-its-tools)  
 
 [Estimation of tree height using GEDI dataset - Random Forest prediction](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_03RF_pred_SM.html)
 
@@ -465,7 +461,7 @@ Recorded lecture can be found [here]().
 * Running a model and exploring RF parameters
 * Prediction of RF model on raster tif (Optimization of RF)
 
-## Lecture 11: Tuesday, 27 October, 2026.
+## Lecture 10: Thursday, 22 October, 2026.
 ### Machine Learning Introduction, Support Vector Machine (Raffaele Scaringi)
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
@@ -487,6 +483,9 @@ Transcript summary lecture can found [here]()
 	* Support Vector Machine (SVM)(F.)
 	* Optimization of SVM
 	* Extension of SVM to regression (SVR)
+
+## Lecture 11: Tuesday, 27 October, 2026.
+
 
 ## Lecture 12: Thursday, 29 October, 2026.
 ### Machine Learning - Perceptron (Raffaele Scaringi)

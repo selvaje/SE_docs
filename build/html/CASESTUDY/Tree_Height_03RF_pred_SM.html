@@ -134,8 +134,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_osboxes.html">Using GRASS for stream-network extraction and basins delineation - osboxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation - osboxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
@@ -168,7 +167,6 @@
 <li class="toctree-l1"><a class="reference internal" href="Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Estimation of tree height using GEDI dataset - Random Forest prediction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#Jupyterlab-setup-and-libraries-retrieving-[Just-for-UBUNTU-24.04]">Jupyterlab setup and libraries retrieving <strong>[Just for UBUNTU 24.04]</strong></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#Jupyterlab-setup-and-libraries-retrieving-[Just-for-OSGEOLIVE16]">Jupyterlab setup and libraries retrieving <strong>[Just for OSGEOLIVE16]</strong></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Data-retrieving-(&gt;3GB)">Data retrieving (&gt;3GB)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Open-the-notebook-lesson">Open the notebook lesson</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Model-definition">Model definition</a><ul>
@@ -185,7 +183,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#Model-run-using-default-parameters-and-wuality-flag-selected-data">Model run using default parameters and wuality flag selected data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Model-Final-Assesment">Model Final Assesment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#Model-Prediction-on-Raster">Model Prediction on Raster</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#Predict-on-the-raster-using-pyspatialml-(deprecated-library)">Predict on the raster using pyspatialml (deprecated library)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Predict-on-the-raster-using-xarray-and-rasterio-(Full-size-90m-res-raster-prediction-&gt;12h)">Predict on the raster using xarray and rasterio (Full size 90m res raster prediction &gt;12h)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#Predict-on-the-raster-using-xarray-and-rasterio-(1000x1000-UL-corner-tile-for-90m-res-raster-prediction)">Predict on the raster using xarray and rasterio (1000x1000 UL corner tile for 90m res raster prediction)</a></li>
 </ul>
@@ -270,27 +267,8 @@
 <h1>Estimation of tree height using GEDI dataset - Random Forest prediction<a class="headerlink" href="#Estimation-of-tree-height-using-GEDI-dataset---Random-Forest-prediction" title="Link to this heading"></a></h1>
 <section id="Jupyterlab-setup-and-libraries-retrieving-[Just-for-UBUNTU-24.04]">
 <h2>Jupyterlab setup and libraries retrieving <strong>[Just for UBUNTU 24.04]</strong><a class="headerlink" href="#Jupyterlab-setup-and-libraries-retrieving-[Just-for-UBUNTU-24.04]" title="Link to this heading"></a></h2>
-<p>To run this lesson properly on osboxes.org you need to have a clean install of jupyterlab using the command line. If you didn’t do it for the previous lesson (Python data analysis or Python geospatial analysis), do it for this one, directly on the terminal:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pipx uninstall jupyterlab
-pipx install --system-site-packages jupyterlab
-</pre></div>
-</div>
-<p>and just after that, you can procede to install python libraries, using the apt install always in the terminal:</p>
+<p>Install python libraries, using the apt install always in the terminal:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo apt install python3-numpy python3-pandas python3-sklearn python3-matplotlib python3-rasterio python3-geopandas python3-seaborn python3-skimage python3-xarray
-</pre></div>
-</div>
-</section>
-<section id="Jupyterlab-setup-and-libraries-retrieving-[Just-for-OSGEOLIVE16]">
-<h2>Jupyterlab setup and libraries retrieving <strong>[Just for OSGEOLIVE16]</strong><a class="headerlink" href="#Jupyterlab-setup-and-libraries-retrieving-[Just-for-OSGEOLIVE16]" title="Link to this heading"></a></h2>
-<p>In order to run this notebook you need to run this command lines in your terminal:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>source $HOME/venv/bin/activate
-sudo apt update
-sudo apt install python3-pip
-pip3 install pyspatialml
-</pre></div>
-</div>
-<p>after that all other needed libraries directly on jupyter with the magic lines (!):</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>!pip3 install &quot;pandas&gt;=2.2.2,&lt;3.0.0&quot; &quot;numpy&gt;=1.26.4,&lt;2.0.0&quot; &quot;rasterio&gt;=1.3.10,&lt;2.0.0&quot; &quot;scikit-learn&gt;=1.4.2,&lt;2.0.0&quot; &quot;scipy&gt;=1.13.0,&lt;2.0.0&quot; &quot;matplotlib&gt;=3.9.0,&lt;4.0.0&quot; &quot;xarray&gt;=2024.1.0,&lt;2025.0.0&quot;
 </pre></div>
 </div>
 </section>
@@ -742,7 +720,7 @@ NUMBER OF ROWS: 1267239
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_18_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_18_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_16_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_16_0.png" />
 </div>
 </div>
 <p>In this way we can see where the date spans to, and detect outliers.</p>
@@ -1116,7 +1094,7 @@ NUMBER OF ROWS: 100000
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_23_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_23_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_21_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_21_0.png" />
 </div>
 </div>
 <p>To have a comparison we’ll analyze the <strong>The Global Forest Canopy Height, 2019 map</strong>. This has been released in 2020 (within a scientific publication <a class="reference external" href="https://doi.org/10.1016/j.rse.2020.112165">https://doi.org/10.1016/j.rse.2020.112165</a>).</p>
@@ -1149,7 +1127,7 @@ NUMBER OF ROWS: 100000
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_25_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_25_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_23_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_23_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1364,7 +1342,7 @@ OUT OF BAG SCORE: 0.2625683482738882
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_41_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_41_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_39_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_39_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -1393,7 +1371,7 @@ OUT OF BAG SCORE: 0.2625683482738882
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_42_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_42_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_40_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_40_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -1438,7 +1416,7 @@ array([ 1, 13,  0,  4,  6,  8, 16,  2, 15,  5, 12,  3, 11,  9, 14,  7, 10,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_46_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_46_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_44_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_44_0.png" />
 </div>
 </div>
 </section>
@@ -3044,7 +3022,7 @@ PEARSON CORRELATION COEFFINCENT: [0.746007848830619, 0.6125852590365624]
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_72_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_72_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_70_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_70_1.png" />
 </div>
 </div>
 <div class="nbinput docutils container">
@@ -3073,7 +3051,7 @@ PEARSON CORRELATION COEFFINCENT: [0.746007848830619, 0.6125852590365624]
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_73_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_73_1.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_71_1.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_71_1.png" />
 </div>
 </div>
 <div class="nbinput nblast docutils container">
@@ -3117,7 +3095,7 @@ array([ 1, 13,  0,  4, 16,  6,  8, 15,  5,  2, 11,  3, 12,  9, 14,  7, 10,
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_76_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_76_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_74_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_74_0.png" />
 </div>
 </div>
 </section>
@@ -3205,76 +3183,6 @@ dic_pred[&#39;test&#39;] = rfReg.predict(X_test)
 </section>
 <section id="Model-Prediction-on-Raster">
 <h2>Model Prediction on Raster<a class="headerlink" href="#Model-Prediction-on-Raster" title="Link to this heading"></a></h2>
-<section id="Predict-on-the-raster-using-pyspatialml-(deprecated-library)">
-<h3>Predict on the raster using pyspatialml (deprecated library)<a class="headerlink" href="#Predict-on-the-raster-using-pyspatialml-(deprecated-library)" title="Link to this heading"></a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span># import Global Landsat Analysis Ready Data
-glad_ard_SVVI_min = &quot;tree_height/geodata_raster/glad_ard_SVVI_min.tif&quot;
-glad_ard_SVVI_med = &quot;tree_height/geodata_raster/glad_ard_SVVI_med.tif&quot;
-glad_ard_SVVI_max = &quot;tree_height/geodata_raster/glad_ard_SVVI_max.tif&quot;
-
-# import climate data
-CHELSA_bio4 = &quot;tree_height/geodata_raster/CHELSA_bio4.tif&quot;
-CHELSA_bio18 = &quot;tree_height/geodata_raster/CHELSA_bio18.tif&quot;
-
-# import soil data
-BLDFIE_WeigAver = &quot;tree_height/geodata_raster/BLDFIE_WeigAver.tif&quot;
-CECSOL_WeigAver = &quot;tree_height/geodata_raster/CECSOL_WeigAver.tif&quot;
-ORCDRC_WeigAver = &quot;tree_height/geodata_raster/ORCDRC_WeigAver.tif&quot;
-
-# import geomorphological data (DEM derived)
-elev = &quot;tree_height/geodata_raster/elev.tif&quot;
-convergence = &quot;tree_height/geodata_raster/convergence.tif&quot;
-northness = &quot;tree_height/geodata_raster/northness.tif&quot;
-eastness = &quot;tree_height/geodata_raster/eastness.tif&quot;
-devmagnitude = &quot;tree_height/geodata_raster/dev-magnitude.tif&quot;
-
-# import hydrographic data (from hydrography90m)
-cti = &quot;tree_height/geodata_raster/cti.tif&quot;
-outlet_dist_dw_basin = &quot;tree_height/geodata_raster/outlet_dist_dw_basin.tif&quot;
-
-# import soil climate data
-
-SBIO3_Isothermality_5_15cm = &quot;tree_height/geodata_raster/SBIO3_Isothermality_5_15cm.tif&quot;
-SBIO4_Temperature_Seasonality_5_15cm = &quot;tree_height/geodata_raster/SBIO4_Temperature_Seasonality_5_15cm.tif&quot;
-
-# import forest cover data
-
-treecover = &quot;tree_height/geodata_raster/treecover.tif&quot;
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>from pyspatialml import Raster
-predictors_rasters = [glad_ard_SVVI_min, glad_ard_SVVI_med, glad_ard_SVVI_max,
-                      CHELSA_bio4,CHELSA_bio18,
-                      BLDFIE_WeigAver,CECSOL_WeigAver,ORCDRC_WeigAver,
-                      elev,convergence,northness,eastness,devmagnitude,cti,outlet_dist_dw_basin,
-                      SBIO3_Isothermality_5_15cm,SBIO4_Temperature_Seasonality_5_15cm,treecover]
-
-stack = Raster(predictors_rasters)
-</pre></div>
-</div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>result = stack.predict(estimator=rfReg, dtype=&#39;int16&#39;, nodata=-1)
-</pre></div>
-</div>
-<div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[53]:
-</pre></div>
-</div>
-<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot regression result</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s2">&quot;figure.figsize&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">12</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
-<span class="n">result</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">cmap</span> <span class="o">=</span> <span class="s2">&quot;plasma&quot;</span>
-<span class="n">result</span><span class="o">.</span><span class="n">plot</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</pre></div>
-</div>
-</div>
-<div class="nboutput nblast docutils container">
-<div class="prompt empty docutils container">
-</div>
-<div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_91_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_91_0.png" />
-</div>
-</div>
-</section>
 <section id="Predict-on-the-raster-using-xarray-and-rasterio-(Full-size-90m-res-raster-prediction-&gt;12h)">
 <h3>Predict on the raster using xarray and rasterio (Full size 90m res raster prediction &gt;12h)<a class="headerlink" href="#Predict-on-the-raster-using-xarray-and-rasterio-(Full-size-90m-res-raster-prediction->12h)" title="Link to this heading"></a></h3>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import xarray as xr
@@ -3504,7 +3412,7 @@ plt.show()
 <div class="prompt empty docutils container">
 </div>
 <div class="output_area docutils container">
-<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_96_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_96_0.png" />
+<img alt="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_89_0.png" src="../_images/CASESTUDY_Tree_Height_03RF_pred_SM_89_0.png" />
 </div>
 </div>
 </section>
