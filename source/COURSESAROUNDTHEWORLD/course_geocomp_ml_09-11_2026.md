@@ -471,7 +471,7 @@ Recorded lecture can be found [here]().
 
 Transcript summary lecture can found [here]()
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261029_IntroML_SVM_Class1.pdf) (R.S.)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261022_IntroML_SVM_Class1.pdf) (R.S.)
 	
 * [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2026.html) (R.S.)
 
