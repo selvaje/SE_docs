@@ -236,7 +236,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 This section introduces data manipulation for geospatial data processing on the command line using [GDAL & OGR](https://gdal.org/) libraries.
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
-	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
+	* [GeoTIFF format](https://gdal.org/drivers/raster/gtifR.S.html)
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
 	* [Geographic Projections database](https://spatialreference.org/)
@@ -284,7 +284,7 @@ and modify it in such a way you get a table like this
 
 ---
 
-* [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTiff.html)
+* [Data type in GTiff](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Data_type_GTifR.S.html)
 
 ## Lecture 5: Tuesday, 29 September, 2026.  
 ### Manipulate geographical data with GDAL/OGR (Giuseppe Amatulli).
@@ -296,7 +296,7 @@ This section introduces data manipulation for geospatial data processing on the 
 
 
 * [GDAL/OGR](http://www.spatial-ecology.net/docs/build/html/GDAL/gdal_osgeo.html)  for raster and vector analysis.
-	* [GeoTIFF format](https://gdal.org/drivers/raster/gtiff.html)
+	* [GeoTIFF format](https://gdal.org/drivers/raster/gtifR.S.html)
 	* [Understanding data type](http://spatial-ecology.net/docs/source/lectures/lect_20240414_Floating_point.pdf) (Lecture)
 	* Understanding NoData Value
 	* Openev & QGIS for raster and vector visualization
@@ -471,17 +471,17 @@ Recorded lecture can be found [here]().
 
 Transcript summary lecture can found [here]()
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261029_IntroML_SVM_Class1.pdf) (F.)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261029_IntroML_SVM_Class1.pdf) (R.S.)
 	
-* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2026.html) (F.)
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_04SVM_pred_2026.html) (R.S.)
 
-* Intro to machine learning (F.)
+* Intro to machine learning (R.S.)
 	* Defining learning
 	* Supervised vs Unsupervised learning
 	* The framework of learning algorithms
 
 * Intro to supervised learning.
-	* Support Vector Machine (SVM)(F.)
+	* Support Vector Machine (SVM)(R.S.)
 	* Optimization of SVM
 	* Extension of SVM to regression (SVR)
 

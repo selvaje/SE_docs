@@ -19,8 +19,8 @@
    Tree_Height_01DataExplore.ipynb
    Tree_Height_02Predictors_extraction.ipynb
    Tree_Height_03RF_pred_SM.ipynb
-   Tree_Height_04SVM_pred_2024.ipynb
    Tree_Height_04SVM_pred_2025.ipynb
+   Tree_Height_04SVM_pred_2026.ipynb
    Tree_Height_05Perceptron_intro_2024.ipynb
    Tree_Height_05Perceptron_intro_2025.ipynb
    Tree_Height_06Perceptron_pred_2023.ipynb 
