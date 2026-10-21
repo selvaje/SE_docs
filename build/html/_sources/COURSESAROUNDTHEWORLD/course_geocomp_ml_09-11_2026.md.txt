@@ -439,7 +439,8 @@ Recorded of the Python can be found [here](). Password has been sent by e-mail o
 ## Lecture 9: Tuesday, 20 October, 2026.
 ### Tree height dataset presentation and ML modeling introduction (Giuseppe Amatulli)
 
-Recorded lecture can be found [here](). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/MD_9WmNkTIWvAx8eJ_Acs9qOCfJY50M3CmF4uQzyQg18oMkoYNhAPIdRfWTRFxJd.bzef3HWukXV9hhK1)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect09_GML_20102026.pdf)
 
 [Estimation of tree height using GEDI dataset - Data explore](http://www.spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html)
 
