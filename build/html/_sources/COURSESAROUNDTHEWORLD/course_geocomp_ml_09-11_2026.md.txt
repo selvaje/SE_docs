@@ -403,8 +403,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 8: Thursday, 8 October, 2026.
 ### Hydrology analysis using GRASS (Giuseppe Amatulli)
 
-Recorded lecture is missing this time anyway you can see the one from last year  [here](https://youtu.be/wl-Gw66roas)  
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect08_GML_08102026.pdf)
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/lwZgVMMPqbgHu8rF9eMCtzdT-6X346g3t4ZzgOZkSbSrBstZlU1r_bmZRQOLnOOv.nurLew-lnJgCbqwH)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect08_GML_08102026.pdf)  
 
    * [Using GRASS for stream-network extraction and basins delineation](https://spatial-ecology.net/docs/build/html/GRASS/grass_hydro.html)
 		* Flow direction algorithms
