@@ -486,6 +486,14 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 ## Lecture 11: Tuesday, 27 October, 2026.
 
+Recorded lecture can be found [here]()
+
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261027_Optmizers_Perceptron_Class2.pdf)
+	- The universal approximator
+	- Intro to optimizers
+	- Intro to gradient descent and optimizers
+
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2026.html)
 
 ## Lecture 12: Thursday, 29 October, 2026.
 ### Machine Learning - Perceptron (Raffaele Scaringi)
