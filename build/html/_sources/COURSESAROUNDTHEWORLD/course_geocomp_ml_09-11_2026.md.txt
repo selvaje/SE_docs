@@ -467,7 +467,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
-Recorded lecture can be found [here](https://yale.zoom.us/rec/share/F4SNICQCRVNp5JcRivnFjzfI_ZeRFxYJ7o82OBP886BS_LxkUh4FT3S_iwnpjIJR.ck5yC3FQr96dlQQi). 
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/F4SNICQCRVNp5JcRivnFjzfI_ZeRFxYJ7o82OBP886BS_LxkUh4FT3S_iwnpjIJR.ck5yC3FQr96dlQQi)  
+
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect10_GML_22102026.pdf)
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261022_IntroML_SVM_Class1.pdf) (R.S.)
@@ -486,7 +487,9 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 ## Lecture 11: Tuesday, 27 October, 2026.
 
-Recorded lecture can be found [here]()
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/0VR1SsbLOoMgomBery48mCPp3h3fdwTh8uGcCbKj1BluXxcB0NOciqG4n9FO1H1K.dhzUoBkTHOcOAjse)  
+
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect11_GML_27102026.pdf)
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261027_Optmizers_Perceptron_Class2.pdf)
 	- The universal approximator
@@ -585,10 +588,7 @@ Discussion papers:
 
 Recorded lecture can be found [here]()
 
-* [Managing Third-Party Libraries:A Survival Guide for Data Scientists - Francesco Lovergine](http://spatial-ecology.net/docs/source/lectures/lect_20262511_dependency_management_in_data_science.pdf)
-
-  * Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
-
+* Social drinks/dinner: at Birfoot Birrificio Artigianale [Via G. Marconi, 75100 Matera MT, Italy](https://maps.app.goo.gl/ufj1mLXwLnjEwRTB9) with "Matera Tech" local comunity. Starting at 19:00. Participation in this social event is self-funded. 
 
 ### Day 3: Wednesday, 25 November 2026
 
@@ -598,8 +598,7 @@ Recorded lecture can be found [here]()
 
 * 9:00-17:00: Final project Student presentation
 
-    * Social drinks/dinner: at Birfoot Birrificio Artigianale [Via G. Marconi, 75100 Matera MT, Italy](https://maps.app.goo.gl/ufj1mLXwLnjEwRTB9) with "Iritornati" local international comunity. Starting at 19:00. Participation in this social event is self-funded.
-
+* Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
 
 ### Day 5: Friday, 27 November 2026
 
