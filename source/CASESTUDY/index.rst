@@ -23,9 +23,8 @@
    Tree_Height_04SVM_pred_2026.ipynb
    Tree_Height_05Perceptron_intro_2025.ipynb
    Tree_Height_05Perceptron_intro_2026.ipynb
-   Tree_Height_06Perceptron_pred_2023.ipynb 
-   Tree_Height_06Perceptron_complete_2024.ipynb
    Tree_Height_06Perceptron_complete_2025.ipynb
+   Tree_Height_06Perceptron_complete_2026.ipynb
    Tree_Height_06NeuralNets_pred.ipynb
    Tree_Height_07FeedForward_Networks_2024.ipynb
    Tree_Height_07FeedForward_Networks_2025.ipynb

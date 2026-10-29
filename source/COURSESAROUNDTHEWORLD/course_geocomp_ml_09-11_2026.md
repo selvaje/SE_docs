@@ -104,14 +104,14 @@ Below we are going to list day by day the final syllabus with the relatives link
 This session introduces the objective of the course and a round table among the students and the teachers.  
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/B_PEj9GliBRPkv2ycxCn6I7ZJF5UHCt71udB3sLJRBO5Yjg2l8QTWazLBUs3Wjj7.ZO3voLTzs5rAp4CE)  
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect01_GML_15092026.pdf)
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect01_GML_09152026.pdf)
 
 Time below in CEST
 
 * 13:00 - 13:10  Tushar Sethi: background/interest & course objective - communication/administration role.
-* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_GA.pdf).
-* 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroML_RS.pdf)
-* 13:45 - 14:15  [Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20261509_IntroGeocomp_FL.pdf)
+* 13:10 - 13:30  Giuseppe Amatulli: [background/interest & bash/gdal/pktools introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260915_IntroGeocomp_GA.pdf).
+* 13:30 - 13:45  [Raffaele Scaringi: background/interest & machine learning introduction - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260915_IntroML_RS.pdf)
+* 13:45 - 14:15  [Francesco Lovergine: background/interest & sw installation and troubleshoting - teaching role](http://spatial-ecology.net/docs/source/lectures/lect_20260915_IntroGeocomp_FL.pdf)
 * 14:15 - 14:30  Break
 * 14:30 - 14:45  Students round table + QA of the course. 
 * 14:45 - 15:45  Ubuntu 26.04 LTS Virtual Machine installation review, QA & troubleshooting.
@@ -218,7 +218,7 @@ You can perform:
 ---
 
     cd /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
-    cp /home/$USER/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIM_indices/TIMESERIES/monthly
+    cp /home/$USER/SE_data/exercise/manipulate_GSIM_assignment_solutions.sh /media/sf_LVM_shared/GSIM/zip/GSIlect_20261509_IntroML_RS.pdfM_indices/TIMESERIES/monthly
 
 ---
 
@@ -468,7 +468,6 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 In this class we will set the main fundamentals to implement machine learning in geo science. We will use the data-set and explanation described in [Estimation of tree height using GEDI dataset - Data explore](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_01DataExplore.html).
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/F4SNICQCRVNp5JcRivnFjzfI_ZeRFxYJ7o82OBP886BS_LxkUh4FT3S_iwnpjIJR.ck5yC3FQr96dlQQi)  
-
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect10_GML_22102026.pdf)
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261022_IntroML_SVM_Class1.pdf) (R.S.)
@@ -488,7 +487,6 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 11: Tuesday, 27 October, 2026.
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/0VR1SsbLOoMgomBery48mCPp3h3fdwTh8uGcCbKj1BluXxcB0NOciqG4n9FO1H1K.dhzUoBkTHOcOAjse)  
-
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect11_GML_27102026.pdf)
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261027_Optmizers_Perceptron_Class2.pdf)
@@ -501,15 +499,15 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 12: Thursday, 29 October, 2026.
 ### Machine Learning - Perceptron (Raffaele Scaringi)
 
-Recorded lecture can be found [here]()
+Recorded lecture can be found [here]()  
+Transcript summary lecture can found [here]()  
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261104_Optmizers_Perceptron_Class2.pdf)
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261029_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
 	- Intro to optimizers
 	- Intro to gradient descent and optimizers
 
-* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2026.html)
-* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.ipynb)
 
 ## Lecture 13: Tuesday, 3 November, 2026.
 ### Machine Learning -  Perceptron (Raffaele Scaringi)
