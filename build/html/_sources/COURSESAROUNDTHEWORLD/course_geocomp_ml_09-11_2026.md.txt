@@ -499,8 +499,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 12: Thursday, 29 October, 2026.
 ### Machine Learning - Perceptron (Raffaele Scaringi)
 
-Recorded lecture can be found [here]()  
-Transcript summary lecture can found [here]()  
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/rNQnkriAzJDXLP5FvYQ8RgWzkMK25A3Tdw9K0cQ2bFg3d3D_n4Fhwt86yRQkQXeB.InFkPvvGGlzAiGEI)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect11_GML_29102026.pdf)  
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261029_Optmizers_Perceptron_Class3.pdf)
 	- The universal approximator
