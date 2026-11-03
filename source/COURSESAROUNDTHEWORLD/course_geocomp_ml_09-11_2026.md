@@ -512,7 +512,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 13: Tuesday, 3 November, 2026.
 ### Machine Learning -  Perceptron (Raffaele Scaringi)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Vo54Uf8FDESxmtkNqZq8T_sa7Xtx3S6DwbS_w8e9A-jWywxPn1iWYQTDZ0ed5qFJ.ylpaBxHRK4p0CZWj).  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect12_GML_29102026.pdf)  
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261103_PerceptronNeuralNets_Class3.pdf )
 
