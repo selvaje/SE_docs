@@ -507,20 +507,28 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 	- Intro to optimizers
 	- Intro to gradient descent and optimizers
 
-* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.ipynb)
+* [Jupyther notebook](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
 
 ## Lecture 13: Tuesday, 3 November, 2026.
 ### Machine Learning -  Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here]().
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261106_Optmizers_Perceptron_Class3.pdf)
-	- The universal approximator
-	- Intro to optimizers
-	- Intro to gradient descent and optimizers
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261103_PerceptronNeuralNets_Class3.pdf )
 
-* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_05Perceptron_intro_2026.html)
-* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
+	* Perceptron
+		- Intro to optimization
+		- Perceptron
+		- Optimizers
+		- Hands-on tutorial
+	* Feedforward Neural Networks
+		- The limitations of Perceptrons
+		- Multi-layer Perceptron
+		- Training: the forward and back-propagation
+		- Debugging tips
+
+* [Jupyther notebook 1](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_06Perceptron_complete_2026.html)
+* [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2026.ipynb)
 
 ## Lecture 14: Thursday, 5 November, 2026.
 ### Machine Learning - Architecture of Neural Networks  (Raffaele Scaringi)
