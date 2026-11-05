@@ -513,7 +513,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ### Machine Learning -  Perceptron (Raffaele Scaringi)
 
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Vo54Uf8FDESxmtkNqZq8T_sa7Xtx3S6DwbS_w8e9A-jWywxPn1iWYQTDZ0ed5qFJ.ylpaBxHRK4p0CZWj).  
-Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect12_GML_29102026.pdf)  
+Transcript summary lecture can found [here]()  
 
 * [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261103_PerceptronNeuralNets_Class4.pdf )
 
@@ -534,8 +534,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 14: Thursday, 5 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi) (Raffaele Scaringi)
 
-Recorded lecture can be found [here]()  
-Transcript summary lecture can found [here]()  
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/YsR_Z9kmGTVq0LH9iK3vHOkTZKbG7PGH4CVNqtz_Nf-cWf01HkwN26uhQI3oN2sW.WU1jm0cZVN6K42VR)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect14_GML_05112026.pdf)  
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20261105_Optmizers_NeuralNets_pt2_Class5.pdf)
 
