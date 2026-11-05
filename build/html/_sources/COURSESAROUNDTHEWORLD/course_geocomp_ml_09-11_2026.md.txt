@@ -515,7 +515,7 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 Recorded lecture can be found [here](https://yale.zoom.us/rec/share/Vo54Uf8FDESxmtkNqZq8T_sa7Xtx3S6DwbS_w8e9A-jWywxPn1iWYQTDZ0ed5qFJ.ylpaBxHRK4p0CZWj).  
 Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect12_GML_29102026.pdf)  
 
-* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261103_PerceptronNeuralNets_Class3.pdf )
+* [Presentation](http://spatial-ecology.net/docs/source/lectures/lect_20261103_PerceptronNeuralNets_Class4.pdf )
 
 	* Perceptron
 		- Intro to optimization
@@ -536,19 +536,21 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 
 Recorded lecture can be found [here]().
 
-* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20261112_Optmizers_PerceptronNeuralNets_Class4.pdf)
-	* Perceptron
-		- Intro to optimization
-		- Perceptron
-		- Optimizers
-		- Hands-on tutorial
+* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/source/lectures/lect_20261105_Optmizers_NeuralNets_pt2_Class5.pdf)
 	* Feedforward Neural Networks
 		- The limitations of Perceptrons
 		- Multi-layer Perceptron
 		- Training: the forward and back-propagation
 		- Debugging tips
+		- Tutorial: Neural Nets for the tree height dataset
+	* Convolutional Neural Networks
+		- Spatial locality structure
+		- Kernels, padding, pooling
+		- Classification tasks
+		- Saliency Analysis
+		- Tutorial: data batching, classification of satellite images, WandB
 
-* [Estimation of tree height using GEDI dataset - Feed forward networks - 2026](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2026.html)
+* [Estimation of tree height using GEDI dataset - Feed forward networks - 2026](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2026.html)
 
 ## Lecture 15: Tuesday, 10 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)

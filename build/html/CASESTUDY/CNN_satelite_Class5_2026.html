@@ -1,0 +1,1278 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Class 5: Deep Learning for Satellite Imagery with Convolutional Neural Networks (CNNs) - 2026 &mdash; Spatial Ecology&#39;s code documentation 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/jupyter-sphinx.css?v=572af1d6" />
+      <link rel="stylesheet" type="text/css" href="../_static/thebelab.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/nbsphinx-code-cells.css?v=2aa19091" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/custom.css?v=6d1dbdfc" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/thebelab-helper.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/@jupyter-widgets/html-manager@^1.0.1/dist/embed-amd.js"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Spatial Ecology's code documentation
+              <img src="../_static/SE_compact.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">COURSE TRAINERS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSETRAINERS/trainers.html">Spatial Ecology course trainers</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">COURSES AROUND THE WORLD</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_wcsu_02-04_2021.html">Western Connecticut State University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_stock_uni_04-05_2021.html">Stockholm University 2021</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2022.html">GeoComp &amp; ML 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_modelling_10-11_2022.html">GeoComp &amp; Modelling 2022 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2023.html">GeoComp &amp; ML 2023 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_04-05_2024.html">GeoComp &amp; ML 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_GEO-OPEN-HACK-2024_06_2024.html">GEO-OPEN-HACK-2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_11-12_2024.html">GeoComp 2024 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_geoanlysis_04_2025.html">Geo Comp/Analysis 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2025.html">GeoComp &amp; ML 2025 course</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026.html">GeoComp &amp; ML 2026 course</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GEO DATA</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GEODATA/geomorpho90m/geomorpho90m.html">Geomorpho90m: technical documentation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">LINUX VIRTUAL MACHINE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Ubuntu26.04_for_Spatial_Ecology_course.html">Prepare Ubuntu 26.04 for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_Colab_for_Spatial_Ecology_course.html">Prepare Colab for Spatial Ecology courses</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../VIRTUALMACHINE/Setting_OSGeoLive_for_Spatial_Ecology_course.html">Prepare OSGeoLive for Spatial Ecology courses</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">WEB SEMINARS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html">Raster/Vector Processing using GDAL/OGR</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#image-processing-using-pktools">Image Processing using Pktools</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#introduction-to-grass-gis">Introduction to GRASS GIS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../WEBSEMINAR/webseminar.html#geocomputation-with-high-performance-computing">GeoComputation with High Performance Computing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">BASH</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashintro_osgeo.html">Linux Operation System as a base for Spatial Ecology Computing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashinter_osgeo.html">Manipulate text files in bash</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../BASH/bashxargs_osgeo.html">Multi-core bash</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">AWK</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../AWK/awk.html">AWK Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GDAL</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_osgeo.html">Use GDAL/OGR for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_colab.html">Use GDAL/OGR for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GDAL/gdal_vs_pktools_comparison.html">GDAL vs pktools: command comparison</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PKTOOLS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_osgeo.html">Use PKTOOLS for raster/vector operations - osgeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pktools_colab.html">Use PKTOOLS for raster/vector operations - colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/gdal_vs_pktools_comparison.html">GDAL vs pktools: command comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction1.html">Introduction to pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_introduction2.html">pyjeo: an open source image processing library in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_pktools.html">Performing raster and vector operations in Python using pyjeo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PKTOOLS/pyjeo_upscaling_surf.html">Scaling-up: batch processing on the cluster with pyjeo</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">R</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../R/R_Intro.html">R Introduction</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/PythonEnvs.html">Python environments or how to survive to your journey in the geodata space</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_Intro.html">Introduction to Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Geo_Python.html">Python &amp; GeoComputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_data_analysis_SM.html">Python data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/Python_geospatial_data_analysis_SM.html">Python geospatial data analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html">RasterIO for dummies: a brief intro to a <em>pythonic</em> raster library</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#2.-Preparing-the-dataset-for-next-ML-exercises-via-rasterio">2. Preparing the dataset for next ML exercises via rasterio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/RasterIO_Intro.html#3.-Beyond-the-basics">3. Beyond the basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PYTHON/OGCSQL.html">Generalities about OGC Geospatial extensions for SQL</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">GRASS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_intro.html">GRASS Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_newproject.html">Start a new GRASS project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro.html">Using GRASS for stream-network extraction and basins delineation - osboxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/grass_hydro_colab.html">Using GRASS for stream-network extraction and basins delineation in Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../GRASS/SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">HIGH PERFORMANCE COMPUTING</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting.html">Geocomputation at High Performance Computing Cluster (HPC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../HPC/hpc_setting_grass.html">Use of GRASS in HPC</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ASSIGNMENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_GRASSmodel.html">SDM1 : Montane woodcreper - Random Forest Model using GRASS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="SDM2_Vath_Rmodel.html">SDM2 : Varied Thrush - Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="manipulate_GSIM.html">Manipulate GSIM files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Data_type_GTiff.html">Data type in GTiff</a></li>
+<li class="toctree-l1"><a class="reference internal" href="temporal_interpolation.html">Temporal interpolation of landsat images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DTW.html">Dynamic Time Warping</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pred_NP.html">Estimating nitrogen and phosphorus concentrations in streams and rivers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day1.html">Estimating nitrogen concentrations in streams and rivers using NN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day2.html">Autoencoder (AE), Variational Autoencoder (VAE) and Generative Adversarial Network (GAN)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN-day3.html">LSTM Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_01DataExplore.html">Estimation of tree height using GEDI dataset - Data explore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_02Predictors_extraction.html">Estimation of tree height using GEDI dataset - Predictors extraction at point location</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_03RF_pred_SM.html">Estimation of tree height using GEDI dataset - Random Forest prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2025.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_04SVM_pred_2026.html">Estimation of tree height using GEDI dataset - Support Vector Machine for Regression (SVR) - 2026</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2025.html">Estimation of tree height using GEDI dataset - Perceptron - 2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_05Perceptron_intro_2026.html">Estimation of tree height using GEDI dataset - Perceptron - 2026</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_complete_2025.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06Perceptron_complete_2026.html">Estimation of tree height using GEDI dataset - Perceptron complete - 2026</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_06NeuralNets_pred.html">Estimation of tree height using GEDI dataset - Neural Network 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_07FeedForward_Networks_2024.html">Estimation of tree height using GEDI dataset - Neural Network 1 - 2024</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_07FeedForward_Networks_2025.html">Estimation of tree height using GEDI dataset - Feed forward networks - 2025</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tree_Height_07FeedForward_Networks_2025.html#Let's-try-the-sklearn-MLP-implementation">Let’s try the sklearn MLP implementation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Implementing-an-Autoencoder">Implementing an Autoencoder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Autoencoding-MNIST">Autoencoding MNIST</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-2">Section 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html#Section-3---Generative-Models">Section 3 - Generative Models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LSTMs_tutorial.html">Using LSTM for time-series predictions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CNN_satelite_with_GPT_code_2023.html">Using GPT to implement a Convolutional Neural Networks for Satellite image classification.</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Classification_pyjeo_sklearn_2023.html">Classification in Python using pyjeo and sklearn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="GEEviaPython_2023.html">Google Earth Engine use via Python, containers and other mythical beasts</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Students Projects</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html">1. 2021 SWEDEN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../STUDENTSPROJECTS/index.html#matera">2. 2022 MATERA</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">OUTDOOR</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_orientering.html">Do not get lost in the wilderness</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/outdoor_info.html">Shelter locations close to Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/bike_accomodation.html">Accomodation in Gioia del Colle (BA)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../OUTDOOR/puglia_discover.html">Discover Puglia by bike!</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">TALKS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../TALKS/intelligent_modelling.html">Intelligent modelling in time and space: combine GeoComputation and Machine Learning for  environmental application.</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">ADMIN</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/00_pktools_gdrive_install.html">Install pktools on the gdrive and be able to use from any Colab</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/video.html">Video tips</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Compiling_OTB.html">Compiling OTB from source</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ADMIN/Organigramma_Apolje_2027.html">Organigramma gerarchico–funzionale</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Spatial Ecology's code documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Class 5: Deep Learning for Satellite Imagery with Convolutional Neural Networks (CNNs) - 2026</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/CASESTUDY/CNN_satelite_Class5_2026.ipynb.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="Class-5:-Deep-Learning-for-Satellite-Imagery-with-Convolutional-Neural-Networks-(CNNs)---2026">
+<h1>Class 5: Deep Learning for Satellite Imagery with Convolutional Neural Networks (CNNs) - 2026<a class="headerlink" href="#Class-5:-Deep-Learning-for-Satellite-Imagery-with-Convolutional-Neural-Networks-(CNNs)---2026" title="Link to this heading"></a></h1>
+<div class="line-block">
+<div class="line"><strong>Course:</strong> Geocomputation &amp; Spatial Ecology</div>
+<div class="line"><strong>Dataset:</strong> <a class="reference external" href="https://github.com/phelber/EuroSAT">EuroSAT</a> (Copernicus Sentinel-2 Satellite Multispectral / Optical Imagery)</div>
+</div>
+<hr class="docutils" />
+<section id="Objectives">
+<h2>Objectives<a class="headerlink" href="#Objectives" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p><strong>Understand Spatial Imagery in Deep Learning:</strong> Transition from 1D tabular pixels to 2D multi-channel spatial tensors <span class="math notranslate nohighlight">\((C, H, W)\)</span>.</p></li>
+<li><p><strong>Baseline Model (Multi-Layer Perceptron):</strong> Understand why flat dense layers struggle with spatial context.</p></li>
+<li><p><strong>Convolutional Neural Networks (CNNs):</strong> Learn how spatial convolution kernels and pooling capture spatial patterns (textures, boundaries, shapes) in satellite imagery.</p></li>
+<li><p><strong>Preventing Overfitting with Early Stopping:</strong> Learn how to detect when a model stops generalizing to unseen satellite scenes and automatically halt training.</p></li>
+<li><p><strong>Hyperparameter Tuning with Hyperopt:</strong> Automate the search for optimal learning rates, batch sizes, and optimizers.</p></li>
+<li><p><strong>Interpretability with Saliency Maps:</strong> Inspect which satellite image features (e.g. roads, water borders, buildings) the CNN focuses on when predicting land cover classes.</p></li>
+</ol>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>cd ~/SE_data
+git pull
+rsync -hvrPt --ignore-existing ~/SE_data/* /media/sf_LVM_shared/my_SE_data
+cd  /media/sf_LVM_shared/my_SE_data/exercise
+jupyter-lab CNN_satelite_Class5_2026.ipynb
+</pre></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 1. Setup &amp; Imports</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PIL</span><span class="w"> </span><span class="kn">import</span> <span class="n">Image</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">torch.nn</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">nn</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">optim</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">torch.utils.data</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dataset</span><span class="p">,</span> <span class="n">DataLoader</span><span class="p">,</span> <span class="n">random_split</span>
+
+<span class="c1"># Hyperparameter optimization</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">hyperopt</span><span class="w"> </span><span class="kn">import</span> <span class="n">fmin</span><span class="p">,</span> <span class="n">tpe</span><span class="p">,</span> <span class="n">hp</span><span class="p">,</span> <span class="n">STATUS_OK</span><span class="p">,</span> <span class="n">Trials</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Select compute device (GPU if available, else CPU)</span>
+<span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Using device: </span><span class="si">{</span><span class="n">device</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s1">&#39;cuda&#39;</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;GPU Model: </span><span class="si">{</span><span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">get_device_name</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Using device: cuda
+GPU Model: NVIDIA GeForce RTX 4090
+</pre></div></div>
+</div>
+<section id="2.-Dataset-Acquisition:-EuroSAT-(Sentinel-2)">
+<h3>2. Dataset Acquisition: EuroSAT (Sentinel-2)<a class="headerlink" href="#2.-Dataset-Acquisition:-EuroSAT-(Sentinel-2)" title="Link to this heading"></a></h3>
+<p>The <strong>EuroSAT</strong> dataset is a benchmark dataset for Land Use and Land Cover (LULC) classification based on European Space Agency (ESA) <strong>Sentinel-2</strong> satellite observations.</p>
+<p>It contains <strong>27,000 georeferenced image patches</strong> <span class="math notranslate nohighlight">\((64 \times 64\text{ pixels})\)</span> across <strong>10 Land Cover classes</strong>:</p>
+<ul class="simple">
+<li><p><strong>Annual Crop</strong></p></li>
+<li><p><strong>Forest</strong></p></li>
+<li><p><strong>Herbaceous Vegetation</strong></p></li>
+<li><p><strong>Highway</strong></p></li>
+<li><p><strong>Industrial</strong></p></li>
+<li><p><strong>Pasture</strong></p></li>
+<li><p><strong>Permanent Crop</strong></p></li>
+<li><p><strong>Residential</strong></p></li>
+<li><p><strong>River</strong></p></li>
+<li><p><strong>Sea Lake</strong></p></li>
+</ul>
+<p>The cell below checks for the dataset locally. If not found, it downloads the clean RGB version (~94 MB) automatically.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 2. Check and Download EuroSAT Dataset (~94 MB)</span>
+<span class="n">data_dir</span> <span class="o">=</span> <span class="s2">&quot;./geodata/EuroSAT&quot;</span>
+<span class="n">extract_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;2750&quot;</span><span class="p">)</span>
+
+<span class="c1"># Possible locations where the dataset might be stored</span>
+<span class="n">search_paths</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">extract_dir</span><span class="p">,</span>
+    <span class="s2">&quot;./EuroSAT/2750&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;../geodata/EuroSAT/2750&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;../../geodata/EuroSAT/2750&quot;</span>
+<span class="p">]</span>
+
+<span class="n">dataset_path</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">search_paths</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">p</span>
+        <span class="k">break</span>
+
+<span class="k">if</span> <span class="n">dataset_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">zip_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_dir</span><span class="p">,</span> <span class="s2">&quot;EuroSAT.zip&quot;</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://huggingface.co/datasets/torchgeo/eurosat/resolve/main/EuroSAT.zip&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;EuroSAT dataset not found locally. Downloading from Hugging Face CDN (~94 MB)...&quot;</span><span class="p">)</span>
+    <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlretrieve</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">zip_path</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Extracting archive...&quot;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+        <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">data_dir</span><span class="p">)</span>
+    <span class="n">dataset_path</span> <span class="o">=</span> <span class="n">extract_dir</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Download and extraction complete!&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Found existing EuroSAT dataset at: </span><span class="si">{</span><span class="n">dataset_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># List classes</span>
+<span class="n">classes</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">d</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">d</span><span class="p">))])</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Discovered </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">)</span><span class="si">}</span><span class="s2"> classes:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [</span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s2">&lt;22s</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">count</span><span class="si">}</span><span class="s2"> images)&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Found existing EuroSAT dataset at: ./geodata/EuroSAT/2750
+
+Discovered 10 classes:
+  [0] AnnualCrop             (3000 images)
+  [1] Forest                 (3000 images)
+  [2] HerbaceousVegetation   (3000 images)
+  [3] Highway                (2500 images)
+  [4] Industrial             (2500 images)
+  [5] Pasture                (2000 images)
+  [6] PermanentCrop          (2500 images)
+  [7] Residential            (3000 images)
+  [8] River                  (2500 images)
+  [9] SeaLake                (3000 images)
+</pre></div></div>
+</div>
+</section>
+</section>
+<section id="PyTorch-Dataset-&amp;-DataLoaders">
+<h2>PyTorch Dataset &amp; DataLoaders<a class="headerlink" href="#PyTorch-Dataset-&-DataLoaders" title="Link to this heading"></a></h2>
+<p>In PyTorch, data loading is handled cleanly by sub-classing <code class="docutils literal notranslate"><span class="pre">torch.utils.data.Dataset</span></code>. For each image:</p>
+<ol class="arabic simple">
+<li><p>We read the JPEG satellite patch with <code class="docutils literal notranslate"><span class="pre">PIL.Image.open()</span></code>.</p></li>
+<li><p>Convert pixel values from <span class="math notranslate nohighlight">\([0, 255]\)</span> integers to <span class="math notranslate nohighlight">\([0.0, 1.0]\)</span> floats.</p></li>
+<li><p>Transpose dimensions from image shape <code class="docutils literal notranslate"><span class="pre">(Height,</span> <span class="pre">Width,</span> <span class="pre">Channels)</span></code> to PyTorch format <code class="docutils literal notranslate"><span class="pre">(Channels,</span> <span class="pre">Height,</span> <span class="pre">Width)</span></code> <span class="math notranslate nohighlight">\(\rightarrow (3, 64, 64)\)</span>.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 3. Define EuroSAT Dataset &amp; Create Train / Val / Test Splits</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EuroSATDataset</span><span class="p">(</span><span class="n">Dataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;PyTorch Dataset for EuroSAT satellite image patches.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_paths</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span> <span class="o">=</span> <span class="n">file_paths</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="c1"># Open satellite patch and ensure 3 RGB channels</span>
+        <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">file_paths</span><span class="p">[</span><span class="n">idx</span><span class="p">])</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">)</span>
+        <span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.0</span>  <span class="c1"># Normalize to [0, 1]</span>
+
+        <span class="c1"># Transpose (H, W, C) -&gt; (C, H, W) for PyTorch</span>
+        <span class="n">tensor</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">labels</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor</span><span class="p">,</span> <span class="n">label</span>
+
+<span class="c1"># Collect all image paths and labels</span>
+<span class="n">all_files</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">all_labels</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cls_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="n">cls_files</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">cls_name</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">)))</span>
+    <span class="n">all_files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">cls_files</span><span class="p">)</span>
+    <span class="n">all_labels</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">idx</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">cls_files</span><span class="p">))</span>
+
+<span class="c1"># Shuffle reproducibly</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">permutation</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">))</span>
+<span class="n">all_files</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_files</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
+<span class="n">all_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_labels</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span>
+
+<span class="c1"># For classroom exercises, we use a balanced subset (e.g. 3,000 images)</span>
+<span class="c1"># to keep training fast (a few seconds per epoch). Set to None to use all 27,000.</span>
+<span class="n">SUBSET_SIZE</span> <span class="o">=</span> <span class="mi">3000</span>
+<span class="k">if</span> <span class="n">SUBSET_SIZE</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">SUBSET_SIZE</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">all_files</span><span class="p">):</span>
+    <span class="n">selected_files</span> <span class="o">=</span> <span class="n">all_files</span><span class="p">[:</span><span class="n">SUBSET_SIZE</span><span class="p">]</span>
+    <span class="n">selected_labels</span> <span class="o">=</span> <span class="n">all_labels</span><span class="p">[:</span><span class="n">SUBSET_SIZE</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">selected_files</span> <span class="o">=</span> <span class="n">all_files</span>
+    <span class="n">selected_labels</span> <span class="o">=</span> <span class="n">all_labels</span>
+
+<span class="c1"># 70% Train, 15% Validation, 15% Test</span>
+<span class="n">n_total</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">selected_files</span><span class="p">)</span>
+<span class="n">n_train</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.70</span> <span class="o">*</span> <span class="n">n_total</span><span class="p">)</span>
+<span class="n">n_val</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">0.15</span> <span class="o">*</span> <span class="n">n_total</span><span class="p">)</span>
+<span class="n">n_test</span> <span class="o">=</span> <span class="n">n_total</span> <span class="o">-</span> <span class="n">n_train</span> <span class="o">-</span> <span class="n">n_val</span>
+
+<span class="n">train_dataset</span> <span class="o">=</span> <span class="n">EuroSATDataset</span><span class="p">(</span><span class="n">selected_files</span><span class="p">[:</span><span class="n">n_train</span><span class="p">],</span> <span class="n">selected_labels</span><span class="p">[:</span><span class="n">n_train</span><span class="p">])</span>
+<span class="n">val_dataset</span>   <span class="o">=</span> <span class="n">EuroSATDataset</span><span class="p">(</span><span class="n">selected_files</span><span class="p">[</span><span class="n">n_train</span><span class="p">:</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">],</span> <span class="n">selected_labels</span><span class="p">[</span><span class="n">n_train</span><span class="p">:</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">])</span>
+<span class="n">test_dataset</span>  <span class="o">=</span> <span class="n">EuroSATDataset</span><span class="p">(</span><span class="n">selected_files</span><span class="p">[</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">:],</span> <span class="n">selected_labels</span><span class="p">[</span><span class="n">n_train</span><span class="o">+</span><span class="n">n_val</span><span class="p">:])</span>
+
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">val_loader</span>   <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">test_loader</span>  <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Data ready:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Training samples:   </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Validation samples: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Test samples:       </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">test_dataset</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Data ready:
+  Training samples:   2100
+  Validation samples: 450
+  Test samples:       450
+</pre></div></div>
+</div>
+</section>
+<section id="Visualizing-Sentinel-2-Land-Cover-Patches">
+<h2>Visualizing Sentinel-2 Land Cover Patches<a class="headerlink" href="#Visualizing-Sentinel-2-Land-Cover-Patches" title="Link to this heading"></a></h2>
+<p>Let’s display one sample patch from each of the 10 classes to inspect the satellite imagery.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 4. Display a sample satellite patch from each class</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">axes</span> <span class="o">=</span> <span class="n">axes</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">cls_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">classes</span><span class="p">):</span>
+    <span class="n">cls_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dataset_path</span><span class="p">,</span> <span class="n">cls_name</span><span class="p">,</span> <span class="s2">&quot;*.jpg&quot;</span><span class="p">))</span>
+    <span class="n">sample_img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">cls_files</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">sample_img</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">cls_name</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;EuroSAT (Sentinel-2) - 10 Land Cover Classes (64x64 RGB)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">0.98</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_8_0.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_8_0.png" />
+</div>
+</div>
+<section id="3.-Training-&amp;-Evaluation-Utility-Functions">
+<h3>3. Training &amp; Evaluation Utility Functions<a class="headerlink" href="#3.-Training-&-Evaluation-Utility-Functions" title="Link to this heading"></a></h3>
+<p>We define reusable functions to train a model for several epochs and track loss and accuracy.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 5. Helper function for training and evaluation</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains a PyTorch model and tracks loss and accuracy per epoch.&quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;train_loss&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;val_loss&#39;</span><span class="p">:</span> <span class="p">[],</span>
+        <span class="s1">&#39;train_acc&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;val_acc&#39;</span><span class="p">:</span> <span class="p">[]</span>
+    <span class="p">}</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="c1"># --- Training Phase ---</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">correct</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+            <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">preds</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+            <span class="n">correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">train_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="n">total</span>
+        <span class="n">train_acc</span> <span class="o">=</span> <span class="n">correct</span> <span class="o">/</span> <span class="n">total</span>
+
+        <span class="c1"># --- Validation Phase ---</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">val_loss_running</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">val_correct</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">val_total</span> <span class="o">=</span> <span class="mi">0</span>
+
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+                <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+
+                <span class="n">val_loss_running</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">preds</span> <span class="o">=</span> <span class="n">outputs</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">val_correct</span> <span class="o">+=</span> <span class="p">(</span><span class="n">preds</span> <span class="o">==</span> <span class="n">labels</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+                <span class="n">val_total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">val_loss</span> <span class="o">=</span> <span class="n">val_loss_running</span> <span class="o">/</span> <span class="n">val_total</span>
+        <span class="n">val_acc</span> <span class="o">=</span> <span class="n">val_correct</span> <span class="o">/</span> <span class="n">val_total</span>
+
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_loss</span><span class="p">)</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_acc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_acc</span><span class="p">)</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_acc</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Epoch [</span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">num_epochs</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">] &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;Train Loss: </span><span class="si">{</span><span class="n">train_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | Train Acc: </span><span class="si">{</span><span class="n">train_acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">% | &quot;</span>
+                  <span class="sa">f</span><span class="s2">&quot;Val Loss: </span><span class="si">{</span><span class="n">val_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2"> | Val Acc: </span><span class="si">{</span><span class="n">val_acc</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">history</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">plot_training_history</span><span class="p">(</span><span class="n">history</span><span class="p">,</span> <span class="n">title_prefix</span><span class="o">=</span><span class="s2">&quot;Model&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Plots training and validation loss &amp; accuracy curves side-by-side.&quot;&quot;&quot;</span>
+    <span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Loss plot</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Loss&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Val Loss&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title_prefix</span><span class="si">}</span><span class="s2"> - Loss Curve&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cross Entropy Loss&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+    <span class="c1"># Accuracy plot</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_acc&#39;</span><span class="p">]],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Acc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]],</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Val Acc&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title_prefix</span><span class="si">}</span><span class="s2"> - Accuracy Curve&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Accuracy (%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+</section>
+<section id="4.-Model-1:-Baseline-Multi-Layer-Perceptron-(FFnet)">
+<h3>4. Model 1: Baseline Multi-Layer Perceptron (FFnet)<a class="headerlink" href="#4.-Model-1:-Baseline-Multi-Layer-Perceptron-(FFnet)" title="Link to this heading"></a></h3>
+<p>A standard Feed-Forward network (Multi-Layer Perceptron) requires flattening the 2D image into a 1D vector:</p>
+<div class="math notranslate nohighlight">
+\[\text{Input Dimension} = 3 \text{ channels} \times 64 \text{ pixels} \times 64 \text{ pixels} = 12,288 \text{ features}\]</div>
+</section>
+</section>
+<section id="The-Limitation-for-Geocomputation:">
+<h2>The Limitation for Geocomputation:<a class="headerlink" href="#The-Limitation-for-Geocomputation:" title="Link to this heading"></a></h2>
+<p>Flattening destroys the spatial topology of the satellite image:</p>
+<ul class="simple">
+<li><p>Pixel <span class="math notranslate nohighlight">\((x, y)\)</span> loses its direct spatial neighborhood with <span class="math notranslate nohighlight">\((x+1, y)\)</span> and <span class="math notranslate nohighlight">\((x, y+1)\)</span>.</p></li>
+<li><p>Rotations, spatial shifts, and texture patterns cannot be learned efficiently without massive parameter counts.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 6. Define and Train the Feed-Forward Multi-Layer Perceptron (FFnet)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">FFnet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">in_features</span><span class="o">=</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">64</span> <span class="o">*</span> <span class="mi">64</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">net</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.2</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">256</span><span class="p">,</span> <span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">net</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">mlp_model</span> <span class="o">=</span> <span class="n">FFnet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">mlp_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Training Baseline Multi-Layer Perceptron (FFnet) ---&quot;</span><span class="p">)</span>
+<span class="n">mlp_history</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">mlp_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plot_training_history</span><span class="p">(</span><span class="n">mlp_history</span><span class="p">,</span> <span class="n">title_prefix</span><span class="o">=</span><span class="s2">&quot;MLP (FFnet)&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--- Training Baseline Multi-Layer Perceptron (FFnet) ---
+Epoch [01/10] Train Loss: 2.2809 | Train Acc: 15.4% | Val Loss: 2.1540 | Val Acc: 11.8%
+Epoch [02/10] Train Loss: 1.9672 | Train Acc: 22.9% | Val Loss: 1.9127 | Val Acc: 19.6%
+Epoch [03/10] Train Loss: 1.8648 | Train Acc: 25.4% | Val Loss: 1.8612 | Val Acc: 27.8%
+Epoch [04/10] Train Loss: 1.8198 | Train Acc: 27.0% | Val Loss: 1.8466 | Val Acc: 32.0%
+Epoch [05/10] Train Loss: 1.7920 | Train Acc: 29.3% | Val Loss: 1.8765 | Val Acc: 28.2%
+Epoch [06/10] Train Loss: 1.7852 | Train Acc: 29.5% | Val Loss: 1.7453 | Val Acc: 32.4%
+Epoch [07/10] Train Loss: 1.7323 | Train Acc: 32.8% | Val Loss: 1.7577 | Val Acc: 32.7%
+Epoch [08/10] Train Loss: 1.7063 | Train Acc: 32.8% | Val Loss: 1.7011 | Val Acc: 36.7%
+Epoch [09/10] Train Loss: 1.6649 | Train Acc: 34.4% | Val Loss: 1.6809 | Val Acc: 34.7%
+Epoch [10/10] Train Loss: 1.6820 | Train Acc: 35.6% | Val Loss: 1.6802 | Val Acc: 37.1%
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_12_1.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_12_1.png" />
+</div>
+</div>
+<section id="5.-Model-2:-Convolutional-Neural-Network-(CNNet)">
+<h3>5. Model 2: Convolutional Neural Network (CNNet)<a class="headerlink" href="#5.-Model-2:-Convolutional-Neural-Network-(CNNet)" title="Link to this heading"></a></h3>
+<p>Convolutional Neural Networks preserve spatial dimensions using two core building blocks:</p>
+<ol class="arabic simple">
+<li><p><strong>Convolutional Filters (Kernels):</strong> Small moving filters (e.g. <span class="math notranslate nohighlight">\(3 \times 3\)</span>) that slide across the image, computing dot products to detect local spatial patterns (edges, borders, vegetation textures, building geometry). This is identical in concept to focal convolution filters in GIS (like Sobel edge filters).</p></li>
+<li><p><strong>Pooling Layers (Downsampling):</strong> Max-pooling selects the strongest feature in a local <span class="math notranslate nohighlight">\(2 \times 2\)</span> window, reducing image resolution while maintaining shift invariance.</p></li>
+</ol>
+</section>
+</section>
+<section id="Architecture:">
+<h2>Architecture:<a class="headerlink" href="#Architecture:" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Block 1:</strong> Conv2D <span class="math notranslate nohighlight">\((3 \rightarrow 32) \rightarrow\)</span> BatchNorm <span class="math notranslate nohighlight">\(\rightarrow\)</span> ReLU <span class="math notranslate nohighlight">\(\rightarrow\)</span> MaxPool <span class="math notranslate nohighlight">\((64 \times 64 \rightarrow 32 \times 32)\)</span></p></li>
+<li><p><strong>Block 2:</strong> Conv2D <span class="math notranslate nohighlight">\((32 \rightarrow 64) \rightarrow\)</span> BatchNorm <span class="math notranslate nohighlight">\(\rightarrow\)</span> ReLU <span class="math notranslate nohighlight">\(\rightarrow\)</span> MaxPool <span class="math notranslate nohighlight">\((32 \times 32 \rightarrow 16 \times 16)\)</span></p></li>
+<li><p><strong>Block 3:</strong> Conv2D <span class="math notranslate nohighlight">\((64 \rightarrow 128) \rightarrow\)</span> BatchNorm <span class="math notranslate nohighlight">\(\rightarrow\)</span> ReLU <span class="math notranslate nohighlight">\(\rightarrow\)</span> MaxPool <span class="math notranslate nohighlight">\((16 \times 16 \rightarrow 8 \times 8)\)</span></p></li>
+<li><p><strong>Classifier:</strong> Flatten <span class="math notranslate nohighlight">\(\rightarrow\)</span> Linear <span class="math notranslate nohighlight">\((8192 \rightarrow 128) \rightarrow\)</span> ReLU <span class="math notranslate nohighlight">\(\rightarrow\)</span> Dropout <span class="math notranslate nohighlight">\((0.3) \rightarrow\)</span> Linear <span class="math notranslate nohighlight">\((128 \rightarrow 10)\)</span></p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 7. Define and Train the Convolutional Neural Network (CNNet)</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CNNet</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_classes</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">features</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="c1"># Block 1: 64x64 -&gt; 32x32</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+
+            <span class="c1"># Block 2: 32x32 -&gt; 16x16</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">64</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+
+            <span class="c1"># Block 3: 16x16 -&gt; 8x8</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">128</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">padding</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">BatchNorm2d</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">MaxPool2d</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Flatten</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span> <span class="o">*</span> <span class="mi">8</span> <span class="o">*</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">128</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Dropout</span><span class="p">(</span><span class="mf">0.3</span><span class="p">),</span>
+            <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">classifier</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">cnn_model</span> <span class="o">=</span> <span class="n">CNNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">cnn_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;--- Training Convolutional Neural Network (CNNet) ---&quot;</span><span class="p">)</span>
+<span class="n">cnn_history</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">cnn_model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plot_training_history</span><span class="p">(</span><span class="n">cnn_history</span><span class="p">,</span> <span class="n">title_prefix</span><span class="o">=</span><span class="s2">&quot;CNN (CNNet)&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+--- Training Convolutional Neural Network (CNNet) ---
+Epoch [01/10] Train Loss: 1.6396 | Train Acc: 43.2% | Val Loss: 1.1849 | Val Acc: 56.4%
+Epoch [02/10] Train Loss: 1.2079 | Train Acc: 57.0% | Val Loss: 0.9639 | Val Acc: 69.1%
+Epoch [03/10] Train Loss: 1.0918 | Train Acc: 61.0% | Val Loss: 0.9767 | Val Acc: 64.0%
+Epoch [04/10] Train Loss: 0.9784 | Train Acc: 64.5% | Val Loss: 1.0578 | Val Acc: 61.1%
+Epoch [05/10] Train Loss: 0.9198 | Train Acc: 67.1% | Val Loss: 1.0398 | Val Acc: 67.3%
+Epoch [06/10] Train Loss: 0.8296 | Train Acc: 70.2% | Val Loss: 1.0029 | Val Acc: 69.3%
+Epoch [07/10] Train Loss: 0.7977 | Train Acc: 70.7% | Val Loss: 0.9739 | Val Acc: 69.1%
+Epoch [08/10] Train Loss: 0.7713 | Train Acc: 73.6% | Val Loss: 1.2347 | Val Acc: 57.1%
+Epoch [09/10] Train Loss: 0.6982 | Train Acc: 74.5% | Val Loss: 0.9708 | Val Acc: 70.2%
+Epoch [10/10] Train Loss: 0.6877 | Train Acc: 74.6% | Val Loss: 0.6998 | Val Acc: 74.2%
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_14_1.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_14_1.png" />
+</div>
+</div>
+</section>
+<section id="Model-Comparison:-MLP-vs.-CNN">
+<h2>Model Comparison: MLP vs. CNN<a class="headerlink" href="#Model-Comparison:-MLP-vs.-CNN" title="Link to this heading"></a></h2>
+<p>Let’s compare the validation accuracy of the MLP baseline against the CNN.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 8. Compare Validation Accuracy of MLP vs CNN</span>
+<span class="n">epochs</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">mlp_history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">mlp_history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]],</span> <span class="s1">&#39;o--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MLP (FFnet)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs</span><span class="p">,</span> <span class="p">[</span><span class="n">a</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">cnn_history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]],</span> <span class="s1">&#39;s-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CNN (CNNet)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">2.5</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Sentinel-2 Land Cover Classification: MLP vs. CNN&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Validation Accuracy (%)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final MLP Validation Accuracy: </span><span class="si">{</span><span class="n">mlp_history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Final CNN Validation Accuracy: </span><span class="si">{</span><span class="n">cnn_history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">][</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_16_0.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_16_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Final MLP Validation Accuracy: 37.11%
+Final CNN Validation Accuracy: 74.22%
+</pre></div></div>
+</div>
+<section id="6.-Overfitting-&amp;-Early-Stopping">
+<h3>6. Overfitting &amp; Early Stopping<a class="headerlink" href="#6.-Overfitting-&-Early-Stopping" title="Link to this heading"></a></h3>
+</section>
+</section>
+<section id="What-is-Overfitting?">
+<h2>What is Overfitting?<a class="headerlink" href="#What-is-Overfitting?" title="Link to this heading"></a></h2>
+<p>When training a deep network:</p>
+<ul class="simple">
+<li><p><strong>Phase 1 (Learning):</strong> Both Training Loss and Validation Loss decrease. The model is learning real spatial structures.</p></li>
+<li><p><strong>Phase 2 (Overfitting):</strong> Training Loss continues to fall towards zero, but <strong>Validation Loss starts climbing</strong>. The model has memorized specific training patches and is losing the ability to generalize to new satellite imagery.</p></li>
+</ul>
+</section>
+<section id="How-Early-Stopping-Works:">
+<h2>How Early Stopping Works:<a class="headerlink" href="#How-Early-Stopping-Works:" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Track the <strong>Validation Loss</strong> after every epoch.</p></li>
+<li><p>If Validation Loss reaches a new minimum, save a copy of the model weights.</p></li>
+<li><p>If Validation Loss fails to improve for <code class="docutils literal notranslate"><span class="pre">patience</span></code> consecutive epochs, halt training automatically and restore the best weights.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 9. Early Stopping Implementation &amp; Side-by-Side Comparison Experiment</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">EarlyStopping</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Monitors validation loss and stops training when no improvement is observed.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">patience</span> <span class="o">=</span> <span class="n">patience</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">min_delta</span> <span class="o">=</span> <span class="n">min_delta</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_loss</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;inf&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">early_stop</span> <span class="o">=</span> <span class="kc">False</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_model_weights</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">best_epoch</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">val_loss</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">epoch</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">val_loss</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">best_loss</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">min_delta</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">best_loss</span> <span class="o">=</span> <span class="n">val_loss</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">best_epoch</span> <span class="o">=</span> <span class="n">epoch</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">best_model_weights</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">state_dict</span><span class="p">())</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">patience</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">early_stop</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">train_with_early_stopping</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span>
+                              <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">use_early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Trains a model with optional early stopping.&quot;&quot;&quot;</span>
+    <span class="n">history</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;train_loss&#39;</span><span class="p">:</span> <span class="p">[],</span> <span class="s1">&#39;val_loss&#39;</span><span class="p">:</span> <span class="p">[]}</span>
+    <span class="n">early_stopper</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">patience</span><span class="o">=</span><span class="n">patience</span><span class="p">)</span> <span class="k">if</span> <span class="n">use_early_stopping</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="n">stopped_epoch</span> <span class="o">=</span> <span class="n">num_epochs</span>
+
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="n">running_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+            <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+            <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">outputs</span><span class="p">,</span> <span class="n">labels</span><span class="p">)</span>
+            <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+            <span class="n">running_loss</span> <span class="o">+=</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">train_loss</span> <span class="o">=</span> <span class="n">running_loss</span> <span class="o">/</span> <span class="n">total</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+        <span class="n">v_loss_running</span> <span class="o">=</span> <span class="mf">0.0</span>
+        <span class="n">v_total</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="ow">in</span> <span class="n">val_loader</span><span class="p">:</span>
+                <span class="n">images</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+                <span class="n">v_loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">),</span> <span class="n">labels</span><span class="p">)</span>
+                <span class="n">v_loss_running</span> <span class="o">+=</span> <span class="n">v_loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="n">images</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+                <span class="n">v_total</span> <span class="o">+=</span> <span class="n">labels</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+
+        <span class="n">val_loss</span> <span class="o">=</span> <span class="n">v_loss_running</span> <span class="o">/</span> <span class="n">v_total</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">train_loss</span><span class="p">)</span>
+        <span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">val_loss</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_early_stopping</span><span class="p">:</span>
+            <span class="n">early_stopper</span><span class="p">(</span><span class="n">val_loss</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">epoch</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">early_stopper</span><span class="o">.</span><span class="n">early_stop</span><span class="p">:</span>
+                <span class="n">stopped_epoch</span> <span class="o">=</span> <span class="n">epoch</span>
+                <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  [EarlyStopping] Halted at epoch </span><span class="si">{</span><span class="n">epoch</span><span class="si">}</span><span class="s2">. Restoring best weights from epoch </span><span class="si">{</span><span class="n">early_stopper</span><span class="o">.</span><span class="n">best_epoch</span><span class="si">}</span><span class="s2"> (val loss: </span><span class="si">{</span><span class="n">early_stopper</span><span class="o">.</span><span class="n">best_loss</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+                <span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">early_stopper</span><span class="o">.</span><span class="n">best_model_weights</span><span class="p">)</span>
+                <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">history</span><span class="p">,</span> <span class="n">stopped_epoch</span><span class="p">,</span> <span class="p">(</span><span class="n">early_stopper</span><span class="o">.</span><span class="n">best_epoch</span> <span class="k">if</span> <span class="n">early_stopper</span> <span class="k">else</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="c1"># Run Comparison Experiment:</span>
+<span class="c1"># We create a noisy, smaller training set (400 samples) so overfitting happens noticeably within 20 epochs</span>
+<span class="n">small_train_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">EuroSATDataset</span><span class="p">(</span><span class="n">selected_files</span><span class="p">[:</span><span class="mi">400</span><span class="p">],</span> <span class="n">selected_labels</span><span class="p">[:</span><span class="mi">400</span><span class="p">]),</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;1. Running Complete Training (Unconstrained - 20 Epochs)...&quot;</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">full_model</span> <span class="o">=</span> <span class="n">CNNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">full_opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">full_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">full_hist</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">train_with_early_stopping</span><span class="p">(</span>
+    <span class="n">full_model</span><span class="p">,</span> <span class="n">small_train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">full_opt</span><span class="p">,</span>
+    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">use_early_stopping</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">2. Running Early Stopped Training (patience = 3)...&quot;</span><span class="p">)</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">es_model</span> <span class="o">=</span> <span class="n">CNNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+<span class="n">es_opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">es_model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+<span class="n">es_hist</span><span class="p">,</span> <span class="n">es_stop_epoch</span><span class="p">,</span> <span class="n">es_best_epoch</span> <span class="o">=</span> <span class="n">train_with_early_stopping</span><span class="p">(</span>
+    <span class="n">es_model</span><span class="p">,</span> <span class="n">small_train_loader</span><span class="p">,</span> <span class="n">val_loader</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">es_opt</span><span class="p">,</span>
+    <span class="n">num_epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">use_early_stopping</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">3</span>
+<span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1. Running Complete Training (Unconstrained - 20 Epochs)...
+
+2. Running Early Stopped Training (patience = 3)...
+  [EarlyStopping] Halted at epoch 15. Restoring best weights from epoch 12 (val loss: 1.0108)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 10. Side-by-Side Plot: Unconstrained Overfitting vs. Early Stopping</span>
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">sharey</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot A: Complete Unconstrained Training</span>
+<span class="n">epochs_full</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_hist</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_full</span><span class="p">,</span> <span class="n">full_hist</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Loss&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_full</span><span class="p">,</span> <span class="n">full_hist</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#d62728&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Val Loss&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Highlight overfitting zone</span>
+<span class="n">min_val_idx</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">full_hist</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]))</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">min_val_idx</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Min Val Loss (Ep </span><span class="si">{</span><span class="n">min_val_idx</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">axvspan</span><span class="p">(</span><span class="n">min_val_idx</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">full_hist</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">]),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Overfitting Zone&#39;</span><span class="p">)</span>
+
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;A: Complete Run (Overfitting Unconstrained)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Cross Entropy Loss&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plot B: Early Stopped Run</span>
+<span class="n">epochs_es</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">es_hist</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_es</span><span class="p">,</span> <span class="n">es_hist</span><span class="p">[</span><span class="s1">&#39;train_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Train Loss&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">epochs_es</span><span class="p">,</span> <span class="n">es_hist</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">],</span> <span class="s1">&#39;s--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#2ca02c&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Val Loss&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">es_stop_epoch</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Stopped (Ep </span><span class="si">{</span><span class="n">es_stop_epoch</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">es_best_epoch</span><span class="p">,</span> <span class="n">es_hist</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">][</span><span class="n">es_best_epoch</span> <span class="o">-</span> <span class="mi">1</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gold&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">120</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+            <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Best Saved Weights (Ep </span><span class="si">{</span><span class="n">es_best_epoch</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;B: Early Stopped Run (Generalization Preserved)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Epoch&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Early Stopping Comparison: Halting Before Model Memorizes Training Data&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.02</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_19_0.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_19_0.png" />
+</div>
+</div>
+<section id="7.-Hyperparameter-Tuning-with-Hyperopt">
+<h3>7. Hyperparameter Tuning with Hyperopt<a class="headerlink" href="#7.-Hyperparameter-Tuning-with-Hyperopt" title="Link to this heading"></a></h3>
+<p>A machine learning model contains parameters learned during backpropagation (weights, biases) and <strong>hyperparameters</strong> set before training (learning rate, optimizer type, batch size).</p>
+<p>Rather than guessing hyperparameters manually, <strong>Hyperopt</strong> uses Bayesian Optimization with a Tree of Parzen Estimators (TPE) to intelligently sample candidate values based on previous performance.</p>
+<p>In this demonstration, we search over:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">lr</span></code>: Continuous log-uniform distribution between <span class="math notranslate nohighlight">\(10^{-4}\)</span> and <span class="math notranslate nohighlight">\(10^{-2}\)</span>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">optimizer</span></code>: Choice between <code class="docutils literal notranslate"><span class="pre">Adam</span></code> and <code class="docutils literal notranslate"><span class="pre">SGD</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">batch_size</span></code>: Choice between <code class="docutils literal notranslate"><span class="pre">32</span></code> and <code class="docutils literal notranslate"><span class="pre">64</span></code>.</p></li>
+</ul>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 11. Define Search Space &amp; Objective Function with Hyperopt</span>
+<span class="n">space</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">loguniform</span><span class="p">(</span><span class="s1">&#39;lr&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1e-4</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">1e-2</span><span class="p">)),</span>
+    <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;optimizer&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;Adam&#39;</span><span class="p">,</span> <span class="s1">&#39;SGD&#39;</span><span class="p">]),</span>
+    <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">hp</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="s1">&#39;batch_size&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">32</span><span class="p">,</span> <span class="mi">64</span><span class="p">])</span>
+<span class="p">}</span>
+
+<span class="n">trial_records</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">objective</span><span class="p">(</span><span class="n">params</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Objective function evaluated by Hyperopt on validation loss.&quot;&quot;&quot;</span>
+    <span class="n">lr</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span>
+    <span class="n">opt_name</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;optimizer&#39;</span><span class="p">]</span>
+    <span class="n">batch_size</span> <span class="o">=</span> <span class="n">params</span><span class="p">[</span><span class="s1">&#39;batch_size&#39;</span><span class="p">]</span>
+
+    <span class="c1"># Create dataloaders for the chosen batch size</span>
+    <span class="n">t_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">train_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">v_loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">val_dataset</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># Initialize a fresh CNN</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">CNNet</span><span class="p">()</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+    <span class="n">crit</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">CrossEntropyLoss</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">opt_name</span> <span class="o">==</span> <span class="s1">&#39;Adam&#39;</span><span class="p">:</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">opt</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span> <span class="n">momentum</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+
+    <span class="c1"># Quick 3-epoch evaluation</span>
+    <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+        <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">t_loader</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+            <span class="n">crit</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+            <span class="n">opt</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># Measure validation loss</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+    <span class="n">val_loss</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">val_total</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="k">for</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">v_loader</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">y</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
+            <span class="n">val_loss</span> <span class="o">+=</span> <span class="n">crit</span><span class="p">(</span><span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+            <span class="n">val_total</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+    <span class="n">final_val_loss</span> <span class="o">=</span> <span class="n">val_loss</span> <span class="o">/</span> <span class="n">val_total</span>
+
+    <span class="n">trial_records</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+        <span class="s1">&#39;trial&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">trial_records</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s1">&#39;lr&#39;</span><span class="p">:</span> <span class="n">lr</span><span class="p">,</span>
+        <span class="s1">&#39;optimizer&#39;</span><span class="p">:</span> <span class="n">opt_name</span><span class="p">,</span>
+        <span class="s1">&#39;batch_size&#39;</span><span class="p">:</span> <span class="n">batch_size</span><span class="p">,</span>
+        <span class="s1">&#39;val_loss&#39;</span><span class="p">:</span> <span class="n">final_val_loss</span>
+    <span class="p">})</span>
+
+    <span class="k">return</span> <span class="p">{</span><span class="s1">&#39;loss&#39;</span><span class="p">:</span> <span class="n">final_val_loss</span><span class="p">,</span> <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="n">STATUS_OK</span><span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Running 5 Hyperopt Trials...&quot;</span><span class="p">)</span>
+<span class="n">trials</span> <span class="o">=</span> <span class="n">Trials</span><span class="p">()</span>
+<span class="n">best_params</span> <span class="o">=</span> <span class="n">fmin</span><span class="p">(</span>
+    <span class="n">fn</span><span class="o">=</span><span class="n">objective</span><span class="p">,</span>
+    <span class="n">space</span><span class="o">=</span><span class="n">space</span><span class="p">,</span>
+    <span class="n">algo</span><span class="o">=</span><span class="n">tpe</span><span class="o">.</span><span class="n">suggest</span><span class="p">,</span>
+    <span class="n">max_evals</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">trials</span><span class="o">=</span><span class="n">trials</span><span class="p">,</span>
+    <span class="n">rstate</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">default_rng</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">--- Hyperopt Search Summary ---&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="s1">&#39;Trial&#39;</span><span class="si">:</span><span class="s2">&lt;7</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Optimizer&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Batch Size&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Learning Rate&#39;</span><span class="si">:</span><span class="s2">&lt;14</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="s1">&#39;Val Loss&#39;</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span> <span class="o">*</span> <span class="mi">65</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trial_records</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;trial&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;7</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;optimizer&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;batch_size&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;14.6f</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">&lt;10.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Running 5 Hyperopt Trials...
+100%|███████████| 5/5 [00:09&lt;00:00,  1.84s/trial, best loss: 0.9279482263988919]
+
+--- Hyperopt Search Summary ---
+Trial   | Optimizer  | Batch Size | Learning Rate  | Val Loss
+-----------------------------------------------------------------
+1       | Adam       | 64         | 0.001739       | 1.9518
+2       | SGD        | 32         | 0.001646       | 0.9552
+3       | Adam       | 32         | 0.000140       | 0.9279
+4       | SGD        | 32         | 0.000266       | 1.3217
+5       | Adam       | 64         | 0.000156       | 0.9516
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 12. Plot Hyperopt Trial Results</span>
+<span class="n">trials_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;trial&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trial_records</span><span class="p">]</span>
+<span class="n">losses</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trial_records</span><span class="p">]</span>
+<span class="n">optimizers</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;optimizer&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trial_records</span><span class="p">]</span>
+<span class="n">lrs</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">[</span><span class="s1">&#39;lr&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">trial_records</span><span class="p">]</span>
+
+<span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">))</span>
+
+<span class="c1"># Plot 1: Trial vs Loss</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;#1f77b4&#39;</span> <span class="k">if</span> <span class="n">o</span> <span class="o">==</span> <span class="s1">&#39;Adam&#39;</span> <span class="k">else</span> <span class="s1">&#39;#ff7f0e&#39;</span> <span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">optimizers</span><span class="p">]</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">trials_list</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.85</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Validation Loss by Hyperopt Trial&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Trial Number&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Validation Loss (lower is better)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Add legend for optimizers</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">matplotlib.patches</span><span class="w"> </span><span class="kn">import</span> <span class="n">Patch</span>
+<span class="n">legend_elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#1f77b4&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Adam&#39;</span><span class="p">),</span> <span class="n">Patch</span><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;#ff7f0e&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;SGD&#39;</span><span class="p">)]</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span><span class="o">=</span><span class="n">legend_elements</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plot 2: Learning Rate vs Loss</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">lrs</span><span class="p">,</span> <span class="n">losses</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Validation Loss vs. Learning Rate (Log Scale)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Learning Rate&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Validation Loss&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_22_0.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_22_0.png" />
+</div>
+</div>
+</section>
+<section id="8.-Model-Interpretability:-Saliency-Maps">
+<h3>8. Model Interpretability: Saliency Maps<a class="headerlink" href="#8.-Model-Interpretability:-Saliency-Maps" title="Link to this heading"></a></h3>
+<p>In remote sensing and Earth observation, understanding <strong>why</strong> a neural network classified a satellite scene is crucial for validation and trust.</p>
+<p>A <strong>Saliency Map</strong> measures how sensitive the output class score <span class="math notranslate nohighlight">\(S_c\)</span> is to small changes in each pixel <span class="math notranslate nohighlight">\((i, j)\)</span> of the input image <span class="math notranslate nohighlight">\(I\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\text{Saliency}_{i,j} = \max_{c \in \{R, G, B\}} \left| \frac{\partial S_c}{\partial I_{c, i, j}} \right|\]</div>
+<p>Pixels with high gradients have the highest impact on the model’s decision (e.g. roads for the <em>Highway</em> class, water contours for the <em>River</em> class, or structural boundaries for <em>Industrial</em> buildings).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 13. Compute and Visualize Saliency Maps on EuroSAT Test Images</span>
+<span class="n">cnn_model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="c1"># Select 6 diverse test images</span>
+<span class="n">sample_indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">70</span><span class="p">]</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sample_indices</span><span class="p">),</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mf">3.2</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">sample_indices</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">row</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sample_indices</span><span class="p">):</span>
+    <span class="n">image_tensor</span><span class="p">,</span> <span class="n">true_label</span> <span class="o">=</span> <span class="n">test_dataset</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">image_tensor</span> <span class="o">=</span> <span class="n">image_tensor</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>  <span class="c1"># Add batch dim (1, 3, 64, 64)</span>
+    <span class="n">image_tensor</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">()</span>
+
+    <span class="c1"># Forward pass</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">cnn_model</span><span class="p">(</span><span class="n">image_tensor</span><span class="p">)</span>
+    <span class="n">pred_label</span> <span class="o">=</span> <span class="n">output</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">item</span><span class="p">()</span>
+
+    <span class="c1"># Backward pass for the predicted class score</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="n">output</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">pred_label</span><span class="p">]</span>
+    <span class="n">score</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+
+    <span class="c1"># Saliency is the maximum absolute gradient across the 3 RGB color channels</span>
+    <span class="n">saliency</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">image_tensor</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">abs</span><span class="p">(),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">saliency</span> <span class="o">=</span> <span class="n">saliency</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+    <span class="c1"># Normalize saliency to [0, 1] for visualization</span>
+    <span class="n">saliency_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">saliency</span> <span class="o">-</span> <span class="n">saliency</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">saliency</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">saliency</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="o">+</span> <span class="mf">1e-8</span><span class="p">)</span>
+
+    <span class="c1"># Original image for plotting (H, W, C)</span>
+    <span class="n">orig_img</span> <span class="o">=</span> <span class="n">image_tensor</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">permute</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+    <span class="n">orig_img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">orig_img</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># Plot original image</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">orig_img</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True: </span><span class="si">{</span><span class="n">classes</span><span class="p">[</span><span class="n">true_label</span><span class="p">]</span><span class="si">}</span><span class="s2"> | Pred: </span><span class="si">{</span><span class="n">classes</span><span class="p">[</span><span class="n">pred_label</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">fontweight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot saliency map</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">saliency_norm</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;hot&#39;</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Saliency Gradient Heatmap&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="n">axes</span><span class="p">[</span><span class="n">row</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s2">&quot;Saliency Maps: Where does the CNN look in Sentinel-2 images?&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.005</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<br/></pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../_images/CASESTUDY_CNN_satelite_Class5_2026_24_0.png" src="../_images/CASESTUDY_CNN_satelite_Class5_2026_24_0.png" />
+</div>
+</div>
+</section>
+<section id="9.-Key-Takeaways-for-Geocomputation-&amp;-Earth-Observation">
+<h3>9. Key Takeaways for Geocomputation &amp; Earth Observation<a class="headerlink" href="#9.-Key-Takeaways-for-Geocomputation-&-Earth-Observation" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p><strong>Spatial Representation Matters:</strong></p>
+<ul class="simple">
+<li><p>Flattening satellite imagery into 1D vectors for a Multi-Layer Perceptron destroys 2D spatial relationships.</p></li>
+<li><p>Convolutional Neural Networks (CNNs) preserve 2D topology and extract hierarchical spatial features (edges <span class="math notranslate nohighlight">\(\rightarrow\)</span> textures <span class="math notranslate nohighlight">\(\rightarrow\)</span> complex land-use patterns).</p></li>
+</ul>
+</li>
+<li><p><strong>Sentinel-2 &amp; Remote Sensing Integration:</strong></p>
+<ul class="simple">
+<li><p>Sentinel-2 imagery can be seamlessly loaded with standard PyTorch <code class="docutils literal notranslate"><span class="pre">Dataset</span></code> loaders without reliance on legacy <code class="docutils literal notranslate"><span class="pre">.mat</span></code> files.</p></li>
+</ul>
+</li>
+<li><p><strong>Preventing Overfitting:</strong></p>
+<ul class="simple">
+<li><p>When training deep models on finite Earth Observation data, monitoring validation loss is essential.</p></li>
+<li><p><strong>Early Stopping</strong> halts training at the exact point where generalization stops improving and restores the optimal weights.</p></li>
+</ul>
+</li>
+<li><p><strong>Hyperparameter Tuning:</strong></p>
+<ul class="simple">
+<li><p>Bayesian Optimization (<code class="docutils literal notranslate"><span class="pre">hyperopt</span></code>) automates selecting learning rates, optimizers, and batch sizes without guesswork.</p></li>
+</ul>
+</li>
+<li><p><strong>Interpretability:</strong></p>
+<ul class="simple">
+<li><p>Gradient-based saliency maps confirm whether the CNN is focusing on meaningful spatial structures (roads, building roofs, river bends) or spurious background artifacts.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2020, Giuseppe Amatulli.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
