@@ -532,9 +532,10 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 * [Jupyther notebook 2](http://spatial-ecology.net/docs/build/html/CASESTUDY/Tree_Height_07FeedForward_Networks_2026.ipynb)
 
 ## Lecture 14: Thursday, 5 November, 2026.
-### Machine Learning - Architecture of Neural Networks  (Raffaele Scaringi)
+### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi) (Raffaele Scaringi)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here]()  
+Transcript summary lecture can found [here]()  
 
 * [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/source/lectures/lect_20261105_Optmizers_NeuralNets_pt2_Class5.pdf)
 	* Feedforward Neural Networks
@@ -550,7 +551,7 @@ Recorded lecture can be found [here]().
 		- Saliency Analysis
 		- Tutorial: data batching, classification of satellite images, WandB
 
-* [Estimation of tree height using GEDI dataset - Feed forward networks - 2026](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2026.html)
+* [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2026.html)
 
 ## Lecture 15: Tuesday, 10 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)
