@@ -537,7 +537,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 Recorded lecture can be found [here]()  
 Transcript summary lecture can found [here]()  
 
-* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/source/lectures/lect_20261105_Optmizers_NeuralNets_pt2_Class5.pdf)
+* [Perceptron & Neural Nets](http://spatial-ecology.net/docs/source/lectures/lect_20261105_Optmizers_NeuralNets_pt2_Class5.pdf)
+
 	* Feedforward Neural Networks
 		- The limitations of Perceptrons
 		- Multi-layer Perceptron
