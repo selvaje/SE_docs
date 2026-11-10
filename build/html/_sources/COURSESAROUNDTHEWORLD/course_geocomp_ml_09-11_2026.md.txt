@@ -557,23 +557,27 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 15: Tuesday, 10 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)
 
-Recorded lecture can be found [here]().
+Recorded lecture can be found [here]()  
+Transcript summary lecture can found [here]()  
 
-* [Neural Nets & Convolutional Neural Networks](http://spatial-ecology.net/docs/source/lectures/lect_20261114_Optmizers_NeuralNets_pt2_Class5_2026.pdf)
-	* Feedforward Neural Networks
-		- The limitations of Perceptrons
-		- Multi-layer Perceptron
-		- Training: the forward and back-propagation
-		- Debugging tips
-		- Tutorial: Neural Nets for the tree height dataset
-	* Convolutional Neural Networks
-		- Spatial locality structure
-		- Kernels, padding, pooling
-		- Classification tasks
-		- Saliency Analysis
-		- Tutorial: data batching, classification of satellite images, WandB
+* [CNN, RNNs, LSTMs & GRUs](http://spatial-ecology.net/docs/source/lectures/lect_20261011_RNN_LSTM_Class6.pdf)
 
-* [Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification](http://spatial-ecology.net/docs/build/html/CASESTUDY/CNN_satelite_Class5_2026.html); Recorded lecture can be found [here](https://youtu.be/28QnxspZwFg?si=fjsuxMoHs59R4889&t=5305)
+	* CNN:
+		- Hands-on tutorial;
+	* Vanilla Recurrent Neural Networks (RNNs)
+		- Recurrent neuron formulation, hidden state h_t, weight sharing
+		- Sequence topologies (One-to-Many, Many-to-One, Many-to-Many)
+		- Forward unrolling and Backpropagation Through Time (BPTT)
+		- The Chain of Jacobians: Vanishing & exploding gradients
+
+	* Gated Architectures: LSTMs & GRUs
+		- The Constant Error Carousel (CEC)
+		- Anatomy of LSTM: Forget, Input, Candidate, Output gates
+		- Gated Recurrent Unit (GRU) as a lightweight alternative
+		- Bidirectional (BiLSTM) & Deep Stacked architectures
+		- Hands-on tutorial
+
+* [Sequence Modeling with Recurrent Neural Networks (RNN, LSTM, GRU)](http://spatial-ecology.net/docs/build/html/CASESTUDY/RNN_LSTM_Class6_2026.html); 
 
 
 ## Lecture 16:  Thursday, 12 November, 2026.
