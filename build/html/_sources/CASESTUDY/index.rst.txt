@@ -30,6 +30,7 @@
    Tree_Height_07FeedForward_Networks_2025.ipynb
    NNs_pt3_SHAP.ipynb
    CNN_satelite_2023.ipynb
+   RNN_LSTM_Class6_2026.ipynb
    foundation_model_IIASA2024.ipynb
    NN_Unsupervised_2024.ipynb 
    LSTMs_tutorial.ipynb
