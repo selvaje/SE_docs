@@ -557,8 +557,8 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 15: Tuesday, 10 November, 2026.
 ### Machine Learning - Capacity, Overfitting, Underfitting - Convolutional Neural Networks (Raffaele Scaringi)
 
-Recorded lecture can be found [here]()  
-Transcript summary lecture can found [here]()  
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/LFa5-NTKVZjcT-BgSM4WdP1yNgs2c7-s2b1-sS7eyhBu_Twz7Qk8glDBtJz5OlCt.4dMn81eZL5ybS0NY)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect15_GML_10112026.pdf)  
 
 * [CNN, RNNs, LSTMs & GRUs](http://spatial-ecology.net/docs/source/lectures/lect_20261011_RNN_LSTM_Class6.pdf)
 
