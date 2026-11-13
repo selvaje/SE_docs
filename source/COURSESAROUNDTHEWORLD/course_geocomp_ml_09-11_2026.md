@@ -583,9 +583,17 @@ Transcript summary lecture can found [here](http://spatial-ecology.net/docs/sour
 ## Lecture 16:  Thursday, 12 November, 2026.
 ### Machine Learning - Papers discussion (Raffaele Scaringi)
 
-Discussion papers:
-* A novel hybrid model for species distribution prediction using neural networks and Grey Wolf Optimizer algorithm
-* Prediction of sap flow with historical environmental factors based on deep learning technology
+Recorded lecture can be found [here](https://yale.zoom.us/rec/share/GOKis-ChHRHnYDT45FWD5lwq41fLpSP5hoEDqSpWAz6j_2369zDzTYDj-zrYgnuf.67QHdFU5QX8x3PMC)  
+Transcript summary lecture can found [here](http://spatial-ecology.net/docs/source/COURSESAROUNDTHEWORLD/course_geocomp_ml_09-11_2026_resume/lect15_GML_12112026.pdf)  
+
+* Recap of the ML topics presented during the courses  
+
+* Discussion papers:
+	- Use of multiple LIDAR-derived digital terrain indices and machine learning 
+for high-resolution national-scale soil moisture mapping of the Swedish forest landscape  
+	- Comparing convolutional neural network and random forest for benthic habitat mapping in Apollo Marine Par  
+	- High‐Resolution Downscaling of Disposable Income in Europe Using Open‐Source Data  
+
 
 ## In-person week: 23-27 November, 2026, coding hackathon in Matera, Italy
 
