@@ -609,6 +609,10 @@ for high-resolution national-scale soil moisture mapping of the Swedish forest l
 
 * 9:00-17:00: Student coding hackathon
 
+**Francesco Lovergine**  
+* 11:00-12:00 CST: "Managing Computing Environments: A Survival Guide for Data Scientists, take two" 
+* 15:00-16:00 CST: "AI-aided computing: chatbots, CLI agents, skills, MCP, open models"
+
 Recorded lecture can be found [here]()
 
 * Social drinks/dinner: at Birfoot Birrificio Artigianale [Via G. Marconi, 75100 Matera MT, Italy](https://maps.app.goo.gl/ufj1mLXwLnjEwRTB9) with "Matera Tech" local comunity. Starting at 19:00. Participation in this social event is self-funded. 
@@ -616,6 +620,19 @@ Recorded lecture can be found [here]()
 ### Day 3: Wednesday, 25 November 2026
 
 * 9:00-17:00: Student coding hackathon
+
+**Olha Kachalova**  
+* 11:00-12:00 CST: "When Accuracy Lies: The Hidden Role of Validation in Spatial Modelling"
+  
+Abstract  
+
+How accurate is a spatial prediction model? Surprisingly, the answer may depend as much on how we validate it as on the model itself. Different validation strategies can produce substantially different performance metrics, potentially leading to contradictory conclusions about model quality.
+
+In this talk, we will explore why conventional random cross-validation can give overly optimistic results for spatially dependent data, while spatial cross-validation may sometimes be unnecessarily pessimistic. Using a practical example of zinc concentration mapping in the Meuse River floodplain, we will compare Random Forest and Random Forest Spatial Interpolation (RFSI) and demonstrate how validation design influences the interpretation of model performance.
+
+Building on recent developments in spatial machine learning validation, we will discuss how to choose a validation strategy according to the intended prediction task — whether interpolating between existing observations or predicting in geographically independent areas.
+
+The main takeaway is that validation is not simply a technical step to calculate accuracy metrics: it defines what those metrics actually mean and where we can trust our predictions.
 
 ### Day 4: Thursday, 26 November 2026
 
@@ -625,6 +642,7 @@ Recorded lecture can be found [here]()
 
 ### Day 5: Friday, 27 November 2026
 
-* 9:00-17:00: Final project Student presentation
+* 9:00-15:00: Final project Student presentation
+* 15:30-18:30: Guided tour in Matera. Participation in this social event is self-funded (10EURO).
 	
-	* Social dinner at Rock Hostel. At 19.00 The event is covered by Spatial Ecology.
+* Social dinner at Rock Hostel. At 19.00 The event is covered by Spatial Ecology.
