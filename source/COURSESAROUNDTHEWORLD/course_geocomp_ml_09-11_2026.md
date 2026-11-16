@@ -634,15 +634,17 @@ Building on recent developments in spatial machine learning validation, we will 
 
 The main takeaway is that validation is not simply a technical step to calculate accuracy metrics: it defines what those metrics actually mean and where we can trust our predictions.
 
+* 19:00 Self-organized hike trought the canyon to reach the Belevedere.  
+
 ### Day 4: Thursday, 26 November 2026
 
 * 9:00-17:00: Final project Student presentation
 
-* Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). At 19.30. Participation in this social event is self-funded (~20EURO).
+* 19.30: Social dinner: Osteria Malatesta, [Via San Biagio, 45, 75100 Matera MT, Italy](https://maps.app.goo.gl/fFf18j9v6WqaP6fHA). Participation in this social event is self-funded (~20EURO).
 
 ### Day 5: Friday, 27 November 2026
 
 * 9:00-15:00: Final project Student presentation
 * 15:30-18:30: Guided tour in Matera. Participation in this social event is self-funded (10EURO).
 	
-* Social dinner at Rock Hostel. At 19.00 The event is covered by Spatial Ecology.
+* 19.00-23.00: Social dinner at Rock Hostel. The event is covered by Spatial Ecology.
