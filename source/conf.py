@@ -28,6 +28,15 @@ myst_enable_extensions = [
 templates_path = ['_templates']
 exclude_patterns = [
     'VIRTUALMACHINE/Setting_OSGeoLive_curso_para_Ecologia_Espacial.md'
+    'CASESTUDY/Perceptron_Intro.ipynb'
+    'CASESTUDY/Tree_Height_03RF_pred.ipynb'
+    'CASESTUDY/Tree_Height_04SVM_pred_2022.ipynb'
+    'CASESTUDY/Tree_Height_04SVM_pred_2023.ipynb'
+    'CASESTUDY/Tree_Height_04SVM_pred_2024.ipynb'
+    'CASESTUDY/Tree_Height_05Perceptron_pred_clean_2022.ipynb'
+    'CASESTUDY/Tree_Height_06Perceptron_complete_2024.ipynb'
+    'CASESTUDY/Tree_Height_06Perceptron_pred_2023.ipynb'
+    'GRASS/grass_osgeo.ipynb'
 ]
 
 html_theme = 'sphinx_rtd_theme'

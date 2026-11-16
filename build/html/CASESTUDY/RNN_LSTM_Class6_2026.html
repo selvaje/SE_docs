@@ -28,7 +28,9 @@
       <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Prithvi 100M model" href="foundation_model_IIASA2024.html" />
+    <link rel="prev" title="Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023" href="CNN_satelite_2023.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -147,7 +149,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../ASSIGNMENTS/assignment_fall2022_solutions.html">Assignments Fall 2022</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">CASE STUDY</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp.html">SDM1 : Montane woodcreper - Gecomputation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_Rmodel.html">SDM1 : Montane woodcreper - Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="SDM1_MWood_gecomp4GRASS.html">SDM1 : Montane woodcreper - Gecomputation for the Random Forest model using GRASS</a></li>
@@ -177,6 +179,52 @@
 <li class="toctree-l1"><a class="reference internal" href="NNs_pt3_SHAP.html">Neural Nets (pt.3), Interpretability and Convolutional Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html">Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CNN_satelite_2023.html#Using-CNNs-for-a-image-dataset">Using CNNs for a image dataset</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sequence Modeling with Recurrent Neural Networks (RNN, LSTM, GRU) - 2026</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Course-Progression-Recap">Course Progression Recap</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Pedagogical-Learning-Objectives">Pedagogical Learning Objectives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#1.-Real-World-Environmental-Data-Acquisition">1. Real-World Environmental Data Acquisition</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Dataset:-NOAA-Seattle-Daily-Weather-Record-(2012-2015)">The Dataset: NOAA Seattle Daily Weather Record (2012-2015)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#2.-Exploratory-Data-Analysis-&amp;-Geological/Atmospheric-Dynamics">2. Exploratory Data Analysis &amp; Geological/Atmospheric Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#3.-The-Golden-Rule-of-Earth-Time-Series:-Zero-Data-Leakage">3. The Golden Rule of Earth Time Series: Zero Data Leakage</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Chronological-Block-Split">Chronological Block Split</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#4.-Geoscientific-Feature-Preprocessing-&amp;-Domain-Scaling">4. Geoscientific Feature Preprocessing &amp; Domain Scaling</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Transformations-Applied:">Transformations Applied:</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#5.-3D-Sequence-Tensor-Windowing-in-PyTorch">5. 3D Sequence Tensor Windowing in PyTorch</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Warm-up-History-for-the-Test-Year">Warm-up History for the Test Year</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#6.-Part-1:-Vanilla-RNN-&amp;-The-Vanishing-Gradient-Pathology">6. Part 1: Vanilla RNN &amp; The Vanishing Gradient Pathology</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Mathematical-Pathology:-Backpropagation-Through-Time-(BPTT)">The Mathematical Pathology: Backpropagation Through Time (BPTT)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#7.-Defensive-Engineering:-Gradient-Norm-Clipping">7. Defensive Engineering: Gradient Norm Clipping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#8.-Part-2:-Long-Short-Term-Memory-(LSTM)-Architecture">8. Part 2: Long Short-Term Memory (LSTM) Architecture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Linear-Memory-Highway:-Constant-Error-Carousel-(CEC)">The Linear Memory Highway: Constant Error Carousel (CEC)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#9.-Part-3:-Gated-Recurrent-Unit-(GRU)-Comparison">9. Part 3: Gated Recurrent Unit (GRU) Comparison</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#10.-Geoscientific-Model-Evaluation:-Benchmarking-on-2015-Unseen-Test-Year">10. Geoscientific Model Evaluation: Benchmarking on 2015 Unseen Test Year</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#11.-Visualizing-Observed-vs.-Simulated-Meteorological-Dynamics">11. Visualizing Observed vs. Simulated Meteorological Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#12.-Physical-Interpretability-&amp;-Hidden/Cell-State-Dynamics">12. Physical Interpretability &amp; Hidden/Cell State Dynamics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#13.-Bidirectional-Recurrent-Networks-(BiLSTM)-for-Spatial-&amp;-Depth-Sequences">13. Bidirectional Recurrent Networks (BiLSTM) for Spatial &amp; Depth Sequences</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#The-Geoscientific-Exception:-Spatial-&amp;-Stratigraphic-Sequences">The Geoscientific Exception: Spatial &amp; Stratigraphic Sequences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#PyTorch-Bidirectional-LSTM-Contract">PyTorch Bidirectional LSTM Contract</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#14.-Hands-on-Student-Exercises-&amp;-Research-References">14. Hands-on Student Exercises &amp; Research References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#[EXERCISE]-Practical-Challenges-for-PhD-&amp;-Post-Doc-Researchers">[EXERCISE] Practical Challenges for PhD &amp; Post-Doc Researchers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Key-Takeaways-for-Geocomputation">Key Takeaways for Geocomputation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Landmark-Literature-&amp;-Reading">Landmark Literature &amp; Reading</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html">Prithvi 100M model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="foundation_model_IIASA2024.html#Proposed-exercises">Proposed exercises</a></li>
 <li class="toctree-l1"><a class="reference internal" href="NN_Unsupervised_2024.html">Autoencoder (AE), Variational Autoencoder (VAE)</a></li>
@@ -227,6 +275,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">&lt;no title&gt;</a></li>
       <li class="breadcrumb-item active">Sequence Modeling with Recurrent Neural Networks (RNN, LSTM, GRU) - 2026</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/CASESTUDY/RNN_LSTM_Class6_2026.ipynb.txt" rel="nofollow"> View page source</a>
@@ -1539,7 +1588,10 @@ GeoGRU (2 layers)      | 38,465               | 2 (Reset/Update)
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="CNN_satelite_2023.html" class="btn btn-neutral float-left" title="Using Multi-layer Perceptron and Convolutional Neural Networks for Satellite image classification - 2023" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="foundation_model_IIASA2024.html" class="btn btn-neutral float-right" title="Prithvi 100M model" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
